@@ -1,5 +1,5 @@
 /* =========================================================================
-   Rezo Fabrik — comportements du site (sans dépendance externe)
+   Rezo Enseignes — comportements du site (sans dépendance externe)
    ========================================================================= */
 (function () {
   "use strict";

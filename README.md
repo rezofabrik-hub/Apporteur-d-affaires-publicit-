@@ -1,4 +1,4 @@
-# Rezo Fabrik — réseau national enseigne, signalétique & publicité par l'objet
+# Rezo Enseignes — réseau national enseigne, signalétique & publicité par l'objet
 
 Site vitrine et générateur de demandes pour une activité d'**apporteur d'affaires**
 en communication visuelle : mise en relation entre des clients ayant un projet
@@ -72,7 +72,18 @@ vers une boîte inexistante.
 ### 2. Identité et coordonnées — `build/data/site.js`
 
 Nom de marque, baseline, nom de domaine, e-mails, téléphone, ville pilote,
-chiffres affichés sur l'accueil. Relancez `node build/build.js` après modification.
+chiffres affichés sur l'accueil.
+
+**Marque commerciale et raison sociale sont deux champs distincts** : `brand`
+porte l'enseigne (**Rezo Enseignes**) affichée partout sur le site, `brandLegal`
+porte la société immatriculée (**SARL Rezofabrik**) qui doit figurer dans les
+mentions légales. Ne confondez pas les deux : seule la société immatriculée a
+une valeur juridique.
+
+Le domaine **rezoenseignes.fr** est libre en `.fr` comme en `.com`. Avant de le
+déposer, vérifiez l'absence de marque antérieure sur
+[data.inpi.fr](https://data.inpi.fr) — c'est gratuit et cela évite un
+changement de nom forcé plus tard. Relancez `node build/build.js` après modification.
 
 **Important** : remplacez `domain` par votre vrai nom de domaine dès qu'il est en
 place. Cette valeur alimente les URL canoniques, le `sitemap.xml` et l'Open Graph.

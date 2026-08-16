@@ -138,6 +138,19 @@ function run() {
 
   sitemap(written.slice());
 
+  /* Suppression des pages devenues obsolètes.
+     Sans cela, retirer une ville ou un métier laisse d'anciens fichiers sur le
+     disque : ils restent servis, sortent du sitemap et portent un contenu périmé
+     (ancien nom de marque, anciennes URL). Toutes les pages HTML de la racine
+     étant générées, celles qui ne viennent pas d'être écrites sont orphelines. */
+  const keep = new Set(written);
+  const orphans = fs.readdirSync(ROOT)
+    .filter((f) => f.endsWith(".html") && !keep.has(f));
+  orphans.forEach((f) => fs.unlinkSync(path.join(ROOT, f)));
+  if (orphans.length) {
+    console.log(`  · ${orphans.length} page(s) obsolète(s) supprimée(s) : ${orphans.slice(0, 5).join(", ")}${orphans.length > 5 ? "…" : ""}`);
+  }
+
   const bytes = written.reduce((n, f) => n + fs.statSync(path.join(ROOT, f)).size, 0);
   console.log(`${written.length} fichiers générés (${(bytes / 1024).toFixed(0)} Ko de HTML)`);
   console.log(`  · 1 accueil`);

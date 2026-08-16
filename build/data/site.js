@@ -2,12 +2,15 @@
    Identité du site — modifiez ce fichier puis relancez `node build/build.js`
    ========================================================================= */
 module.exports = {
-  brand: "Rezo Fabrik",
+  brand: "Rezo Enseignes",
+  /* Marque commerciale ci-dessus, raison sociale ci-dessous : les mentions
+     légales doivent porter la société immatriculée, pas le nom d'enseigne. */
   brandLegal: "SARL Rezofabrik",
   tagline: "Réseau national enseigne, signalétique & publicité par l'objet",
   /* Adresse publique du site. Utilisée pour les URL canoniques, le sitemap
      et les balises Open Graph. À remplacer par votre nom de domaine dès qu'il
-     est en place (ex. "https://www.rezofabrik.fr"), puis relancer le build. */
+     est en place (ex. "https://www.rezoenseignes.fr"), puis relancer le build.
+     Le domaine rezoenseignes.fr est libre en .fr comme en .com. */
   domain: "https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-",
   lang: "fr-FR",
 
@@ -16,8 +19,8 @@ module.exports = {
   role: "agence de communication et de mise en relation",
 
   /* Contact — répliqué dans assets/js/config.js */
-  email: "contact@rezofabrik.fr",
-  emailPro: "partenaires@rezofabrik.fr",
+  email: "contact@rezoenseignes.fr",
+  emailPro: "partenaires@rezoenseignes.fr",
   phoneDisplay: "07 75 76 92 32",
   phoneHref: "+33775769232",
 

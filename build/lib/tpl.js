@@ -87,7 +87,7 @@ function header(active) {
         <path d="M3 21h18M6 21V8l6-5 6 5v13M10 21v-6h4v6"/>
       </svg>
     </span>
-    <span class="logo-txt">${esc(site.brand)}<small>Enseigne · Signalétique</small></span>
+    <span class="logo-txt">${esc(site.brand)}<small>Réseau national</small></span>
   </a>
 
   <nav class="nav" aria-label="Navigation principale">
@@ -150,7 +150,7 @@ function footer(cities) {
             <path d="M3 21h18M6 21V8l6-5 6 5v13M10 21v-6h4v6"/>
           </svg>
         </span>
-        <span class="logo-txt">${esc(site.brand)}<small>Enseigne · Signalétique</small></span>
+        <span class="logo-txt">${esc(site.brand)}<small>Réseau national</small></span>
       </a>
       <p class="ftr-about">${esc(site.tagline)}. Nous qualifions votre projet et le confions à des professionnels
       sélectionnés près de chez vous. Service gratuit et sans engagement pour le client.</p>

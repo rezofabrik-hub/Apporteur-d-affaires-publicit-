@@ -28,8 +28,8 @@ window.RF_CONFIG = {
   /* ---------------------------------------------------------------------
      2. COORDONNÉES — reprises partout sur le site
   --------------------------------------------------------------------- */
-  email: "contact@rezofabrik.fr",
-  emailPro: "partenaires@rezofabrik.fr",
+  email: "contact@rezoenseignes.fr",
+  emailPro: "partenaires@rezoenseignes.fr",
   phone: "07 75 76 92 32",
   phoneHref: "+33775769232",
 

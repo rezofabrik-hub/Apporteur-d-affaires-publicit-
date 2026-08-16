@@ -616,7 +616,7 @@ function legal(cities) {
   l'économie numérique).</p></div>
 
   <h2>Éditeur du site</h2>
-  <p><strong>${esc(site.brandLegal)}</strong><br>
+  <p><strong>${esc(site.brandLegal)}</strong>, exploitant la marque <strong>${esc(site.brand)}</strong><br>
   Société à responsabilité limitée au capital de [montant] €<br>
   Siège social : ${esc(site.address.street)}, ${esc(site.address.cp)} ${esc(site.address.city)}<br>
   SIRET : [numéro] — RCS Perpignan [numéro]<br>
@@ -673,7 +673,7 @@ function legal(cities) {
 </div></section>
 <section class="sec"><div class="wrap wrap-narrow"><article class="prose">
   <h2>Responsable du traitement</h2>
-  <p><strong>${esc(site.brandLegal)}</strong><br>
+  <p><strong>${esc(site.brandLegal)}</strong>, exploitant la marque <strong>${esc(site.brand)}</strong><br>
   ${esc(site.address.street)}, ${esc(site.address.cp)} ${esc(site.address.city)}<br>
   Téléphone : <a data-cfg="phone" href="tel:${esc(site.phoneHref)}">${esc(site.phoneDisplay)}</a><br>
   E-mail : <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a></p>
