@@ -111,7 +111,7 @@ convertit mieux qu'une photo de chantier réel. Déposez vos fichiers dans
 `assets/img/` en conservant la nomenclature `<sujet>-<n>-lg.jpg` et
 `<sujet>-<n>-md.jpg`, et mettez à jour `assets/img/manifest.json`.
 
-Les scripts de collecte se trouvent dans `tools/` (dépôt `comte-guifr-`) et ne
+Les scripts de collecte se trouvent dans `tools/` et ne
 sont pas nécessaires au fonctionnement du site.
 
 ---
