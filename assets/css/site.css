@@ -1228,3 +1228,31 @@ td { color: var(--tx-2); }
      cherche a une raison de le faire — souvent vérifier à qui il a affaire. */
   .ftr-bot nav a { display: inline-block; padding-block: 6px; }
 }
+
+
+/* ---------- 31. Remise de première année ----------
+   Un prix remisé doit se lire d'un coup d'œil : le tarif courant barré, le
+   prix réellement dû en grand. L'inverse — remise annoncée en petit sous un
+   prix plein — fait douter, et donne l'impression qu'on cache quelque chose. */
+.disc-banner {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px;
+  justify-content: center; text-align: center;
+  max-width: 900px; margin: 0 auto 26px; padding: 16px 22px;
+  background: var(--signal-100); border: 1.5px solid var(--signal);
+  border-radius: var(--r-lg);
+}
+.disc-banner b { font-size: 1.06rem; color: var(--signal-600); }
+.disc-banner span { font-size: .93rem; color: var(--tx-2); }
+.disc-banner strong { color: var(--tx); }
+
+/* Tarif courant barré, placé au-dessus du prix remisé. */
+.plan-price-cut { position: relative; }
+.plan-price-cut s {
+  display: block; width: 100%;
+  font-size: .95rem; font-weight: 600; color: var(--tx-3);
+  text-decoration-thickness: 1.5px; margin-bottom: 2px;
+}
+.plan-note-cut b { color: var(--signal-600); }
+
+/* Sur fond sombre, l'ardoise du prix barré doit rester lisible. */
+.dark .plan-price-cut s { color: var(--tx-inv-3); }

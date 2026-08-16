@@ -18,6 +18,14 @@ module.exports = {
   baseline: "Un seul interlocuteur pour toute votre communication, de l'enseigne au site internet, partout en France.",
   role: "agence de communication et de mise en relation",
 
+  /* Date de lancement du réseau. Elle fixe la date anniversaire à laquelle
+     prend fin la remise de première année (voir `discount` dans
+     build/data/partnership.js). Ne la modifiez qu'ici : la bannière, les
+     cartes tarifaires et la FAQ s'y réfèrent toutes, aucune date n'est
+     écrite en dur ailleurs. */
+  launchDate: "2026-08-16",
+  anniversary: "16 août",
+
   /* Expérience du dirigeant — c'est l'argument que ni une franchise ni une
      plateforme de mise en relation ne peuvent avancer. Repris sur l'accueil,
      la page méthode, la page partenaires et dans les données structurées. */

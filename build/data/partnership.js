@@ -27,15 +27,32 @@ module.exports = {
     label: "Offre de lancement",
     headline: "Les 2 premiers mois à 0 €",
     sub: "Le réseau se constitue : les premières entreprises inscrites reçoivent les demandes de leur zone pendant deux mois, gratuitement et sans engagement.",
-    detail: "Vous jugez sur pièces. À l'issue des deux mois, vous choisissez votre abonnement pour la première année — 6 mois ou 12 mois — ou vous ne donnez pas suite, sans frais ni justification.",
+    detail: "Vous jugez sur pièces. À l'issue des deux mois, vous choisissez votre abonnement pour la première année — 6 mois ou 12 mois, avec 20 % de remise jusqu'à la date anniversaire du réseau — ou vous ne donnez pas suite, sans frais ni justification.",
     conditions: [
       "Offre réservée aux premières entreprises inscrites, dans la limite des places par zone et par métier",
       "Deux mois à 0 €, sans prélèvement et sans carte bancaire demandée",
       "Aucune commission sur les affaires signées, pendant les deux mois comme après",
-      "À l'issue des deux mois, vous choisissez entre l'abonnement 6 mois et l'abonnement 12 mois",
+      "À l'issue des deux mois, vous choisissez entre l'abonnement 6 mois et l'abonnement 12 mois, remisés de 20 % pour la première année",
       "Aucun basculement automatique : sans accord explicite de votre part, l'accès s'arrête"
     ],
     badge: "2 mois à 0 €"
+  },
+
+  /* ---------------------------------------------------------------------
+     REMISE DE PREMIÈRE ANNÉE.
+     Les montants remisés ne sont écrits nulle part : ils sont recalculés à
+     partir du tarif et du taux ci-dessous à chaque génération du site. Un
+     seul chiffre à changer pour ajuster toute l'offre, et aucune page ne peut
+     conserver un ancien prix.
+     Passez `active: false` à la date anniversaire pour revenir au plein tarif.
+     La date, elle, se règle dans build/data/site.js (`launchDate`).
+  --------------------------------------------------------------------- */
+  discount: {
+    active: true,
+    rate: 20,
+    label: "−20 % la première année",
+    headline: "20 % de remise sur votre première année",
+    note: "Remise de lancement appliquée à la première année d'abonnement, quelle que soit la formule retenue. Elle court jusqu'à la date anniversaire du réseau ; au-delà, l'abonnement se renouvelle au tarif courant — et seulement si vous le décidez, puisqu'il n'y a aucune reconduction tacite."
   },
 
   /* Devise et mentions affichées sous les prix.
@@ -44,7 +61,7 @@ module.exports = {
      lui qui sert de base à tous les calculs d'amortissement ci-dessous. */
   currency: "€",
   priceSuffix: "TTC",
-  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse. Vous récupérez cette TVA : le coût réellement supporté est de 408 € pour l'abonnement 6 mois et de 742 € pour l'abonnement 12 mois. Sans reconduction tacite : vous décidez du renouvellement.",
+  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez. Remise de première année déduite, la charge réellement supportée revient à 327 € pour l'abonnement 6 mois et à 593 € pour l'abonnement 12 mois. Au tarif courant, après la date anniversaire, elle serait de 408 € et 742 €. Sans reconduction tacite : vous décidez du renouvellement.",
 
   /* ---------------------------------------------------------------------
      Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
@@ -112,7 +129,7 @@ module.exports = {
       priceNote: "soit 74,17 € par mois TTC — 90 € de moins que deux semestres",
       featured: true,
       badge: "Le plus choisi",
-      pitch: "Les mêmes avantages que la formule 6 mois, pour 90 € de moins sur l'année.",
+      pitch: "Les mêmes avantages que la formule 6 mois, au meilleur tarif mensuel du réseau.",
       audience: "Enseigniste, imprimeur, poseur ou agence qui veut un flux installé sur l'année",
       features: [
         "Référencement complet dans l'annuaire du réseau",
@@ -169,7 +186,7 @@ module.exports = {
     title: "Combien faut-il signer pour rembourser l'abonnement ?",
     lead: "La question n'est pas ce que coûte l'abonnement, mais à partir de quel moment il est remboursé. Voici le calcul, fait avec nos propres grilles tarifaires et une hypothèse de marge délibérément prudente.",
     threshold: "742 €",
-    thresholdNote: "Coût réel de l'abonnement 12 mois : 890 € TTC, dont 148 € de TVA que vous récupérez. C'est donc 742 € qu'il faut couvrir, soit environ 2 100 € de chiffre d'affaires à 35 % de marge brute.",
+    thresholdNote: "Coût réel de l'abonnement 12 mois : 890 € TTC, dont 148 € de TVA que vous récupérez. C'est donc 742 € qu'il faut couvrir, soit environ 2 100 € de chiffre d'affaires à 35 % de marge brute. Le calcul est fait au tarif courant : avec la remise de première année, le seuil tombe à 593 € et 1 700 € de chiffre d'affaires.",
     head: ["Une seule affaire de ce type", "Budget courant", "Marge brute à 35 %", "Abonnement 12 mois remboursé ?"],
     rows: [
       ["Caisson lumineux LED simple face 2 m", "900 – 2 200 €", "315 – 770 €", "Oui sur le haut de la fourchette"],
@@ -238,6 +255,8 @@ module.exports = {
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
     { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est précisément la raison d'être de la formule Découverte : deux mois à zéro euro vous permettent de mesurer le flux réel de votre secteur avant d'engager le moindre euro." },
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
+    { q: "En quoi consiste la remise de 20 % ?", a: "C'est une remise de lancement appliquée à votre première année d'abonnement, quelle que soit la formule retenue. L'abonnement 6 mois revient donc à 392 € au lieu de 490, et l'abonnement 12 mois à 712 € au lieu de 890. Elle court jusqu'à la date anniversaire du réseau ; au-delà, le renouvellement se fait au tarif courant — et uniquement si vous le décidez, puisqu'il n'existe aucune reconduction tacite." },
+    { q: "La remise s'applique-t-elle aussi au service de pose ?", a: "Oui, la première année du service de pose bénéficie des mêmes 20 %, dans les mêmes conditions. Les deux offres suivent la même grille depuis le départ." },
     { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "La durée d'engagement et le prix, rien d'autre. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses — un partenaire qui paie est un partenaire servi. L'engagement annuel se récompense donc sur le tarif : 890 € contre 980 € pour deux semestres, soit 90 € d'économie." },
     { q: "Puis-je passer du 6 mois au 12 mois ?", a: "Oui, à tout moment : la différence est calculée au prorata du temps restant, sans frais de changement. Comme les prestations sont les mêmes, ce choix ne porte que sur la durée et sur le rythme de renouvellement qui vous arrange." },
     { q: "Prenez-vous une commission en plus de l'abonnement ?", a: "Non, jamais. L'abonnement est la seule contrepartie. Vous facturez le client en direct, au prix que vous fixez, et rien ne nous revient sur le chantier." },

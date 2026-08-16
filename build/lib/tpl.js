@@ -421,6 +421,36 @@ function trustBar() {
 }
 
 /** Bandeau d'offre de lancement — masqué automatiquement si `launch.active` est faux. */
+/* ------------------------------------------------- remise de lancement
+   Le prix remisé n'est jamais saisi à la main : il se déduit du tarif et du
+   taux. Le jour où l'un des deux change, toutes les pages suivent. */
+function discountOn(price) {
+  const D = partnership.discount;
+  const base = Number(String(price).replace(/\s/g, ""));
+  if (!D || !D.active || !base) return null;
+  const net = Math.round(base * (1 - D.rate / 100));
+  return {
+    base, net, rate: D.rate,
+    saved: base - net,
+    /* Prix mensuel équivalent, arrondi au centime, pour les mentions de type
+       « soit 59,33 € par mois ». */
+    perMonth: (d) => (net / parseInt(d, 10)).toFixed(2).replace(".", ","),
+    ht: Math.round(net / 1.2)
+  };
+}
+
+/* Bandeau de rappel de la remise, posé au-dessus des cartes tarifaires. */
+function discountBanner() {
+  const D = partnership.discount;
+  if (!D || !D.active) return "";
+  return `<div class="disc-banner">
+  <b>${esc(D.headline)}</b>
+  <span>Offre de lancement valable jusqu'à la date anniversaire du réseau,
+  le <strong>${esc(site.anniversary)}</strong>. Les tarifs affichés ci-dessous
+  tiennent déjà compte de la remise.</span>
+</div>`;
+}
+
 /* Barre d'entrée de l'espace professionnels.
    Le site s'adresse d'abord aux entreprises qui cherchent à se rendre
    visibles ; le recrutement de prestataires est un second métier, qui doit
@@ -522,5 +552,5 @@ module.exports = {
   site, services, esc, attr, jsonld, img, heroImg, pick, manifest,
   page, header, footer, crumbs, crumbSchema, faqBlock, faqSchema,
   serviceCards, ctaDouble, trustBar, keywordCloud, launchBanner, amortBlock,
-  proBar, proInvite, partnership, NAV_MORE
+  proBar, proInvite, discountOn, discountBanner, partnership, NAV_MORE
 };

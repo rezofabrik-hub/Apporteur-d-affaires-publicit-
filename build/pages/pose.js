@@ -15,10 +15,18 @@ module.exports = function posePage(cities) {
   <h3>${esc(pl.name)}</h3>
   ${P.launch && P.launch.active ? `<span class="plan-launch">🎁 ${esc(P.launch.badge)}</span>` : ""}
   <p class="plan-pitch">${esc(pl.pitch)}</p>
+  ${(() => { const d = T.discountOn(pl.price); return d ? `
+  <div class="plan-price plan-price-cut">
+    <s aria-label="Tarif courant">${esc(d.base)} ${esc(P.currency)}</s>
+    <b>${esc(d.net)}</b><span>${esc(P.currency)} ${esc(P.priceSuffix)}</span><em>/ ${esc(pl.duration)}</em>
+  </div>
+  <p class="plan-note plan-note-cut"><b>${esc(P.discount.label)}</b> — soit
+    ${esc(d.perMonth(pl.duration))} ${esc(P.currency)} par mois et ${esc(d.saved)} ${esc(P.currency)}
+    d'économie. Tarif courant ensuite : ${esc(d.base)} ${esc(P.currency)}.</p>` : `
   <div class="plan-price">
     <b>${esc(pl.price)}</b><span>${esc(P.currency)} ${esc(P.priceSuffix)}</span><em>/ ${esc(pl.duration)}</em>
   </div>
-  <p class="plan-note">${esc(pl.priceNote)}</p>
+  <p class="plan-note">${esc(pl.priceNote)}</p>`; })()}
   <p class="plan-audience"><strong>Pour qui :</strong> ${esc(pl.audience)}</p>
   <ul class="plan-list">
     ${pl.features.map((f) => `<li class="yes">${esc(f)}</li>`).join("")}
