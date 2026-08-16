@@ -1,0 +1,933 @@
+{
+ "enseigne": [
+  {
+   "name": "enseigne-1",
+   "w": 1024,
+   "h": 758
+  },
+  {
+   "name": "enseigne-2",
+   "w": 1023,
+   "h": 682
+  },
+  {
+   "name": "enseigne-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "enseigne-4",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "enseigne-5",
+   "w": 1024,
+   "h": 683
+  }
+ ],
+ "enseigne-lumineuse": [
+  {
+   "name": "enseigne-lumineuse-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "enseigne-lumineuse-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "enseigne-lumineuse-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "enseigne-lumineuse-4",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "enseigne-lumineuse-5",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "enseigne-lumineuse-6",
+   "w": 1024,
+   "h": 473
+  }
+ ],
+ "lettres-decoupees": [
+  {
+   "name": "lettres-decoupees-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "lettres-decoupees-2",
+   "w": 1024,
+   "h": 576
+  },
+  {
+   "name": "lettres-decoupees-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "lettres-decoupees-4",
+   "w": 1023,
+   "h": 681
+  }
+ ],
+ "signaletique": [
+  {
+   "name": "signaletique-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "signaletique-2",
+   "w": 1023,
+   "h": 681
+  },
+  {
+   "name": "signaletique-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "signaletique-4",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "signaletique-5",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "signaletique-6",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "signaletique-7",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "signaletique-8",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "signaletique-int": [
+  {
+   "name": "signaletique-int-1",
+   "w": 1000,
+   "h": 664
+  },
+  {
+   "name": "signaletique-int-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "signaletique-int-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "signaletique-int-4",
+   "w": 1023,
+   "h": 670
+  }
+ ],
+ "signaletique-secu": [
+  {
+   "name": "signaletique-secu-1",
+   "w": 1023,
+   "h": 685
+  },
+  {
+   "name": "signaletique-secu-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "signaletique-secu-3",
+   "w": 1024,
+   "h": 680
+  },
+  {
+   "name": "signaletique-secu-4",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "signaletique-secu-5",
+   "w": 1023,
+   "h": 649
+  },
+  {
+   "name": "signaletique-secu-6",
+   "w": 1024,
+   "h": 683
+  }
+ ],
+ "covering": [
+  {
+   "name": "covering-1",
+   "w": 1024,
+   "h": 679
+  },
+  {
+   "name": "covering-2",
+   "w": 1024,
+   "h": 682
+  },
+  {
+   "name": "covering-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "covering-4",
+   "w": 1023,
+   "h": 713
+  },
+  {
+   "name": "covering-5",
+   "w": 1024,
+   "h": 538
+  },
+  {
+   "name": "covering-6",
+   "w": 1024,
+   "h": 939
+  },
+  {
+   "name": "covering-7",
+   "w": 1024,
+   "h": 625
+  },
+  {
+   "name": "covering-8",
+   "w": 1024,
+   "h": 812
+  },
+  {
+   "name": "covering-9",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "covering-10",
+   "w": 1010,
+   "h": 1024
+  },
+  {
+   "name": "covering-11",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "covering-flotte": [
+  {
+   "name": "covering-flotte-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "covering-flotte-2",
+   "w": 1024,
+   "h": 659
+  },
+  {
+   "name": "covering-flotte-3",
+   "w": 1024,
+   "h": 623
+  }
+ ],
+ "impression": [
+  {
+   "name": "impression-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "impression-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "impression-3",
+   "w": 1023,
+   "h": 719
+  }
+ ],
+ "impression-banderole": [
+  {
+   "name": "impression-banderole-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "impression-banderole-2",
+   "w": 960,
+   "h": 720
+  },
+  {
+   "name": "impression-banderole-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "impression-banderole-4",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "impression-banderole-5",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "impression-banderole-6",
+   "w": 1023,
+   "h": 577
+  },
+  {
+   "name": "impression-banderole-7",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "objets-pub": [
+  {
+   "name": "objets-pub-1",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "objets-pub-2",
+   "w": 1024,
+   "h": 512
+  },
+  {
+   "name": "objets-pub-3",
+   "w": 1024,
+   "h": 765
+  },
+  {
+   "name": "objets-pub-4",
+   "w": 1023,
+   "h": 1023
+  }
+ ],
+ "textile": [
+  {
+   "name": "textile-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "textile-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "textile-3",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "textile-4",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "textile-5",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "textile-6",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "maquette": [
+  {
+   "name": "maquette-1",
+   "w": 1000,
+   "h": 750
+  },
+  {
+   "name": "maquette-2",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "maquette-3",
+   "w": 1024,
+   "h": 682
+  },
+  {
+   "name": "maquette-4",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "maquette-5",
+   "w": 1024,
+   "h": 663
+  }
+ ],
+ "pao": [
+  {
+   "name": "pao-1",
+   "w": 960,
+   "h": 641
+  },
+  {
+   "name": "pao-2",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "pao-3",
+   "w": 1024,
+   "h": 663
+  },
+  {
+   "name": "pao-4",
+   "w": 1024,
+   "h": 684
+  },
+  {
+   "name": "pao-5",
+   "w": 1024,
+   "h": 732
+  }
+ ],
+ "nacelle": [
+  {
+   "name": "nacelle-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "nacelle-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "nacelle-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "nacelle-4",
+   "w": 1024,
+   "h": 701
+  },
+  {
+   "name": "nacelle-5",
+   "w": 1024,
+   "h": 975
+  },
+  {
+   "name": "nacelle-6",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "nacelle-7",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "nacelle-8",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "nacelle-9",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "pose": [
+  {
+   "name": "pose-1",
+   "w": 1024,
+   "h": 585
+  },
+  {
+   "name": "pose-2",
+   "w": 1023,
+   "h": 473
+  },
+  {
+   "name": "pose-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "pose-4",
+   "w": 1024,
+   "h": 620
+  },
+  {
+   "name": "pose-5",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "pose-6",
+   "w": 1024,
+   "h": 680
+  }
+ ],
+ "vitrophanie": [
+  {
+   "name": "vitrophanie-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "vitrophanie-2",
+   "w": 1024,
+   "h": 703
+  },
+  {
+   "name": "vitrophanie-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "vitrophanie-4",
+   "w": 1023,
+   "h": 685
+  },
+  {
+   "name": "vitrophanie-5",
+   "w": 1023,
+   "h": 542
+  },
+  {
+   "name": "vitrophanie-6",
+   "w": 1023,
+   "h": 682
+  }
+ ],
+ "plv": [
+  {
+   "name": "plv-1",
+   "w": 1024,
+   "h": 606
+  },
+  {
+   "name": "plv-2",
+   "w": 1024,
+   "h": 746
+  },
+  {
+   "name": "plv-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "plv-4",
+   "w": 1024,
+   "h": 678
+  },
+  {
+   "name": "plv-5",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "plv-6",
+   "w": 1024,
+   "h": 729
+  },
+  {
+   "name": "plv-7",
+   "w": 1024,
+   "h": 615
+  }
+ ],
+ "stand": [
+  {
+   "name": "stand-1",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "stand-2",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "stand-3",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "stand-4",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "stand-5",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "stand-6",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "stand-7",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "stand-8",
+   "w": 1024,
+   "h": 683
+  }
+ ],
+ "gravure": [
+  {
+   "name": "gravure-1",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "gravure-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "gravure-3",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "gravure-4",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "gravure-5",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "gravure-6",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "gravure-7",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "gravure-8",
+   "w": 1024,
+   "h": 683
+  }
+ ],
+ "totem": [
+  {
+   "name": "totem-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "totem-2",
+   "w": 1023,
+   "h": 685
+  },
+  {
+   "name": "totem-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "totem-4",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "totem-5",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "totem-6",
+   "w": 1024,
+   "h": 683
+  }
+ ],
+ "digital": [
+  {
+   "name": "digital-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "digital-2",
+   "w": 1024,
+   "h": 1024
+  },
+  {
+   "name": "digital-3",
+   "w": 1024,
+   "h": 679
+  },
+  {
+   "name": "digital-4",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "digital-5",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "digital-6",
+   "w": 1024,
+   "h": 683
+  }
+ ],
+ "marquage-sol": [
+  {
+   "name": "marquage-sol-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "marquage-sol-2",
+   "w": 1024,
+   "h": 771
+  },
+  {
+   "name": "marquage-sol-3",
+   "w": 1023,
+   "h": 768
+  },
+  {
+   "name": "marquage-sol-4",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "marquage-sol-5",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "marquage-sol-6",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "atelier": [
+  {
+   "name": "atelier-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "atelier-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "atelier-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "atelier-4",
+   "w": 1024,
+   "h": 758
+  },
+  {
+   "name": "atelier-5",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "equipe-pro": [
+  {
+   "name": "equipe-pro-1",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "equipe-pro-2",
+   "w": 960,
+   "h": 640
+  },
+  {
+   "name": "equipe-pro-3",
+   "w": 960,
+   "h": 640
+  },
+  {
+   "name": "equipe-pro-4",
+   "w": 960,
+   "h": 640
+  },
+  {
+   "name": "equipe-pro-5",
+   "w": 960,
+   "h": 636
+  }
+ ],
+ "commerce": [
+  {
+   "name": "commerce-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "commerce-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "commerce-3",
+   "w": 1024,
+   "h": 1010
+  },
+  {
+   "name": "commerce-4",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "commerce-5",
+   "w": 1024,
+   "h": 713
+  },
+  {
+   "name": "commerce-6",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "commerce-7",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "commerce-8",
+   "w": 1024,
+   "h": 921
+  },
+  {
+   "name": "commerce-9",
+   "w": 1024,
+   "h": 792
+  },
+  {
+   "name": "commerce-10",
+   "w": 1024,
+   "h": 678
+  },
+  {
+   "name": "commerce-11",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "commerce-12",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "perpignan": [
+  {
+   "name": "perpignan-1",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "perpignan-2",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "perpignan-3",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "perpignan-4",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "perpignan-5",
+   "w": 1024,
+   "h": 501
+  },
+  {
+   "name": "perpignan-6",
+   "w": 1024,
+   "h": 748
+  },
+  {
+   "name": "perpignan-7",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "perpignan-8",
+   "w": 1024,
+   "h": 601
+  },
+  {
+   "name": "perpignan-9",
+   "w": 1024,
+   "h": 688
+  }
+ ],
+ "hero": [
+  {
+   "name": "hero-1",
+   "w": 1024,
+   "h": 834
+  },
+  {
+   "name": "hero-2",
+   "w": 1024,
+   "h": 743
+  },
+  {
+   "name": "hero-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "hero-4",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "hero-5",
+   "w": 1024,
+   "h": 768
+  }
+ ]
+}

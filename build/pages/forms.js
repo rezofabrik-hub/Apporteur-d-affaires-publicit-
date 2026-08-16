@@ -1,0 +1,830 @@
+const T = require("../lib/tpl");
+const { site, services, esc, attr, img, heroImg } = T;
+
+/* ------------------------------------------------------------- helpers */
+const id = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+  .replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "");
+
+function checks(name, items, opts) {
+  const o = opts || {};
+  return `<div class="opts">${items.map((it) => {
+    const label = typeof it === "string" ? it : it.l;
+    const hint = typeof it === "string" ? "" : it.h;
+    const v = id(name + "_" + label);
+    return `<label class="opt" for="${v}">
+      <input type="${o.radio ? "radio" : "checkbox"}" id="${v}" name="${esc(name)}" value="${attr(label)}">
+      <span class="opt-box" aria-hidden="true"></span>
+      <span class="opt-txt">${esc(label)}${hint ? `<small>${esc(hint)}</small>` : ""}</span>
+    </label>`;
+  }).join("")}</div>`;
+}
+
+function capGroup(title, name, items, hint) {
+  return `<fieldset style="margin-bottom:26px">
+  <legend class="fieldset-legend">${esc(title)}${hint ? ` <span class="hint">— ${esc(hint)}</span>` : ""}</legend>
+  ${checks(name, items)}
+</fieldset>`;
+}
+
+/* ═══════════════════════════════════════════════ FORMULAIRE CLIENT */
+function devis(cities) {
+  const crumbItems = [
+    { name: "Accueil", url: "index.html" },
+    { name: "Demande de devis", url: "devis.html" }
+  ];
+
+  const body = `
+<section class="hero hero-in-page">
+  <div class="hero-bg">${heroImg("commerce", 2, "Devanture de commerce avec enseigne")}</div>
+  <div class="wrap hero-in">
+    ${T.crumbs(crumbItems)}
+    <span class="eyebrow">Demande de projet</span>
+    <h1>Décrivez votre projet, recevez des devis comparables sous 48 h</h1>
+    <p class="lead">Quatre étapes, deux minutes. Plus votre description est précise, plus les propositions
+    que vous recevrez seront justes — et comparables entre elles. Service gratuit, sans engagement
+    et sans exclusivité.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="split">
+      <div class="form-panel">
+        <form class="form" data-kind="client" novalidate>
+          <div class="stepper" aria-hidden="true">
+            <div class="now"><i></i><span>Votre projet</span></div>
+            <div><i></i><span>Caractéristiques</span></div>
+            <div><i></i><span>Lieu &amp; délai</span></div>
+            <div><i></i><span>Coordonnées</span></div>
+          </div>
+
+          <!-- Étape 1 -->
+          <div class="fstep active">
+            <fieldset data-require-one>
+              <legend class="fieldset-legend">Quelle prestation recherchez-vous ? <span class="req">*</span></legend>
+              ${checks("prestation", services.map((s) => ({ l: s.navShort, h: s.navDesc })))}
+              <p class="err">Sélectionnez au moins une prestation.</p>
+              <p class="hint" style="margin-top:10px">Plusieurs choix possibles — par exemple une enseigne
+              et le marquage du véhicule assorti.</p>
+            </fieldset>
+
+            <div class="field">
+              <label for="description">Décrivez votre projet <span class="req">*</span></label>
+              <span class="hint">Activité, ce que vous voulez faire, ce qui existe déjà. Écrivez simplement,
+              nous traduisons en termes techniques.</span>
+              <textarea id="description" name="description" required
+                placeholder="Exemple : je reprends une boulangerie en centre-ville. La façade fait 6 mètres, il y a un ancien caisson lumineux hors service que je souhaite remplacer par des lettres découpées éclairées, plus une enseigne drapeau."></textarea>
+              <p class="err">Merci de décrire votre projet en quelques lignes.</p>
+            </div>
+
+            <div class="field">
+              <label for="type_client">Vous êtes</label>
+              <select id="type_client" name="type_client">
+                <option value="">— Choisir —</option>
+                <option>Commerçant / point de vente</option>
+                <option>Artisan / TPE</option>
+                <option>Entreprise / PME</option>
+                <option>Profession libérale ou santé</option>
+                <option>Restaurant, bar, hôtel</option>
+                <option>Industrie / logistique</option>
+                <option>Collectivité ou établissement public</option>
+                <option>Franchise ou réseau multi-sites</option>
+                <option>Association</option>
+                <option>Particulier</option>
+              </select>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+              <button type="button" class="btn btn-primary" data-next>Continuer</button>
+            </div>
+          </div>
+
+          <!-- Étape 2 -->
+          <div class="fstep">
+            <div class="row-2">
+              <div class="field">
+                <label for="dimensions">Dimensions approximatives</label>
+                <input type="text" id="dimensions" name="dimensions" placeholder="Ex. bandeau de 6 m × 0,80 m">
+              </div>
+              <div class="field">
+                <label for="quantite">Quantité</label>
+                <input type="text" id="quantite" name="quantite" placeholder="Ex. 1 enseigne + 3 véhicules">
+              </div>
+            </div>
+
+            <fieldset>
+              <legend class="fieldset-legend">Contraintes particulières</legend>
+              ${checks("contraintes", [
+                { l: "Pose en hauteur (au-delà de 3,5 m)", h: "Nacelle probablement nécessaire" },
+                { l: "Secteur protégé / bâtiment classé", h: "Avis de l'Architecte des Bâtiments de France" },
+                { l: "Local en copropriété", h: "Autorisation d'assemblée générale à prévoir" },
+                { l: "Enseigne existante à déposer", h: "Dépose et reprise de façade" },
+                { l: "Électricité à créer", h: "Pas d'alimentation en place" },
+                { l: "Rue piétonne / accès difficile", h: "Occupation du domaine public" },
+                { l: "Bord de mer / atmosphère saline", h: "Inox 316 recommandé" },
+                { l: "Aucune contrainte connue", h: "" }
+              ])}
+            </fieldset>
+
+            <div class="field">
+              <label for="fichiers">Avez-vous un logo ou des visuels ?</label>
+              <select id="fichiers" name="fichiers">
+                <option value="">— Choisir —</option>
+                <option>Oui, en fichier vectoriel (AI, EPS, PDF, SVG)</option>
+                <option>Oui, mais uniquement en image (JPG, PNG)</option>
+                <option>J'ai un logo mais je ne sais pas dans quel format</option>
+                <option>Non, j'ai besoin d'une création graphique</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="budget">Ordre de budget envisagé</label>
+              <span class="hint">Facultatif, mais très utile : cela évite de recevoir des propositions hors sujet.</span>
+              <select id="budget" name="budget">
+                <option value="">— Je ne sais pas encore —</option>
+                <option>Moins de 500 €</option>
+                <option>500 € à 1 500 €</option>
+                <option>1 500 € à 3 000 €</option>
+                <option>3 000 € à 6 000 €</option>
+                <option>6 000 € à 15 000 €</option>
+                <option>Plus de 15 000 €</option>
+              </select>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+              <button type="button" class="btn btn-primary" data-next>Continuer</button>
+            </div>
+          </div>
+
+          <!-- Étape 3 -->
+          <div class="fstep">
+            <div class="row-2">
+              <div class="field">
+                <label for="ville">Ville du projet <span class="req">*</span></label>
+                <input type="text" id="ville" name="ville" required list="villes-list" placeholder="Ex. Perpignan">
+                <datalist id="villes-list">${cities.map((c) => `<option value="${attr(c.name)}">`).join("")}</datalist>
+                <p class="err">Indiquez la ville où se situe le projet.</p>
+              </div>
+              <div class="field">
+                <label for="code_postal">Code postal</label>
+                <input type="text" id="code_postal" name="code_postal" inputmode="numeric" placeholder="66000">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="adresse">Adresse du chantier</label>
+              <span class="hint">Facultatif. Utile pour évaluer l'accès et la hauteur d'intervention.</span>
+              <input type="text" id="adresse" name="adresse" placeholder="Ex. 12 rue de la Loge">
+            </div>
+
+            <fieldset>
+              <legend class="fieldset-legend">Quand souhaitez-vous que ce soit réalisé ?</legend>
+              ${checks("delai", [
+                "Le plus vite possible", "Sous 1 mois", "Sous 2 à 3 mois",
+                "Dans plus de 3 mois", "Je me renseigne, pas de date fixée"
+              ], { radio: true })}
+            </fieldset>
+
+            <div class="field">
+              <label for="accompagnement">Souhaitez-vous être accompagné sur les démarches ?</label>
+              <select id="accompagnement" name="accompagnement">
+                <option value="">— Choisir —</option>
+                <option>Oui, dossier d'autorisation préalable en mairie</option>
+                <option>Oui, déclaration TLPE</option>
+                <option>Oui, autorisation d'occupation du domaine public</option>
+                <option>Oui, plusieurs de ces démarches</option>
+                <option>Non, je m'en occupe</option>
+                <option>Je ne sais pas ce qui est nécessaire</option>
+              </select>
+            </div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+              <button type="button" class="btn btn-primary" data-next>Continuer</button>
+            </div>
+          </div>
+
+          <!-- Étape 4 -->
+          <div class="fstep">
+            <div class="row-2">
+              <div class="field">
+                <label for="nom">Nom et prénom <span class="req">*</span></label>
+                <input type="text" id="nom" name="nom" required autocomplete="name">
+                <p class="err">Merci d'indiquer votre nom.</p>
+              </div>
+              <div class="field">
+                <label for="entreprise">Entreprise / enseigne</label>
+                <input type="text" id="entreprise" name="entreprise" autocomplete="organization">
+              </div>
+            </div>
+            <div class="row-2">
+              <div class="field">
+                <label for="email">E-mail <span class="req">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+                <p class="err">Adresse e-mail invalide.</p>
+              </div>
+              <div class="field">
+                <label for="telephone">Téléphone <span class="req">*</span></label>
+                <input type="tel" id="telephone" name="telephone" required autocomplete="tel" placeholder="06 12 34 56 78">
+                <p class="err">Merci d'indiquer un numéro pour vous rappeler.</p>
+              </div>
+            </div>
+
+            <fieldset>
+              <legend class="fieldset-legend">Meilleur moment pour vous joindre</legend>
+              ${checks("rappel", ["Matin", "Après-midi", "Fin de journée", "Peu importe"], { radio: true })}
+            </fieldset>
+
+            <div class="field consent">
+              <input type="checkbox" id="consent" name="consentement" value="oui" required>
+              <label for="consent">J'accepte que mes informations soient transmises aux professionnels
+              du réseau sélectionnés pour répondre à ma demande, conformément à la
+              <a href="confidentialite.html">politique de confidentialité</a>. <span class="req">*</span>
+              <span class="err">Cette autorisation est nécessaire pour traiter votre demande.</span></label>
+            </div>
+
+            <div class="form-status" role="status" aria-live="polite"></div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+              <button type="submit" class="btn btn-primary btn-lg" data-submit>Envoyer ma demande</button>
+            </div>
+            <p class="hint" style="text-align:center">Gratuit · Sans engagement · Réponse sous 48 h ouvrées</p>
+          </div>
+        </form>
+      </div>
+
+      <aside>
+        <div class="aside-card aside-sticky">
+          <h3>Ce qui se passe ensuite</h3>
+          <div class="steps stack" style="margin-top:18px">
+            <div class="step"><h3 style="font-size:.98rem">Rappel sous 24 h</h3>
+              <p style="font-size:.88rem">Nous précisons ensemble les points techniques.</p></div>
+            <div class="step"><h3 style="font-size:.98rem">Consultation ciblée</h3>
+              <p style="font-size:.88rem">Cahier des charges transmis aux bons ateliers.</p></div>
+            <div class="step"><h3 style="font-size:.98rem">Vos devis</h3>
+              <p style="font-size:.88rem">2 à 3 propositions comparables, sous 48 h.</p></div>
+          </div>
+          <hr style="margin:24px 0">
+          <p style="font-size:.88rem">Vous préférez en parler ?<br>
+            <a data-cfg="phone" href="tel:${esc(site.phoneHref)}" style="font-weight:700;color:var(--signal-600)">${esc(site.phoneDisplay)}</a>
+          </p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>`;
+
+  return T.page({
+    file: "devis.html", active: "devis.html",
+    title: `Demande de Devis Gratuit — Enseigne, Signalétique, Covering | ${site.brand}`,
+    desc: "Décrivez votre projet d'enseigne, de signalétique, de covering ou d'impression : recevez sous 48 h des devis comparables d'artisans vérifiés. Gratuit et sans engagement.",
+    body, cities,
+    schema: [T.crumbSchema(crumbItems)]
+  });
+}
+
+/* ═══════════════════════════════════════ FORMULAIRE PROFESSIONNELS */
+function pros(cities) {
+  const crumbItems = [
+    { name: "Accueil", url: "index.html" },
+    { name: "Professionnels", url: "professionnels.html" }
+  ];
+
+  const body = `
+<section class="hero hero-in-page">
+  <div class="hero-bg">${heroImg("atelier", 2, "Atelier de fabrication d'enseignes")}</div>
+  <div class="wrap hero-in">
+    ${T.crumbs(crumbItems)}
+    <span class="eyebrow">Espace professionnels</span>
+    <h1>Recevez des affaires concrètes, correspondant à vos capacités réelles</h1>
+    <p class="lead">Enseigniste, imprimeur grand format, poseur habilité, spécialiste du covering,
+    graphiste ou fournisseur d'objets publicitaires : rejoignez le réseau et recevez des demandes
+    qualifiées dans votre zone. Pas d'abonnement, pas de droit d'entrée — nous nous rémunérons
+    uniquement sur les affaires qui se concrétisent.</p>
+    <div class="btns">
+      <a class="btn btn-pro btn-lg" href="#candidature">Remplir le questionnaire</a>
+      <a class="btn btn-ghost btn-lg" href="#pourquoi">Pourquoi nous rejoindre</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="pourquoi">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Le principe</span>
+      <h2>Un apporteur d'affaires, pas une place de marché anonyme</h2>
+      <p class="lead">Nous ne diffusons pas votre demande à trente entreprises. Chaque projet est qualifié
+      par téléphone, traduit en cahier des charges, puis confié à deux ou trois professionnels dont
+      l'outil de production correspond réellement au besoin. Votre taux de transformation s'en ressent.</p>
+    </div>
+    <div class="grid g-3">
+      <div class="tile">
+        <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg></span>
+        <h3>Des demandes qualifiées</h3>
+        <p>Budget, délai, dimensions, contraintes de façade et attentes du client sont précisés avant
+        de vous être transmis. Vous chiffrez, vous ne débroussaillez pas.</p>
+      </div>
+      <div class="tile">
+        <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <h3>Dans votre zone réelle</h3>
+        <p>Vous définissez votre rayon d'intervention. Nous ne vous enverrons pas un chantier
+        à 300 km que vous refuserez.</p>
+      </div>
+      <div class="tile">
+        <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+        <h3>Selon vos capacités déclarées</h3>
+        <p>Le questionnaire ci-dessous cartographie précisément ce que vous savez faire :
+        machines, habilitations, hauteur d'intervention, volumes. Nous n'envoyons que ce qui vous correspond.</p>
+      </div>
+      <div class="tile">
+        <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+        <h3>Aucun frais fixe</h3>
+        <p>Pas de droit d'entrée, pas d'abonnement mensuel, pas d'achat de leads à l'aveugle.
+        Une commission d'apport uniquement sur les affaires signées.</p>
+      </div>
+      <div class="tile">
+        <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></span>
+        <h3>Vous restez maître du contrat</h3>
+        <p>Vous facturez le client en direct, vous fixez vos prix, vous gardez la relation.
+        Nous n'intervenons pas dans l'exécution.</p>
+      </div>
+      <div class="tile">
+        <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <h3>Un réseau exigeant</h3>
+        <p>Assurances à jour, habilitations vérifiées, retours clients suivis. Un réseau crédible
+        est un réseau qui trie — c'est aussi ce qui protège votre réputation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-2">
+  <div class="wrap">
+    <div class="grid g-halves">
+      <div>
+        <span class="eyebrow">Qui recherchons-nous</span>
+        <h2>Les métiers que nous référençons</h2>
+        <p class="lead">Nous cherchons des entreprises qui produisent, pas des intermédiaires
+        qui revendent. Si vous avez un atelier, des machines, des poseurs ou une réelle expertise
+        de création, vous êtes concerné.</p>
+        <ul class="checks">
+          <li><strong>Enseignistes fabricants</strong> — lettres découpées, caissons, néon LED, totems</li>
+          <li><strong>Imprimeurs grand format</strong> — UV, latex, solvant, sublimation, découpe numérique</li>
+          <li><strong>Poseurs et sociétés de pose</strong> — nacelle CACES, habilitation électrique, cordistes</li>
+          <li><strong>Spécialistes du covering</strong> — total covering, flotte, dépose, films techniques</li>
+          <li><strong>Ateliers de signalétique</strong> — gravure, PMR, ISO 7010, marquage au sol</li>
+          <li><strong>Graphistes et studios</strong> — logo, charte, maquettes, fichiers de production</li>
+          <li><strong>Fournisseurs d'objets publicitaires</strong> — sérigraphie, broderie, EPI marqués</li>
+          <li><strong>Menuisiers et métalliers</strong> — structures, supports, habillages de façade</li>
+        </ul>
+      </div>
+      <div class="showcase">
+        <figure class="s-a">${img("atelier", 3, "Atelier de fabrication et machines de production", { sizes: "(max-width: 780px) 50vw, 32vw" })}</figure>
+        <figure class="s-b">${img("gravure", 4, "Machine de découpe numérique en atelier", { sizes: "(max-width: 780px) 50vw, 22vw" })}</figure>
+        <figure class="s-c" style="grid-column:span 6">${img("pose", 2, "Poseur installant une enseigne en façade", { sizes: "(max-width: 780px) 50vw, 25vw" })}</figure>
+        <figure class="s-c" style="grid-column:span 6">${img("impression", 1, "Imprimante numérique grand format", { sizes: "(max-width: 780px) 50vw, 25vw" })}</figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="candidature">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="eyebrow">Questionnaire de capacités</span>
+      <h2>Rejoindre le réseau</h2>
+      <p class="lead mx-auto">Ce questionnaire cartographie ce que votre entreprise sait réellement faire.
+      Il est un peu long — c'est volontaire : plus il est précis, plus les affaires que nous vous
+      transmettrons seront pertinentes. Comptez 5 à 7 minutes.</p>
+    </div>
+
+    <div class="form-panel form-pro" style="max-width:940px;margin-inline:auto">
+      <form class="form" data-kind="pro" novalidate>
+        <div class="stepper" aria-hidden="true">
+          <div class="now"><i></i><span>Entreprise</span></div>
+          <div><i></i><span>Contact</span></div>
+          <div><i></i><span>Capacités</span></div>
+          <div><i></i><span>Moyens</span></div>
+          <div><i></i><span>Commercial</span></div>
+        </div>
+
+        <!-- Étape 1 : entreprise -->
+        <div class="fstep active">
+          <div class="row-2">
+            <div class="field">
+              <label for="p_entreprise">Raison sociale <span class="req">*</span></label>
+              <input type="text" id="p_entreprise" name="entreprise" required autocomplete="organization">
+              <p class="err">Indiquez le nom de votre entreprise.</p>
+            </div>
+            <div class="field">
+              <label for="p_siret">SIRET <span class="req">*</span></label>
+              <input type="text" id="p_siret" name="siret" required inputmode="numeric" placeholder="14 chiffres">
+              <p class="err">Le SIRET est nécessaire pour vérifier votre inscription.</p>
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label for="p_forme">Forme juridique</label>
+              <select id="p_forme" name="forme_juridique">
+                <option value="">— Choisir —</option>
+                <option>Auto-entrepreneur / micro-entreprise</option>
+                <option>EI / EIRL</option>
+                <option>EURL</option>
+                <option>SARL</option>
+                <option>SAS / SASU</option>
+                <option>SA</option>
+                <option>SCOP / coopérative</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="p_creation">Année de création</label>
+              <input type="number" id="p_creation" name="annee_creation" min="1900" max="2100" placeholder="2015">
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label for="p_effectif">Effectif</label>
+              <select id="p_effectif" name="effectif">
+                <option value="">— Choisir —</option>
+                <option>1 personne (indépendant)</option>
+                <option>2 à 5</option>
+                <option>6 à 10</option>
+                <option>11 à 20</option>
+                <option>21 à 50</option>
+                <option>Plus de 50</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="p_site">Site internet</label>
+              <input type="url" id="p_site" name="site_web" placeholder="https://">
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label for="p_ville">Ville <span class="req">*</span></label>
+              <input type="text" id="p_ville" name="ville" required>
+              <p class="err">Indiquez la ville de votre atelier.</p>
+            </div>
+            <div class="field">
+              <label for="p_cp">Code postal <span class="req">*</span></label>
+              <input type="text" id="p_cp" name="code_postal" required inputmode="numeric">
+              <p class="err">Code postal requis.</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="p_rayon">Rayon d'intervention habituel <span class="req">*</span></label>
+            <select id="p_rayon" name="rayon" required>
+              <option value="">— Choisir —</option>
+              <option>Jusqu'à 30 km</option>
+              <option>Jusqu'à 60 km</option>
+              <option>Jusqu'à 100 km</option>
+              <option>Département entier</option>
+              <option>Région entière</option>
+              <option>France entière</option>
+              <option>France entière + outre-mer</option>
+            </select>
+            <p class="err">Merci d'indiquer votre zone d'intervention.</p>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+            <button type="button" class="btn btn-pro" data-next>Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 2 : contact -->
+        <div class="fstep">
+          <div class="row-2">
+            <div class="field">
+              <label for="p_nom">Nom et prénom <span class="req">*</span></label>
+              <input type="text" id="p_nom" name="nom" required autocomplete="name">
+              <p class="err">Merci d'indiquer votre nom.</p>
+            </div>
+            <div class="field">
+              <label for="p_fonction">Fonction</label>
+              <input type="text" id="p_fonction" name="fonction" placeholder="Gérant, responsable commercial…">
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label for="p_email">E-mail professionnel <span class="req">*</span></label>
+              <input type="email" id="p_email" name="email" required autocomplete="email">
+              <p class="err">Adresse e-mail invalide.</p>
+            </div>
+            <div class="field">
+              <label for="p_tel">Téléphone <span class="req">*</span></label>
+              <input type="tel" id="p_tel" name="telephone" required autocomplete="tel">
+              <p class="err">Numéro de téléphone requis.</p>
+            </div>
+          </div>
+          <div class="field">
+            <label for="p_presentation">Présentez votre entreprise en quelques lignes</label>
+            <span class="hint">Spécialité, clients types, ce qui vous distingue, chantiers dont vous êtes fier.</span>
+            <textarea id="p_presentation" name="presentation"
+              placeholder="Exemple : atelier de 6 personnes spécialisé en enseignes lumineuses depuis 2008, fraiseuse numérique 3×2 m, cabine de thermolaquage, 2 poseurs CACES nacelle, principalement franchises et retail."></textarea>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+            <button type="button" class="btn btn-pro" data-next>Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 3 : capacités -->
+        <div class="fstep">
+          <p class="lead" style="font-size:1rem">Cochez tout ce que votre entreprise <strong>réalise
+          elle-même</strong>, en interne. N'incluez pas ce que vous sous-traitez systématiquement :
+          c'est la précision de cette section qui détermine la qualité des affaires que vous recevrez.</p>
+
+          <fieldset data-require-one style="margin-bottom:26px">
+            <legend class="fieldset-legend">Fabrication d'enseignes <span class="req">*</span></legend>
+            ${checks("cap_enseigne", [
+              "Lettres découpées / lettres relief", "Lettres boîtier rétro-éclairées",
+              "Caisson lumineux simple ou double face", "Néon LED / néon flexible",
+              "Enseigne drapeau et potence", "Totem et mât publicitaire",
+              "Enseigne de toiture / grande hauteur", "Habillage de bandeau et devanture",
+              "Rénovation d'enseigne existante"
+            ])}
+            <p class="err">Cochez au moins une capacité, ici ou dans les rubriques suivantes.</p>
+          </fieldset>
+
+          ${capGroup("Signalétique", "cap_signaletique", [
+            "Signalétique intérieure", "Signalétique directionnelle et jalonnement",
+            "Plaques de porte et numérotation", "Signalétique PMR (relief et braille)",
+            "Signalétique de sécurité ISO 7010", "Plans d'évacuation NF X 08-070",
+            "Signalétique industrielle et logistique", "Plaques professionnelles gravées",
+            "Marquage au sol intérieur", "Marquage au sol extérieur (résine)",
+            "Signalétique de chantier"
+          ])}
+
+          ${capGroup("Impression et façonnage", "cap_impression", [
+            "Impression UV sur rigide", "Impression latex", "Impression éco-solvant",
+            "Sublimation textile", "Impression grande laize (> 2,5 m)",
+            "Table de découpe à lame oscillante", "Plotter de découpe (vinyle)",
+            "Laminage et plastification", "Œillets, ourlets, façonnage bâche",
+            "Contrecollage sur rigide", "Impression offset / petit format"
+          ])}
+
+          ${capGroup("Covering et marquage véhicule", "cap_covering", [
+            "Total covering", "Semi-covering", "Lettrage adhésif simple",
+            "Marquage de flotte (série)", "Dépose et remise en état",
+            "Vitres microperforées", "Films teintés et solaires",
+            "Films de protection carrosserie (PPF)", "Marquage rétro-réfléchissant homologué",
+            "Covering poids lourd / remorque", "Atelier chauffé dédié"
+          ])}
+
+          ${capGroup("Objets publicitaires et textile", "cap_objets", [
+            "Sérigraphie textile", "Broderie machine", "Transfert numérique DTF",
+            "Flex et flock découpés", "Tampographie", "Gravure laser",
+            "Sublimation objets", "Vêtements de travail et EPI marqués",
+            "Sourcing d'objets publicitaires", "Goodies écoresponsables",
+            "Marquage sur verre et métal"
+          ])}
+
+          ${capGroup("Création graphique et PAO", "cap_creation", [
+            "Création de logo", "Charte graphique complète", "Maquette d'enseigne",
+            "Simulation photoréaliste sur façade", "Maquette covering sur gabarit véhicule",
+            "Vectorisation de logo", "Préparation de fichiers d'impression",
+            "Modélisation 3D", "Plan de jalonnement signalétique",
+            "Montage de dossier Cerfa d'enseigne"
+          ])}
+
+          ${capGroup("Pose, hauteur et maintenance", "cap_pose", [
+            "Pose d'enseigne en façade", "Pose de signalétique intérieure",
+            "Pose d'adhésif et vitrophanie", "Travail en nacelle (PEMP)",
+            "Travail sur échafaudage", "Travaux sur cordes (cordiste)",
+            "Raccordement électrique", "Dépose et évacuation",
+            "Maintenance et SAV d'enseignes", "Dépannage sous 48 h",
+            "Intervention de nuit ou hors horaires", "Contrat d'entretien annuel"
+          ])}
+
+          ${capGroup("Atelier et équipement", "cap_atelier", [
+            "Fraiseuse à commande numérique (CNC)", "Découpe laser",
+            "Découpe jet d'eau", "Plieuse / cisaille", "Poste à souder alu et inox",
+            "Thermoformage / plieuse plexiglas", "Cabine de peinture ou thermolaquage",
+            "Menuiserie bois", "Serrurerie / métallerie",
+            "Atelier de montage électrique", "Stockage et logistique"
+          ], "Machines dont vous disposez en propre")}
+
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+            <button type="button" class="btn btn-pro" data-next>Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 4 : moyens et habilitations -->
+        <div class="fstep">
+          <fieldset style="margin-bottom:26px">
+            <legend class="fieldset-legend">Travail en hauteur — moyens dont vous disposez</legend>
+            ${checks("moyens_hauteur", [
+              { l: "Nacelle en propriété", h: "Vous possédez votre PEMP" },
+              { l: "Nacelle en location ponctuelle", h: "Vous louez selon les chantiers" },
+              { l: "Camion nacelle", h: "Bras sur porteur" },
+              { l: "Nacelle araignée", h: "Accès difficile, intérieur" },
+              { l: "Échafaudage", h: "Montage par vos soins" },
+              { l: "Cordistes", h: "Travaux sur cordes" },
+              { l: "Pas de travail en hauteur", h: "Vous ne posez pas au-delà de 3,5 m" }
+            ])}
+          </fieldset>
+
+          <div class="field" data-show-if="moyens_hauteur=Nacelle en propriété">
+            <label for="p_nacelle_h">Hauteur de travail maximale de votre nacelle</label>
+            <select id="p_nacelle_h" name="nacelle_hauteur">
+              <option value="">— Choisir —</option>
+              <option>Jusqu'à 10 m</option><option>10 à 16 m</option>
+              <option>16 à 22 m</option><option>22 à 30 m</option><option>Plus de 30 m</option>
+            </select>
+          </div>
+
+          <fieldset style="margin-bottom:26px">
+            <legend class="fieldset-legend">Habilitations et certifications à jour</legend>
+            ${checks("habilitations", [
+              "CACES R486 catégorie A", "CACES R486 catégorie B",
+              "Habilitation électrique (B1V, BR, BC…)", "Formation travail en hauteur",
+              "Habilitation port du harnais", "AIPR (travaux à proximité de réseaux)",
+              "Qualibat", "RGE", "Certification ISO 9001",
+              "Imprim'Vert", "Aucune pour l'instant"
+            ])}
+          </fieldset>
+
+          <fieldset style="margin-bottom:26px">
+            <legend class="fieldset-legend">Assurances <span class="req">*</span></legend>
+            ${checks("assurances", [
+              "Responsabilité civile professionnelle", "Garantie décennale",
+              "Assurance flotte véhicules", "Assurance matériel et machines"
+            ])}
+          </fieldset>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="p_capacite">Capacité de production mensuelle</label>
+              <select id="p_capacite" name="capacite_mensuelle">
+                <option value="">— Choisir —</option>
+                <option>1 à 3 chantiers</option>
+                <option>4 à 10 chantiers</option>
+                <option>11 à 25 chantiers</option>
+                <option>Plus de 25 chantiers</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="p_delai">Délai moyen entre commande et livraison</label>
+              <select id="p_delai" name="delai_moyen">
+                <option value="">— Choisir —</option>
+                <option>Moins d'une semaine</option>
+                <option>1 à 2 semaines</option>
+                <option>2 à 4 semaines</option>
+                <option>Plus d'un mois</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="p_sous_traitance">Que sous-traitez-vous habituellement ?</label>
+            <span class="hint">Soyez transparent : cela nous aide à composer des binômes cohérents
+            plutôt qu'à vous envoyer des affaires que vous devrez refuser.</span>
+            <textarea id="p_sous_traitance" name="sous_traitance" style="min-height:90px"
+              placeholder="Exemple : je sous-traite l'impression grand format et la pose au-delà de 12 m."></textarea>
+          </div>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+            <button type="button" class="btn btn-pro" data-next>Continuer</button>
+          </div>
+        </div>
+
+        <!-- Étape 5 : commercial -->
+        <div class="fstep">
+          <fieldset style="margin-bottom:26px">
+            <legend class="fieldset-legend">Types de clients que vous recherchez</legend>
+            ${checks("clients_cibles", [
+              "Commerces de proximité", "Restaurants, bars, hôtels",
+              "Artisans et TPE", "PME et industrie",
+              "Franchises et réseaux multi-sites", "Collectivités et marchés publics",
+              "Promoteurs et bailleurs", "Professions libérales et santé",
+              "Événementiel et salons", "Particuliers"
+            ])}
+          </fieldset>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="p_mini">Montant minimum de chantier accepté</label>
+              <select id="p_mini" name="montant_minimum">
+                <option value="">— Choisir —</option>
+                <option>Pas de minimum</option>
+                <option>À partir de 300 €</option>
+                <option>À partir de 800 €</option>
+                <option>À partir de 1 500 €</option>
+                <option>À partir de 3 000 €</option>
+                <option>À partir de 10 000 €</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="p_disponibilite">Disponibilité actuelle</label>
+              <select id="p_disponibilite" name="disponibilite">
+                <option value="">— Choisir —</option>
+                <option>Immédiate, je cherche activement</option>
+                <option>Bonne, quelques créneaux</option>
+                <option>Chargé, mais intéressé</option>
+                <option>Complet pour l'instant</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset style="margin-bottom:26px">
+            <legend class="fieldset-legend">Modèle de collaboration</legend>
+            ${checks("collaboration", [
+              { l: "Commission d'apport d'affaires", h: "Un pourcentage sur les affaires signées" },
+              { l: "Remise réseau sur devis", h: "Vous appliquez une remise, nous facturons le client" },
+              { l: "Sous-traitance pure", h: "Nous portons le contrat, vous exécutez" },
+              { l: "À discuter", h: "Vous préférez en parler d'abord" }
+            ], { radio: true })}
+          </fieldset>
+
+          <div class="field">
+            <label for="p_references">Références et réalisations</label>
+            <span class="hint">Liens vers votre portfolio, réseaux sociaux, ou description de
+            2 ou 3 chantiers représentatifs.</span>
+            <textarea id="p_references" name="references" style="min-height:100px"></textarea>
+          </div>
+
+          <div class="field consent">
+            <input type="checkbox" id="p_consent" name="consentement" value="oui" required>
+            <label for="p_consent">J'accepte que les informations transmises soient utilisées pour évaluer
+            ma candidature et me proposer des affaires, conformément à la
+            <a href="confidentialite.html">politique de confidentialité</a>. Je certifie exactes les
+            capacités et habilitations déclarées. <span class="req">*</span>
+            <span class="err">Cette autorisation est nécessaire pour traiter votre candidature.</span></label>
+          </div>
+
+          <div class="form-status" role="status" aria-live="polite"></div>
+
+          <div class="form-nav">
+            <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+            <button type="submit" class="btn btn-pro btn-lg" data-submit>Envoyer ma candidature</button>
+          </div>
+          <p class="hint" style="text-align:center">Réponse sous 48 h ouvrées · Aucun frais d'inscription</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-3">
+  <div class="wrap wrap-narrow">
+    <div class="sec-head center">
+      <span class="eyebrow">Questions des professionnels</span>
+      <h2>Ce que les entreprises nous demandent</h2>
+    </div>
+    ${T.faqBlock([
+      { q: "Combien coûte l'adhésion au réseau ?", a: "Rien. Pas de droit d'entrée, pas d'abonnement mensuel, pas d'achat de contacts à l'aveugle. Nous nous rémunérons par une commission d'apport d'affaires, uniquement lorsqu'un projet que nous vous avons transmis est signé. Le taux est défini avec vous à l'entrée dans le réseau, selon votre métier et le montant des chantiers." },
+      { q: "Combien de professionnels reçoivent la même demande ?", a: "Deux ou trois au maximum, choisis parce que leurs capacités correspondent au projet. Nous ne diffusons pas une demande à trente entreprises : c'est ce qui détruit les taux de transformation et pousse les prix vers le bas au détriment de la qualité." },
+      { q: "Suis-je obligé d'accepter les affaires proposées ?", a: "Non, jamais. Vous acceptez ou déclinez au cas par cas, sans justification et sans pénalité. Nous vous demandons simplement de répondre rapidement pour que nous puissions réorienter la demande si nécessaire." },
+      { q: "Qui facture le client final ?", a: "Vous, en direct, dans le modèle d'apport d'affaires. Vous fixez vos prix, vous signez votre devis, vous gardez la relation client et le service après-vente. Dans le modèle de sous-traitance, c'est nous qui portons le contrat — le choix se fait à l'entrée dans le réseau." },
+      { q: "Pourquoi le questionnaire est-il aussi détaillé ?", a: "Parce que c'est exactement ce qui fait la différence entre une demande pertinente et une perte de temps. Savoir que vous disposez d'une fraiseuse numérique de 3 mètres, d'une nacelle 16 mètres et de deux poseurs CACES nous permet de vous adresser le bon chantier du premier coup. Un annuaire généraliste ne peut pas faire ça." },
+      { q: "Travaillez-vous avec des indépendants et des micro-entreprises ?", a: "Oui, à condition que les assurances soient à jour et que les capacités déclarées soient réelles. Un poseur indépendant bien équipé et réactif vaut mieux qu'une structure plus grosse mais indisponible. La taille n'est pas un critère de sélection ; la fiabilité en est un." }
+    ])}
+  </div>
+</section>`;
+
+  return T.page({
+    file: "professionnels.html", active: "professionnels.html",
+    title: `Devenir Partenaire — Enseignistes, Imprimeurs, Poseurs | ${site.brand}`,
+    desc: "Enseigniste, imprimeur grand format, poseur nacelle, covering, graphiste : rejoignez le réseau et recevez des demandes qualifiées dans votre zone. Sans abonnement ni droit d'entrée.",
+    body, cities,
+    schema: [T.crumbSchema(crumbItems)]
+  });
+}
+
+/* ═════════════════════════════════════════════════════════ REMERCIEMENT */
+function merci(cities) {
+  const body = `
+<section class="hero hero-in-page">
+  <div class="hero-bg">${heroImg("hero", 3, "Rue commerçante")}</div>
+  <div class="wrap hero-in" id="thanks-msg">
+    <h1>Demande bien reçue</h1>
+    <p class="lead">Merci. Nous étudions votre projet et vous rappelons sous 24 heures ouvrées pour
+    préciser les points techniques. Vos premières propositions arriveront ensuite sous 48 heures.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap wrap-narrow center">
+    <h2>En attendant, ces pages peuvent vous être utiles</h2>
+    <div class="btns center" style="margin-top:26px">
+      <a class="btn btn-dark" href="tarifs.html">Guide des prix</a>
+      <a class="btn btn-ghost" href="reglementation-enseigne.html">Réglementation des enseignes</a>
+      <a class="btn btn-ghost" href="glossaire.html">Glossaire du métier</a>
+    </div>
+  </div>
+</section>`;
+  return T.page({
+    file: "merci.html", noindex: true,
+    title: `Merci — votre demande est enregistrée | ${site.brand}`,
+    desc: "Votre demande a bien été enregistrée. Nous vous recontactons sous 24 heures ouvrées.",
+    body, cities
+  });
+}
+
+module.exports = { devis, pros, merci };

@@ -1,0 +1,344 @@
+/* =========================================================================
+   Gabarits et composants HTML partagés
+   ========================================================================= */
+const fs = require("fs");
+const path = require("path");
+
+const site = require("../data/site");
+const services = require("../data/services");
+
+const IMG_DIR = path.join(__dirname, "..", "..", "assets", "img");
+let manifest = {};
+try { manifest = JSON.parse(fs.readFileSync(path.join(IMG_DIR, "manifest.json"), "utf8")); } catch (e) {}
+
+/* ---------------------------------------------------------------- outils */
+const esc = (s) => String(s == null ? "" : s)
+  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+/** Échappe pour un attribut, en neutralisant le HTML inline du contenu. */
+const attr = (s) => esc(String(s == null ? "" : s).replace(/<[^>]+>/g, ""));
+
+const jsonld = (obj) => `<script type="application/ld+json">${
+  JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`;
+
+/**
+ * Renvoie l'entrée image `topic` n° i (1-based, boucle si dépassement).
+ */
+function pick(topic, i) {
+  const list = manifest[topic] || [];
+  if (!list.length) return null;
+  return list[(i - 1) % list.length];
+}
+
+/**
+ * Balise <img> responsive avec deux tailles + chargement différé.
+ * @param {string} topic  sujet du manifeste
+ * @param {number} i      index dans le sujet
+ * @param {string} alt    texte alternatif (obligatoire pour l'accessibilité et le SEO)
+ */
+function img(topic, i, alt, opts) {
+  const o = opts || {};
+  const e = pick(topic, i);
+  if (!e) return "";
+  const ratio = e.h / e.w;
+  const mdW = Math.min(720, e.w);
+  return `<img src="assets/img/${e.name}-md.jpg"` +
+    ` srcset="assets/img/${e.name}-md.jpg ${mdW}w, assets/img/${e.name}-lg.jpg ${e.w}w"` +
+    ` sizes="${o.sizes || "(max-width: 780px) 100vw, 33vw"}"` +
+    ` width="${mdW}" height="${Math.round(mdW * ratio)}"` +
+    ` alt="${attr(alt)}"` +
+    ` loading="${o.eager ? "eager" : "lazy"}"` +
+    ` decoding="async"${o.eager ? ' fetchpriority="high"' : ""}>`;
+}
+
+/** Image de fond de héros (toujours chargée en priorité). */
+function heroImg(topic, i, alt) {
+  const e = pick(topic, i);
+  if (!e) return "";
+  return `<img src="assets/img/${e.name}-lg.jpg" alt="${attr(alt)}" width="${e.w}" height="${e.h}"` +
+    ` loading="eager" decoding="async" fetchpriority="high">`;
+}
+
+/* ------------------------------------------------------------- structure */
+const NAV_MORE = [
+  ["villes.html", "Villes couvertes", "Nos zones d'intervention en France"],
+  ["tarifs.html", "Prix et budgets", "Ce que coûte réellement chaque prestation"],
+  ["glossaire.html", "Glossaire du métier", "Tout le vocabulaire de la communication visuelle"],
+  ["reglementation-enseigne.html", "Réglementation", "Autorisation, RLP, TLPE, accessibilité"],
+  ["comment-ca-marche.html", "Comment ça marche", "Notre rôle d'apporteur d'affaires"],
+  ["faq.html", "Questions fréquentes", "Les réponses aux 20 questions les plus posées"]
+];
+
+function header(active) {
+  const svcLinks = services.map((s) =>
+    `<a href="${s.slug}.html"><strong>${esc(s.nav)}</strong><span>${esc(s.navDesc)}</span></a>`).join("");
+  const moreLinks = NAV_MORE.map(([h, t, d]) =>
+    `<a href="${h}"><strong>${esc(t)}</strong><span>${esc(d)}</span></a>`).join("");
+  const cur = (h) => (active === h ? ' aria-current="page"' : "");
+
+  return `<header class="hdr">
+<div class="wrap hdr-in">
+  <a class="logo" href="index.html" aria-label="${attr(site.brand)} — accueil">
+    <span class="logo-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 21h18M6 21V8l6-5 6 5v13M10 21v-6h4v6"/>
+      </svg>
+    </span>
+    <span class="logo-txt">${esc(site.brand)}<small>Enseigne · Signalétique</small></span>
+  </a>
+
+  <nav class="nav" aria-label="Navigation principale">
+    <div class="drop" data-open="false">
+      <button type="button" aria-expanded="false">Nos métiers
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="drop-menu">${svcLinks}</div>
+    </div>
+    <a href="villes.html"${cur("villes.html")}>Villes</a>
+    <a href="tarifs.html"${cur("tarifs.html")}>Tarifs</a>
+    <div class="drop" data-open="false">
+      <button type="button" aria-expanded="false">Ressources
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="drop-menu">${moreLinks}</div>
+    </div>
+    <a href="professionnels.html"${cur("professionnels.html")}>Professionnels</a>
+  </nav>
+
+  <div class="hdr-cta">
+    <a class="btn btn-ghost btn-sm" href="professionnels.html">Devenir partenaire</a>
+    <a class="btn btn-primary btn-sm" href="devis.html">Devis gratuit</a>
+  </div>
+
+  <button class="burger" aria-expanded="false" aria-controls="mnav" aria-label="Ouvrir le menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+
+<div class="mnav" id="mnav">
+  <div class="mnav-h">Nos métiers</div>
+  ${services.map((s) => `<a href="${s.slug}.html">${esc(s.nav)}</a>`).join("")}
+  <div class="mnav-h">Ressources</div>
+  ${NAV_MORE.map(([h, t]) => `<a href="${h}">${esc(t)}</a>`).join("")}
+  <div class="btns">
+    <a class="btn btn-ghost" href="professionnels.html">Devenir partenaire</a>
+    <a class="btn btn-primary" href="devis.html">Devis gratuit</a>
+  </div>
+</div>
+</header>`;
+}
+
+function footer(cities) {
+  const cityLinks = (cities || []).slice(0, 40)
+    .map((c) => `<a href="enseigne-signaletique-${c.slug}.html">${esc(c.name)}</a>`).join(" ");
+
+  return `<footer class="ftr">
+<div class="wrap">
+  <div class="ftr-top">
+    <div>
+      <a class="logo" href="index.html">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21h18M6 21V8l6-5 6 5v13M10 21v-6h4v6"/>
+          </svg>
+        </span>
+        <span class="logo-txt">${esc(site.brand)}<small>Enseigne · Signalétique</small></span>
+      </a>
+      <p class="ftr-about">${esc(site.tagline)}. Nous qualifions votre projet et le confions à des professionnels
+      sélectionnés près de chez vous. Service gratuit et sans engagement pour le client.</p>
+      <p class="ftr-about" style="margin-top:14px">
+        <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a><br>
+        <a data-cfg="phone" href="tel:${esc(site.phoneHref)}">${esc(site.phoneDisplay)}</a>
+      </p>
+    </div>
+
+    <div>
+      <h4>Nos métiers</h4>
+      <ul>${services.map((s) => `<li><a href="${s.slug}.html">${esc(s.navShort)}</a></li>`).join("")}</ul>
+    </div>
+
+    <div>
+      <h4>Ressources</h4>
+      <ul>${NAV_MORE.map(([h, t]) => `<li><a href="${h}">${esc(t)}</a></li>`).join("")}</ul>
+    </div>
+
+    <div>
+      <h4>Le réseau</h4>
+      <ul>
+        <li><a href="devis.html">Demander un devis</a></li>
+        <li><a href="professionnels.html">Devenir partenaire</a></li>
+        <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
+        <li><a href="credits-photos.html">Crédits photographiques</a></li>
+        <li><a href="mentions-legales.html">Mentions légales</a></li>
+        <li><a href="confidentialite.html">Confidentialité</a></li>
+      </ul>
+    </div>
+  </div>
+
+  ${cityLinks ? `<div class="ftr-cities">
+    <h4>Enseigne et signalétique par ville</h4>
+    <p>${cityLinks} <a href="villes.html">Toutes les villes</a></p>
+  </div>` : ""}
+
+  <div class="ftr-bot">
+    <span>© <span data-year>2026</span> ${esc(site.brandLegal)} — ${esc(site.tagline)}.</span>
+    <nav aria-label="Liens légaux">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="confidentialite.html">Données personnelles</a>
+      <a href="credits-photos.html">Crédits photos</a>
+      <a href="plan-du-site.html">Plan du site</a>
+    </nav>
+  </div>
+</div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-ghost" data-cfg="phoneHref" data-keep-text href="tel:${esc(site.phoneHref)}">Appeler</a>
+  <a class="btn btn-primary" href="devis.html">Devis gratuit</a>
+</div>`;
+}
+
+/* --------------------------------------------------------------- la page */
+/**
+ * @param {object} o  {file,title,desc,h1,crumbs,body,schema,active,noindex}
+ */
+function page(o) {
+  const canonical = site.domain.replace(/\/$/, "") + "/" + (o.file === "index.html" ? "" : o.file);
+  const ogImg = site.domain.replace(/\/$/, "") + "/assets/img/" + (o.ogImage || "hero-1-lg.jpg");
+
+  const schemas = (o.schema || []).map(jsonld).join("\n");
+
+  return `<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(o.title)}</title>
+<meta name="description" content="${attr(o.desc)}">
+<link rel="canonical" href="${esc(canonical)}">
+${o.noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">'}
+<meta name="author" content="${attr(site.brand)}">
+<meta name="theme-color" content="#0A1522">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="${attr(site.brand)}">
+<meta property="og:title" content="${attr(o.title)}">
+<meta property="og:description" content="${attr(o.desc)}">
+<meta property="og:url" content="${esc(canonical)}">
+<meta property="og:image" content="${esc(ogImg)}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${attr(o.title)}">
+<meta name="twitter:description" content="${attr(o.desc)}">
+<meta name="twitter:image" content="${esc(ogImg)}">
+
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/favicon.svg">
+<link rel="stylesheet" href="assets/css/site.css">
+${schemas}
+</head>
+<body>
+<a class="skip" href="#main">Aller au contenu principal</a>
+${header(o.active)}
+<main id="main">
+${o.body}
+</main>
+${footer(o.cities)}
+<script src="assets/js/config.js"></script>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>`;
+}
+
+/* ---------------------------------------------------------- composants */
+function crumbs(items) {
+  const li = items.map((it, i) => {
+    const last = i === items.length - 1;
+    return `<li>${last
+      ? `<span aria-current="page">${esc(it.name)}</span>`
+      : `<a href="${it.url}">${esc(it.name)}</a>`}</li>`;
+  }).join("");
+  return `<nav class="crumbs" aria-label="Fil d'Ariane"><ol>${li}</ol></nav>`;
+}
+
+function crumbSchema(items) {
+  return {
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: items.map((it, i) => ({
+      "@type": "ListItem", position: i + 1, name: it.name,
+      item: site.domain.replace(/\/$/, "") + "/" + (it.url === "index.html" ? "" : it.url)
+    }))
+  };
+}
+
+function faqBlock(faq) {
+  if (!faq || !faq.length) return "";
+  return `<div class="acc">${faq.map((f) => `<details>
+  <summary>${esc(f.q)}</summary>
+  <div class="acc-body"><p>${f.a}</p></div>
+</details>`).join("")}</div>`;
+}
+
+function faqSchema(faq) {
+  return {
+    "@context": "https://schema.org", "@type": "FAQPage",
+    mainEntity: faq.map((f) => ({
+      "@type": "Question", name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: String(f.a).replace(/<[^>]+>/g, "") }
+    }))
+  };
+}
+
+function serviceCards(list, limit) {
+  return (list || services).slice(0, limit || 99).map((s, i) => `<a class="card card-link" href="${s.slug}.html">
+  <div class="card-media">${img(s.topic, 1, s.nav + " — " + s.navDesc)}<span class="card-tag">${esc(s.navShort)}</span></div>
+  <div class="card-body">
+    <h3>${esc(s.nav)}</h3>
+    <p>${esc(s.navDesc)}.</p>
+    <span class="card-more">Découvrir</span>
+  </div>
+</a>`).join("");
+}
+
+function ctaDouble() {
+  return `<div class="cta-split">
+  <div class="cta-card client">
+    <h3>Vous avez un projet ?</h3>
+    <p>Décrivez-le en 2 minutes. Nous le qualifions et le confions à des professionnels sélectionnés
+    près de chez vous. Vous recevez des propositions comparables sous 48 heures. C'est gratuit et sans engagement.</p>
+    <a class="btn btn-white" href="devis.html">Demander mon devis gratuit</a>
+  </div>
+  <div class="cta-card pro">
+    <h3>Vous êtes professionnel ?</h3>
+    <p>Enseigniste, imprimeur, poseur, graphiste, spécialiste du covering ou de l'objet publicitaire :
+    rejoignez le réseau et recevez des demandes qualifiées dans votre zone, correspondant à vos capacités réelles.</p>
+    <a class="btn btn-white" href="professionnels.html">Rejoindre le réseau</a>
+  </div>
+</div>`;
+}
+
+function trustBar() {
+  const ico = {
+    free: '<path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+    fast: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+    check: '<path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/>',
+    map: '<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>'
+  };
+  const svg = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`;
+  return `<div class="trust">
+  <div>${svg(ico.free)}<b>100 % gratuit</b><span>Aucun frais pour le client, aucun engagement, aucune exclusivité.</span></div>
+  <div>${svg(ico.fast)}<b>Réponse sous 48 h</b><span>Votre demande est qualifiée puis transmise le jour même aux bons professionnels.</span></div>
+  <div>${svg(ico.check)}<b>Professionnels vérifiés</b><span>Assurances, qualifications, capacités de production et références contrôlées.</span></div>
+  <div>${svg(ico.map)}<b>Toute la France</b><span>Un réseau d'ateliers et de poseurs de proximité, métropole et outre-mer.</span></div>
+</div>`;
+}
+
+function keywordCloud(words, title) {
+  return `<div class="kw-block"><b>${esc(title)} :</b> ${words.map(esc).join(" · ")}.</div>`;
+}
+
+module.exports = {
+  site, services, esc, attr, jsonld, img, heroImg, pick, manifest,
+  page, header, footer, crumbs, crumbSchema, faqBlock, faqSchema,
+  serviceCards, ctaDouble, trustBar, keywordCloud, NAV_MORE
+};

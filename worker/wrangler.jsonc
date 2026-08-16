@@ -1,0 +1,19 @@
+{
+  // Worker de réception des formulaires — voir worker/lead-worker.js
+  "name": "rezofabrik-leads",
+  "main": "lead-worker.js",
+  "compatibility_date": "2026-01-01",
+
+  // Créez le namespace puis reportez son id :
+  //   wrangler kv namespace create LEADS
+  "kv_namespaces": [
+    { "binding": "LEADS", "id": "REMPLACER_PAR_VOTRE_ID_KV" }
+  ],
+
+  // Adresses utilisées pour la notification par e-mail (via Resend).
+  // La clé API se met en secret : wrangler secret put RESEND_API_KEY
+  "vars": {
+    "MAIL_TO": "contact@rezofabrik.fr",
+    "MAIL_FROM": "site@rezofabrik.fr"
+  }
+}
