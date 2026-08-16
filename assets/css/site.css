@@ -1176,3 +1176,55 @@ td { color: var(--tx-2); }
 .tile-plain h3 { font-size: 1.02rem; margin-bottom: .35em; }
 .tile-plain p { font-size: .91rem; margin: 0; }
 .tile-plain a { color: var(--signal-600); font-weight: 600; }
+
+
+/* ---------- 30. Ergonomie tactile et lisibilité sur mobile ----------
+   Aucune page ne déborde horizontalement, mais deux défauts subsistaient au
+   doigt : des libellés descendus sous 11 px, et des liens de navigation hauts
+   de 16 px seulement. Sur un écran tactile, une cible de moins de 24 px se
+   rate régulièrement — et les deux liens les plus précieux du site, le
+   téléphone et l'e-mail, étaient précisément dans ce cas.
+
+   Les corrections sont volontairement cantonnées aux écrans tactiles : sur
+   un grand écran, la souris est précise et la densité actuelle est justifiée.
+   Les liens en pleine phrase (« … à Rivesaltes, Le Soler … ») restent tels
+   quels : les agrandir déformerait l'interligne du paragraphe, et la norme
+   d'accessibilité les exempte justement pour cette raison.               */
+@media (max-width: 900px) {
+
+  /* Libellés : rien en dessous de 11 px, seuil sous lequel un texte devient
+     pénible à lire sur un écran tenu à bout de bras. */
+  .logo-txt small { font-size: .72rem; letter-spacing: .07em; }
+  .stepper span { font-size: .82rem; }
+
+  /* Listes de liens du pied de page : navigation à part entière, donc
+     cible confortable plutôt qu'une ligne de texte de 16 px. */
+  .ftr li { margin-bottom: 0; }
+  .ftr li > a {
+    display: block; padding-block: 9px; font-size: .93rem;
+  }
+
+  /* Téléphone et e-mail : les deux liens qui déclenchent réellement un
+     contact. Ils méritent la cible la plus généreuse du site. */
+  .ftr-about a,
+  .aside-card a[href^="tel:"],
+  .aside-card a[href^="mailto:"],
+  .ftr-about a[href^="tel:"],
+  .ftr-about a[href^="mailto:"] {
+    display: inline-block; padding-block: 6px; font-weight: 600;
+  }
+
+  /* Fil d'Ariane : petit, mais c'est un chemin de retour qu'on utilise. */
+  .crumbs li { min-height: 26px; }
+  .crumbs a { display: inline-flex; align-items: center; min-height: 26px; }
+
+  /* Nuage de mots-clés et listes de villes : beaucoup de liens serrés, dont
+     les soixante villes du pied de page — la porte d'entrée du maillage local. */
+  .kw-block a,
+  .link-list a,
+  .ftr-cities a { display: inline-block; padding-block: 5px; }
+
+  /* Mentions légales et plan du site : peu cliqués, mais un visiteur qui les
+     cherche a une raison de le faire — souvent vérifier à qui il a affaire. */
+  .ftr-bot nav a { display: inline-block; padding-block: 6px; }
+}
