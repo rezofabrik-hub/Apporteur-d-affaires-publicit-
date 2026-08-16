@@ -197,6 +197,44 @@
       form.addEventListener("change", refreshConditionals);
       refreshConditionals();
 
+      /**
+       * Département d'une demande : code sur deux caractères et libellé.
+       * Le code postal prime — c'est une donnée saisie par le demandeur et
+       * non un choix dans une liste. La Corse est le seul cas ambigu : 20xxx
+       * ne distingue pas 2A de 2B, on ne tranche donc pas.
+       */
+      function deduireDepartement(form, data) {
+        /* Ce que la liste de suggestion sait de la ville saisie. */
+        var parVille = null;
+        var liste = document.getElementById("villes-list");
+        if (liste && data.ville) {
+          var cible = String(data.ville).trim().toLowerCase();
+          var opts = liste.getElementsByTagName("option");
+          for (var i = 0; i < opts.length; i++) {
+            if (String(opts[i].value).trim().toLowerCase() === cible) {
+              parVille = { code: opts[i].getAttribute("data-dept") || "",
+                           nom: opts[i].getAttribute("data-dept-nom") || "" };
+              break;
+            }
+          }
+        }
+
+        var cp = String(data.code_postal || "").replace(/\D/g, "");
+        if (cp.length >= 5) {
+          var deb = cp.slice(0, 2);
+          var r;
+          if (deb === "20") r = { code: "2A/2B", nom: "Corse" };
+          else if (deb === "97" || deb === "98") r = { code: cp.slice(0, 3), nom: "Outre-mer" };
+          else r = { code: deb, nom: "" };
+          /* Le code postal fait foi sur le numéro ; le nom du département,
+             lui, ne s'en déduit pas — on le reprend de la ville quand les
+             deux concordent, pour que l'e-mail reçu se lise sans décodage. */
+          if (!r.nom && parVille && parVille.code === r.code) r.nom = parVille.nom;
+          return r;
+        }
+        return parVille;
+      }
+
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         if (steps && !steps.validateCurrent()) return;
@@ -260,10 +298,23 @@
            un souligné et ne sont jamais affichés dans l'e-mail reçu.
            `_captcha: false` évite d'imposer un reCAPTCHA au visiteur : le
            formulaire compte déjà cinq étapes, un robot n'irait pas au bout. */
+        /* Département de la demande, déduit avant l'envoi. C'est LA donnée
+           d'orientation : une demande sert à être transmise au partenaire de
+           la zone, et retrouver le département à la main pour chaque e-mail
+           reçu est le genre de friction qui fait perdre des heures dès la
+           dizaine de demandes par semaine. Le code postal fait foi ; à défaut
+           on retombe sur la ville, dont la liste de suggestion porte déjà son
+           département. */
+        var dep = deduireDepartement(form, data);
+        if (dep) { data.departement = dep.code + (dep.nom ? " — " + dep.nom : ""); }
+
         if (endpoints.some(function (u) { return /formsubmit\.co/.test(u); })) {
           data._subject = (form.dataset.kind === "pro"
             ? "Candidature partenaire — "
-            : "Demande de devis — ") + (data.entreprise || data.nom || "site web");
+            : "Demande de devis — ")
+            + (dep ? "[" + dep.code + "] " : "")
+            + (data.entreprise || data.nom || "site web")
+            + (data.ville ? " · " + data.ville : "");
           data._template = "table";
           data._captcha = "false";
           if (data.email) data._replyto = data.email;

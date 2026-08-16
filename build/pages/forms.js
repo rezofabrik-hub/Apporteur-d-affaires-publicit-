@@ -166,7 +166,8 @@ function devis(cities) {
               <div class="field">
                 <label for="ville">Ville du projet <span class="req">*</span></label>
                 <input type="text" id="ville" name="ville" required list="villes-list" placeholder="Ex. Perpignan">
-                <datalist id="villes-list">${cities.map((c) => `<option value="${attr(c.name)}">`).join("")}</datalist>
+                <datalist id="villes-list">${cities.map((c) =>
+                  `<option value="${attr(c.name)}" data-dept="${attr(c.dept)}" data-dept-nom="${attr(c.deptName)}">`).join("")}</datalist>
                 <p class="err">Indiquez la ville où se situe le projet.</p>
               </div>
               <div class="field">

@@ -439,5 +439,57 @@ module.exports = [
     { q: "Une association bénéficie-t-elle de tarifs particuliers ?", a: "Il n'existe pas de tarif associatif réglementé, mais beaucoup de professionnels du réseau pratiquent des conditions adaptées, notamment pour les clubs de leur commune, et acceptent des délais de production plus longs contre une remise. Précisez votre statut associatif dans la demande : cela fait souvent une différence réelle." }
   ],
   services: ["objets-publicitaires", "impression-grand-format", "enseignes", "signaletique"]
+},
+
+/* Syndics et gestionnaires de copropriété. Segment distinct des agences
+   immobilières, et souvent confondu avec elles à tort : l'agence vend un
+   bien une fois, le syndic gère le même immeuble pendant des années et
+   commande de la signalétique tous les ans, sur un parc de dizaines
+   d'immeubles. Une partie de ses besoins est de surcroît réglementaire,
+   donc non négociable — c'est ce qui rend ce client durable. */
+{
+  slug: "syndic-copropriete",
+  nav: "Syndics & copropriétés",
+  h1: "Signalétique de copropriété pour syndics et gestionnaires",
+  title: "Signalétique Copropriété — Syndic, Résidence, Parking, Sécurité",
+  desc: "Plaques de résidence, numérotation de bâtiments, signalétique de parking et de caves, plans d'évacuation et affichage légal. Devis pour syndics partout en France.",
+  topic: "signaletique",
+  topicAlt: ["gravure", "enseigne"],
+  lead: "Un syndic ne commande pas une enseigne, il équipe un parc. Numérotation, plans d'évacuation, signalétique de parking, affichage légal : les mêmes besoins reviennent immeuble après immeuble, avec une contrainte que les autres clients n'ont pas — chaque dépense passe devant une assemblée générale, et doit donc être justifiable ligne par ligne.",
+  besoins: [
+    ["Plaque de résidence et numérotation",
+     "Plaque d'entrée gravée ou en lettres découpées, numérotation des bâtiments, des cages d'escalier, des étages et des paliers. C'est la première chose qu'un livreur, un secours ou un visiteur cherche, et la première source d'appels au gardien quand elle manque."],
+    ["Signalétique de parking et de caves",
+     "Numérotation des emplacements, marquage au sol, identification des caves et des locaux techniques, hauteur libre signalée à l'entrée. Le marquage au sol se refait tous les trois à cinq ans selon le passage."],
+    ["Plans d'évacuation et consignes de sécurité",
+     "Plans par niveau, consignes d'incendie, identification des issues de secours et des moyens de lutte. Ces supports relèvent d'une norme, pas du goût du conseil syndical."],
+    ["Affichage légal et panneaux d'information",
+     "Vitrine d'affichage fermant à clé dans le hall, panneaux de règlement intérieur, consignes de tri, horaires de collecte et coordonnées d'urgence."],
+    ["Accessibilité des parties communes",
+     "Bandes de contraste, nez de marche, signalétique en relief et braille, identification des cheminements. Les parties communes d'un immeuble d'habitation ont leurs propres exigences, distinctes de celles d'un établissement recevant du public."],
+    ["Boîtes aux lettres et étiquettes",
+     "Étiquetage normalisé des boîtes, renouvellement lors des changements d'occupants, plaques de porte pour les professions libérales installées dans l'immeuble."]
+  ],
+  specifics: [
+    "Le <strong>plan d'évacuation</strong> répond à la norme <strong>NF X 08-070</strong> : format, orientation dans le sens de lecture réelle du lecteur, position du « vous êtes ici », pictogrammes normalisés. Un plan joliment dessiné mais non conforme ne remplit pas l'obligation, et c'est un point que le contrôleur regarde en premier.",
+    "La <strong>numérotation des lots et des emplacements</strong> doit correspondre exactement à l'état descriptif de division de la copropriété. Une numérotation « logique » refaite sur place, différente du règlement, crée des litiges à la revente — nous demandons donc systématiquement l'état descriptif avant fabrication, jamais un relevé sur site.",
+    "Le calendrier compte autant que le devis. Une dépense de signalétique passe en <strong>assemblée générale</strong>, souvent une fois par an : un devis valable trente jours ne sert à rien à un syndic. Les professionnels du réseau établissent des propositions à validité longue, et acceptent le fractionnement d'un programme sur deux exercices lorsque le budget travaux ne suit pas."
+  ],
+  budget: [
+    ["Plaque de résidence gravée ou lettres découpées", "250 – 1 200 €"],
+    ["Numérotation complète d'un bâtiment (paliers et portes)", "400 – 1 800 €"],
+    ["Plan d'évacuation normalisé (par niveau)", "90 – 260 €"],
+    ["Vitrine d'affichage légal fermant à clé", "180 – 600 €"],
+    ["Numérotation et marquage au sol d'un parking (30 places)", "900 – 2 800 €"],
+    ["Mise en accessibilité des parties communes", "600 – 3 500 €"]
+  ],
+  faq: [
+    { q: "Peut-on traiter plusieurs immeubles dans une même consultation ?", a: "Oui, et c'est même préférable : un même professionnel qui équipe cinq résidences amortit ses déplacements et ses réglages machine, ce qui se voit sur le prix unitaire. Indiquez le nombre d'immeubles et leur commune dans la demande — nous orientons alors vers un atelier dimensionné pour le volume plutôt que vers un artisan qui traitera votre parc en cinq chantiers séparés." },
+    { q: "Le devis restera-t-il valable jusqu'à l'assemblée générale ?", a: "C'est une demande que nous transmettons systématiquement. Beaucoup de professionnels acceptent une validité de six mois à un an sur ce type de prestation, parfois avec une clause de révision si le prix des matières évolue fortement. Précisez la date prévisionnelle de votre assemblée dès la demande : cela évite de tout refaire chiffrer." },
+    { q: "Le plan d'évacuation est-il obligatoire dans un immeuble d'habitation ?", a: "Les obligations diffèrent selon que l'immeuble relève du seul régime de l'habitation ou comporte des locaux recevant du public, et selon sa hauteur. Les consignes de sécurité affichées dans les parties communes et l'identification des moyens de secours sont en revanche attendues partout. Nous vous orientons vers un professionnel qui connaît le régime applicable à votre immeuble plutôt que de vous vendre un plan par défaut." },
+    { q: "Qui décide de la charte graphique d'une résidence ?", a: "Le conseil syndical, sur proposition du syndic, et la décision passe en assemblée. Notre rôle est de fournir des propositions comparables sur la même base technique pour que le vote porte sur un choix éclairé — pas sur trois devis qui ne décrivent pas les mêmes matériaux." },
+    { q: "Intervenez-vous sur les résidences anciennes en secteur protégé ?", a: "Oui. Une plaque de résidence sur un immeuble situé aux abords d'un monument historique relève de l'avis de l'Architecte des Bâtiments de France au même titre qu'une enseigne commerciale. Les professionnels du réseau connaissent les matériaux qui passent — laiton, bronze, lettres découpées — et ceux qui sont systématiquement refusés." }
+  ],
+  services: ["signaletique", "decoupe-laser-cnc", "enseignes", "impression-grand-format"]
 }
 ];
