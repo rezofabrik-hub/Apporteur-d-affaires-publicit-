@@ -1245,5 +1245,94 @@
    "w": 1024,
    "h": 768
   }
+ ],
+ "imprimerie": [
+  {
+   "name": "imprimerie-1",
+   "w": 1023,
+   "h": 753
+  },
+  {
+   "name": "imprimerie-2",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "imprimerie-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "imprimerie-4",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "imprimerie-5",
+   "w": 1280,
+   "h": 854
+  },
+  {
+   "name": "imprimerie-6",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "imprimerie-7",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "imprimerie-8",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "impression-3d": [
+  {
+   "name": "impression-3d-1",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "impression-3d-2",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "impression-3d-3",
+   "w": 1024,
+   "h": 576
+  },
+  {
+   "name": "impression-3d-4",
+   "w": 1024,
+   "h": 758
+  },
+  {
+   "name": "impression-3d-5",
+   "w": 1024,
+   "h": 854
+  },
+  {
+   "name": "impression-3d-6",
+   "w": 1024,
+   "h": 824
+  },
+  {
+   "name": "impression-3d-7",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "impression-3d-8",
+   "w": 1023,
+   "h": 612
+  },
+  {
+   "name": "impression-3d-9",
+   "w": 1024,
+   "h": 768
+  }
  ]
 }

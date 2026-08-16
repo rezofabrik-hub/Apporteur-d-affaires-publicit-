@@ -621,6 +621,26 @@ function pros(cities) {
             "Reprise et vectorisation de fichiers de découpe"
           ], "Procédés que vous réalisez en interne")}
 
+          ${capGroup("Imprimerie et façonnage papier", "cap_imprimerie", [
+            "Impression offset", "Impression numérique petit format",
+            "Impression données variables", "Cartes de visite et papeterie",
+            "Flyers, dépliants et plaquettes", "Brochures et catalogues",
+            "Étiquettes et adhésifs imprimés", "Carnets autocopiants",
+            "Pliage et rainage", "Piqûre à cheval", "Dos carré collé",
+            "Reliure spirale ou wire-o", "Pelliculage", "Vernis sélectif",
+            "Dorure à chaud et gaufrage", "Découpe à la forme",
+            "Massicot et façonnage", "Mise sous pli et routage",
+            "Label Imprim'Vert", "Papiers FSC ou PEFC"
+          ], "Procédés d'imprimerie que vous réalisez")}
+
+          ${capGroup("Impression 3D et prototypage", "cap_3d", [
+            "Impression 3D FDM (filament)", "Impression 3D résine SLA ou DLP",
+            "Frittage de poudre SLS", "MJF", "Impression 3D grand volume",
+            "Impression 3D métal", "Modélisation 3D", "Scan 3D et rétro-conception",
+            "Finition, ponçage et peinture de pièces imprimées",
+            "Petite série (10 à 500 pièces)", "Moulage silicone"
+          ], "Procédés que vous réalisez en interne")}
+
           ${capGroup("Atelier et équipement", "cap_atelier", [
             "Plieuse / cisaille", "Poste à souder alu et inox",
             "Thermoformage / plieuse plexiglas", "Cabine de peinture ou thermolaquage",

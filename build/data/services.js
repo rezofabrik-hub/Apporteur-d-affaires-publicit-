@@ -816,4 +816,233 @@ module.exports = [
   related: ["enseignes", "signaletique", "maquette-creation-graphique", "impression-grand-format"]
 }
 
+,
+/* ═════════════════════════════════════════════════════ 10. IMPRIMERIE */
+{
+  slug: "imprimerie",
+  nav: "Imprimerie",
+  navShort: "Imprimerie",
+  navDesc: "Cartes, flyers, brochures, papeterie, catalogues, façonnage",
+  h1: "Imprimerie : offset, numérique et façonnage",
+  title: "Imprimerie — Cartes de Visite, Flyers, Brochures, Papeterie",
+  desc: "Imprimerie offset et numérique : cartes de visite, flyers, dépliants, brochures, papeterie commerciale, catalogues, affiches. Imprimeurs équipés, façonnage et reliure.",
+  eyebrow: "Métier n°10",
+  topic: "imprimerie",
+  topicAlt: ["impression", "pao"],
+  lead: "L'imprimé n'est pas mort, il s'est spécialisé. Une carte de visite sur papier de création, un dépliant bien façonné ou un catalogue relié disent quelque chose qu'aucun fichier PDF ne dira. Encore faut-il savoir arbitrer entre offset et numérique, choisir un papier qui tienne le pliage, et fournir un fichier qui n'oblige pas l'imprimeur à vous rappeler.",
+  keywords: [
+    "imprimerie", "imprimeur", "impression offset", "impression numérique",
+    "carte de visite", "flyer", "dépliant", "plaquette commerciale", "brochure",
+    "catalogue", "papeterie commerciale", "papier en-tête", "enveloppe imprimée",
+    "carnet autocopiant", "bloc-notes", "affiche", "affichette", "menu restaurant",
+    "faire-part", "carte de correspondance", "chemise à rabats", "étiquette adhésive",
+    "reliure", "dos carré collé", "piqûre à cheval", "spirale", "pelliculage",
+    "dorure à chaud", "vernis sélectif", "gaufrage", "découpe à la forme",
+    "papier recyclé", "imprim'vert", "quadrichromie", "Pantone", "BAT", "façonnage"
+  ],
+  intro: [
+    "Le choix se joue d'abord sur le <strong>tirage</strong>. En dessous de 500 exemplaires, le numérique gagne presque toujours : pas de calage, pas de plaques, départ immédiat. Au-delà de 1 000, l'offset reprend l'avantage — le coût unitaire s'effondre à mesure que la machine tourne, et la qualité de teinte reste supérieure sur les aplats.",
+    "Le second critère est la <strong>finition</strong>. Un pelliculage soft touch, un vernis sélectif, une dorure ou un gaufrage transforment un imprimé banal en objet qu'on garde. Ces finitions relèvent du façonnage, un métier à part entière que tous les imprimeurs ne pratiquent pas en interne : c'est précisément ce que nous vérifions avant de vous mettre en relation."
+  ],
+  sub: [
+    { t: "Cartes de visite et cartes de correspondance",
+      d: "Du 350 g classique au papier de création 600 g avec tranche colorée. Pelliculage mat, soft touch, vernis sélectif, dorure à chaud, coins arrondis. C'est le support où la qualité du papier se remarque immédiatement, et où l'économie se voit tout autant." },
+    { t: "Flyers, dépliants et plaquettes",
+      d: "Du flyer A6 recto-verso au dépliant trois volets et à la plaquette agrafée. Le pliage conditionne le choix du grammage : au-delà de 170 g, un rainage préalable est indispensable, faute de quoi le papier casse et la fibre apparaît sur le pli." },
+    { t: "Brochures, catalogues et magazines",
+      d: "Piqûre à cheval jusqu'à 64 pages, dos carré collé au-delà, reliure spirale ou wire-o pour les documents à consulter à plat. Le nombre de pages d'un cahier est toujours un multiple de quatre : cela se prévoit dès la maquette." },
+    { t: "Papeterie commerciale",
+      d: "Papier en-tête, enveloppes à fenêtre, cartes de correspondance, chemises à rabats, blocs-notes, carnets autocopiants numérotés. L'ensemble qui fait qu'une entreprise a l'air structurée avant même d'avoir parlé." },
+    { t: "Affiches et affichettes",
+      d: "De l'A3 de vitrine au 120 × 176 d'abribus. En petit tirage, le numérique suffit ; en série, l'offset donne des aplats plus réguliers, ce qui compte quand l'affiche est vue de près." },
+    { t: "Supports pour l'hôtellerie et la restauration",
+      d: "Menus pelliculés ou vernis pour résister aux manipulations, sets de table, chevalets, cartes des vins, tickets et additions. Le pelliculage n'est pas cosmétique ici : il double la durée de vie du support." },
+    { t: "Étiquettes et adhésifs imprimés",
+      d: "Étiquettes en bobine ou en planche, adhésif permanent ou repositionnable, papier ou polypropylène, découpe à la forme. Pour l'agroalimentaire et les cosmétiques, avec les mentions réglementaires intégrées à la maquette." },
+    { t: "Façonnage et finitions",
+      d: "Pliage, rainage, perforation, découpe à la forme, pelliculage, vernis, dorure, gaufrage, numérotation, mise sous pli. C'est ce qui distingue un imprimé professionnel d'une sortie de photocopieur." }
+  ],
+  sections: [
+    {
+      h2: "Offset ou numérique : comment trancher",
+      p: [
+        "Le point de bascule se situe couramment entre 500 et 1 000 exemplaires, mais il dépend du format et du nombre de couleurs. L'<strong>offset</strong> demande la fabrication de plaques et un calage machine : ce coût fixe, réparti sur 200 exemplaires, rend le tirage prohibitif ; réparti sur 5 000, il devient négligeable.",
+        "Le <strong>numérique</strong> n'a pas de coût fixe, mais un coût unitaire constant. Il autorise en revanche ce que l'offset ne sait pas faire : la donnée variable — un nom, un numéro, un QR code différent sur chaque exemplaire — et le tirage à l'unité. Sur les couleurs très saturées et les grands aplats, l'offset garde l'avantage, et la différence se voit."
+      ],
+      table: {
+        head: ["Support", "Tirage courant", "Budget indicatif", "Délai"],
+        rows: [
+          ["Cartes de visite 350 g pelliculées", "500 ex.", "45 – 110 €", "3 – 5 jours"],
+          ["Cartes de visite papier de création 600 g", "500 ex.", "150 – 380 €", "5 – 8 jours"],
+          ["Flyers A5 recto-verso 135 g", "1 000 ex.", "60 – 150 €", "3 – 5 jours"],
+          ["Dépliants A4 trois volets 170 g", "1 000 ex.", "150 – 340 €", "4 – 7 jours"],
+          ["Brochure A4 16 pages piquée", "500 ex.", "420 – 950 €", "6 – 10 jours"],
+          ["Catalogue A4 48 pages dos carré collé", "1 000 ex.", "1 400 – 3 200 €", "10 – 15 jours"],
+          ["Papier en-tête A4 90 g", "1 000 ex.", "90 – 210 €", "3 – 5 jours"],
+          ["Affiches A3 quadri 170 g", "250 ex.", "80 – 190 €", "3 – 5 jours"],
+          ["Carnets autocopiants numérotés", "50 carnets", "180 – 420 €", "7 – 12 jours"]
+        ],
+        foot: "Fourchettes hors création graphique et hors livraison. Les finitions spéciales — dorure, vernis sélectif, gaufrage — ajoutent couramment 30 à 80 % au prix du tirage."
+      }
+    },
+    {
+      h2: "Le fichier : là où se perdent les délais",
+      p: [
+        "La majorité des retards en imprimerie ne viennent pas de la machine, mais du fichier. Quatre points reviennent systématiquement : le <strong>fond perdu</strong> de 3 à 5 mm absent, les images en <strong>RVB</strong> au lieu du CMJN, la <strong>résolution</strong> insuffisante, et les <strong>polices non vectorisées</strong>.",
+        "Le fond perdu mérite une explication, parce qu'il surprend souvent : la massicoteuse coupe avec une tolérance de l'ordre du millimètre. Sans marge de débord, un liseré blanc apparaît sur le bord. À l'inverse, tout élément important doit rester à 5 mm au moins du bord fini, sans quoi il risque d'être rogné."
+      ],
+      list: [
+        "Fond perdu : 3 mm en petit format, 5 mm à partir du A3",
+        "Colorimétrie : CMJN pour la quadrichromie, référence Pantone pour une couleur d'identité à respecter",
+        "Résolution : 300 dpi à l'échelle finale — une image agrandie ne regagne jamais sa définition",
+        "Polices : vectorisées ou fournies, sinon l'imprimeur substitue et la maquette bouge",
+        "Noir des textes : 100 % de noir seul, jamais un noir composé qui deviendrait flou au repérage",
+        "PDF : format PDF/X-4 ou PDF/X-1a, avec traits de coupe et fond perdu inclus"
+      ],
+      note: "Un BAT — bon à tirer — doit toujours être validé avant lancement, et il vous engage : après signature, une erreur repérée sur le tirage reste à votre charge. Prenez le temps de le relire à deux personnes, en particulier les numéros de téléphone et les adresses."
+    },
+    {
+      h2: "Papiers, grammages et impact environnemental",
+      p: [
+        "Le <strong>grammage</strong> se mesure en grammes par mètre carré. Un flyer tient à 135 g, un dépliant plié demande 170 g, une couverture de brochure 250 à 300 g, une carte de visite 350 g au minimum. En dessous, le support paraît bon marché — et il l'est.",
+        "Sur le plan environnemental, trois repères concrets : le label <strong>Imprim'Vert</strong> atteste du traitement des déchets dangereux de l'imprimeur ; les certifications <strong>FSC</strong> et <strong>PEFC</strong> portent sur l'origine du bois ; le papier <strong>recyclé</strong> réduit l'empreinte mais rend les couleurs légèrement plus mates. Un imprimeur qui ne peut citer aucun de ces trois éléments n'a probablement pas engagé la démarche."
+      ]
+    }
+  ],
+  faq: [
+    { q: "À partir de quelle quantité l'offset devient-il intéressant ?",
+      a: "Autour de 500 à 1 000 exemplaires selon le format et le nombre de couleurs. En dessous, le coût des plaques et du calage machine pèse trop lourd : le numérique revient moins cher et part plus vite. Au-delà de 2 000 exemplaires, l'écart bascule nettement en faveur de l'offset. Donnez-nous la quantité exacte dans votre demande, c'est ce qui détermine vers quel imprimeur nous vous orientons." },
+    { q: "Combien de temps faut-il pour recevoir ma commande ?",
+      a: "Sur un fichier conforme, comptez 3 à 5 jours ouvrés pour des cartes de visite ou des flyers, 6 à 10 jours pour une brochure, 10 à 15 jours pour un catalogue relié. Les finitions spéciales — dorure, gaufrage, découpe à la forme — ajoutent 3 à 5 jours car elles passent sur une machine séparée, parfois chez un façonnier extérieur." },
+    { q: "Pouvez-vous créer la maquette ?",
+      a: "Oui. Les graphistes du réseau conçoivent le document et livrent un PDF conforme aux exigences de l'imprimeur : fond perdu, CMJN, polices vectorisées, traits de coupe. C'est une prestation distincte de l'impression, chiffrée à part, et le fichier vous appartient ensuite définitivement. Voyez notre page <a href=\"maquette-creation-graphique.html\">maquette et création graphique</a>." },
+    { q: "Mes couleurs seront-elles exactement celles de mon écran ?",
+      a: "Non, et personne ne peut le promettre. Un écran émet de la lumière, un papier la réfléchit : certaines couleurs vives, notamment les bleus et les verts saturés, n'existent pas en quadrichromie. Si une couleur est un élément de votre identité, faites-la traiter en Pantone plutôt qu'en quadri, ou demandez une épreuve contractuelle avant tirage." },
+    { q: "Imprimez-vous en petite quantité ?",
+      a: "Oui, jusqu'à l'unité en numérique. C'est courant pour un prototype de plaquette, un menu de test ou un tirage d'essai avant une commande importante. Le coût unitaire est évidemment plus élevé, mais cela reste bien moins cher que de découvrir une erreur sur cinq mille exemplaires." },
+    { q: "Proposez-vous du papier recyclé ou certifié ?",
+      a: "Oui. La plupart des imprimeurs du réseau sont labellisés Imprim'Vert et proposent des papiers FSC ou PEFC, ainsi que des gammes recyclées. Précisez-le dans votre demande : le surcoût est aujourd'hui faible, parfois nul, et l'argument se met en avant sur vos supports." }
+  ],
+  related: ["impression-grand-format", "maquette-creation-graphique", "objets-publicitaires", "signaletique"]
+}
+,
+/* ═══════════════════════════════════════════════════ 11. IMPRESSION 3D */
+{
+  slug: "impression-3d",
+  nav: "Impression 3D",
+  navShort: "Impression 3D",
+  navDesc: "Prototypage, pièces techniques, lettres volumiques, maquettes",
+  h1: "Impression 3D, prototypage et pièces sur mesure",
+  title: "Impression 3D — Prototypage, Pièces Techniques, Lettres 3D",
+  desc: "Impression 3D FDM, résine SLA et frittage SLS : prototypes, pièces techniques, lettres volumiques, maquettes d'architecture, PLV et pièces de rechange sur mesure.",
+  eyebrow: "Métier n°11",
+  topic: "impression-3d",
+  topicAlt: ["cnc", "atelier"],
+  lead: "L'impression 3D a quitté le laboratoire pour entrer dans l'atelier. Elle sert aujourd'hui à valider une forme avant de la fabriquer, à produire une pièce que plus personne ne commercialise, ou à réaliser un volume publicitaire impossible à obtenir autrement. Ce n'est ni une machine à tout faire, ni un gadget : c'est un procédé avec un domaine d'emploi précis.",
+  keywords: [
+    "impression 3D", "imprimante 3D", "prototypage rapide", "prototype 3D",
+    "FDM", "dépôt de filament", "SLA", "résine", "stéréolithographie",
+    "SLS", "frittage de poudre", "MJF", "impression 3D résine",
+    "PLA", "PETG", "ABS", "ASA", "nylon", "TPU flexible", "fibre de carbone",
+    "modélisation 3D", "fichier STL", "scan 3D", "rétro-conception",
+    "lettres volumiques", "logo 3D", "maquette architecture", "PLV volumique",
+    "pièce sur mesure", "pièce de rechange", "petite série", "moule silicone"
+  ],
+  intro: [
+    "Trois technologies couvrent l'essentiel des besoins. Le <strong>FDM</strong>, qui dépose un filament fondu couche par couche, est le plus économique : parfait pour les volumes, les supports et les pièces peu sollicitées. La <strong>résine SLA</strong> polymérise un bain liquide au laser et donne un détail très fin, idéal pour les maquettes et les pièces où la surface se voit. Le <strong>frittage SLS</strong> fusionne une poudre de nylon et produit des pièces réellement mécaniques, sans support et sans direction faible.",
+    "Le piège classique est de confondre prototype et pièce de série. Une pièce FDM se casse le long des couches, sous une contrainte que la même pièce injectée encaisserait sans broncher. Pour un usage fonctionnel durable, il faut soit passer en SLS, soit accepter le procédé pour ce qu'il est : un moyen de valider vite, à peu de frais, avant d'engager un outillage."
+  ],
+  sub: [
+    { t: "Prototypage et validation de forme",
+      d: "Tenir la pièce en main change tout : les proportions, la prise en main et les interférences se voient immédiatement. Quelques dizaines d'euros et deux jours suffisent souvent à éviter une erreur de fabrication à plusieurs milliers." },
+    { t: "Lettres et logos volumiques",
+      d: "Lettres en relief, logos en volume, enseignes intérieures et éléments de PLV. Sur des formes complexes ou des épaisseurs importantes, l'impression 3D fait ce qu'aucune découpe ne sait faire — puis la pièce est poncée, apprêtée et peinte." },
+    { t: "Pièces techniques et de rechange",
+      d: "Support, gabarit, entretoise, capot, pièce d'un équipement dont le fabricant n'assure plus le service. À partir d'un plan, d'un scan ou de la pièce cassée, l'atelier redessine et réimprime." },
+    { t: "Maquettes d'architecture et volumes",
+      d: "Maquettes de bâtiment, plans-reliefs, volumes de présentation pour un projet, un salon ou une réunion publique. La résine donne ici le niveau de détail que le FDM ne permet pas." },
+    { t: "PLV et présentoirs volumiques",
+      d: "Présentoirs de comptoir, supports de produit, formes publicitaires en volume. En petite série, l'impression 3D évite l'outillage de thermoformage, dont l'amortissement n'a de sens qu'à partir de plusieurs centaines de pièces." },
+    { t: "Rétro-conception et scan 3D",
+      d: "Numérisation d'une pièce existante, reconstruction du modèle, correction, puis réimpression. Le scan seul ne suffit jamais : c'est le travail de reprise du maillage qui fait la qualité du résultat." },
+    { t: "Modélisation 3D",
+      d: "Beaucoup de clients arrivent avec une idée ou un croquis, pas un fichier. La modélisation est une prestation à part entière, facturée à l'heure, et le fichier vous appartient ensuite." },
+    { t: "Finitions et peinture",
+      d: "Ponçage, apprêt, mastic, peinture, vernis, métallisation. Une pièce sortie de machine porte toujours ses stries de couches : la finition représente couramment la moitié du temps total, et c'est elle qui rend la pièce présentable." }
+  ],
+  sections: [
+    {
+      h2: "Quelle technologie pour quel usage ?",
+      p: [
+        "Le choix se fait sur trois critères : la <strong>finesse</strong> attendue, la <strong>tenue mécanique</strong> et le <strong>budget</strong>. Une maquette de présentation et un support technique qui sera vissé n'appellent ni la même machine, ni la même matière.",
+        "Un point que peu d'ateliers annoncent spontanément : toutes ces matières vieillissent au soleil. Le PLA se déforme dès 55 °C — un tableau de bord de voiture l'atteint largement en été — et la résine jaunit et fragilise sous les ultraviolets. Pour un usage extérieur durable, il faut de l'ASA ou du nylon, et une peinture qui filtre les UV. Une pièce imprimée n'est pas un matériau d'enseigne extérieure."
+      ],
+      table: {
+        head: ["Technologie", "Précision", "Tenue mécanique", "Usage privilégié"],
+        rows: [
+          ["FDM filament", "0,1 – 0,3 mm", "Moyenne, faible entre couches", "Volumes, prototypes, PLV, gabarits"],
+          ["Résine SLA / DLP", "0,02 – 0,1 mm", "Faible, cassante", "Maquettes, détail fin, pièces vues"],
+          ["Frittage SLS nylon", "0,1 mm", "Bonne et isotrope", "Pièces fonctionnelles, petite série"],
+          ["MJF", "0,08 mm", "Bonne", "Série de 10 à 500 pièces"],
+          ["FDM grand volume", "0,3 – 0,8 mm", "Moyenne", "Lettres, volumes publicitaires, décors"],
+          ["Dépôt métal", "0,1 mm", "Élevée", "Pièces techniques, très coûteux"]
+        ],
+        foot: "Aucun de ces procédés ne remplace l'injection plastique au-delà de quelques centaines de pièces : à partir de ce seuil, l'outillage s'amortit et le coût unitaire devient sans comparaison."
+      }
+    },
+    {
+      h2: "Ce que coûte une pièce imprimée en 3D",
+      p: [
+        "Le prix dépend de trois facteurs : le <strong>volume de matière</strong>, le <strong>temps machine</strong> et la <strong>finition</strong>. Le premier surprend souvent — une pièce creuse remplie à 15 % coûte une fraction du prix de la même pièce pleine, pour une rigidité presque équivalente.",
+        "La finition est le poste le plus sous-estimé. Sortie de machine, une pièce FDM porte des stries visibles ; la rendre lisse et peinte demande ponçage, apprêt, reprise et peinture — souvent plus de temps que l'impression elle-même. Si l'aspect compte, faites-le chiffrer explicitement plutôt que de le découvrir à la livraison."
+      ],
+      table: {
+        head: ["Prestation", "Budget indicatif", "Remarque"],
+        rows: [
+          ["Petite pièce FDM (moins de 10 cm)", "15 – 60 €", "Brut de machine"],
+          ["Pièce FDM moyenne (10 – 25 cm)", "60 – 220 €", "Selon remplissage et matière"],
+          ["Lettre volumique 30 cm peinte", "90 – 280 €", "Finition comprise"],
+          ["Maquette résine détaillée", "150 – 900 €", "Selon volume et complexité"],
+          ["Pièce technique SLS nylon", "80 – 450 €", "Usage fonctionnel"],
+          ["Modélisation 3D à partir d'un croquis", "60 – 120 € / h", "Fichier livré au client"],
+          ["Scan 3D et rétro-conception", "180 – 700 €", "Selon taille et précision"],
+          ["Finition peinture et vernis", "40 – 250 €", "Souvent la moitié du temps total"]
+        ],
+        foot: "Fourchettes indicatives hors livraison. À partir d'une dizaine de pièces identiques, demandez un chiffrage en petite série : le paramétrage étant amorti, la remise est significative."
+      }
+    },
+    {
+      h2: "Fournir un fichier exploitable",
+      p: [
+        "Le format d'échange reste le <strong>STL</strong>, parfois le STEP ou le 3MF quand les couleurs et les matières comptent. Un fichier issu d'un logiciel de rendu ou de jeu vidéo n'est en général pas imprimable en l'état : il faut un maillage fermé, sans trou ni face inversée, ce qu'on appelle un volume étanche.",
+        "Si vous n'avez qu'un croquis, une photo ou la pièce cassée, dites-le simplement. La modélisation est un vrai travail, facturé à l'heure, mais elle évite l'aller-retour de fichiers inexploitables qui fait perdre une semaine à tout le monde."
+      ],
+      list: [
+        "Maillage fermé, sans trou ni normale inversée",
+        "Épaisseur de paroi d'au moins 1,2 mm en FDM, 0,8 mm en résine",
+        "Échelle en millimètres, l'unité par défaut de la quasi-totalité des machines",
+        "Congés plutôt qu'angles vifs sur les zones qui subiront un effort",
+        "Tolérance d'ajustement de 0,2 à 0,4 mm entre deux pièces qui s'emboîtent",
+        "Orientation d'impression signalée si une face doit rester parfaitement lisse"
+      ],
+      note: "Précisez toujours l'usage réel de la pièce — décorative, fonctionnelle, intérieure, extérieure. C'est cette information, bien plus que le fichier, qui détermine la technologie et la matière à retenir."
+    }
+  ],
+  faq: [
+    { q: "Une pièce imprimée en 3D est-elle solide ?",
+      a: "Cela dépend entièrement du procédé. Une pièce FDM est solide dans le plan des couches mais se fend le long de celles-ci : très correct pour un support ou un gabarit, insuffisant pour une pièce qui subit des efforts répétés. Le frittage SLS produit en revanche des pièces isotropes, réellement fonctionnelles. Décrivez l'usage prévu : c'est ce qui détermine la technologie." },
+    { q: "Puis-je m'en servir en extérieur ?",
+      a: "Avec précaution. Le PLA se déforme à partir de 55 °C et la résine jaunit sous les ultraviolets. Pour l'extérieur, il faut de l'ASA, du nylon ou de l'ABS, plus une peinture filtrant les UV — et même ainsi, une pièce imprimée ne rivalise pas avec l'aluminium ou le plexiglas d'une enseigne. Nous vous le dirons plutôt que de vous vendre une pièce qui ne tiendra pas deux étés." },
+    { q: "Quel délai pour une pièce ?",
+      a: "Sur un fichier prêt, 2 à 5 jours ouvrés pour une pièce courante, une semaine si une finition peinte est demandée. La modélisation ajoute 1 à 3 jours selon la complexité, et le scan 3D d'une pièce existante 2 à 4 jours de plus. Les grands volumes s'impriment parfois en plusieurs morceaux assemblés ensuite, ce qui allonge d'autant." },
+    { q: "Est-ce moins cher qu'une pièce usinée ?",
+      a: "À l'unité et sur une forme complexe, presque toujours : il n'y a ni outillage ni programmation lourde. À partir de quelques dizaines de pièces simples, le fraisage numérique ou la découpe redeviennent compétitifs, et l'injection les dépasse tous au-delà de quelques centaines. Nous chiffrons les deux voies quand le doute est permis — voyez aussi notre page <a href=\"decoupe-laser-cnc.html\">découpe laser et CNC</a>." },
+    { q: "Je n'ai pas de fichier 3D, est-ce bloquant ?",
+      a: "Non. À partir d'un croquis coté, de photos ou de la pièce elle-même, les ateliers du réseau modélisent ou numérisent. C'est une prestation facturée à l'heure, comprise entre 60 et 120 €, et le fichier obtenu vous appartient : vous pourrez le refaire imprimer où vous voulez, y compris ailleurs." },
+    { q: "Faites-vous de la petite série ?",
+      a: "Oui, typiquement de 10 à 500 pièces en SLS ou MJF, procédés conçus pour cela. Le paramétrage n'étant réalisé qu'une fois, le prix unitaire baisse nettement avec la quantité. Au-delà de 500 pièces, nous vous orientons honnêtement vers l'injection plastique, même si cela ne passe pas par nos ateliers." }
+  ],
+  related: ["decoupe-laser-cnc", "maquette-creation-graphique", "enseignes", "objets-publicitaires"]
+}
+
 ];
