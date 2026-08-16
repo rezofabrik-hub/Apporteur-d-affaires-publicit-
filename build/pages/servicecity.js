@@ -1,6 +1,7 @@
 const T = require("../lib/tpl");
 const { site, services, esc, img, heroImg } = T;
 const FR = require("../lib/fr");  // accords des noms de département
+const terrain = require("../data/terrain");  // contraintes réelles par ville
 
 /* Angles rédactionnels croisés : le couple (métier, ville) choisit l'angle,
    ce qui évite des pages jumelles tout en restant pertinent. */
@@ -56,13 +57,18 @@ const LOCAL_NOTE = {
   "referencement-naturel": "À %V, le levier le plus rapide et le moins cher n'est pas le site : c'est la fiche Google Business Profile, qui peut produire des appels en deux à huit semaines. Aucun prestataire sérieux ne vous garantira en revanche une première place."
 };
 
-module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, index) {
+module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, index, metiersDispo) {
   const file = svc.slug + "-" + city.slug + ".html";
   const S = svc.navShort;
   const V = city.name;
   const angle = ANGLES[index % ANGLES.length];
   const fill = (t) => t.replace(/%S/g, S.toLowerCase()).replace(/%V/g, V);
   const localNote = fill(LOCAL_NOTE[svc.slug] || "");
+
+  /* Contraintes réelles du secteur — littoral, vent nommé, montagne, UV.
+     C'est ce qui différencie vraiment une page d'une autre : deux villes de
+     même taille dans deux départements différents n'ont pas les mêmes. */
+  const contraintes = terrain.contraintes(city);
 
   const crumbItems = [
     { name: "Accueil", url: "index.html" },
@@ -83,7 +89,12 @@ module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, 
       a: `Oui, dans l'ensemble de l'agglomération et du département : ${(city.neighbors || []).slice(0, 5).join(", ")} et au-delà. La proximité du prestataire est un critère de sélection prioritaire, parce qu'elle conditionne le délai de pose et la réactivité du service après-vente.` }
   ];
 
-  const otherServices = services.filter((s) => s.slug !== svc.slug).slice(0, 4);
+  /* Ne proposer que des pages qui existent réellement : sur une ville où
+     seuls les métiers locaux sont déclinés, lier les treize produirait des
+     404 — le genre d'erreur qui coûte plus cher en référencement que la page
+     manquante elle-même. */
+  const dispo = (metiersDispo && metiersDispo.length ? metiersDispo : services);
+  const otherServices = dispo.filter((s) => s.slug !== svc.slug).slice(0, 4);
 
   const body = `
 <section class="hero hero-in-page">
@@ -128,6 +139,19 @@ module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, 
         <div class="tags">${city.quartiers.map((q) => `<span class="tag">${esc(q)}</span>`).join("")}</div>` : ""}
         ${(city.zones || []).length ? `<h3 style="margin-top:1.4em">Zones d'activité</h3>
         <div class="tags">${city.zones.map((z) => `<span class="tag">${esc(z)}</span>`).join("")}</div>` : ""}
+        <p>${esc(terrain.tissu(city))}</p>
+
+        ${contraintes.length ? `<h2 id="terrain">Ce que le terrain impose à ${esc(V)}</h2>
+        <p>Ces contraintes ne sont pas des considérations de confort : elles déterminent le
+        matériau, la fixation et la durée de vie réelle du support. Un devis qui les ignore
+        est un devis qu'il faudra refaire.</p>
+        ${contraintes.map((c) => `<h3>${esc(c.titre)}</h3><p>${esc(c.texte)}</p>`).join("")}` : ""}
+
+        <h2 id="tlpe">Taxe locale sur la publicité extérieure à ${esc(V)}</h2>
+        <p>${esc(terrain.strateTlpe(city))}</p>
+        <p style="font-size:.9rem;color:var(--tx-3)">Le détail du mécanisme, des exonérations
+        et des surfaces prises en compte figure sur notre
+        <a href="reglementation-enseigne.html">page réglementation</a>.</p>
 
         ${priceTable ? `<h2 id="prix">Budgets indicatifs</h2>
         <div class="table-wrap"><table>

@@ -36,13 +36,31 @@ const ROOT = path.join(__dirname, "..");
 const MATRIX_CITIES = 60;
 
 /* Villes ajoutées à la matrice hors du seuil ci-dessus, parce qu'un réseau
-   franchisé y tient un site dédié — pano-macon.fr, pano-agen.fr et les
-   autres. Ces sites-là comptent entre 2 et 93 URL et n'ont, pour la plupart,
-   aucune page « métier + ville » : c'est précisément le terrain où une page
-   « caisson lumineux à Mâcon » se gagne. Les villes déjà couvertes par le
-   seuil ne sont pas répétées ici. */
+   concurrent y tient une agence physique. Relevé sur la carte officielle
+   PANO : 133 agences ouvertes en France métropolitaine, dont 99 dans des
+   villes que le site couvrait déjà mais sans déclinaison par métier. Leurs
+   sites d'agence comptent entre 2 et 93 URL et n'ont, pour la plupart, aucune
+   page « métier + ville » : c'est là que se gagne « caisson lumineux à
+   Mâcon ». */
 const MATRIX_EXTRA = ["macon", "chambery", "valence", "annemasse", "agen", "auxerre"];
+
+const MATRIX_CONCURRENCE = ["anglet", "angouleme", "aubagne", "bastia", "biscarrosse", "boulogne-sur-mer", "bourg-en-bresse", "briancon", "chaville", "cholet", "creil", "dax", "douai", "evreux", "haguenau", "issoire", "lannion", "lons-le-saunier", "lorient", "mantes-la-jolie", "marmande", "mayenne", "menton", "orange", "pau", "perigueux", "quimper", "rambouillet", "saint-brieuc", "saint-laurent-du-var", "saint-nazaire", "saintes", "salon-de-provence", "toul", "vannes", "vesoul", "vichy", "vienne", "villefranche-sur-saone", "vitrolles", "voiron"];
+
+/* Sur ces villes-là, la matrice est volontairement restreinte aux métiers
+   à intention locale. Un internaute cherche « pose d'enseigne à Vesoul » ;
+   il ne cherche pas « impression 3D à Vesoul » ni « référencement naturel à
+   Vesoul » — ces métiers-là se travaillent sur leur page nationale. Décliner
+   les treize métiers partout produirait des centaines de pages proches les
+   unes des autres pour des requêtes qui n'existent pas : la mesure de
+   similarité en 5-grammes montait à 70 %, ce que Google traite en pages
+   satellites. Sept métiers ciblés valent mieux que treize dilués. */
+const METIERS_LOCAUX = [
+  "enseignes", "signaletique", "covering-vehicule", "impression-grand-format",
+  "pose-nacelle", "vitrophanie-plv", "imprimerie"
+];
+
 let matrixCitiesCount = MATRIX_CITIES;
+let matrixPagesCount = 0;
 const written = [];
 
 function write(file, html) {
@@ -122,17 +140,39 @@ function run() {
     MATRIX_EXTRA.map((slug) => cities.find((c) => c.slug === slug && !dejaDansMatrice.has(slug)))
       .filter(Boolean)
   );
+  const dejaTout = new Set(matrixCities.map((c) => c.slug));
+  /* Deux sources pour les villes « concurrence » : la liste relevée sur la
+     carte PANO ci-dessus, et le drapeau posé par tools/gen_villes.js sur les
+     communes ajoutées uniquement parce qu'un concurrent y est installé. La
+     seconde se met à jour toute seule quand la carte du concurrent bouge. */
+  const villesConcurrence = MATRIX_CONCURRENCE
+    .map((slug) => cities.find((c) => c.slug === slug))
+    .concat(cities.filter((c) => c.concurrence))
+    .filter((c) => c && !dejaTout.has(c.slug))
+    .filter((c, i, a) => a.findIndex((x) => x.slug === c.slug) === i);
   matrixCitiesCount = matrixCities.length;
+
   let n = 0;
   services.forEach((svc) => {
-    matrixCities.forEach((city, ci) => {
-      const others = matrixCities.filter((c) => c.slug !== city.slug)
+    const local = METIERS_LOCAUX.indexOf(svc.slug) !== -1;
+    const cibles = local ? matrixCities.concat(villesConcurrence) : matrixCities;
+    cibles.forEach((city, ci) => {
+      const others = cibles.filter((c) => c.slug !== city.slug)
         .slice(ci % 5, (ci % 5) + 6);
+      /* Métiers réellement déclinés pour cette ville : sur une ville
+         « concurrence », seuls les sept métiers locaux existent. Sans cette
+         liste, le bloc « autres métiers » pointerait vers des pages qui ne
+         sont pas générées. */
+      const metiersDispo = services.filter((s2) =>
+        local && villesConcurrence.indexOf(city) !== -1
+          ? METIERS_LOCAUX.indexOf(s2.slug) !== -1
+          : (dejaTout.has(city.slug) || METIERS_LOCAUX.indexOf(s2.slug) !== -1));
       write(svc.slug + "-" + city.slug + ".html",
-        serviceCityPage(svc, city, cities, others, n));
+        serviceCityPage(svc, city, cities, others, n, metiersDispo));
       n++;
     });
   });
+  matrixPagesCount = n;
 
   write("devis.html", forms.devis(cities));
   write("collectivites.html", collectivitesPage(cities));
@@ -181,8 +221,8 @@ function run() {
   console.log(`  · ${cities.length} pages villes`);
   console.log(`  · ${sectors.length + 1} pages secteurs`);
   console.log(`  · ${projects.length + 1} pages réalisations`);
-  console.log(`  · ${services.length * matrixCitiesCount} pages métier x ville`);
-  console.log(`  · ${written.length - services.length - cities.length - sectors.length - 1 - projects.length - 1 - services.length * matrixCitiesCount - 2} pages transverses + sitemap + robots`);
+  console.log(`  · ${matrixPagesCount} pages métier x ville`);
+  console.log(`  · ${written.length - services.length - cities.length - sectors.length - 1 - projects.length - 1 - matrixPagesCount - 2} pages transverses + sitemap + robots`);
 }
 
 run();

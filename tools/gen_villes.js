@@ -44,6 +44,29 @@ const OUT = path.join(__dirname, "..", "build", "data", "cities-auto.js");
 const OUT_PREF = path.join(__dirname, "..", "build", "data", "prefectures.js");
 const CACHE = path.join(__dirname, ".geocache");
 
+/* Communes ajoutées quelles que soient leur taille, parce qu'un réseau
+   concurrent y tient une agence physique. Sans elles, le site laisse le
+   terrain libre là où quelqu'un est déjà installé — exactement l'inverse de
+   ce qu'on cherche. Le couple (nom, département) évite les homonymes, très
+   nombreux en France : le nom seul ramènerait le mauvais Saint-Amour.
+   Certains noms d'agence désignent un territoire et non une commune
+   (« Bassin d'Arcachon », « Médoc », « Sénart », « Val d'Europe ») : on
+   retient alors la commune-centre réelle. */
+const VILLES_CONCURRENCE = [
+  ["Saint-Maximin-la-Sainte-Baume", "83"], ["Ancenis-Saint-Géréon", "44"],
+  ["Saint-Gratien", "95"], ["Arcachon", "33"], ["Clamart", "92"],
+  ["Cosne-Cours-sur-Loire", "58"], ["Deauville", "14"], ["Feurs", "42"],
+  ["Gramat", "46"], ["Houilles", "78"], ["Langon", "33"], ["Le Tréport", "76"],
+  ["Lépanges-sur-Vologne", "88"], ["Libourne", "33"], ["Maubeuge", "59"],
+  ["Lesparre-Médoc", "33"], ["Montargis", "45"], ["Montigny-le-Bretonneux", "78"],
+  ["Morlaix", "29"], ["Obernai", "67"], ["Péronne", "80"], ["Plaisir", "78"],
+  ["Pont-du-Château", "63"], ["Royan", "17"], ["Saint-André-de-Cubzac", "33"],
+  ["Saint-Jean-de-Luz", "64"], ["Saint-Ouen-l'Aumône", "95"],
+  ["Saint-Vincent-de-Tyrosse", "40"], ["Saint-Amour", "39"], ["Sartène", "2A"],
+  ["Lieusaint", "77"], ["Serris", "77"], ["Argelès-sur-Mer", "66"],
+  ["Ris-Orangis", "91"]
+];
+
 const SEUIL_POP = 20000;   // toute commune au-dessus est retenue
 const MIN_PAR_DEPT = 3;    // plancher, même dans un département rural
 const MAX_PAR_DEPT = 8;    // plafond, pour ne pas empiler les banlieues
@@ -153,6 +176,15 @@ const cpPrincipal = (c) => (c.codesPostaux || []).slice().sort()[0] || "";
       gardees[gardees.length - 1] = pref;
     }
 
+    /* Communes imposées par la présence d'un concurrent, hors barème. */
+    const norm = (x) => x.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    VILLES_CONCURRENCE.filter(([, dep]) => dep === d.code).forEach(([nom]) => {
+      const c = list.find((x) => norm(x.nom) === norm(nom));
+      if (!c) { console.log(`  ! introuvable : ${nom} (${d.code})`); return; }
+      c.concurrence = true;
+      if (!gardees.some((g) => g.code === c.code)) gardees.push(c);
+    });
+
     gardees.forEach((c) => retenues.push({ commune: c, dept: d }));
   }
   console.log(`${retenues.length} villes retenues`);
@@ -179,6 +211,7 @@ const cpPrincipal = (c) => (c.codesPostaux || []).slice().sort()[0] || "";
     cp: cpPrincipal(commune),
     pop: pop(commune.population),
     prefecture: commune.code === dept.chefLieu || undefined,
+    concurrence: commune.concurrence || undefined,
     neighbors: voisines(commune)
   }));
 
@@ -204,6 +237,7 @@ const cpPrincipal = (c) => (c.codesPostaux || []).slice().sort()[0] || "";
     `cp: ${JSON.stringify(v.cp)}`,
     `pop: ${JSON.stringify(v.pop)}`,
     v.prefecture ? "prefecture: true" : null,
+    v.concurrence ? "concurrence: true" : null,
     `neighbors: ${JSON.stringify(v.neighbors)}`
   ].filter(Boolean).join(", ") + " }";
 
