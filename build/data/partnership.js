@@ -53,9 +53,24 @@ module.exports = {
      pratiques visant les professionnels. Une hausse annoncée à l'avance, elle,
      est parfaitement licite — à condition d'être appliquée le moment venu.
 
-     `rate` = pourcentage de hausse prévu. Passez `active: false` le jour où
-     vous relevez les tarifs, et remontez les prix dans `plans` d'autant.
-     La date se règle dans build/data/site.js (`launchDate`).
+     ┌──────────────────────────────────────────────────────────────────┐
+     │  À FAIRE LE 16 AOÛT 2027 — application de la hausse annoncée      │
+     │                                                                  │
+     │  1. Dans `plans` ci-dessous :  490 → 588   et   890 → 1068        │
+     │  2. Dans `pose.plans`, plus bas :  490 → 588   et   890 → 1068    │
+     │  3. Ici même : `active: false`                                    │
+     │  4. Mettre à jour `vatNote` : 408 → 490 HT, 742 → 890 HT          │
+     │  5. `node build/build.js`, puis pousser                           │
+     │                                                                  │
+     │  Les abonnements en cours restent au tarif de lancement jusqu'à   │
+     │  leur terme : c'est ce que le site promet, contractuellement.     │
+     │  Ne pas appliquer cette hausse retournerait l'argument contre     │
+     │  vous — un partenaire qui a signé pour éviter une hausse qui      │
+     │  n'arrive jamais ne renouvellera pas de bonne grâce.              │
+     └──────────────────────────────────────────────────────────────────┘
+
+     `rate` = pourcentage de hausse prévu. La date se règle dans
+     build/data/site.js (`launchDate` et `anniversary`).
   --------------------------------------------------------------------- */
   launchPrice: {
     active: true,
