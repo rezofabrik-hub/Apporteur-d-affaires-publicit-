@@ -91,8 +91,9 @@ module.exports = function partnersPage(cities) {
       secteur. Vous ne choisissez la durée de votre abonnement qu'ensuite, en connaissance de cause —
       un budget de prospection fixe, sans pourcentage prélevé sur vos chantiers.</p>
       <p class="lead mx-auto"><strong>Les deux abonnements donnent exactement les mêmes avantages.</strong>
-      Seule la durée d'engagement change : nous ne pratiquons pas les formules à deux vitesses, où
-      celui qui s'engage moins longtemps reçoit moins de demandes.</p>
+      Nous ne pratiquons pas les formules à deux vitesses, où celui qui s'engage moins longtemps
+      reçoit moins de demandes. Ce qui change, c'est le tarif : l'année revient à
+      <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie.</p>
     </div>
     <div class="plans">${planCards}</div>
     <p class="center" style="margin-top:26px;font-size:.87rem;color:var(--tx-3)">${esc(P.vatNote)}</p>

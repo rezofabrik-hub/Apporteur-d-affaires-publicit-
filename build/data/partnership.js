@@ -44,14 +44,17 @@ module.exports = {
      lui qui sert de base à tous les calculs d'amortissement ci-dessous. */
   currency: "€",
   priceSuffix: "TTC",
-  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse. Vous récupérez cette TVA : le coût réellement supporté est de 408 € pour l'abonnement 6 mois et de 825 € pour l'abonnement 12 mois. Sans reconduction tacite : vous décidez du renouvellement.",
+  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse. Vous récupérez cette TVA : le coût réellement supporté est de 408 € pour l'abonnement 6 mois et de 742 € pour l'abonnement 12 mois. Sans reconduction tacite : vous décidez du renouvellement.",
 
   /* ---------------------------------------------------------------------
      Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
      puis on s'abonne pour la première année sur 6 ou 12 mois.
      `free: true` marque la formule d'essai — elle n'est affichée que tant que
      `launch.active` vaut true. `featured: true` met une formule en avant.
-     Tarifs annoncés TTC : 490 € pour 6 mois, 990 € pour 12 mois.
+     Tarifs annoncés TTC : 490 € pour 6 mois, 890 € pour 12 mois.
+     Les prestations étant identiques d'une formule à l'autre, c'est le prix
+     qui doit rendre l'engagement long attractif : deux semestres coûtent
+     980 €, l'année 890 € — 90 € d'écart, argument chiffré et vérifiable.
   --------------------------------------------------------------------- */
   plans: [
     {
@@ -105,11 +108,11 @@ module.exports = {
       id: "annuel",
       name: "Abonnement 12 mois",
       duration: "12 mois",
-      price: "990",
-      priceNote: "soit 82,50 € par mois TTC — 825 € HT à votre charge réelle",
+      price: "890",
+      priceNote: "soit 74,17 € par mois TTC — 90 € de moins que deux semestres",
       featured: true,
       badge: "Le plus choisi",
-      pitch: "Les mêmes avantages, sur douze mois : une seule échéance à gérer dans l'année.",
+      pitch: "Les mêmes avantages que la formule 6 mois, pour 90 € de moins sur l'année.",
       audience: "Enseigniste, imprimeur, poseur ou agence qui veut un flux installé sur l'année",
       features: [
         "Référencement complet dans l'annuaire du réseau",
@@ -165,12 +168,12 @@ module.exports = {
     eyebrow: "Amortissement",
     title: "Combien faut-il signer pour rembourser l'abonnement ?",
     lead: "La question n'est pas ce que coûte l'abonnement, mais à partir de quel moment il est remboursé. Voici le calcul, fait avec nos propres grilles tarifaires et une hypothèse de marge délibérément prudente.",
-    threshold: "825 €",
-    thresholdNote: "Coût réel de l'abonnement 12 mois : 990 € TTC, dont 165 € de TVA que vous récupérez. C'est donc 825 € qu'il faut couvrir, soit environ 2 400 € de chiffre d'affaires à 35 % de marge brute.",
+    threshold: "742 €",
+    thresholdNote: "Coût réel de l'abonnement 12 mois : 890 € TTC, dont 148 € de TVA que vous récupérez. C'est donc 742 € qu'il faut couvrir, soit environ 2 100 € de chiffre d'affaires à 35 % de marge brute.",
     head: ["Une seule affaire de ce type", "Budget courant", "Marge brute à 35 %", "Abonnement 12 mois remboursé ?"],
     rows: [
-      ["Caisson lumineux LED simple face 2 m", "900 – 2 200 €", "315 – 770 €", "Presque — il en faut deux"],
-      ["Lettres découpées relief rétro-éclairées", "1 800 – 6 000 €", "630 – 2 100 €", "Oui, dès 2 400 € de vente"],
+      ["Caisson lumineux LED simple face 2 m", "900 – 2 200 €", "315 – 770 €", "Oui sur le haut de la fourchette"],
+      ["Lettres découpées relief rétro-éclairées", "1 800 – 6 000 €", "630 – 2 100 €", "Oui, dès 2 100 € de vente"],
       ["Totem lumineux double face 3 m", "3 000 – 9 000 €", "1 050 – 3 150 €", "Oui, une seule suffit"],
       ["Habillage complet de devanture", "4 000 – 20 000 €", "1 400 – 7 000 €", "Oui, largement"],
       ["Semi-covering imprimé sur fourgon", "1 100 – 2 400 €", "385 – 840 €", "Oui sur le haut de la fourchette"],
@@ -178,7 +181,7 @@ module.exports = {
     ],
     note: "Autrement dit : une enseigne à lettres relief, un totem ou un covering complet dans l'année, et l'abonnement est remboursé. Tout le reste de ce que le réseau vous transmet est du chiffre d'affaires net de coût d'acquisition — puisqu'il n'y a aucune commission sur les affaires signées.",
     compare: [
-      ["Abonnement 12 mois", "825 € HT pour l'année", "Demandes qualifiées, jamais adressées à plus de 2 ou 3 partenaires"],
+      ["Abonnement 12 mois", "742 € HT pour l'année", "Demandes qualifiées, jamais adressées à plus de 2 ou 3 partenaires"],
       ["Achat de contacts à l'unité", "25 à 60 € le contact", "Non qualifié, revendu simultanément à 5 ou 10 entreprises"],
       ["Franchise du secteur", "15 000 à 60 000 € de droit d'entrée", "Plus une redevance annuelle assise sur votre chiffre d'affaires"]
     ],
@@ -192,12 +195,12 @@ module.exports = {
       head: ["Type d'intervention", "Budget courant", "Marge brute à 45 %", "Abonnement 12 mois remboursé ?"],
       rows: [
         ["Pose d'enseigne avec nacelle (journée)", "800 – 1 600 €", "360 – 720 €", "Oui en deux journées"],
-        ["Pose d'enseigne avec nacelle (½ journée)", "450 – 900 €", "202 – 405 €", "Oui en trois demi-journées"],
+        ["Pose d'enseigne avec nacelle (½ journée)", "450 – 900 €", "202 – 405 €", "Deux à quatre demi-journées"],
         ["Dépose d'enseigne + rebouchage", "300 – 1 200 €", "135 – 540 €", "Deux à trois chantiers"],
         ["Raccordement électrique et horloge astronomique", "200 – 600 €", "90 – 270 €", "Complément de chantier"],
         ["Contrat de maintenance annuel (1 enseigne)", "180 – 600 € / an", "81 – 270 € / an", "Récurrent, il s'ajoute chaque année"]
       ],
-      note: "Deux journées de nacelle dans l'année suffisent à couvrir les 825 € de coût réel. Un seul chantier que vous n'auriez pas pu prendre — parce qu'il était à 200 kilomètres et qu'aucun poseur n'était disponible — coûte plus cher que l'abonnement entier."
+      note: "Deux journées de nacelle dans l'année suffisent à couvrir les 742 € de coût réel. Un seul chantier que vous n'auriez pas pu prendre — parce qu'il était à 200 kilomètres et qu'aucun poseur n'était disponible — coûte plus cher que l'abonnement entier."
     }
   },
 
@@ -229,13 +232,13 @@ module.exports = {
   ],
 
   faq: [
-    { q: "Comment fonctionne la formule Découverte à 0 € ?", a: "Vous remplissez le questionnaire, nous vérifions votre dossier, et vous recevez les demandes de votre zone pendant deux mois sans rien payer et sans carte bancaire. À l'issue de cette période, nous faisons le point sur ce qui vous a été transmis et vous choisissez votre abonnement pour la première année : 6 mois à 490 € TTC ou 12 mois à 990 € TTC. Si le flux ne vous convient pas, vous ne donnez pas suite et cela s'arrête là." },
+    { q: "Comment fonctionne la formule Découverte à 0 € ?", a: "Vous remplissez le questionnaire, nous vérifions votre dossier, et vous recevez les demandes de votre zone pendant deux mois sans rien payer et sans carte bancaire. À l'issue de cette période, nous faisons le point sur ce qui vous a été transmis et vous choisissez votre abonnement pour la première année : 6 mois à 490 € TTC ou 12 mois à 890 € TTC. Si le flux ne vous convient pas, vous ne donnez pas suite et cela s'arrête là." },
     { q: "Pourquoi une formule à 0 € ?", a: "Parce qu'un réseau qui démarre a un problème d'amorçage : sans partenaires nous ne pouvons pas servir les demandes, et sans demandes personne n'a envie de payer. Les deux premiers mois à zéro euro cassent ce blocage — vous jugez sur pièces, nous constituons le réseau. C'est temporaire et réservé aux premières entreprises inscrites." },
     { q: "Pourquoi un abonnement plutôt qu'une commission ?", a: "Parce qu'une commission variable pousse l'intermédiaire à privilégier les gros dossiers et à vous envoyer un maximum de demandes, qualifiées ou non. L'abonnement inverse la logique : notre intérêt devient de vous garder d'une année sur l'autre, donc de vous transmettre des demandes que vous transformez réellement. Vous gardez par ailleurs 100 % de la marge sur chaque chantier signé." },
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
     { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est précisément la raison d'être de la formule Découverte : deux mois à zéro euro vous permettent de mesurer le flux réel de votre secteur avant d'engager le moindre euro." },
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
-    { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "Uniquement la durée d'engagement. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses : un partenaire qui paie est un partenaire servi, et rien ne justifie de moins bien traiter celui qui préfère s'engager sur six mois." },
+    { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "La durée d'engagement et le prix, rien d'autre. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses — un partenaire qui paie est un partenaire servi. L'engagement annuel se récompense donc sur le tarif : 890 € contre 980 € pour deux semestres, soit 90 € d'économie." },
     { q: "Puis-je passer du 6 mois au 12 mois ?", a: "Oui, à tout moment : la différence est calculée au prorata du temps restant, sans frais de changement. Comme les prestations sont les mêmes, ce choix ne porte que sur la durée et sur le rythme de renouvellement qui vous arrange." },
     { q: "Prenez-vous une commission en plus de l'abonnement ?", a: "Non, jamais. L'abonnement est la seule contrepartie. Vous facturez le client en direct, au prix que vous fixez, et rien ne nous revient sur le chantier." },
     { q: "Acceptez-vous les auto-entrepreneurs ?", a: "Oui, dès lors que le SIRET est actif et que les assurances sont à jour. La taille n'est pas un critère de sélection ; la fiabilité et l'adéquation des capacités en sont. Un poseur indépendant bien équipé et réactif vaut mieux qu'une structure importante mais indisponible." },
@@ -275,8 +278,8 @@ module.exports = {
         id: "pose-12",
         name: "Pose Illimitée",
         duration: "12 mois",
-        price: "990",
-        priceNote: "soit 82,50 € par mois TTC — demandes illimitées",
+        price: "890",
+        priceNote: "soit 74,17 € par mois TTC — demandes illimitées",
         featured: true,
         badge: "Pour les fabricants",
         pitch: "Pour ceux qui livrent dans toute la France et veulent un poseur disponible à chaque fois.",
