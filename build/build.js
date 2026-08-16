@@ -290,6 +290,7 @@ function run() {
   matrixPagesCount = n;
 
   write("devis.html", forms.devis(cities));
+  write("entraide-partenaires.html", forms.entraide(cities));
   write("collectivites.html", collectivitesPage(cities));
   write("partenaires.html", partnersPage(cities));
   write("service-pose.html", posePage(cities));

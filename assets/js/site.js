@@ -192,12 +192,14 @@
   }
 
   function mailtoFallback(form, data) {
-    var to = form.dataset.kind === "pro"
-      ? (CFG.emailPro || CFG.email || "")
-      : (CFG.email || "");
+    var versPro = form.dataset.kind === "pro" || form.dataset.kind === "entraide";
+    var to = versPro ? (CFG.emailPro || CFG.email || "") : (CFG.email || "");
     var subject = form.dataset.kind === "pro"
       ? "Candidature partenaire — " + (data.entreprise || data.nom || "")
-      : "Demande de devis — " + (data.prestation || "signalétique") + " — " + (data.ville || "");
+      : form.dataset.kind === "entraide"
+        ? "Entraide partenaire — " + (data.entreprise || data.nom || "") +
+          (data.departement_besoin ? " [" + data.departement_besoin + "]" : "")
+        : "Demande de devis — " + (data.prestation || "signalétique") + " — " + (data.ville || "");
     var lines = Object.keys(data)
       .filter(function (k) { return k[0] !== "_" && data[k] !== ""; })
       .map(function (k) {
@@ -287,7 +289,10 @@
            seconde adresse en réserve suffit à faire passer le formulaire :
            celle des deux qui est activée prend le relais, sans qu'aucune
            ligne ne soit à changer le jour où la première est confirmée. */
-        var endpoints = (form.dataset.kind === "pro"
+        /* L'entraide entre partenaires arrive côté professionnel, comme les
+           candidatures : c'est la même boîte qui traite le réseau. */
+        var cotePro = form.dataset.kind === "pro" || form.dataset.kind === "entraide";
+        var endpoints = (cotePro
           ? [CFG.endpointPro, CFG.endpointProAlt, CFG.endpointClient]
           : [CFG.endpointClient, CFG.endpointClientAlt, CFG.endpointPro]
         ).filter(function (u, i, all) { return u && all.indexOf(u) === i; });
@@ -342,12 +347,24 @@
            on retombe sur la ville, dont la liste de suggestion porte déjà son
            département. */
         var dep = deduireDepartement(form, data);
+        /* Sur une demande d'entraide, c'est le département du chantier qui
+           oriente, pas celui du demandeur : il saisit lui-même le premier. */
+        if (data.departement_besoin) {
+          var db = String(data.departement_besoin).replace(/[^0-9AB]/gi, "").slice(0, 3);
+          if (db) dep = { code: db, nom: (dep && dep.code === db) ? dep.nom : "" };
+        }
         if (dep) { data.departement = dep.code + (dep.nom ? " — " + dep.nom : ""); }
 
         if (endpoints.some(function (u) { return /formsubmit\.co/.test(u); })) {
-          data._subject = (form.dataset.kind === "pro"
+          /* Trois natures de message, trois préfixes : la boîte de réception
+             se trie d'un coup d'œil, sans ouvrir. « URGENT » remonte en tête
+             quand le partenaire a coché un dépannage. */
+          var urgence = /urgent/i.test(String(data.delai || "")) ? "URGENT · " : "";
+          data._subject = urgence + (form.dataset.kind === "pro"
             ? "Candidature partenaire — "
-            : "Demande de devis — ")
+            : form.dataset.kind === "entraide"
+              ? "Entraide partenaire — "
+              : "Demande de devis — ")
             + (dep ? "[" + dep.code + "] " : "")
             + (data.entreprise || data.nom || "site web")
             + (data.ville ? " · " + data.ville : "");

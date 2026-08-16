@@ -1011,4 +1011,257 @@ function merci(cities) {
   });
 }
 
-module.exports = { devis, pros, merci };
+/* ══════════════════════════════════ ENTRAIDE ENTRE PARTENAIRES
+   Le réseau dans l'autre sens : c'est le partenaire qui demande. Même
+   mécanique que les deux autres formulaires — rien de nouveau à maintenir —
+   mais un `data-kind` distinct, pour que l'objet de l'e-mail reçu dise
+   immédiatement s'il s'agit d'un client, d'une candidature ou d'un confrère
+   qui a besoin d'un poseur dans l'heure. */
+function entraide(cities) {
+  const E = require("../data/entraide");
+  const crumbItems = [
+    { name: "Accueil", url: "index.html" },
+    { name: "Partenaires du secteur", url: "partenaires.html" },
+    { name: E.nav, url: E.slug + ".html" }
+  ];
+
+  const body = `
+<section class="hero hero-in-page">
+  <div class="hero-bg">${heroImg("atelier", 2, "Atelier de fabrication d'enseignes")}</div>
+  <div class="wrap hero-in">
+    ${T.crumbs(crumbItems)}
+    <span class="eyebrow">Réservé aux partenaires du réseau</span>
+    <h1>${esc(E.h1)}</h1>
+    <p class="lead">${esc(E.lead)}</p>
+    <div class="btns">
+      <a class="btn btn-pro btn-lg" href="#demande">Formuler une demande</a>
+      <a class="btn btn-ghost btn-lg" href="partenaires.html">Rejoindre le réseau</a>
+    </div>
+    <div class="pill-row">
+      <span class="pill">Compris dans toutes les formules</span>
+      <span class="pill">Réponse sous 24 h ouvrées</span>
+      <span class="pill">Aucune commission entre partenaires</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Ce que vous pouvez chercher</span>
+      <h2>Six besoins que le réseau sait traiter</h2>
+      <p class="lead">Ils reviennent tous les mois dans le métier, et ils ne dépendent d'aucun
+      client : un réseau sert à cela autant qu'à recevoir des demandes.</p>
+    </div>
+    <div class="grid g-3">
+      ${E.motifs.map((m) => `<div class="tile">
+        <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/></svg></span>
+        <h3>${esc(m.titre)}</h3><p>${esc(m.texte)}</p>
+      </div>`).join("")}
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-2">
+  <div class="wrap">
+    <div class="grid g-halves">
+      <div>
+        <span class="eyebrow">Comment ça se passe</span>
+        <h2>Trois étapes, et vous traitez en direct</h2>
+        <div class="steps stack" style="margin-top:30px">
+          ${E.etapes.map(([t, d]) => `<div class="step"><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join("")}
+        </div>
+      </div>
+      <div>
+        <div class="aside-card">
+          <h3>${esc(E.confidentialite.titre)}</h3>
+          <p>${esc(E.confidentialite.texte)}</p>
+          <ul class="checks" style="margin-top:18px">
+            ${E.confidentialite.points.map((x) => `<li>${esc(x)}</li>`).join("")}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="demande">
+  <div class="wrap">
+    <div class="split">
+      <div class="form-panel">
+        <h2 style="margin-top:0">Formuler une demande</h2>
+        <p class="lead">Deux étapes. Plus le besoin est précis, plus vite nous trouvons
+        l'entreprise capable d'y répondre.</p>
+
+        <form class="form" data-kind="entraide" novalidate>
+          <div class="stepper" aria-hidden="true">
+            <div class="now"><i></i><span>Votre besoin</span></div>
+            <div><i></i><span>Vos coordonnées</span></div>
+          </div>
+
+          <div class="fstep active">
+            <fieldset data-require-one>
+              <legend class="fieldset-legend">De quoi avez-vous besoin ? <span class="req">*</span></legend>
+              ${checks("motif", E.motifs.map((m) => ({ l: m.titre, h: m.texte.split(".")[0] + "." })))}
+              <p class="err">Sélectionnez au moins un motif.</p>
+            </fieldset>
+
+            <div class="field">
+              <label for="e_besoin">Décrivez précisément le besoin <span class="req">*</span></label>
+              <span class="hint">Matière et épaisseur, dimensions, hauteur d'intervention, matériel
+              attendu, volume. Écrivez comme vous le diriez à un confrère au téléphone.</span>
+              <textarea id="e_besoin" name="besoin" required
+                placeholder="Exemple : j'ai vendu un totem double face de 3,50 m à monter sur platine, à 160 km de mon atelier. Je fabrique, mais je n'ai personne pour poser le 14. Il faut une nacelle 16 m et un raccordement électrique."></textarea>
+              <p class="err">Décrivez votre besoin en quelques lignes.</p>
+            </div>
+
+            <div class="row-2">
+              <div class="field">
+                <label for="e_dept">Département concerné <span class="req">*</span></label>
+                <input type="text" id="e_dept" name="departement_besoin" required
+                       inputmode="numeric" placeholder="Ex. 66" maxlength="3">
+                <p class="err">Indiquez le département du chantier ou de la livraison.</p>
+              </div>
+              <div class="field">
+                <label for="e_ville">Ville ou commune</label>
+                <input type="text" id="e_ville" name="ville" list="villes-list" placeholder="Ex. Perpignan">
+                <datalist id="villes-list">${cities.map((c) =>
+                  `<option value="${attr(c.name)}" data-dept="${attr(c.dept)}" data-dept-nom="${attr(c.deptName)}">`).join("")}</datalist>
+              </div>
+            </div>
+
+            <div class="row-2">
+              <div class="field">
+                <label for="e_delai">Délai <span class="req">*</span></label>
+                <select id="e_delai" name="delai" required>
+                  <option value="">— Choisir —</option>
+                  <option>Dépannage urgent — sous 48 h</option>
+                  <option>Cette semaine</option>
+                  <option>Dans les quinze jours</option>
+                  <option>Dans le mois</option>
+                  <option>Pas d'urgence, je prépare</option>
+                </select>
+                <p class="err">Indiquez sous quel délai vous avez besoin d'une réponse.</p>
+              </div>
+              <div class="field">
+                <label for="e_budget">Ordre de budget que vous prévoyez</label>
+                <input type="text" id="e_budget" name="budget_prevu" placeholder="Ex. 450 € la journée de pose">
+                <span class="hint">Facultatif, mais cela accélère beaucoup la mise en relation.</span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="e_offre">À l'inverse, qu'avez-vous à proposer en ce moment ?</label>
+              <span class="hint">Une machine récente, une équipe qui se libère, une période creuse,
+              un secteur où vous acceptez de vous déplacer. Nous vous solliciterons en priorité.</span>
+              <textarea id="e_offre" name="offre" rows="2"
+                placeholder="Exemple : fraiseuse numérique 3 × 2 m installée en juin, disponible ; nacelle 18 m et équipe libre la deuxième quinzaine de septembre sur l'Aude et l'Hérault."></textarea>
+            </div>
+
+            <div class="form-nav">
+              <span></span>
+              <button type="button" class="btn btn-pro" data-next>Continuer</button>
+            </div>
+          </div>
+
+          <div class="fstep">
+            <div class="row-2">
+              <div class="field">
+                <label for="e_entreprise">Votre entreprise <span class="req">*</span></label>
+                <input type="text" id="e_entreprise" name="entreprise" required autocomplete="organization">
+                <p class="err">Indiquez le nom de votre entreprise.</p>
+              </div>
+              <div class="field">
+                <label for="e_siret">SIRET</label>
+                <input type="text" id="e_siret" name="siret" inputmode="numeric" placeholder="14 chiffres">
+                <span class="hint">Facultatif si vous êtes déjà partenaire.</span>
+              </div>
+            </div>
+            <div class="row-2">
+              <div class="field">
+                <label for="e_nom">Nom du contact <span class="req">*</span></label>
+                <input type="text" id="e_nom" name="nom" required autocomplete="name">
+                <p class="err">Indiquez votre nom.</p>
+              </div>
+              <div class="field">
+                <label for="e_tel">Téléphone <span class="req">*</span></label>
+                <input type="tel" id="e_tel" name="telephone" required autocomplete="tel">
+                <p class="err">Un numéro joignable : sur une urgence, nous appelons.</p>
+              </div>
+            </div>
+            <div class="field">
+              <label for="e_email">E-mail <span class="req">*</span></label>
+              <input type="email" id="e_email" name="email" required autocomplete="email">
+              <p class="err">Indiquez une adresse e-mail valide.</p>
+            </div>
+
+            <label class="consent" for="e_ok">
+              <input type="checkbox" id="e_ok" name="consentement" required value="Oui">
+              <span class="opt-box" aria-hidden="true"></span>
+              <span>J'accepte que ma demande soit transmise aux entreprises du réseau susceptibles
+              d'y répondre, et que mes coordonnées soient communiquées à celle que je retiendrai.
+              <a href="mentions-legales.html">Mentions légales</a>.</span>
+              <p class="err">Votre accord est nécessaire pour transmettre la demande.</p>
+            </label>
+
+            <div class="form-status" role="status" aria-live="polite"></div>
+
+            <div class="form-nav">
+              <button type="button" class="btn btn-ghost" data-prev>Retour</button>
+              <button type="submit" class="btn btn-pro btn-lg" data-submit>Envoyer ma demande</button>
+            </div>
+            <p class="hint" style="text-align:center">Réponse sous 24 h ouvrées · Aucune commission
+            entre partenaires · Votre demande n'est jamais diffusée publiquement</p>
+          </div>
+        </form>
+      </div>
+
+      <aside>
+        <div class="aside-card aside-sticky">
+          <h3>Pas encore partenaire ?</h3>
+          <p>L'entraide est comprise dans toutes les formules, y compris les deux mois à 0 €.
+          Elle fonctionne dès la première semaine, sans attendre que les demandes clients arrivent.</p>
+          <a class="btn btn-pro btn-block" href="partenaires.html">Voir les formules</a>
+          <p style="margin-top:18px;font-size:.86rem">Vous cherchez un exécutant sans rejoindre le
+          réseau ? <a href="sous-traitance-professionnels.html">La sous-traitance entre
+          professionnels</a> est ouverte à tous.</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="sec bg-2">
+  <div class="wrap wrap-narrow">
+    <div class="sec-head">
+      <span class="eyebrow">Questions fréquentes</span>
+      <h2>Ce que les partenaires nous demandent</h2>
+    </div>
+    ${T.faqBlock(E.faq)}
+  </div>
+</section>`;
+
+  return T.page({
+    file: E.slug + ".html",
+    active: E.slug + ".html",
+    space: "pro",
+    title: `${E.title} | ${site.brand}`,
+    desc: E.desc,
+    body, cities,
+    schema: [
+      T.crumbSchema(crumbItems),
+      {
+        "@context": "https://schema.org", "@type": "Service",
+        name: "Entraide entre partenaires du réseau",
+        serviceType: "Mise en relation entre professionnels de la communication visuelle",
+        provider: { "@id": site.domain.replace(/\/$/, "") + "/#organization" },
+        areaServed: { "@type": "Country", name: "France" },
+        audience: { "@type": "BusinessAudience",
+          audienceType: "Enseignistes, imprimeurs, poseurs et agences membres du réseau" }
+      },
+      T.faqSchema(E.faq)
+    ]
+  });
+}
+
+module.exports = { devis, pros, merci, entraide };

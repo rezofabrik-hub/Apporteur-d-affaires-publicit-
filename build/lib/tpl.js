@@ -140,6 +140,7 @@ const NAV_MORE = [
   ["collectivites.html", "Collectivités & institutions", "Marchés publics, accessibilité, jalonnement"],
   ["reseau-pose-national.html", "Réseau national de pose", "Trouver un poseur, ou en devenir un"],
   ["sous-traitance-professionnels.html", "Sous-traitance entre pros", "Agences, imprimeurs, franchises : qui produit"],
+  ["entraide-partenaires.html", "Entraide entre partenaires", "Capacité, poseur, dépannage, matériel"],
   ["realisations.html", "Réalisations", "Projets détaillés, contraintes et budgets"],
   ["secteurs.html", "Secteurs d'activité", "Pharmacie, CHR, santé, auto, industrie…"],
   ["villes.html", "Villes couvertes", "Nos zones d'intervention en France"],

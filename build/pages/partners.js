@@ -97,6 +97,20 @@ module.exports = function partnersPage(cities) {
   </div>
 </section>
 
+<section class="sec-tight">
+  <div class="wrap">
+    <div class="local-short" style="border-left-color:var(--pro);background:var(--pro-100);margin:0">
+      <b>Le réseau fonctionne aussi dans l'autre sens</b>
+      <p>Recevoir des demandes de clients, c'est la moitié de ce qu'apporte le réseau. L'autre moitié,
+      c'est de pouvoir en formuler une : une capacité de production que vous n'avez pas, un poseur à
+      180 kilomètres, une nacelle en panne le matin d'un chantier, du matériel, un avis technique.
+      C'est compris dans toutes les formules — <strong>y compris les deux mois à 0 €</strong> — et
+      cela fonctionne dès la première semaine, sans attendre que les demandes clients arrivent.
+      <a href="entraide-partenaires.html">Voir l'entraide entre partenaires</a>.</p>
+    </div>
+  </div>
+</section>
+
 <section class="sec bg-2" id="formules">
   <div class="wrap">
     <div class="sec-head center">
