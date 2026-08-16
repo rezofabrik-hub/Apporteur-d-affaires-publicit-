@@ -21,6 +21,20 @@ module.exports = [
   quartiers: ["Le Marais", "Opéra-Grands Boulevards", "Saint-Germain-des-Prés", "Montmartre", "Bastille", "Batignolles", "Belleville", "Montparnasse"],
   zones: ["La Défense", "Paris Rive Gauche", "Bercy Village", "Plaine Saint-Denis", "Quartier central des affaires"],
   neighbors: ["Boulogne-Billancourt", "Saint-Denis", "Montreuil", "Levallois-Perret", "Issy-les-Moulineaux", "Neuilly-sur-Seine", "Vincennes", "Clichy"] },
+{
+  slug: "canet-en-roussillon", name: "Canet-en-Roussillon",
+  dept: "66", deptName: "Pyrénées-Orientales", region: "Occitanie",
+  cp: "66140", pop: "12 500",
+  intro: "Station balnéaire de l'agglomération perpignanaise, Canet-en-Roussillon vit à deux rythmes : une activité commerciale intense d'avril à septembre, et un cœur de village qui tourne à l'année. Deux réalités qui appellent des supports différents — l'un saisonnier et démontable, l'autre durable et taillé pour le bord de mer.",
+  quartiers: ["Canet-Plage", "Canet-Village", "Le Port", "Les Jardins de Canet", "Le Sardinal"],
+  zones: ["Zone d'activités du Sardinal", "Port de Canet-en-Roussillon", "Front de mer", "Zone commerciale de la Plage"],
+  neighbors: ["Perpignan", "Sainte-Marie-la-Mer", "Saint-Cyprien", "Cabestany", "Alénya", "Torreilles", "Saint-Nazaire"],
+  specifics: [
+    "Canet-en-Roussillon est en <strong>bord de mer direct</strong>, et c'est la contrainte technique dominante. L'air salin attaque l'acier zingué en une saison et pique même l'inox 304 en quelques années. Sur le front de mer et au port, l'<strong>inox 316</strong> est le minimum pour toute visserie et toute structure extérieure, et la laque doit être de qualité marine.",
+    "S'y ajoute la <strong>tramontane</strong>, qui souffle plus de 100 jours par an sur le Roussillon et dépasse régulièrement 100 km/h. Une enseigne drapeau, un totem ou une bâche de terrasse se calculent au vent, ils ne s'estiment pas : c'est la première cause d'arrachement local. Au-delà de 6 m², une bâche pleine se comporte comme une voile — la mesh microperforée devient indispensable.",
+    "Enfin, la <strong>saisonnalité</strong> change la logique des supports. Sur le front de mer, la combinaison qui fonctionne associe une enseigne permanente durable et des habillages saisonniers en adhésif repositionnable, posés en avril et déposés en octobre sans laisser de trace."
+  ]
+},
 { slug: "marseille", name: "Marseille", dept: "13", deptName: "Bouches-du-Rhône", region: "Provence-Alpes-Côte d'Azur", cp: "13000", pop: "875 000",
   quartiers: ["Vieux-Port", "Le Panier", "La Joliette", "Castellane", "Prado", "La Valentine", "Saint-Barnabé", "Endoume"],
   zones: ["Euroméditerranée", "Zone industrielle de Saint-Menet", "Grand Littoral", "Les Terrasses du Port", "Zone de la Valentine"],

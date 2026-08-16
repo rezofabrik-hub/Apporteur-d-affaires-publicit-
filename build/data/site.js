@@ -3,7 +3,7 @@
    ========================================================================= */
 module.exports = {
   brand: "Rezo Fabrik",
-  brandLegal: "Rezo Fabrik",
+  brandLegal: "SARL Rezofabrik",
   tagline: "Réseau national enseigne, signalétique & publicité par l'objet",
   /* Adresse publique du site. Utilisée pour les URL canoniques, le sitemap
      et les balises Open Graph. À remplacer par votre nom de domaine dès qu'il
@@ -18,8 +18,18 @@ module.exports = {
   /* Contact — répliqué dans assets/js/config.js */
   email: "contact@rezofabrik.fr",
   emailPro: "partenaires@rezofabrik.fr",
-  phoneDisplay: "06 00 00 00 00",
-  phoneHref: "+33600000000",
+  phoneDisplay: "07 75 76 92 32",
+  phoneHref: "+33775769232",
+
+  /* Siège social — repris dans le pied de page, les mentions légales
+     et les données structurées (Organization / LocalBusiness). */
+  address: {
+    street: "9 rue de la Close",
+    cp: "66140",
+    city: "Canet-en-Roussillon",
+    region: "Occitanie",
+    country: "FR"
+  },
 
   /* Ville pilote */
   pilotCity: "perpignan",

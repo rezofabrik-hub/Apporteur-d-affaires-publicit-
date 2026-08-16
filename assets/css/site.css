@@ -6,12 +6,12 @@
 /* ---------- 1. Jetons ---------- */
 :root {
   /* Encre */
-  --ink-950: #060C15;
-  --ink-900: #0A1522;
-  --ink-850: #0F1E30;
-  --ink-800: #16293F;
-  --ink-700: #22405E;
-  --ink-600: #35597C;
+  --ink-950: #16293F;
+  --ink-900: #1E3854;
+  --ink-850: #24425F;
+  --ink-800: #2A4C6D;
+  --ink-700: #33597D;
+  --ink-600: #436C92;
 
   /* Papier */
   --paper: #FFFFFF;
@@ -35,13 +35,13 @@
   --tx-2: #3E4E63;
   --tx-3: #667791;
   --tx-inv: #FFFFFF;
-  --tx-inv-2: rgba(255, 255, 255, .72);
-  --tx-inv-3: rgba(255, 255, 255, .54);
+  --tx-inv-2: rgba(255, 255, 255, .84);
+  --tx-inv-3: rgba(255, 255, 255, .70);
 
   /* Lignes */
   --line: #DFE4EC;
   --line-2: #C9D1DD;
-  --line-inv: rgba(255, 255, 255, .14);
+  --line-inv: rgba(255, 255, 255, .20);
 
   /* Formes */
   --r-sm: 6px;
@@ -325,17 +325,17 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--sec) 0; }
 /* ---------- 7. Héros ---------- */
 .hero {
   position: relative; overflow: hidden;
-  background: var(--ink-950); color: #fff;
+  background: var(--ink-900); color: #fff;
   padding-block: clamp(64px, 9vw, 128px);
   isolation: isolate;
 }
 .hero-bg { position: absolute; inset: 0; z-index: -2; }
-.hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .40; }
+.hero-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .62; }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background:
-    radial-gradient(120% 90% at 12% 8%, rgba(255, 90, 31, .30) 0%, transparent 58%),
-    linear-gradient(178deg, rgba(6, 12, 21, .60) 0%, rgba(6, 12, 21, .88) 62%, var(--ink-950) 100%);
+    radial-gradient(120% 90% at 12% 8%, rgba(255, 106, 45, .26) 0%, transparent 58%),
+    linear-gradient(178deg, rgba(22, 41, 63, .42) 0%, rgba(22, 41, 63, .74) 60%, rgba(22, 41, 63, .92) 100%);
 }
 .hero h1 { color: #fff; max-width: 17ch; }
 .hero .lead { color: var(--tx-inv-2); max-width: 60ch; }
@@ -437,7 +437,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--sec) 0; }
 .tile h3 { font-size: 1.08rem; }
 .tile p { font-size: .92rem; color: var(--tx-2); margin: 0; }
 
-.dark .tile { background: rgba(255, 255, 255, .045); border-color: var(--line-inv); }
+.dark .tile { background: rgba(255, 255, 255, .075); border-color: var(--line-inv); }
 .dark .tile-ico { background: rgba(255, 90, 31, .17); color: var(--amber); }
 
 /* Numérotées */
@@ -726,7 +726,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 }
 .cta::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: radial-gradient(90% 130% at 100% 0%, rgba(255, 90, 31, .34) 0%, transparent 62%);
+  background: radial-gradient(90% 130% at 100% 0%, rgba(255, 106, 45, .30) 0%, transparent 62%);
 }
 .cta h2 { color: #fff; max-width: 20ch; }
 .cta p { color: var(--tx-inv-2); max-width: 58ch; }
@@ -740,7 +740,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 .cta-card.client { background: var(--ink-900); color: #fff; }
 .cta-card.client::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
-  background: radial-gradient(85% 120% at 95% 5%, rgba(255, 90, 31, .38) 0%, transparent 60%);
+  background: radial-gradient(85% 120% at 95% 5%, rgba(255, 106, 45, .32) 0%, transparent 60%);
 }
 .cta-card.pro { background: var(--pro-600); color: #fff; }
 .cta-card.pro::before {
@@ -754,7 +754,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 .cta-card .btn-white:hover { background: var(--paper-2); box-shadow: var(--sh-3); }
 
 /* ---------- 18. Pied de page ---------- */
-.ftr { background: var(--ink-950); color: var(--tx-inv-3); padding-top: clamp(52px, 7vw, 84px); }
+.ftr { background: var(--ink-950); color: rgba(255, 255, 255, .76); padding-top: clamp(52px, 7vw, 84px); }
 .ftr-top { display: grid; grid-template-columns: 1.6fr repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(28px, 4vw, 52px); }
 .ftr h4 {
   color: #fff; font-size: .77rem; letter-spacing: .13em; text-transform: uppercase;
@@ -762,7 +762,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 }
 .ftr ul { list-style: none; padding: 0; margin: 0; }
 .ftr li { margin-bottom: .5em; }
-.ftr a { color: var(--tx-inv-3); text-decoration: none; font-size: .89rem; transition: color .14s; }
+.ftr a { color: rgba(255, 255, 255, .78); text-decoration: none; font-size: .89rem; transition: color .14s; }
 .ftr a:hover { color: #fff; }
 .ftr .logo { color: #fff; margin-bottom: 16px; }
 .ftr-about { font-size: .89rem; line-height: 1.65; max-width: 38ch; }
@@ -775,7 +775,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 .ftr-bot nav { display: flex; flex-wrap: wrap; gap: 18px; }
 
 .ftr-cities { margin-top: clamp(36px, 4vw, 52px); padding-top: 30px; border-top: 1px solid var(--line-inv); }
-.ftr-cities p { font-size: .82rem; line-height: 2; margin: 0; color: var(--tx-inv-3); }
+.ftr-cities p { font-size: .82rem; line-height: 2; margin: 0; color: rgba(255, 255, 255, .7); }
 .ftr-cities a { font-size: .82rem; }
 .ftr-cities a::after { content: " ·"; color: rgba(255,255,255,.2); }
 .ftr-cities a:last-child::after { display: none; }

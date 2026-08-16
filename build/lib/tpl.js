@@ -149,8 +149,11 @@ function footer(cities) {
       <p class="ftr-about">${esc(site.tagline)}. Nous qualifions votre projet et le confions à des professionnels
       sélectionnés près de chez vous. Service gratuit et sans engagement pour le client.</p>
       <p class="ftr-about" style="margin-top:14px">
-        <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a><br>
-        <a data-cfg="phone" href="tel:${esc(site.phoneHref)}">${esc(site.phoneDisplay)}</a>
+        <strong style="color:#fff">${esc(site.brandLegal)}</strong><br>
+        ${esc(site.address.street)}<br>
+        ${esc(site.address.cp)} ${esc(site.address.city)}<br>
+        <a data-cfg="phone" href="tel:${esc(site.phoneHref)}">${esc(site.phoneDisplay)}</a><br>
+        <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a>
       </p>
     </div>
 
@@ -220,7 +223,7 @@ function page(o) {
 <link rel="canonical" href="${esc(canonical)}">
 ${o.noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">'}
 <meta name="author" content="${attr(site.brand)}">
-<meta name="theme-color" content="#0A1522">
+<meta name="theme-color" content="#1E3854">
 
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">

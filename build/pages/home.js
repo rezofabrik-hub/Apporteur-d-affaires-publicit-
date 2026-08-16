@@ -249,8 +249,17 @@ module.exports = function home(cities) {
       {
         "@context": "https://schema.org", "@type": "Organization",
         "@id": site.domain + "/#organization",
-        name: site.brand, url: site.domain, description: site.tagline,
+        name: site.brand, legalName: site.brandLegal,
+        url: site.domain, description: site.tagline,
         email: site.email, telephone: site.phoneHref,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: site.address.street,
+          postalCode: site.address.cp,
+          addressLocality: site.address.city,
+          addressRegion: site.address.region,
+          addressCountry: site.address.country
+        },
         areaServed: { "@type": "Country", name: "France" },
         knowsAbout: services.map((s) => s.nav)
       },

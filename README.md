@@ -5,7 +5,7 @@ en communication visuelle : mise en relation entre des clients ayant un projet
 (enseigne, signalétique, covering, impression, objets publicitaires) et des
 professionnels indépendants partout en France.
 
-**395 pages HTML statiques**, sans framework ni dépendance externe : aucun CDN,
+**398 pages HTML statiques**, sans framework ni dépendance externe : aucun CDN,
 aucune police distante, aucun traceur. Tout se charge depuis le domaine.
 
 ---
@@ -16,7 +16,7 @@ aucune police distante, aucun traceur. Tout se charge depuis le domaine.
 |---|---|---|
 | Accueil | `index.html` | Positionnement, métiers, méthode, preuve, double appel à l'action |
 | Métiers | 8 pages piliers | Contenu long (1 500 à 2 500 mots) par domaine, avec tableaux de prix et FAQ |
-| Villes | 119 pages locales | SEO local : département, quartiers, zones d'activité, contraintes régionales |
+| Villes | 120 pages locales | SEO local : département, quartiers, zones d'activité, contraintes régionales |
 | Secteurs | 12 pages + sommaire | Pharmacie, CHR, santé, auto, beauté, immobilier, BTP, industrie, retail, ERP, franchise, sport |
 | Métier × ville | 240 pages | « Covering véhicule à Lyon », « Enseignes à Bordeaux » — les requêtes locales qui convertissent |
 | Conversion | `devis.html`, `professionnels.html`, `merci.html` | Formulaires multi-étapes client et partenaire |
@@ -33,7 +33,7 @@ aucune police distante, aucun traceur. Tout se charge depuis le domaine.
 ## Démarrage
 
 ```bash
-node build/build.js          # régénère les 395 pages + sitemap.xml + robots.txt
+node build/build.js          # régénère les 398 pages + sitemap.xml + robots.txt
 python3 -m http.server 8000  # prévisualisation sur http://localhost:8000
 ```
 
@@ -62,8 +62,10 @@ un webhook Make/Zapier, ou le Worker Cloudflare fourni dans `worker/`.
 > ouverture du logiciel de messagerie avec la demande pré-remplie, et sauvegarde
 > locale dans le navigateur. Rien n'est perdu, mais rien n'est automatisé.
 
-Mettez également à jour l'e-mail et le téléphone dans ce fichier —
-ils sont injectés partout sur le site.
+Le téléphone (07 75 76 92 32) est déjà renseigné et injecté partout sur le site.
+**L'e-mail reste un espace réservé** (`contact@rezofabrik.fr`) : remplacez-le par
+votre adresse réelle, sinon le mode secours des formulaires enverra les demandes
+vers une boîte inexistante.
 
 ### 2. Identité et coordonnées — `build/data/site.js`
 
@@ -73,12 +75,17 @@ chiffres affichés sur l'accueil. Relancez `node build/build.js` après modifica
 **Important** : remplacez `domain` par votre vrai nom de domaine dès qu'il est en
 place. Cette valeur alimente les URL canoniques, le `sitemap.xml` et l'Open Graph.
 
-### 3. Mentions légales et confidentialité
+### 3. Mentions légales — trois champs restants
 
-Les pages `mentions-legales.html` et `confidentialite.html` contiennent des champs
-entre crochets — `[Forme juridique]`, `[adresse]`, `[SIRET]` — **à compléter avant
-toute mise en ligne définitive**. Ces mentions sont légalement obligatoires
-(loi n°2004-575 du 21 juin 2004). Le contenu se modifie dans `build/pages/misc.js`.
+L'éditeur est renseigné : **SARL Rezofabrik**, 9 rue de la Close, 66140
+Canet-en-Roussillon, 07 75 76 92 32. Restent à compléter dans
+`build/pages/misc.js` (page `mentions-legales.html`) :
+
+- le **SIRET** et le numéro **RCS Perpignan**
+- le **capital social**
+- le numéro de **TVA intracommunautaire**
+
+Ces mentions sont légalement obligatoires (loi n°2004-575 du 21 juin 2004).
 
 ### 4. Ajouter des villes — `build/data/cities.js`
 
@@ -141,7 +148,7 @@ Deux modèles dominent le secteur, et ils ne se battent pas de la même façon :
   (`/magasins/albi`), des pages catégories et des **pages secteurs**
   (`/industries/…`).
 
-La structure de ce site répond directement à ces deux modèles : **119 villes**
+La structure de ce site répond directement à ces deux modèles : **120 villes**
 (contre ~50 chez Signarama), **12 secteurs** (dimension qu'ils exploitent) et
 surtout une **matrice métier × ville de 240 pages** qu'aucun des deux ne couvre
 systématiquement sur un domaine unique. C'est là que se joue la longue traîne
@@ -151,7 +158,7 @@ qui convertit : « covering véhicule Lyon » plutôt que « covering ».
 
 ## Référencement — ce qui est déjà en place
 
-- Titres et méta-descriptions uniques sur les 395 pages (vérifié automatiquement)
+- Titres et méta-descriptions uniques sur les 398 pages (vérifié automatiquement)
 - Données structurées JSON-LD : `Organization`, `WebSite`, `Service`,
   `LocalBusiness` (une par ville), `FAQPage`, `BreadcrumbList`, `ItemList`,
   `DefinedTermSet`

@@ -605,22 +605,25 @@ function legal(cities) {
   <h1>Mentions légales</h1>
 </div></section>
 <section class="sec"><div class="wrap wrap-narrow"><article class="prose">
-  <div class="note"><p><strong>À compléter avant mise en ligne définitive.</strong> Les champs entre crochets
-  doivent être renseignés avec vos informations réelles : ces mentions sont obligatoires
-  (article 6 de la loi n°2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique).</p></div>
+  <div class="note"><p><strong>Trois champs restent à compléter</strong> — SIRET, capital social et
+  numéro de TVA intracommunautaire — signalés entre crochets ci-dessous. Ces mentions sont
+  obligatoires (article 6 de la loi n°2004-575 du 21 juin 2004 pour la confiance dans
+  l'économie numérique).</p></div>
 
   <h2>Éditeur du site</h2>
   <p><strong>${esc(site.brandLegal)}</strong><br>
-  [Forme juridique] au capital de [montant] €<br>
-  Siège social : [adresse complète]<br>
-  SIRET : [numéro] — RCS [ville] [numéro]<br>
+  Société à responsabilité limitée au capital de [montant] €<br>
+  Siège social : ${esc(site.address.street)}, ${esc(site.address.cp)} ${esc(site.address.city)}<br>
+  SIRET : [numéro] — RCS Perpignan [numéro]<br>
   TVA intracommunautaire : [numéro]<br>
-  Téléphone : <span data-cfg="phoneDisplay">${esc(site.phoneDisplay)}</span><br>
+  Téléphone : <a data-cfg="phone" href="tel:${esc(site.phoneHref)}">${esc(site.phoneDisplay)}</a><br>
   E-mail : <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a><br>
-  Directeur de la publication : [nom du responsable]</p>
+  Directeur de la publication : le gérant de ${esc(site.brandLegal)}</p>
 
   <h2>Hébergement</h2>
-  <p>[Nom de l'hébergeur]<br>[Adresse]<br>[Téléphone]</p>
+  <p>GitHub, Inc. — GitHub Pages<br>
+  88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>
+  <a href="https://github.com" rel="nofollow noopener" target="_blank">github.com</a></p>
 
   <h2>Activité</h2>
   <p>${esc(site.brandLegal)} exerce une activité d'apport d'affaires et de mise en relation entre des
@@ -664,12 +667,11 @@ function legal(cities) {
   combien de temps elles sont conservées et comment exercer vos droits.</p>
 </div></section>
 <section class="sec"><div class="wrap wrap-narrow"><article class="prose">
-  <div class="note"><p><strong>À compléter avant mise en ligne définitive :</strong> identité du responsable
-  de traitement, coordonnées exactes et, le cas échéant, coordonnées du délégué à la protection des données.</p></div>
-
   <h2>Responsable du traitement</h2>
-  <p>${esc(site.brandLegal)}, [adresse], joignable à l'adresse
-  <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a>.</p>
+  <p><strong>${esc(site.brandLegal)}</strong><br>
+  ${esc(site.address.street)}, ${esc(site.address.cp)} ${esc(site.address.city)}<br>
+  Téléphone : <a data-cfg="phone" href="tel:${esc(site.phoneHref)}">${esc(site.phoneDisplay)}</a><br>
+  E-mail : <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a></p>
 
   <h2>Données collectées</h2>
   <ul class="checks">
