@@ -355,6 +355,31 @@
         }
         if (dep) { data.departement = dep.code + (dep.nom ? " — " + dep.nom : ""); }
 
+        /* Lien d'orientation. C'est ce qui transforme un e-mail reçu en
+           décision prête : il ouvre la console interne avec le département,
+           le métier, le budget et le descriptif déjà chargés, et les
+           partenaires déjà classés. Une seule validation, et le message part.
+           Le descriptif est tronqué à 400 caractères : au-delà, l'URL
+           dépasse ce que certains clients de messagerie acceptent de rendre
+           cliquable — le texte complet figure de toute façon dans l'e-mail. */
+        if (form.dataset.kind !== "pro") {
+          var base = location.href.replace(/[^/]*$/, "") + "console.html";
+          var q = [];
+          if (dep) q.push("dept=" + encodeURIComponent(dep.code));
+          if (data.ville) q.push("ville=" + encodeURIComponent(data.ville));
+          /* Codes métier plutôt que libellés : la console croise avec ce que
+             les partenaires ont déclaré, qui est stocké en slug. */
+          var mets = $$('[name="prestation"]:checked', form)
+            .map(function (e) { return e.dataset.slug || ""; })
+            .filter(Boolean).join(",");
+          if (mets) q.push("metiers=" + encodeURIComponent(mets));
+          if (data.budget) q.push("budget=" + encodeURIComponent(data.budget));
+          if (data.delai) q.push("delai=" + encodeURIComponent(data.delai));
+          var d = data.description || data.besoin || "";
+          if (d) q.push("desc=" + encodeURIComponent(String(d).slice(0, 400)));
+          if (q.length) data["Orienter cette demande"] = base + "?" + q.join("&");
+        }
+
         if (endpoints.some(function (u) { return /formsubmit\.co/.test(u); })) {
           /* Trois natures de message, trois préfixes : la boîte de réception
              se trie d'un coup d'œil, sans ouvrir. « URGENT » remonte en tête

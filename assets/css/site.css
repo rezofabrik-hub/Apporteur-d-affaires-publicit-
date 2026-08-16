@@ -1364,3 +1364,60 @@ td { color: var(--tx-2); }
 }
 .local-short b { display: block; margin-bottom: 6px; font-size: 1rem; color: var(--pro-700); }
 .local-short p { margin: 0; font-size: .93rem; color: var(--tx-2); line-height: 1.65; }
+
+
+/* ---------- 35. Console d'orientation (page interne) ----------
+   Outil, pas document : on privilégie la densité et la lecture en diagonale
+   à l'aération éditoriale du reste du site. Deux colonnes qui se replient à
+   une, des blocs qui se lisent comme des fiches, et le résultat le plus
+   pertinent visuellement détaché du reste — c'est celui qu'on va cliquer
+   neuf fois sur dix. */
+.c-head { display: flex; flex-wrap: wrap; gap: 24px 40px; align-items: flex-end; justify-content: space-between; }
+.c-stats { display: flex; gap: 28px; }
+.c-stats div { text-align: right; }
+.c-stats b { display: block; font-size: 1.9rem; font-weight: 800; line-height: 1; color: var(--pro-700); font-variant-numeric: tabular-nums; }
+.c-stats span { font-size: .78rem; color: var(--tx-3); }
+
+.c-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(18px, 2.4vw, 30px); align-items: start; }
+@media (max-width: 900px) { .c-grid { grid-template-columns: 1fr; } }
+
+.c-panel {
+  background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: clamp(18px, 2.4vw, 28px);
+}
+.c-panel h2 { font-size: 1.12rem; margin: 0 0 18px; }
+.c-panel hr { margin: 24px 0; }
+
+.c-cases { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(190px, 100%), 1fr)); gap: 2px 14px; }
+.c-cases label { display: flex; align-items: center; gap: 7px; font-size: .88rem; padding: 4px 0; cursor: pointer; }
+.c-cases input { accent-color: var(--pro-600); width: 15px; height: 15px; }
+
+.c-zone { font-weight: 700; margin: 0 0 10px; }
+.c-compte { font-size: .85rem; color: var(--tx-3); margin: 0 0 14px; }
+.c-vide, .c-vide2 { font-size: .92rem; color: var(--tx-2); line-height: 1.6; }
+.c-vide { background: var(--signal-100); border-left: 3px solid var(--signal); padding: 16px 18px; border-radius: 0 var(--r) var(--r) 0; }
+.c-vide b { display: block; margin-bottom: 4px; color: var(--tx); }
+.c-alerte { background: var(--flag-bg, var(--signal-100)); border-left: 3px solid var(--signal); padding: 12px 16px; border-radius: 0 var(--r) var(--r) 0; font-size: .88rem; margin-bottom: 14px; }
+.c-msg { font-size: .86rem; color: var(--pro-700); margin-left: 12px; }
+
+/* Une proposition de partenaire */
+.res { border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; margin-bottom: 10px; }
+.res-top { border-color: var(--pro); box-shadow: inset 3px 0 0 var(--pro); }
+.res-h { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.res-h b { font-size: 1rem; }
+.res-tag {
+  font-size: .72rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase;
+  background: var(--paper-3); color: var(--tx-2); padding: 3px 9px; border-radius: var(--r-pill);
+}
+.res-top .res-tag { background: var(--pro-100); color: var(--pro-700); }
+.res-tour { background: transparent; border: 1px solid var(--line-2); }
+.res-meta { font-size: .86rem; color: var(--tx-2); margin: 6px 0 0; }
+.res-act { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+
+/* Fiche du fichier partenaires */
+.c-fiche {
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  padding: 10px 0; border-bottom: 1px solid var(--rule-soft, var(--paper-3));
+}
+.c-fiche small { color: var(--tx-3); }
+.c-fiche.off { opacity: .5; }

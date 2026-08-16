@@ -13,8 +13,13 @@ function checks(name, items, opts) {
     const label = typeof it === "string" ? it : it.l;
     const hint = typeof it === "string" ? "" : it.h;
     const v = id(name + "_" + label);
+    /* `data-slug` porte l'identifiant technique du métier quand il existe.
+       La valeur envoyée reste le libellé lisible — c'est lui qui doit
+       apparaître dans l'e-mail — mais la console d'orientation a besoin du
+       slug pour croiser avec les métiers déclarés par les partenaires. */
+    const slug = (typeof it === "object" && it.slug) ? ` data-slug="${attr(it.slug)}"` : "";
     return `<label class="opt" for="${v}">
-      <input type="${o.radio ? "radio" : "checkbox"}" id="${v}" name="${esc(name)}" value="${attr(label)}">
+      <input type="${o.radio ? "radio" : "checkbox"}" id="${v}" name="${esc(name)}" value="${attr(label)}"${slug}>
       <span class="opt-box" aria-hidden="true"></span>
       <span class="opt-txt">${esc(label)}${hint ? `<small>${esc(hint)}</small>` : ""}</span>
     </label>`;
@@ -64,7 +69,7 @@ function devis(cities) {
           <div class="fstep active">
             <fieldset data-require-one>
               <legend class="fieldset-legend">Quelle prestation recherchez-vous ? <span class="req">*</span></legend>
-              ${checks("prestation", services.map((s) => ({ l: s.navShort, h: s.navDesc })))}
+              ${checks("prestation", services.map((s) => ({ l: s.navShort, h: s.navDesc, slug: s.slug })))}
               <p class="err">Sélectionnez au moins une prestation.</p>
               <p class="hint" style="margin-top:10px">Plusieurs choix possibles — par exemple une enseigne
               et le marquage du véhicule assorti.</p>

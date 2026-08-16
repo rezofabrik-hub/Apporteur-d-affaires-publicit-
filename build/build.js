@@ -22,6 +22,7 @@ const sectorPage = require("./pages/sector");
 const serviceCityPage = require("./pages/servicecity");
 const graphisme = require("./pages/graphisme");
 const paiementPage = require("./pages/paiement");
+const consolePage = require("./pages/console");
 const partnersPage = require("./pages/partners");
 const posePage = require("./pages/pose");
 const projectPage = require("./pages/project");
@@ -94,7 +95,7 @@ function sitemap(pages) {
     /* paiement.html est volontairement absent : la page porte un noindex et
        son adresse ne se transmet qu'à un partenaire dont le dossier est
        validé. L'inscrire au sitemap reviendrait à l'annoncer à Google. */
-    .filter((f) => !["404.html", "merci.html", "paiement.html"].includes(f))
+    .filter((f) => !["404.html", "merci.html", "paiement.html", "console.html"].includes(f))
     .map((f) => {
       let p = "0.6";
       if (f === "index.html") p = "1.0";
@@ -157,6 +158,7 @@ User-agent: *
 Allow: /
 Disallow: /merci.html
 Disallow: /paiement.html
+Disallow: /console.html
 
 ${ROBOTS_IA.map(([ua, note]) => `# ${note}\nUser-agent: ${ua}\nAllow: /\nDisallow: /merci.html\n`).join("\n")}
 Sitemap: ${base}/sitemap.xml
@@ -331,6 +333,7 @@ function run() {
   write("confidentialite.html", lg.conf);
   write("conditions-generales.html", misc.cgv(cities));
   write("paiement.html", paiementPage(cities));
+  write("console.html", consolePage());
 
   const pl = misc.plan(cities, T.NAV_MORE.map(([h, t]) => [h, t]), sectors);
   write("plan-du-site.html", pl.plan);

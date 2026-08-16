@@ -52,6 +52,12 @@ const attr = (s) => esc(String(s == null ? "" : s).replace(/<[^>]+>/g, ""));
 const jsonld = (obj) => `<script type="application/ld+json">${
   JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`;
 
+/* JSON destiné à être exécuté par le navigateur, et non lu comme des données
+   structurées. Le `<` est échappé pour la même raison que ci-dessus : une
+   chaîne contenant « </script> » refermerait la balise et injecterait du
+   HTML dans la page. */
+const jsonRaw = (obj) => JSON.stringify(obj).replace(/</g, "\\u003c");
+
 /* ------------------------------------------------- calibrage SERP (SEO)
    Google n'affiche qu'une largeur fixe de titre et de description. Au-delà,
    il tronque — ou, plus souvent, il réécrit lui-même la balise à partir du
@@ -682,6 +688,6 @@ module.exports = {
   site, services, esc, attr, jsonld, img, heroImg, pick, manifest,
   page, header, footer, crumbs, crumbSchema, faqBlock, faqSchema,
   serviceCards, ctaDouble, trustBar, keywordCloud, launchBanner, amortBlock,
-  proBar, proInvite, launchPriceOn, launchPriceBanner, partnership, NAV_MORE,
+  proBar, proInvite, launchPriceOn, launchPriceBanner, partnership, NAV_MORE, jsonRaw,
   localBlock, fabrication
 };
