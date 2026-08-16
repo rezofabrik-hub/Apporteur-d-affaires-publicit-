@@ -437,14 +437,19 @@ function comment(cities) {
         </div>
 
         <h2 id="modele">Notre modèle économique, en clair</h2>
-        <p>Le service est <strong>gratuit pour le client</strong>. Nous sommes rémunérés par les
-        professionnels du réseau, sous forme d'une commission d'apport d'affaires versée uniquement
-        lorsqu'un projet se concrétise. Cette commission ne s'ajoute pas à votre devis : elle est prise
-        sur la marge de l'entreprise, qui l'accepte parce qu'elle lui coûte moins cher que de la
-        prospection commerciale.</p>
-        <div class="note"><p><strong>Ce que cela implique concrètement :</strong> nous n'avons aucun intérêt
-        à vous orienter vers l'offre la plus chère. Nous avons intérêt à ce que le projet se fasse,
-        qu'il se passe bien, et que vous reveniez — c'est tout.</p></div>
+        <p>Le service est <strong>entièrement gratuit pour le client</strong> : ni la mise en relation,
+        ni les devis ne vous sont facturés, et aucune commission n'est ajoutée au prix que vous paierez
+        à l'entreprise retenue.</p>
+        <p>Nous sommes rémunérés par les professionnels du réseau, sous forme d'un
+        <strong>abonnement fixe</strong> de six ou douze mois. Ils l'acceptent parce qu'il leur coûte
+        moins cher qu'une campagne de prospection, et parce qu'il remplace l'achat de contacts à
+        l'unité pratiqué par les plateformes. Le détail figure sur la page
+        <a href="partenaires.html">partenaires</a>.</p>
+        <div class="note"><p><strong>Ce que cela implique concrètement :</strong> comme notre revenu ne
+        dépend pas du montant de votre chantier, nous n'avons aucun intérêt à vous orienter vers l'offre
+        la plus chère. Nous avons intérêt à ce que le projet se fasse, qu'il se passe bien, et que le
+        partenaire renouvelle son abonnement — ce qu'il ne fera que si les demandes que nous lui
+        transmettons se transforment.</p></div>
 
         <h2 id="selection">Comment nous sélectionnons les professionnels</h2>
         <ul class="checks">
@@ -490,7 +495,7 @@ function faqPage(cities) {
   const crumbItems = [{ name: "Accueil", url: "index.html" }, { name: "Questions fréquentes", url: "faq.html" }];
   const groups = [
     { t: "Le service", items: [
-      { q: "Le service est-il vraiment gratuit ?", a: "Oui, totalement et sans contrepartie cachée. Vous ne payez ni la mise en relation, ni les devis. Notre rémunération provient des professionnels du réseau, sous forme d'une commission d'apport versée uniquement lorsqu'un projet se concrétise. Cette commission est prise sur leur marge et ne s'ajoute pas à votre devis." },
+      { q: "Le service est-il vraiment gratuit ?", a: "Oui, totalement et sans contrepartie cachée. Vous ne payez ni la mise en relation, ni les devis, et aucune commission n'est ajoutée au prix de l'entreprise retenue. Notre rémunération provient des professionnels du réseau, sous forme d'un abonnement fixe de six ou douze mois — indépendant du montant de votre chantier." },
       { q: "Suis-je engagé après avoir rempli le formulaire ?", a: "Non. Vous pouvez refuser toutes les propositions reçues, sans justification et sans frais. Aucune exclusivité ne vous est demandée : vous restez libre de consulter d'autres entreprises en parallèle." },
       { q: "Combien de devis vais-je recevoir ?", a: "Deux à trois en général, établis sur un cahier des charges identique. Nous préférons trois offres sérieuses à dix offres approximatives : au-delà, le tri devient un travail à part entière et les professionnels sérieux se désengagent." },
       { q: "En combien de temps ?", a: "Nous vous rappelons sous 24 heures ouvrées pour préciser le besoin, puis les propositions arrivent sous 48 heures. Pour un projet complexe — signalétique d'un bâtiment entier, flotte de véhicules — comptez 3 à 5 jours." }
@@ -738,7 +743,9 @@ function plan(cities, extraPages, sectors) {
     </ul></div>
     <div><h2 style="font-size:1.1rem">Le réseau</h2><ul class="link-list">
       <li><a href="devis.html">Demander un devis</a></li>
-      <li><a href="professionnels.html">Devenir partenaire</a></li>
+      <li><a href="partenaires.html">Devenir partenaire</a></li>
+      <li><a href="service-pose.html">Service de pose</a></li>
+      <li><a href="professionnels.html">Questionnaire d'adhésion</a></li>
       <li><a href="credits-photos.html">Crédits photos</a></li>
       <li><a href="mentions-legales.html">Mentions légales</a></li>
       <li><a href="confidentialite.html">Confidentialité</a></li>

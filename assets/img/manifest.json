@@ -929,5 +929,37 @@
    "w": 1024,
    "h": 768
   }
+ ],
+ "croix-pharmacie": [
+  {
+   "name": "croix-pharmacie-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "croix-pharmacie-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "croix-pharmacie-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "croix-pharmacie-4",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "croix-pharmacie-5",
+   "w": 1024,
+   "h": 819
+  },
+  {
+   "name": "croix-pharmacie-6",
+   "w": 1024,
+   "h": 768
+  }
  ]
 }

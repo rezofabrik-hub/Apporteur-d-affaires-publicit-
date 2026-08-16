@@ -2,7 +2,7 @@ const T = require("../lib/tpl");
 const { site, services, esc, img, heroImg } = T;
 
 const FAQ = [
-  { q: "Le service est-il vraiment gratuit pour le client ?", a: "Oui, totalement. Vous ne payez rien pour être mis en relation, ni pour recevoir des devis. Notre rémunération vient des professionnels du réseau, sous forme d'apport d'affaires, uniquement lorsqu'un projet se concrétise. Vous restez libre de ne donner suite à aucune proposition." },
+  { q: "Le service est-il vraiment gratuit pour le client ?", a: "Oui, totalement. Vous ne payez rien pour être mis en relation ni pour recevoir des devis, et aucune commission n'est ajoutée au prix de l'entreprise retenue. Notre rémunération vient des professionnels du réseau, sous forme d'un abonnement fixe. Vous restez libre de ne donner suite à aucune proposition." },
   { q: "Combien de devis vais-je recevoir ?", a: "En général deux à trois propositions, établies sur le même cahier des charges pour être réellement comparables. Nous préférons trois devis sérieux à dix devis approximatifs : au-delà, le tri devient un travail à part entière et les professionnels se désengagent." },
   { q: "Qui réalise réellement les travaux ?", a: "Des entreprises indépendantes de votre région : enseignistes fabricants, imprimeurs grand format, poseurs habilités au travail en hauteur, graphistes et spécialistes de l'objet publicitaire. Nous vérifions leurs assurances, leurs qualifications et leurs capacités de production avant tout référencement." },
   { q: "Intervenez-vous partout en France ?", a: "Oui, en métropole comme en outre-mer. Le réseau s'est constitué depuis Perpignan et les Pyrénées-Orientales, puis s'est étendu aux grandes agglomérations. Lorsqu'une zone est encore peu couverte, nous sollicitons directement des professionnels locaux pour votre projet." },
@@ -132,8 +132,8 @@ module.exports = function home(cities) {
       <div class="tile">
         <span class="tile-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
         <h3>Gratuit, sans exclusivité</h3>
-        <p>Vous ne payez rien, vous ne signez rien avec nous, et vous restez libre de refuser
-        l'intégralité des propositions reçues.</p>
+        <p>Côté client, vous ne payez rien et ne signez rien avec nous : notre revenu vient de
+        l'abonnement des professionnels, pas de votre chantier.</p>
       </div>
     </div>
   </div>

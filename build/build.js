@@ -19,6 +19,8 @@ const forms = require("./pages/forms");
 const misc = require("./pages/misc");
 const sectorPage = require("./pages/sector");
 const serviceCityPage = require("./pages/servicecity");
+const partnersPage = require("./pages/partners");
+const posePage = require("./pages/pose");
 
 const ROOT = path.join(__dirname, "..");
 
@@ -56,7 +58,7 @@ function sitemap(pages) {
     .map((f) => {
       let p = "0.6";
       if (f === "index.html") p = "1.0";
-      else if (["devis.html", "professionnels.html"].includes(f)) p = "0.9";
+      else if (["devis.html", "professionnels.html", "partenaires.html", "service-pose.html"].includes(f)) p = "0.9";
       else if (services.some((s) => s.slug + ".html" === f)) p = "0.9";
       else if (f === "secteurs.html" || f === "villes.html") p = "0.8";
       else if (services.some((s) => f.startsWith(s.slug + "-"))) p = "0.8";
@@ -106,6 +108,8 @@ function run() {
   });
 
   write("devis.html", forms.devis(cities));
+  write("partenaires.html", partnersPage(cities));
+  write("service-pose.html", posePage(cities));
   write("professionnels.html", forms.pros(cities));
   write("merci.html", forms.merci(cities));
 

@@ -1,5 +1,6 @@
 const T = require("../lib/tpl");
 const { site, services, esc, attr, img, heroImg } = T;
+const P = require("../data/partnership");
 
 /* ------------------------------------------------------------- helpers */
 const id = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -300,13 +301,13 @@ function pros(cities) {
     ${T.crumbs(crumbItems)}
     <span class="eyebrow">Espace professionnels</span>
     <h1>Recevez des affaires concrètes, correspondant à vos capacités réelles</h1>
-    <p class="lead">Enseigniste, imprimeur grand format, poseur habilité, spécialiste du covering,
-    graphiste ou fournisseur d'objets publicitaires : rejoignez le réseau et recevez des demandes
-    qualifiées dans votre zone. Pas d'abonnement, pas de droit d'entrée — nous nous rémunérons
-    uniquement sur les affaires qui se concrétisent.</p>
+    <p class="lead">Enseigniste, agence de publicité, imprimeur grand format, poseur habilité,
+    spécialiste du covering ou fournisseur d'objets publicitaires : rejoignez le réseau et recevez
+    des demandes qualifiées dans votre zone. Un <strong>abonnement fixe sur 6 ou 12 mois</strong>,
+    sans droit d'entrée et <strong>sans aucune commission</strong> sur les affaires que vous signez.</p>
     <div class="btns">
       <a class="btn btn-pro btn-lg" href="#candidature">Remplir le questionnaire</a>
-      <a class="btn btn-ghost btn-lg" href="#pourquoi">Pourquoi nous rejoindre</a>
+      <a class="btn btn-ghost btn-lg" href="partenaires.html">Voir les formules et tarifs</a>
     </div>
   </div>
 </section>
@@ -315,10 +316,11 @@ function pros(cities) {
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Le principe</span>
-      <h2>Un apporteur d'affaires, pas une place de marché anonyme</h2>
+      <h2>Une agence de mise en relation, pas une place de marché anonyme</h2>
       <p class="lead">Nous ne diffusons pas votre demande à trente entreprises. Chaque projet est qualifié
       par téléphone, traduit en cahier des charges, puis confié à deux ou trois professionnels dont
-      l'outil de production correspond réellement au besoin. Votre taux de transformation s'en ressent.</p>
+      l'outil de production correspond réellement au besoin. Votre taux de transformation s'en ressent.
+      <a href="partenaires.html">Voir les formules d'abonnement →</a></p>
     </div>
     <div class="grid g-3">
       <div class="tile">
@@ -341,9 +343,10 @@ function pros(cities) {
       </div>
       <div class="tile">
         <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-        <h3>Aucun frais fixe</h3>
-        <p>Pas de droit d'entrée, pas d'abonnement mensuel, pas d'achat de leads à l'aveugle.
-        Une commission d'apport uniquement sur les affaires signées.</p>
+        <h3>Un budget fixe, zéro commission</h3>
+        <p>Un abonnement sur 6 ou 12 mois, sans droit d'entrée et sans achat de contacts à l'unité.
+        Aucun pourcentage n'est prélevé sur vos chantiers : chaque affaire signée vous revient
+        intégralement.</p>
       </div>
       <div class="tile">
         <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></span>
@@ -396,9 +399,9 @@ function pros(cities) {
     <div class="sec-head center">
       <span class="eyebrow">Questionnaire de capacités</span>
       <h2>Rejoindre le réseau</h2>
-      <p class="lead mx-auto">Ce questionnaire cartographie ce que votre entreprise sait réellement faire.
-      Il est un peu long — c'est volontaire : plus il est précis, plus les affaires que nous vous
-      transmettrons seront pertinentes. Comptez 5 à 7 minutes.</p>
+      <p class="lead mx-auto">Ce questionnaire cartographie ce que votre entreprise sait réellement faire
+      et avec quel matériel. Il est un peu long — c'est volontaire : nacelle, CACES, véhicules et machines
+      déterminent les chantiers que nous pourrons vous confier. Comptez 7 à 10 minutes.</p>
     </div>
 
     <div class="form-panel form-pro" style="max-width:940px;margin-inline:auto">
@@ -407,8 +410,8 @@ function pros(cities) {
           <div class="now"><i></i><span>Entreprise</span></div>
           <div><i></i><span>Contact</span></div>
           <div><i></i><span>Capacités</span></div>
-          <div><i></i><span>Moyens</span></div>
-          <div><i></i><span>Commercial</span></div>
+          <div><i></i><span>Matériel &amp; véhicules</span></div>
+          <div><i></i><span>Formule</span></div>
         </div>
 
         <!-- Étape 1 : entreprise -->
@@ -614,8 +617,12 @@ function pros(cities) {
           </div>
         </div>
 
-        <!-- Étape 4 : moyens et habilitations -->
+        <!-- Étape 4 : matériel, véhicules et habilitations -->
         <div class="fstep">
+          <p class="lead" style="font-size:1rem">Cette étape est déterminante pour les chantiers de
+          <strong>pose</strong> : c'est votre matériel réel — hauteur de nacelle, échafaudage, véhicules —
+          qui décide des interventions que nous pouvons vous confier.</p>
+
           <fieldset style="margin-bottom:26px">
             <legend class="fieldset-legend">Travail en hauteur — moyens dont vous disposez</legend>
             ${checks("moyens_hauteur", [
@@ -639,15 +646,84 @@ function pros(cities) {
           </div>
 
           <fieldset style="margin-bottom:26px">
-            <legend class="fieldset-legend">Habilitations et certifications à jour</legend>
-            ${checks("habilitations", [
-              "CACES R486 catégorie A", "CACES R486 catégorie B",
-              "Habilitation électrique (B1V, BR, BC…)", "Formation travail en hauteur",
-              "Habilitation port du harnais", "AIPR (travaux à proximité de réseaux)",
-              "Qualibat", "RGE", "Certification ISO 9001",
-              "Imprim'Vert", "Aucune pour l'instant"
+            <legend class="fieldset-legend">Parc de véhicules <span class="hint">— cochez ce que vous possédez</span></legend>
+            ${checks("vehicules", [
+              { l: "Voiture / véhicule léger", h: "Déplacements, métrés, petits chantiers" },
+              { l: "Camionnette (type Kangoo, Berlingo)", h: "Matériel et petites enseignes" },
+              { l: "Fourgon (type Jumpy, Trafic)", h: "Panneaux et signalétique" },
+              { l: "Grand fourgon (type Master, Sprinter)", h: "Grands formats, échafaudage" },
+              { l: "Camion plateau", h: "Totems, structures, charges longues" },
+              { l: "Camion nacelle", h: "Pose en hauteur autonome" },
+              { l: "Camion-benne ou porte-engin", h: "Dépose et évacuation" },
+              { l: "Remorque", h: "Transport de nacelle ou de matériel" },
+              { l: "Atelier mobile équipé", h: "Interventions et SAV sur site" }
             ])}
           </fieldset>
+
+          <div class="row-2">
+            <div class="field">
+              <label for="p_nb_vehicules">Nombre de véhicules d'intervention</label>
+              <select id="p_nb_vehicules" name="nombre_vehicules">
+                <option value="">— Choisir —</option>
+                <option>1</option><option>2 à 3</option><option>4 à 6</option>
+                <option>7 à 10</option><option>Plus de 10</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="p_equipes">Équipes de pose disponibles</label>
+              <select id="p_equipes" name="equipes_pose">
+                <option value="">— Choisir —</option>
+                <option>Aucune (je ne pose pas)</option>
+                <option>1 poseur</option>
+                <option>1 binôme</option>
+                <option>2 binômes</option>
+                <option>3 équipes ou plus</option>
+              </select>
+            </div>
+          </div>
+
+          <fieldset style="margin-bottom:26px">
+            <legend class="fieldset-legend">Permis détenus par vos équipes</legend>
+            ${checks("permis", [
+              "Permis B", "Permis BE / remorque", "Permis C (poids lourd)",
+              "Permis CE (semi-remorque)", "FIMO / FCO à jour"
+            ])}
+          </fieldset>
+
+          <fieldset style="margin-bottom:26px">
+            <legend class="fieldset-legend">Habilitations et certifications à jour</legend>
+            ${checks("habilitations", [
+              { l: "CACES R486 catégorie A", h: "Nacelle à élévation verticale" },
+              { l: "CACES R486 catégorie B", h: "Nacelle à élévation multidirectionnelle" },
+              { l: "CACES R482 (engins de chantier)", h: "" },
+              { l: "CACES R489 (chariots élévateurs)", h: "" },
+              { l: "CACES R483 (grues mobiles)", h: "" },
+              { l: "Montage d'échafaudage (R408)", h: "" },
+              { l: "Habilitation électrique (B1V, BR, BC…)", h: "" },
+              { l: "Formation travail en hauteur", h: "" },
+              { l: "Habilitation port du harnais", h: "" },
+              { l: "Cordiste (CQP / IRATA)", h: "" },
+              { l: "AIPR (travaux à proximité de réseaux)", h: "" },
+              { l: "SST (sauveteur secouriste du travail)", h: "" },
+              { l: "Qualibat", h: "" }, { l: "RGE", h: "" },
+              { l: "Certification ISO 9001", h: "" }, { l: "Imprim'Vert", h: "" },
+              { l: "Aucune pour l'instant", h: "" }
+            ])}
+          </fieldset>
+
+          <div class="field">
+            <label for="p_zone_pose">Rayon accepté pour un chantier de pose</label>
+            <span class="hint">Distinct de votre zone commerciale : beaucoup d'entreprises posent plus loin qu'elles ne vendent.</span>
+            <select id="p_zone_pose" name="rayon_pose">
+              <option value="">— Choisir —</option>
+              <option>Je ne pose pas</option>
+              <option>Jusqu'à 50 km</option>
+              <option>Jusqu'à 100 km</option>
+              <option>Jusqu'à 200 km</option>
+              <option>Région entière</option>
+              <option>France entière</option>
+            </select>
+          </div>
 
           <fieldset style="margin-bottom:26px">
             <legend class="fieldset-legend">Assurances <span class="req">*</span></legend>
@@ -733,13 +809,17 @@ function pros(cities) {
           </div>
 
           <fieldset style="margin-bottom:26px">
-            <legend class="fieldset-legend">Modèle de collaboration</legend>
-            ${checks("collaboration", [
-              { l: "Commission d'apport d'affaires", h: "Un pourcentage sur les affaires signées" },
-              { l: "Remise réseau sur devis", h: "Vous appliquez une remise, nous facturons le client" },
-              { l: "Sous-traitance pure", h: "Nous portons le contrat, vous exécutez" },
-              { l: "À discuter", h: "Vous préférez en parler d'abord" }
-            ], { radio: true })}
+            <legend class="fieldset-legend">Formule d'abonnement envisagée</legend>
+            <p class="hint" style="margin-bottom:12px">Aucun engagement à ce stade : nous en reparlons
+            lors de l'entretien. <a href="partenaires.html">Voir le détail des formules →</a></p>
+            ${checks("formule", P.plans.map((pl) => ({
+              l: pl.name + " — " + pl.duration,
+              h: pl.price + " " + P.currency + " HT · " + pl.pitch
+            })).concat(P.pose.plans.map((pl) => ({
+              l: pl.name + " — " + pl.duration,
+              h: pl.price + " " + P.currency + " HT · service de pose"
+            }))).concat([{ l: "Je ne sais pas encore", h: "Vous préférez en parler d'abord" }]),
+            { radio: true })}
           </fieldset>
 
           <div class="field">
@@ -764,7 +844,7 @@ function pros(cities) {
             <button type="button" class="btn btn-ghost" data-prev>Retour</button>
             <button type="submit" class="btn btn-pro btn-lg" data-submit>Envoyer ma candidature</button>
           </div>
-          <p class="hint" style="text-align:center">Réponse sous 48 h ouvrées · Aucun frais d'inscription</p>
+          <p class="hint" style="text-align:center">Réponse sous 48 h ouvrées · Aucun droit d'entrée · Aucune commission</p>
         </div>
       </form>
     </div>
@@ -778,10 +858,10 @@ function pros(cities) {
       <h2>Ce que les entreprises nous demandent</h2>
     </div>
     ${T.faqBlock([
-      { q: "Combien coûte l'adhésion au réseau ?", a: "Rien. Pas de droit d'entrée, pas d'abonnement mensuel, pas d'achat de contacts à l'aveugle. Nous nous rémunérons par une commission d'apport d'affaires, uniquement lorsqu'un projet que nous vous avons transmis est signé. Le taux est défini avec vous à l'entrée dans le réseau, selon votre métier et le montant des chantiers." },
+      { q: "Combien coûte l'adhésion au réseau ?", a: "Un abonnement fixe, sur 6 ou 12 mois selon la formule retenue, sans droit d'entrée. Il n'y a <strong>aucune commission</strong> sur les affaires que vous signez : le chantier vous revient intégralement. Le détail des formules et des montants figure sur la page <a href=\"partenaires.html\">partenaires</a>." },
       { q: "Combien de professionnels reçoivent la même demande ?", a: "Deux ou trois au maximum, choisis parce que leurs capacités correspondent au projet. Nous ne diffusons pas une demande à trente entreprises : c'est ce qui détruit les taux de transformation et pousse les prix vers le bas au détriment de la qualité." },
       { q: "Suis-je obligé d'accepter les affaires proposées ?", a: "Non, jamais. Vous acceptez ou déclinez au cas par cas, sans justification et sans pénalité. Nous vous demandons simplement de répondre rapidement pour que nous puissions réorienter la demande si nécessaire." },
-      { q: "Qui facture le client final ?", a: "Vous, en direct, dans le modèle d'apport d'affaires. Vous fixez vos prix, vous signez votre devis, vous gardez la relation client et le service après-vente. Dans le modèle de sous-traitance, c'est nous qui portons le contrat — le choix se fait à l'entrée dans le réseau." },
+      { q: "Qui facture le client final ?", a: "Vous, en direct. Vous fixez vos prix, vous signez votre devis, vous gardez la relation client et le service après-vente. Nous n'intervenons ni dans le contrat, ni dans l'exécution, et nous ne prélevons rien sur la facture." },
       { q: "Pourquoi le questionnaire est-il aussi détaillé ?", a: "Parce que c'est exactement ce qui fait la différence entre une demande pertinente et une perte de temps. Savoir que vous disposez d'une fraiseuse numérique de 3 mètres, d'une nacelle 16 mètres et de deux poseurs CACES nous permet de vous adresser le bon chantier du premier coup. Un annuaire généraliste ne peut pas faire ça." },
       { q: "Travaillez-vous avec des indépendants et des micro-entreprises ?", a: "Oui, à condition que les assurances soient à jour et que les capacités déclarées soient réelles. Un poseur indépendant bien équipé et réactif vaut mieux qu'une structure plus grosse mais indisponible. La taille n'est pas un critère de sélection ; la fiabilité en est un." }
     ])}
@@ -790,8 +870,8 @@ function pros(cities) {
 
   return T.page({
     file: "professionnels.html", active: "professionnels.html",
-    title: `Devenir Partenaire — Enseignistes, Imprimeurs, Poseurs | ${site.brand}`,
-    desc: "Enseigniste, imprimeur grand format, poseur nacelle, covering, graphiste : rejoignez le réseau et recevez des demandes qualifiées dans votre zone. Sans abonnement ni droit d'entrée.",
+    title: `Questionnaire Partenaire — Enseignistes, Agences, Poseurs | ${site.brand}`,
+    desc: "Enseigniste, agence de publicité, imprimeur, poseur nacelle, covering : rejoignez le réseau par abonnement 6 ou 12 mois, sans droit d'entrée et sans commission sur vos affaires.",
     body, cities,
     schema: [T.crumbSchema(crumbItems)]
   });

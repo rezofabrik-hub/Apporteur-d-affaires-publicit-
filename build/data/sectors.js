@@ -9,7 +9,7 @@ module.exports = [
   h1: "Signalétique et enseigne de pharmacie",
   title: "Enseigne & Signalétique de Pharmacie — Croix, Vitrine, Agencement",
   desc: "Croix de pharmacie, enseigne, vitrophanie, signalétique de rayons et de comptoir. Devis d'enseignistes spécialisés officine partout en France.",
-  topic: "vitrophanie", topicAlt: ["signaletique-int", "enseigne-lumineuse"],
+  topic: "croix-pharmacie", topicAlt: ["vitrophanie", "signaletique-int"],
   lead: "L'officine est un cas particulier : la croix est réglementée, la vitrine est un support de santé publique autant que de commerce, et le rayonnage doit être lisible par une clientèle souvent âgée. Trois contraintes qui excluent l'enseigniste généraliste improvisé.",
   besoins: [
     ["Croix de pharmacie", "Croix LED simple ou double face, fixe ou à messages défilants, avec affichage de la température et de l'heure. Programmation à distance, allumage sur horloge astronomique."],

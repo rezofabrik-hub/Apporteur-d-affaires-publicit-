@@ -13,7 +13,7 @@ module.exports = {
 
   /* Positionnement (repris dans les balises et le contenu) */
   baseline: "Un seul interlocuteur pour toute votre communication visuelle, partout en France.",
-  role: "apporteur d'affaires",
+  role: "agence de communication et de mise en relation",
 
   /* Contact — répliqué dans assets/js/config.js */
   email: "contact@rezofabrik.fr",

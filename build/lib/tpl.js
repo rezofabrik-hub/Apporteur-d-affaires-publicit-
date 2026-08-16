@@ -66,7 +66,7 @@ const NAV_MORE = [
   ["tarifs.html", "Prix et budgets", "Ce que coûte réellement chaque prestation"],
   ["glossaire.html", "Glossaire du métier", "Tout le vocabulaire de la communication visuelle"],
   ["reglementation-enseigne.html", "Réglementation", "Autorisation, RLP, TLPE, accessibilité"],
-  ["comment-ca-marche.html", "Comment ça marche", "Notre rôle d'apporteur d'affaires"],
+  ["comment-ca-marche.html", "Comment ça marche", "Notre rôle d'agence de mise en relation"],
   ["faq.html", "Questions fréquentes", "Les réponses aux 20 questions les plus posées"]
 ];
 
@@ -104,11 +104,11 @@ function header(active) {
       </button>
       <div class="drop-menu">${moreLinks}</div>
     </div>
-    <a href="professionnels.html"${cur("professionnels.html")}>Professionnels</a>
+    <a href="partenaires.html"${cur("partenaires.html")}>Partenaires</a>
   </nav>
 
   <div class="hdr-cta">
-    <a class="btn btn-ghost btn-sm" href="professionnels.html">Devenir partenaire</a>
+    <a class="btn btn-ghost btn-sm" href="partenaires.html">Devenir partenaire</a>
     <a class="btn btn-primary btn-sm" href="devis.html">Devis gratuit</a>
   </div>
 
@@ -120,10 +120,14 @@ function header(active) {
 <div class="mnav" id="mnav">
   <div class="mnav-h">Nos métiers</div>
   ${services.map((s) => `<a href="${s.slug}.html">${esc(s.nav)}</a>`).join("")}
+  <div class="mnav-h">Partenaires du secteur</div>
+  <a href="partenaires.html">Formules et tarifs</a>
+  <a href="service-pose.html">Service de pose</a>
+  <a href="professionnels.html">Questionnaire d'adhésion</a>
   <div class="mnav-h">Ressources</div>
   ${NAV_MORE.map(([h, t]) => `<a href="${h}">${esc(t)}</a>`).join("")}
   <div class="btns">
-    <a class="btn btn-ghost" href="professionnels.html">Devenir partenaire</a>
+    <a class="btn btn-ghost" href="partenaires.html">Devenir partenaire</a>
     <a class="btn btn-primary" href="devis.html">Devis gratuit</a>
   </div>
 </div>
@@ -171,7 +175,9 @@ function footer(cities) {
       <h4>Le réseau</h4>
       <ul>
         <li><a href="devis.html">Demander un devis</a></li>
-        <li><a href="professionnels.html">Devenir partenaire</a></li>
+        <li><a href="partenaires.html">Devenir partenaire</a></li>
+        <li><a href="service-pose.html">Service de pose</a></li>
+        <li><a href="professionnels.html">Questionnaire d'adhésion</a></li>
         <li><a href="comment-ca-marche.html">Comment ça marche</a></li>
         <li><a href="credits-photos.html">Crédits photographiques</a></li>
         <li><a href="mentions-legales.html">Mentions légales</a></li>
@@ -315,9 +321,10 @@ function ctaDouble() {
   </div>
   <div class="cta-card pro">
     <h3>Vous êtes professionnel ?</h3>
-    <p>Enseigniste, imprimeur, poseur, graphiste, spécialiste du covering ou de l'objet publicitaire :
-    rejoignez le réseau et recevez des demandes qualifiées dans votre zone, correspondant à vos capacités réelles.</p>
-    <a class="btn btn-white" href="professionnels.html">Rejoindre le réseau</a>
+    <p>Enseigniste, agence de publicité, imprimeur, poseur, spécialiste du covering ou de l'objet
+    publicitaire : rejoignez le réseau par abonnement 6 ou 12 mois, sans droit d'entrée et
+    sans commission sur vos affaires.</p>
+    <a class="btn btn-white" href="partenaires.html">Voir les formules</a>
   </div>
 </div>`;
 }
