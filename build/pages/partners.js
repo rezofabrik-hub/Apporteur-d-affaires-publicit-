@@ -113,16 +113,46 @@ module.exports = function partnersPage(cities) {
       <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie. Au-delà,
       deux formules élargissent la zone — une <strong>région entière</strong> ou la
       <strong>France complète</strong>.</p>
-      <p class="lead mx-auto">Chaque niveau donne droit à un <strong>label de partenaire</strong> —
-      Local, Confirmé, Régional ou National — que vous affichez sur votre devanture, vos devis et
-      vos véhicules. Il atteste que votre SIRET, vos assurances et vos habilitations ont été
-      vérifiés.</p>
+      <p class="lead mx-auto">Trois niveaux de partenariat, trois labels :
+      <strong>Partenaire Proximité</strong>, <strong>Partenaire Régional</strong> et
+      <strong>Partenaire National</strong>. Vous l'affichez sur votre devanture, vos devis et vos
+      véhicules ; il atteste que votre SIRET, vos assurances et vos habilitations ont été vérifiés.
+      Et il détermine <a href="#repartition">quelles demandes vous parviennent</a>.</p>
     </div>
     ${T.launchPriceBanner()}
     <div class="plans">${planCards}</div>
     <p class="center" style="margin-top:26px;font-size:.87rem;color:var(--tx-3)">${esc(P.vatNote)}</p>
   </div>
 </section>
+${(() => { const D = P.dispatch; return `
+<section class="sec" id="repartition">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">${esc(D.eyebrow)}</span>
+      <h2>${esc(D.title)}</h2>
+      <p class="lead">${esc(D.lead)}</p>
+    </div>
+
+    <div class="grid g-3" style="margin-bottom:34px">
+      ${D.ladder.map(([niveau, zone, texte]) => `<div class="tile">
+        <span class="plan-tier">${esc(niveau)}</span>
+        <h3 style="font-size:1.02rem">${esc(zone)}</h3>
+        <p>${esc(texte)}</p>
+      </div>`).join("")}
+    </div>
+
+    <div class="table-wrap"><table>
+      <thead><tr>${D.head.map((h, i) =>
+        `<th scope="col"${i === 1 ? ' style="color:var(--pro-600)"' : ""}>${esc(h)}</th>`).join("")}</tr></thead>
+      <tbody>${D.rows.map((r) => `<tr>${r.map((c, i) => i === 0
+        ? `<th scope="row">${esc(c)}</th>`
+        : `<td${i === 1 ? ' style="font-weight:600;color:var(--pro-600)"' : ""}>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
+    </table></div>
+
+    <div class="note"><p>${esc(D.note)}</p></div>
+  </div>
+</section>`; })()}
+
 ${T.amortBlock('vente')}
 
 <section class="sec">

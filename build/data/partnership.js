@@ -97,7 +97,7 @@ module.exports = {
      lui qui sert de base à tous les calculs d'amortissement ci-dessous. */
   currency: "€",
   priceSuffix: "TTC",
-  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € sur 6 mois, 742 € sur 12 mois, 1 242 € en formule Région et 2 492 € en France entière. Contrat, accès et tarif sont bloqués sur toute la durée souscrite. Sans reconduction tacite : vous décidez du renouvellement.",
+  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € sur 6 mois, 742 € sur 12 mois, 1 242 € en Rayonnement régional et 2 492 € en Envergure nationale. Contrat, accès et tarif sont bloqués sur toute la durée souscrite. Sans reconduction tacite : vous décidez du renouvellement.",
 
   /* ---------------------------------------------------------------------
      Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
@@ -134,9 +134,9 @@ module.exports = {
     },
     {
       id: "semestriel",
-      name: "Abonnement 6 mois",
-      tier: "Partenaire Local",
-      cta: "Choisir l'abonnement 6 mois",
+      name: "Proximité — 6 mois",
+      tier: "Partenaire Proximité",
+      cta: "Choisir Proximité 6 mois",
       duration: "6 mois",
       price: "490",
       nextPrice: "690",   // tarif au 16 août 2027
@@ -157,16 +157,16 @@ module.exports = {
         "Fiche entreprise avec logo, photos et coordonnées",
         "Bilan des demandes transmises à mi-parcours",
         "Accompagnement sur les dossiers multi-sites et les appels d'offres",
-        "Label Partenaire Local à afficher sur vos supports",
+        "Label Partenaire Proximité à afficher sur vos supports",
         "Aucune commission sur les affaires signées"
       ],
       notIncluded: []
     },
     {
       id: "annuel",
-      name: "Abonnement 12 mois",
-      tier: "Partenaire Confirmé",
-      cta: "Choisir l'abonnement 12 mois",
+      name: "Proximité — 12 mois",
+      tier: "Partenaire Proximité",
+      cta: "Choisir Proximité 12 mois",
       duration: "12 mois",
       price: "890",
       nextPrice: "1199",   // tarif au 16 août 2027
@@ -186,16 +186,16 @@ module.exports = {
         "Fiche entreprise avec logo, photos et coordonnées",
         "Bilan semestriel des demandes transmises",
         "Accompagnement sur les dossiers multi-sites et les appels d'offres",
-        "Label Partenaire Confirmé à afficher sur vos supports",
+        "Label Partenaire Proximité à afficher sur vos supports",
         "Aucune commission sur les affaires signées"
       ],
       notIncluded: []
     },
     {
       id: "region",
-      name: "Région",
+      name: "Rayonnement régional",
       tier: "Partenaire Régional",
-      cta: "Choisir la formule Région",
+      cta: "Choisir Rayonnement régional",
       duration: "12 mois",
       price: "1490",
       nextPrice: "1790",
@@ -203,7 +203,7 @@ module.exports = {
       pitch: "Une région administrative entière, pour qui livre bien au-delà de son département.",
       audience: "Fabricant, imprimeur grand format ou agence disposant d'équipes mobiles",
       features: [
-        "Tout ce que comprend l'abonnement 12 mois",
+        "Tout ce que comprend la formule Proximité",
         "Zone d'intervention : une région administrative complète",
         "Priorité d'envoi sur l'ensemble de la région",
         "Mise en avant sur toutes les pages villes de la région",
@@ -216,9 +216,9 @@ module.exports = {
     },
     {
       id: "france",
-      name: "France entière",
+      name: "Envergure nationale",
       tier: "Partenaire National",
-      cta: "Choisir la France entière",
+      cta: "Choisir Envergure nationale",
       duration: "12 mois",
       price: "2990",
       nextPrice: "3490",
@@ -226,7 +226,7 @@ module.exports = {
       pitch: "Tout le territoire, pour les structures qui produisent et livrent partout.",
       audience: "Fabricant national, imprimeur industriel, réseau de poseurs, centrale d'achat",
       features: [
-        "Tout ce que comprend la formule Région",
+        "Tout ce que comprend Rayonnement régional",
         "Zone d'intervention : France métropolitaine et outre-mer",
         "Priorité d'envoi sur les dossiers nationaux et multi-sites",
         "Mise en avant sur l'ensemble des pages villes du site",
@@ -255,6 +255,51 @@ module.exports = {
     ["Une alternative claire à la franchise",
      "Pas de droit d'entrée à cinq chiffres, pas de redevance sur le chiffre d'affaires, pas de fournisseurs imposés, pas de contrainte d'enseigne. Vous restez indépendant."]
   ],
+
+  /* ---------------------------------------------------------------------
+     RÉPARTITION DES DEMANDES.
+     C'est la contrepartie concrète de chaque niveau, et donc ce qui justifie
+     l'écart de prix. Un partenaire National paie six fois le tarif Proximité :
+     il doit savoir exactement ce qu'il achète, et un partenaire Proximité doit
+     savoir ce qu'il n'aura pas. Le tableau ci-dessous est un engagement, pas
+     un argumentaire — il décrit la règle réellement appliquée à l'arrivée
+     d'une demande.
+  --------------------------------------------------------------------- */
+  dispatch: {
+    eyebrow: "Répartition des demandes",
+    title: "Qui reçoit quoi, et pourquoi les niveaux ne se valent pas",
+    lead: "Chaque demande est classée selon l'étendue de la communication à réaliser, puis adressée aux partenaires du niveau correspondant. Ce n'est pas une hiérarchie de prestige : c'est une question de capacité à livrer.",
+    head: ["Ce que demande le client", "Partenaires sollicités", "Pourquoi eux"],
+    rows: [
+      ["Une enseigne, une vitrine, un véhicule — un seul lieu",
+       "Partenaires Proximité du département concerné",
+       "La proximité conditionne le coût de déplacement et la réactivité du service après-vente"],
+      ["Deux à cinq sites dans un même département",
+       "Partenaires Proximité, en priorité ceux qui ont déclaré des équipes de pose",
+       "Un seul atelier peut couvrir l'ensemble sans multiplier les trajets"],
+      ["Un déploiement sur plusieurs départements d'une même région",
+       "Partenaires Régionaux de la région, avec des Proximité en appui sur la pose",
+       "Il faut une structure capable de coordonner un planning multi-sites"],
+      ["Un marché public ou une consultation de collectivité",
+       "Partenaires Régionaux et Nationaux selon l'étendue du lot",
+       "Ces dossiers exigent des références, une capacité financière et des délais tenus"],
+      ["Une campagne nationale, une franchise, un réseau multi-sites",
+       "Partenaires Nationaux exclusivement",
+       "Un donneur d'ordre national veut un interlocuteur unique, pas dix prestataires à coordonner"],
+      ["Un chantier isolé hors de la zone de tout partenaire",
+       "Partenaire le plus proche, quel que soit son niveau",
+       "Mieux vaut un professionnel compétent à cent kilomètres qu'une demande non servie"]
+    ],
+    note: "Un partenaire Proximité ne reçoit pas les campagnes nationales, et c'est assumé : il n'aurait ni les équipes ni la trésorerie pour un déploiement de quarante points de vente. À l'inverse, un partenaire National reçoit aussi les demandes locales de ses départements — monter en niveau n'a jamais fait perdre les affaires du bas de gamme.",
+    ladder: [
+      ["Partenaire Proximité", "3 départements de votre choix",
+       "Vous recevez les demandes locales de vos trois départements : commerces, artisans, professions libérales, PME mono-site. C'est le volume le plus régulier du réseau, et celui qui se transforme le mieux quand on est installé à côté."],
+      ["Partenaire Régional", "Une région administrative entière",
+       "Vous ajoutez les déploiements régionaux et les consultations de collectivités du territoire. Ces dossiers sont moins nombreux mais nettement plus gros, et beaucoup d'entreprises locales ne peuvent pas les prendre faute d'équipes mobiles."],
+      ["Partenaire National", "France métropolitaine et outre-mer",
+       "Vous êtes seul sur les campagnes nationales, les franchises et les réseaux multi-sites — les dossiers où le donneur d'ordre cherche un interlocuteur unique. Vous conservez par ailleurs toutes les demandes locales de vos départements."]
+    ]
+  },
 
   /* ---------------------------------------------------------------------
      AMORTISSEMENT — l'objection numéro un d'un artisan devant un abonnement
@@ -349,7 +394,7 @@ module.exports = {
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
     { q: "Mon tarif peut-il augmenter en cours d'abonnement ?", a: "Non. Le contrat, l'accès au réseau et le tarif sont bloqués sur toute la durée que vous avez souscrite : six mois pour la formule semestrielle, un an pour la formule annuelle. Le prix inscrit à votre adhésion est celui que vous payez jusqu'au terme, sans révision. Toute évolution éventuelle du tarif vous serait communiquée deux mois avant l'échéance, et ne s'appliquerait qu'à un renouvellement que vous seriez libre de refuser." },
     { q: "Le service de pose suit-il la même grille tarifaire ?", a: "Oui, aux mêmes montants et dans les mêmes conditions. Les deux offres suivent la même grille depuis le départ." },
-    { q: "Comment se définit ma zone d'intervention ?", a: "Vous choisissez librement vos trois départements sur les formules 6 et 12 mois, et ils n'ont pas à être limitrophes : un atelier peut viser une métropole située à deux départements de là, où se trouvent réellement ses clients. Le questionnaire vous propose les départements voisins du vôtre à titre de suggestion, rien de plus. Si trois départements ne suffisent pas, la formule Région couvre une région administrative entière et la formule France entière tout le territoire." },
+    { q: "Comment se définit ma zone d'intervention ?", a: "Vous choisissez librement vos trois départements sur les formules 6 et 12 mois, et ils n'ont pas à être limitrophes : un atelier peut viser une métropole située à deux départements de là, où se trouvent réellement ses clients. Le questionnaire vous propose les départements voisins du vôtre à titre de suggestion, rien de plus. Si trois départements ne suffisent pas, la formule Rayonnement régional couvre une région administrative entière et Envergure nationale tout le territoire." },
     { q: "Puis-je changer mes départements en cours d'abonnement ?", a: "Oui, une fois par période et sans frais : il suffit de nous le demander. Un déménagement d'atelier, l'embauche d'une équipe mobile ou une zone qui se révèle moins active que prévu sont autant de raisons légitimes. Nous ajustons également votre périmètre de notre propre initiative si le volume transmis reste faible." },
     { q: "À quoi sert le label de partenaire ?", a: "Chaque niveau d'adhésion donne droit à un label — Partenaire Local, Confirmé, Régional ou National — que vous pouvez afficher sur votre devanture, vos devis, votre site et vos véhicules. Il atteste que votre SIRET, vos assurances et vos habilitations ont été vérifiés par le réseau. Pour un client qui hésite entre deux entreprises, c'est un élément de réassurance concret, et il ne vous coûte rien de plus que votre abonnement." },
     { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "La durée d'engagement et le prix, rien d'autre. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses — un partenaire qui paie est un partenaire servi. L'engagement annuel se récompense donc sur le tarif : 890 € contre 980 € pour deux semestres, soit 90 € d'économie." },
