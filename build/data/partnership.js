@@ -305,6 +305,58 @@ module.exports = {
   },
 
   /* ---------------------------------------------------------------------
+     PAIEMENT — liens Stripe, un par formule
+     ---------------------------------------------------------------------
+     POURQUOI DES « PAYMENT LINKS » ET PAS UNE INTÉGRATION
+
+     Le site est statique : aucun serveur ne tourne derrière, donc rien ne
+     peut créer une session de paiement ni recevoir un webhook. Les Payment
+     Links de Stripe résolvent cela sans rien changer à l'architecture : on
+     crée le lien dans le tableau de bord Stripe, on le colle ci-dessous,
+     et Stripe héberge la page de paiement — authentification forte, 3-D
+     Secure, reçu, gestion des cartes refusées. Aucune clé d'API ne se
+     retrouve dans le code public, ce qui serait le cas avec une intégration
+     côté navigateur.
+
+     PAIEMENT UNIQUE, PAS ABONNEMENT RÉCURRENT
+
+     Créez les liens en mode « paiement unique », pas en mode abonnement.
+     C'est cohérent avec l'engagement pris sur la page partenaires — aucune
+     reconduction tacite — et cela évite les mandats SEPA, les résiliations
+     à gérer et les prélèvements contestés. Le partenaire repaie
+     volontairement à l'échéance, ou ne repaie pas.
+
+     À NE JAMAIS METTRE EN ACCÈS LIBRE
+
+     Ces liens ne figurent pas sur la page partenaires et n'ont pas à y
+     figurer. Le parcours est : questionnaire, vérification du dossier,
+     entretien, PUIS paiement. Un bouton « payer » en accès public ferait
+     entrer des entreprises non vérifiées, qu'il faudrait rembourser — et la
+     promesse de professionnels contrôlés ne vaudrait plus rien. La page
+     paiement.html est en noindex et n'est liée depuis nulle part : son
+     adresse se transmet par e-mail, une fois le dossier validé.
+  --------------------------------------------------------------------- */
+  paiement: {
+    /* Collez ici l'URL fournie par Stripe pour chaque formule.
+       Tant qu'une case reste vide, la formule s'affiche sur la page de
+       paiement avec la mention « nous vous transmettons le lien » plutôt
+       qu'un bouton mort. */
+    liens: {
+      semestriel: "",
+      annuel: "",
+      region: "",
+      france: ""
+    },
+    /* Moyens acceptés, affichés au partenaire. Le virement reste utile :
+       beaucoup d'entreprises du bâtiment paient ainsi par habitude, et il
+       ne coûte aucune commission. */
+    virement: true,
+    ribNote: "Un règlement par virement est possible : demandez le RIB, la facture vous est adressée avant paiement.",
+    delaiActivation: "Votre accès est ouvert sous 24 heures ouvrées après réception du règlement.",
+    factureNote: "Une facture conforme, portant notre SIRET et le numéro de TVA intracommunautaire, vous est adressée systématiquement — le reçu Stripe ne la remplace pas."
+  },
+
+  /* ---------------------------------------------------------------------
      AMORTISSEMENT — l'objection numéro un d'un artisan devant un abonnement
      est « combien ça va me coûter », jamais « combien ça va me rapporter ».
      On répond donc par un seuil, pas par un argument : le chiffre d'affaires

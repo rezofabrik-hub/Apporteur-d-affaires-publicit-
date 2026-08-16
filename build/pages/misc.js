@@ -805,4 +805,176 @@ function plan(cities, extraPages, sectors) {
   };
 }
 
-module.exports = { villes, tarifs, glossaire, reglementation, comment, faqPage, credits, legal, plan };
+/* ═════════════════════════════════════════════ CONDITIONS DE VENTE
+   Rédigées pour un abonnement vendu entre professionnels. Deux partis pris
+   assumés, parce qu'ils protègent autant l'acheteur que le vendeur :
+
+   · l'engagement est présenté comme une OBLIGATION DE MOYENS. Aucun réseau
+     ne peut garantir un volume de demandes — l'écrire noir sur blanc évite
+     le litige que produit inévitablement la promesse inverse ;
+   · les pénalités de retard entre professionnels sont mentionnées, parce
+     que le code de commerce l'impose et que leur absence prive le vendeur
+     de tout recours simple.
+
+   Ce texte est un socle sérieux, pas un document validé par un avocat. Il
+   est explicitement signalé comme tel en tête de page : faire relire des
+   CGV avant d'encaisser le premier euro coûte quelques centaines d'euros et
+   évite d'en perdre plusieurs milliers. */
+function cgv(cities) {
+  const A = site.address;
+  return T.page({
+    file: "conditions-generales.html",
+    title: `Conditions générales de vente | ${site.brand}`,
+    desc: "Conditions générales de vente de l'abonnement partenaire : objet, durée, prix, paiement, obligations réciproques et résiliation.",
+    cities,
+    body: `
+<section class="hero hero-in-page"><div class="wrap hero-in">
+  ${T.crumbs([{ name: "Accueil", url: "index.html" }, { name: "Conditions générales de vente", url: "conditions-generales.html" }])}
+  <h1>Conditions générales de vente</h1>
+  <p class="lead">Abonnement partenaire — contrat conclu entre professionnels.</p>
+</div></section>
+
+<section class="sec"><div class="wrap wrap-narrow"><article class="prose">
+
+  <div class="note"><p><strong>Document à faire valider avant le premier encaissement.</strong>
+  Ce texte couvre les clauses attendues d'un abonnement vendu entre professionnels, mais il n'a pas
+  été relu par un avocat. Une relecture par un conseil ou par un expert-comptable, avant la première
+  facture, est vivement recommandée — de même que le renseignement des mentions entre crochets.</p></div>
+
+  <h2>1. Identification du prestataire</h2>
+  <p>${esc(site.brandLegal)}, exploitant la marque ${esc(site.brand)}, société à responsabilité
+  limitée au capital de [capital social] euros, dont le siège est situé ${esc(A.street)},
+  ${esc(A.cp)} ${esc(A.city)}, immatriculée au registre du commerce et des sociétés de Perpignan
+  sous le numéro [SIRET], numéro de TVA intracommunautaire [TVA].</p>
+  <p>Téléphone : ${esc(site.phoneDisplay)} — Courriel : ${esc(site.emailPro)}</p>
+
+  <h2>2. Objet et champ d'application</h2>
+  <p>Les présentes conditions régissent la souscription, par une entreprise professionnelle
+  ci-après « le Partenaire », d'un abonnement au réseau de mise en relation exploité par
+  ${esc(site.brandLegal)}. Elles constituent, conformément à l'article L.441-1 du code de commerce,
+  le socle unique de la négociation commerciale et sont communiquées à tout professionnel qui en
+  fait la demande.</p>
+  <p>Toute souscription emporte acceptation sans réserve des présentes. Elles prévalent sur les
+  conditions d'achat du Partenaire, sauf accord écrit contraire.</p>
+
+  <h2>3. Nature de la prestation</h2>
+  <p>Le prestataire qualifie les demandes émanant de clients finals et les transmet aux partenaires
+  dont les capacités déclarées, la zone d'intervention et les habilitations correspondent au projet.
+  Il n'intervient ni dans la négociation, ni dans le contrat, ni dans l'exécution des travaux, qui
+  relèvent exclusivement du Partenaire et de son client.</p>
+  <p><strong>Le prestataire est tenu d'une obligation de moyens et non de résultat.</strong> Le
+  nombre, la nature et le montant des demandes transmises dépendent de l'activité réelle du marché
+  sur la zone souscrite : ils ne peuvent faire l'objet d'aucune garantie, et aucun volume minimal
+  n'est promis. Cette réalité est la raison pour laquelle une formule d'essai gratuite est proposée
+  préalablement à tout engagement payant.</p>
+
+  <h2>4. Conditions d'adhésion</h2>
+  <p>L'adhésion est subordonnée à la vérification du dossier : SIRET actif, assurance de
+  responsabilité civile professionnelle et, le cas échéant, assurance décennale en cours de
+  validité, habilitations déclarées, cohérence des capacités de production annoncées. Le prestataire
+  se réserve le droit de refuser une adhésion sans avoir à motiver sa décision, notamment lorsque la
+  densité de partenaires sur une zone et un métier donnés est déjà atteinte.</p>
+
+  <h2>5. Formules, durée et prise d'effet</h2>
+  <p>Les formules, leurs périmètres et leurs tarifs figurent sur la page
+  <a href="partenaires.html">partenaires</a>. L'abonnement est souscrit pour une durée ferme de six
+  ou douze mois selon la formule retenue. Il prend effet à l'ouverture de l'accès, notifiée par
+  courriel, et non à la date de règlement.</p>
+  <p><strong>L'abonnement ne fait l'objet d'aucune reconduction tacite.</strong> Il prend fin de
+  plein droit à son terme, sans formalité ni préavis. Le prestataire recontacte le Partenaire avant
+  l'échéance ; la poursuite de la relation suppose une nouvelle souscription expresse.</p>
+
+  <h2>6. Prix, taxes et facturation</h2>
+  <p>Les prix sont indiqués en euros toutes taxes comprises, TVA française au taux en vigueur
+  incluse. Une facture conforme est adressée au Partenaire pour chaque règlement ; le reçu émis par
+  le prestataire de paiement ne constitue pas une facture.</p>
+  <p>Aucune commission n'est prélevée sur les affaires signées par le Partenaire, qu'elles
+  proviennent d'une demande transmise par le réseau ou d'un échange avec un autre partenaire. La
+  rémunération du prestataire est exclusivement constituée de l'abonnement.</p>
+  <p>Le tarif convenu à la souscription est celui applicable pour toute la période souscrite. Une
+  évolution tarifaire ne peut concerner qu'une souscription ultérieure, que le Partenaire reste
+  libre de refuser.</p>
+
+  <h2>7. Modalités de paiement</h2>
+  <p>Le règlement s'effectue par carte bancaire, au moyen d'un lien de paiement sécurisé, ou par
+  virement. Le paiement est exigible à la souscription, en une fois pour la période retenue. Aucun
+  mandat de prélèvement n'est mis en place.</p>
+  <p>Conformément aux articles L.441-10 et D.441-5 du code de commerce, tout retard de paiement
+  entraîne de plein droit, sans mise en demeure préalable, l'application de pénalités calculées au
+  taux d'intérêt appliqué par la Banque centrale européenne à son opération de refinancement la plus
+  récente, majoré de dix points de pourcentage, ainsi qu'une indemnité forfaitaire pour frais de
+  recouvrement de quarante euros. Lorsque les frais de recouvrement exposés sont supérieurs à ce
+  montant forfaitaire, une indemnisation complémentaire peut être réclamée sur justificatifs.</p>
+
+  <h2>8. Droit de rétractation</h2>
+  <p>Le contrat étant conclu entre professionnels et l'objet de l'abonnement — la recherche de
+  clients pour l'activité exercée — entrant dans le champ de l'activité principale du Partenaire,
+  le droit de rétractation prévu au code de la consommation n'est pas applicable. Il est rappelé que
+  la formule d'essai gratuite permet d'apprécier le service sans engagement préalable.</p>
+
+  <h2>9. Obligations du Partenaire</h2>
+  <ul class="checks">
+    <li>Maintenir en vigueur pendant toute la durée de l'abonnement les assurances et habilitations
+        déclarées, et signaler sans délai toute modification.</li>
+    <li>Traiter les demandes transmises avec diligence, et informer le prestataire lorsqu'il ne
+        souhaite pas ou ne peut pas y donner suite.</li>
+    <li>Tenir à jour ses capacités réelles, sa zone d'intervention et ses disponibilités.</li>
+    <li>N'utiliser le label et les éléments d'identité du réseau que pendant la durée de
+        l'abonnement, et cesser tout usage à son terme.</li>
+    <li>Traiter en direct et sous sa seule responsabilité la relation contractuelle avec le client
+        qui lui est présenté.</li>
+  </ul>
+
+  <h2>10. Obligations du prestataire</h2>
+  <ul class="checks">
+    <li>Qualifier les demandes avant transmission et ne les adresser qu'à un nombre restreint de
+        partenaires, tel qu'indiqué sur la page partenaires.</li>
+    <li>Ne pas publier d'annuaire des partenaires et ne communiquer les coordonnées du Partenaire
+        qu'au client concerné par un projet précis.</li>
+    <li>Ne pas saturer une zone au-delà de la densité annoncée pour un même métier.</li>
+    <li>Restituer, avant l'échéance, le relevé des demandes transmises au Partenaire.</li>
+  </ul>
+
+  <h2>11. Confidentialité</h2>
+  <p>Chaque partie s'engage à ne pas divulguer les informations d'ordre commercial, technique ou
+  tarifaire portées à sa connaissance à l'occasion du présent contrat. Le prestataire ne publie ni
+  ne commercialise le fichier de ses partenaires.</p>
+
+  <h2>12. Données personnelles</h2>
+  <p>Les traitements mis en œuvre, leurs finalités, leurs durées de conservation et les modalités
+  d'exercice des droits sont décrits dans la <a href="confidentialite.html">politique de
+  confidentialité</a>. Les données transmises au titre d'une demande sont communiquées aux seuls
+  partenaires sollicités pour ce projet.</p>
+
+  <h2>13. Suspension et résiliation</h2>
+  <p>Le prestataire peut suspendre l'accès, après mise en demeure restée sans effet pendant quinze
+  jours, en cas de manquement grave du Partenaire, notamment la caducité d'une assurance
+  obligatoire, une déclaration de capacités manifestement inexacte ou des manquements répétés envers
+  les clients présentés. Le Partenaire peut résilier à tout moment ; l'abonnement étant souscrit pour
+  une durée ferme, la résiliation anticipée n'ouvre pas droit à remboursement, sauf manquement
+  imputable au prestataire.</p>
+
+  <h2>14. Responsabilité</h2>
+  <p>Le prestataire n'est pas partie au contrat conclu entre le Partenaire et son client. Il ne
+  peut être tenu responsable de l'exécution des travaux, des délais, de la qualité des ouvrages, des
+  sinistres, ni du défaut de paiement du client. Sa responsabilité, toutes causes confondues, ne
+  peut excéder le montant de l'abonnement effectivement réglé au titre de la période en cours.</p>
+
+  <h2>15. Force majeure</h2>
+  <p>Aucune partie ne peut être tenue responsable d'un manquement résultant d'un événement de force
+  majeure au sens de l'article 1218 du code civil.</p>
+
+  <h2>16. Droit applicable et différends</h2>
+  <p>Les présentes sont soumises au droit français. En cas de différend, les parties s'efforcent de
+  trouver une solution amiable. À défaut d'accord, le litige relève de la compétence exclusive du
+  tribunal de commerce de Perpignan, y compris en cas de pluralité de défendeurs ou d'appel en
+  garantie.</p>
+
+  <p style="margin-top:2.4em;font-size:.9rem;color:var(--tx-3)">Version en vigueur au
+  ${esc(new Date().toISOString().slice(0, 10))}.</p>
+
+</article></div></section>`
+  });
+}
+
+module.exports = { villes, tarifs, glossaire, reglementation, comment, faqPage, credits, legal, cgv, plan };

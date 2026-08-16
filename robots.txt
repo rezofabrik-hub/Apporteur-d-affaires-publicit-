@@ -5,6 +5,7 @@
 User-agent: *
 Allow: /
 Disallow: /merci.html
+Disallow: /paiement.html
 
 # OpenAI — alimente ChatGPT
 User-agent: GPTBot
