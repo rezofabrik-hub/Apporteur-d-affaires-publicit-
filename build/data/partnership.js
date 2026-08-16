@@ -27,12 +27,12 @@ module.exports = {
     label: "Offre de lancement",
     headline: "Les 2 premiers mois à 0 €",
     sub: "Le réseau se constitue : les premières entreprises inscrites reçoivent les demandes de leur zone pendant deux mois, gratuitement et sans engagement.",
-    detail: "Vous jugez sur pièces. À l'issue des deux mois, vous choisissez votre abonnement — 6 mois ou 12 mois, au tarif de lancement — ou vous ne donnez pas suite, sans frais ni justification.",
+    detail: "Vous jugez sur pièces. À l'issue des deux mois, vous choisissez votre abonnement — 6 mois ou 12 mois — ou vous ne donnez pas suite, sans frais ni justification.",
     conditions: [
       "Offre réservée aux premières entreprises inscrites, dans la limite des places par zone et par métier",
       "Deux mois à 0 €, sans prélèvement et sans carte bancaire demandée",
       "Aucune commission sur les affaires signées, pendant les deux mois comme après",
-      "À l'issue des deux mois, vous choisissez entre l'abonnement 6 mois et l'abonnement 12 mois, au tarif de lancement en vigueur jusqu'à la date anniversaire",
+      "À l'issue des deux mois, vous choisissez entre l'abonnement 6 mois et l'abonnement 12 mois",
       "Aucun basculement automatique : sans accord explicite de votre part, l'accès s'arrête",
       "Contrat, accès et tarif bloqués sur la durée souscrite : six mois ou un an selon la formule"
     ],
@@ -78,7 +78,14 @@ module.exports = {
      La date se règle dans build/data/site.js (`launchDate` et `anniversary`).
   --------------------------------------------------------------------- */
   launchPrice: {
-    active: true,
+    /* Volontairement inactif : la hausse ne s'annonce pas sur le site. Elle est
+       communiquée individuellement à chaque partenaire, deux mois avant la fin
+       de son contrat. Annoncer une augmentation à quelqu'un qui découvre
+       l'offre le fait hésiter ; l'annoncer à un partenaire qui a déjà mesuré
+       ce que le réseau lui rapporte est une tout autre conversation.
+       Les montants cibles restent consignés dans `nextPrice` sur chaque
+       formule — mémoire interne, jamais affichée. */
+    active: false,
     label: "Tarif de lancement",
     headline: "Tarif de lancement, bloqué sur toute la durée souscrite",
     note: "Les montants ci-dessous sont les tarifs de lancement du réseau ; ils seront relevés à la date anniversaire. Le tarif que vous obtenez aujourd'hui, comme votre accès au réseau, est bloqué pour toute la durée souscrite — six mois ou un an selon la formule — hausse comprise."
@@ -90,7 +97,7 @@ module.exports = {
      lui qui sert de base à tous les calculs d'amortissement ci-dessous. */
   currency: "€",
   priceSuffix: "TTC",
-  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € pour l'abonnement 6 mois et de 742 € pour l'abonnement 12 mois. Tarifs de lancement : ils passeront à 690 € et 1 199 € à la date anniversaire du réseau. Sans reconduction tacite : vous décidez du renouvellement.",
+  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € pour l'abonnement 6 mois et de 742 € pour l'abonnement 12 mois. Contrat, accès et tarif sont bloqués sur toute la durée souscrite. Sans reconduction tacite : vous décidez du renouvellement.",
 
   /* ---------------------------------------------------------------------
      Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
@@ -217,7 +224,7 @@ module.exports = {
     title: "Combien faut-il signer pour rembourser l'abonnement ?",
     lead: "La question n'est pas ce que coûte l'abonnement, mais à partir de quel moment il est remboursé. Voici le calcul, fait avec nos propres grilles tarifaires et une hypothèse de marge délibérément prudente.",
     threshold: "742 €",
-    thresholdNote: "Coût réel de l'abonnement 12 mois : 890 € TTC, dont 148 € de TVA que vous récupérez. C'est donc 742 € qu'il faut couvrir, soit environ 2 100 € de chiffre d'affaires à 35 % de marge brute. Au tarif d'après la date anniversaire, il faudrait couvrir 890 € et signer 2 550 €.",
+    thresholdNote: "Coût réel de l'abonnement 12 mois : 890 € TTC, dont 148 € de TVA que vous récupérez. C'est donc 742 € qu'il faut couvrir, soit environ 2 100 € de chiffre d'affaires à 35 % de marge brute.",
     head: ["Une seule affaire de ce type", "Budget courant", "Marge brute à 35 %", "Abonnement 12 mois remboursé ?"],
     rows: [
       ["Caisson lumineux LED simple face 2 m", "900 – 2 200 €", "315 – 770 €", "Oui sur le haut de la fourchette"],
@@ -286,9 +293,8 @@ module.exports = {
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
     { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est précisément la raison d'être de la formule Découverte : deux mois à zéro euro vous permettent de mesurer le flux réel de votre secteur avant d'engager le moindre euro." },
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
-    { q: "Qu'est-ce que le tarif de lancement ?", a: "Ce sont les prix pratiqués pendant la constitution du réseau : 490 € pour six mois et 890 € pour douze. À la date anniversaire du réseau, ils passeront à 690 € et 1 199 €. Nous l'annonçons à l'avance plutôt que de barrer un prix que nous n'avons jamais pratiqué : le tarif que vous obtenez aujourd'hui est le vrai, et il reste acquis pour toute la durée de votre abonnement." },
-    { q: "Mon tarif peut-il augmenter en cours d'abonnement ?", a: "Non. Le contrat, l'accès au réseau et le tarif sont bloqués sur toute la durée que vous avez souscrite : six mois pour la formule semestrielle, un an pour la formule annuelle. La hausse du 16 août ne s'applique qu'aux nouvelles souscriptions et aux renouvellements postérieurs — jamais à un abonnement en cours. Un abonnement d'un an signé la veille de la hausse court donc au tarif de lancement jusqu'à son terme." },
-    { q: "Le service de pose suit-il le même tarif de lancement ?", a: "Oui, aux mêmes montants et avec la même hausse programmée à la date anniversaire. Les deux offres suivent la même grille depuis le départ." },
+    { q: "Mon tarif peut-il augmenter en cours d'abonnement ?", a: "Non. Le contrat, l'accès au réseau et le tarif sont bloqués sur toute la durée que vous avez souscrite : six mois pour la formule semestrielle, un an pour la formule annuelle. Le prix inscrit à votre adhésion est celui que vous payez jusqu'au terme, sans révision. Toute évolution éventuelle du tarif vous serait communiquée deux mois avant l'échéance, et ne s'appliquerait qu'à un renouvellement que vous seriez libre de refuser." },
+    { q: "Le service de pose suit-il la même grille tarifaire ?", a: "Oui, aux mêmes montants et dans les mêmes conditions. Les deux offres suivent la même grille depuis le départ." },
     { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "La durée d'engagement et le prix, rien d'autre. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses — un partenaire qui paie est un partenaire servi. L'engagement annuel se récompense donc sur le tarif : 890 € contre 980 € pour deux semestres, soit 90 € d'économie." },
     { q: "Puis-je passer du 6 mois au 12 mois ?", a: "Oui, à tout moment : la différence est calculée au prorata du temps restant, sans frais de changement. Comme les prestations sont les mêmes, ce choix ne porte que sur la durée et sur le rythme de renouvellement qui vous arrange." },
     { q: "Prenez-vous une commission en plus de l'abonnement ?", a: "Non, jamais. L'abonnement est la seule contrepartie. Vous facturez le client en direct, au prix que vous fixez, et rien ne nous revient sur le chantier." },

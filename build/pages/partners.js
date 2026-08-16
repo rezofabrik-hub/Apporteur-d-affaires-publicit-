@@ -109,9 +109,7 @@ module.exports = function partnersPage(cities) {
       <p class="lead mx-auto"><strong>Les deux abonnements donnent exactement les mêmes avantages.</strong>
       Nous ne pratiquons pas les formules à deux vitesses, où celui qui s'engage moins longtemps
       reçoit moins de demandes. Ce qui change, c'est le tarif : l'année revient à
-      <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie.
-      Les deux montants sont des tarifs de lancement : ils passeront à 690 € et 1 199 € à la
-      date anniversaire du réseau.</p>
+      <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie.</p>
     </div>
     ${T.launchPriceBanner()}
     <div class="plans">${planCards}</div>
