@@ -245,13 +245,43 @@
         }
         if (CFG.web3formsKey) data.access_key = CFG.web3formsKey;
 
+        /* Champs de service attendus par FormSubmit. Ils commencent tous par
+           un souligné et ne sont jamais affichés dans l'e-mail reçu.
+           `_captcha: false` évite d'imposer un reCAPTCHA au visiteur : le
+           formulaire compte déjà cinq étapes, un robot n'irait pas au bout. */
+        if (/formsubmit\.co/.test(endpoint)) {
+          data._subject = (form.dataset.kind === "pro"
+            ? "Candidature partenaire — "
+            : "Demande de devis — ") + (data.entreprise || data.nom || "site web");
+          data._template = "table";
+          data._captcha = "false";
+          if (data.email) data._replyto = data.email;
+        }
+
+        /* Délai de garde. Sans lui, un réseau qui ne répond pas — 4G faible,
+           tunnel, point de collecte indisponible — laisse le visiteur devant
+           « Envoi en cours… » indéfiniment : il ferme la page et la demande
+           est perdue. Au-delà de douze secondes on abandonne et on bascule
+           sur le repli e-mail, qui lui aboutit toujours. */
+        var ctrl = window.AbortController ? new AbortController() : null;
+        var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 12000);
+
         fetch(endpoint, {
           method: "POST",
           headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify(data)
+          body: JSON.stringify(data),
+          signal: ctrl ? ctrl.signal : undefined
         })
-          .then(function (r) { done(r.ok); })
-          .catch(function () { done(false); });
+          /* FormSubmit peut répondre 200 avec `success: false` — adresse non
+             confirmée, quota atteint. Se fier au seul code HTTP enverrait le
+             visiteur sur la page de remerciement alors que rien n'est parti. */
+          .then(function (r) {
+            return r.json().then(function (j) {
+              return r.ok && (j.success === undefined || j.success === true || j.success === "true");
+            }, function () { return r.ok; });
+          })
+          .then(function (r) { clearTimeout(timer); done(r); })
+          .catch(function () { clearTimeout(timer); done(false); });
       });
     });
   }

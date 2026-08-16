@@ -18,9 +18,21 @@ window.RF_CONFIG = {
      Tant que la valeur reste vide, les formulaires basculent automatiquement
      sur le mode secours : ouverture du logiciel de messagerie avec un e-mail
      pré-rempli, et sauvegarde locale de la demande (aucune donnée perdue).
+
+     ⚠️  ACTIVATION — À FAIRE UNE SEULE FOIS
+     FormSubmit exige une confirmation avant de délivrer quoi que ce soit :
+     à la toute première demande reçue, un e-mail « Confirm your email »
+     arrive sur l'adresse ci-dessous. Tant que le lien qu'il contient n'est
+     pas cliqué, AUCUNE demande n'est transmise. Vérifiez les indésirables :
+     ce message y atterrit souvent.
   --------------------------------------------------------------------- */
-  endpointClient: "",   // demandes de devis (particuliers / entreprises)
-  endpointPro: "",      // candidatures des professionnels partenaires
+  /* FormSubmit retenu parce qu'il ne demande ni compte, ni clé d'API, ni
+     carte bancaire : l'adresse de destination est l'endpoint. Le jour où le
+     volume justifie un outil plus complet — accusé de réception automatique,
+     export CSV, connexion à un CRM — Formspree ou un Worker Cloudflare
+     prennent le relais en changeant ces deux lignes, rien d'autre. */
+  endpointClient: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
+  endpointPro: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
 
   /* Champ requis par Web3Forms uniquement (sinon laisser vide) */
   web3formsKey: "",
