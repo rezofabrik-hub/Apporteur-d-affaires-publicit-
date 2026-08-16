@@ -27,8 +27,24 @@
     $$(".drop").forEach(function (drop) {
       var btn = drop.querySelector("button");
       if (!btn) return;
-      var close = function () { drop.dataset.open = "false"; btn.setAttribute("aria-expanded", "false"); };
-      var open  = function () { drop.dataset.open = "true";  btn.setAttribute("aria-expanded", "true"); };
+      /* Fermeture différée. Même avec le pont CSS, un menu qui se referme à
+         l'instant précis où le pointeur sort est impitoyable : il suffit de
+         frôler le bord en visant un lien pour tout perdre et devoir
+         recommencer. Un délai de 180 ms rend le geste tolérant sans jamais
+         donner l'impression que le menu s'attarde. */
+      var minuteur = null;
+      var close = function () {
+        clearTimeout(minuteur);
+        drop.dataset.open = "false"; btn.setAttribute("aria-expanded", "false");
+      };
+      var closeSoon = function () {
+        clearTimeout(minuteur);
+        minuteur = setTimeout(close, 180);
+      };
+      var open  = function () {
+        clearTimeout(minuteur);
+        drop.dataset.open = "true";  btn.setAttribute("aria-expanded", "true");
+      };
 
       btn.addEventListener("click", function (e) {
         e.stopPropagation();
@@ -36,7 +52,7 @@
       });
       if (window.matchMedia("(hover: hover)").matches) {
         drop.addEventListener("mouseenter", open);
-        drop.addEventListener("mouseleave", close);
+        drop.addEventListener("mouseleave", closeSoon);
       }
       drop.addEventListener("keydown", function (e) { if (e.key === "Escape") { close(); btn.focus(); } });
       document.addEventListener("click", function (e) { if (!drop.contains(e.target)) close(); });

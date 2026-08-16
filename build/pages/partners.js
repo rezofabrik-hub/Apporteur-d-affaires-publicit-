@@ -68,8 +68,6 @@ module.exports = function partnersPage(cities) {
     </div>
     <div class="pill-row">
       <span class="pill">${esc(site.experienceLine)}</span>
-      <span class="pill">Tarif bloqué sur la durée</span>
-      <span class="pill">Sans droit d'entrée</span>
       <span class="pill">Sans commission</span>
       <span class="pill">Sans reconduction tacite</span>
       <span class="pill">Vous facturez en direct</span>

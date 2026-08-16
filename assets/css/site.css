@@ -294,6 +294,17 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--sec) 0; }
   opacity: 0; visibility: hidden; transition: opacity .18s, transform .18s, visibility .18s;
 }
 .drop[data-open="true"] .drop-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+
+/* Pont invisible entre le bouton et le panneau. Les neuf pixels qui les
+   séparent n'appartiennent ni à l'un ni à l'autre : la souris qui descend
+   vers un lien les traverse, `mouseleave` se déclenche sur .drop, et le menu
+   se referme avant d'avoir été atteint. Mesuré sur quatre trajectoires, il se
+   fermait à chaque fois. Ce pseudo-élément rend l'espace solidaire du menu —
+   il n'intercepte rien quand le menu est fermé, puisqu'il hérite alors de sa
+   visibilité. */
+.drop-menu::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -12px; height: 12px;
+}
 .drop-menu a {
   display: block; padding: 11px 13px; border-radius: var(--r); text-decoration: none;
 }
