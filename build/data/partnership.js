@@ -81,17 +81,25 @@ module.exports = {
       duration: "6 mois",
       price: "490",
       priceNote: "soit 82 € par mois TTC — 408 € HT à votre charge réelle",
-      pitch: "Pour poursuivre après les deux mois d'essai sans engager une année entière.",
-      audience: "Artisan, indépendant, structure de 1 à 3 personnes",
+      pitch: "Tous les avantages du réseau, sur un engagement de six mois seulement.",
+      audience: "Artisan, indépendant ou entreprise qui préfère ne pas s'engager sur l'année",
+      /* Prestations volontairement identiques à celles de l'abonnement annuel :
+         un partenaire qui paie est un partenaire servi, quelle que soit la
+         durée qu'il a choisie. Seule la durée d'engagement les distingue. */
       features: [
-        "Tout ce que comprend la formule Découverte",
-        "Référencement maintenu sans interruption",
-        "Zone d'intervention d'un département",
-        "Jusqu'à 2 métiers déclarés",
+        "Référencement complet dans l'annuaire du réseau",
+        "Réception des demandes correspondant à vos capacités déclarées",
+        "Zone d'intervention : jusqu'à 3 départements",
+        "Métiers déclarés illimités",
+        "Priorité d'envoi sur les demandes de votre spécialité",
+        "Page dédiée sur le site, indexée par les moteurs de recherche",
+        "Mise en avant sur les pages villes de votre zone",
+        "Fiche entreprise avec logo, photos et coordonnées",
         "Bilan des demandes transmises à mi-parcours",
+        "Accompagnement sur les dossiers multi-sites et les appels d'offres",
         "Aucune commission sur les affaires signées"
       ],
-      notIncluded: ["Mise en avant prioritaire", "Page dédiée sur le site"]
+      notIncluded: []
     },
     {
       id: "annuel",
@@ -101,15 +109,17 @@ module.exports = {
       priceNote: "soit 82,50 € par mois TTC — 825 € HT à votre charge réelle",
       featured: true,
       badge: "Le plus choisi",
-      pitch: "La formule de référence pour une entreprise structurée qui veut un flux régulier sur l'année.",
-      audience: "Enseigniste, imprimeur, poseur, agence, structure de 3 à 20 personnes",
+      pitch: "Les mêmes avantages, sur douze mois : une seule échéance à gérer dans l'année.",
+      audience: "Enseigniste, imprimeur, poseur ou agence qui veut un flux installé sur l'année",
       features: [
-        "Tout ce que comprend l'abonnement 6 mois",
-        "Zone d'intervention étendue : jusqu'à 3 départements",
+        "Référencement complet dans l'annuaire du réseau",
+        "Réception des demandes correspondant à vos capacités déclarées",
+        "Zone d'intervention : jusqu'à 3 départements",
         "Métiers déclarés illimités",
         "Priorité d'envoi sur les demandes de votre spécialité",
         "Page dédiée sur le site, indexée par les moteurs de recherche",
         "Mise en avant sur les pages villes de votre zone",
+        "Fiche entreprise avec logo, photos et coordonnées",
         "Bilan semestriel des demandes transmises",
         "Accompagnement sur les dossiers multi-sites et les appels d'offres",
         "Aucune commission sur les affaires signées"
@@ -225,7 +235,8 @@ module.exports = {
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
     { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est précisément la raison d'être de la formule Découverte : deux mois à zéro euro vous permettent de mesurer le flux réel de votre secteur avant d'engager le moindre euro." },
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
-    { q: "Puis-je passer du 6 mois au 12 mois ?", a: "Oui, à tout moment : la différence est calculée au prorata du temps restant, sans frais de changement. Le passage de l'abonnement 12 mois vers le 6 mois s'effectue en revanche à l'échéance." },
+    { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "Uniquement la durée d'engagement. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses : un partenaire qui paie est un partenaire servi, et rien ne justifie de moins bien traiter celui qui préfère s'engager sur six mois." },
+    { q: "Puis-je passer du 6 mois au 12 mois ?", a: "Oui, à tout moment : la différence est calculée au prorata du temps restant, sans frais de changement. Comme les prestations sont les mêmes, ce choix ne porte que sur la durée et sur le rythme de renouvellement qui vous arrange." },
     { q: "Prenez-vous une commission en plus de l'abonnement ?", a: "Non, jamais. L'abonnement est la seule contrepartie. Vous facturez le client en direct, au prix que vous fixez, et rien ne nous revient sur le chantier." },
     { q: "Acceptez-vous les auto-entrepreneurs ?", a: "Oui, dès lors que le SIRET est actif et que les assurances sont à jour. La taille n'est pas un critère de sélection ; la fiabilité et l'adéquation des capacités en sont. Un poseur indépendant bien équipé et réactif vaut mieux qu'une structure importante mais indisponible." },
     { q: "Que se passe-t-il si un partenaire ne donne pas satisfaction ?", a: "Nous suivons les retours clients après chaque affaire transmise. Un partenaire dont les litiges se répètent est retiré du réseau sans remboursement du temps restant, conformément aux conditions d'adhésion. C'est ce qui protège la crédibilité du réseau — et donc la vôtre." }
