@@ -45,6 +45,12 @@
 - [Création de site internet](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/creation-site-internet.html) : Site vitrine, e-commerce, refonte, hébergement, maintenance
 - [Référencement naturel](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/referencement-naturel.html) : SEO local, technique, contenu, fiche Google, campagnes
 
+## Graphisme — logo, charte, choix d'un graphiste
+
+- [Création de logo et identité visuelle](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/creation-logo-identite-visuelle.html) : ce qui doit être livré (fichiers vectoriels, versions monochrome et négatif, références Pantone/CMJN/RVB) et la cession de droits, qui doit être écrite — payer une création ne suffit pas à en acquérir les droits en droit français.
+- [Charte graphique](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/charte-graphique.html) : ce que contient le document, et la distinction avec le cahier technique d'enseigne.
+- [Trouver un graphiste](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/trouver-un-graphiste.html) : différences entre indépendant, studio et agence, tarifs journaliers, ce qu'il faut fournir pour obtenir un devis juste.
+
 ## Secteurs d'activité
 
 - [Pharmacie & parapharmacie](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-pharmacie.html)

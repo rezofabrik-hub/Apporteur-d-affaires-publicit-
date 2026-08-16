@@ -20,6 +20,7 @@ const forms = require("./pages/forms");
 const misc = require("./pages/misc");
 const sectorPage = require("./pages/sector");
 const serviceCityPage = require("./pages/servicecity");
+const graphisme = require("./pages/graphisme");
 const partnersPage = require("./pages/partners");
 const posePage = require("./pages/pose");
 const projectPage = require("./pages/project");
@@ -207,6 +208,12 @@ function llms(base) {
 
 ${services.map((s) => `- [${s.nav}](${u(s.slug + ".html")}) : ${s.navDesc}`).join("\n")}
 
+## Graphisme — logo, charte, choix d'un graphiste
+
+- [Création de logo et identité visuelle](${u("creation-logo-identite-visuelle.html")}) : ce qui doit être livré (fichiers vectoriels, versions monochrome et négatif, références Pantone/CMJN/RVB) et la cession de droits, qui doit être écrite — payer une création ne suffit pas à en acquérir les droits en droit français.
+- [Charte graphique](${u("charte-graphique.html")}) : ce que contient le document, et la distinction avec le cahier technique d'enseigne.
+- [Trouver un graphiste](${u("trouver-un-graphiste.html")}) : différences entre indépendant, studio et agence, tarifs journaliers, ce qu'il faut fournir pour obtenir un devis juste.
+
 ## Secteurs d'activité
 
 ${sectors.map((s) => `- [${s.nav}](${u("signaletique-" + s.slug + ".html")})`).join("\n")}
@@ -292,6 +299,12 @@ function run() {
 
   write("devis.html", forms.devis(cities));
   write("entraide-partenaires.html", forms.entraide(cities));
+
+  /* Volets du métier graphique déclinés par intention de recherche : on ne
+     cherche pas « maquette », on cherche « création de logo », « charte
+     graphique » ou « trouver un graphiste ». Pages transverses, jamais
+     croisées avec les villes — ce métier n'a pas d'ancrage local. */
+  graphisme.PAGES.forEach((g) => write(g.slug + ".html", graphisme.page(g, cities)));
   write("collectivites.html", collectivitesPage(cities));
   write("partenaires.html", partnersPage(cities));
   write("service-pose.html", posePage(cities));

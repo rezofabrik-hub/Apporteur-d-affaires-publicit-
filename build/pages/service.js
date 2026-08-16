@@ -39,6 +39,36 @@ ${svc.sections.map((s) => `<li><a href="#${slugify(s.h2)}">${esc(s.h2)}</a></li>
 
   const related = services.filter((s) => (svc.related || []).includes(s.slug));
 
+  /* Volets détaillés d'un métier, déclinés par intention de recherche plutôt
+     que par territoire. Le graphisme est le seul concerné pour l'instant :
+     on ne cherche pas « maquette », on cherche « création de logo » ou
+     « charte graphique ». La page métier reste le pivot et doit pointer vers
+     eux, sans quoi elle capte une requête qu'elle traite moins bien qu'une
+     page dédiée. */
+  let volets = [];
+  try {
+    volets = require("../data/graphisme")
+      .filter(() => svc.slug === "maquette-creation-graphique");
+  } catch (e) { volets = []; }
+
+  const voletsBloc = volets.length ? `
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Le détail du métier</span>
+      <h2>Trois volets traités à part</h2>
+      <p class="lead">Chacun répond à une question que les autres ne posent pas : à qui appartient
+      ce que vous payez, ce que contient une charte, et quel profil de graphiste correspond
+      réellement à votre besoin.</p>
+    </div>
+    <div class="grid g-3">
+      ${volets.map((v) => `<a class="card card-link" href="${v.slug}.html">
+        <div class="card-body"><h3>${esc(v.nav)}</h3><p>${esc(v.navDesc)}</p></div>
+      </a>`).join("")}
+    </div>
+  </div>
+</section>` : "";
+
   const body = `
 <section class="hero hero-in-page">
   <div class="hero-bg">${heroImg(svc.topic, 1, svc.h1)}</div>
@@ -149,6 +179,7 @@ ${svc.sections.map((s) => `<li><a href="#${slugify(s.h2)}">${esc(s.h2)}</a></li>
     <div class="grid g-4">${T.serviceCards(related)}</div>
   </div>
 </section>
+${voletsBloc}
 
 <section class="sec bg-2">
   <div class="wrap">${T.ctaDouble()}</div>
