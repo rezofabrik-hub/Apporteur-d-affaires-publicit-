@@ -150,10 +150,20 @@ Par ordre d'impact :
 
 ## Déploiement
 
-### GitHub Pages (automatique)
+### GitHub Pages — **le site est en ligne**
 
-Le workflow `.github/workflows/deploy-pages.yml` publie le site à chaque push
-sur `main`. Il active GitHub Pages tout seul au premier passage.
+**https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/**
+
+⚠️ L'URL est sensible à la casse : `Apporteur` prend un **A majuscule**.
+
+Le workflow `.github/workflows/deploy-pages.yml` régénère les pages puis publie
+l'ensemble sur la branche `gh-pages` à chaque push sur `main`. Aucune action
+manuelle n'est nécessaire.
+
+Pour brancher votre propre nom de domaine : ajoutez-le dans
+*Settings → Pages → Custom domain*, créez un fichier `CNAME` à la racine
+contenant le domaine, puis mettez à jour `domain` dans `build/data/site.js`
+et relancez le build.
 
 ### Cloudflare Pages / Workers
 

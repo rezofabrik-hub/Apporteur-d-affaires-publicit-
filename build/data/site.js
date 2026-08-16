@@ -8,7 +8,7 @@ module.exports = {
   /* Adresse publique du site. Utilisée pour les URL canoniques, le sitemap
      et les balises Open Graph. À remplacer par votre nom de domaine dès qu'il
      est en place (ex. "https://www.rezofabrik.fr"), puis relancer le build. */
-  domain: "https://rezofabrik-hub.github.io/apporteur-d-affaires-publicit-",
+  domain: "https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-",
   lang: "fr-FR",
 
   /* Positionnement (repris dans les balises et le contenu) */
