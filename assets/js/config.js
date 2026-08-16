@@ -19,36 +19,40 @@ window.RF_CONFIG = {
      sur le mode secours : ouverture du logiciel de messagerie avec un e-mail
      pré-rempli, et sauvegarde locale de la demande (aucune donnée perdue).
 
-     ⚠️  ACTIVATION — À FAIRE UNE SEULE FOIS, SUR L'UNE DES DEUX ADRESSES
-     FormSubmit exige une confirmation avant de délivrer quoi que ce soit :
-     un e-mail intitulé « Activate Form », expédié par no-reply@formsubmit.co,
-     arrive sur l'adresse visée. Tant que le lien qu'il contient n'est pas
-     cliqué, l'endpoint répond « This form needs Activation » et AUCUNE
-     demande n'est transmise.
+     ACTIVATION — FAITE. Elle l'a été le 16 août 2026 sur rezofabrik@gmail.com.
+     FormSubmit exige une confirmation avant de délivrer quoi que ce soit : un
+     e-mail « Activate Form » arrive sur l'adresse visée, et tant que son lien
+     n'est pas cliqué l'endpoint répond « This form needs Activation » sans
+     rien transmettre. Deux points à retenir pour la suite :
 
-     Où chercher cet e-mail dans Gmail — il n'arrive presque jamais dans
-     l'onglet principal :
-       · onglet « Promotions » et onglet « Mises à jour » ;
-       · dossier « Spam » ET dossier « Corbeille » ;
-       · barre de recherche : formsubmit  (puis, si rien : in:anywhere formsubmit)
-     Le lien reste valable, il n'expire pas.
+     · L'activation vaut pour le DOMAINE depuis lequel la demande est postée.
+       Au passage sur rezoenseignes.fr, prévoir une nouvelle confirmation :
+       poster une fois depuis le nouveau domaine déclenche l'e-mail, un clic
+       et c'est réglé. Le vérifier AVANT d'annoncer le domaine, pas après.
+     · L'e-mail d'activation n'arrive presque jamais dans l'onglet principal
+       de Gmail. Le retrouver par : in:anywhere formsubmit
   --------------------------------------------------------------------- */
   /* FormSubmit retenu parce qu'il ne demande ni compte, ni clé d'API, ni
      carte bancaire : l'adresse de destination est l'endpoint. Le jour où le
      volume justifie un outil plus complet — accusé de réception automatique,
      export CSV, connexion à un CRM — Formspree ou un Worker Cloudflare
      prennent le relais en changeant ces lignes, rien d'autre. */
-  endpointClient: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
-  endpointPro: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
+  /* ADRESSE ACTIVE — vérifiée le 16 août 2026 : l'endpoint répond
+     {"success":"true"} et le message arrive bien dans la boîte.
+     C'est elle qui reçoit les demandes, elle est donc en tête : l'ordre
+     compte, chaque adresse non activée coûte un aller-retour réseau avant
+     que la suivante soit essayée. */
+  endpointClient: "https://formsubmit.co/ajax/rezofabrik@gmail.com",
+  endpointPro: "https://formsubmit.co/ajax/rezofabrik@gmail.com",
 
-  /* Adresse de repli, essayée automatiquement si la première n'est pas
-     encore activée. Les deux boîtes sont relevées par la même personne :
-     confirmer l'une OU l'autre suffit à mettre le formulaire en service, et
-     confirmer les deux met le site à l'abri d'une boîte saturée. Le jour où
-     l'adresse principale est activée, elle reprend la main toute seule —
-     l'adresse de repli n'est sollicitée qu'en cas d'échec. */
-  endpointClientAlt: "https://formsubmit.co/ajax/rezofabrik@gmail.com",
-  endpointProAlt: "https://formsubmit.co/ajax/rezofabrik@gmail.com",
+  /* Adresse de repli, essayée automatiquement si la première échoue.
+     commercial-rezofabrik@gmail.com n'est pas encore activée côté FormSubmit
+     (réponse « This form needs Activation »). Elle reste câblée ici : le jour
+     où le lien d'activation est cliqué, elle devient un vrai second filet
+     sans qu'aucune ligne ne change. Pour en faire l'adresse principale,
+     il suffira d'intervertir les deux blocs. */
+  endpointClientAlt: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
+  endpointProAlt: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
 
   /* Champ requis par Web3Forms uniquement (sinon laisser vide) */
   web3formsKey: "",
