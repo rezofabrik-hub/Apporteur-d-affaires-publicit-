@@ -1421,3 +1421,39 @@ td { color: var(--tx-2); }
 }
 .c-fiche small { color: var(--tx-3); }
 .c-fiche.off { opacity: .5; }
+
+
+/* ---------- 36. Confort tactile : cibles trop petites au doigt ----------
+   Relevé sur 36 pages × 13 largeurs : trois familles d'éléments passaient
+   sous les 24 px de haut recommandés par le critère WCAG 2.5.8. Les liens
+   en ligne dans une phrase en sont explicitement exemptés — on ne touche
+   donc pas au corps de texte, seulement à ce qui se comporte comme un
+   bouton ou un élément de navigation. */
+
+/* Sommaire d'article : une liste de navigation, pas de la prose. Ses liens
+   se pointent au doigt, ils doivent donc respirer verticalement. */
+.toc a { display: inline-block; padding: 5px 0; }
+
+/* Lien du bandeau de lancement : formellement en ligne dans une phrase,
+   donc exempté — mais c'est un appel à l'action, et 16 px de haut sur un
+   téléphone se rate une fois sur trois. */
+.launch-strip a { display: inline-block; padding: 4px 0; }
+
+/* Cases à cocher de la console. Le libellé est cliquable et constitue la
+   vraie cible, mais 15 px de case sur un écran tenu à une main est
+   inconfortable même quand le doigt tombe à côté et que ça fonctionne. */
+.c-cases label { min-height: 28px; }
+.c-cases input { width: 18px; height: 18px; flex: 0 0 auto; }
+
+/* Lien seul dans son paragraphe : il n'est pas « dans une phrase », il se
+   comporte comme un bouton discret en fin de section. L'exemption ne
+   s'applique donc pas, et six pixels suffisent à le rendre confortable. */
+.prose p > a:only-child { display: inline-block; padding: 3px 0; }
+
+/* Liens en cellule de tableau — crédits photographiques surtout, qui en
+   aligne près de huit cents vers les auteurs et les licences. Ce sont des
+   liens de référence, cliqués au doigt comme les autres. La règle vise
+   toutes les cellules : sur les grilles tarifaires, qui n'en contiennent
+   pas, elle n'a aucun effet. Le `min-width` couvre les pseudonymes de deux
+   caractères, qui satisfaisaient la hauteur mais pas la largeur. */
+td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
