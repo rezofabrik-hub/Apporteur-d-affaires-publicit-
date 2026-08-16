@@ -9,6 +9,30 @@ const services = require("../data/services");
 const partnership = require("../data/partnership");
 const fabrication = require("../data/fabrication");
 
+/* -------------------------------------------------------- chiffres du site
+   La surface du site — nombre de villes, de départements, de métiers, de
+   secteurs — est citée dans des phrases de vente. Écrite en dur, elle est
+   fausse dès la mise à jour suivante, et c'est le genre de détail qu'un
+   partenaire vérifie avant de signer. On la calcule donc à partir des
+   données, et `chiffres()` substitue les jetons {villes}, {departements},
+   {metiers} et {secteurs} partout où ils apparaissent dans une page. */
+const CHIFFRES = (() => {
+  const cities = require("../data/cities");
+  let secteurs = 0;
+  try { secteurs = require("../data/sectors").length; } catch (e) {}
+  return {
+    villes: String(cities.length),
+    departements: String(new Set(cities.map((c) => c.dept)).size),
+    metiers: String(services.length),
+    secteurs: String(secteurs)
+  };
+})();
+
+const chiffres = (html) => String(html).replace(
+  /\{(villes|departements|metiers|secteurs)\}/g,
+  (m, k) => CHIFFRES[k] !== undefined && CHIFFRES[k] !== "0" ? CHIFFRES[k] : m
+);
+
 const IMG_DIR = path.join(__dirname, "..", "..", "assets", "img");
 let manifest = {};
 try { manifest = JSON.parse(fs.readFileSync(path.join(IMG_DIR, "manifest.json"), "utf8")); } catch (e) {}
@@ -277,6 +301,7 @@ function page(o) {
      acceptent des textes plus longs — d'où le titre complet en og:title. */
   const title = seoTitle(o.title);
   const desc = seoDesc(o.desc);
+  const corps = chiffres(o.body);
 
   return `<!DOCTYPE html>
 <html lang="fr">
@@ -312,7 +337,7 @@ ${schemas}
 ${header(o.active)}
 ${o.space === "pro" ? proBar() + launchBanner(true) : ""}
 <main id="main">
-${o.body}
+${corps}
 </main>
 ${footer(o.cities)}
 <script src="assets/js/config.js"></script>

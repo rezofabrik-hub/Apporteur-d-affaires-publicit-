@@ -69,6 +69,41 @@ module.exports = function cityPage(city, cities, index) {
     const m = cities.find((c) => c.name.toLowerCase() === n.toLowerCase());
     return m ? `<a href="enseigne-signaletique-${m.slug}.html">${esc(n)}</a>` : esc(n);
   });
+  /* Bloc « où nous intervenons ». Deux versions, et le choix ne relève pas
+     de la mise en page mais de l'honnêteté : les quartiers et les zones
+     d'activité d'une ville ne s'inventent pas, et une liste de noms de
+     quartiers approximatifs est ce qu'un habitant repère en premier. Les
+     villes rédigées à la main les portent ; les autres s'appuient sur ce
+     qui est vérifiable — leur statut administratif, leur département et
+     leurs communes limitrophes réelles. */
+  const ouBlock = (city.quartiers && city.quartiers.length)
+    ? `<h3>Quartiers couverts</h3>
+        <div class="tags">${city.quartiers.map((q) => `<span class="tag">${esc(q)}</span>`).join("")}</div>
+        <h3 style="margin-top:1.6em">Zones d'activité et pôles économiques</h3>
+        <div class="tags">${(city.zones || []).map((z) => `<span class="tag">${esc(z)}</span>`).join("")}</div>`
+    : `<p>${city.prefecture
+        ? `Préfecture ${FR.du(city.deptName)}, ${esc(city.name)} concentre les services de l'État,
+           les sièges administratifs et un commerce de centre-ville soumis, presque partout, à
+           l'avis de l'Architecte des Bâtiments de France. Deux registres s'y côtoient : la devanture
+           de centre ancien, où la lettre découpée et l'enseigne drapeau passent quand le caisson
+           plein est refusé, et les zones commerciales de périphérie, où la visibilité routière
+           commande tout.`
+        : `Comme partout, deux logiques cohabitent à ${esc(city.name)} : le commerce de centre-ville,
+           où la devanture se joue au détail et souvent sous contrainte réglementaire, et les zones
+           d'activité de périphérie, où la lisibilité à distance et la hauteur de pose priment. Le
+           réseau intervient sur les deux, avec des professionnels installés
+           ${esc(FR.dans(city.deptName))} ou dans les départements limitrophes.`}</p>
+        ${around.length ? `<h3 style="margin-top:1.6em">Communes desservies depuis ${esc(city.name)}</h3>
+        <div class="tags">${around.map((n) => {
+          const m = cities.find((c) => c.name.toLowerCase() === n.toLowerCase());
+          return m
+            ? `<a class="tag" href="enseigne-signaletique-${m.slug}.html">${esc(n)}</a>`
+            : `<span class="tag">${esc(n)}</span>`;
+        }).join("")}</div>
+        <p style="margin-top:1.2em;font-size:.9rem;color:var(--tx-3)">Communes les plus peuplées
+        dans un rayon d'une vingtaine de kilomètres. Un poseur ne facture pas le même déplacement
+        à 15 et à 80 kilomètres : c'est la raison d'être de cette liste.</p>` : ""}`;
+
   const communesBlock = around.length ? `
 <section class="sec bg-2" id="communes">
   <div class="wrap">
@@ -238,10 +273,7 @@ ${!city.pilot ? `<section class="sec">
         <p>Le réseau traite des projets dans l'ensemble des quartiers de ${esc(city.name)} et dans les
         zones d'activité de l'agglomération. Les professionnels sollicités sont choisis pour leur proximité,
         ce qui raccourcit les délais de pose et rend le service après-vente réellement praticable.</p>
-        <h3>Quartiers couverts</h3>
-        <div class="tags">${(city.quartiers || []).map((q) => `<span class="tag">${esc(q)}</span>`).join("")}</div>
-        <h3 style="margin-top:1.6em">Zones d'activité et pôles économiques</h3>
-        <div class="tags">${(city.zones || []).map((z) => `<span class="tag">${esc(z)}</span>`).join("")}</div>
+        ${ouBlock}
 
         <h2 id="qui">Qui fait appel à nous à ${esc(city.name)}</h2>
         <ul class="checks">

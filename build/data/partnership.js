@@ -245,7 +245,11 @@ module.exports = {
     ["Un budget fixe, connu à l'avance",
      "Un abonnement, pas une commission variable ni un achat de contacts à l'unité. Vous savez ce que la prospection vous coûte sur l'année, et chaque affaire supplémentaire améliore votre rentabilité au lieu de la diminuer."],
     ["Une visibilité que vous ne pourriez pas produire seul",
-     "Le site couvre 120 villes, 8 métiers et 12 secteurs d'activité. Votre fiche partenaire profite de cette surface, qu'une entreprise seule mettrait des années à construire."],
+     /* {villes}, {metiers} et {secteurs} sont substitués au rendu (voir
+        T.chiffres dans build/lib/tpl.js). Un chiffre écrit en dur dans une
+        phrase de vente vieillit mal et finit par être faux le jour où on le
+        montre à un partenaire — ici il suit les données. */
+     "Le site couvre {villes} villes et {departements} départements, {metiers} métiers et {secteurs} secteurs d'activité. Votre fiche partenaire profite de cette surface, qu'une entreprise seule mettrait des années à construire."],
     ["Un filtrage par capacités réelles",
      "Nacelle, CACES, parc de véhicules, machines d'atelier, hauteur d'intervention : votre profil technique détermine les demandes que vous recevez. Vous ne perdez pas de temps sur des chantiers que vous auriez refusés."],
     ["Vos données restent confidentielles",

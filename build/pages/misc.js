@@ -8,6 +8,11 @@ function villes(cities) {
   const crumbItems = [{ name: "Accueil", url: "index.html" }, { name: "Villes couvertes", url: "villes.html" }];
   const byRegion = {};
   cities.forEach((c) => { (byRegion[c.region] = byRegion[c.region] || []).push(c); });
+  /* Tri alphabétique à l'intérieur de chaque région. L'ordre du tableau
+     source suit l'ancienneté des pages, ce qui n'a aucun sens pour un
+     visiteur qui cherche sa ville des yeux avant de taper dans le champ. */
+  Object.values(byRegion).forEach((l) => l.sort((a, b) => a.name.localeCompare(b.name, "fr")));
+  const nbDepts = new Set(cities.map((c) => c.dept)).size;
 
   const body = `
 <section class="hero hero-in-page">
@@ -16,9 +21,10 @@ function villes(cities) {
     ${T.crumbs(crumbItems)}
     <span class="eyebrow">Couverture nationale</span>
     <h1>Enseigne et signalétique dans toute la France</h1>
-    <p class="lead">Le réseau s'appuie sur des ateliers, des imprimeurs et des poseurs locaux.
-    Trouvez votre ville ci-dessous, ou décrivez directement votre projet : nous sollicitons
-    des professionnels de proximité même dans les communes non listées.</p>
+    <p class="lead"><strong>${cities.length} villes</strong> et <strong>${nbDepts} départements</strong>
+    couverts, préfectures comprises. Le réseau s'appuie sur des ateliers, des imprimeurs et des
+    poseurs locaux : trouvez votre ville ci-dessous, ou décrivez directement votre projet — nous
+    sollicitons des professionnels de proximité même dans les communes non listées.</p>
   </div>
 </section>
 
@@ -33,7 +39,7 @@ function villes(cities) {
       <a href="devis.html">nous couvrons l'ensemble du territoire</a>.</p>
 
     ${Object.keys(byRegion).sort().map((r) => `<div class="city-group" style="margin-top:44px">
-      <h2 style="font-size:1.2rem">${esc(r)}</h2>
+      <h2 style="font-size:1.2rem">${esc(r)} <span style="font-weight:500;color:var(--tx-3);font-size:.85rem">${byRegion[r].length} ville${byRegion[r].length > 1 ? "s" : ""}</span></h2>
       <div class="city-grid">
         ${byRegion[r].map((c) => `<a class="city-chip" href="enseigne-signaletique-${c.slug}.html"
           data-search="${attr(c.name + " " + c.dept + " " + c.deptName + " " + c.region + " " + c.cp)}">
@@ -48,9 +54,10 @@ function villes(cities) {
     <div class="sec-head">
       <span class="eyebrow">Votre ville n'est pas listée ?</span>
       <h2>Nous intervenons partout, y compris hors des grandes agglomérations</h2>
-      <p class="lead">Les pages ci-dessus correspondent aux villes où le réseau est déjà solidement
-      implanté. Pour toute autre commune, nous sollicitons directement des professionnels du département
-      concerné : le délai de réponse reste de 48 heures.</p>
+      <p class="lead">Les pages ci-dessus couvrent les préfectures et les principales villes de chaque
+      département. Elles ne sont pas une limite : la France compte plus de 34 000 communes, et pour
+      toutes les autres nous sollicitons directement des professionnels du département concerné.
+      Le délai de réponse reste de 48 heures, à Paris comme dans un village de 400 habitants.</p>
     </div>
     ${T.ctaDouble()}
   </div>

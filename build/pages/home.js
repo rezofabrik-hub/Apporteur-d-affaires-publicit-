@@ -14,6 +14,16 @@ const FAQ = [
 module.exports = function home(cities) {
   const pilot = cities.find((c) => c.pilot) || cities[0];
 
+  /* La couverture est comptée, pas annoncée : « France entière » est ce que
+     tout le monde écrit, y compris les réseaux qui tiennent huit pages. Un
+     nombre de départements se vérifie en trois clics — c'est précisément ce
+     qui le rend crédible, et c'est l'écart qu'aucun concurrent ne comble en
+     une semaine. Le chiffre suit automatiquement les données. */
+  const nbDepts = new Set(cities.map((c) => c.dept)).size;
+  const stats = site.stats.slice(0, 3).concat([
+    { n: nbDepts + " dép.", l: `couverts, ${cities.length} villes, DOM inclus` }
+  ]);
+
   const body = `
 <section class="hero">
   <div class="hero-bg">${heroImg("hero", 2, "Rue commerçante avec enseignes et devantures de magasins")}</div>
@@ -29,7 +39,7 @@ module.exports = function home(cities) {
       <a class="btn btn-ghost btn-lg" href="comment-ca-marche.html">Comment ça marche</a>
     </div>
     <div class="hero-stats">
-      ${site.stats.map((s) => `<div><b>${esc(s.n)}</b><span>${esc(s.l)}</span></div>`).join("")}
+      ${stats.map((s) => `<div><b>${esc(s.n)}</b><span>${esc(s.l)}</span></div>`).join("")}
     </div>
   </div>
 </section>
@@ -89,8 +99,10 @@ module.exports = function home(cities) {
     <div class="sec-head">
       <span class="eyebrow">Nos métiers</span>
       <h2>Toute la communication visuelle, d'un seul point d'entrée</h2>
-      <p class="lead">De la première maquette à la pose en nacelle, huit familles de métiers couvrent
-      l'intégralité de vos besoins de visibilité. Un seul interlocuteur, des spécialistes pour chaque étape.</p>
+      <p class="lead">De la première maquette à la pose en nacelle, ${services.length} familles de métiers
+      couvrent l'intégralité de vos besoins de visibilité — enseigne, impression, covering, découpe,
+      impression 3D, imprimerie, web et référencement. Un seul interlocuteur, des spécialistes pour
+      chaque étape.</p>
     </div>
     <div class="grid g-4">${T.serviceCards()}</div>
   </div>
@@ -197,10 +209,12 @@ ${T.localBlock("national")}
         <h2>De ${esc(pilot.name)} à toute la France</h2>
         <p class="lead">Le réseau s'est constitué à ${esc(pilot.name)} et ${esc(FR.dans(pilot.deptName))},
         où nous connaissons les contraintes de terrain : secteur patrimonial, tramontane, atmosphère saline,
-        règlement local de publicité. Il couvre aujourd'hui l'ensemble des grandes agglomérations françaises,
-        avec la même exigence de proximité.</p>
+        règlement local de publicité. Il couvre aujourd'hui <strong>${nbDepts} départements</strong> et
+        <strong>${cities.length} villes</strong> — les 96 départements métropolitains, préfectures comprises,
+        et l'outre-mer — avec la même exigence de proximité.</p>
         <ul class="checks">
           <li>Un interlocuteur unique, où que soit votre point de vente</li>
+          <li>Une page dédiée pour chaque préfecture et chaque grande ville de France métropolitaine</li>
           <li>Des ateliers locaux pour la fabrication, la pose et le service après-vente</li>
           <li>Le déploiement multi-sites d'une même charte, à l'identique</li>
           <li>La connaissance des règlements locaux de publicité, commune par commune</li>

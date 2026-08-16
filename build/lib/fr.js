@@ -41,7 +41,10 @@ const GENRE = {
   "Corse-du-Sud": "f", "Haute-Corse": "f", "Seine-Saint-Denis": "f",
   "Haute-Saône": "f", "Meuse": "f", "Orne": "f", "Essonne": "f", "Ardèche": "f",
   "Creuse": "f", "Haute-Marne": "f", "Haute-Loire": "f", "Lozère": "f",
-  "Martinique": "f", "Guadeloupe": "f", "Guyane": "f", "Mayotte": "f",
+
+  /* ---- outre-mer : « en Guadeloupe », jamais « dans la Guadeloupe ».
+     Ces trois-là s'emploient sans article, comme les départements composés. */
+  "Martinique": "e", "Guadeloupe": "e", "Guyane": "e",
 
   /* ---- masculins */
   "Rhône": "m", "Hérault": "m", "Bas-Rhin": "m", "Haut-Rhin": "m", "Nord": "m",
@@ -52,7 +55,7 @@ const GENRE = {
   "Jura": "m", "Cantal": "m", "Aveyron": "m", "Gers": "m", "Ariège": "f",
 
   /* ---- sans article, avec « à » */
-  "Paris": "a", "La Réunion": "a",
+  "Paris": "a", "La Réunion": "a", "Mayotte": "a",
 };
 
 /** Genre grammatical d'un département : m, f, p, e ou a. */
