@@ -19,8 +19,10 @@ module.exports = {
   role: "agence de communication et de mise en relation",
 
   /* Contact — répliqué dans assets/js/config.js */
-  email: "contact@rezoenseignes.fr",
-  emailPro: "partenaires@rezoenseignes.fr",
+  /* Adresse opérationnelle actuelle. À basculer sur contact@rezoenseignes.fr
+     et partenaires@rezoenseignes.fr dès que le domaine sera déposé. */
+  email: "commercial-rezofabrik@gmail.com",
+  emailPro: "commercial-rezofabrik@gmail.com",
   phoneDisplay: "07 75 76 92 32",
   phoneHref: "+33775769232",
 

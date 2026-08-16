@@ -64,10 +64,13 @@ un webhook Make/Zapier, ou le Worker Cloudflare fourni dans `worker/`.
 > ouverture du logiciel de messagerie avec la demande pré-remplie, et sauvegarde
 > locale dans le navigateur. Rien n'est perdu, mais rien n'est automatisé.
 
-Le téléphone (07 75 76 92 32) est déjà renseigné et injecté partout sur le site.
-**L'e-mail reste un espace réservé** (`contact@rezofabrik.fr`) : remplacez-le par
-votre adresse réelle, sinon le mode secours des formulaires enverra les demandes
-vers une boîte inexistante.
+Téléphone et e-mail sont opérationnels : **07 75 76 92 32** et
+**commercial-rezofabrik@gmail.com**, injectés partout sur le site. Le mode
+secours des formulaires aboutit donc réellement, même sans endpoint configuré.
+
+Basculez sur `contact@rezoenseignes.fr` et `partenaires@rezoenseignes.fr` dès que
+le domaine sera déposé — deux lignes dans ce fichier et deux dans
+`build/data/site.js`.
 
 ### 2. Identité et coordonnées — `build/data/site.js`
 

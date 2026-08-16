@@ -28,8 +28,11 @@ window.RF_CONFIG = {
   /* ---------------------------------------------------------------------
      2. COORDONNÉES — reprises partout sur le site
   --------------------------------------------------------------------- */
-  email: "contact@rezoenseignes.fr",
-  emailPro: "partenaires@rezoenseignes.fr",
+  /* Adresse opérationnelle actuelle — les formulaires en mode secours
+     y aboutissent réellement. À basculer sur les adresses du domaine
+     rezoenseignes.fr dès qu'il sera déposé. */
+  email: "commercial-rezofabrik@gmail.com",
+  emailPro: "commercial-rezofabrik@gmail.com",
   phone: "07 75 76 92 32",
   phoneHref: "+33775769232",
 
