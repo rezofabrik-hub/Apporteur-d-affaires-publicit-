@@ -33,8 +33,7 @@ module.exports = {
       "Deux mois à 0 €, sans prélèvement et sans carte bancaire demandée",
       "Aucune commission sur les affaires signées, pendant les deux mois comme après",
       "À l'issue des deux mois, vous choisissez entre l'abonnement 6 mois et l'abonnement 12 mois",
-      "Aucun basculement automatique : sans accord explicite de votre part, l'accès s'arrête",
-      "Contrat, accès et tarif bloqués sur la durée souscrite : six mois ou un an selon la formule"
+      "Aucun basculement automatique : sans accord explicite de votre part, l'accès s'arrête"
     ],
     badge: "2 mois à 0 €"
   },
@@ -87,8 +86,8 @@ module.exports = {
        formule — mémoire interne, jamais affichée. */
     active: false,
     label: "Tarif de lancement",
-    headline: "Tarif de lancement, bloqué sur toute la durée souscrite",
-    note: "Les montants ci-dessous sont les tarifs de lancement du réseau ; ils seront relevés à la date anniversaire. Le tarif que vous obtenez aujourd'hui, comme votre accès au réseau, est bloqué pour toute la durée souscrite — six mois ou un an selon la formule — hausse comprise."
+    headline: "Tarif de lancement du réseau",
+    note: "Les montants ci-dessous sont les tarifs de lancement du réseau."
   },
 
   /* Devise et mentions affichées sous les prix.
@@ -97,7 +96,7 @@ module.exports = {
      lui qui sert de base à tous les calculs d'amortissement ci-dessous. */
   currency: "€",
   priceSuffix: "TTC",
-  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € sur 6 mois, 742 € sur 12 mois, 1 242 € en Rayonnement régional et 2 492 € en Envergure nationale. Contrat, accès et tarif sont bloqués sur toute la durée souscrite. Sans reconduction tacite : vous décidez du renouvellement.",
+  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € sur 6 mois, 742 € sur 12 mois, 1 242 € en Rayonnement régional et 2 492 € en Envergure nationale. Sans reconduction tacite : vous décidez du renouvellement.",
 
   /* ---------------------------------------------------------------------
      Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
@@ -257,7 +256,7 @@ module.exports = {
     ["Vous gardez le client",
      "Vous facturez en direct, vous fixez vos prix, vous conservez la relation et le service après-vente. Nous n'intervenons ni dans le contrat, ni dans l'exécution."],
     ["Une alternative claire à la franchise",
-     "Pas de droit d'entrée à cinq chiffres, pas de redevance sur le chiffre d'affaires, pas de fournisseurs imposés, pas de contrainte d'enseigne. Vous restez indépendant."]
+     "Pas de redevance assise sur votre chiffre d'affaires, pas de fournisseurs imposés, pas de contrainte d'enseigne, pas d'engagement sur cinq à sept ans. Vous restez indépendant."]
   ],
 
   /* ---------------------------------------------------------------------
@@ -370,7 +369,6 @@ module.exports = {
   comparison: {
     head: ["", "Abonnement partenaire", "Annuaire professionnel", "Franchise du secteur", "Achat de contacts"],
     rows: [
-      ["Coût d'entrée", "Aucun", "Aucun", "15 000 à 60 000 €", "Aucun"],
       ["Coût récurrent", "Abonnement fixe", "Abonnement fixe", "Redevance sur le chiffre d'affaires", "Au contact, sans plafond"],
       ["Ce que vous achetez", "Des demandes qualifiées", "Une fiche et de la visibilité", "Une marque et un territoire", "Des coordonnées"],
       ["Commission sur affaires", "Aucune", "Aucune", "Incluse dans la redevance", "Aucune"],
@@ -404,7 +402,7 @@ module.exports = {
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
     { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est précisément la raison d'être de la formule Découverte : deux mois à zéro euro vous permettent de mesurer le flux réel de votre secteur avant d'engager le moindre euro." },
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
-    { q: "Mon tarif peut-il augmenter en cours d'abonnement ?", a: "Non. Le contrat, l'accès au réseau et le tarif sont bloqués sur toute la durée que vous avez souscrite : six mois pour la formule semestrielle, un an pour la formule annuelle. Le prix inscrit à votre adhésion est celui que vous payez jusqu'au terme, sans révision. Toute évolution éventuelle du tarif vous serait communiquée deux mois avant l'échéance, et ne s'appliquerait qu'à un renouvellement que vous seriez libre de refuser." },
+    { q: "Que se passe-t-il à la fin de mon abonnement ?", a: "Rien d'automatique : il n'y a pas de reconduction tacite. Nous vous recontactons avant l'échéance avec le bilan des demandes qui vous ont été transmises, et vous décidez de renouveler ou non. Les conditions applicables au renouvellement vous sont communiquées à ce moment-là, et vous restez libre de ne pas donner suite." },
     { q: "Le service de pose suit-il la même grille tarifaire ?", a: "Oui, aux mêmes montants et dans les mêmes conditions. Les deux offres suivent la même grille depuis le départ." },
     { q: "Comment se définit ma zone d'intervention ?", a: "Vous choisissez librement vos trois départements sur les formules 6 et 12 mois, et ils n'ont pas à être limitrophes : un atelier peut viser une métropole située à deux départements de là, où se trouvent réellement ses clients. Le questionnaire vous propose les départements voisins du vôtre à titre de suggestion, rien de plus. Si trois départements ne suffisent pas, la formule Rayonnement régional couvre une région administrative entière et Envergure nationale tout le territoire." },
     { q: "Puis-je changer mes départements en cours d'abonnement ?", a: "Oui, une fois par période et sans frais : il suffit de nous le demander. Un déménagement d'atelier, l'embauche d'une équipe mobile ou une zone qui se révèle moins active que prévu sont autant de raisons légitimes. Nous ajustons également votre périmètre de notre propre initiative si le volume transmis reste faible." },

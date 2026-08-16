@@ -443,7 +443,7 @@ function ctaDouble(space) {
   <div class="cta-card pro">
     <h3>Vous voulez rejoindre le réseau ?</h3>
     <p>Enseigniste, agence de publicité, imprimeur, poseur, spécialiste du covering ou de l'objet
-    publicitaire : deux mois à 0 €, puis un abonnement de 6 ou 12 mois, sans droit d'entrée et
+    publicitaire : deux mois à 0 €, puis un abonnement de 6 ou 12 mois
     sans commission sur vos affaires.</p>
     <a class="btn btn-white" href="professionnels.html">Remplir le questionnaire</a>
   </div>

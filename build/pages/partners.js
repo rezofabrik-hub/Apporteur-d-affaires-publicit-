@@ -185,10 +185,10 @@ ${T.amortBlock('vente')}
         ? `<th scope="row">${esc(c)}</th>`
         : `<td${i === 1 ? ' style="font-weight:600;color:var(--pro-600)"' : ""}>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
     </table></div>
-    <div class="note"><p>Une franchise du secteur demande couramment un droit d'entrée à cinq chiffres,
-    une redevance assise sur votre chiffre d'affaires, l'abandon de votre enseigne et des fournisseurs
-    imposés, sur un engagement de cinq à sept ans. Notre modèle ne touche à aucun de ces points :
-    vous gardez votre nom, vos fournisseurs, vos prix et votre indépendance.</p>
+    <div class="note"><p>Une franchise du secteur demande couramment une redevance assise sur votre
+    chiffre d'affaires, l'abandon de votre enseigne et des fournisseurs imposés, sur un engagement de
+    cinq à sept ans. Rien de tout cela ici : vous gardez votre nom, vos fournisseurs, vos prix et
+    votre indépendance.</p>
     <p style="margin-top:1em">La confusion la plus fréquente porte sur l'annuaire professionnel.
     Un annuaire vend de la <strong>visibilité</strong> : une fiche, un portrait, une mention dans
     une newsletter. C'est utile pour la notoriété, mais personne n'y prospecte à votre place et
@@ -276,7 +276,7 @@ ${T.amortBlock('vente')}
     file: "partenaires.html", active: "partenaires.html",
     space: "pro",   // affiche le bandeau d'entrée de l'espace professionnels
     title: `Devenir Partenaire — Abonnement Réseau Enseigne & Signalétique | ${site.brand}`,
-    desc: "Enseigniste, agence de publicité, imprimeur, poseur nacelle : rejoignez le réseau avec un abonnement 6 ou 12 mois, sans droit d'entrée et sans commission sur vos affaires. Recevez des demandes qualifiées dans votre zone.",
+    desc: "Enseigniste, agence de publicité, imprimeur, poseur nacelle : rejoignez le réseau avec un abonnement 6 ou 12 mois et sans commission sur vos affaires. Recevez des demandes qualifiées dans votre zone.",
     body, cities,
     schema: [
       T.crumbSchema(crumbItems),
