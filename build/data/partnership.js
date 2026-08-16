@@ -358,18 +358,24 @@ module.exports = {
     }
   },
 
-  /* Comparaison honnête avec les autres façons de trouver des chantiers */
+  /* Comparaison honnête avec les autres façons de trouver des chantiers.
+     Quatre modèles coexistent sur le marché français, et le partenaire les
+     confond souvent. L'annuaire professionnel en particulier : il vend de la
+     visibilité, pas des affaires — distinction essentielle, et qui n'est
+     presque jamais faite parce qu'elle ne sert pas les annuaires. */
   comparison: {
-    head: ["", "Abonnement partenaire", "Franchise du secteur", "Achat de contacts"],
+    head: ["", "Abonnement partenaire", "Annuaire professionnel", "Franchise du secteur", "Achat de contacts"],
     rows: [
-      ["Coût d'entrée", "Aucun", "15 000 à 60 000 €", "Aucun"],
-      ["Coût récurrent", "Abonnement fixe", "Redevance sur le chiffre d'affaires", "Au contact, sans plafond"],
-      ["Commission sur affaires", "Aucune", "Incluse dans la redevance", "Aucune"],
-      ["Votre enseigne", "La vôtre", "Celle du réseau", "La vôtre"],
-      ["Fournisseurs", "Libres", "Imposés", "Libres"],
-      ["Nombre de destinataires par demande", "2 à 3", "Sans objet", "5 à 10 selon les plateformes"],
-      ["Demande qualifiée par téléphone", "Oui", "Sans objet", "Rarement"],
-      ["Engagement", "6 ou 12 mois", "5 à 7 ans", "Aucun"]
+      ["Coût d'entrée", "Aucun", "Aucun", "15 000 à 60 000 €", "Aucun"],
+      ["Coût récurrent", "Abonnement fixe", "Abonnement fixe", "Redevance sur le chiffre d'affaires", "Au contact, sans plafond"],
+      ["Ce que vous achetez", "Des demandes qualifiées", "Une fiche et de la visibilité", "Une marque et un territoire", "Des coordonnées"],
+      ["Commission sur affaires", "Aucune", "Aucune", "Incluse dans la redevance", "Aucune"],
+      ["Qui fait la prospection", "Le réseau", "Personne — vous attendez d'être trouvé", "Vous, sous l'enseigne", "La plateforme"],
+      ["Votre enseigne", "La vôtre", "La vôtre", "Celle du réseau", "La vôtre"],
+      ["Fournisseurs", "Libres", "Libres", "Imposés", "Libres"],
+      ["Nombre de destinataires par demande", "2 à 3", "Sans objet", "Sans objet", "5 à 10 selon les plateformes"],
+      ["Demande qualifiée par téléphone", "Oui", "Sans objet", "Sans objet", "Rarement"],
+      ["Engagement", "6 ou 12 mois", "12 mois en général", "5 à 7 ans", "Aucun"]
     ]
   },
 

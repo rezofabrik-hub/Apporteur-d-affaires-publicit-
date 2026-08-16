@@ -34,7 +34,9 @@ const MODELES = {
      "Rien", "Utile si vous débutez ; sans intérêt si vous exercez déjà depuis dix ans"],
     ["Sous-traitance encadrée", "Une marge prélevée sur votre prix de journée",
      "Un prix unique tout compris",
-     "Vous perdez la relation client et vous ne fixez plus votre tarif"]
+     "Vous perdez la relation client et vous ne fixez plus votre tarif"],
+    ["Annuaire professionnel", "Un abonnement pour une fiche et de la visibilité",
+     "Rien", "On vend de la visibilité, pas des chantiers : personne ne prospecte à votre place"]
   ],
   foot: "Notre modèle est le troisième : un abonnement fixe, aucune commission sur les affaires signées, et vous facturez le client en direct au prix que vous fixez."
 };

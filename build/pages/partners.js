@@ -172,7 +172,13 @@ ${T.amortBlock('vente')}
     <div class="note"><p>Une franchise du secteur demande couramment un droit d'entrée à cinq chiffres,
     une redevance assise sur votre chiffre d'affaires, l'abandon de votre enseigne et des fournisseurs
     imposés, sur un engagement de cinq à sept ans. Notre modèle ne touche à aucun de ces points :
-    vous gardez votre nom, vos fournisseurs, vos prix et votre indépendance.</p></div>
+    vous gardez votre nom, vos fournisseurs, vos prix et votre indépendance.</p>
+    <p style="margin-top:1em">La confusion la plus fréquente porte sur l'annuaire professionnel.
+    Un annuaire vend de la <strong>visibilité</strong> : une fiche, un portrait, une mention dans
+    une newsletter. C'est utile pour la notoriété, mais personne n'y prospecte à votre place et
+    vous attendez d'être trouvé. Un apporteur d'affaires vend des <strong>demandes</strong> :
+    quelqu'un cherche le client, qualifie le besoin par téléphone et vous transmet un cahier des
+    charges. Les deux se cumulent très bien — ils ne se remplacent pas.</p></div>
   </div>
 </section>
 
