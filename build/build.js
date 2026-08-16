@@ -24,6 +24,7 @@ const partnersPage = require("./pages/partners");
 const posePage = require("./pages/pose");
 const projectPage = require("./pages/project");
 const collectivitesPage = require("./pages/collectivites");
+const reseauPosePage = require("./pages/reseaupose");
 
 const ROOT = path.join(__dirname, "..");
 
@@ -64,7 +65,7 @@ function sitemap(pages) {
     .map((f) => {
       let p = "0.6";
       if (f === "index.html") p = "1.0";
-      else if (["devis.html", "professionnels.html", "partenaires.html", "service-pose.html", "collectivites.html"].includes(f)) p = "0.9";
+      else if (["devis.html", "professionnels.html", "partenaires.html", "service-pose.html", "collectivites.html", "reseau-pose-national.html"].includes(f)) p = "0.9";
       else if (services.some((s) => s.slug + ".html" === f)) p = "0.9";
       else if (["secteurs.html", "villes.html", "realisations.html"].includes(f)) p = "0.85";
       else if (f.startsWith("realisation-")) p = "0.75";
@@ -122,6 +123,7 @@ function run() {
   write("collectivites.html", collectivitesPage(cities));
   write("partenaires.html", partnersPage(cities));
   write("service-pose.html", posePage(cities));
+  write("reseau-pose-national.html", reseauPosePage(cities));
   write("professionnels.html", forms.pros(cities));
   write("merci.html", forms.merci(cities));
 

@@ -108,6 +108,7 @@ function heroImg(topic, i, alt) {
 /* ------------------------------------------------------------- structure */
 const NAV_MORE = [
   ["collectivites.html", "Collectivités & institutions", "Marchés publics, accessibilité, jalonnement"],
+  ["reseau-pose-national.html", "Réseau national de pose", "Trouver un poseur, ou en devenir un"],
   ["realisations.html", "Réalisations", "Projets détaillés, contraintes et budgets"],
   ["secteurs.html", "Secteurs d'activité", "Pharmacie, CHR, santé, auto, industrie…"],
   ["villes.html", "Villes couvertes", "Nos zones d'intervention en France"],

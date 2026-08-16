@@ -538,7 +538,9 @@ module.exports = [
   eyebrow: "Métier n°7",
   lead: "La pose représente 15 à 30 % du budget d'une enseigne et la totalité du risque. Travail en hauteur, raccordement électrique, ancrage dans des façades parfois fragiles, autorisation d'occupation du domaine public : c'est l'étape où les entreprises non équipées improvisent, et où les sinistres arrivent.",
   keywords: [
-    "pose enseigne", "installateur enseigne", "travail en hauteur", "nacelle",
+    "pose enseigne", "installateur enseigne", "réseau de poseurs", "réseau national de pose",
+    "poseur publicitaire", "poseur d'adhésif", "médiapplicateur", "sous-traitance pose",
+    "sous-traitant poseur", "trouver un poseur", "devenir poseur", "travail en hauteur", "nacelle",
     "CACES nacelle", "CACES R486", "plateforme élévatrice", "PEMP", "échafaudage",
     "habilitation électrique", "dépose enseigne", "démontage enseigne",
     "maintenance enseigne", "SAV enseigne", "remplacement LED", "dépannage enseigne lumineuse",
