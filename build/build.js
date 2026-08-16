@@ -224,6 +224,7 @@ ${sectors.map((s) => `- [${s.nav}](${u("signaletique-" + s.slug + ".html")})`).j
 
 - [Devenir partenaire](${u("partenaires.html")}) : formules, tarifs, engagement.
 - [Candidature](${u("professionnels.html")})
+- [Entraide entre partenaires](${u("entraide-partenaires.html")}) : un membre du réseau qui cherche lui-même une capacité de production, un poseur, un dépannage urgent, du matériel ou un avis technique. Compris dans toutes les formules.
 
 ## Plan complet
 
