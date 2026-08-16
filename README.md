@@ -5,7 +5,7 @@ en communication visuelle : mise en relation entre des clients ayant un projet
 (enseigne, signalétique, covering, impression, objets publicitaires) et des
 professionnels indépendants partout en France.
 
-**400 pages HTML statiques**, sans framework ni dépendance externe : aucun CDN,
+**419 pages HTML statiques**, sans framework ni dépendance externe : aucun CDN,
 aucune police distante, aucun traceur. Tout se charge depuis le domaine.
 
 ---
@@ -21,6 +21,7 @@ aucune police distante, aucun traceur. Tout se charge depuis le domaine.
 | Métier × ville | 240 pages | « Covering véhicule à Lyon », « Enseignes à Bordeaux » — les requêtes locales qui convertissent |
 | Conversion | `devis.html`, `professionnels.html`, `merci.html` | Formulaires multi-étapes client et partenaire |
 | Partenaires | `partenaires.html`, `service-pose.html` | Formules d'abonnement 6/12 mois, comparatif franchise, service de pose |
+| Réalisations | `realisations.html` + 18 fiches | Contexte, contrainte technique, solution, budget — par métier et par ville |
 | Ressources | `tarifs`, `glossaire`, `reglementation-enseigne`, `comment-ca-marche`, `faq`, `villes` | Contenu de référence, longue traîne |
 | Légal | `mentions-legales`, `confidentialite`, `credits-photos`, `plan-du-site`, `404` | Obligations et transparence |
 
@@ -34,7 +35,7 @@ aucune police distante, aucun traceur. Tout se charge depuis le domaine.
 ## Démarrage
 
 ```bash
-node build/build.js          # régénère les 400 pages + sitemap.xml + robots.txt
+node build/build.js          # régénère les 419 pages + sitemap.xml + robots.txt
 python3 -m http.server 8000  # prévisualisation sur http://localhost:8000
 ```
 
@@ -101,7 +102,33 @@ le plan du site et le sitemap se mettent à jour automatiquement.
   neighbors: ["Tarascon", "Nîmes", "…"] }
 ```
 
-### 5. Les tarifs partenaires — `build/data/partnership.js`
+### 5. Les réalisations — `build/data/projects.js`
+
+**C'est le levier le plus puissant du secteur.** Signarama publie plus de
+4 000 pages de chantiers photographiés, une par réalisation et par magasin :
+du contenu strictement unique, impossible à dupliquer, qui capte des requêtes
+très ciblées du type « enseigne lumineuse Angoulême ».
+
+Les 18 fiches livrées sont des **projets types**, signalés comme tels sur chaque
+page : contraintes et budgets réels du métier, mais photographies libres de droit.
+C'est volontaire — présenter des photos d'inconnus comme ses propres chantiers se
+retourne contre soi au premier client qui les reconnaît.
+
+**Pour chaque vrai chantier** : dupliquez une entrée, remplacez les textes, passez
+`illustration: false`, ajoutez vos photos dans `assets/img/` et relancez le build.
+Cinquante vraies réalisations valent mieux que cinq cents pages générées.
+
+Le questionnaire partenaire demande désormais aux candidats s'ils peuvent fournir
+des photos de chantier — c'est votre source d'approvisionnement.
+
+### 6. L'offre de lancement — `build/data/partnership.js`
+
+Le bloc `launch` pilote les **2 mois offerts** : bandeau en haut de chaque page,
+encart complet sur les pages partenaires et pose, pastille sur chaque formule,
+et deux questions dédiées dans la FAQ. Passez `active: false` quand le réseau est
+suffisamment garni — tout disparaît en une fois.
+
+### 7. Les tarifs partenaires — `build/data/partnership.js`
 
 **Les montants sont des propositions, pas des prix validés.** Tout se règle dans
 ce fichier : formules partenaires (Découverte 6 mois, Partenaire annuel 12 mois,
@@ -113,19 +140,19 @@ signées — c'est répété sur chaque formule et dans la FAQ. Si vous changez 
 principe, corrigez aussi `build/pages/forms.js`, `build/pages/misc.js`
 (page « Comment ça marche ») et `build/pages/home.js`, qui l'énoncent également.
 
-### 6. Ajouter un secteur d'activité — `build/data/sectors.js`
+### 8. Ajouter un secteur d'activité — `build/data/sectors.js`
 
 Même principe : une entrée = une page complète, ajoutée automatiquement au menu,
 au plan du site et au sitemap.
 
-### 7. Élargir la matrice métier × ville
+### 9. Élargir la matrice métier × ville
 
 La constante `MATRIX_CITIES` en tête de `build/build.js` fixe le nombre de villes
 croisées avec les 8 métiers (30 par défaut, soit 240 pages). La porter à 60 génère
 480 pages. Augmentez progressivement : mieux vaut 240 pages substantielles que
 800 pages creuses, que Google traite comme des pages satellites.
 
-### 8. Ajouter ou modifier un métier — `build/data/services.js`
+### 10. Ajouter ou modifier un métier — `build/data/services.js`
 
 Chaque entrée génère une page complète : héros, sommaire, sections,
 tableau de prix, grille de prestations, galerie, FAQ, données structurées.
@@ -171,7 +198,7 @@ qui convertit : « covering véhicule Lyon » plutôt que « covering ».
 
 ## Référencement — ce qui est déjà en place
 
-- Titres et méta-descriptions uniques sur les 400 pages (vérifié automatiquement)
+- Titres et méta-descriptions uniques sur les 419 pages (vérifié automatiquement)
 - Données structurées JSON-LD : `Organization`, `WebSite`, `Service`,
   `LocalBusiness` (une par ville), `FAQPage`, `BreadcrumbList`, `ItemList`,
   `DefinedTermSet`
@@ -191,10 +218,13 @@ Par ordre d'impact :
 1. **Google Business Profile** par ville où vous avez une adresse réelle —
    c'est le premier levier du référencement local, devant le site lui-même
 2. **Google Search Console** : soumettre `sitemap.xml`, surveiller l'indexation
-3. **Remplacer les photos** par vos réalisations, avec des `alt` décrivant
-   la ville et la prestation
-4. **Publier des cas clients** : une page par chantier réel, avec photos
-   avant/après et budget — c'est le contenu qui convertit le mieux
+3. **Publier des réalisations réelles** — c'est le premier levier, devant tout le
+   reste. Analyse faite sur leurs sitemaps : Signarama tire l'essentiel de son
+   trafic de ses **4 073 pages de chantiers photographiés**, contre seulement
+   76 pages produit×ville. Chaque chantier de partenaire publié vous rapproche
+   d'eux ; les pages générées, beaucoup moins.
+4. **Remplacer les photos d'illustration** par vos visuels, avec des `alt`
+   décrivant la ville et la prestation
 5. **Obtenir des liens** : annuaires professionnels, fédérations,
    chambres de métiers, partenaires du réseau
 6. **Avis clients** : Google, Pages Jaunes, Trustpilot

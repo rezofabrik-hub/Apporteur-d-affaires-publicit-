@@ -6,6 +6,7 @@ const path = require("path");
 
 const site = require("../data/site");
 const services = require("../data/services");
+const partnership = require("../data/partnership");
 
 const IMG_DIR = path.join(__dirname, "..", "..", "assets", "img");
 let manifest = {};
@@ -61,6 +62,7 @@ function heroImg(topic, i, alt) {
 
 /* ------------------------------------------------------------- structure */
 const NAV_MORE = [
+  ["realisations.html", "Réalisations", "Projets détaillés, contraintes et budgets"],
   ["secteurs.html", "Secteurs d'activité", "Pharmacie, CHR, santé, auto, industrie…"],
   ["villes.html", "Villes couvertes", "Nos zones d'intervention en France"],
   ["tarifs.html", "Prix et budgets", "Ce que coûte réellement chaque prestation"],
@@ -95,7 +97,7 @@ function header(active) {
       </button>
       <div class="drop-menu">${svcLinks}</div>
     </div>
-    <a href="secteurs.html"${cur("secteurs.html")}>Secteurs</a>
+    <a href="realisations.html"${cur("realisations.html")}>Réalisations</a>
     <a href="villes.html"${cur("villes.html")}>Villes</a>
     <a href="tarifs.html"${cur("tarifs.html")}>Tarifs</a>
     <div class="drop" data-open="false">
@@ -175,6 +177,7 @@ function footer(cities) {
       <h4>Le réseau</h4>
       <ul>
         <li><a href="devis.html">Demander un devis</a></li>
+        <li><a href="realisations.html">Réalisations</a></li>
         <li><a href="partenaires.html">Devenir partenaire</a></li>
         <li><a href="service-pose.html">Service de pose</a></li>
         <li><a href="professionnels.html">Questionnaire d'adhésion</a></li>
@@ -251,6 +254,7 @@ ${schemas}
 <body>
 <a class="skip" href="#main">Aller au contenu principal</a>
 ${header(o.active)}
+${o.noStrip ? "" : launchBanner(true)}
 <main id="main">
 ${o.body}
 </main>
@@ -345,6 +349,27 @@ function trustBar() {
 </div>`;
 }
 
+/** Bandeau d'offre de lancement — masqué automatiquement si `launch.active` est faux. */
+function launchBanner(compact) {
+  const L = partnership.launch;
+  if (!L || !L.active) return "";
+  if (compact) {
+    return `<div class="launch-strip"><b>${esc(L.label)}</b> ${esc(L.headline)} —
+      <a href="partenaires.html#lancement">en savoir plus</a></div>`;
+  }
+  return `<div class="launch" id="lancement">
+  <span class="launch-tag">${esc(L.label)}</span>
+  <h2>${esc(L.headline)}</h2>
+  <p>${esc(L.sub)}</p>
+  <p style="margin-top:14px">${esc(L.detail)}</p>
+  <ul>${L.conditions.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
+  <div class="btns">
+    <a class="btn btn-white btn-lg" href="professionnels.html">Profiter des 2 mois offerts</a>
+    <a class="btn btn-ghost btn-lg" href="partenaires.html#formules">Voir les formules</a>
+  </div>
+</div>`;
+}
+
 function keywordCloud(words, title) {
   return `<div class="kw-block"><b>${esc(title)} :</b> ${words.map(esc).join(" · ")}.</div>`;
 }
@@ -352,5 +377,5 @@ function keywordCloud(words, title) {
 module.exports = {
   site, services, esc, attr, jsonld, img, heroImg, pick, manifest,
   page, header, footer, crumbs, crumbSchema, faqBlock, faqSchema,
-  serviceCards, ctaDouble, trustBar, keywordCloud, NAV_MORE
+  serviceCards, ctaDouble, trustBar, keywordCloud, launchBanner, partnership, NAV_MORE
 };

@@ -394,6 +394,10 @@ function pros(cities) {
   </div>
 </section>
 
+<section class="sec-tight" id="offre">
+  <div class="wrap">${T.launchBanner()}</div>
+</section>
+
 <section class="sec" id="candidature">
   <div class="wrap">
     <div class="sec-head center">
@@ -828,6 +832,20 @@ function pros(cities) {
             2 ou 3 chantiers représentatifs.</span>
             <textarea id="p_references" name="references" style="min-height:100px"></textarea>
           </div>
+
+          <fieldset style="margin-bottom:26px">
+            <legend class="fieldset-legend">Photos de vos chantiers</legend>
+            <p class="hint" style="margin-bottom:12px">Chaque chantier photographié devient une
+            <a href="realisations.html">fiche réalisation</a> publiée sur le site, qui vous cite et
+            se positionne sur votre ville et votre métier. Nous rédigeons la fiche technique,
+            vous validez avant publication.</p>
+            ${checks("photos_chantiers", [
+              { l: "Oui, je peux fournir des photos", h: "Avant/après, détails de fabrication, pose" },
+              { l: "Oui, et je peux en prendre de nouvelles", h: "Sur les prochains chantiers" },
+              { l: "J'ai des photos mais sans accord du client", h: "Nous publierons sans le nommer" },
+              { l: "Pas pour l'instant", h: "" }
+            ], { radio: true })}
+          </fieldset>
 
           <div class="field consent">
             <input type="checkbox" id="p_consent" name="consentement" value="oui" required>

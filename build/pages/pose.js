@@ -13,6 +13,7 @@ module.exports = function posePage(cities) {
 <div class="plan${pl.featured ? " plan-featured" : ""}">
   ${pl.badge ? `<span class="plan-badge">${esc(pl.badge)}</span>` : ""}
   <h3>${esc(pl.name)}</h3>
+  ${P.launch && P.launch.active ? `<span class="plan-launch">🎁 ${esc(P.launch.badge)}</span>` : ""}
   <p class="plan-pitch">${esc(pl.pitch)}</p>
   <div class="plan-price">
     <b>${esc(pl.price)}</b><span>${esc(P.currency)} HT</span><em>/ ${esc(pl.duration)}</em>
@@ -49,6 +50,8 @@ module.exports = function posePage(cities) {
 </section>
 
 <section class="sec-tight"><div class="wrap">${T.trustBar()}</div></section>
+
+<section class="sec-tight bg-2"><div class="wrap">${T.launchBanner()}</div></section>
 
 <section class="sec">
   <div class="wrap">

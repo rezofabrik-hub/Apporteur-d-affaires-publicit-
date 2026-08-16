@@ -11,6 +11,7 @@ const site = require("./data/site");
 const services = require("./data/services");
 const cities = require("./data/cities");
 const sectors = require("./data/sectors");
+const projects = require("./data/projects");
 
 const home = require("./pages/home");
 const servicePage = require("./pages/service");
@@ -21,6 +22,7 @@ const sectorPage = require("./pages/sector");
 const serviceCityPage = require("./pages/servicecity");
 const partnersPage = require("./pages/partners");
 const posePage = require("./pages/pose");
+const projectPage = require("./pages/project");
 
 const ROOT = path.join(__dirname, "..");
 
@@ -60,7 +62,8 @@ function sitemap(pages) {
       if (f === "index.html") p = "1.0";
       else if (["devis.html", "professionnels.html", "partenaires.html", "service-pose.html"].includes(f)) p = "0.9";
       else if (services.some((s) => s.slug + ".html" === f)) p = "0.9";
-      else if (f === "secteurs.html" || f === "villes.html") p = "0.8";
+      else if (["secteurs.html", "villes.html", "realisations.html"].includes(f)) p = "0.85";
+      else if (f.startsWith("realisation-")) p = "0.75";
       else if (services.some((s) => f.startsWith(s.slug + "-"))) p = "0.8";
       else if (f.startsWith("signaletique-") && sectors.some((x) => "signaletique-" + x.slug + ".html" === f)) p = "0.8";
       else if (f.startsWith("enseigne-signaletique-")) p = "0.7";
@@ -89,6 +92,10 @@ function run() {
 
   services.forEach((s) => write(s.slug + ".html", servicePage(s, cities)));
   cities.forEach((c, i) => write("enseigne-signaletique-" + c.slug + ".html", cityPage(c, cities, i)));
+
+  /* Réalisations */
+  write("realisations.html", projectPage.index(projects, cities));
+  projects.forEach((pr) => write("realisation-" + pr.slug + ".html", projectPage(pr, cities, projects)));
 
   /* Secteurs d'activité */
   write("secteurs.html", sectorPage.index(sectors, cities));
@@ -137,8 +144,9 @@ function run() {
   console.log(`  · ${services.length} pages métier`);
   console.log(`  · ${cities.length} pages villes`);
   console.log(`  · ${sectors.length + 1} pages secteurs`);
+  console.log(`  · ${projects.length + 1} pages réalisations`);
   console.log(`  · ${services.length * MATRIX_CITIES} pages métier x ville`);
-  console.log(`  · ${written.length - services.length - cities.length - sectors.length - 1 - services.length * MATRIX_CITIES - 2} pages transverses + sitemap + robots`);
+  console.log(`  · ${written.length - services.length - cities.length - sectors.length - 1 - projects.length - 1 - services.length * MATRIX_CITIES - 2} pages transverses + sitemap + robots`);
 }
 
 run();

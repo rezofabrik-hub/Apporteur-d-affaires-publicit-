@@ -10,6 +10,28 @@
    ========================================================================= */
 module.exports = {
 
+  /* ---------------------------------------------------------------------
+     OFFRE DE LANCEMENT — la réponse au problème d'amorçage.
+     Sans partenaires, impossible de servir la demande ; sans demande, personne
+     ne paie. Les deux mois offerts cassent ce blocage. Passez `active: false`
+     quand le réseau est suffisamment garni.
+  --------------------------------------------------------------------- */
+  launch: {
+    active: true,
+    label: "Offre de lancement",
+    headline: "2 mois offerts sur toutes les formules",
+    sub: "Le réseau se constitue : les premières entreprises inscrites bénéficient de deux mois offerts, quelle que soit la formule choisie.",
+    detail: "Concrètement, vous recevez les demandes de votre zone pendant deux mois sans rien payer. Vous ne réglez l'abonnement qu'ensuite, en connaissance de cause — et seulement si le flux vous convient.",
+    conditions: [
+      "Offre réservée aux premières entreprises inscrites, dans la limite des places par zone et par métier",
+      "Deux mois offerts sur toute formule, Découverte comme annuelle",
+      "Aucun prélèvement pendant la période d'essai, aucune carte bancaire demandée",
+      "Aucune commission sur les affaires signées, pendant l'essai comme après",
+      "Vous restez libre de ne pas donner suite à l'issue des deux mois"
+    ],
+    badge: "2 mois offerts"
+  },
+
   /* Devise et mentions affichées sous les prix */
   currency: "€",
   vatNote: "Montants hors taxes. Sans reconduction tacite : vous décidez du renouvellement.",
@@ -124,6 +146,8 @@ module.exports = {
   ],
 
   faq: [
+    { q: "Comment fonctionnent les deux mois offerts ?", a: "Vous remplissez le questionnaire, nous vérifions votre dossier, et vous recevez les demandes de votre zone pendant deux mois sans rien payer et sans carte bancaire. À l'issue de cette période, nous faisons le point sur ce qui vous a été transmis et vous décidez. Si le flux ne vous convient pas, vous ne donnez pas suite et cela s'arrête là." },
+    { q: "Pourquoi offrir deux mois ?", a: "Parce qu'un réseau qui démarre a un problème d'amorçage : sans partenaires nous ne pouvons pas servir les demandes, et sans demandes personne n'a envie de payer. Les deux mois offerts cassent ce blocage — vous jugez sur pièces, nous constituons le réseau. C'est temporaire et réservé aux premières entreprises inscrites." },
     { q: "Pourquoi un abonnement plutôt qu'une commission ?", a: "Parce qu'une commission variable pousse l'intermédiaire à privilégier les gros dossiers et à vous envoyer un maximum de demandes, qualifiées ou non. L'abonnement inverse la logique : notre intérêt devient de vous garder d'une année sur l'autre, donc de vous transmettre des demandes que vous transformez réellement. Vous gardez par ailleurs 100 % de la marge sur chaque chantier signé." },
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire, et un seul en formule Exclusivité territoriale. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
     { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est aussi la raison d'être de la formule Découverte sur six mois : elle vous permet de mesurer avant de vous engager sur une année." },

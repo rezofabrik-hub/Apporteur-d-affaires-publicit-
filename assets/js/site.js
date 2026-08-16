@@ -308,9 +308,34 @@
     }
   }
 
+  /* ----------------------------------------------------------------- *
+   * 9. Filtre des réalisations par métier
+   * ----------------------------------------------------------------- */
+  function initProjects() {
+    var bar = $(".proj-filters");
+    if (!bar) return;
+    var cards = $$(".proj");
+    var empty = $(".proj-empty");
+    $$("button", bar).forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var f = btn.dataset.filter;
+        $$("button", bar).forEach(function (b) {
+          b.setAttribute("aria-pressed", String(b === btn));
+        });
+        var shown = 0;
+        cards.forEach(function (c) {
+          var hit = f === "all" || c.dataset.service === f;
+          c.hidden = !hit;
+          if (hit) shown++;
+        });
+        if (empty) empty.classList.toggle("show", shown === 0);
+      });
+    });
+  }
+
   function boot() {
     initNav(); initCitySearch(); initForms(); initPrefill();
-    initContacts(); initThanks(); initYear();
+    initProjects(); initContacts(); initThanks(); initYear();
   }
 
   document.readyState === "loading"
