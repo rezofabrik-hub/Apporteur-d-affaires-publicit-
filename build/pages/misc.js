@@ -719,7 +719,7 @@ function legal(cities) {
 }
 
 /* ═════════════════════════════════════════════════ PLAN DU SITE / 404 */
-function plan(cities, extraPages) {
+function plan(cities, extraPages, sectors) {
   const body = `
 <section class="hero hero-in-page"><div class="wrap hero-in">
   ${T.crumbs([{ name: "Accueil", url: "index.html" }, { name: "Plan du site", url: "plan-du-site.html" }])}
@@ -742,6 +742,11 @@ function plan(cities, extraPages) {
       <li><a href="confidentialite.html">Confidentialité</a></li>
     </ul></div>
   </div>
+  <h2 style="margin-top:3em;font-size:1.1rem">Secteurs d'activité</h2>
+  <div class="city-grid">
+    ${(sectors || []).map((s) => `<a class="city-chip" href="signaletique-${s.slug}.html">${esc(s.nav)}</a>`).join("")}
+  </div>
+
   <h2 style="margin-top:3em;font-size:1.1rem">Villes couvertes</h2>
   <div class="city-grid">
     ${cities.map((c) => `<a class="city-chip" href="enseigne-signaletique-${c.slug}.html">${esc(c.name)}<small>${esc(c.dept)}</small></a>`).join("")}

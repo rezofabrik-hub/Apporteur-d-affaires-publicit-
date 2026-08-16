@@ -61,6 +61,7 @@ function heroImg(topic, i, alt) {
 
 /* ------------------------------------------------------------- structure */
 const NAV_MORE = [
+  ["secteurs.html", "Secteurs d'activité", "Pharmacie, CHR, santé, auto, industrie…"],
   ["villes.html", "Villes couvertes", "Nos zones d'intervention en France"],
   ["tarifs.html", "Prix et budgets", "Ce que coûte réellement chaque prestation"],
   ["glossaire.html", "Glossaire du métier", "Tout le vocabulaire de la communication visuelle"],
@@ -94,6 +95,7 @@ function header(active) {
       </button>
       <div class="drop-menu">${svcLinks}</div>
     </div>
+    <a href="secteurs.html"${cur("secteurs.html")}>Secteurs</a>
     <a href="villes.html"${cur("villes.html")}>Villes</a>
     <a href="tarifs.html"${cur("tarifs.html")}>Tarifs</a>
     <div class="drop" data-open="false">

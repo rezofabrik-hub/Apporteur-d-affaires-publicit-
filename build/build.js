@@ -10,14 +10,20 @@ const T = require("../build/lib/tpl");
 const site = require("./data/site");
 const services = require("./data/services");
 const cities = require("./data/cities");
+const sectors = require("./data/sectors");
 
 const home = require("./pages/home");
 const servicePage = require("./pages/service");
 const cityPage = require("./pages/city");
 const forms = require("./pages/forms");
 const misc = require("./pages/misc");
+const sectorPage = require("./pages/sector");
+const serviceCityPage = require("./pages/servicecity");
 
 const ROOT = path.join(__dirname, "..");
+
+/* Nombre de villes retenues pour la matrice métier x ville */
+const MATRIX_CITIES = 30;
 const written = [];
 
 function write(file, html) {
@@ -52,6 +58,9 @@ function sitemap(pages) {
       if (f === "index.html") p = "1.0";
       else if (["devis.html", "professionnels.html"].includes(f)) p = "0.9";
       else if (services.some((s) => s.slug + ".html" === f)) p = "0.9";
+      else if (f === "secteurs.html" || f === "villes.html") p = "0.8";
+      else if (services.some((s) => f.startsWith(s.slug + "-"))) p = "0.8";
+      else if (f.startsWith("signaletique-") && sectors.some((x) => "signaletique-" + x.slug + ".html" === f)) p = "0.8";
       else if (f.startsWith("enseigne-signaletique-")) p = "0.7";
       else if (["mentions-legales.html", "confidentialite.html", "credits-photos.html", "plan-du-site.html"].includes(f)) p = "0.3";
       return url(f, p);
@@ -79,6 +88,23 @@ function run() {
   services.forEach((s) => write(s.slug + ".html", servicePage(s, cities)));
   cities.forEach((c, i) => write("enseigne-signaletique-" + c.slug + ".html", cityPage(c, cities, i)));
 
+  /* Secteurs d'activité */
+  write("secteurs.html", sectorPage.index(sectors, cities));
+  sectors.forEach((sec) => write("signaletique-" + sec.slug + ".html", sectorPage(sec, cities)));
+
+  /* Matrice métier x ville : les requêtes locales qui convertissent */
+  const matrixCities = cities.slice(0, MATRIX_CITIES);
+  let n = 0;
+  services.forEach((svc) => {
+    matrixCities.forEach((city, ci) => {
+      const others = matrixCities.filter((c) => c.slug !== city.slug)
+        .slice(ci % 5, (ci % 5) + 6);
+      write(svc.slug + "-" + city.slug + ".html",
+        serviceCityPage(svc, city, cities, others, n));
+      n++;
+    });
+  });
+
   write("devis.html", forms.devis(cities));
   write("professionnels.html", forms.pros(cities));
   write("merci.html", forms.merci(cities));
@@ -95,7 +121,7 @@ function run() {
   write("mentions-legales.html", lg.mentions);
   write("confidentialite.html", lg.conf);
 
-  const pl = misc.plan(cities, T.NAV_MORE.map(([h, t]) => [h, t]));
+  const pl = misc.plan(cities, T.NAV_MORE.map(([h, t]) => [h, t]), sectors);
   write("plan-du-site.html", pl.plan);
   write("404.html", pl.notFound);
 
@@ -106,7 +132,9 @@ function run() {
   console.log(`  · 1 accueil`);
   console.log(`  · ${services.length} pages métier`);
   console.log(`  · ${cities.length} pages villes`);
-  console.log(`  · ${written.length - services.length - cities.length - 3} pages transverses + sitemap + robots`);
+  console.log(`  · ${sectors.length + 1} pages secteurs`);
+  console.log(`  · ${services.length * MATRIX_CITIES} pages métier x ville`);
+  console.log(`  · ${written.length - services.length - cities.length - sectors.length - 1 - services.length * MATRIX_CITIES - 2} pages transverses + sitemap + robots`);
 }
 
 run();

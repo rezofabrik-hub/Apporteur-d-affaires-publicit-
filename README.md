@@ -5,7 +5,7 @@ en communication visuelle : mise en relation entre des clients ayant un projet
 (enseigne, signalétique, covering, impression, objets publicitaires) et des
 professionnels indépendants partout en France.
 
-**69 pages HTML statiques**, sans framework ni dépendance externe : aucun CDN,
+**395 pages HTML statiques**, sans framework ni dépendance externe : aucun CDN,
 aucune police distante, aucun traceur. Tout se charge depuis le domaine.
 
 ---
@@ -16,7 +16,9 @@ aucune police distante, aucun traceur. Tout se charge depuis le domaine.
 |---|---|---|
 | Accueil | `index.html` | Positionnement, métiers, méthode, preuve, double appel à l'action |
 | Métiers | 8 pages piliers | Contenu long (1 500 à 2 500 mots) par domaine, avec tableaux de prix et FAQ |
-| Villes | 46 pages locales | SEO local : département, quartiers, zones d'activité, contraintes régionales |
+| Villes | 119 pages locales | SEO local : département, quartiers, zones d'activité, contraintes régionales |
+| Secteurs | 12 pages + sommaire | Pharmacie, CHR, santé, auto, beauté, immobilier, BTP, industrie, retail, ERP, franchise, sport |
+| Métier × ville | 240 pages | « Covering véhicule à Lyon », « Enseignes à Bordeaux » — les requêtes locales qui convertissent |
 | Conversion | `devis.html`, `professionnels.html`, `merci.html` | Formulaires multi-étapes client et partenaire |
 | Ressources | `tarifs`, `glossaire`, `reglementation-enseigne`, `comment-ca-marche`, `faq`, `villes` | Contenu de référence, longue traîne |
 | Légal | `mentions-legales`, `confidentialite`, `credits-photos`, `plan-du-site`, `404` | Obligations et transparence |
@@ -31,7 +33,7 @@ aucune police distante, aucun traceur. Tout se charge depuis le domaine.
 ## Démarrage
 
 ```bash
-node build/build.js          # régénère les 69 pages + sitemap.xml + robots.txt
+node build/build.js          # régénère les 395 pages + sitemap.xml + robots.txt
 python3 -m http.server 8000  # prévisualisation sur http://localhost:8000
 ```
 
@@ -91,7 +93,19 @@ le plan du site et le sitemap se mettent à jour automatiquement.
   neighbors: ["Tarascon", "Nîmes", "…"] }
 ```
 
-### 5. Ajouter ou modifier un métier — `build/data/services.js`
+### 5. Ajouter un secteur d'activité — `build/data/sectors.js`
+
+Même principe : une entrée = une page complète, ajoutée automatiquement au menu,
+au plan du site et au sitemap.
+
+### 6. Élargir la matrice métier × ville
+
+La constante `MATRIX_CITIES` en tête de `build/build.js` fixe le nombre de villes
+croisées avec les 8 métiers (30 par défaut, soit 240 pages). La porter à 60 génère
+480 pages. Augmentez progressivement : mieux vaut 240 pages substantielles que
+800 pages creuses, que Google traite comme des pages satellites.
+
+### 7. Ajouter ou modifier un métier — `build/data/services.js`
 
 Chaque entrée génère une page complète : héros, sommaire, sections,
 tableau de prix, grille de prestations, galerie, FAQ, données structurées.
@@ -116,9 +130,28 @@ sont pas nécessaires au fonctionnement du site.
 
 ---
 
+## La concurrence, en clair
+
+Deux modèles dominent le secteur, et ils ne se battent pas de la même façon :
+
+- **PANO** ne référence pas un site, mais **environ 150 sites** — chaque agence a
+  son propre domaine (`pano-douai.fr`, `pano-agen.fr`, `panoaix.fr`…). D'où leur
+  omniprésence locale. Chaque site pris isolément reste toutefois modeste.
+- **Signarama** joue sur un seul domaine avec une cinquantaine de pages magasin
+  (`/magasins/albi`), des pages catégories et des **pages secteurs**
+  (`/industries/…`).
+
+La structure de ce site répond directement à ces deux modèles : **119 villes**
+(contre ~50 chez Signarama), **12 secteurs** (dimension qu'ils exploitent) et
+surtout une **matrice métier × ville de 240 pages** qu'aucun des deux ne couvre
+systématiquement sur un domaine unique. C'est là que se joue la longue traîne
+qui convertit : « covering véhicule Lyon » plutôt que « covering ».
+
+---
+
 ## Référencement — ce qui est déjà en place
 
-- Titres et méta-descriptions uniques sur les 69 pages (vérifié automatiquement)
+- Titres et méta-descriptions uniques sur les 395 pages (vérifié automatiquement)
 - Données structurées JSON-LD : `Organization`, `WebSite`, `Service`,
   `LocalBusiness` (une par ville), `FAQPage`, `BreadcrumbList`, `ItemList`,
   `DefinedTermSet`
