@@ -56,7 +56,7 @@ module.exports = {
         "Fiche entreprise avec logo, photos et coordonnées",
         "Aucune commission sur les affaires signées"
       ],
-      notIncluded: ["Exclusivité territoriale", "Mise en avant prioritaire", "Page dédiée sur le site"]
+      notIncluded: ["Mise en avant prioritaire", "Page dédiée sur le site"]
     },
     {
       id: "annuel",
@@ -76,25 +76,6 @@ module.exports = {
         "Page dédiée sur le site, indexée par les moteurs de recherche",
         "Mise en avant sur les pages villes de votre zone",
         "Bilan semestriel des demandes transmises",
-        "Aucune commission sur les affaires signées"
-      ],
-      notIncluded: ["Exclusivité territoriale"]
-    },
-    {
-      id: "exclusif",
-      name: "Exclusivité territoriale",
-      duration: "12 mois",
-      price: "1 490",
-      priceNote: "soit 124 € par mois — nombre de zones limité",
-      pitch: "Vous êtes le seul partenaire du réseau sur votre métier et votre secteur.",
-      audience: "Entreprise structurée cherchant un volume d'affaires soutenu",
-      features: [
-        "Tout ce que comprend la formule Partenaire annuel",
-        "Exclusivité sur votre métier dans la zone retenue",
-        "Toutes les demandes de la zone vous sont adressées en premier",
-        "Zone d'intervention : jusqu'à une région",
-        "Votre logo sur les pages villes de la zone",
-        "Interlocuteur dédié et point mensuel",
         "Accompagnement sur les dossiers multi-sites et les appels d'offres",
         "Aucune commission sur les affaires signées"
       ],
@@ -149,7 +130,7 @@ module.exports = {
     { q: "Comment fonctionnent les deux mois offerts ?", a: "Vous remplissez le questionnaire, nous vérifions votre dossier, et vous recevez les demandes de votre zone pendant deux mois sans rien payer et sans carte bancaire. À l'issue de cette période, nous faisons le point sur ce qui vous a été transmis et vous décidez. Si le flux ne vous convient pas, vous ne donnez pas suite et cela s'arrête là." },
     { q: "Pourquoi offrir deux mois ?", a: "Parce qu'un réseau qui démarre a un problème d'amorçage : sans partenaires nous ne pouvons pas servir les demandes, et sans demandes personne n'a envie de payer. Les deux mois offerts cassent ce blocage — vous jugez sur pièces, nous constituons le réseau. C'est temporaire et réservé aux premières entreprises inscrites." },
     { q: "Pourquoi un abonnement plutôt qu'une commission ?", a: "Parce qu'une commission variable pousse l'intermédiaire à privilégier les gros dossiers et à vous envoyer un maximum de demandes, qualifiées ou non. L'abonnement inverse la logique : notre intérêt devient de vous garder d'une année sur l'autre, donc de vous transmettre des demandes que vous transformez réellement. Vous gardez par ailleurs 100 % de la marge sur chaque chantier signé." },
-    { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire, et un seul en formule Exclusivité territoriale. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
+    { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
     { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est aussi la raison d'être de la formule Découverte sur six mois : elle vous permet de mesurer avant de vous engager sur une année." },
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non. Aucune reconduction tacite : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
     { q: "Puis-je changer de formule en cours d'année ?", a: "Oui, vers le haut à tout moment : la différence est calculée au prorata du temps restant. Le passage vers une formule inférieure s'effectue à l'échéance." },
