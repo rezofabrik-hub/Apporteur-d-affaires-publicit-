@@ -8,8 +8,9 @@ module.exports = function partnersPage(cities) {
     { name: "Partenaires du secteur", url: "partenaires.html" }
   ];
 
-  /* La formule d'essai n'a de sens que pendant le lancement : elle disparaît
-     d'elle-même le jour où l'on passe `launch.active` à false. */
+  /* Toutes les formules sont payantes depuis le passage à l'offre « douze
+     mois au tarif de six » : le filtre reste, il servira le jour où une
+     formule d'essai réapparaîtrait. */
   const shownPlans = P.plans.filter((pl) => !pl.free || (P.launch && P.launch.active));
 
   /* Le prix affiché est le prix réellement pratiqué. Ce qui est annoncé, c'est
@@ -26,9 +27,9 @@ module.exports = function partnersPage(cities) {
     return price + `
   <p class="plan-note plan-note-launch"><b>${esc(P.launchPrice.label)}</b> — soit
     ${esc(d.perMonth(pl.duration))} ${esc(P.currency)} par mois, et ${esc(d.ht)} ${esc(P.currency)}
-    HT à votre charge réelle. Ce tarif passe à <b>${esc(d.after)} ${esc(P.currency)}</b>
-    le ${esc(T.site.anniversary)} — mais le vôtre reste bloqué
-    <b>${esc(pl.duration)}</b>.</p>`;
+    HT à votre charge réelle une fois la TVA récupérée. Le tarif du réseau passera à
+    <b>${esc(d.after)} ${esc(P.currency)}</b> le ${esc(T.site.anniversary)} 2027 ;
+    le prix de votre souscription reste le vôtre jusqu'au terme de votre abonnement.</p>`;
   };
 
   const planCards = shownPlans.map((pl) => `
@@ -60,8 +61,8 @@ module.exports = function partnersPage(cities) {
     <p class="lead">Nous sommes une <strong>agence de communication et de mise en relation</strong> :
     nous qualifions les projets des clients, puis nous les confions à de vrais professionnels —
     enseignistes, imprimeurs, poseurs, agences de publicité, spécialistes du covering et de l'objet
-    publicitaire. <strong>Deux mois à 0 €</strong> pour commencer, puis un abonnement fixe de 6 ou
-    12 mois — et <strong>aucune commission sur vos affaires</strong>.</p>
+    publicitaire. <strong>Douze mois d'accès à 490 € TTC</strong> pour la première année du réseau,
+    et <strong>aucune commission sur vos affaires</strong>.</p>
     <div class="btns">
       <a class="btn btn-pro btn-lg" href="#formules">Voir les formules</a>
       <a class="btn btn-ghost btn-lg" href="professionnels.html">Remplir le questionnaire</a>
@@ -104,7 +105,7 @@ module.exports = function partnersPage(cities) {
       <p>Recevoir des demandes de clients, c'est la moitié de ce qu'apporte le réseau. L'autre moitié,
       c'est de pouvoir en formuler une : une capacité de production que vous n'avez pas, un poseur à
       180 kilomètres, une nacelle en panne le matin d'un chantier, du matériel, un avis technique.
-      C'est compris dans toutes les formules — <strong>y compris les deux mois à 0 €</strong> — et
+      C'est compris dans toutes les formules, et
       cela fonctionne dès la première semaine, sans attendre que les demandes clients arrivent.
       <a href="entraide-partenaires.html">Voir l'entraide entre partenaires</a>.</p>
     </div>
@@ -115,15 +116,15 @@ module.exports = function partnersPage(cities) {
   <div class="wrap">
     <div class="sec-head center">
       <span class="eyebrow">Formules d'abonnement</span>
-      <h2>Deux mois à 0 €, puis 6 ou 12 mois pour la première année</h2>
-      <p class="lead mx-auto">Vous commencez sans rien payer et vous mesurez le flux réel de votre
-      secteur. Vous ne choisissez la durée de votre abonnement qu'ensuite, en connaissance de cause —
-      un budget de prospection fixe, sans pourcentage prélevé sur vos chantiers.</p>
-      <p class="lead mx-auto"><strong>Les abonnements 6 et 12 mois donnent exactement les mêmes
-      avantages.</strong> Nous ne pratiquons pas les formules à deux vitesses, où celui qui s'engage
-      moins longtemps reçoit moins de demandes. Ce qui change, c'est le tarif : l'année revient à
-      <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie. Au-delà,
-      deux formules élargissent la zone — une <strong>région entière</strong> ou la
+      <h2>Douze mois au tarif de six, pour la première année du réseau</h2>
+      <p class="lead mx-auto">Un référencement neuf met six à douze mois à produire son plein effet.
+      Un abonnement de six mois se terminerait juste avant que cela commence à rapporter : les trois
+      formules sont donc souscrites pour douze mois, au tarif d'un semestre pendant toute la première
+      année du réseau. Un budget de prospection fixe, sans pourcentage prélevé sur vos chantiers.</p>
+      <p class="lead mx-auto"><strong>Les trois formules donnent exactement les mêmes
+      avantages.</strong> Nous ne pratiquons pas les offres à deux vitesses, où celui qui paie moins
+      reçoit moins de demandes. Ce qui change, c'est l'étendue de la zone : trois départements de
+      votre choix en <strong>Proximité</strong>, une <strong>région entière</strong>, ou la
       <strong>France complète</strong>.</p>
       <p class="lead mx-auto"><strong>Vous n'êtes pas publié.</strong> Nous ne tenons aucun annuaire
       de partenaires : votre nom, vos coordonnées et vos capacités restent dans notre fichier
@@ -290,7 +291,7 @@ ${T.amortBlock('vente')}
     file: "partenaires.html", active: "partenaires.html",
     space: "pro",   // affiche le bandeau d'entrée de l'espace professionnels
     title: `Devenir Partenaire — Abonnement Réseau Enseigne & Signalétique | ${site.brand}`,
-    desc: "Enseigniste, agence de publicité, imprimeur, poseur nacelle : rejoignez le réseau avec un abonnement 6 ou 12 mois et sans commission sur vos affaires. Recevez des demandes qualifiées dans votre zone.",
+    desc: "Enseigniste, agence de publicité, imprimeur, poseur nacelle : 12 mois d'accès au réseau à 490 € TTC pour la première année, sans commission sur vos affaires. Recevez des demandes qualifiées dans votre zone.",
     body, cities,
     schema: [
       T.crumbSchema(crumbItems),

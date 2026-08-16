@@ -449,7 +449,7 @@ function ctaDouble(space) {
   <div class="cta-card pro">
     <h3>Vous voulez rejoindre le réseau ?</h3>
     <p>Enseigniste, agence de publicité, imprimeur, poseur, spécialiste du covering ou de l'objet
-    publicitaire : deux mois à 0 €, puis un abonnement de 6 ou 12 mois
+    publicitaire : douze mois d'accès à 490 € TTC, tarif de lancement du réseau
     sans commission sur vos affaires.</p>
     <a class="btn btn-white" href="professionnels.html">Remplir le questionnaire</a>
   </div>
@@ -535,7 +535,7 @@ function proInvite() {
   <div>
     <b>Vous êtes enseigniste, imprimeur, poseur ou agence ?</b>
     <span>Le réseau recrute des professionnels dans toute la France. Rubrique séparée,
-    abonnement sans commission, deux mois à 0 € pour commencer.</span>
+    abonnement sans commission, 12 mois au tarif de 6 pour la première année.</span>
   </div>
   <a class="btn btn-pro" href="partenaires.html">Devenir partenaire</a>
 </aside>`;
@@ -555,7 +555,7 @@ function launchBanner(compact) {
   <p style="margin-top:14px">${esc(L.detail)}</p>
   <ul>${L.conditions.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
   <div class="btns">
-    <a class="btn btn-white btn-lg" href="professionnels.html">Commencer avec 2 mois à 0 €</a>
+    <a class="btn btn-white btn-lg" href="professionnels.html">Rejoindre le réseau</a>
     <a class="btn btn-ghost btn-lg" href="partenaires.html#formules">Voir les formules</a>
   </div>
 </div>`;

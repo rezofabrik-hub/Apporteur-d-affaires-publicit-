@@ -11,31 +11,55 @@
 module.exports = {
 
   /* ---------------------------------------------------------------------
-     OFFRE DE LANCEMENT — la réponse au problème d'amorçage.
-     Sans partenaires, impossible de servir la demande ; sans demande, personne
-     ne paie. Les deux mois gratuits cassent ce blocage.
+     OFFRE DE LANCEMENT — première année du réseau.
 
-     Ils constituent désormais une formule à part entière — Découverte, à 0 € —
-     et non plus une remise appliquée aux formules payantes : un prix affiché à
-     zéro lève l'objection d'entrée bien plus efficacement qu'un rabais, et il
-     évite au partenaire d'avoir à choisir une durée avant d'avoir rien vu.
-     Passez `active: false` quand le réseau est suffisamment garni : la formule
-     Découverte disparaîtra alors des cartes tarifaires et du questionnaire.
+     L'ancienne formule était « deux mois à 0 € puis 6 ou 12 mois ». Elle est
+     remplacée par une année entière au tarif d'un semestre, pour une raison
+     de calendrier et non de marketing : un référencement neuf met six à douze
+     mois à produire. Un abonnement de six mois expirait précisément au moment
+     où le flux commence — le partenaire serait parti juste avant que cela
+     fonctionne. Douze mois lui font traverser la montée en charge.
+
+     CE QUI REMPLACE LA GRATUITÉ. Les deux mois offerts levaient l'objection
+     « je ne vous connais pas ». Ils sont remplacés par une garantie de montée
+     en charge : sans aucune demande transmise au bout de trois mois, l'accès
+     est prolongé de six mois sans frais. Le risque reste du bon côté, la
+     prestation n'est plus donnée, et surtout la promesse dit la vérité sur le
+     calendrier au lieu de la masquer.
+
+     Un partenaire qui paie répond au téléphone ; un partenaire gratuit laisse
+     filer les demandes et abîme le réseau. C'est la vraie raison de fond.
   --------------------------------------------------------------------- */
   launch: {
     active: true,
     label: "Offre de lancement",
-    headline: "Les 2 premiers mois à 0 €",
-    sub: "Le réseau se constitue : les premières entreprises inscrites reçoivent les demandes de leur zone pendant deux mois, gratuitement et sans engagement.",
-    detail: "Vous jugez sur pièces. À l'issue des deux mois, vous choisissez votre abonnement — 6 mois ou 12 mois — ou vous ne donnez pas suite, sans frais ni justification.",
+    headline: "12 mois au tarif de 6 — première année du réseau",
+    sub: "Le réseau se constitue : les entreprises qui entrent cette première année obtiennent douze mois d'accès à 490 € TTC, le tarif d'un semestre.",
+    detail: "C'est une question de calendrier autant que de prix. Un réseau qui démarre met six à douze mois à installer son flux de demandes : l'abonnement doit couvrir cette montée en charge, pas s'arrêter au milieu.",
     conditions: [
-      "Offre réservée aux premières entreprises inscrites, dans la limite des places par zone et par métier",
-      "Deux mois à 0 €, sans prélèvement et sans carte bancaire demandée",
-      "Aucune commission sur les affaires signées, pendant les deux mois comme après",
-      "À l'issue des deux mois, vous choisissez entre l'abonnement 6 mois et l'abonnement 12 mois",
-      "Aucun basculement automatique : sans accord explicite de votre part, l'accès s'arrête"
+      "Tarif de lancement réservé aux entreprises inscrites avant le 16 août 2027",
+      "12 mois d'accès à 490 € TTC, soit 408 € HT à votre charge réelle",
+      "Le tarif du réseau passera ensuite à 890 € par an — votre prix reste celui de votre souscription jusqu'à son terme",
+      "Aucune commission sur les affaires signées",
+      "Aucune reconduction tacite : à l'échéance, vous décidez",
+      "Sans aucune demande transmise au bout de trois mois, votre accès est prolongé de six mois sans frais"
     ],
-    badge: "2 mois à 0 €"
+    badge: "12 mois au prix de 6"
+  },
+
+  /* Garantie de montée en charge — reprise telle quelle sur la page
+     partenaires, le questionnaire et les conditions de vente. Elle ne coûte
+     rien si le réseau fonctionne, et elle est la seule façon honnête de
+     vendre une première année : on ne cache pas que le flux met du temps à
+     s'installer, on s'engage sur ce qui se passe s'il ne s'installe pas. */
+  garantie: {
+    titre: "Garantie de montée en charge",
+    texte: "Un référencement neuf met six à douze mois à produire son plein effet, et nous ne le cacherons pas pour vendre un abonnement. Si aucune demande ne vous a été transmise au bout de trois mois, votre accès est prolongé de six mois sans frais — sans démarche de votre part, nous le constatons nous-mêmes sur le relevé.",
+    conditions: [
+      "Constaté sur le relevé des demandes transmises, sans réclamation à formuler",
+      "Prolongation de six mois, aux mêmes conditions et sans supplément",
+      "S'applique dès lors que vos capacités et votre zone sont renseignées et à jour"
+    ]
   },
 
   /* ---------------------------------------------------------------------
@@ -55,10 +79,10 @@ module.exports = {
      ┌──────────────────────────────────────────────────────────────────┐
      │  À FAIRE LE 16 AOÛT 2027 — application de la hausse annoncée      │
      │                                                                  │
-     │  1. `plans` ci-dessous        : price 490 → 690, 890 → 1199       │
-     │  2. `pose.plans`, plus bas    : price 490 → 690, 890 → 1199       │
-     │  3. Ici même                  : `active: false`                   │
-     │  4. `vatNote`                 : 408 → 575 HT, 742 → 999 HT        │
+     │  1. `plans` ci-dessous        : Proximité 490 → 890                │
+     │  2. `pose.plans`, plus bas    : Ponctuelle 490 → 890               │
+     │  3. `launch`                  : `active: false`                    │
+     │  4. `vatNote`                 : 408 → 742 HT                       │
      │  5. `node build/build.js`, puis pousser                          │
      │                                                                  │
      │  Les abonnements en cours restent au tarif de lancement jusqu'à   │
@@ -70,24 +94,30 @@ module.exports = {
 
      Les prix futurs sont portés par `nextPrice` sur chaque formule, et non
      par un pourcentage global : les deux hausses ne sont pas du même ordre
-     (+41 % sur six mois, +35 % sur l'année, montants arrondis). Annoncer
-     « +20 % » aurait été faux dès lors que ces montants-là sont ceux qui
-     seront réellement appliqués.
+     Le tarif de lancement, lui, est annoncé comme temporaire sur le site :
+     c'est ce qui le rend licite. Un « lancement » reconduit indéfiniment
+     ferait de 890 € un prix qui n'a jamais existé.
 
      La date se règle dans build/data/site.js (`launchDate` et `anniversary`).
   --------------------------------------------------------------------- */
   launchPrice: {
     /* Volontairement inactif : la hausse ne s'annonce pas sur le site. Elle est
-       communiquée individuellement à chaque partenaire, deux mois avant la fin
+       communiquée individuellement à chaque partenaire avant la fin
        de son contrat. Annoncer une augmentation à quelqu'un qui découvre
        l'offre le fait hésiter ; l'annoncer à un partenaire qui a déjà mesuré
        ce que le réseau lui rapporte est une tout autre conversation.
        Les montants cibles restent consignés dans `nextPrice` sur chaque
        formule — mémoire interne, jamais affichée. */
-    active: false,
+    /* Actif : le caractère temporaire du tarif doit être annoncé, sinon
+       « offre de lancement » ne veut rien dire. C'est aussi ce qui rend
+       l'annonce licite — un prix de lancement daté, appliqué puis relevé à
+       la date dite, n'est pas une réduction fictive. Encore faut-il
+       réellement passer à 890 € le 16 août 2027 : reconduire indéfiniment le
+       lancement ferait de 890 € un prix qui n'a jamais existé. */
+    active: true,
     label: "Tarif de lancement",
-    headline: "Tarif de lancement du réseau",
-    note: "Les montants ci-dessous sont les tarifs de lancement du réseau."
+    headline: "Tarif de lancement — première année du réseau",
+    note: "490 € TTC les 12 mois pour toute souscription avant le 16 août 2027. Le tarif du réseau passera ensuite à 890 € par an. Le prix de votre souscription reste le vôtre jusqu'au terme de votre abonnement."
   },
 
   /* Devise et mentions affichées sous les prix.
@@ -96,82 +126,33 @@ module.exports = {
      lui qui sert de base à tous les calculs d'amortissement ci-dessous. */
   currency: "€",
   priceSuffix: "TTC",
-  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € sur 6 mois, 742 € sur 12 mois, 1 242 € en Rayonnement régional et 2 492 € en Envergure nationale. Sans reconduction tacite : vous décidez du renouvellement.",
+  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € sur l'année en formule Proximité, 1 242 € en Rayonnement régional et 2 492 € en Envergure nationale. Toutes les formules sont souscrites pour douze mois, sans reconduction tacite : à l'échéance, vous décidez.",
 
   /* ---------------------------------------------------------------------
-     Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
-     puis on s'abonne pour la première année sur 6 ou 12 mois.
-     `free: true` marque la formule d'essai — elle n'est affichée que tant que
-     `launch.active` vaut true. `featured: true` met une formule en avant.
-     Tarifs annoncés TTC : 490 € pour 6 mois, 890 € pour 12 mois.
-     Les prestations étant identiques d'une formule à l'autre, c'est le prix
-     qui doit rendre l'engagement long attractif : deux semestres coûtent
-     980 €, l'année 890 € — 90 € d'écart, argument chiffré et vérifiable.
+     Trois formules, toutes souscrites pour douze mois. Ce n'est plus la
+     durée qui les distingue mais l'étendue de la zone : trois départements,
+     une région, ou la France entière. Un partenaire n'a donc plus à arbitrer
+     entre deux durées avant d'avoir rien vu — il choisit un périmètre, ce
+     qu'il sait faire.
+
+     Tarifs annoncés TTC. `featured: true` met une formule en avant.
+     `nextPrice` porte le tarif applicable après le 16 août 2027 : mémoire
+     interne pour la formule Proximité, dont la hausse est annoncée sur le
+     site puisqu'elle justifie le caractère temporaire du lancement.
   --------------------------------------------------------------------- */
   plans: [
     {
-      id: "decouverte",
-      name: "Découverte",
-      tier: "Partenaire Découverte",
-      duration: "2 mois",
-      price: "0",
-      free: true,
-      badge: "Offre de lancement",
-      priceNote: "gratuit, sans carte bancaire et sans engagement",
-      pitch: "Recevez les demandes de votre zone pendant deux mois avant de décider quoi que ce soit.",
-      audience: "Toute entreprise du secteur qui veut mesurer le flux avant de s'engager",
-      features: [
-        "Inscription au fichier partenaires du réseau, jamais publié",
-        "Réception des demandes correspondant à vos capacités déclarées",
-        "Zone d'intervention d'un département",
-        "Jusqu'à 2 métiers déclarés",
-        "Fiche entreprise avec logo, photos et coordonnées",
-        "Aucune commission sur les affaires signées",
-        "Bilan des demandes transmises au terme des deux mois"
-      ],
-      notIncluded: ["Priorité d'envoi", "Zone étendue à 3 départements"]
-    },
-    {
-      id: "semestriel",
-      name: "Proximité — 6 mois",
-      tier: "Partenaire Proximité",
-      cta: "Choisir Proximité 6 mois",
-      duration: "6 mois",
-      price: "490",
-      nextPrice: "690",   // tarif au 16 août 2027
-      priceNote: "soit 82 € par mois TTC — 408 € HT à votre charge réelle",
-      pitch: "Tous les avantages du réseau, sur un engagement de six mois seulement.",
-      audience: "Artisan, indépendant ou entreprise qui préfère ne pas s'engager sur l'année",
-      /* Prestations volontairement identiques à celles de l'abonnement annuel :
-         un partenaire qui paie est un partenaire servi, quelle que soit la
-         durée qu'il a choisie. Seule la durée d'engagement les distingue. */
-      features: [
-        "Inscription complète au fichier partenaires, jamais publié",
-        "Réception des demandes correspondant à vos capacités déclarées",
-        "Zone d'intervention : 3 départements de votre choix",
-        "Métiers déclarés illimités",
-        "Priorité d'envoi sur les demandes de votre spécialité",
-        "Vos coordonnées transmises au seul client dont le projet correspond",
-        "Votre nom n'apparaît nulle part : vos concurrents ignorent que vous êtes du réseau",
-        "Bilan des demandes transmises à mi-parcours",
-        "Accompagnement sur les dossiers multi-sites et les appels d'offres",
-        "Label Partenaire Proximité à afficher sur vos supports",
-        "Aucune commission sur les affaires signées"
-      ],
-      notIncluded: []
-    },
-    {
       id: "annuel",
-      name: "Proximité — 12 mois",
+      name: "Proximité",
       tier: "Partenaire Proximité",
-      cta: "Choisir Proximité 12 mois",
+      cta: "Choisir la formule Proximité",
       duration: "12 mois",
-      price: "890",
-      nextPrice: "1199",   // tarif au 16 août 2027
-      priceNote: "soit 74,17 € par mois TTC — 90 € de moins que deux semestres",
+      price: "490",
+      nextPrice: "890",   // tarif du réseau à partir du 16 août 2027
+      priceNote: "soit 41 € par mois TTC — 408 € HT à votre charge réelle sur l'année",
       featured: true,
-      badge: "Le plus choisi",
-      pitch: "Les mêmes avantages que la formule 6 mois, au meilleur tarif mensuel du réseau.",
+      badge: "12 mois au prix de 6",
+      pitch: "Une année complète d'accès au tarif d'un semestre, le temps que le flux s'installe.",
       audience: "Enseigniste, imprimeur, poseur ou agence qui veut un flux installé sur l'année",
       features: [
         "Inscription complète au fichier partenaires, jamais publié",
@@ -181,7 +162,7 @@ module.exports = {
         "Priorité d'envoi sur les demandes de votre spécialité",
         "Vos coordonnées transmises au seul client dont le projet correspond",
         "Votre nom n'apparaît nulle part : vos concurrents ignorent que vous êtes du réseau",
-        "Bilan semestriel des demandes transmises",
+        "Bilan des demandes transmises à mi-parcours, puis avant l'échéance",
         "Accompagnement sur les dossiers multi-sites et les appels d'offres",
         "Label Partenaire Proximité à afficher sur vos supports",
         "Aucune commission sur les affaires signées"
@@ -342,7 +323,6 @@ module.exports = {
        paiement avec la mention « nous vous transmettons le lien » plutôt
        qu'un bouton mort. */
     liens: {
-      semestriel: "",
       annuel: "",
       region: "",
       france: ""
@@ -377,9 +357,9 @@ module.exports = {
     eyebrow: "Amortissement",
     title: "Combien faut-il signer pour rembourser l'abonnement ?",
     lead: "La question n'est pas ce que coûte l'abonnement, mais à partir de quel moment il est remboursé. Voici le calcul, fait avec nos propres grilles tarifaires et une hypothèse de marge délibérément prudente.",
-    threshold: "742 €",
-    thresholdNote: "Coût réel de l'abonnement 12 mois : 890 € TTC, dont 148 € de TVA que vous récupérez. C'est donc 742 € qu'il faut couvrir, soit environ 2 100 € de chiffre d'affaires à 35 % de marge brute.",
-    head: ["Une seule affaire de ce type", "Budget courant", "Marge brute à 35 %", "Abonnement 12 mois remboursé ?"],
+    threshold: "408 €",
+    thresholdNote: "Coût réel de l'abonnement annuel au tarif de lancement : 490 € TTC, dont 82 € de TVA que vous récupérez. C'est donc 408 € qu'il faut couvrir sur douze mois, soit environ 1 170 € de chiffre d'affaires à 35 % de marge brute. Une seule enseigne de commerce y suffit.",
+    head: ["Une seule affaire de ce type", "Budget courant", "Marge brute à 35 %", "Année d'abonnement remboursée ?"],
     rows: [
       ["Caisson lumineux LED simple face 2 m", "900 – 2 200 €", "315 – 770 €", "Oui sur le haut de la fourchette"],
       ["Lettres découpées relief rétro-éclairées", "1 800 – 6 000 €", "630 – 2 100 €", "Oui, dès 2 100 € de vente"],
@@ -390,7 +370,7 @@ module.exports = {
     ],
     note: "Autrement dit : une enseigne à lettres relief, un totem ou un covering complet dans l'année, et l'abonnement est remboursé. Tout le reste de ce que le réseau vous transmet est du chiffre d'affaires net de coût d'acquisition — puisqu'il n'y a aucune commission sur les affaires signées.",
     compare: [
-      ["Abonnement 12 mois", "742 € HT pour l'année", "Demandes qualifiées, jamais adressées à plus de 2 ou 3 partenaires"],
+      ["Abonnement annuel", "408 € HT pour l'année", "Demandes qualifiées, jamais adressées à plus de 2 ou 3 partenaires"],
       ["Achat de contacts à l'unité", "25 à 60 € le contact", "Non qualifié, revendu simultanément à 5 ou 10 entreprises"],
       ["Franchise du secteur", "15 000 à 60 000 € de droit d'entrée", "Plus une redevance annuelle assise sur votre chiffre d'affaires"]
     ],
@@ -399,17 +379,17 @@ module.exports = {
        élevée qu'en fabrication : la pose, c'est de la main-d'œuvre, pas de
        l'achat de matière. Le seuil tombe donc à moins de deux journées. */
     pose: {
-      title: "Deux journées de pose et l'abonnement est remboursé",
+      title: "Une à deux journées de pose et l'année est remboursée",
       lead: "Le calcul est encore plus direct sur la pose : il n'y a pas d'achat de matière, donc la marge porte sur la main-d'œuvre. Nous retenons 45 %, ce qui reste conservateur pour une équipe équipée.",
-      head: ["Type d'intervention", "Budget courant", "Marge brute à 45 %", "Abonnement 12 mois remboursé ?"],
+      head: ["Type d'intervention", "Budget courant", "Marge brute à 45 %", "Année d'abonnement remboursée ?"],
       rows: [
-        ["Pose d'enseigne avec nacelle (journée)", "800 – 1 600 €", "360 – 720 €", "Oui en deux journées"],
-        ["Pose d'enseigne avec nacelle (½ journée)", "450 – 900 €", "202 – 405 €", "Deux à quatre demi-journées"],
-        ["Dépose d'enseigne + rebouchage", "300 – 1 200 €", "135 – 540 €", "Deux à trois chantiers"],
+        ["Pose d'enseigne avec nacelle (journée)", "800 – 1 600 €", "360 – 720 €", "Oui, une à deux journées"],
+        ["Pose d'enseigne avec nacelle (½ journée)", "450 – 900 €", "202 – 405 €", "Une à deux demi-journées"],
+        ["Dépose d'enseigne + rebouchage", "300 – 1 200 €", "135 – 540 €", "Un à trois chantiers"],
         ["Raccordement électrique et horloge astronomique", "200 – 600 €", "90 – 270 €", "Complément de chantier"],
         ["Contrat de maintenance annuel (1 enseigne)", "180 – 600 € / an", "81 – 270 € / an", "Récurrent, il s'ajoute chaque année"]
       ],
-      note: "Deux journées de nacelle dans l'année suffisent à couvrir les 742 € de coût réel. Un seul chantier que vous n'auriez pas pu prendre — parce qu'il était à 200 kilomètres et qu'aucun poseur n'était disponible — coûte plus cher que l'abonnement entier."
+      note: "Une à deux journées de nacelle dans l'année suffisent à couvrir les 408 € de coût réel. Un seul chantier que vous n'auriez pas pu prendre — parce qu'il était à 200 kilomètres et qu'aucun poseur n'était disponible — coûte plus cher que l'abonnement entier."
     }
   },
 
@@ -429,7 +409,7 @@ module.exports = {
       ["Fournisseurs", "Libres", "Libres", "Imposés", "Libres"],
       ["Nombre de destinataires par demande", "2 à 3", "Sans objet", "Sans objet", "5 à 10 selon les plateformes"],
       ["Demande qualifiée par téléphone", "Oui", "Sans objet", "Sans objet", "Rarement"],
-      ["Engagement", "6 ou 12 mois", "12 mois en général", "5 à 7 ans", "Aucun"]
+      ["Engagement", "12 mois, sans reconduction tacite", "12 mois en général", "5 à 7 ans", "Aucun"]
     ]
   },
 
@@ -446,23 +426,23 @@ module.exports = {
   ],
 
   faq: [
-    { q: "Comment fonctionne la formule Découverte à 0 € ?", a: "Vous remplissez le questionnaire, nous vérifions votre dossier, et vous recevez les demandes de votre zone pendant deux mois sans rien payer et sans carte bancaire. À l'issue de cette période, nous faisons le point sur ce qui vous a été transmis et vous choisissez votre abonnement pour la première année : 6 mois à 490 € TTC ou 12 mois à 890 € TTC. Si le flux ne vous convient pas, vous ne donnez pas suite et cela s'arrête là." },
-    { q: "Pourquoi une formule à 0 € ?", a: "Parce qu'un réseau qui démarre a un problème d'amorçage : sans partenaires nous ne pouvons pas servir les demandes, et sans demandes personne n'a envie de payer. Les deux premiers mois à zéro euro cassent ce blocage — vous jugez sur pièces, nous constituons le réseau. C'est temporaire et réservé aux premières entreprises inscrites." },
+    { q: "Que comprend l'offre de lancement ?", a: "Douze mois d'accès au réseau pour 490 € TTC, soit le tarif d'un semestre. Elle est réservée aux entreprises qui souscrivent avant le 16 août 2027 ; au-delà, le tarif du réseau sera de 890 € par an. Le prix de votre souscription reste le vôtre jusqu'au terme de votre abonnement, quelle que soit l'évolution ultérieure." },
+    { q: "Pourquoi douze mois et pas six ?", a: "Par honnêteté de calendrier. Un réseau qui démarre met six à douze mois à installer un flux de demandes régulier : un abonnement de six mois se terminerait précisément au moment où cela commence à produire, et vous seriez parti juste avant. Douze mois vous font traverser la montée en charge — et c'est aussi pour cela que le tarif est celui d'un semestre." },
     { q: "Pourquoi un abonnement plutôt qu'une commission ?", a: "Parce qu'une commission variable pousse l'intermédiaire à privilégier les gros dossiers et à vous envoyer un maximum de demandes, qualifiées ou non. L'abonnement inverse la logique : notre intérêt devient de vous garder d'une année sur l'autre, donc de vous transmettre des demandes que vous transformez réellement. Vous gardez par ailleurs 100 % de la marge sur chaque chantier signé." },
-    { q: "Je suis une agence franchisée. Puis-je rejoindre le réseau ?", a: "Oui, et c'est même une situation confortable des deux côtés. Un contrat de franchise vous attribue un secteur : il vous protège de vos confrères du réseau, mais il plafonne aussi votre croissance, puisque vous ne pouvez pas aller prospecter ailleurs. Nous ne vous demandons rien de contraire à cela — nous vous transmettons des demandes situées à l'intérieur de votre propre secteur, celui que votre contrat vous attribue déjà. Vous ne prenez le territoire de personne, vous recevez simplement des clients de votre zone que vous n'avez pas eu à démarcher. Deux réserves, dites franchement : relisez les clauses de votre contrat relatives aux apporteurs d'affaires extérieurs, certains réseaux imposent que toute demande passe par leur propre outil ; et parlez-en à votre franchiseur plutôt que de le découvrir plus tard. La formule Découverte à 0 € existe précisément pour tester cela sans rien engager." },
+    { q: "Je suis une agence franchisée. Puis-je rejoindre le réseau ?", a: "Oui, et c'est même une situation confortable des deux côtés. Un contrat de franchise vous attribue un secteur : il vous protège de vos confrères du réseau, mais il plafonne aussi votre croissance, puisque vous ne pouvez pas aller prospecter ailleurs. Nous ne vous demandons rien de contraire à cela — nous vous transmettons des demandes situées à l'intérieur de votre propre secteur, celui que votre contrat vous attribue déjà. Vous ne prenez le territoire de personne, vous recevez simplement des clients de votre zone que vous n'avez pas eu à démarcher. Deux réserves, dites franchement : relisez les clauses de votre contrat relatives aux apporteurs d'affaires extérieurs, certains réseaux imposent que toute demande passe par leur propre outil ; et parlez-en à votre franchiseur plutôt que de le découvrir plus tard. Le tarif de lancement et la garantie de montée en charge limitent le risque d'un essai : douze mois à 490 €, et une prolongation de six mois sans frais si rien ne vous est transmis au bout de trois." },
 
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
-    { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est précisément la raison d'être de la formule Découverte : deux mois à zéro euro vous permettent de mesurer le flux réel de votre secteur avant d'engager le moindre euro." },
-    { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
+    { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Une garantie de montée en charge s'applique : si aucune demande ne vous a été transmise au bout de trois mois, votre accès est prolongé de six mois sans frais. Vous n'avez aucune démarche à faire, nous le constatons nous-mêmes sur le relevé des demandes. Et si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût." },
+    { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non. Aucune reconduction tacite, aucun prélèvement automatique, aucun mandat SEPA : le règlement est unique, pour la période souscrite. Nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
     { q: "Que se passe-t-il à la fin de mon abonnement ?", a: "Rien d'automatique : il n'y a pas de reconduction tacite. Nous vous recontactons avant l'échéance avec le bilan des demandes qui vous ont été transmises, et vous décidez de renouveler ou non. Les conditions applicables au renouvellement vous sont communiquées à ce moment-là, et vous restez libre de ne pas donner suite." },
-    { q: "Le service de pose suit-il la même grille tarifaire ?", a: "Oui, aux mêmes montants et dans les mêmes conditions. Les deux offres suivent la même grille depuis le départ." },
-    { q: "Comment se définit ma zone d'intervention ?", a: "Vous choisissez librement vos trois départements sur les formules 6 et 12 mois, et ils n'ont pas à être limitrophes : un atelier peut viser une métropole située à deux départements de là, où se trouvent réellement ses clients. Le questionnaire vous propose les départements voisins du vôtre à titre de suggestion, rien de plus. Si trois départements ne suffisent pas, la formule Rayonnement régional couvre une région administrative entière et Envergure nationale tout le territoire." },
+    { q: "Le service de pose suit-il la même grille tarifaire ?", a: "L'entrée est au même tarif : 490 € TTC pour douze mois en formule Pose Ponctuelle, qui couvre jusqu'à cinq demandes de pose par mois. La formule Pose Illimitée, à 890 € TTC sur douze mois, lève ce plafond et ajoute la coordination de chantier." },
+    { q: "Comment se définit ma zone d'intervention ?", a: "Vous choisissez librement vos trois départements en formule Proximité, et ils n'ont pas à être limitrophes : un atelier peut viser une métropole située à deux départements de là, où se trouvent réellement ses clients. Le questionnaire vous propose les départements voisins du vôtre à titre de suggestion, rien de plus. Si trois départements ne suffisent pas, la formule Rayonnement régional couvre une région administrative entière et Envergure nationale tout le territoire." },
     { q: "Puis-je changer mes départements en cours d'abonnement ?", a: "Oui, une fois par période et sans frais : il suffit de nous le demander. Un déménagement d'atelier, l'embauche d'une équipe mobile ou une zone qui se révèle moins active que prévu sont autant de raisons légitimes. Nous ajustons également votre périmètre de notre propre initiative si le volume transmis reste faible." },
     { q: "Mon entreprise sera-t-elle affichée sur le site ?", a: "Non, et c'est délibéré. Nous ne publions aucun annuaire de partenaires. Votre nom, vos coordonnées et vos capacités restent dans notre fichier interne et ne sortent que pour un projet précis, vers le seul client concerné. Un annuaire public vous expose à côté de vos concurrents, laisse n'importe qui comparer dix fiches et vous met en concurrence sur le prix avant même d'avoir parlé. Nous faisons l'inverse : le client reçoit deux ou trois noms choisis pour son projet, pas une liste." },
     { q: "Quelle différence avec un annuaire professionnel ?", a: "Un annuaire vend de la visibilité : vous payez une fiche, un portrait, une mention dans une newsletter, puis vous attendez qu'on vous trouve. Personne n'y prospecte à votre place. Nous vendons des demandes : nous allons chercher le client, nous qualifions son besoin par téléphone, nous rédigeons un cahier des charges et nous vous le transmettons. Les deux se cumulent très bien — beaucoup de nos partenaires figurent dans un annuaire — mais ils ne se remplacent pas." },
     { q: "À quoi sert le label de partenaire ?", a: "Chaque niveau d'adhésion donne droit à un label — Partenaire Local, Confirmé, Régional ou National — que vous pouvez afficher sur votre devanture, vos devis, votre site et vos véhicules. Il atteste que votre SIRET, vos assurances et vos habilitations ont été vérifiés par le réseau. Pour un client qui hésite entre deux entreprises, c'est un élément de réassurance concret, et il ne vous coûte rien de plus que votre abonnement." },
-    { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "La durée d'engagement et le prix, rien d'autre. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses — un partenaire qui paie est un partenaire servi. L'engagement annuel se récompense donc sur le tarif : 890 € contre 980 € pour deux semestres, soit 90 € d'économie." },
-    { q: "Puis-je passer du 6 mois au 12 mois ?", a: "Oui, à tout moment : la différence est calculée au prorata du temps restant, sans frais de changement. Comme les prestations sont les mêmes, ce choix ne porte que sur la durée et sur le rythme de renouvellement qui vous arrange." },
+    { q: "Quelle différence entre les trois formules ?", a: "L'étendue de la zone, et rien d'autre. Les prestations sont strictement identiques : mêmes demandes qualifiées, même priorité d'envoi, même absence de commission, même confidentialité. Proximité couvre trois départements de votre choix, Rayonnement régional une région entière, Envergure nationale la France complète — et c'est cette dernière qui reçoit les campagnes multi-sites d'un donneur d'ordre national." },
+    { q: "Puis-je changer de formule en cours d'abonnement ?", a: "Oui, à tout moment vers une formule plus large : la différence est calculée au prorata du temps restant, sans frais de changement. C'est fréquent chez un partenaire qui décroche un premier dossier multi-sites et veut élargir sa zone dans la foulée." },
     { q: "Prenez-vous une commission en plus de l'abonnement ?", a: "Non, jamais. L'abonnement est la seule contrepartie. Vous facturez le client en direct, au prix que vous fixez, et rien ne nous revient sur le chantier." },
     { q: "Acceptez-vous les auto-entrepreneurs ?", a: "Oui, dès lors que le SIRET est actif et que les assurances sont à jour. La taille n'est pas un critère de sélection ; la fiabilité et l'adéquation des capacités en sont. Un poseur indépendant bien équipé et réactif vaut mieux qu'une structure importante mais indisponible." },
     { q: "Que se passe-t-il si un partenaire ne donne pas satisfaction ?", a: "Nous suivons les retours clients après chaque affaire transmise. Un partenaire dont les litiges se répètent est retiré du réseau sans remboursement du temps restant, conformément aux conditions d'adhésion. C'est ce qui protège la crédibilité du réseau — et donc la vôtre." }
@@ -483,10 +463,10 @@ module.exports = {
       {
         id: "pose-6",
         name: "Pose Ponctuelle",
-        duration: "6 mois",
+        duration: "12 mois",
         price: "490",
-        nextPrice: "690",
-        priceNote: "soit 82 € par mois TTC — 408 € HT à votre charge réelle",
+        nextPrice: "890",
+        priceNote: "tarif de lancement — 408 € HT à votre charge réelle sur l'année",
         pitch: "Pour les structures qui posent quelques chantiers par mois hors de leur zone.",
         audience: "Enseigniste, imprimeur ou agence de 1 à 5 personnes",
         features: [
@@ -504,7 +484,7 @@ module.exports = {
         duration: "12 mois",
         price: "890",
         nextPrice: "1199",
-        priceNote: "soit 74,17 € par mois TTC — demandes illimitées",
+        priceNote: "742 € HT à votre charge réelle — demandes de pose illimitées",
         featured: true,
         badge: "Pour les fabricants",
         pitch: "Pour ceux qui livrent dans toute la France et veulent un poseur disponible à chaque fois.",

@@ -877,12 +877,20 @@ function cgv(cities) {
 
   <h2>5. Formules, durée et prise d'effet</h2>
   <p>Les formules, leurs périmètres et leurs tarifs figurent sur la page
-  <a href="partenaires.html">partenaires</a>. L'abonnement est souscrit pour une durée ferme de six
-  ou douze mois selon la formule retenue. Il prend effet à l'ouverture de l'accès, notifiée par
+  <a href="partenaires.html">partenaires</a>. L'abonnement est souscrit pour une durée ferme de douze mois. Il prend effet à l'ouverture de l'accès, notifiée par
   courriel, et non à la date de règlement.</p>
   <p><strong>L'abonnement ne fait l'objet d'aucune reconduction tacite.</strong> Il prend fin de
   plein droit à son terme, sans formalité ni préavis. Le prestataire recontacte le Partenaire avant
   l'échéance ; la poursuite de la relation suppose une nouvelle souscription expresse.</p>
+
+  <h2>5 bis. Garantie de montée en charge</h2>
+  <p>Le référencement d'un site nouveau met plusieurs mois à produire son plein effet, ce dont le
+  prestataire informe le Partenaire avant toute souscription. En conséquence, si aucune demande n'a
+  été transmise au Partenaire dans les trois mois suivant l'ouverture de son accès, celui-ci est
+  prolongé de six mois sans frais supplémentaires. Cette prolongation est constatée par le
+  prestataire sur le relevé des demandes transmises, sans réclamation à formuler par le Partenaire.
+  Elle suppose que les capacités déclarées et la zone d'intervention aient été renseignées et
+  tenues à jour.</p>
 
   <h2>6. Prix, taxes et facturation</h2>
   <p>Les prix sont indiqués en euros toutes taxes comprises, TVA française au taux en vigueur
@@ -909,8 +917,7 @@ function cgv(cities) {
   <h2>8. Droit de rétractation</h2>
   <p>Le contrat étant conclu entre professionnels et l'objet de l'abonnement — la recherche de
   clients pour l'activité exercée — entrant dans le champ de l'activité principale du Partenaire,
-  le droit de rétractation prévu au code de la consommation n'est pas applicable. Il est rappelé que
-  la formule d'essai gratuite permet d'apprécier le service sans engagement préalable.</p>
+  le droit de rétractation prévu au code de la consommation n'est pas applicable. Il est rappelé qu'une garantie de montée en charge est prévue à l'article 5 bis.</p>
 
   <h2>9. Obligations du Partenaire</h2>
   <ul class="checks">
