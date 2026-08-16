@@ -32,6 +32,10 @@
   /* Pro (second accent, espace partenaires) */
   --pro: #0E9E90;
   --pro-600: #0A7D72;
+  /* Variante foncée, réservée au texte posé SUR --pro-100. Le --pro-600 y
+     tombe à 4,44:1 : suffisant sur blanc (5,01:1), en dessous du seuil de
+     4,5:1 sur le fond teinté. Celui-ci y remonte à 5,21:1. */
+  --pro-700: #087167;
   --pro-100: #E2F5F3;
 
   /* Texte */
@@ -251,8 +255,12 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--sec) 0; }
 }
 .logo-mark svg { width: 20px; height: 20px; }
 .logo-txt { display: flex; flex-direction: column; line-height: 1.05; }
+/* Baseline sous le logo. Elle était à .58rem, soit 9,3 px une fois rendue :
+   sous 11 px, une ligne en capitales espacées cesse d'être lue et devient un
+   motif décoratif. .69rem la ramène à 11 px — la taille minimale où elle
+   reste une phrase, sans venir concurrencer le nom de marque au-dessus. */
 .logo-txt small {
-  font-size: .58rem; font-weight: 600; letter-spacing: .1em;
+  font-size: .69rem; font-weight: 600; letter-spacing: .08em;
   text-transform: uppercase; color: var(--tx-3);
 }
 
@@ -873,7 +881,9 @@ td { color: var(--tx-2); }
   color: var(--ink-900); font-variant-numeric: tabular-nums;
 }
 .plan-price span { font-size: 1.05rem; font-weight: 700; color: var(--ink-900); }
-.plan-price em { font-style: normal; font-size: .92rem; color: var(--tx-3); font-weight: 600; }
+/* --tx-3 tombe à 4,28:1 sur le fond gris des cartes tarifaires ; la durée
+   de l'abonnement fait partie du prix, elle doit se lire. */
+.plan-price em { font-style: normal; font-size: .92rem; color: var(--tx-2); font-weight: 600; }
 .plan-note { font-size: .84rem; color: var(--pro-600); font-weight: 600; margin: 6px 0 18px; }
 .plan-audience { font-size: .85rem; color: var(--tx-3); margin-bottom: 20px; }
 .plan-audience strong { color: var(--tx-2); }
@@ -945,7 +955,11 @@ td { color: var(--tx-2); }
 .launch-strip a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
 .launch-strip b {
   display: inline-block; padding: 2px 9px; margin-right: 8px;
-  background: rgba(255, 255, 255, .22); border-radius: var(--r-pill);
+  /* Pastille assombrie plutôt qu'éclaircie : un voile blanc à 22 % sur le
+     vert du bandeau ramenait le libellé blanc à 3,36:1, sous le seuil pour
+     du 11,8 px. Un voile noir à 18 % le remonte à 6,76:1 et détache mieux
+     la pastille du reste de la ligne. */
+  background: rgba(0, 0, 0, .18); border-radius: var(--r-pill);
   font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
 }
 
@@ -1078,6 +1092,12 @@ td { color: var(--tx-2); }
 .btn strong,
 .btn b { color: inherit; }
 
+/* Exception dans l'exception : la pastille du bandeau héros. Du blanc sur
+   l'orange de marque ne donne que 3,12:1, en dessous du seuil pour un texte
+   de 11,5 px. L'encre foncée sur ce même orange monte à 4,73:1 — la couleur
+   de marque est intacte, c'est le texte qui change. */
+.hero-badge b { color: var(--ink-950); }
+
 
 /* ---------- 27. Formule d'essai à 0 € ----------
    La formule Découverte n'est pas un abonnement moins cher, c'est une porte
@@ -1151,8 +1171,8 @@ td { color: var(--tx-2); }
   font-size: .72rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
 }
 .pro-bar p { margin: 0; font-size: .92rem; color: var(--ink-900); max-width: 82ch; }
-.pro-bar b { color: var(--pro-600); }
-.pro-bar a { color: var(--pro-600); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.pro-bar b { color: var(--pro-700); }
+.pro-bar a { color: var(--pro-700); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
 /* Invitation en bas des pages client : présente, mais visiblement secondaire
    par rapport au bloc de demande de devis qui la précède. */
@@ -1272,3 +1292,53 @@ td { color: var(--tx-2); }
 }
 .plan-featured .plan-tier { background: var(--pro-100); border-color: var(--pro); color: var(--pro-600); }
 .plan-free .plan-tier { background: var(--signal-100); border-color: var(--signal); color: var(--signal-600); }
+
+
+/* ---------- 34. Fabrication locale ----------
+   Trois registres dans un même bloc, et il faut qu'ils se distinguent au
+   premier coup d'œil : le tableau du transport évité (ce qu'on gagne),
+   l'effet d'échelle multi-sites (pourquoi c'est décisif en national) et
+   l'arbitrage honnête (quand la centralisation reste meilleure). Ce dernier
+   est volontairement traité en gris neutre plutôt qu'en couleur d'accent :
+   c'est un contrepoint, pas un argument de vente. */
+.local-table { margin-top: clamp(30px, 4vw, 46px); }
+.local-table h3 { font-size: clamp(1.05rem, 2vw, 1.3rem); margin: 0 0 16px; }
+.local-note { margin: 12px 0 0; font-size: .86rem; color: var(--tx-3); line-height: 1.6; }
+
+.local-scale {
+  margin-top: clamp(30px, 4vw, 46px);
+  padding: clamp(24px, 3.4vw, 38px);
+  border-radius: var(--r-lg);
+  background: var(--ink-900); color: var(--tx-inv);
+}
+.local-scale h3 { margin: 0 0 12px; font-size: clamp(1.1rem, 2.2vw, 1.42rem); color: #fff; }
+.local-scale p { margin: 0 0 18px; color: var(--tx-inv-2); }
+.local-scale .checks { margin: 0; }
+.local-scale .checks li { color: var(--tx-inv-2); }
+
+.local-fair {
+  margin-top: clamp(30px, 4vw, 46px);
+  padding: clamp(24px, 3.4vw, 34px);
+  border: 1px solid var(--line); border-radius: var(--r-lg);
+  background: var(--paper-2);
+}
+.local-fair h3 { margin: 0 0 12px; font-size: clamp(1.02rem, 2vw, 1.24rem); }
+.local-fair p { margin: 0 0 20px; color: var(--tx-2); font-size: .95rem; }
+
+.local-arb { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.local-arb li {
+  display: grid; grid-template-columns: minmax(min(260px, 100%), 1fr) minmax(min(220px, 100%), .9fr);
+  gap: 6px 22px; margin: 0; padding: 13px 18px; background: #fff;
+}
+.local-arb b { font-size: .93rem; font-weight: 600; }
+.local-arb span { font-size: .89rem; color: var(--tx-2); }
+@media (max-width: 700px) { .local-arb li { grid-template-columns: 1fr; } }
+
+/* Version courte, posée dans le fil d'une page déjà dense. */
+.local-short {
+  margin: 1.9em 0; padding: 20px 24px;
+  border-left: 3px solid var(--pro); border-radius: 0 var(--r) var(--r) 0;
+  background: var(--pro-100);
+}
+.local-short b { display: block; margin-bottom: 6px; font-size: 1rem; color: var(--pro-700); }
+.local-short p { margin: 0; font-size: .93rem; color: var(--tx-2); line-height: 1.65; }

@@ -164,6 +164,8 @@ module.exports = function collectivitesPage(cities) {
   </div>
 </section>
 
+${T.localBlock("complet")}
+
 <section class="sec bg-3">
   <div class="wrap wrap-narrow">
     <div class="sec-head center">

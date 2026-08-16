@@ -204,9 +204,20 @@
         var data = collect(form);
         backup(data);
 
-        var endpoint = form.dataset.kind === "pro"
-          ? (CFG.endpointPro || CFG.endpointClient)
-          : (CFG.endpointClient || CFG.endpointPro);
+        /* Chaîne de points de collecte, essayés dans l'ordre.
+           Raison d'être : FormSubmit n'accepte une adresse qu'après un clic
+           dans un e-mail de confirmation, et cet e-mail se perd — filtre
+           anti-spam, onglet « Promotions », alias non encore créé. Tant que
+           l'adresse principale n'est pas confirmée, l'endpoint répond 200
+           avec `success: "false"` et la demande n'arrive nulle part. Une
+           seconde adresse en réserve suffit à faire passer le formulaire :
+           celle des deux qui est activée prend le relais, sans qu'aucune
+           ligne ne soit à changer le jour où la première est confirmée. */
+        var endpoints = (form.dataset.kind === "pro"
+          ? [CFG.endpointPro, CFG.endpointProAlt, CFG.endpointClient]
+          : [CFG.endpointClient, CFG.endpointClientAlt, CFG.endpointPro]
+        ).filter(function (u, i, all) { return u && all.indexOf(u) === i; });
+        var endpoint = endpoints[0];
 
         function done(ok) {
           if (submitBtn) { submitBtn.disabled = false; submitBtn.textContent = submitBtn.dataset.label || "Envoyer"; }
@@ -249,7 +260,7 @@
            un souligné et ne sont jamais affichés dans l'e-mail reçu.
            `_captcha: false` évite d'imposer un reCAPTCHA au visiteur : le
            formulaire compte déjà cinq étapes, un robot n'irait pas au bout. */
-        if (/formsubmit\.co/.test(endpoint)) {
+        if (endpoints.some(function (u) { return /formsubmit\.co/.test(u); })) {
           data._subject = (form.dataset.kind === "pro"
             ? "Candidature partenaire — "
             : "Demande de devis — ") + (data.entreprise || data.nom || "site web");
@@ -258,30 +269,42 @@
           if (data.email) data._replyto = data.email;
         }
 
-        /* Délai de garde. Sans lui, un réseau qui ne répond pas — 4G faible,
-           tunnel, point de collecte indisponible — laisse le visiteur devant
-           « Envoi en cours… » indéfiniment : il ferme la page et la demande
-           est perdue. Au-delà de douze secondes on abandonne et on bascule
-           sur le repli e-mail, qui lui aboutit toujours. */
-        var ctrl = window.AbortController ? new AbortController() : null;
-        var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 12000);
+        /* Délai de garde global. Sans lui, un réseau qui ne répond pas — 4G
+           faible, tunnel, point de collecte indisponible — laisse le visiteur
+           devant « Envoi en cours… » indéfiniment : il ferme la page et la
+           demande est perdue. Passé ce délai on abandonne la chaîne et on
+           bascule sur le repli e-mail, qui lui aboutit toujours. */
+        var deadline = Date.now() + 16000;
 
-        fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Accept": "application/json" },
-          body: JSON.stringify(data),
-          signal: ctrl ? ctrl.signal : undefined
-        })
-          /* FormSubmit peut répondre 200 avec `success: false` — adresse non
-             confirmée, quota atteint. Se fier au seul code HTTP enverrait le
-             visiteur sur la page de remerciement alors que rien n'est parti. */
-          .then(function (r) {
-            return r.json().then(function (j) {
-              return r.ok && (j.success === undefined || j.success === true || j.success === "true");
-            }, function () { return r.ok; });
+        function attempt(i) {
+          if (i >= endpoints.length || Date.now() >= deadline) { done(false); return; }
+
+          var ctrl = window.AbortController ? new AbortController() : null;
+          var budget = Math.min(8000, Math.max(2000, deadline - Date.now()));
+          var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, budget);
+
+          fetch(endpoints[i], {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "Accept": "application/json" },
+            body: JSON.stringify(data),
+            signal: ctrl ? ctrl.signal : undefined
           })
-          .then(function (r) { clearTimeout(timer); done(r); })
-          .catch(function () { clearTimeout(timer); done(false); });
+            /* FormSubmit peut répondre 200 avec `success: false` — adresse non
+               confirmée, quota atteint. Se fier au seul code HTTP enverrait le
+               visiteur sur la page de remerciement alors que rien n'est parti. */
+            .then(function (r) {
+              return r.json().then(function (j) {
+                return r.ok && (j.success === undefined || j.success === true || j.success === "true");
+              }, function () { return r.ok; });
+            })
+            .then(function (ok) {
+              clearTimeout(timer);
+              if (ok) done(true); else attempt(i + 1);
+            })
+            .catch(function () { clearTimeout(timer); attempt(i + 1); });
+        }
+
+        attempt(0);
       });
     });
   }

@@ -160,6 +160,20 @@ ${(() => { const D = P.dispatch; return `
 ${T.amortBlock('vente')}
 
 <section class="sec">
+  <div class="wrap wrap-narrow">
+    <div class="sec-head">
+      <span class="eyebrow">Ce que vous vendez sans le savoir</span>
+      <h2>Votre atelier est un argument commercial que nous mettons en avant</h2>
+      <p class="lead">Un donneur d'ordre national qui fait fabriquer dans un atelier unique paie le
+      transport de chaque support vers chaque site — un poste qui ne baisse jamais, quel que soit le
+      volume. Nous vendons l'inverse : la fabrication au plus près du chantier. C'est votre outil de
+      production, pas seulement votre camion, qui vous rend attractif sur ces dossiers.</p>
+    </div>
+    ${T.localBlock("court")}
+  </div>
+</section>
+
+<section class="sec">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Comparaison</span>

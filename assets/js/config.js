@@ -19,20 +19,36 @@ window.RF_CONFIG = {
      sur le mode secours : ouverture du logiciel de messagerie avec un e-mail
      pré-rempli, et sauvegarde locale de la demande (aucune donnée perdue).
 
-     ⚠️  ACTIVATION — À FAIRE UNE SEULE FOIS
+     ⚠️  ACTIVATION — À FAIRE UNE SEULE FOIS, SUR L'UNE DES DEUX ADRESSES
      FormSubmit exige une confirmation avant de délivrer quoi que ce soit :
-     à la toute première demande reçue, un e-mail « Confirm your email »
-     arrive sur l'adresse ci-dessous. Tant que le lien qu'il contient n'est
-     pas cliqué, AUCUNE demande n'est transmise. Vérifiez les indésirables :
-     ce message y atterrit souvent.
+     un e-mail intitulé « Activate Form », expédié par no-reply@formsubmit.co,
+     arrive sur l'adresse visée. Tant que le lien qu'il contient n'est pas
+     cliqué, l'endpoint répond « This form needs Activation » et AUCUNE
+     demande n'est transmise.
+
+     Où chercher cet e-mail dans Gmail — il n'arrive presque jamais dans
+     l'onglet principal :
+       · onglet « Promotions » et onglet « Mises à jour » ;
+       · dossier « Spam » ET dossier « Corbeille » ;
+       · barre de recherche : formsubmit  (puis, si rien : in:anywhere formsubmit)
+     Le lien reste valable, il n'expire pas.
   --------------------------------------------------------------------- */
   /* FormSubmit retenu parce qu'il ne demande ni compte, ni clé d'API, ni
      carte bancaire : l'adresse de destination est l'endpoint. Le jour où le
      volume justifie un outil plus complet — accusé de réception automatique,
      export CSV, connexion à un CRM — Formspree ou un Worker Cloudflare
-     prennent le relais en changeant ces deux lignes, rien d'autre. */
+     prennent le relais en changeant ces lignes, rien d'autre. */
   endpointClient: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
   endpointPro: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
+
+  /* Adresse de repli, essayée automatiquement si la première n'est pas
+     encore activée. Les deux boîtes sont relevées par la même personne :
+     confirmer l'une OU l'autre suffit à mettre le formulaire en service, et
+     confirmer les deux met le site à l'abri d'une boîte saturée. Le jour où
+     l'adresse principale est activée, elle reprend la main toute seule —
+     l'adresse de repli n'est sollicitée qu'en cas d'échec. */
+  endpointClientAlt: "https://formsubmit.co/ajax/rezofabrik@gmail.com",
+  endpointProAlt: "https://formsubmit.co/ajax/rezofabrik@gmail.com",
 
   /* Champ requis par Web3Forms uniquement (sinon laisser vide) */
   web3formsKey: "",

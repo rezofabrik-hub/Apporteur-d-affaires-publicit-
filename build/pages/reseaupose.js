@@ -235,6 +235,7 @@ module.exports = function reseauPosePage(cities) {
       <span class="eyebrow">Questions des poseurs</span>
       <h2>Ce que les poseurs nous demandent</h2>
     </div>
+    ${T.localBlock("court")}
     ${T.faqBlock(POSEUR_FAQ)}
   </div>
 </section>

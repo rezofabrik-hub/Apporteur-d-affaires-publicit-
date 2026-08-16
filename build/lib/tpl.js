@@ -7,6 +7,7 @@ const path = require("path");
 const site = require("../data/site");
 const services = require("../data/services");
 const partnership = require("../data/partnership");
+const fabrication = require("../data/fabrication");
 
 const IMG_DIR = path.join(__dirname, "..", "..", "assets", "img");
 let manifest = {};
@@ -551,6 +552,74 @@ function amortBlock(variant) {
 </section>`;
 }
 
+/**
+ * Bloc « fabrication locale » : pourquoi un produit encombrant ne doit pas
+ * traverser la France. C'est l'argument structurel du réseau — un fabricant
+ * unique, aussi bon soit-il, ne peut pas le tenir.
+ *
+ * @param {"complet"|"national"|"court"} variant
+ *   · complet  — bénéfices + tableau transport + contrepoint (pages client)
+ *   · national — ajoute l'effet d'échelle multi-sites (B2B, offre nationale)
+ *   · court    — un simple encadré, pour les pages déjà denses
+ */
+function localBlock(variant) {
+  const F = fabrication;
+  if (!F) return "";
+
+  if (variant === "court") {
+    return `<aside class="local-short">
+  <b>${esc(F.short.title)}</b>
+  <p>${esc(F.short.body)}</p>
+</aside>`;
+  }
+
+  const benefits = `<div class="grid g-4">${F.benefits.map(([t, d]) =>
+    `<div class="tile tile-plain"><h3>${esc(t)}</h3><p>${esc(d)}</p></div>`).join("")}</div>`;
+
+  /* Dernière colonne mise en avant : c'est la seule valeur exacte du
+     tableau, et c'est elle que le lecteur doit retenir. */
+  const table = `<div class="table-wrap"><table class="t-amort">
+  <thead><tr>${F.transportHead.map((h, i) =>
+    `<th scope="col"${i === 3 ? ' style="color:var(--pro-600)"' : ""}>${esc(h)}</th>`).join("")}</tr></thead>
+  <tbody>${F.transport.map((r) => `<tr>${r.map((c, i) => i === 0
+    ? `<th scope="row">${esc(c)}</th>`
+    : `<td${i === 3 ? ' style="font-weight:700;color:var(--pro-600)"' : ""}>${esc(c)}</td>`
+  ).join("")}</tr>`).join("")}</tbody>
+</table></div>`;
+
+  const scale = variant !== "national" ? "" : `
+    <div class="local-scale">
+      <h3>${esc(F.scale.title)}</h3>
+      <p>${esc(F.scale.body)}</p>
+      <ul class="checks">${F.scale.points.map((p) => `<li>${esc(p)}</li>`).join("")}</ul>
+    </div>`;
+
+  const centralise = `
+    <div class="local-fair">
+      <h3>${esc(F.centralise.title)}</h3>
+      <p>${esc(F.centralise.body)}</p>
+      <ul class="local-arb">${F.centralise.rows.map(([q, a]) =>
+        `<li><b>${esc(q)}</b><span>${esc(a)}</span></li>`).join("")}</ul>
+    </div>`;
+
+  return `
+<section class="sec" id="fabrication-locale">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">${esc(F.eyebrow)}</span>
+      <h2>${esc(F.title)}</h2>
+      <p class="lead">${esc(F.lead)}</p>
+    </div>
+    ${benefits}
+    <div class="local-table">
+      <h3>Ce que coûte le transport que vous ne payez pas</h3>
+      ${table}
+      <p class="local-note">${esc(F.transportNote)}</p>
+    </div>${scale}${centralise}
+  </div>
+</section>`;
+}
+
 function keywordCloud(words, title) {
   return `<div class="kw-block"><b>${esc(title)} :</b> ${words.map(esc).join(" · ")}.</div>`;
 }
@@ -559,5 +628,6 @@ module.exports = {
   site, services, esc, attr, jsonld, img, heroImg, pick, manifest,
   page, header, footer, crumbs, crumbSchema, faqBlock, faqSchema,
   serviceCards, ctaDouble, trustBar, keywordCloud, launchBanner, amortBlock,
-  proBar, proInvite, launchPriceOn, launchPriceBanner, partnership, NAV_MORE
+  proBar, proInvite, launchPriceOn, launchPriceBanner, partnership, NAV_MORE,
+  localBlock, fabrication
 };

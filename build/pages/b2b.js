@@ -159,6 +159,8 @@ module.exports = function b2bPage(cities) {
   </div>
 </section>
 
+${T.localBlock("national")}
+
 <section class="sec bg-2">
   <div class="wrap wrap-narrow">
     <div class="sec-head">
