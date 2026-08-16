@@ -961,5 +961,210 @@
    "w": 1024,
    "h": 768
   }
+ ],
+ "flotte": [
+  {
+   "name": "flotte-1",
+   "w": 1024,
+   "h": 697
+  },
+  {
+   "name": "flotte-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "flotte-3",
+   "w": 800,
+   "h": 705
+  },
+  {
+   "name": "flotte-4",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "echafaudage": [
+  {
+   "name": "echafaudage-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "echafaudage-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "echafaudage-3",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "concession": [
+  {
+   "name": "concession-1",
+   "w": 1013,
+   "h": 645
+  },
+  {
+   "name": "concession-2",
+   "w": 1024,
+   "h": 761
+  },
+  {
+   "name": "concession-3",
+   "w": 1024,
+   "h": 619
+  },
+  {
+   "name": "concession-4",
+   "w": 1023,
+   "h": 592
+  }
+ ],
+ "standexpo": [
+  {
+   "name": "standexpo-1",
+   "w": 1024,
+   "h": 872
+  },
+  {
+   "name": "standexpo-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "standexpo-3",
+   "w": 1023,
+   "h": 858
+  },
+  {
+   "name": "standexpo-4",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "entrepot": [
+  {
+   "name": "entrepot-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "entrepot-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "entrepot-3",
+   "w": 1024,
+   "h": 819
+  },
+  {
+   "name": "entrepot-4",
+   "w": 1024,
+   "h": 633
+  }
+ ],
+ "restaurant": [
+  {
+   "name": "restaurant-1",
+   "w": 1024,
+   "h": 833
+  },
+  {
+   "name": "restaurant-2",
+   "w": 1024,
+   "h": 1024
+  },
+  {
+   "name": "restaurant-3",
+   "w": 1024,
+   "h": 496
+  },
+  {
+   "name": "restaurant-4",
+   "w": 1024,
+   "h": 752
+  }
+ ],
+ "coiffure": [
+  {
+   "name": "coiffure-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "coiffure-2",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "coiffure-3",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "workwear": [
+  {
+   "name": "workwear-1",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "workwear-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "workwear-3",
+   "w": 1024,
+   "h": 1024
+  }
+ ],
+ "chantier": [
+  {
+   "name": "chantier-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "chantier-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "chantier-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "chantier-4",
+   "w": 1024,
+   "h": 768
+  }
+ ],
+ "coveringmer": [
+  {
+   "name": "coveringmer-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "coveringmer-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "coveringmer-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "coveringmer-4",
+   "w": 1024,
+   "h": 768
+  }
  ]
 }

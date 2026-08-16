@@ -161,11 +161,17 @@ tableau de prix, grille de prestations, galerie, FAQ, données structurées.
 
 ## Les photographies
 
-175 visuels libres de droit (**CC0**, domaine public, **CC BY**, **CC BY-SA**),
+218 visuels libres de droit (**CC0**, domaine public, **CC BY**, **CC BY-SA**),
 issus d'[Openverse](https://openverse.org) et de
 [Wikimedia Commons](https://commons.wikimedia.org), sélectionnés visuellement
 puis harmonisés par un étalonnage colorimétrique commun. Auteurs et licences
 sont listés sur `credits-photos.html`.
+
+Dix des dix-huit fiches réalisations disposent de **visuels qui leur sont propres**
+(flotte marquée, totem de concession, allée d'entrepôt, néon de restaurant, bâche
+d'échafaudage, panneau de chantier, vitrine de salon, véhicule habillé, stand,
+tenue haute visibilité) : ils n'apparaissent nulle part ailleurs sur le site, ce
+qui évite l'effet catalogue.
 
 **Remplacez-les par vos propres réalisations dès que possible** : rien ne
 convertit mieux qu'une photo de chantier réel. Déposez vos fichiers dans
