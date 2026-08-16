@@ -18,14 +18,15 @@ module.exports = function home(cities) {
 <section class="hero">
   <div class="hero-bg">${heroImg("hero", 2, "Rue commerçante avec enseignes et devantures de magasins")}</div>
   <div class="wrap hero-in">
-    <span class="hero-badge"><b>Nouveau</b> Réseau national d'artisans de la communication visuelle</span>
-    <h1>Votre enseigne, votre signalétique et votre publicité, confiées aux bons professionnels</h1>
-    <p class="lead">${esc(site.baseline)} Décrivez votre projet en deux minutes : nous le qualifions,
-    puis nous le confions à des enseignistes, imprimeurs et poseurs sélectionnés près de chez vous.
-    Vous recevez des propositions comparables sous 48 heures — gratuitement et sans engagement.</p>
+    <span class="hero-badge"><b>Pour les entreprises</b> Enseigne, signalétique, covering et publicité</span>
+    <h1>Vous voulez rendre votre entreprise visible ? Nous trouvons les bons professionnels</h1>
+    <p class="lead">${esc(site.baseline)} <strong>Commerce, entreprise, artisan, profession libérale,
+    restaurant, industrie ou collectivité</strong> : décrivez votre projet en deux minutes. Nous le
+    qualifions, puis nous le confions à des enseignistes, imprimeurs et poseurs sélectionnés près de
+    chez vous. Vous recevez des propositions comparables sous 48 heures, gratuitement et sans engagement.</p>
     <div class="btns">
       <a class="btn btn-primary btn-lg" href="devis.html">Décrire mon projet</a>
-      <a class="btn btn-ghost btn-lg" href="professionnels.html">Je suis un professionnel</a>
+      <a class="btn btn-ghost btn-lg" href="comment-ca-marche.html">Comment ça marche</a>
     </div>
     <div class="hero-stats">
       ${site.stats.map((s) => `<div><b>${esc(s.n)}</b><span>${esc(s.l)}</span></div>`).join("")}
@@ -35,6 +36,32 @@ module.exports = function home(cities) {
 
 <section class="sec-tight">
   <div class="wrap">${T.trustBar()}</div>
+</section>
+
+<section class="sec-tight" id="pour-qui">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">À qui s'adresse ce service</span>
+      <h2 style="font-size:clamp(1.4rem,2.6vw,2rem)">Un service pour les entreprises qui veulent
+      se faire connaître</h2>
+      <p class="lead">Notre métier est de vous rendre visible : sur votre façade, sur vos véhicules,
+      dans vos locaux, sur vos supports imprimés et vos objets publicitaires. Si vous êtes vous-même
+      un professionnel de la communication visuelle et que vous cherchez du travail,
+      <a href="partenaires.html">rendez-vous dans l'espace professionnels</a> — c'est une rubrique à part.</p>
+    </div>
+    <div class="grid g-4">
+      ${[
+        ["Commerces et points de vente", "Boulangerie, boutique, pharmacie, coiffure, opticien : devanture, enseigne lumineuse, vitrophanie."],
+        ["Entreprises et PME", "Signalétique de locaux, totem d'entrée, habillage de flotte, salons et événements."],
+        ["Artisans et indépendants", "Marquage de véhicule, panneau de chantier, enseigne, cartes et supports imprimés."],
+        ["Restaurants, bars et hôtels", "Enseigne, menu extérieur, terrasse, signalétique intérieure et directionnelle."],
+        ["Santé et professions libérales", "Plaque professionnelle, croix de pharmacie, signalétique de cabinet et d'accueil."],
+        ["Industrie et logistique", "Signalétique de sécurité, marquage au sol, identification de zones et de quais."],
+        ["Franchises et réseaux", "Déploiement multi-sites cohérent, charte technique, coordination des poses."],
+        ["Collectivités et institutions", "Marchés publics, jalonnement, accessibilité, patrimoine — <a href=\"collectivites.html\">offre dédiée</a>."]
+      ].map(([t, d]) => `<div class="tile tile-plain"><h3>${esc(t)}</h3><p>${d}</p></div>`).join("")}
+    </div>
+  </div>
 </section>
 
 <section class="sec-tight bg-2">

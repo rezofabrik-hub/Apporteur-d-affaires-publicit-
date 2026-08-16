@@ -307,7 +307,7 @@ ${schemas}
 <body>
 <a class="skip" href="#main">Aller au contenu principal</a>
 ${header(o.active)}
-${o.noStrip ? "" : launchBanner(true)}
+${o.space === "pro" ? proBar() + launchBanner(true) : ""}
 <main id="main">
 ${o.body}
 </main>
@@ -368,22 +368,40 @@ function serviceCards(list, limit) {
 </a>`).join("");
 }
 
-function ctaDouble() {
-  return `<div class="cta-split">
-  <div class="cta-card client">
-    <h3>Vous avez un projet ?</h3>
-    <p>Décrivez-le en 2 minutes. Nous le qualifions et le confions à des professionnels sélectionnés
-    près de chez vous. Vous recevez des propositions comparables sous 48 heures. C'est gratuit et sans engagement.</p>
+/**
+ * Bloc d'appel à l'action de fin de page.
+ * @param {"pro"} [space]  sur les pages de l'espace professionnels, l'ordre
+ *   des deux cartes s'inverse : le visiteur y est un prestataire, pas un client.
+ *
+ * Sur les pages client, les deux publics ne sont plus mis sur le même plan.
+ * Un commerçant venu chercher une enseigne doit voir une seule proposition —
+ * décrire son projet ; le recrutement de partenaires descend d'un cran, dans
+ * une bande distincte qui l'annonce comme une rubrique séparée.
+ */
+function ctaDouble(space) {
+  const client = `<div class="cta-card client">
+    <h3>Vous avez un projet de communication visuelle ?</h3>
+    <p>Commerce, entreprise, artisan, profession libérale, collectivité : décrivez votre projet en
+    2 minutes. Nous le qualifions et le confions à des professionnels sélectionnés près de chez vous.
+    Vous recevez des propositions comparables sous 48 heures, gratuitement et sans engagement.</p>
     <a class="btn btn-white" href="devis.html">Demander mon devis gratuit</a>
-  </div>
+  </div>`;
+
+  if (space === "pro") {
+    return `<div class="cta-split">
   <div class="cta-card pro">
-    <h3>Vous êtes professionnel ?</h3>
+    <h3>Vous voulez rejoindre le réseau ?</h3>
     <p>Enseigniste, agence de publicité, imprimeur, poseur, spécialiste du covering ou de l'objet
-    publicitaire : rejoignez le réseau par abonnement 6 ou 12 mois, sans droit d'entrée et
+    publicitaire : deux mois à 0 €, puis un abonnement de 6 ou 12 mois, sans droit d'entrée et
     sans commission sur vos affaires.</p>
-    <a class="btn btn-white" href="partenaires.html">Voir les formules</a>
+    <a class="btn btn-white" href="professionnels.html">Remplir le questionnaire</a>
   </div>
+  ${client}
 </div>`;
+  }
+
+  return `<div class="cta-split cta-solo">${client}</div>
+${proInvite()}`;
 }
 
 function trustBar() {
@@ -403,6 +421,34 @@ function trustBar() {
 }
 
 /** Bandeau d'offre de lancement — masqué automatiquement si `launch.active` est faux. */
+/* Barre d'entrée de l'espace professionnels.
+   Le site s'adresse d'abord aux entreprises qui cherchent à se rendre
+   visibles ; le recrutement de prestataires est un second métier, qui doit
+   se voir comme tel. Cette barre marque la frontière : à partir d'ici, le
+   visiteur n'est plus un client, c'est un fournisseur potentiel. */
+function proBar() {
+  return `<div class="pro-bar">
+  <span class="pro-bar-tag">Espace professionnels</span>
+  <p>Cette rubrique s'adresse aux <b>enseignistes, imprimeurs, poseurs, agences et fournisseurs</b>
+  qui veulent rejoindre le réseau. Vous cherchez une enseigne ou de la signalétique pour votre
+  entreprise ? <a href="devis.html">Demandez plutôt un devis gratuit</a>.</p>
+</div>`;
+}
+
+/* Invitation discrète à rejoindre le réseau, posée en bas des pages client.
+   Elle ne doit jamais concurrencer la demande de devis : un commerçant venu
+   chercher une enseigne n'est pas là pour s'abonner. */
+function proInvite() {
+  return `<aside class="pro-invite">
+  <div>
+    <b>Vous êtes enseigniste, imprimeur, poseur ou agence ?</b>
+    <span>Le réseau recrute des professionnels dans toute la France. Rubrique séparée,
+    abonnement sans commission, deux mois à 0 € pour commencer.</span>
+  </div>
+  <a class="btn btn-pro" href="partenaires.html">Devenir partenaire</a>
+</aside>`;
+}
+
 function launchBanner(compact) {
   const L = partnership.launch;
   if (!L || !L.active) return "";
@@ -475,5 +521,6 @@ function keywordCloud(words, title) {
 module.exports = {
   site, services, esc, attr, jsonld, img, heroImg, pick, manifest,
   page, header, footer, crumbs, crumbSchema, faqBlock, faqSchema,
-  serviceCards, ctaDouble, trustBar, keywordCloud, launchBanner, amortBlock, partnership, NAV_MORE
+  serviceCards, ctaDouble, trustBar, keywordCloud, launchBanner, amortBlock,
+  proBar, proInvite, partnership, NAV_MORE
 };

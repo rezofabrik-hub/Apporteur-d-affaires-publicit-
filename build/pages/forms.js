@@ -891,6 +891,7 @@ function pros(cities) {
 
   return T.page({
     file: "professionnels.html", active: "professionnels.html",
+    space: "pro",   // affiche le bandeau d'entrée de l'espace professionnels
     title: `Questionnaire Partenaire — Enseignistes, Agences, Poseurs | ${site.brand}`,
     desc: "Enseigniste, agence de publicité, imprimeur, poseur nacelle, covering : rejoignez le réseau par abonnement 6 ou 12 mois, sans droit d'entrée et sans commission sur vos affaires.",
     body, cities,

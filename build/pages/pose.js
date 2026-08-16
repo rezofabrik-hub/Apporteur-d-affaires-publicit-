@@ -171,10 +171,11 @@ ${T.amortBlock("pose")}
   </div>
 </section>
 
-<section class="sec"><div class="wrap">${T.ctaDouble()}</div></section>`;
+<section class="sec"><div class="wrap">${T.ctaDouble("pro")}</div></section>`;
 
   return T.page({
     file: "service-pose.html", active: "service-pose.html",
+    space: "pro",   // affiche le bandeau d'entrée de l'espace professionnels
     title: `Service de Pose d'Enseigne — Poseurs Habilités partout en France | ${site.brand}`,
     desc: "Vous fabriquez sans équipe de pose ? Nous mobilisons un poseur habilité CACES nacelle partout en France, devis sous 24 h, attestations vérifiées. Abonnement 6 ou 12 mois.",
     body, cities,

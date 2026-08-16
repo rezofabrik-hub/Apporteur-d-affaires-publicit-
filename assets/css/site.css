@@ -1129,3 +1129,50 @@ td { color: var(--tx-2); }
   .amort { grid-template-columns: 1fr; }
   .amort-seuil { position: static; }
 }
+
+
+/* ---------- 29. Séparation des deux publics ----------
+   Le site s'adresse aux entreprises qui cherchent à se rendre visibles. Le
+   recrutement de prestataires est un second métier : il ne doit plus se
+   présenter au même niveau, sans quoi un commerçant venu chercher une
+   enseigne hésite entre deux propositions qui ne le concernent pas toutes. */
+
+/* Bandeau d'entrée de l'espace professionnels — uniquement sur les 3 pages
+   de la rubrique. Il annonce le changement de public dès la première ligne. */
+.pro-bar {
+  background: var(--pro-100); border-bottom: 1px solid rgba(14, 158, 144, .28);
+  padding: 13px var(--gut);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px;
+  justify-content: center; text-align: center;
+}
+.pro-bar-tag {
+  padding: 3px 11px; border-radius: var(--r-pill);
+  background: var(--pro-600); color: #fff;
+  font-size: .72rem; font-weight: 800; letter-spacing: .07em; text-transform: uppercase;
+}
+.pro-bar p { margin: 0; font-size: .92rem; color: var(--ink-900); max-width: 82ch; }
+.pro-bar b { color: var(--pro-600); }
+.pro-bar a { color: var(--pro-600); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Invitation en bas des pages client : présente, mais visiblement secondaire
+   par rapport au bloc de demande de devis qui la précède. */
+.pro-invite {
+  margin-top: 18px; padding: 22px 26px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px;
+  justify-content: space-between;
+  background: var(--paper-2); border: 1.5px solid var(--line); border-radius: var(--r-lg);
+}
+.pro-invite > div { min-width: 0; flex: 1 1 320px; }
+.pro-invite b { display: block; font-size: 1rem; color: var(--tx); }
+.pro-invite span { display: block; margin-top: 4px; font-size: .9rem; color: var(--tx-2); line-height: 1.55; }
+.pro-invite .btn { flex: 0 0 auto; }
+
+/* Une seule carte : elle ne doit pas s'étirer sur toute la largeur d'écran. */
+.cta-solo { grid-template-columns: 1fr; }
+
+/* Tuiles « à qui s'adresse ce service » : sobres, sans pictogramme, pour
+   rester une liste de lecture et non une seconde grille de services. */
+.tile-plain { padding: 22px 24px; }
+.tile-plain h3 { font-size: 1.02rem; margin-bottom: .35em; }
+.tile-plain p { font-size: .91rem; margin: 0; }
+.tile-plain a { color: var(--signal-600); font-weight: 600; }

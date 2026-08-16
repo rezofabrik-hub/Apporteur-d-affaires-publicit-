@@ -194,6 +194,7 @@ ${T.amortBlock('vente')}
 
   return T.page({
     file: "partenaires.html", active: "partenaires.html",
+    space: "pro",   // affiche le bandeau d'entrée de l'espace professionnels
     title: `Devenir Partenaire — Abonnement Réseau Enseigne & Signalétique | ${site.brand}`,
     desc: "Enseigniste, agence de publicité, imprimeur, poseur nacelle : rejoignez le réseau avec un abonnement 6 ou 12 mois, sans droit d'entrée et sans commission sur vos affaires. Recevez des demandes qualifiées dans votre zone.",
     body, cities,
