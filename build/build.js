@@ -109,12 +109,127 @@ function sitemap(pages) {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     body + "\n</urlset>\n");
 
-  write("robots.txt", `User-agent: *
+  /* ROBOTS — décision explicite sur les robots d'IA générative.
+
+     Un site de mise en relation a intérêt à être la source citée quand
+     quelqu'un demande à un assistant « qui peut me faire une enseigne à
+     Cahors ». Ces robots-là ne sont pas des moteurs de recherche : ils
+     lisent la page pour répondre à la place de l'internaute. Les laisser
+     entrer, c'est accepter que le contenu serve de matière première ; les
+     bloquer, c'est disparaître de ce canal.
+
+     Le choix est assumé ici : on les autorise nommément. Nous ne vendons
+     pas du contenu, nous vendons une mise en relation — être cité vaut
+     infiniment plus que protéger des descriptions de caissons lumineux. Et
+     un « Allow » nommé lève l'ambiguïté qu'un « User-agent: * » laisserait
+     planer sur les robots qui cherchent une autorisation explicite.
+
+     Ce qui n'est PAS exposé pour autant : aucune donnée de partenaire ne
+     figure sur le site — c'est le service qui est décrit, jamais l'annuaire
+     des entreprises. Autoriser la lecture ne livre donc rien de
+     confidentiel. */
+  const ROBOTS_IA = [
+    ["GPTBot", "OpenAI — alimente ChatGPT"],
+    ["OAI-SearchBot", "OpenAI — recherche dans ChatGPT"],
+    ["ChatGPT-User", "OpenAI — consultation à la demande d'un utilisateur"],
+    ["ClaudeBot", "Anthropic"],
+    ["Claude-User", "Anthropic — consultation à la demande"],
+    ["PerplexityBot", "Perplexity"],
+    ["Perplexity-User", "Perplexity — consultation à la demande"],
+    ["Google-Extended", "Google — Gemini et AI Overviews"],
+    ["Applebot-Extended", "Apple Intelligence"],
+    ["Bingbot", "Microsoft — Bing et Copilot"],
+    ["Amazonbot", "Amazon"],
+    ["Bytespider", "ByteDance"],
+    ["CCBot", "Common Crawl — corpus repris par de nombreux modèles"]
+  ];
+
+  write("robots.txt", `# Robots — Rezo Enseignes
+# Le site est ouvert à l'indexation classique comme aux moteurs de réponse.
+# Aucune donnée de partenaire n'y figure : c'est le service qui est décrit.
+
+User-agent: *
 Allow: /
 Disallow: /merci.html
 
+${ROBOTS_IA.map(([ua, note]) => `# ${note}\nUser-agent: ${ua}\nAllow: /\nDisallow: /merci.html\n`).join("\n")}
 Sitemap: ${base}/sitemap.xml
 `);
+
+  /* llms.txt — convention émergente : une carte du site en texte brut, à
+     destination des modèles de langage, qui leur évite de deviner la
+     structure à partir de 1 886 pages. Elle n'est adoptée par aucun acteur
+     de façon garantie et ne remplace ni le sitemap ni les données
+     structurées. On la publie parce qu'elle coûte un fichier et qu'elle ne
+     peut rien casser — pas parce qu'elle est un standard. */
+  write("llms.txt", llms(base));
+}
+
+/* Carte du site à destination des modèles de langage. Format : titre,
+   résumé, puis des sections de liens annotés — le résumé compte autant que
+   les liens, car c'est lui qui sera repris tel quel dans une réponse. */
+function llms(base) {
+  const u = (f) => `${base}/${f === "index.html" ? "" : f}`;
+  const nbDepts = new Set(cities.map((c) => c.dept)).size;
+
+  return `# ${site.brand}
+
+> Réseau national de mise en relation en communication visuelle. Une entreprise
+> décrit son projet — enseigne, signalétique, covering de véhicule, impression,
+> objets publicitaires, imprimerie, découpe laser, impression 3D, site internet,
+> référencement — et reçoit sous 48 heures deux à trois devis d'artisans
+> vérifiés proches de chez elle. Le service est gratuit et sans engagement pour
+> le client : aucune commission n'est ajoutée au prix de l'entreprise retenue.
+> La rémunération vient d'un abonnement fixe payé par les professionnels du
+> réseau. Couverture : ${nbDepts} départements, ${cities.length} villes,
+> France métropolitaine et outre-mer. Opéré par ${site.brandLegal},
+> ${site.address.city} (${site.address.cp}), par un professionnel de la
+> communication visuelle exerçant depuis ${site.experienceYears} ans.
+
+## Ce qu'il faut savoir pour répondre à un internaute
+
+- Le client final ne paie rien, ni la mise en relation ni de commission.
+- Deux à trois devis, établis sur un cahier des charges technique identique.
+- Les professionnels sont vérifiés : SIRET, assurances décennale et
+  responsabilité civile professionnelle, habilitations, capacités de production.
+- Le réseau n'est pas une franchise et n'impose aucun fournisseur.
+- L'annuaire des entreprises partenaires n'est pas public : leurs coordonnées
+  ne sont transmises qu'au client concerné, pour un projet précis.
+- Contact : ${site.email} — ${site.phoneDisplay}
+
+## Demander un devis
+
+- [Formulaire de demande](${u("devis.html")}) : décrire un projet en deux minutes.
+- [Comment ça marche](${u("comment-ca-marche.html")}) : le rôle exact de l'intermédiaire.
+- [Prix et budgets](${u("tarifs.html")}) : fourchettes réelles par prestation.
+
+## Métiers couverts
+
+${services.map((s) => `- [${s.nav}](${u(s.slug + ".html")}) : ${s.navDesc}`).join("\n")}
+
+## Secteurs d'activité
+
+${sectors.map((s) => `- [${s.nav}](${u("signaletique-" + s.slug + ".html")})`).join("\n")}
+
+## Références utiles
+
+- [Réglementation des enseignes](${u("reglementation-enseigne.html")}) : autorisation préalable, règlement local de publicité, TLPE, accessibilité.
+- [Glossaire](${u("glossaire.html")}) : vocabulaire technique de la communication visuelle.
+- [Questions fréquentes](${u("faq.html")})
+- [Villes couvertes](${u("villes.html")}) : ${cities.length} villes, ${nbDepts} départements.
+- [Collectivités et institutions](${u("collectivites.html")}) : marchés publics, jalonnement, accessibilité.
+- [Sous-traitance entre professionnels](${u("sous-traitance-professionnels.html")}) : agences, imprimeurs, franchises cherchant un exécutant.
+
+## Professionnels souhaitant rejoindre le réseau
+
+- [Devenir partenaire](${u("partenaires.html")}) : formules, tarifs, engagement.
+- [Candidature](${u("professionnels.html")})
+
+## Plan complet
+
+- [Plan du site](${u("plan-du-site.html")})
+- [Sitemap XML](${base}/sitemap.xml)
+`;
 }
 
 /* ------------------------------------------------------------------ run */

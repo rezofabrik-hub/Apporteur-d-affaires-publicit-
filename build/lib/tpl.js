@@ -33,6 +33,11 @@ const chiffres = (html) => String(html).replace(
   (m, k) => CHIFFRES[k] !== undefined && CHIFFRES[k] !== "0" ? CHIFFRES[k] : m
 );
 
+/* Date de génération, reprise dans `dateModified`. Le site étant régénéré
+   entièrement à chaque build, c'est la seule date honnête disponible : elle
+   dit quand la page a été produite, pas quand son sujet a changé. */
+const BUILD_DATE = new Date().toISOString().slice(0, 10);
+
 const IMG_DIR = path.join(__dirname, "..", "..", "assets", "img");
 let manifest = {};
 try { manifest = JSON.parse(fs.readFileSync(path.join(IMG_DIR, "manifest.json"), "utf8")); } catch (e) {}
@@ -294,7 +299,25 @@ function page(o) {
   const canonical = site.domain.replace(/\/$/, "") + "/" + (o.file === "index.html" ? "" : o.file);
   const ogImg = site.domain.replace(/\/$/, "") + "/assets/img/" + (o.ogImage || "hero-1-lg.jpg");
 
-  const schemas = (o.schema || []).map(jsonld).join("\n");
+  /* Un schéma WebPage sur chaque page, systématiquement. Il porte trois
+     informations qu'un moteur de réponse cherche avant de citer une source :
+     de quoi parle la page, à quelle date elle a été mise à jour, et à quelle
+     organisation elle appartient. Sans `dateModified`, un contenu daté n'a
+     aucun moyen de prouver qu'il ne l'est pas. */
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": canonical + "#webpage",
+    url: canonical,
+    name: o.title,
+    description: o.desc,
+    inLanguage: site.lang,
+    dateModified: BUILD_DATE,
+    isPartOf: { "@id": site.domain.replace(/\/$/, "") + "/#website" },
+    publisher: { "@id": site.domain.replace(/\/$/, "") + "/#organization" }
+  };
+
+  const schemas = [pageSchema].concat(o.schema || []).map(jsonld).join("\n");
 
   /* Calibrage systématique : aucune page ne part en production avec un titre
      ou une description que Google réécrira. Les réseaux sociaux, eux,

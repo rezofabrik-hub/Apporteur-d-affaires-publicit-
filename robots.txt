@@ -1,4 +1,73 @@
+# Robots — Rezo Enseignes
+# Le site est ouvert à l'indexation classique comme aux moteurs de réponse.
+# Aucune donnée de partenaire n'y figure : c'est le service qui est décrit.
+
 User-agent: *
+Allow: /
+Disallow: /merci.html
+
+# OpenAI — alimente ChatGPT
+User-agent: GPTBot
+Allow: /
+Disallow: /merci.html
+
+# OpenAI — recherche dans ChatGPT
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /merci.html
+
+# OpenAI — consultation à la demande d'un utilisateur
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /merci.html
+
+# Anthropic
+User-agent: ClaudeBot
+Allow: /
+Disallow: /merci.html
+
+# Anthropic — consultation à la demande
+User-agent: Claude-User
+Allow: /
+Disallow: /merci.html
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /merci.html
+
+# Perplexity — consultation à la demande
+User-agent: Perplexity-User
+Allow: /
+Disallow: /merci.html
+
+# Google — Gemini et AI Overviews
+User-agent: Google-Extended
+Allow: /
+Disallow: /merci.html
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /merci.html
+
+# Microsoft — Bing et Copilot
+User-agent: Bingbot
+Allow: /
+Disallow: /merci.html
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+Disallow: /merci.html
+
+# ByteDance
+User-agent: Bytespider
+Allow: /
+Disallow: /merci.html
+
+# Common Crawl — corpus repris par de nombreux modèles
+User-agent: CCBot
 Allow: /
 Disallow: /merci.html
 
