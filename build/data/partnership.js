@@ -38,16 +38,20 @@ module.exports = {
     badge: "2 mois à 0 €"
   },
 
-  /* Devise et mentions affichées sous les prix */
+  /* Devise et mentions affichées sous les prix.
+     Les tarifs sont annoncés TTC : le partenaire voit ce qu'il décaisse.
+     Mais il récupère la TVA, donc la charge réelle est le montant HT — c'est
+     lui qui sert de base à tous les calculs d'amortissement ci-dessous. */
   currency: "€",
-  vatNote: "Montants hors taxes. Sans reconduction tacite : vous décidez du renouvellement.",
+  priceSuffix: "TTC",
+  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse. Vous récupérez cette TVA : le coût réellement supporté est de 408 € pour l'abonnement 6 mois et de 825 € pour l'abonnement 12 mois. Sans reconduction tacite : vous décidez du renouvellement.",
 
   /* ---------------------------------------------------------------------
      Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
      puis on s'abonne pour la première année sur 6 ou 12 mois.
      `free: true` marque la formule d'essai — elle n'est affichée que tant que
      `launch.active` vaut true. `featured: true` met une formule en avant.
-     Les tarifs des deux abonnements sont inchangés : 390 € et 690 €.
+     Tarifs annoncés TTC : 490 € pour 6 mois, 990 € pour 12 mois.
   --------------------------------------------------------------------- */
   plans: [
     {
@@ -75,8 +79,8 @@ module.exports = {
       id: "semestriel",
       name: "Abonnement 6 mois",
       duration: "6 mois",
-      price: "390",
-      priceNote: "soit 65 € par mois",
+      price: "490",
+      priceNote: "soit 82 € par mois TTC — 408 € HT à votre charge réelle",
       pitch: "Pour poursuivre après les deux mois d'essai sans engager une année entière.",
       audience: "Artisan, indépendant, structure de 1 à 3 personnes",
       features: [
@@ -93,8 +97,8 @@ module.exports = {
       id: "annuel",
       name: "Abonnement 12 mois",
       duration: "12 mois",
-      price: "690",
-      priceNote: "soit 57,50 € par mois — 90 € de moins que deux semestres",
+      price: "990",
+      priceNote: "soit 82,50 € par mois TTC — 825 € HT à votre charge réelle",
       featured: true,
       badge: "Le plus choisi",
       pitch: "La formule de référence pour une entreprise structurée qui veut un flux régulier sur l'année.",
@@ -130,6 +134,63 @@ module.exports = {
      "Pas de droit d'entrée à cinq chiffres, pas de redevance sur le chiffre d'affaires, pas de fournisseurs imposés, pas de contrainte d'enseigne. Vous restez indépendant."]
   ],
 
+  /* ---------------------------------------------------------------------
+     AMORTISSEMENT — l'objection numéro un d'un artisan devant un abonnement
+     est « combien ça va me coûter », jamais « combien ça va me rapporter ».
+     On répond donc par un seuil, pas par un argument : le chiffre d'affaires
+     qu'il faut signer dans l'année pour rembourser l'abonnement.
+
+     Deux règles pour que ce bloc reste crédible :
+     · les fourchettes de prix sont EXACTEMENT celles des tableaux tarifaires
+       publiés sur les pages métier — un visiteur qui recoupe doit retrouver
+       les mêmes chiffres, sinon tout le site perd sa crédibilité ;
+     · le taux de marge est affiché, pas caché dans le calcul. 35 % en
+       fabrication (achat de matière) et 45 % en pose (main-d'œuvre) sont des
+       hypothèses volontairement basses : si le partenaire fait mieux, le
+       raisonnement ne fait que se renforcer.
+
+     Base de calcul : le coût HT, puisque le partenaire récupère la TVA.
+  --------------------------------------------------------------------- */
+  amortissement: {
+    eyebrow: "Amortissement",
+    title: "Combien faut-il signer pour rembourser l'abonnement ?",
+    lead: "La question n'est pas ce que coûte l'abonnement, mais à partir de quel moment il est remboursé. Voici le calcul, fait avec nos propres grilles tarifaires et une hypothèse de marge délibérément prudente.",
+    threshold: "825 €",
+    thresholdNote: "Coût réel de l'abonnement 12 mois : 990 € TTC, dont 165 € de TVA que vous récupérez. C'est donc 825 € qu'il faut couvrir, soit environ 2 400 € de chiffre d'affaires à 35 % de marge brute.",
+    head: ["Une seule affaire de ce type", "Budget courant", "Marge brute à 35 %", "Abonnement 12 mois remboursé ?"],
+    rows: [
+      ["Caisson lumineux LED simple face 2 m", "900 – 2 200 €", "315 – 770 €", "Presque — il en faut deux"],
+      ["Lettres découpées relief rétro-éclairées", "1 800 – 6 000 €", "630 – 2 100 €", "Oui, dès 2 400 € de vente"],
+      ["Totem lumineux double face 3 m", "3 000 – 9 000 €", "1 050 – 3 150 €", "Oui, une seule suffit"],
+      ["Habillage complet de devanture", "4 000 – 20 000 €", "1 400 – 7 000 €", "Oui, largement"],
+      ["Semi-covering imprimé sur fourgon", "1 100 – 2 400 €", "385 – 840 €", "Oui sur le haut de la fourchette"],
+      ["Total covering sur fourgon", "2 600 – 5 500 €", "910 – 1 925 €", "Oui, une seule suffit"]
+    ],
+    note: "Autrement dit : une enseigne à lettres relief, un totem ou un covering complet dans l'année, et l'abonnement est remboursé. Tout le reste de ce que le réseau vous transmet est du chiffre d'affaires net de coût d'acquisition — puisqu'il n'y a aucune commission sur les affaires signées.",
+    compare: [
+      ["Abonnement 12 mois", "825 € HT pour l'année", "Demandes qualifiées, jamais adressées à plus de 2 ou 3 partenaires"],
+      ["Achat de contacts à l'unité", "25 à 60 € le contact", "Non qualifié, revendu simultanément à 5 ou 10 entreprises"],
+      ["Franchise du secteur", "15 000 à 60 000 € de droit d'entrée", "Plus une redevance annuelle assise sur votre chiffre d'affaires"]
+    ],
+
+    /* Variante affichée sur la page du service de pose. La marge y est plus
+       élevée qu'en fabrication : la pose, c'est de la main-d'œuvre, pas de
+       l'achat de matière. Le seuil tombe donc à moins de deux journées. */
+    pose: {
+      title: "Deux journées de pose et l'abonnement est remboursé",
+      lead: "Le calcul est encore plus direct sur la pose : il n'y a pas d'achat de matière, donc la marge porte sur la main-d'œuvre. Nous retenons 45 %, ce qui reste conservateur pour une équipe équipée.",
+      head: ["Type d'intervention", "Budget courant", "Marge brute à 45 %", "Abonnement 12 mois remboursé ?"],
+      rows: [
+        ["Pose d'enseigne avec nacelle (journée)", "800 – 1 600 €", "360 – 720 €", "Oui en deux journées"],
+        ["Pose d'enseigne avec nacelle (½ journée)", "450 – 900 €", "202 – 405 €", "Oui en trois demi-journées"],
+        ["Dépose d'enseigne + rebouchage", "300 – 1 200 €", "135 – 540 €", "Deux à trois chantiers"],
+        ["Raccordement électrique et horloge astronomique", "200 – 600 €", "90 – 270 €", "Complément de chantier"],
+        ["Contrat de maintenance annuel (1 enseigne)", "180 – 600 € / an", "81 – 270 € / an", "Récurrent, il s'ajoute chaque année"]
+      ],
+      note: "Deux journées de nacelle dans l'année suffisent à couvrir les 825 € de coût réel. Un seul chantier que vous n'auriez pas pu prendre — parce qu'il était à 200 kilomètres et qu'aucun poseur n'était disponible — coûte plus cher que l'abonnement entier."
+    }
+  },
+
   /* Comparaison honnête avec les autres façons de trouver des chantiers */
   comparison: {
     head: ["", "Abonnement partenaire", "Franchise du secteur", "Achat de contacts"],
@@ -158,7 +219,7 @@ module.exports = {
   ],
 
   faq: [
-    { q: "Comment fonctionne la formule Découverte à 0 € ?", a: "Vous remplissez le questionnaire, nous vérifions votre dossier, et vous recevez les demandes de votre zone pendant deux mois sans rien payer et sans carte bancaire. À l'issue de cette période, nous faisons le point sur ce qui vous a été transmis et vous choisissez votre abonnement pour la première année : 6 mois à 390 € ou 12 mois à 690 €. Si le flux ne vous convient pas, vous ne donnez pas suite et cela s'arrête là." },
+    { q: "Comment fonctionne la formule Découverte à 0 € ?", a: "Vous remplissez le questionnaire, nous vérifions votre dossier, et vous recevez les demandes de votre zone pendant deux mois sans rien payer et sans carte bancaire. À l'issue de cette période, nous faisons le point sur ce qui vous a été transmis et vous choisissez votre abonnement pour la première année : 6 mois à 490 € TTC ou 12 mois à 990 € TTC. Si le flux ne vous convient pas, vous ne donnez pas suite et cela s'arrête là." },
     { q: "Pourquoi une formule à 0 € ?", a: "Parce qu'un réseau qui démarre a un problème d'amorçage : sans partenaires nous ne pouvons pas servir les demandes, et sans demandes personne n'a envie de payer. Les deux premiers mois à zéro euro cassent ce blocage — vous jugez sur pièces, nous constituons le réseau. C'est temporaire et réservé aux premières entreprises inscrites." },
     { q: "Pourquoi un abonnement plutôt qu'une commission ?", a: "Parce qu'une commission variable pousse l'intermédiaire à privilégier les gros dossiers et à vous envoyer un maximum de demandes, qualifiées ou non. L'abonnement inverse la logique : notre intérêt devient de vous garder d'une année sur l'autre, donc de vous transmettre des demandes que vous transformez réellement. Vous gardez par ailleurs 100 % de la marge sur chaque chantier signé." },
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
@@ -186,8 +247,8 @@ module.exports = {
         id: "pose-6",
         name: "Pose Ponctuelle",
         duration: "6 mois",
-        price: "290",
-        priceNote: "soit 48 € par mois",
+        price: "490",
+        priceNote: "soit 82 € par mois TTC — 408 € HT à votre charge réelle",
         pitch: "Pour les structures qui posent quelques chantiers par mois hors de leur zone.",
         audience: "Enseigniste, imprimeur ou agence de 1 à 5 personnes",
         features: [
@@ -203,8 +264,8 @@ module.exports = {
         id: "pose-12",
         name: "Pose Illimitée",
         duration: "12 mois",
-        price: "790",
-        priceNote: "soit 66 € par mois — demandes illimitées",
+        price: "990",
+        priceNote: "soit 82,50 € par mois TTC — demandes illimitées",
         featured: true,
         badge: "Pour les fabricants",
         pitch: "Pour ceux qui livrent dans toute la France et veulent un poseur disponible à chaque fois.",

@@ -18,7 +18,7 @@ module.exports = function partnersPage(cities) {
   <h3>${esc(pl.name)}</h3>
   <p class="plan-pitch">${esc(pl.pitch)}</p>
   <div class="plan-price">
-    <b>${esc(pl.price)}</b><span>${esc(P.currency)} HT</span>
+    <b>${esc(pl.price)}</b><span>${esc(P.currency)}${pl.free ? "" : " " + esc(P.priceSuffix)}</span>
     <em>/ ${esc(pl.duration)}</em>
   </div>
   <p class="plan-note">${esc(pl.priceNote)}</p>
@@ -95,6 +95,7 @@ module.exports = function partnersPage(cities) {
     <p class="center" style="margin-top:26px;font-size:.87rem;color:var(--tx-3)">${esc(P.vatNote)}</p>
   </div>
 </section>
+${T.amortBlock('vente')}
 
 <section class="sec">
   <div class="wrap">

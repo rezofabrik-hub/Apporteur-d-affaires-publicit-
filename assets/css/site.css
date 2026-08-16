@@ -1089,3 +1089,43 @@ td { color: var(--tx-2); }
 .plan-free .plan-price b { color: var(--signal-600); }
 .plan-free .btn-pro { background: var(--signal); box-shadow: 0 6px 18px rgba(255, 90, 31, .3); }
 .plan-free .btn-pro:hover { background: var(--signal-600); box-shadow: 0 10px 26px rgba(255, 90, 31, .38); }
+
+
+/* ---------- 28. Bloc d'amortissement ----------
+   Le seuil chiffré doit se lire avant le tableau, y compris par quelqu'un qui
+   survole : d'où la colonne latérale collante sur grand écran, qui reste en
+   vue pendant que l'œil parcourt les lignes. Sur mobile elle repasse
+   simplement au-dessus du tableau.                                          */
+.amort { display: grid; gap: clamp(20px, 3vw, 34px); grid-template-columns: minmax(min(280px, 100%), .8fr) 2fr; align-items: start; }
+.amort-main { min-width: 0; }
+
+.amort-seuil {
+  position: sticky; top: 96px;
+  background: var(--ink-900); color: #fff;
+  border-radius: var(--r-lg); padding: 26px 24px;
+}
+.amort-seuil span { display: block; font-size: .78rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--amber); }
+.amort-seuil b { display: block; margin: 6px 0 12px; font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 800; letter-spacing: -.03em; line-height: 1; }
+.amort-seuil p { margin: 0; font-size: .92rem; color: var(--tx-inv-2); }
+
+.t-amort th[scope="row"] { font-weight: 600; }
+
+/* Les trois façons d'acheter un chantier, mises côte à côte sous le tableau */
+.amort-compare {
+  list-style: none; margin: 26px 0 0; padding: 0;
+  display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+}
+.amort-compare li {
+  margin: 0; min-width: 0; padding: 20px 22px;
+  background: #fff; border: 1.5px solid var(--line); border-radius: var(--r-lg);
+}
+.amort-compare li:first-child { border-color: var(--pro); }
+.amort-compare b { display: block; font-size: .98rem; }
+.amort-compare em { display: block; margin: 4px 0 8px; font-style: normal; font-weight: 800; color: var(--pro-600); }
+.amort-compare li:not(:first-child) em { color: var(--tx-2); }
+.amort-compare span { font-size: .89rem; color: var(--tx-2); line-height: 1.55; }
+
+@media (max-width: 880px) {
+  .amort { grid-template-columns: 1fr; }
+  .amort-seuil { position: static; }
+}

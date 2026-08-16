@@ -16,7 +16,7 @@ module.exports = function posePage(cities) {
   ${P.launch && P.launch.active ? `<span class="plan-launch">🎁 ${esc(P.launch.badge)}</span>` : ""}
   <p class="plan-pitch">${esc(pl.pitch)}</p>
   <div class="plan-price">
-    <b>${esc(pl.price)}</b><span>${esc(P.currency)} HT</span><em>/ ${esc(pl.duration)}</em>
+    <b>${esc(pl.price)}</b><span>${esc(P.currency)} ${esc(P.priceSuffix)}</span><em>/ ${esc(pl.duration)}</em>
   </div>
   <p class="plan-note">${esc(pl.priceNote)}</p>
   <p class="plan-audience"><strong>Pour qui :</strong> ${esc(pl.audience)}</p>
@@ -127,6 +127,8 @@ module.exports = function posePage(cities) {
     <p class="center" style="margin-top:26px;font-size:.87rem;color:var(--tx-3)">${esc(P.vatNote)}</p>
   </div>
 </section>
+
+${T.amortBlock("pose")}
 
 <section class="sec dark" id="poseurs">
   <div class="wrap">

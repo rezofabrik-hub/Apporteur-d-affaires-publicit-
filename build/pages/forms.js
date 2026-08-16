@@ -821,10 +821,10 @@ function pros(cities) {
             ${checks("formule", P.plans.filter((pl) => !pl.free || (P.launch && P.launch.active)).map((pl) => ({
               /* Le nom des abonnements porte déjà la durée : ne pas la répéter. */
               l: pl.name.includes(pl.duration) ? pl.name : pl.name + " — " + pl.duration,
-              h: (pl.free ? "Gratuit" : pl.price + " " + P.currency + " HT") + " · " + pl.pitch
+              h: (pl.free ? "Gratuit" : pl.price + " " + P.currency + " " + P.priceSuffix) + " · " + pl.pitch
             })).concat(P.pose.plans.map((pl) => ({
               l: pl.name + " — " + pl.duration,
-              h: pl.price + " " + P.currency + " HT · service de pose"
+              h: pl.price + " " + P.currency + " " + P.priceSuffix + " · service de pose"
             }))).concat([{ l: "Je ne sais pas encore", h: "Vous préférez en parler d'abord" }]),
             { radio: true })}
           </fieldset>

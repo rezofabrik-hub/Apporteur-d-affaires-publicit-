@@ -423,6 +423,51 @@ function launchBanner(compact) {
 </div>`;
 }
 
+/**
+ * Bloc d'amortissement : à partir de quelle affaire l'abonnement est remboursé.
+ * @param {"vente"|"pose"} variant  jeu de données à afficher
+ */
+function amortBlock(variant) {
+  const A = partnership.amortissement;
+  if (!A) return "";
+  const V = variant === "pose" ? A.pose : A;
+  const table = `<div class="table-wrap"><table class="t-amort">
+  <thead><tr>${V.head.map((h, i) =>
+    `<th scope="col"${i === 3 ? ' style="color:var(--pro-600)"' : ""}>${esc(h)}</th>`).join("")}</tr></thead>
+  <tbody>${V.rows.map((r) => `<tr>${r.map((c, i) => i === 0
+    ? `<th scope="row">${esc(c)}</th>`
+    : `<td${i === 3 ? ' style="font-weight:600;color:var(--pro-600)"' : ""}>${esc(c)}</td>`
+  ).join("")}</tr>`).join("")}</tbody>
+</table></div>`;
+
+  /* Le seuil chiffré n'est rappelé qu'une fois, sur la variante vente : le
+     répéter sur la page pose donnerait deux encadrés identiques au visiteur
+     qui consulte les deux. */
+  const seuil = variant === "pose" ? "" : `
+    <aside class="amort-seuil">
+      <span>Seuil à couvrir</span>
+      <b>${esc(A.threshold)}</b>
+      <p>${esc(A.thresholdNote)}</p>
+    </aside>`;
+
+  const compare = variant === "pose" || !A.compare ? "" : `
+  <ul class="amort-compare">${A.compare.map(([t, p, d]) =>
+    `<li><b>${esc(t)}</b><em>${esc(p)}</em><span>${esc(d)}</span></li>`).join("")}</ul>`;
+
+  return `
+<section class="sec bg-2" id="amortissement">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">${esc(A.eyebrow)}</span>
+      <h2>${esc(V.title)}</h2>
+      <p class="lead">${esc(V.lead)}</p>
+    </div>
+    <div class="amort">${seuil}<div class="amort-main">${table}</div></div>
+    <div class="note"><p>${esc(V.note)}</p></div>${compare}
+  </div>
+</section>`;
+}
+
 function keywordCloud(words, title) {
   return `<div class="kw-block"><b>${esc(title)} :</b> ${words.map(esc).join(" · ")}.</div>`;
 }
@@ -430,5 +475,5 @@ function keywordCloud(words, title) {
 module.exports = {
   site, services, esc, attr, jsonld, img, heroImg, pick, manifest,
   page, header, footer, crumbs, crumbSchema, faqBlock, faqSchema,
-  serviceCards, ctaDouble, trustBar, keywordCloud, launchBanner, partnership, NAV_MORE
+  serviceCards, ctaDouble, trustBar, keywordCloud, launchBanner, amortBlock, partnership, NAV_MORE
 };
