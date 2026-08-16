@@ -403,6 +403,14 @@ function comment(cities) {
   <div class="wrap">
     <div class="split">
       <article class="prose">
+        <h2 id="experience">Qui est derrière le réseau</h2>
+        <p>${esc(site.experienceText)}</p>
+        <p>Concrètement, cela change trois choses. Un projet mal exprimé au départ est
+        <strong>rattrapé au téléphone</strong> plutôt que transmis tel quel. Un devis auquel il manque
+        la dépose, le raccordement électrique ou le dossier en mairie est <strong>repéré avant</strong>
+        que vous ne le signiez. Et un professionnel qui annonce des capacités qu'il n'a pas est
+        <strong>identifié à la première question technique</strong>.</p>
+
         <h2 id="probleme">Le problème que nous résolvons</h2>
         <p>Un commerçant qui cherche une enseigne fait face à trois difficultés qui n'ont rien
         d'anecdotique. D'abord, <strong>il ne connaît pas le vocabulaire</strong> : impossible de

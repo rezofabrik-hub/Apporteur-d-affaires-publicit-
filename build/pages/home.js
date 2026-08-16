@@ -1,5 +1,6 @@
 const T = require("../lib/tpl");
 const { site, services, esc, img, heroImg } = T;
+const FR = require("../lib/fr");  // accords des noms de département
 
 const FAQ = [
   { q: "Le service est-il vraiment gratuit pour le client ?", a: "Oui, totalement. Vous ne payez rien pour être mis en relation ni pour recevoir des devis, et aucune commission n'est ajoutée au prix de l'entreprise retenue. Notre rémunération vient des professionnels du réseau, sous forme d'un abonnement fixe. Vous restez libre de ne donner suite à aucune proposition." },
@@ -34,6 +35,26 @@ module.exports = function home(cities) {
 
 <section class="sec-tight">
   <div class="wrap">${T.trustBar()}</div>
+</section>
+
+<section class="sec-tight bg-2">
+  <div class="wrap">
+    <div class="grid g-halves">
+      <div>
+        <span class="eyebrow">Qui vous répond</span>
+        <h2 style="font-size:clamp(1.4rem,2.6vw,2rem)">${esc(site.experienceLine)}</h2>
+        <p>${esc(site.experienceText)}</p>
+      </div>
+      <div>
+        <ul class="checks" style="margin:0">
+          <li>Un besoin qualifié par téléphone en dix minutes, pas par formulaire automatique</li>
+          <li>Un cahier des charges technique rédigé pour vous : matériaux, dimensions, éclairage, fixations</li>
+          <li>La lecture critique des devis reçus, poste par poste</li>
+          <li>La connaissance des règlements locaux de publicité et des démarches en mairie</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="sec bg-2" id="metiers">
@@ -145,7 +166,7 @@ module.exports = function home(cities) {
       <div>
         <span class="eyebrow">Couverture nationale</span>
         <h2>De ${esc(pilot.name)} à toute la France</h2>
-        <p class="lead">Le réseau s'est constitué à ${esc(pilot.name)} et dans les ${esc(pilot.deptName)},
+        <p class="lead">Le réseau s'est constitué à ${esc(pilot.name)} et ${esc(FR.dans(pilot.deptName))},
         où nous connaissons les contraintes de terrain : secteur patrimonial, tramontane, atmosphère saline,
         règlement local de publicité. Il couvre aujourd'hui l'ensemble des grandes agglomérations françaises,
         avec la même exigence de proximité.</p>
@@ -261,7 +282,9 @@ module.exports = function home(cities) {
           addressCountry: site.address.country
         },
         areaServed: { "@type": "Country", name: "France" },
-        knowsAbout: services.map((s) => s.nav)
+        knowsAbout: services.map((s) => s.nav),
+        foundingDate: String(new Date().getFullYear() - site.experienceYears),
+        slogan: site.experienceLine
       },
       {
         "@context": "https://schema.org", "@type": "WebSite",

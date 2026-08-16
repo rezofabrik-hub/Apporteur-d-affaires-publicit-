@@ -46,6 +46,7 @@ module.exports = function partnersPage(cities) {
       <a class="btn btn-ghost btn-lg" href="professionnels.html">Remplir le questionnaire</a>
     </div>
     <div class="pill-row">
+      <span class="pill">${esc(site.experienceLine)}</span>
       <span class="pill">Sans droit d'entrée</span>
       <span class="pill">Sans commission</span>
       <span class="pill">Sans reconduction tacite</span>

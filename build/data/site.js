@@ -18,6 +18,13 @@ module.exports = {
   baseline: "Un seul interlocuteur pour toute votre communication visuelle, partout en France.",
   role: "agence de communication et de mise en relation",
 
+  /* Expérience du dirigeant — c'est l'argument que ni une franchise ni une
+     plateforme de mise en relation ne peuvent avancer. Repris sur l'accueil,
+     la page méthode, la page partenaires et dans les données structurées. */
+  experienceYears: 25,
+  experienceLine: "25 ans de métier dans la communication visuelle",
+  experienceText: "Le réseau n'est pas piloté par un informaticien qui a repéré un marché, mais par un professionnel de la communication visuelle qui l'exerce depuis vingt-cinq ans. C'est ce qui permet de qualifier un projet en dix minutes au téléphone, de traduire « je voudrais quelque chose de visible » en cahier des charges technique, et de repérer immédiatement un devis auquel il manque la moitié des postes.",
+
   /* Contact — répliqué dans assets/js/config.js */
   /* Adresse opérationnelle actuelle. À basculer sur contact@rezoenseignes.fr
      et partenaires@rezoenseignes.fr dès que le domaine sera déposé. */
@@ -41,7 +48,7 @@ module.exports = {
 
   /* Chiffres affichés (à ajuster au réel) */
   stats: [
-    { n: "12", l: "métiers de la communication visuelle" },
+    { n: "25 ans", l: "d'expérience en communication visuelle" },
     { n: "48 h", l: "pour recevoir vos premières propositions" },
     { n: "100 %", l: "gratuit et sans engagement pour le client" },
     { n: "France", l: "entière, DOM inclus" }

@@ -23,11 +23,15 @@ const serviceCityPage = require("./pages/servicecity");
 const partnersPage = require("./pages/partners");
 const posePage = require("./pages/pose");
 const projectPage = require("./pages/project");
+const collectivitesPage = require("./pages/collectivites");
 
 const ROOT = path.join(__dirname, "..");
 
-/* Nombre de villes retenues pour la matrice métier x ville */
-const MATRIX_CITIES = 30;
+/* Nombre de villes croisées avec les 8 métiers.
+   Les 8 angles rédactionnels et la note technique propre à chaque métier
+   limitent la répétition ; monter beaucoup plus haut produirait des pages
+   trop proches les unes des autres, ce que Google traite en pages satellites. */
+const MATRIX_CITIES = 60;
 const written = [];
 
 function write(file, html) {
@@ -60,7 +64,7 @@ function sitemap(pages) {
     .map((f) => {
       let p = "0.6";
       if (f === "index.html") p = "1.0";
-      else if (["devis.html", "professionnels.html", "partenaires.html", "service-pose.html"].includes(f)) p = "0.9";
+      else if (["devis.html", "professionnels.html", "partenaires.html", "service-pose.html", "collectivites.html"].includes(f)) p = "0.9";
       else if (services.some((s) => s.slug + ".html" === f)) p = "0.9";
       else if (["secteurs.html", "villes.html", "realisations.html"].includes(f)) p = "0.85";
       else if (f.startsWith("realisation-")) p = "0.75";
@@ -115,6 +119,7 @@ function run() {
   });
 
   write("devis.html", forms.devis(cities));
+  write("collectivites.html", collectivitesPage(cities));
   write("partenaires.html", partnersPage(cities));
   write("service-pose.html", posePage(cities));
   write("professionnels.html", forms.pros(cities));

@@ -1,5 +1,6 @@
 const T = require("../lib/tpl");
 const { site, services, esc, img, heroImg } = T;
+const FR = require("../lib/fr");  // accords des noms de département
 
 /* Contraintes réelles par région : elles rendent chaque page utile et différente. */
 const REGION_NOTE = {
@@ -58,6 +59,55 @@ module.exports = function cityPage(city, cities, index) {
       ? `<a class="tag" href="enseigne-signaletique-${match.slug}.html">${esc(n)}</a>`
       : `<span class="tag">${esc(n)}</span>`;
   }).join("");
+
+  /* Communes du même département déjà couvertes par le site : ce maillage
+     interne est ce qui fait la force du référencement local des réseaux
+     franchisés, qui déclinent chaque agence sur les villages alentour. */
+  const sameDept = cities.filter((c) => c.dept === city.dept && c.slug !== city.slug);
+  const around = (city.neighbors || []);
+  const aroundLinked = around.map((n) => {
+    const m = cities.find((c) => c.name.toLowerCase() === n.toLowerCase());
+    return m ? `<a href="enseigne-signaletique-${m.slug}.html">${esc(n)}</a>` : esc(n);
+  });
+  const communesBlock = around.length ? `
+<section class="sec bg-2" id="communes">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Zone d'intervention</span>
+      <h2>Enseigne et signalétique autour de ${esc(city.name)}</h2>
+      <p class="lead">Un chantier ne s'arrête pas aux limites de la commune. Les professionnels
+      que nous sollicitons pour ${esc(city.name)} interviennent dans toute l'agglomération et,
+      plus largement, dans l'ensemble du département ${esc(city.dept)} — ${esc(city.deptName)}.</p>
+    </div>
+    <div class="split">
+      <article class="prose">
+        <p>Nous traitons régulièrement des projets d'enseigne, de signalétique, de covering et
+        d'impression grand format à ${aroundLinked.slice(0, 3).join(", ")}${around.length > 3
+          ? `, ainsi qu'à ${aroundLinked.slice(3).join(", ")}` : ""}.
+        Pour les communes plus petites du secteur, le principe reste le même : nous sollicitons
+        l'atelier ou le poseur le plus proche, parce que la distance conditionne à la fois le
+        coût du déplacement et la réactivité du service après-vente.</p>
+        <p>C'est un point sur lequel un commerçant de village est souvent mal servi : les grands
+        réseaux facturent le déplacement depuis leur agence, parfois à cinquante kilomètres, quand
+        un artisan installé à quinze minutes existe et ne demande qu'à travailler. Notre rôle est
+        précisément de faire ce rapprochement.</p>
+        <h3>Communes limitrophes desservies</h3>
+        <div class="tags">${nearby}</div>
+        ${sameDept.length ? `<h3 style="margin-top:1.6em">Autres villes ${esc(FR.du(city.deptName))}</h3>
+        <div class="tags">${sameDept.slice(0, 12).map((c) =>
+          `<a class="tag" href="enseigne-signaletique-${c.slug}.html">${esc(c.name)}</a>`).join("")}</div>` : ""}
+      </article>
+      <aside>
+        <div class="aside-card aside-sticky">
+          <h3>Votre commune n'est pas citée ?</h3>
+          <p>Ce n'est pas un obstacle : nous couvrons l'ensemble du département ${esc(city.dept)}
+          et sollicitons des professionnels de proximité même dans les plus petites communes.</p>
+          <a class="btn btn-primary btn-block" href="devis.html?ville=${encodeURIComponent(city.name)}">Décrire mon projet</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>` : "";
 
   const localFaq = [
     {
@@ -219,6 +269,8 @@ ${!city.pilot ? `<section class="sec">
   </div>
 </section>` : ""}
 
+${communesBlock}
+
 <section class="sec bg-3">
   <div class="wrap">
     <div class="split">
@@ -257,8 +309,13 @@ ${!city.pilot ? `<section class="sec">
 
   return T.page({
     file,
-    title: `Enseigne & Signalétique à ${city.name} (${city.dept}) — Devis Gratuit | ${site.brand}`,
-    desc: `Enseigne lumineuse, signalétique, covering et impression à ${city.name} (${city.cp}). Recevez sous 48 h des devis d'artisans vérifiés du ${city.deptName}. Gratuit et sans engagement.`,
+    /* Titre et description calibrés pour tenir dans le résultat Google sans
+       réécriture : ville et code postal en tête, communes alentour ensuite.
+       C'est la requête « ville + village voisin » qui fait le trafic local,
+       pas le nom du réseau — que le calibrage sacrifiera s'il faut couper. */
+    title: `Enseigne & Signalétique à ${city.name} (${city.dept}) — Devis gratuit | ${site.brand}`,
+    desc: `Enseigne, signalétique, covering et impression à ${city.name} (${city.cp})${
+      (city.neighbors || []).length ? ", " + city.neighbors.slice(0, 2).join(", ") : ""}. Devis d'artisans vérifiés sous 48 h, gratuit et sans engagement.`,
     body,
     cities,
     schema: [
@@ -266,7 +323,7 @@ ${!city.pilot ? `<section class="sec">
       {
         "@context": "https://schema.org", "@type": "LocalBusiness",
         name: `${site.brand} — ${city.name}`,
-        description: `Mise en relation avec des professionnels de l'enseigne, de la signalétique et de la publicité par l'objet à ${city.name} et dans le ${city.deptName}.`,
+        description: `Mise en relation avec des professionnels de l'enseigne, de la signalétique et de la publicité par l'objet à ${city.name} et ${FR.dans(city.deptName)}.`,
         url: site.domain.replace(/\/$/, "") + "/" + file,
         email: site.email, telephone: site.phoneHref, priceRange: "€€",
         address: { "@type": "PostalAddress", addressLocality: city.name,

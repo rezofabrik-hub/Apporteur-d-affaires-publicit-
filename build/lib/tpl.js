@@ -22,6 +22,51 @@ const attr = (s) => esc(String(s == null ? "" : s).replace(/<[^>]+>/g, ""));
 const jsonld = (obj) => `<script type="application/ld+json">${
   JSON.stringify(obj).replace(/</g, "\\u003c")}</script>`;
 
+/* ------------------------------------------------- calibrage SERP (SEO)
+   Google n'affiche qu'une largeur fixe de titre et de description. Au-delà,
+   il tronque — ou, plus souvent, il réécrit lui-même la balise à partir du
+   corps de la page, et on perd la maîtrise de ce que voit l'internaute.
+   Les deux fonctions ci-dessous ramènent chaque page dans la fenêtre
+   affichable en dégradant proprement, jamais au milieu d'un mot. */
+const TITLE_MAX = 62;
+const DESC_MAX = 158;
+const BRAND_RE = new RegExp("\\s*\\|\\s*" + site.brand.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*$");
+
+/** Ramène un titre sous TITLE_MAX : suffixe de marque, puis segment, puis mot. */
+function seoTitle(t) {
+  t = String(t || "").replace(/\s+/g, " ").trim();
+  if (t.length <= TITLE_MAX) return t;
+
+  /* 1. La marque est la première chose sacrifiable : sur une requête locale,
+        « enseigne + ville » pèse infiniment plus que le nom du réseau. */
+  const s = t.replace(BRAND_RE, "");
+  if (s.length <= TITLE_MAX) return s;
+
+  /* 2. Couper à la dernière césure éditoriale (— ou –) qui tient. */
+  const win = s.slice(0, TITLE_MAX + 1);
+  const sep = Math.max(win.lastIndexOf(" — "), win.lastIndexOf(" – "), win.lastIndexOf(" - "));
+  if (sep >= 25) return s.slice(0, sep);
+
+  /* 3. Sinon, dernier mot entier. */
+  const sp = win.lastIndexOf(" ");
+  return (sp >= 25 ? s.slice(0, sp) : s.slice(0, TITLE_MAX)).replace(/[,;:(—–-]+$/, "").trim();
+}
+
+/** Ramène une description sous DESC_MAX en gardant des phrases entières. */
+function seoDesc(d) {
+  d = String(d || "").replace(/\s+/g, " ").trim();
+  if (d.length <= DESC_MAX) return d;
+
+  /* Une description coupée net se lit mal ; on préfère perdre la dernière
+     phrase entière plutôt que d'afficher des points de suspension. */
+  const win = d.slice(0, DESC_MAX + 1);
+  const dot = Math.max(win.lastIndexOf(". "), win.lastIndexOf("! "), win.lastIndexOf("? "));
+  if (dot >= 90) return d.slice(0, dot + 1);
+
+  const sp = win.lastIndexOf(" ");
+  return (sp >= 90 ? d.slice(0, sp) : d.slice(0, DESC_MAX - 1)).replace(/[,;:(—–-]+$/, "").trim() + "…";
+}
+
 /**
  * Renvoie l'entrée image `topic` n° i (1-based, boucle si dépassement).
  */
@@ -62,6 +107,7 @@ function heroImg(topic, i, alt) {
 
 /* ------------------------------------------------------------- structure */
 const NAV_MORE = [
+  ["collectivites.html", "Collectivités & institutions", "Marchés publics, accessibilité, jalonnement"],
   ["realisations.html", "Réalisations", "Projets détaillés, contraintes et budgets"],
   ["secteurs.html", "Secteurs d'activité", "Pharmacie, CHR, santé, auto, industrie…"],
   ["villes.html", "Villes couvertes", "Nos zones d'intervention en France"],
@@ -178,6 +224,7 @@ function footer(cities) {
       <ul>
         <li><a href="devis.html">Demander un devis</a></li>
         <li><a href="realisations.html">Réalisations</a></li>
+        <li><a href="collectivites.html">Collectivités &amp; institutions</a></li>
         <li><a href="partenaires.html">Devenir partenaire</a></li>
         <li><a href="service-pose.html">Service de pose</a></li>
         <li><a href="professionnels.html">Questionnaire d'adhésion</a></li>
@@ -222,13 +269,19 @@ function page(o) {
 
   const schemas = (o.schema || []).map(jsonld).join("\n");
 
+  /* Calibrage systématique : aucune page ne part en production avec un titre
+     ou une description que Google réécrira. Les réseaux sociaux, eux,
+     acceptent des textes plus longs — d'où le titre complet en og:title. */
+  const title = seoTitle(o.title);
+  const desc = seoDesc(o.desc);
+
   return `<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(o.title)}</title>
-<meta name="description" content="${attr(o.desc)}">
+<title>${esc(title)}</title>
+<meta name="description" content="${attr(desc)}">
 <link rel="canonical" href="${esc(canonical)}">
 ${o.noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">'}
 <meta name="author" content="${attr(site.brand)}">

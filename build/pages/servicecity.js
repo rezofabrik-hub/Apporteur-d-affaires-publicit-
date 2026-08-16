@@ -1,5 +1,6 @@
 const T = require("../lib/tpl");
 const { site, services, esc, img, heroImg } = T;
+const FR = require("../lib/fr");  // accords des noms de département
 
 /* Angles rédactionnels croisés : le couple (métier, ville) choisit l'angle,
    ce qui évite des pages jumelles tout en restant pertinent. */
@@ -19,6 +20,22 @@ const ANGLES = [
   {
     h: "Délais et organisation d'un chantier %S à %V",
     p: "Sur un projet %S à %V, le délai réel se compose de trois blocs : la validation de la maquette, la fabrication, et la pose — à laquelle s'ajoutent, le cas échéant, deux à quatre mois d'instruction administrative qui courent en parallèle. Savoir cela à l'avance évite la mauvaise surprise à trois semaines d'une ouverture."
+  },
+  {
+    h: "Réseau ouvert ou franchise : que change ce choix à %V ?",
+    p: "À %V comme ailleurs, une agence franchisée vous oriente vers son propre atelier, son catalogue et ses fournisseurs référencés. Nous partons du problème inverse : votre projet d'abord, puis l'atelier dont la machine correspond. Sur un projet %S, cela évite le classique « ce n'est pas exactement ce que nous faisons, mais on peut s'en approcher »."
+  },
+  {
+    h: "Ce qu'il faut vérifier dans un devis %S à %V",
+    p: "Un devis %S à %V se lit sur quatre lignes que beaucoup omettent : la référence exacte des matériaux, la pose chiffrée ou renvoyée « en sus », la dépose de l'existant, et les démarches administratives. Un écart de 40 % entre deux propositions vient presque toujours de là, pas de la marge."
+  },
+  {
+    h: "Durabilité : ce qui tient dans le temps à %V",
+    p: "Le mauvais calcul le plus fréquent sur un projet %S à %V consiste à comparer deux devis au prix d'achat sans regarder la durée de vie. Entre un matériau d'entrée de gamme et une fabrication durable, l'écart initial se rattrape souvent en une seule refabrication évitée — et la différence de prix ne représente qu'une fraction du coût de la pose."
+  },
+  {
+    h: "Un seul interlocuteur pour votre projet %S à %V",
+    p: "Beaucoup de projets à %V mobilisent plusieurs métiers : une enseigne, le marquage du véhicule assorti, la vitrine et parfois le textile de l'équipe. Les faire traiter séparément revient à répéter quatre fois le même brief et à obtenir quatre rendus légèrement différents. Nous coordonnons l'ensemble depuis un cahier des charges unique."
   }
 ];
 
@@ -56,7 +73,7 @@ module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, 
     { q: `Sous quel délai intervenez-vous à ${V} ?`,
       a: `Vous recevez vos premières propositions sous 48 heures. Ensuite, comptez 2 à 4 semaines entre la commande et la réalisation pour un projet standard, davantage si une autorisation préalable est nécessaire — l'instruction en mairie de ${V} courant alors en parallèle de la fabrication.` },
     { q: `Qui réalisera les travaux à ${V} ?`,
-      a: `Des entreprises indépendantes du ${city.deptName} (${city.dept}), sélectionnées parce que leur outil de production correspond à votre projet, et dont nous vérifions le SIRET, les assurances et les habilitations. Vous contractez directement avec celle que vous retenez ; nous n'intervenons pas dans l'exécution.` },
+      a: `Des entreprises indépendantes ${FR.du(city.deptName)} (${city.dept}), sélectionnées parce que leur outil de production correspond à votre projet, et dont nous vérifions le SIRET, les assurances et les habilitations. Vous contractez directement avec celle que vous retenez ; nous n'intervenons pas dans l'exécution.` },
     { q: `Intervenez-vous autour de ${V} ?`,
       a: `Oui, dans l'ensemble de l'agglomération et du département : ${(city.neighbors || []).slice(0, 5).join(", ")} et au-delà. La proximité du prestataire est un critère de sélection prioritaire, parce qu'elle conditionne le délai de pose et la réactivité du service après-vente.` }
   ];
@@ -70,7 +87,7 @@ module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, 
     ${T.crumbs(crumbItems)}
     <span class="eyebrow">${esc(V)} · ${esc(city.dept)} ${esc(city.deptName)}</span>
     <h1>${esc(svc.navShort)} à ${esc(V)}</h1>
-    <p class="lead">${esc(svc.navDesc)} à ${esc(V)} (${esc(city.cp)}) et dans tout le ${esc(city.deptName)}.
+    <p class="lead">${esc(svc.navDesc)} à ${esc(V)} (${esc(city.cp)}) et ${esc(FR.dans(city.deptName))}.
     Décrivez votre projet : nous le confions à des professionnels vérifiés de votre secteur et vous
     recevez des devis comparables sous 48 heures. Gratuit, sans engagement.</p>
     <div class="btns">
@@ -95,9 +112,13 @@ module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, 
           ${svc.sub.map((s) => `<li><strong>${esc(s.t)}</strong> — ${esc(s.d.split(".")[0])}.</li>`).join("")}
         </ul>
 
-        <h2 id="secteurs">Où nous intervenons à ${esc(V)}</h2>
+        <h2 id="secteurs">Où nous intervenons à ${esc(V)} et alentour</h2>
         <p>Les professionnels du réseau traitent des projets ${esc(S.toLowerCase())} dans l'ensemble
-        des quartiers de ${esc(V)} et dans les zones d'activité de l'agglomération.</p>
+        des quartiers de ${esc(V)}, dans les zones d'activité de l'agglomération, et dans les communes
+        voisines${(city.neighbors || []).length ? " — " + city.neighbors.slice(0, 6).join(", ") : ""}.
+        Nous sollicitons systématiquement l'atelier ou le poseur le plus proche du chantier :
+        c'est ce qui fait la différence sur le coût de déplacement et sur la réactivité du
+        service après-vente.</p>
         ${(city.quartiers || []).length ? `<h3>Quartiers</h3>
         <div class="tags">${city.quartiers.map((q) => `<span class="tag">${esc(q)}</span>`).join("")}</div>` : ""}
         ${(city.zones || []).length ? `<h3 style="margin-top:1.4em">Zones d'activité</h3>
@@ -176,8 +197,11 @@ module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, 
 
   return T.page({
     file,
-    title: `${S} à ${V} (${city.dept}) — Devis Gratuit sous 48 h | ${site.brand}`,
-    desc: `${svc.navDesc} à ${V} (${city.cp}). Recevez sous 48 h des devis comparables d'entreprises vérifiées du ${city.deptName}. Service gratuit et sans engagement.`,
+    /* Métier + ville d'abord : c'est la requête tapée. Le suffixe de marque
+       et la mention « 48 h » sont les premiers éléments que le calibrage
+       SERP retirera si le nom du métier ou de la ville est long. */
+    title: `${S} à ${V} (${city.dept}) — Devis gratuit 48 h | ${site.brand}`,
+    desc: `${svc.navDesc} à ${V} (${city.cp})${(city.neighbors || []).length ? ", " + city.neighbors.slice(0, 2).join(", ") : ""}. Devis d'entreprises vérifiées sous 48 h, gratuit.`,
     ogImage: (T.pick(svc.topic, 1) || { name: "hero-1" }).name + "-lg.jpg",
     body, cities,
     schema: [
