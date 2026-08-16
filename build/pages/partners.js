@@ -113,6 +113,10 @@ module.exports = function partnersPage(cities) {
       <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie. Au-delà,
       deux formules élargissent la zone — une <strong>région entière</strong> ou la
       <strong>France complète</strong>.</p>
+      <p class="lead mx-auto"><strong>Vous n'êtes pas publié.</strong> Nous ne tenons aucun annuaire
+      de partenaires : votre nom, vos coordonnées et vos capacités restent dans notre fichier
+      interne et ne sortent que pour un projet précis, vers le seul client concerné. Vos
+      concurrents ignorent que vous êtes du réseau.</p>
       <p class="lead mx-auto">Trois niveaux de partenariat, trois labels :
       <strong>Partenaire Proximité</strong>, <strong>Partenaire Régional</strong> et
       <strong>Partenaire National</strong>. Vous l'affichez sur votre devanture, vos devis et vos
