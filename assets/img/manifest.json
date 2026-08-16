@@ -493,7 +493,17 @@
  ],
  "vitrophanie": [
   {
-   "name": "vitrophanie-1",
+   "name": "vitrophanie-4",
+   "w": 1023,
+   "h": 685
+  },
+  {
+   "name": "vitrophanie-6",
+   "w": 1023,
+   "h": 682
+  },
+  {
+   "name": "vitrophanie-3",
    "w": 1024,
    "h": 768
   },
@@ -503,24 +513,14 @@
    "h": 703
   },
   {
-   "name": "vitrophanie-3",
-   "w": 1024,
-   "h": 768
-  },
-  {
-   "name": "vitrophanie-4",
-   "w": 1023,
-   "h": 685
-  },
-  {
    "name": "vitrophanie-5",
    "w": 1023,
    "h": 542
   },
   {
-   "name": "vitrophanie-6",
-   "w": 1023,
-   "h": 682
+   "name": "vitrophanie-1",
+   "w": 1024,
+   "h": 768
   }
  ],
  "plv": [

@@ -153,10 +153,10 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--sec) 0; }
 .dark strong { color: #fff; }
 
 .grid { display: grid; gap: clamp(18px, 2.5vw, 30px); }
-.g-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-.g-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.g-4 { grid-template-columns: repeat(auto-fit, minmax(224px, 1fr)); }
-.g-halves { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); align-items: center; }
+.g-2 { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); }
+.g-3 { grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+.g-4 { grid-template-columns: repeat(auto-fit, minmax(min(224px, 100%), 1fr)); }
+.g-halves { grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); align-items: center; }
 
 .stack > * + * { margin-top: 1.1em; }
 .center { text-align: center; }
@@ -356,7 +356,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--sec) 0; }
 }
 
 .hero-stats {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr));
   gap: 2px; margin-top: 52px;
   border-top: 1px solid var(--line-inv); padding-top: 30px;
 }
@@ -461,7 +461,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--sec) 0; }
 
 /* ---------- 10. Bandeau de confiance ---------- */
 .trust {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr));
   gap: 1px; background: var(--line); border: 1px solid var(--line);
   border-radius: var(--r-lg); overflow: hidden;
 }
@@ -516,7 +516,7 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--sec) 0; }
 
 /* ---------- 12. Mise en page à colonnes ---------- */
 .split { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: clamp(32px, 5vw, 68px); align-items: start; }
-@media (max-width: 980px) { .split { grid-template-columns: 1fr; } }
+@media (max-width: 980px) { .split { grid-template-columns: minmax(0, 1fr); } }
 
 .aside-card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
@@ -596,7 +596,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 .fieldset-legend { display: block; margin-bottom: 12px; }
 
 /* Cases / options en grille */
-.opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 10px; }
+.opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(215px, 100%), 1fr)); gap: 10px; }
 .opt {
   position: relative; display: flex; align-items: flex-start; gap: 11px;
   padding: 14px 16px; background: #fff; border: 1.5px solid var(--line-2);
@@ -686,7 +686,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 }
 
 .city-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 9px;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(210px, 100%), 1fr)); gap: 9px;
   margin-top: 26px;
 }
 .city-chip {
@@ -702,7 +702,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 .city-empty.show { display: block; }
 
 /* ---------- 16. Galerie ---------- */
-.gal { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; }
+.gal { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 12px; }
 .gal figure { margin: 0; border-radius: var(--r); overflow: hidden; aspect-ratio: 4 / 3; background: var(--paper-3); }
 .gal img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s cubic-bezier(.2,.7,.3,1); }
 .gal figure:hover img { transform: scale(1.06); }
@@ -732,7 +732,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 .cta p { color: var(--tx-inv-2); max-width: 58ch; }
 .cta .btns { margin-top: 30px; }
 
-.cta-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; }
+.cta-split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: 18px; }
 .cta-card {
   border-radius: var(--r-xl); padding: clamp(28px, 4vw, 46px); position: relative;
   overflow: hidden; isolation: isolate;
@@ -755,7 +755,7 @@ fieldset { border: 0; padding: 0; margin: 0; }
 
 /* ---------- 18. Pied de page ---------- */
 .ftr { background: var(--ink-950); color: rgba(255, 255, 255, .76); padding-top: clamp(52px, 7vw, 84px); }
-.ftr-top { display: grid; grid-template-columns: 1.6fr repeat(auto-fit, minmax(150px, 1fr)); gap: clamp(28px, 4vw, 52px); }
+.ftr-top { display: grid; grid-template-columns: 1.6fr repeat(auto-fit, minmax(min(150px, 100%), 1fr)); gap: clamp(28px, 4vw, 52px); }
 .ftr h4 {
   color: #fff; font-size: .77rem; letter-spacing: .13em; text-transform: uppercase;
   margin-bottom: 16px; font-weight: 800;
@@ -841,7 +841,7 @@ td { color: var(--tx-2); }
 
 /* ---------- 21. Formules d'abonnement ---------- */
 .plans {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr));
   gap: 20px; align-items: start;
 }
 .plan {
@@ -973,7 +973,7 @@ td { color: var(--tx-2); }
 .proj-empty.show { display: block; }
 
 .proj-facts {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
   gap: 1px; background: var(--line); border: 1px solid var(--line);
   border-radius: var(--r-lg); overflow: hidden; margin: 1.8em 0;
 }
@@ -991,3 +991,57 @@ td { color: var(--tx-2); }
   font-size: .86rem; color: var(--tx-2); line-height: 1.55;
 }
 .illus-note svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; color: var(--tx-3); }
+
+/* ---------- 24. Lisibilité des composants clairs en section sombre ----------
+   `.tile p`, `.step p` et `.card-body p` fixent une couleur de texte foncée et
+   sont déclarés APRÈS `.dark p` : à spécificité égale, c'est la dernière règle
+   qui l'emporte, et le texte devenait gris foncé sur fond bleu nuit — illisible.
+   On rétablit ici explicitement les couleurs inversées.                      */
+.dark .tile p,
+.dark .tile li,
+.dark .step p,
+.dark .card-body p,
+.dark .plan-pitch,
+.dark .plan-audience,
+.dark .proj-meta { color: var(--tx-inv-2); }
+
+.dark .tile h3,
+.dark .step h3,
+.dark .card-body h3 { color: #fff; }
+
+.dark .card-list li,
+.dark .tile small { color: var(--tx-inv-3); }
+
+.dark .link-list a { color: var(--tx-inv-2); }
+.dark .link-list a:hover { color: #fff; }
+.dark .link-list li { border-bottom-color: var(--line-inv); }
+
+
+/* ---------- 25. Anti-débordement horizontal sur mobile ----------
+   Un enfant de grille vaut `minmax(auto, 1fr)` par défaut : sa largeur minimale
+   est celle de son contenu. Un tableau large (min-width 520px) empêchait donc
+   la colonne de rétrécir, et la page débordait de près de 180 px sur un écran
+   de 360 px. `min-width: 0` autorise la colonne à passer sous cette largeur, et
+   le conteneur `.table-wrap` reprend son rôle de zone défilante.            */
+.grid > *,
+.split > *,
+.g-halves > *,
+.plans > *,
+.prose,
+.card-body,
+.tile { min-width: 0; }
+
+.prose img,
+.prose figure,
+.prose pre { max-width: 100%; }
+
+/* Les mots très longs (URL, références techniques) ne doivent pas élargir la page */
+.prose p, .prose li, .acc-body p, .card-body p, .tile p { overflow-wrap: break-word; }
+
+@media (max-width: 620px) {
+  /* Les tableaux de prix restent lisibles en défilant dans leur cadre */
+  .table-wrap { -webkit-overflow-scrolling: touch; }
+  .proj-facts { grid-template-columns: 1fr 1fr; }
+  .stepper span { display: none; }
+  .hero-stats { gap: 18px 2px; }
+}
