@@ -97,7 +97,7 @@ module.exports = {
      lui qui sert de base à tous les calculs d'amortissement ci-dessous. */
   currency: "€",
   priceSuffix: "TTC",
-  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € pour l'abonnement 6 mois et de 742 € pour l'abonnement 12 mois. Contrat, accès et tarif sont bloqués sur toute la durée souscrite. Sans reconduction tacite : vous décidez du renouvellement.",
+  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € sur 6 mois, 742 € sur 12 mois, 1 242 € en formule Région et 2 492 € en France entière. Contrat, accès et tarif sont bloqués sur toute la durée souscrite. Sans reconduction tacite : vous décidez du renouvellement.",
 
   /* ---------------------------------------------------------------------
      Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
@@ -113,6 +113,7 @@ module.exports = {
     {
       id: "decouverte",
       name: "Découverte",
+      tier: "Partenaire Découverte",
       duration: "2 mois",
       price: "0",
       free: true,
@@ -134,6 +135,8 @@ module.exports = {
     {
       id: "semestriel",
       name: "Abonnement 6 mois",
+      tier: "Partenaire Local",
+      cta: "Choisir l'abonnement 6 mois",
       duration: "6 mois",
       price: "490",
       nextPrice: "690",   // tarif au 16 août 2027
@@ -146,7 +149,7 @@ module.exports = {
       features: [
         "Référencement complet dans l'annuaire du réseau",
         "Réception des demandes correspondant à vos capacités déclarées",
-        "Zone d'intervention : jusqu'à 3 départements",
+        "Zone d'intervention : 3 départements de votre choix",
         "Métiers déclarés illimités",
         "Priorité d'envoi sur les demandes de votre spécialité",
         "Page dédiée sur le site, indexée par les moteurs de recherche",
@@ -154,6 +157,7 @@ module.exports = {
         "Fiche entreprise avec logo, photos et coordonnées",
         "Bilan des demandes transmises à mi-parcours",
         "Accompagnement sur les dossiers multi-sites et les appels d'offres",
+        "Label Partenaire Local à afficher sur vos supports",
         "Aucune commission sur les affaires signées"
       ],
       notIncluded: []
@@ -161,6 +165,8 @@ module.exports = {
     {
       id: "annuel",
       name: "Abonnement 12 mois",
+      tier: "Partenaire Confirmé",
+      cta: "Choisir l'abonnement 12 mois",
       duration: "12 mois",
       price: "890",
       nextPrice: "1199",   // tarif au 16 août 2027
@@ -172,7 +178,7 @@ module.exports = {
       features: [
         "Référencement complet dans l'annuaire du réseau",
         "Réception des demandes correspondant à vos capacités déclarées",
-        "Zone d'intervention : jusqu'à 3 départements",
+        "Zone d'intervention : 3 départements de votre choix",
         "Métiers déclarés illimités",
         "Priorité d'envoi sur les demandes de votre spécialité",
         "Page dédiée sur le site, indexée par les moteurs de recherche",
@@ -180,6 +186,54 @@ module.exports = {
         "Fiche entreprise avec logo, photos et coordonnées",
         "Bilan semestriel des demandes transmises",
         "Accompagnement sur les dossiers multi-sites et les appels d'offres",
+        "Label Partenaire Confirmé à afficher sur vos supports",
+        "Aucune commission sur les affaires signées"
+      ],
+      notIncluded: []
+    },
+    {
+      id: "region",
+      name: "Région",
+      tier: "Partenaire Régional",
+      cta: "Choisir la formule Région",
+      duration: "12 mois",
+      price: "1490",
+      nextPrice: "1790",
+      priceNote: "soit 124,17 € par mois TTC — 1 242 € HT à votre charge réelle",
+      pitch: "Une région administrative entière, pour qui livre bien au-delà de son département.",
+      audience: "Fabricant, imprimeur grand format ou agence disposant d'équipes mobiles",
+      features: [
+        "Tout ce que comprend l'abonnement 12 mois",
+        "Zone d'intervention : une région administrative complète",
+        "Priorité d'envoi sur l'ensemble de la région",
+        "Mise en avant sur toutes les pages villes de la région",
+        "Bilan trimestriel des demandes transmises",
+        "Interlocuteur dédié",
+        "Label Partenaire Régional à afficher sur vos supports",
+        "Aucune commission sur les affaires signées"
+      ],
+      notIncluded: []
+    },
+    {
+      id: "france",
+      name: "France entière",
+      tier: "Partenaire National",
+      cta: "Choisir la France entière",
+      duration: "12 mois",
+      price: "2990",
+      nextPrice: "3490",
+      priceNote: "soit 249,17 € par mois TTC — 2 492 € HT à votre charge réelle",
+      pitch: "Tout le territoire, pour les structures qui produisent et livrent partout.",
+      audience: "Fabricant national, imprimeur industriel, réseau de poseurs, centrale d'achat",
+      features: [
+        "Tout ce que comprend la formule Région",
+        "Zone d'intervention : France métropolitaine et outre-mer",
+        "Priorité d'envoi sur les dossiers nationaux et multi-sites",
+        "Mise en avant sur l'ensemble des pages villes du site",
+        "Demandes des collectivités et des marchés publics",
+        "Bilan mensuel des demandes transmises",
+        "Interlocuteur dédié et point trimestriel",
+        "Label Partenaire National à afficher sur vos supports",
         "Aucune commission sur les affaires signées"
       ],
       notIncluded: []
@@ -295,6 +349,9 @@ module.exports = {
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
     { q: "Mon tarif peut-il augmenter en cours d'abonnement ?", a: "Non. Le contrat, l'accès au réseau et le tarif sont bloqués sur toute la durée que vous avez souscrite : six mois pour la formule semestrielle, un an pour la formule annuelle. Le prix inscrit à votre adhésion est celui que vous payez jusqu'au terme, sans révision. Toute évolution éventuelle du tarif vous serait communiquée deux mois avant l'échéance, et ne s'appliquerait qu'à un renouvellement que vous seriez libre de refuser." },
     { q: "Le service de pose suit-il la même grille tarifaire ?", a: "Oui, aux mêmes montants et dans les mêmes conditions. Les deux offres suivent la même grille depuis le départ." },
+    { q: "Comment se définit ma zone d'intervention ?", a: "Vous choisissez librement vos trois départements sur les formules 6 et 12 mois, et ils n'ont pas à être limitrophes : un atelier peut viser une métropole située à deux départements de là, où se trouvent réellement ses clients. Le questionnaire vous propose les départements voisins du vôtre à titre de suggestion, rien de plus. Si trois départements ne suffisent pas, la formule Région couvre une région administrative entière et la formule France entière tout le territoire." },
+    { q: "Puis-je changer mes départements en cours d'abonnement ?", a: "Oui, une fois par période et sans frais : il suffit de nous le demander. Un déménagement d'atelier, l'embauche d'une équipe mobile ou une zone qui se révèle moins active que prévu sont autant de raisons légitimes. Nous ajustons également votre périmètre de notre propre initiative si le volume transmis reste faible." },
+    { q: "À quoi sert le label de partenaire ?", a: "Chaque niveau d'adhésion donne droit à un label — Partenaire Local, Confirmé, Régional ou National — que vous pouvez afficher sur votre devanture, vos devis, votre site et vos véhicules. Il atteste que votre SIRET, vos assurances et vos habilitations ont été vérifiés par le réseau. Pour un client qui hésite entre deux entreprises, c'est un élément de réassurance concret, et il ne vous coûte rien de plus que votre abonnement." },
     { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "La durée d'engagement et le prix, rien d'autre. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses — un partenaire qui paie est un partenaire servi. L'engagement annuel se récompense donc sur le tarif : 890 € contre 980 € pour deux semestres, soit 90 € d'économie." },
     { q: "Puis-je passer du 6 mois au 12 mois ?", a: "Oui, à tout moment : la différence est calculée au prorata du temps restant, sans frais de changement. Comme les prestations sont les mêmes, ce choix ne porte que sur la durée et sur le rythme de renouvellement qui vous arrange." },
     { q: "Prenez-vous une commission en plus de l'abonnement ?", a: "Non, jamais. L'abonnement est la seule contrepartie. Vous facturez le client en direct, au prix que vous fixez, et rien ne nous revient sur le chantier." },

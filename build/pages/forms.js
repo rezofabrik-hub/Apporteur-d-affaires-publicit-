@@ -1,6 +1,7 @@
 const T = require("../lib/tpl");
 const { site, services, esc, attr, img, heroImg } = T;
 const P = require("../data/partnership");
+const DEP = require("../data/departements");
 
 /* ------------------------------------------------------------- helpers */
 const id = (s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -484,6 +485,37 @@ function pros(cities) {
               <p class="err">Code postal requis.</p>
             </div>
           </div>
+          <div class="field" id="zone-depts">
+            <label for="p_dept">Départements couverts <span class="req">*</span></label>
+            <span class="hint">Les formules 6 et 12 mois couvrent <strong>trois départements de votre
+            choix</strong>, pas nécessairement limitrophes : à vous de désigner ceux où se trouvent
+            réellement vos clients. Nous vous signalons simplement les voisins du vôtre, à titre
+            d'aide. Les formules Région et France entière couvrent un périmètre plus large, calé
+            lors de l'entretien.</span>
+
+            <select id="p_dept" name="departement_principal" required>
+              <option value="">— Votre département —</option>
+              ${DEP.list.map((d) => `<option value="${attr(d.code)}">${esc(d.code)} — ${esc(d.nom)}</option>`).join("")}
+            </select>
+            <p class="err">Indiquez le département de votre atelier.</p>
+
+            <div id="dept-autres">
+              <p class="hint" style="margin:14px 0 8px"><strong>Deux autres départements</strong>
+              de votre choix <span id="dept-suggest"></span></p>
+              <div class="row-2">
+                <select id="p_dept2" name="departement_2">
+                  <option value="">— Deuxième département —</option>
+                  ${DEP.list.map((d) => `<option value="${attr(d.code + " - " + d.nom)}">${esc(d.code)} — ${esc(d.nom)}</option>`).join("")}
+                </select>
+                <select id="p_dept3" name="departement_3">
+                  <option value="">— Troisième département —</option>
+                  ${DEP.list.map((d) => `<option value="${attr(d.code + " - " + d.nom)}">${esc(d.code)} — ${esc(d.nom)}</option>`).join("")}
+                </select>
+              </div>
+              <p class="hint" id="dept-count" style="margin-top:8px"></p>
+            </div>
+          </div>
+
           <div class="field">
             <label for="p_rayon">Rayon d'intervention habituel <span class="req">*</span></label>
             <select id="p_rayon" name="rayon" required>
@@ -911,7 +943,10 @@ function pros(cities) {
           </div>
           <p class="hint" style="text-align:center">Réponse sous 48 h ouvrées · Aucun droit d'entrée · Aucune commission</p>
         </div>
-      </form>
+              </form>
+        <script type="application/json" id="dept-data">${JSON.stringify(
+          DEP.list.reduce((o, d) => { o[d.code] = { n: d.nom, v: d.voisins }; return o; }, {})
+        )}</script>
     </div>
   </div>
 </section>

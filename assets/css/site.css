@@ -1247,3 +1247,28 @@ td { color: var(--tx-2); }
 
 /* Mention du tarif de lancement et de la hausse datée, sous le prix. */
 .plan-note-launch b { color: var(--signal-600); }
+
+
+/* ---------- 32. Zone d'intervention du partenaire ----------
+   Les cases des départements limitrophes se désactivent une fois la limite
+   de la formule atteinte. Un choix grisé se comprend immédiatement, là où un
+   message d'erreur après validation oblige à revenir en arrière. */
+.opt.opt-off { opacity: .45; cursor: not-allowed; }
+.opt.opt-off .opt-txt { text-decoration: line-through; }
+#dept-voisins-list { margin-top: 4px; }
+#dept-count { font-weight: 600; color: var(--pro-600); }
+
+
+/* ---------- 33. Label de niveau de partenariat ----------
+   Le label est ce que le partenaire affichera sur sa devanture : il mérite
+   d'être identifiable sur la carte tarifaire, sans venir concurrencer le nom
+   de la formule ni le prix. */
+.plan-tier {
+  display: inline-block; margin-bottom: 10px;
+  padding: 4px 12px; border-radius: var(--r-pill);
+  background: var(--paper-3); border: 1px solid var(--line-2);
+  font-size: .74rem; font-weight: 800; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--tx-2);
+}
+.plan-featured .plan-tier { background: var(--pro-100); border-color: var(--pro); color: var(--pro-600); }
+.plan-free .plan-tier { background: var(--signal-100); border-color: var(--signal); color: var(--signal-600); }

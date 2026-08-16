@@ -286,6 +286,89 @@
     }
   }
 
+
+  /* ----------------------------------------------------------------- *
+   * 9. Zone d'intervention : trois départements au choix
+   *
+   * Le partenaire désigne librement ses trois départements — ils n'ont pas à
+   * être limitrophes, parce qu'un atelier vise souvent une métropole située
+   * un peu plus loin plutôt que la campagne d'à côté. On se contente donc de
+   * deux services : deviner son département depuis le code postal, et lui
+   * rappeler quels sont ses voisins s'il veut s'en inspirer.
+   * ----------------------------------------------------------------- */
+  function initZoneDepts() {
+    var box = $("#zone-depts");
+    var raw = $("#dept-data");
+    if (!box || !raw) return;
+
+    var DEPTS;
+    try { DEPTS = JSON.parse(raw.textContent); } catch (e) { return; }
+
+    var sel = $("#p_dept", box);
+    var d2 = $("#p_dept2", box);
+    var d3 = $("#p_dept3", box);
+    var suggest = $("#dept-suggest", box);
+    var count = $("#dept-count", box);
+    var cp = $("#p_cp");
+    if (!sel || !d2 || !d3) return;
+
+    /* Le code postal donne le département, sauf en Corse où 20xxx ne permet
+       pas de trancher entre 2A et 2B : on laisse alors le partenaire choisir. */
+    function deptFromCp(v) {
+      var d = String(v || "").replace(/\D/g, "");
+      if (d.length < 2) return "";
+      if (d.indexOf("97") === 0 || d.indexOf("98") === 0) {
+        return DEPTS[d.slice(0, 3)] ? d.slice(0, 3) : "";
+      }
+      var two = d.slice(0, 2);
+      if (two === "20") return "";
+      return DEPTS[two] ? two : "";
+    }
+
+    var codeOf = function (v) { return String(v || "").split(" - ")[0]; };
+
+    function majSuggestion() {
+      var d = DEPTS[sel.value];
+      if (!suggest) return;
+      if (!d || !d.v.length) { suggest.textContent = ""; return; }
+      suggest.innerHTML = "— voisins du " + sel.value + " : <b>" +
+        d.v.map(function (v) { return v + " " + DEPTS[v].n; }).join("</b>, <b>") + "</b>";
+    }
+
+    /* Un même département déclaré deux fois réduirait la zone sans que le
+       partenaire s'en rende compte : on le signale au lieu de l'accepter. */
+    function majCompteur() {
+      var choisis = [sel.value, codeOf(d2.value), codeOf(d3.value)].filter(Boolean);
+      var uniques = choisis.filter(function (c, i) { return choisis.indexOf(c) === i; });
+      if (choisis.length !== uniques.length) {
+        count.textContent = "Vous avez indiqué deux fois le même département — corrigez pour couvrir trois zones distinctes.";
+        count.style.color = "var(--signal-600)";
+        return;
+      }
+      count.style.color = "";
+      count.textContent = uniques.length + " département" + (uniques.length > 1 ? "s" : "") +
+        " sur 3" + (uniques.length < 3 ? " — vous pouvez en désigner encore " + (3 - uniques.length) + "." : " : votre zone est complète.");
+    }
+
+    sel.addEventListener("change", function () {
+      sel.dataset.touched = "1";
+      majSuggestion(); majCompteur();
+    });
+    d2.addEventListener("change", majCompteur);
+    d3.addEventListener("change", majCompteur);
+
+    if (cp) {
+      cp.addEventListener("input", function () {
+        if (sel.dataset.touched === "1") return;
+        var d = deptFromCp(cp.value);
+        if (d && sel.value !== d) { sel.value = d; majSuggestion(); majCompteur(); }
+      });
+    }
+
+    majSuggestion();
+    majCompteur();
+  }
+
   /* ----------------------------------------------------------------- *
    * 7. Année courante
    * ----------------------------------------------------------------- */
@@ -340,7 +423,7 @@
   }
 
   function boot() {
-    initNav(); initCitySearch(); initForms(); initPrefill();
+    initNav(); initCitySearch(); initForms(); initPrefill(); initZoneDepts();
     initProjects(); initContacts(); initThanks(); initYear();
   }
 

@@ -34,6 +34,7 @@ module.exports = function partnersPage(cities) {
   const planCards = shownPlans.map((pl) => `
 <div class="plan${pl.featured ? " plan-featured" : ""}${pl.free ? " plan-free" : ""}">
   ${pl.badge ? `<span class="plan-badge">${esc(pl.badge)}</span>` : ""}
+  ${pl.tier ? `<span class="plan-tier">${esc(pl.tier)}</span>` : ""}
   <h3>${esc(pl.name)}</h3>
   <p class="plan-pitch">${esc(pl.pitch)}</p>
   ${priceBlock(pl)}
@@ -44,7 +45,7 @@ module.exports = function partnersPage(cities) {
   </ul>
   <a class="btn ${pl.free || pl.featured ? "btn-pro" : "btn-ghost"} btn-block"
      href="professionnels.html?formule=${encodeURIComponent(pl.name)}">${
-       pl.free ? "Commencer gratuitement" : "Choisir l'" + esc(pl.name.toLowerCase())}</a>
+       pl.free ? "Commencer gratuitement" : esc(pl.cta || "Choisir cette formule")}</a>
 </div>`).join("");
 
   const comp = P.comparison;
@@ -106,10 +107,16 @@ module.exports = function partnersPage(cities) {
       <p class="lead mx-auto">Vous commencez sans rien payer et vous mesurez le flux réel de votre
       secteur. Vous ne choisissez la durée de votre abonnement qu'ensuite, en connaissance de cause —
       un budget de prospection fixe, sans pourcentage prélevé sur vos chantiers.</p>
-      <p class="lead mx-auto"><strong>Les deux abonnements donnent exactement les mêmes avantages.</strong>
-      Nous ne pratiquons pas les formules à deux vitesses, où celui qui s'engage moins longtemps
-      reçoit moins de demandes. Ce qui change, c'est le tarif : l'année revient à
-      <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie.</p>
+      <p class="lead mx-auto"><strong>Les abonnements 6 et 12 mois donnent exactement les mêmes
+      avantages.</strong> Nous ne pratiquons pas les formules à deux vitesses, où celui qui s'engage
+      moins longtemps reçoit moins de demandes. Ce qui change, c'est le tarif : l'année revient à
+      <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie. Au-delà,
+      deux formules élargissent la zone — une <strong>région entière</strong> ou la
+      <strong>France complète</strong>.</p>
+      <p class="lead mx-auto">Chaque niveau donne droit à un <strong>label de partenaire</strong> —
+      Local, Confirmé, Régional ou National — que vous affichez sur votre devanture, vos devis et
+      vos véhicules. Il atteste que votre SIRET, vos assurances et vos habilitations ont été
+      vérifiés.</p>
     </div>
     ${T.launchPriceBanner()}
     <div class="plans">${planCards}</div>
