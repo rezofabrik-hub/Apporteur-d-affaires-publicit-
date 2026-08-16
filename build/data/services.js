@@ -1045,4 +1045,216 @@ module.exports = [
   related: ["decoupe-laser-cnc", "maquette-creation-graphique", "enseignes", "objets-publicitaires"]
 }
 
+,
+/* ═══════════════════════════════════════ 12. CRÉATION DE SITE INTERNET */
+{
+  slug: "creation-site-internet",
+  nav: "Création de site internet",
+  navShort: "Site internet",
+  navDesc: "Site vitrine, e-commerce, refonte, hébergement, maintenance",
+  h1: "Création de site internet pour les entreprises",
+  title: "Création de Site Internet — Vitrine, E-commerce, Refonte",
+  desc: "Création de site internet vitrine et e-commerce, refonte, responsive, hébergement et maintenance. Développeurs et intégrateurs vérifiés, partout en France.",
+  eyebrow: "Métier n°12",
+  topic: "site-internet",
+  topicAlt: ["maquette", "pao"],
+  lead: "Une enseigne attire le passant qui se trouve devant votre porte. Un site internet attire celui qui vous cherche depuis chez lui, à minuit, sur son téléphone. Les deux relèvent du même métier — rendre une entreprise visible — et se conçoivent d'autant mieux qu'ils sont pensés ensemble : même identité, mêmes couleurs, même promesse.",
+  keywords: [
+    "création site internet", "création site web", "site vitrine", "site e-commerce",
+    "boutique en ligne", "refonte de site", "site responsive", "site mobile",
+    "agence web", "développeur web", "intégrateur web", "webdesign",
+    "WordPress", "PrestaShop", "Shopify", "CMS", "site sur mesure",
+    "landing page", "page de destination", "nom de domaine", "hébergement web",
+    "certificat SSL", "HTTPS", "maintenance site internet", "mise à jour site",
+    "RGPD", "bandeau cookies", "mentions légales site", "accessibilité web RGAA",
+    "Core Web Vitals", "vitesse de chargement", "formulaire de contact", "prise de rendez-vous en ligne"
+  ],
+  intro: [
+    "La première question n'est pas « quel budget » mais <strong>à quoi sert ce site</strong>. Un site vitrine de cinq pages qui rassure et fait sonner le téléphone n'a rien à voir avec une boutique en ligne qui doit gérer stocks, paiements et livraisons. Le premier se construit en trois semaines, la seconde en trois mois, et les deux ne se chiffrent pas dans le même ordre de grandeur.",
+    "Le deuxième arbitrage porte sur le <strong>socle technique</strong>. Un CMS comme WordPress ou PrestaShop vous rend autonome pour modifier vos textes, au prix de mises à jour régulières à ne pas négliger. Un développement sur mesure coûte plus cher et vous rend dépendant de son auteur, mais il fait exactement ce que vous demandez. Un professionnel honnête vous posera la question de l'autonomie avant celle de la technologie."
+  ],
+  sub: [
+    { t: "Site vitrine",
+      d: "De cinq à quinze pages : qui vous êtes, ce que vous faites, où vous trouver, comment vous joindre. C'est le format qui convient à la grande majorité des commerces, artisans et professions libérales — et celui qui rentabilise le plus vite." },
+    { t: "Site e-commerce",
+      d: "Catalogue, panier, paiement sécurisé, gestion des stocks, transporteurs, factures. Sous PrestaShop, WooCommerce ou Shopify selon le volume et le niveau d'autonomie souhaité. Prévoyez le temps de saisie du catalogue : c'est presque toujours le poste sous-estimé." },
+    { t: "Refonte de site existant",
+      d: "Reprise d'un site vieillissant, non responsive ou devenu impossible à mettre à jour. La refonte impose une précaution absolue : conserver les anciennes adresses ou les rediriger une à une, faute de quoi vous perdez d'un coup tout le référencement acquis." },
+    { t: "Landing page et page de campagne",
+      d: "Une page unique, conçue pour une seule action : demander un devis, réserver, télécharger. Utile pour une campagne publicitaire, un lancement ou une opération saisonnière, sans toucher au site principal." },
+    { t: "Nom de domaine et hébergement",
+      d: "Dépôt du nom de domaine, hébergement, certificat SSL, adresses e-mail professionnelles, sauvegardes. Exigez que le domaine soit déposé <strong>à votre nom</strong> : c'est votre bien, et c'est le point de blocage le plus fréquent en cas de séparation." },
+    { t: "Maintenance et mises à jour",
+      d: "Mises à jour du CMS et des extensions, sauvegardes, surveillance de disponibilité, correctifs de sécurité. Un site laissé sans mise à jour pendant deux ans finit par être piraté ou par cesser de fonctionner — ce n'est pas une hypothèse, c'est une échéance." },
+    { t: "Conformité RGPD et mentions légales",
+      d: "Bandeau de consentement réellement conforme, politique de confidentialité, mentions légales, registre des traitements. Obligatoire dès lors qu'un formulaire collecte un nom et une adresse e-mail." },
+    { t: "Rédaction et photos",
+      d: "Un site se juge d'abord sur ses textes et ses images. Rédaction des pages, photographies de vos locaux, de votre équipe et de vos réalisations : c'est ce qui distingue un site vivant d'un modèle rempli à la hâte." }
+  ],
+  sections: [
+    {
+      h2: "Combien coûte un site internet ?",
+      p: [
+        "Les écarts de prix du marché sont vertigineux et souvent mal compris. Ce qui les creuse n'est pas la technologie, c'est le <strong>volume de contenu à produire</strong> et le <strong>degré de sur-mesure</strong>. Un site de dix pages dont vous fournissez les textes et les photos coûte une fraction du même site où tout est à créer.",
+        "Méfiez-vous des deux extrêmes. En dessous de 800 €, on vous installe un modèle générique dans lequel votre logo est déposé — ce qui peut suffire, à condition de le savoir. Au-delà de 15 000 € pour un site vitrine, demandez le détail poste par poste : la différence doit s'expliquer par du développement spécifique, pas par de la marge."
+      ],
+      table: {
+        head: ["Type de site", "Budget indicatif", "Délai", "Maintenance annuelle"],
+        rows: [
+          ["Page unique / landing page", "600 – 1 800 €", "1 – 2 semaines", "100 – 300 €"],
+          ["Site vitrine 5 à 10 pages", "1 500 – 4 500 €", "3 – 6 semaines", "300 – 700 €"],
+          ["Site vitrine sur mesure 10 à 20 pages", "4 000 – 9 000 €", "6 – 10 semaines", "500 – 1 200 €"],
+          ["Refonte avec reprise du référencement", "2 500 – 7 000 €", "4 – 8 semaines", "400 – 900 €"],
+          ["Boutique en ligne jusqu'à 100 produits", "3 500 – 9 000 €", "6 – 12 semaines", "600 – 1 500 €"],
+          ["Boutique en ligne catalogue important", "9 000 – 30 000 €", "3 – 6 mois", "1 200 – 4 000 €"],
+          ["Nom de domaine + hébergement + SSL", "80 – 300 € / an", "immédiat", "inclus"],
+          ["Rédaction de contenu", "80 – 250 € la page", "—", "—"],
+          ["Reportage photo d'entreprise", "400 – 1 500 €", "1 journée", "—"]
+        ],
+        foot: "Fourchettes hors référencement payant et hors production vidéo. La saisie d'un catalogue e-commerce se chiffre séparément, couramment 3 à 8 € par référence si vous ne la faites pas vous-même."
+      }
+    },
+    {
+      h2: "Ce qu'il faut exiger avant de signer",
+      p: [
+        "Trois clauses protègent réellement, et leur absence explique la quasi-totalité des litiges que rencontrent les petites entreprises avec leur prestataire web.",
+        "La <strong>propriété du nom de domaine</strong> d'abord : il doit être déposé à votre nom, avec vos coordonnées comme contact administratif. Ensuite les <strong>accès</strong> — hébergement, base de données, back-office — qui doivent vous être remis, même si vous ne les utilisez jamais. Enfin la <strong>réversibilité</strong> : la possibilité de récupérer l'intégralité du site et de le confier à quelqu'un d'autre, sans négociation."
+      ],
+      list: [
+        "Le nom de domaine est déposé à votre nom, pas à celui du prestataire",
+        "Les identifiants d'hébergement et d'administration vous sont remis par écrit",
+        "Le site est livré responsive, testé sur téléphone, tablette et ordinateur",
+        "Le certificat SSL est actif : l'adresse commence par https",
+        "Les mentions légales et la politique de confidentialité sont fournies",
+        "Le nombre d'allers-retours de correction est écrit au devis",
+        "Le contenu de la maintenance est détaillé, pas résumé à « maintenance »",
+        "En cas de refonte, le plan de redirection des anciennes adresses est prévu"
+      ],
+      note: "Un site livré sans redirection des anciennes adresses fait perdre en quelques semaines des années de référencement. Si vous refaites un site existant, cette ligne doit apparaître au devis — c'est le premier signe qu'on a affaire à quelqu'un de sérieux."
+    },
+    {
+      h2: "Un site qui sert à quelque chose",
+      p: [
+        "Un site n'est pas une plaquette en ligne, c'est un outil qui doit produire des appels et des demandes. Trois éléments y contribuent bien plus que le graphisme : la <strong>vitesse</strong>, la <strong>clarté du chemin vers le contact</strong>, et la <strong>preuve</strong>.",
+        "La vitesse d'abord, parce que plus de la moitié des visiteurs arrivent depuis un téléphone, souvent en 4G : au-delà de trois secondes d'attente, une part importante repart. Le chemin vers le contact ensuite : téléphone cliquable, formulaire court, adresse visible sur chaque page. La preuve enfin — photos de vos réalisations, avis clients, années d'expérience : c'est ce qui transforme un visiteur en appel."
+      ]
+    }
+  ],
+  faq: [
+    { q: "Combien de temps faut-il pour créer un site ?",
+      a: "Trois à six semaines pour un site vitrine, six à douze pour une boutique en ligne. Le délai dépend rarement du prestataire : il dépend de vous. Les textes, les photos et les validations sont ce qui fait glisser un projet. Un site dont le contenu est prêt le jour du lancement sort deux fois plus vite qu'un site dont on attend les textes." },
+    { q: "Puis-je modifier mon site moi-même ensuite ?",
+      a: "Oui si le site est construit sur un CMS — WordPress, PrestaShop, Shopify. Vous modifiez textes, photos et articles depuis une interface, après une formation d'une heure ou deux qui doit figurer au devis. Sur un développement sur mesure, cela dépend de ce qui a été prévu : posez la question avant de signer, pas après." },
+    { q: "À qui appartient le site une fois payé ?",
+      a: "À vous, y compris le nom de domaine, le contenu et les fichiers. Exigez que le domaine soit déposé à votre nom dès le départ et que les accès à l'hébergement vous soient remis. C'est le principal point de blocage rencontré par les petites entreprises : un prestataire qui détient le domaine détient votre visibilité." },
+    { q: "Faut-il vraiment payer une maintenance chaque année ?",
+      a: "Sur un site CMS, oui. Les extensions et le cœur du système reçoivent des correctifs de sécurité en continu ; un site non mis à jour pendant deux ans finit piraté ou en panne. Sur un site statique sans base de données, le risque est bien moindre et un simple hébergement suffit. Faites préciser lequel des deux vous achetez." },
+    { q: "Mon site apparaîtra-t-il tout de suite sur Google ?",
+      a: "Non, et personne ne peut le promettre. Un site neuf est indexé en quelques jours, mais se positionner sur des requêtes concurrentielles demande des mois de travail de référencement. La création du site et le référencement sont deux prestations distinctes — voyez notre page <a href=\"referencement-naturel.html\">référencement naturel</a>." },
+    { q: "Pouvez-vous reprendre un site existant ?",
+      a: "Oui, à condition d'avoir les accès. Nous faisons d'abord un état des lieux — technologie, version, extensions, sécurité, référencement acquis — avant de dire si la reprise est raisonnable ou si une refonte revient moins cher. Il arrive qu'un site soit techniquement irrécupérable ; nous le dirons plutôt que de facturer des rustines." }
+  ],
+  related: ["referencement-naturel", "maquette-creation-graphique", "enseignes", "imprimerie"]
+}
+,
+/* ═══════════════════════════════════════ 13. RÉFÉRENCEMENT NATUREL */
+{
+  slug: "referencement-naturel",
+  nav: "Référencement naturel",
+  navShort: "Référencement",
+  navDesc: "SEO local, technique, contenu, fiche Google, campagnes",
+  h1: "Référencement naturel et visibilité sur Google",
+  title: "Référencement Naturel SEO — Visibilité Google Locale",
+  desc: "Référencement naturel local et national : audit technique, contenu, fiche Google, netlinking. Être trouvé par les clients qui cherchent votre métier dans votre ville.",
+  eyebrow: "Métier n°13",
+  topic: "referencement",
+  topicAlt: ["site-internet", "pao"],
+  lead: "Avoir un site ne sert à rien si personne ne le trouve. Le référencement naturel consiste à faire remonter votre entreprise sur les recherches que tapent réellement vos clients — « plombier Perpignan », « pharmacie de garde Canet », « traiteur mariage 66 ». C'est un travail lent, cumulatif, et c'est celui qui rapporte le plus longtemps.",
+  keywords: [
+    "référencement naturel", "SEO", "agence SEO", "référencement local",
+    "référencement Google", "être premier sur Google", "audit SEO",
+    "optimisation SEO", "mots-clés", "recherche de mots-clés", "balise title",
+    "méta description", "maillage interne", "netlinking", "backlinks",
+    "contenu SEO", "rédaction web", "Google Business Profile", "fiche Google",
+    "avis Google", "Google Maps", "pack local", "Search Console",
+    "Core Web Vitals", "vitesse de site", "données structurées", "schema.org",
+    "SEA", "Google Ads", "publicité en ligne", "trafic qualifié", "position zéro"
+  ],
+  intro: [
+    "Le référencement local repose sur trois piliers, et négliger l'un des trois annule largement les deux autres. La <strong>fiche Google Business Profile</strong> d'abord : c'est elle qui vous fait apparaître dans la carte et le bloc des trois résultats locaux, et c'est le levier le plus rapide — souvent quelques semaines. Le <strong>site</strong> ensuite, qui doit posséder une page réellement rédigée par métier et par zone, pas une page « nos services » qui liste tout. La <strong>réputation</strong> enfin : avis clients, citations dans les annuaires, mentions cohérentes de votre nom, adresse et téléphone.",
+    "Un avertissement utile : personne ne peut garantir une première place. Quiconque le promet vend soit de la publicité payante déguisée, soit du vent. Ce qui s'engage sérieusement, c'est une méthode, un calendrier de travaux et des indicateurs mesurables — positions suivies, trafic, appels reçus."
+  ],
+  sub: [
+    { t: "Audit de référencement",
+      d: "État des lieux technique, éditorial et concurrentiel : ce qui bloque l'indexation, ce qui manque en contenu, ce que font mieux vos concurrents. C'est le point de départ obligé — travailler sans audit revient à traiter au hasard." },
+    { t: "Référencement local",
+      d: "Le cœur du sujet pour un commerce ou un artisan. Fiche Google complète et vivante, pages par ville et par métier, cohérence du nom, de l'adresse et du téléphone partout où ils apparaissent, avis clients entretenus." },
+    { t: "Fiche Google Business Profile",
+      d: "Création ou reprise de la fiche, catégories, horaires, zone desservie, photos, questions-réponses, publications régulières. C'est gratuit, c'est le levier le plus rentable, et c'est celui que la plupart des entreprises laissent à l'abandon." },
+    { t: "Optimisation technique",
+      d: "Vitesse de chargement, adaptation mobile, indexation, adresses propres, données structurées, plan de site, redirections. Un site techniquement bancal plafonne quelle que soit la qualité de ses textes." },
+    { t: "Contenu et rédaction",
+      d: "Pages métier, pages ville, articles de fond, questions fréquentes. Le contenu est ce qui fait la différence sur la durée — à condition qu'il réponde vraiment à une question que se posent vos clients." },
+    { t: "Netlinking",
+      d: "Obtenir des liens depuis des sites crédibles de votre secteur ou de votre territoire : annuaires locaux, presse régionale, partenaires, fédérations professionnelles. La qualité prime largement sur le nombre, et les liens achetés en masse se retournent contre vous." },
+    { t: "Avis clients",
+      d: "Méthode pour en obtenir régulièrement, réponses aux avis négatifs, intégration au site. Les avis pèsent à la fois sur le classement local et sur la décision d'appeler — c'est souvent le dernier critère avant le contact." },
+    { t: "Suivi et rapports",
+      d: "Positions, trafic, origine des visiteurs, appels et formulaires. Un rapport mensuel lisible, qui dit ce qui a été fait et ce que cela a produit, pas un export brut de statistiques." }
+  ],
+  sections: [
+    {
+      h2: "Combien coûte le référencement, et en combien de temps ?",
+      p: [
+        "Le référencement naturel se travaille dans la durée : les premiers effets apparaissent entre trois et six mois, les résultats solides entre neuf et dix-huit. Une prestation vendue au mois sur trois mois n'a aucune chance de produire quoi que ce soit de durable — c'est une dépense, pas un investissement.",
+        "Deux formats existent. L'<strong>accompagnement mensuel</strong> convient à qui veut progresser continûment et dispose d'un budget régulier. La <strong>prestation ponctuelle</strong> — audit, corrections techniques, rédaction d'un lot de pages — convient à qui veut un socle propre puis avancer seul. Les deux sont légitimes ; ce qui ne l'est pas, c'est de vendre le second en laissant croire au premier."
+      ],
+      table: {
+        head: ["Prestation", "Budget indicatif", "Premiers effets"],
+        rows: [
+          ["Audit SEO complet avec plan d'action", "600 – 2 500 €", "immédiat (feuille de route)"],
+          ["Optimisation technique d'un site existant", "800 – 3 500 €", "1 – 3 mois"],
+          ["Création et optimisation de la fiche Google", "300 – 900 €", "2 – 8 semaines"],
+          ["Rédaction d'une page optimisée", "120 – 350 € la page", "2 – 4 mois"],
+          ["Accompagnement mensuel TPE locale", "350 – 900 € / mois", "3 – 6 mois"],
+          ["Accompagnement mensuel PME multi-zones", "900 – 3 000 € / mois", "4 – 8 mois"],
+          ["Netlinking, par lien de qualité", "80 – 400 € le lien", "1 – 4 mois"],
+          ["Gestion de campagne Google Ads", "15 – 20 % du budget publicitaire", "immédiat"]
+        ],
+        foot: "Le budget publicitaire Google Ads s'ajoute aux honoraires de gestion. Contrairement au référencement naturel, il produit un effet immédiat mais s'arrête net dès que vous cessez de payer."
+      }
+    },
+    {
+      h2: "Naturel ou payant : les deux ne font pas la même chose",
+      p: [
+        "Le <strong>référencement naturel</strong> construit un actif : chaque page bien positionnée continue de rapporter des mois après avoir été écrite. Il est lent à démarrer et exige de la constance, mais son coût par contact baisse avec le temps.",
+        "La <strong>publicité payante</strong> achète une visibilité immédiate, parfaitement ciblée, et s'arrête à la seconde où le budget s'épuise. Elle a toute sa place pour un lancement, une saison forte ou un test de marché rapide. L'erreur courante consiste à opposer les deux : le bon dosage est presque toujours du payant pour amorcer, du naturel pour installer."
+      ],
+      list: [
+        "Naturel : lent, cumulatif, coût dégressif, effet durable",
+        "Payant : immédiat, maîtrisé, coût constant, effet nul dès l'arrêt",
+        "La fiche Google est gratuite et devrait toujours être traitée en premier",
+        "Un site lent plafonne dans les deux cas, naturel comme payant",
+        "Une page par métier et par zone bat toujours une page « nos services » fourre-tout"
+      ],
+      note: "Nous appliquons à ce site ce que nous préconisons : plus de huit cents pages, une page dédiée par métier et par ville, des données structurées sur chaque page, des méta-descriptions calibrées, un maillage interne vers les communes alentour. Vous pouvez en juger le résultat en cherchant nos pages — c'est la meilleure démonstration que nous puissions offrir."
+    }
+  ],
+  faq: [
+    { q: "Pouvez-vous me garantir la première place sur Google ?",
+      a: "Non, et aucun prestataire honnête ne le fera. Le classement dépend de centaines de critères que Google ne publie pas et fait évoluer en permanence, ainsi que de la concurrence sur chaque requête. Ce qui s'engage, c'est une méthode, un calendrier de travaux et des indicateurs suivis. Une garantie de première place est le signal d'alarme le plus fiable du secteur." },
+    { q: "En combien de temps verrai-je des résultats ?",
+      a: "La fiche Google Business Profile peut produire des appels en deux à huit semaines : c'est le levier le plus rapide et le moins cher. Le référencement du site demande trois à six mois pour les premiers mouvements et neuf à dix-huit pour des positions solides sur des requêtes disputées. Toute promesse de résultat en un mois porte sur de la publicité payante, pas sur du naturel." },
+    { q: "Faut-il refaire mon site pour être bien référencé ?",
+      a: "Pas nécessairement. Beaucoup de sites existants remontent très bien après des corrections techniques et l'ajout de pages. La refonte s'impose quand le site n'est pas adapté au mobile, quand il est trop lent pour être rattrapé, ou quand sa technologie empêche d'ajouter des pages. L'audit tranche cette question, et il coûte bien moins cher qu'une refonte inutile." },
+    { q: "Le référencement local, c'est différent ?",
+      a: "Oui, et c'est le plus rentable pour un commerce ou un artisan. Il se joue sur trois choses : une fiche Google complète et entretenue, des pages réellement rédigées pour chaque métier et chaque zone, et la cohérence de votre nom, adresse et téléphone partout où ils apparaissent. Un concurrent national mal implanté localement se bat très bien sur ce terrain." },
+    { q: "Que se passe-t-il si j'arrête l'accompagnement ?",
+      a: "Le travail déjà réalisé reste acquis : les pages écrites, les corrections techniques et les liens obtenus continuent de produire. Vos positions s'érodent lentement, au rythme où vos concurrents avancent. C'est l'inverse exact de la publicité payante, dont l'effet cesse le jour même de l'arrêt." },
+    { q: "Achetez-vous des liens ?",
+      a: "Nous privilégions les liens obtenus : annuaires locaux sérieux, presse régionale, fédérations professionnelles, partenaires et fournisseurs. Les réseaux de liens achetés en masse fonctionnent quelques mois puis exposent à une sanction difficile à lever. Sur un site d'entreprise dont la visibilité est l'actif principal, le risque n'en vaut jamais la peine." }
+  ],
+  related: ["creation-site-internet", "maquette-creation-graphique", "enseignes", "objets-publicitaires"]
+}
+
 ];

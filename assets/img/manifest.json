@@ -1334,5 +1334,94 @@
    "w": 1024,
    "h": 768
   }
+ ],
+ "site-internet": [
+  {
+   "name": "site-internet-1",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "site-internet-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "site-internet-3",
+   "w": 1280,
+   "h": 960
+  },
+  {
+   "name": "site-internet-4",
+   "w": 1023,
+   "h": 714
+  },
+  {
+   "name": "site-internet-5",
+   "w": 1024,
+   "h": 663
+  },
+  {
+   "name": "site-internet-6",
+   "w": 1024,
+   "h": 733
+  },
+  {
+   "name": "site-internet-7",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "site-internet-8",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "site-internet-9",
+   "w": 1024,
+   "h": 713
+  }
+ ],
+ "referencement": [
+  {
+   "name": "referencement-1",
+   "w": 960,
+   "h": 640
+  },
+  {
+   "name": "referencement-2",
+   "w": 960,
+   "h": 640
+  },
+  {
+   "name": "referencement-3",
+   "w": 960,
+   "h": 640
+  },
+  {
+   "name": "referencement-4",
+   "w": 1024,
+   "h": 684
+  },
+  {
+   "name": "referencement-5",
+   "w": 960,
+   "h": 640
+  },
+  {
+   "name": "referencement-6",
+   "w": 960,
+   "h": 640
+  },
+  {
+   "name": "referencement-7",
+   "w": 960,
+   "h": 640
+  },
+  {
+   "name": "referencement-8",
+   "w": 1024,
+   "h": 683
+  }
  ]
 }

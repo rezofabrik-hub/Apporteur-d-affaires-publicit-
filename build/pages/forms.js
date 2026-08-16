@@ -641,6 +641,18 @@ function pros(cities) {
             "Petite série (10 à 500 pièces)", "Moulage silicone"
           ], "Procédés que vous réalisez en interne")}
 
+          ${capGroup("Web et référencement", "cap_web", [
+            "Création de site vitrine", "Création de site e-commerce",
+            "Refonte de site existant", "Développement sur mesure",
+            "WordPress", "PrestaShop", "Shopify", "Webdesign et maquettes",
+            "Hébergement et nom de domaine", "Maintenance et mises à jour",
+            "Conformité RGPD et mentions légales", "Accessibilité web RGAA",
+            "Audit de référencement", "Référencement local",
+            "Fiche Google Business Profile", "Optimisation technique SEO",
+            "Rédaction de contenu web", "Netlinking",
+            "Campagnes Google Ads", "Réseaux sociaux", "Analyse et rapports"
+          ], "Prestations web que vous réalisez")}
+
           ${capGroup("Atelier et équipement", "cap_atelier", [
             "Plieuse / cisaille", "Poste à souder alu et inox",
             "Thermoformage / plieuse plexiglas", "Cabine de peinture ou thermolaquage",

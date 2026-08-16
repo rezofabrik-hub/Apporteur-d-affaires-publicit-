@@ -6,7 +6,7 @@ module.exports = {
   /* Marque commerciale ci-dessus, raison sociale ci-dessous : les mentions
      légales doivent porter la société immatriculée, pas le nom d'enseigne. */
   brandLegal: "SARL Rezofabrik",
-  tagline: "Réseau national enseigne, signalétique & publicité par l'objet",
+  tagline: "Réseau national enseigne, signalétique, imprimerie & web",
   /* Adresse publique du site. Utilisée pour les URL canoniques, le sitemap
      et les balises Open Graph. À remplacer par votre nom de domaine dès qu'il
      est en place (ex. "https://www.rezoenseignes.fr"), puis relancer le build.
@@ -15,7 +15,7 @@ module.exports = {
   lang: "fr-FR",
 
   /* Positionnement (repris dans les balises et le contenu) */
-  baseline: "Un seul interlocuteur pour toute votre communication visuelle, partout en France.",
+  baseline: "Un seul interlocuteur pour toute votre communication, de l'enseigne au site internet, partout en France.",
   role: "agence de communication et de mise en relation",
 
   /* Expérience du dirigeant — c'est l'argument que ni une franchise ni une
