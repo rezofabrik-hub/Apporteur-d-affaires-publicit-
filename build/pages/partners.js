@@ -8,11 +8,14 @@ module.exports = function partnersPage(cities) {
     { name: "Partenaires du secteur", url: "partenaires.html" }
   ];
 
-  const planCards = P.plans.map((pl) => `
-<div class="plan${pl.featured ? " plan-featured" : ""}">
+  /* La formule d'essai n'a de sens que pendant le lancement : elle disparaît
+     d'elle-même le jour où l'on passe `launch.active` à false. */
+  const shownPlans = P.plans.filter((pl) => !pl.free || (P.launch && P.launch.active));
+
+  const planCards = shownPlans.map((pl) => `
+<div class="plan${pl.featured ? " plan-featured" : ""}${pl.free ? " plan-free" : ""}">
   ${pl.badge ? `<span class="plan-badge">${esc(pl.badge)}</span>` : ""}
   <h3>${esc(pl.name)}</h3>
-  ${P.launch && P.launch.active ? `<span class="plan-launch">🎁 ${esc(P.launch.badge)}</span>` : ""}
   <p class="plan-pitch">${esc(pl.pitch)}</p>
   <div class="plan-price">
     <b>${esc(pl.price)}</b><span>${esc(P.currency)} HT</span>
@@ -24,8 +27,9 @@ module.exports = function partnersPage(cities) {
     ${pl.features.map((f) => `<li class="yes">${esc(f)}</li>`).join("")}
     ${pl.notIncluded.map((f) => `<li class="no">${esc(f)}</li>`).join("")}
   </ul>
-  <a class="btn ${pl.featured ? "btn-pro" : "btn-ghost"} btn-block"
-     href="professionnels.html?formule=${encodeURIComponent(pl.name)}">Choisir ${esc(pl.name)}</a>
+  <a class="btn ${pl.free || pl.featured ? "btn-pro" : "btn-ghost"} btn-block"
+     href="professionnels.html?formule=${encodeURIComponent(pl.name)}">${
+       pl.free ? "Commencer gratuitement" : "Choisir l'" + esc(pl.name.toLowerCase())}</a>
 </div>`).join("");
 
   const comp = P.comparison;
@@ -40,7 +44,8 @@ module.exports = function partnersPage(cities) {
     <p class="lead">Nous sommes une <strong>agence de communication et de mise en relation</strong> :
     nous qualifions les projets des clients, puis nous les confions à de vrais professionnels —
     enseignistes, imprimeurs, poseurs, agences de publicité, spécialistes du covering et de l'objet
-    publicitaire. Un abonnement fixe sur 6 ou 12 mois, <strong>aucune commission sur vos affaires</strong>.</p>
+    publicitaire. <strong>Deux mois à 0 €</strong> pour commencer, puis un abonnement fixe de 6 ou
+    12 mois — et <strong>aucune commission sur vos affaires</strong>.</p>
     <div class="btns">
       <a class="btn btn-pro btn-lg" href="#formules">Voir les formules</a>
       <a class="btn btn-ghost btn-lg" href="professionnels.html">Remplir le questionnaire</a>
@@ -81,9 +86,10 @@ module.exports = function partnersPage(cities) {
   <div class="wrap">
     <div class="sec-head center">
       <span class="eyebrow">Formules d'abonnement</span>
-      <h2>6 mois pour tester, 12 mois pour installer un flux</h2>
-      <p class="lead mx-auto">Un budget de prospection fixe, connu à l'avance, sans pourcentage prélevé
-      sur vos chantiers. Chaque affaire supplémentaire améliore votre rentabilité au lieu de la réduire.</p>
+      <h2>Deux mois à 0 €, puis 6 ou 12 mois pour la première année</h2>
+      <p class="lead mx-auto">Vous commencez sans rien payer et vous mesurez le flux réel de votre
+      secteur. Vous ne choisissez la durée de votre abonnement qu'ensuite, en connaissance de cause —
+      un budget de prospection fixe, sans pourcentage prélevé sur vos chantiers.</p>
     </div>
     <div class="plans">${planCards}</div>
     <p class="center" style="margin-top:26px;font-size:.87rem;color:var(--tx-3)">${esc(P.vatNote)}</p>

@@ -303,8 +303,9 @@ function pros(cities) {
     <h1>Recevez des affaires concrètes, correspondant à vos capacités réelles</h1>
     <p class="lead">Enseigniste, agence de publicité, imprimeur grand format, poseur habilité,
     spécialiste du covering ou fournisseur d'objets publicitaires : rejoignez le réseau et recevez
-    des demandes qualifiées dans votre zone. Un <strong>abonnement fixe sur 6 ou 12 mois</strong>,
-    sans droit d'entrée et <strong>sans aucune commission</strong> sur les affaires que vous signez.</p>
+    des demandes qualifiées dans votre zone. <strong>Les deux premiers mois sont à 0 €</strong>, puis
+    un abonnement fixe de 6 ou 12 mois pour la première année, sans droit d'entrée et
+    <strong>sans aucune commission</strong> sur les affaires que vous signez.</p>
     <div class="btns">
       <a class="btn btn-pro btn-lg" href="#candidature">Remplir le questionnaire</a>
       <a class="btn btn-ghost btn-lg" href="partenaires.html">Voir les formules et tarifs</a>
@@ -344,7 +345,8 @@ function pros(cities) {
       <div class="tile">
         <span class="tile-ico" aria-hidden="true" style="background:var(--pro-100);color:var(--pro-600)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
         <h3>Un budget fixe, zéro commission</h3>
-        <p>Un abonnement sur 6 ou 12 mois, sans droit d'entrée et sans achat de contacts à l'unité.
+        <p>Deux mois à 0 € pour juger sur pièces, puis un abonnement de 6 ou 12 mois pour la première
+            année, sans droit d'entrée et sans achat de contacts à l'unité.
         Aucun pourcentage n'est prélevé sur vos chantiers : chaque affaire signée vous revient
         intégralement.</p>
       </div>
@@ -816,9 +818,10 @@ function pros(cities) {
             <legend class="fieldset-legend">Formule d'abonnement envisagée</legend>
             <p class="hint" style="margin-bottom:12px">Aucun engagement à ce stade : nous en reparlons
             lors de l'entretien. <a href="partenaires.html">Voir le détail des formules →</a></p>
-            ${checks("formule", P.plans.map((pl) => ({
-              l: pl.name + " — " + pl.duration,
-              h: pl.price + " " + P.currency + " HT · " + pl.pitch
+            ${checks("formule", P.plans.filter((pl) => !pl.free || (P.launch && P.launch.active)).map((pl) => ({
+              /* Le nom des abonnements porte déjà la durée : ne pas la répéter. */
+              l: pl.name.includes(pl.duration) ? pl.name : pl.name + " — " + pl.duration,
+              h: (pl.free ? "Gratuit" : pl.price + " " + P.currency + " HT") + " · " + pl.pitch
             })).concat(P.pose.plans.map((pl) => ({
               l: pl.name + " — " + pl.duration,
               h: pl.price + " " + P.currency + " HT · service de pose"
@@ -876,7 +879,7 @@ function pros(cities) {
       <h2>Ce que les entreprises nous demandent</h2>
     </div>
     ${T.faqBlock([
-      { q: "Combien coûte l'adhésion au réseau ?", a: "Un abonnement fixe, sur 6 ou 12 mois selon la formule retenue, sans droit d'entrée. Il n'y a <strong>aucune commission</strong> sur les affaires que vous signez : le chantier vous revient intégralement. Le détail des formules et des montants figure sur la page <a href=\"partenaires.html\">partenaires</a>." },
+      { q: "Combien coûte l'adhésion au réseau ?", a: "Vous commencez par la formule Découverte : deux mois à 0 €, sans carte bancaire. Vous choisissez ensuite votre abonnement pour la première année, sur 6 ou 12 mois, sans droit d'entrée. Il n'y a <strong>aucune commission</strong> sur les affaires que vous signez : le chantier vous revient intégralement. Le détail des formules et des montants figure sur la page <a href=\"partenaires.html\">partenaires</a>." },
       { q: "Combien de professionnels reçoivent la même demande ?", a: "Deux ou trois au maximum, choisis parce que leurs capacités correspondent au projet. Nous ne diffusons pas une demande à trente entreprises : c'est ce qui détruit les taux de transformation et pousse les prix vers le bas au détriment de la qualité." },
       { q: "Suis-je obligé d'accepter les affaires proposées ?", a: "Non, jamais. Vous acceptez ou déclinez au cas par cas, sans justification et sans pénalité. Nous vous demandons simplement de répondre rapidement pour que nous puissions réorienter la demande si nécessaire." },
       { q: "Qui facture le client final ?", a: "Vous, en direct. Vous fixez vos prix, vous signez votre devis, vous gardez la relation client et le service après-vente. Nous n'intervenons ni dans le contrat, ni dans l'exécution, et nous ne prélevons rien sur la facture." },

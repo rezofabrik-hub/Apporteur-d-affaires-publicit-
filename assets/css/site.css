@@ -23,6 +23,10 @@
   --signal: #FF5A1F;
   --signal-600: #E8460C;
   --signal-100: #FFEDE5;
+  /* Orange éclairci réservé aux fonds sombres : le --signal plein ne donne
+     que 3,9:1 sur --ink-900, celui-ci monte à 5,2:1 et reste franchement
+     orange. À n'employer que sur fond foncé — il passe mal sur blanc. */
+  --signal-300: #FF8A4C;
   --amber: #FFB020;
 
   /* Pro (second accent, espace partenaires) */
@@ -1045,3 +1049,43 @@ td { color: var(--tx-2); }
   .stepper span { display: none; }
   .hero-stats { gap: 18px 2px; }
 }
+
+
+/* ---------- 26. Mise en valeur sur fond sombre ----------
+   `strong { color: var(--tx) }` applique l'encre foncée partout, y compris
+   dans les héros et les blocs d'appel à l'action, qui sont bleu nuit. Les
+   mots mis en avant y devenaient donc quasi invisibles — 1,53:1 de contraste,
+   soit du texte foncé sur fond foncé. C'est d'autant plus dommageable que ce
+   sont précisément les arguments que l'on cherche à faire ressortir :
+   « abonnement fixe », « sans aucune commission », « 25 ans de métier ».
+
+   On les passe en orange de marque plutôt qu'en blanc : sur un fond sombre où
+   tout le texte est déjà clair, le blanc ne se distingue plus du reste, alors
+   que l'orange isole l'argument au premier coup d'œil.                       */
+.hero strong,
+.hero b,
+.cta strong,
+.cta b,
+.dark strong,
+.dark b { color: var(--signal-300); }
+
+/* Sauf là où le gras est déjà porté par un fond coloré ou une pastille :
+   l'orange sur orange, ou sur le vert de l'espace partenaires, serait illisible. */
+.hero-badge b,
+.launch-strip b,
+.plan-badge b,
+.tag b,
+.btn strong,
+.btn b { color: inherit; }
+
+
+/* ---------- 27. Formule d'essai à 0 € ----------
+   La formule Découverte n'est pas un abonnement moins cher, c'est une porte
+   d'entrée gratuite : elle doit se distinguer des deux abonnements sans pour
+   autant leur voler la vedette. D'où l'orange de lancement sur son bandeau,
+   alors que le vert « partenaires » reste réservé à la formule recommandée. */
+.plan-free { border-color: var(--signal); background: linear-gradient(180deg, var(--signal-100) 0%, #fff 190px); }
+.plan-free .plan-badge { background: var(--signal); }
+.plan-free .plan-price b { color: var(--signal-600); }
+.plan-free .btn-pro { background: var(--signal); box-shadow: 0 6px 18px rgba(255, 90, 31, .3); }
+.plan-free .btn-pro:hover { background: var(--signal-600); box-shadow: 0 10px 26px rgba(255, 90, 31, .38); }

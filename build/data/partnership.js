@@ -13,23 +13,29 @@ module.exports = {
   /* ---------------------------------------------------------------------
      OFFRE DE LANCEMENT — la réponse au problème d'amorçage.
      Sans partenaires, impossible de servir la demande ; sans demande, personne
-     ne paie. Les deux mois offerts cassent ce blocage. Passez `active: false`
-     quand le réseau est suffisamment garni.
+     ne paie. Les deux mois gratuits cassent ce blocage.
+
+     Ils constituent désormais une formule à part entière — Découverte, à 0 € —
+     et non plus une remise appliquée aux formules payantes : un prix affiché à
+     zéro lève l'objection d'entrée bien plus efficacement qu'un rabais, et il
+     évite au partenaire d'avoir à choisir une durée avant d'avoir rien vu.
+     Passez `active: false` quand le réseau est suffisamment garni : la formule
+     Découverte disparaîtra alors des cartes tarifaires et du questionnaire.
   --------------------------------------------------------------------- */
   launch: {
     active: true,
     label: "Offre de lancement",
-    headline: "2 mois offerts sur toutes les formules",
-    sub: "Le réseau se constitue : les premières entreprises inscrites bénéficient de deux mois offerts, quelle que soit la formule choisie.",
-    detail: "Concrètement, vous recevez les demandes de votre zone pendant deux mois sans rien payer. Vous ne réglez l'abonnement qu'ensuite, en connaissance de cause — et seulement si le flux vous convient.",
+    headline: "Les 2 premiers mois à 0 €",
+    sub: "Le réseau se constitue : les premières entreprises inscrites reçoivent les demandes de leur zone pendant deux mois, gratuitement et sans engagement.",
+    detail: "Vous jugez sur pièces. À l'issue des deux mois, vous choisissez votre abonnement pour la première année — 6 mois ou 12 mois — ou vous ne donnez pas suite, sans frais ni justification.",
     conditions: [
       "Offre réservée aux premières entreprises inscrites, dans la limite des places par zone et par métier",
-      "Deux mois offerts sur toute formule, Découverte comme annuelle",
-      "Aucun prélèvement pendant la période d'essai, aucune carte bancaire demandée",
-      "Aucune commission sur les affaires signées, pendant l'essai comme après",
-      "Vous restez libre de ne pas donner suite à l'issue des deux mois"
+      "Deux mois à 0 €, sans prélèvement et sans carte bancaire demandée",
+      "Aucune commission sur les affaires signées, pendant les deux mois comme après",
+      "À l'issue des deux mois, vous choisissez entre l'abonnement 6 mois et l'abonnement 12 mois",
+      "Aucun basculement automatique : sans accord explicite de votre part, l'accès s'arrête"
     ],
-    badge: "2 mois offerts"
+    badge: "2 mois à 0 €"
   },
 
   /* Devise et mentions affichées sous les prix */
@@ -37,39 +43,64 @@ module.exports = {
   vatNote: "Montants hors taxes. Sans reconduction tacite : vous décidez du renouvellement.",
 
   /* ---------------------------------------------------------------------
-     Les formules. `featured: true` met la formule en avant.
+     Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
+     puis on s'abonne pour la première année sur 6 ou 12 mois.
+     `free: true` marque la formule d'essai — elle n'est affichée que tant que
+     `launch.active` vaut true. `featured: true` met une formule en avant.
+     Les tarifs des deux abonnements sont inchangés : 390 € et 690 €.
   --------------------------------------------------------------------- */
   plans: [
     {
       id: "decouverte",
       name: "Découverte",
-      duration: "6 mois",
-      price: "390",
-      priceNote: "soit 65 € par mois",
-      pitch: "Pour tester le réseau sans engager une année entière.",
-      audience: "Artisan, indépendant, structure de 1 à 3 personnes",
+      duration: "2 mois",
+      price: "0",
+      free: true,
+      badge: "Offre de lancement",
+      priceNote: "gratuit, sans carte bancaire et sans engagement",
+      pitch: "Recevez les demandes de votre zone pendant deux mois avant de décider quoi que ce soit.",
+      audience: "Toute entreprise du secteur qui veut mesurer le flux avant de s'engager",
       features: [
         "Référencement dans l'annuaire du réseau",
         "Réception des demandes correspondant à vos capacités déclarées",
         "Zone d'intervention d'un département",
         "Jusqu'à 2 métiers déclarés",
         "Fiche entreprise avec logo, photos et coordonnées",
+        "Aucune commission sur les affaires signées",
+        "Bilan des demandes transmises au terme des deux mois"
+      ],
+      notIncluded: ["Mise en avant prioritaire", "Page dédiée sur le site"]
+    },
+    {
+      id: "semestriel",
+      name: "Abonnement 6 mois",
+      duration: "6 mois",
+      price: "390",
+      priceNote: "soit 65 € par mois",
+      pitch: "Pour poursuivre après les deux mois d'essai sans engager une année entière.",
+      audience: "Artisan, indépendant, structure de 1 à 3 personnes",
+      features: [
+        "Tout ce que comprend la formule Découverte",
+        "Référencement maintenu sans interruption",
+        "Zone d'intervention d'un département",
+        "Jusqu'à 2 métiers déclarés",
+        "Bilan des demandes transmises à mi-parcours",
         "Aucune commission sur les affaires signées"
       ],
       notIncluded: ["Mise en avant prioritaire", "Page dédiée sur le site"]
     },
     {
       id: "annuel",
-      name: "Partenaire annuel",
+      name: "Abonnement 12 mois",
       duration: "12 mois",
       price: "690",
-      priceNote: "soit 57,50 € par mois — deux mois offerts",
+      priceNote: "soit 57,50 € par mois — 90 € de moins que deux semestres",
       featured: true,
       badge: "Le plus choisi",
-      pitch: "La formule de référence pour une entreprise structurée qui veut un flux régulier.",
+      pitch: "La formule de référence pour une entreprise structurée qui veut un flux régulier sur l'année.",
       audience: "Enseigniste, imprimeur, poseur, agence, structure de 3 à 20 personnes",
       features: [
-        "Tout ce que comprend la formule Découverte",
+        "Tout ce que comprend l'abonnement 6 mois",
         "Zone d'intervention étendue : jusqu'à 3 départements",
         "Métiers déclarés illimités",
         "Priorité d'envoi sur les demandes de votre spécialité",
@@ -127,13 +158,13 @@ module.exports = {
   ],
 
   faq: [
-    { q: "Comment fonctionnent les deux mois offerts ?", a: "Vous remplissez le questionnaire, nous vérifions votre dossier, et vous recevez les demandes de votre zone pendant deux mois sans rien payer et sans carte bancaire. À l'issue de cette période, nous faisons le point sur ce qui vous a été transmis et vous décidez. Si le flux ne vous convient pas, vous ne donnez pas suite et cela s'arrête là." },
-    { q: "Pourquoi offrir deux mois ?", a: "Parce qu'un réseau qui démarre a un problème d'amorçage : sans partenaires nous ne pouvons pas servir les demandes, et sans demandes personne n'a envie de payer. Les deux mois offerts cassent ce blocage — vous jugez sur pièces, nous constituons le réseau. C'est temporaire et réservé aux premières entreprises inscrites." },
+    { q: "Comment fonctionne la formule Découverte à 0 € ?", a: "Vous remplissez le questionnaire, nous vérifions votre dossier, et vous recevez les demandes de votre zone pendant deux mois sans rien payer et sans carte bancaire. À l'issue de cette période, nous faisons le point sur ce qui vous a été transmis et vous choisissez votre abonnement pour la première année : 6 mois à 390 € ou 12 mois à 690 €. Si le flux ne vous convient pas, vous ne donnez pas suite et cela s'arrête là." },
+    { q: "Pourquoi une formule à 0 € ?", a: "Parce qu'un réseau qui démarre a un problème d'amorçage : sans partenaires nous ne pouvons pas servir les demandes, et sans demandes personne n'a envie de payer. Les deux premiers mois à zéro euro cassent ce blocage — vous jugez sur pièces, nous constituons le réseau. C'est temporaire et réservé aux premières entreprises inscrites." },
     { q: "Pourquoi un abonnement plutôt qu'une commission ?", a: "Parce qu'une commission variable pousse l'intermédiaire à privilégier les gros dossiers et à vous envoyer un maximum de demandes, qualifiées ou non. L'abonnement inverse la logique : notre intérêt devient de vous garder d'une année sur l'autre, donc de vous transmettre des demandes que vous transformez réellement. Vous gardez par ailleurs 100 % de la marge sur chaque chantier signé." },
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
-    { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est aussi la raison d'être de la formule Découverte sur six mois : elle vous permet de mesurer avant de vous engager sur une année." },
-    { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non. Aucune reconduction tacite : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
-    { q: "Puis-je changer de formule en cours d'année ?", a: "Oui, vers le haut à tout moment : la différence est calculée au prorata du temps restant. Le passage vers une formule inférieure s'effectue à l'échéance." },
+    { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est précisément la raison d'être de la formule Découverte : deux mois à zéro euro vous permettent de mesurer le flux réel de votre secteur avant d'engager le moindre euro." },
+    { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
+    { q: "Puis-je passer du 6 mois au 12 mois ?", a: "Oui, à tout moment : la différence est calculée au prorata du temps restant, sans frais de changement. Le passage de l'abonnement 12 mois vers le 6 mois s'effectue en revanche à l'échéance." },
     { q: "Prenez-vous une commission en plus de l'abonnement ?", a: "Non, jamais. L'abonnement est la seule contrepartie. Vous facturez le client en direct, au prix que vous fixez, et rien ne nous revient sur le chantier." },
     { q: "Acceptez-vous les auto-entrepreneurs ?", a: "Oui, dès lors que le SIRET est actif et que les assurances sont à jour. La taille n'est pas un critère de sélection ; la fiabilité et l'adéquation des capacités en sont. Un poseur indépendant bien équipé et réactif vaut mieux qu'une structure importante mais indisponible." },
     { q: "Que se passe-t-il si un partenaire ne donne pas satisfaction ?", a: "Nous suivons les retours clients après chaque affaire transmise. Un partenaire dont les litiges se répètent est retiré du réseau sans remboursement du temps restant, conformément aux conditions d'adhésion. C'est ce qui protège la crédibilité du réseau — et donc la vôtre." }

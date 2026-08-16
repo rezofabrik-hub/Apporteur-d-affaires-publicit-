@@ -417,7 +417,7 @@ function launchBanner(compact) {
   <p style="margin-top:14px">${esc(L.detail)}</p>
   <ul>${L.conditions.map((c) => `<li>${esc(c)}</li>`).join("")}</ul>
   <div class="btns">
-    <a class="btn btn-white btn-lg" href="professionnels.html">Profiter des 2 mois offerts</a>
+    <a class="btn btn-white btn-lg" href="professionnels.html">Commencer avec 2 mois à 0 €</a>
     <a class="btn btn-ghost btn-lg" href="partenaires.html#formules">Voir les formules</a>
   </div>
 </div>`;
