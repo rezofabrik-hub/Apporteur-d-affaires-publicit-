@@ -33,7 +33,8 @@ module.exports = {
       "Deux mois à 0 €, sans prélèvement et sans carte bancaire demandée",
       "Aucune commission sur les affaires signées, pendant les deux mois comme après",
       "À l'issue des deux mois, vous choisissez entre l'abonnement 6 mois et l'abonnement 12 mois, au tarif de lancement en vigueur jusqu'à la date anniversaire",
-      "Aucun basculement automatique : sans accord explicite de votre part, l'accès s'arrête"
+      "Aucun basculement automatique : sans accord explicite de votre part, l'accès s'arrête",
+      "Contrat, accès et tarif bloqués sur la durée souscrite : six mois ou un an selon la formule"
     ],
     badge: "2 mois à 0 €"
   },
@@ -60,8 +61,8 @@ module.exports = {
     active: true,
     rate: 20,
     label: "Tarif de lancement",
-    headline: "Tarif de lancement, garanti jusqu'à la date anniversaire du réseau",
-    note: "Les montants ci-dessous sont les tarifs de lancement du réseau. Ils seront relevés de 20 % à la date anniversaire. Le tarif obtenu aujourd'hui reste acquis pour toute la durée de votre abonnement, hausse comprise."
+    headline: "Tarif de lancement, bloqué sur toute la durée souscrite",
+    note: "Les montants ci-dessous sont les tarifs de lancement du réseau ; ils seront relevés de 20 % à la date anniversaire. Le tarif que vous obtenez aujourd'hui, comme votre accès au réseau, est bloqué pour toute la durée souscrite — six mois ou un an selon la formule — hausse comprise."
   },
 
   /* Devise et mentions affichées sous les prix.
@@ -265,6 +266,7 @@ module.exports = {
     { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est précisément la raison d'être de la formule Découverte : deux mois à zéro euro vous permettent de mesurer le flux réel de votre secteur avant d'engager le moindre euro." },
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
     { q: "Qu'est-ce que le tarif de lancement ?", a: "Ce sont les prix pratiqués pendant la constitution du réseau : 490 € pour six mois et 890 € pour douze. Ils seront relevés de 20 % à la date anniversaire du réseau, soit 588 € et 1 068 €. Nous l'annonçons à l'avance plutôt que de barrer un prix que nous n'avons jamais pratiqué : le tarif que vous obtenez aujourd'hui est le vrai, et il reste acquis pour toute la durée de votre abonnement." },
+    { q: "Mon tarif peut-il augmenter en cours d'abonnement ?", a: "Non. Le contrat, l'accès au réseau et le tarif sont bloqués sur toute la durée que vous avez souscrite : six mois pour la formule semestrielle, un an pour la formule annuelle. La hausse du 16 août ne s'applique qu'aux nouvelles souscriptions et aux renouvellements postérieurs — jamais à un abonnement en cours. Un abonnement d'un an signé la veille de la hausse court donc au tarif de lancement jusqu'à son terme." },
     { q: "Le service de pose suit-il le même tarif de lancement ?", a: "Oui, aux mêmes montants et avec la même hausse programmée à la date anniversaire. Les deux offres suivent la même grille depuis le départ." },
     { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "La durée d'engagement et le prix, rien d'autre. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses — un partenaire qui paie est un partenaire servi. L'engagement annuel se récompense donc sur le tarif : 890 € contre 980 € pour deux semestres, soit 90 € d'économie." },
     { q: "Puis-je passer du 6 mois au 12 mois ?", a: "Oui, à tout moment : la différence est calculée au prorata du temps restant, sans frais de changement. Comme les prestations sont les mêmes, ce choix ne porte que sur la durée et sur le rythme de renouvellement qui vous arrange." },

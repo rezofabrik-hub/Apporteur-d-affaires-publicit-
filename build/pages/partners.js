@@ -27,7 +27,8 @@ module.exports = function partnersPage(cities) {
   <p class="plan-note plan-note-launch"><b>${esc(P.launchPrice.label)}</b> — soit
     ${esc(d.perMonth(pl.duration))} ${esc(P.currency)} par mois, et ${esc(d.ht)} ${esc(P.currency)}
     HT à votre charge réelle. Ce tarif passe à <b>${esc(d.after)} ${esc(P.currency)}</b>
-    le ${esc(T.site.anniversary)}.</p>`;
+    le ${esc(T.site.anniversary)} — mais le vôtre reste bloqué
+    <b>${esc(pl.duration)}</b>.</p>`;
   };
 
   const planCards = shownPlans.map((pl) => `
@@ -66,6 +67,7 @@ module.exports = function partnersPage(cities) {
     </div>
     <div class="pill-row">
       <span class="pill">${esc(site.experienceLine)}</span>
+      <span class="pill">Tarif bloqué sur la durée</span>
       <span class="pill">Sans droit d'entrée</span>
       <span class="pill">Sans commission</span>
       <span class="pill">Sans reconduction tacite</span>

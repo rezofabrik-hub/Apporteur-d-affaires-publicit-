@@ -21,7 +21,8 @@ module.exports = function posePage(cities) {
   ${(() => { const d = T.launchPriceOn(pl.price); return d ? `
   <p class="plan-note plan-note-launch"><b>${esc(P.launchPrice.label)}</b> — soit
     ${esc(d.perMonth(pl.duration))} ${esc(P.currency)} par mois. Ce tarif passe à
-    <b>${esc(d.after)} ${esc(P.currency)}</b> le ${esc(T.site.anniversary)}.</p>` : `
+    <b>${esc(d.after)} ${esc(P.currency)}</b> le ${esc(T.site.anniversary)} — mais le vôtre
+    reste bloqué <b>${esc(pl.duration)}</b>.</p>` : `
   <p class="plan-note">${esc(pl.priceNote)}</p>`; })()}
   <p class="plan-audience"><strong>Pour qui :</strong> ${esc(pl.audience)}</p>
   <ul class="plan-list">

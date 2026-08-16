@@ -448,8 +448,9 @@ function launchPriceBanner() {
   return `<div class="disc-banner">
   <b>${esc(L.headline)}</b>
   <span>Les tarifs ci-dessous seront relevés de <strong>${esc(L.rate)} %</strong> le
-  <strong>${esc(site.anniversary)}</strong>. Le prix obtenu avant cette date reste
-  acquis pour toute la durée de votre abonnement.</span>
+  <strong>${esc(site.anniversary)}</strong>. Contrat, accès et tarif sont
+  <strong>bloqués sur toute la durée souscrite</strong> — six mois ou un an selon la
+  formule : une hausse ne touche jamais un abonnement en cours.</span>
 </div>`;
 }
 
