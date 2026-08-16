@@ -286,14 +286,25 @@ hr { border: 0; border-top: 1px solid var(--line); margin: var(--sec) 0; }
 .drop > button svg { width: 11px; height: 11px; transition: transform .2s; }
 .drop[data-open="true"] > button svg { transform: rotate(180deg); }
 
+/* Le panneau est centré sur son bouton, ce qui le fait sortir de l'écran dès
+   que le bouton est près d'un bord : « Nos métiers » est le premier élément
+   de la barre, et à 1 280 px — la largeur d'écran la plus répandue — sept de
+   ses treize liens tombaient hors du cadre, à gauche. Deux garde-fous : une
+   largeur qui ne peut pas dépasser la fenêtre, et un décalage `--nudge`
+   calculé à l'ouverture par initNav() pour ramener le panneau à l'intérieur.
+   Sans JavaScript, le panneau reste centré et simplement plus étroit. */
 .drop-menu {
-  position: absolute; top: calc(100% + 9px); left: 50%; transform: translateX(-50%) translateY(-6px);
-  min-width: 560px; padding: 12px; background: #fff;
+  position: absolute; top: calc(100% + 9px); left: 50%;
+  transform: translateX(calc(-50% + var(--nudge, 0px))) translateY(-6px);
+  min-width: 560px; max-width: calc(100vw - 24px); padding: 12px; background: #fff;
   border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--sh-4);
   display: grid; grid-template-columns: 1fr 1fr; gap: 3px;
   opacity: 0; visibility: hidden; transition: opacity .18s, transform .18s, visibility .18s;
 }
-.drop[data-open="true"] .drop-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.drop[data-open="true"] .drop-menu {
+  opacity: 1; visibility: visible;
+  transform: translateX(calc(-50% + var(--nudge, 0px))) translateY(0);
+}
 
 /* Pont invisible entre le bouton et le panneau. Les neuf pixels qui les
    séparent n'appartiennent ni à l'un ni à l'autre : la souris qui descend

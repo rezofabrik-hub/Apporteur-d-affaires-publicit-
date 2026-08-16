@@ -41,10 +41,30 @@
         clearTimeout(minuteur);
         minuteur = setTimeout(close, 180);
       };
+      /* Recentrage dans la fenêtre. Le panneau est centré sur son bouton ;
+         quand le bouton est près d'un bord, une partie des liens sort de
+         l'écran et devient impossible à atteindre. On mesure après ouverture
+         et on décale du strict nécessaire, jamais plus. */
+      var menu = drop.querySelector(".drop-menu");
+      function replacer() {
+        if (!menu) return;
+        menu.style.setProperty("--nudge", "0px");
+        var r = menu.getBoundingClientRect();
+        var marge = 12;
+        var d = 0;
+        if (r.left < marge) d = marge - r.left;
+        else if (r.right > window.innerWidth - marge) d = (window.innerWidth - marge) - r.right;
+        if (d) menu.style.setProperty("--nudge", Math.round(d) + "px");
+      }
+
       var open  = function () {
         clearTimeout(minuteur);
         drop.dataset.open = "true";  btn.setAttribute("aria-expanded", "true");
+        replacer();
       };
+      window.addEventListener("resize", function () {
+        if (drop.dataset.open === "true") replacer();
+      });
 
       btn.addEventListener("click", function (e) {
         e.stopPropagation();
