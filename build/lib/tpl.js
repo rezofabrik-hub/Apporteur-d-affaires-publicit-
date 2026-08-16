@@ -421,33 +421,35 @@ function trustBar() {
 }
 
 /** Bandeau d'offre de lancement — masqué automatiquement si `launch.active` est faux. */
-/* ------------------------------------------------- remise de lancement
-   Le prix remisé n'est jamais saisi à la main : il se déduit du tarif et du
-   taux. Le jour où l'un des deux change, toutes les pages suivent. */
-function discountOn(price) {
-  const D = partnership.discount;
+/* ------------------------------------------------- tarif de lancement
+   On n'affiche jamais un prix barré : le tarif actuel est le prix réel, et
+   c'est la hausse à venir qui est annoncée. Le montant futur se déduit du
+   tarif et du taux, il n'est écrit nulle part. */
+/** Millier séparé par une espace insécable, comme le veut l'usage français. */
+const eur = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
+
+function launchPriceOn(price) {
+  const L = partnership.launchPrice;
   const base = Number(String(price).replace(/\s/g, ""));
-  if (!D || !D.active || !base) return null;
-  const net = Math.round(base * (1 - D.rate / 100));
+  if (!L || !L.active || !base) return null;
   return {
-    base, net, rate: D.rate,
-    saved: base - net,
-    /* Prix mensuel équivalent, arrondi au centime, pour les mentions de type
-       « soit 59,33 € par mois ». */
-    perMonth: (d) => (net / parseInt(d, 10)).toFixed(2).replace(".", ","),
-    ht: Math.round(net / 1.2)
+    now: base,
+    after: eur(base * (1 + L.rate / 100)),
+    rate: L.rate,
+    perMonth: (d) => (base / parseInt(d, 10)).toFixed(2).replace(".", ","),
+    ht: eur(base / 1.2)
   };
 }
 
-/* Bandeau de rappel de la remise, posé au-dessus des cartes tarifaires. */
-function discountBanner() {
-  const D = partnership.discount;
-  if (!D || !D.active) return "";
+/* Bandeau posé au-dessus des cartes tarifaires. */
+function launchPriceBanner() {
+  const L = partnership.launchPrice;
+  if (!L || !L.active) return "";
   return `<div class="disc-banner">
-  <b>${esc(D.headline)}</b>
-  <span>Offre de lancement valable jusqu'à la date anniversaire du réseau,
-  le <strong>${esc(site.anniversary)}</strong>. Les tarifs affichés ci-dessous
-  tiennent déjà compte de la remise.</span>
+  <b>${esc(L.headline)}</b>
+  <span>Les tarifs ci-dessous seront relevés de <strong>${esc(L.rate)} %</strong> le
+  <strong>${esc(site.anniversary)}</strong>. Le prix obtenu avant cette date reste
+  acquis pour toute la durée de votre abonnement.</span>
 </div>`;
 }
 
@@ -552,5 +554,5 @@ module.exports = {
   site, services, esc, attr, jsonld, img, heroImg, pick, manifest,
   page, header, footer, crumbs, crumbSchema, faqBlock, faqSchema,
   serviceCards, ctaDouble, trustBar, keywordCloud, launchBanner, amortBlock,
-  proBar, proInvite, discountOn, discountBanner, partnership, NAV_MORE
+  proBar, proInvite, launchPriceOn, launchPriceBanner, partnership, NAV_MORE
 };

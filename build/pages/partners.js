@@ -12,26 +12,22 @@ module.exports = function partnersPage(cities) {
      d'elle-même le jour où l'on passe `launch.active` à false. */
   const shownPlans = P.plans.filter((pl) => !pl.free || (P.launch && P.launch.active));
 
-  /* Le prix barré et le prix remisé sont calculés, jamais saisis : voir
-     T.discountOn(). Les formules gratuites ne sont évidemment pas remisées. */
+  /* Le prix affiché est le prix réellement pratiqué. Ce qui est annoncé, c'est
+     la hausse à venir — jamais une réduction sur un tarif jamais appliqué. */
   const priceBlock = (pl) => {
-    const d = pl.free ? null : T.discountOn(pl.price);
-    if (!d) return `
+    const d = pl.free ? null : T.launchPriceOn(pl.price);
+    const price = `
   <div class="plan-price">
     <b>${esc(pl.price)}</b><span>${esc(P.currency)}${pl.free ? "" : " " + esc(P.priceSuffix)}</span>
     <em>/ ${esc(pl.duration)}</em>
-  </div>
+  </div>`;
+    if (!d) return price + `
   <p class="plan-note">${esc(pl.priceNote)}</p>`;
-    return `
-  <div class="plan-price plan-price-cut">
-    <s aria-label="Tarif courant">${esc(d.base)} ${esc(P.currency)}</s>
-    <b>${esc(d.net)}</b><span>${esc(P.currency)} ${esc(P.priceSuffix)}</span>
-    <em>/ ${esc(pl.duration)}</em>
-  </div>
-  <p class="plan-note plan-note-cut"><b>${esc(P.discount.label)}</b> — soit
-    ${esc(d.perMonth(pl.duration))} ${esc(P.currency)} par mois et
-    ${esc(d.saved)} ${esc(P.currency)} d'économie. Tarif courant ensuite :
-    ${esc(d.base)} ${esc(P.currency)}.</p>`;
+    return price + `
+  <p class="plan-note plan-note-launch"><b>${esc(P.launchPrice.label)}</b> — soit
+    ${esc(d.perMonth(pl.duration))} ${esc(P.currency)} par mois, et ${esc(d.ht)} ${esc(P.currency)}
+    HT à votre charge réelle. Ce tarif passe à <b>${esc(d.after)} ${esc(P.currency)}</b>
+    le ${esc(T.site.anniversary)}.</p>`;
   };
 
   const planCards = shownPlans.map((pl) => `
@@ -111,9 +107,10 @@ module.exports = function partnersPage(cities) {
       <p class="lead mx-auto"><strong>Les deux abonnements donnent exactement les mêmes avantages.</strong>
       Nous ne pratiquons pas les formules à deux vitesses, où celui qui s'engage moins longtemps
       reçoit moins de demandes. Ce qui change, c'est le tarif : l'année revient à
-      <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie.</p>
+      <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie.
+      Les deux montants sont des tarifs de lancement, relevés de 20 % à la date anniversaire.</p>
     </div>
-    ${T.discountBanner()}
+    ${T.launchPriceBanner()}
     <div class="plans">${planCards}</div>
     <p class="center" style="margin-top:26px;font-size:.87rem;color:var(--tx-3)">${esc(P.vatNote)}</p>
   </div>

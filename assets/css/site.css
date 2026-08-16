@@ -1230,10 +1230,10 @@ td { color: var(--tx-2); }
 }
 
 
-/* ---------- 31. Remise de première année ----------
-   Un prix remisé doit se lire d'un coup d'œil : le tarif courant barré, le
-   prix réellement dû en grand. L'inverse — remise annoncée en petit sous un
-   prix plein — fait douter, et donne l'impression qu'on cache quelque chose. */
+/* ---------- 31. Tarif de lancement ----------
+   Pas de prix barré : le montant affiché est celui qu'on paie réellement.
+   Ce qu'on met en valeur, c'est la hausse annoncée — un fait vérifiable et
+   daté, là où un prix barré jamais pratiqué serait une réduction fictive. */
 .disc-banner {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px;
   justify-content: center; text-align: center;
@@ -1245,14 +1245,5 @@ td { color: var(--tx-2); }
 .disc-banner span { font-size: .93rem; color: var(--tx-2); }
 .disc-banner strong { color: var(--tx); }
 
-/* Tarif courant barré, placé au-dessus du prix remisé. */
-.plan-price-cut { position: relative; }
-.plan-price-cut s {
-  display: block; width: 100%;
-  font-size: .95rem; font-weight: 600; color: var(--tx-3);
-  text-decoration-thickness: 1.5px; margin-bottom: 2px;
-}
-.plan-note-cut b { color: var(--signal-600); }
-
-/* Sur fond sombre, l'ardoise du prix barré doit rester lisible. */
-.dark .plan-price-cut s { color: var(--tx-inv-3); }
+/* Mention du tarif de lancement et de la hausse datée, sous le prix. */
+.plan-note-launch b { color: var(--signal-600); }
