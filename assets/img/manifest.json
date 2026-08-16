@@ -1166,5 +1166,84 @@
    "w": 1024,
    "h": 768
   }
+ ],
+ "decoupe-laser": [
+  {
+   "name": "decoupe-laser-1",
+   "w": 1280,
+   "h": 719
+  },
+  {
+   "name": "decoupe-laser-2",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "decoupe-laser-3",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "decoupe-laser-4",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "decoupe-laser-5",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "decoupe-laser-6",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "decoupe-laser-7",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "decoupe-laser-8",
+   "w": 1280,
+   "h": 854
+  }
+ ],
+ "cnc": [
+  {
+   "name": "cnc-1",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "cnc-2",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "cnc-3",
+   "w": 1024,
+   "h": 683
+  },
+  {
+   "name": "cnc-4",
+   "w": 1024,
+   "h": 681
+  },
+  {
+   "name": "cnc-5",
+   "w": 1023,
+   "h": 663
+  },
+  {
+   "name": "cnc-6",
+   "w": 1024,
+   "h": 768
+  },
+  {
+   "name": "cnc-7",
+   "w": 1024,
+   "h": 768
+  }
  ]
 }

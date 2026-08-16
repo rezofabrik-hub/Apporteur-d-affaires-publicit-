@@ -48,7 +48,8 @@ const LOCAL_NOTE = {
   "objets-publicitaires": "À %V comme ailleurs, les frais techniques — écran de sérigraphie, programme de broderie — ne sont facturés qu'une fois. La deuxième commande du même visuel coûte donc nettement moins cher : pensez-y en dimensionnant la première série.",
   "maquette-creation-graphique": "Un logo conçu pour l'écran n'est pas toujours fabricable en relief. Avant de lancer une enseigne à %V, faites vérifier que les tracés sont découpables et que le rendu tient en rétro-éclairage.",
   "pose-nacelle": "À %V, toute intervention en nacelle empiétant sur le trottoir ou la chaussée nécessite une autorisation d'occupation du domaine public, à demander dix à quinze jours à l'avance. Les poseurs du réseau s'en chargent.",
-  "vitrophanie-plv": "Sur une vitrine à %V, gardez 40 à 50 % de surface réellement transparente. Un commerce dont on ne voit pas l'intérieur est perçu comme fermé — c'est l'erreur la plus fréquente et la plus coûteuse."
+  "vitrophanie-plv": "Sur une vitrine à %V, gardez 40 à 50 % de surface réellement transparente. Un commerce dont on ne voit pas l'intérieur est perçu comme fermé — c'est l'erreur la plus fréquente et la plus coûteuse.",
+  "decoupe-laser-cnc": "Peu d'ateliers de %V possèdent à la fois un laser et une fraiseuse numérique : celui qui n'a qu'une machine vous orientera vers ce qu'elle sait faire. Précisez la matière et l'épaisseur dans votre demande, c'est ce qui détermine le bon atelier."
 };
 
 module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, index) {

@@ -216,8 +216,9 @@
               "?type=" + encodeURIComponent(form.dataset.kind || "client");
           } else if (status) {
             status.className = "form-status ko show";
-            status.innerHTML = 'L\'envoi automatique n\'a pas abouti. Votre demande a été conservée : ' +
-              '<a href="' + mailtoFallback(form, data) + '">cliquez ici pour l\'envoyer par e-mail</a>.';
+            status.innerHTML = 'La transmission automatique n\'a pas abouti. Votre demande a été ' +
+              'conservée : <a href="' + mailtoFallback(form, data) + '">cliquez ici pour la faire ' +
+              'parvenir à notre bureau d\'études</a>.';
           }
         }
 
@@ -226,8 +227,13 @@
           window.location.href = mailtoFallback(form, data);
           if (status) {
             status.className = "form-status ok show";
-            status.textContent = "Votre logiciel de messagerie va s'ouvrir avec la demande pré-remplie. " +
-              "Il ne vous reste qu'à l'envoyer.";
+            /* Sans point de collecte configuré, la demande transite par un
+               e-mail que le visiteur doit valider. On nomme la destination —
+               c'est elle qui rassure — sans jamais annoncer un envoi qui n'a
+               pas encore eu lieu : quelqu'un qui croit avoir terminé ferme la
+               fenêtre, et la demande est perdue. */
+            status.textContent = "Votre demande part vers notre bureau d'études. " +
+              "Dernière étape : validez l'envoi pour qu'elle nous parvienne.";
           }
           return;
         }
@@ -274,7 +280,7 @@
     if (!box) return;
     var type = new URLSearchParams(location.search).get("type");
     if (type === "pro") {
-      box.innerHTML = "<h1>Candidature bien reçue</h1><p class=\"lead\">Merci d'avoir rejoint le réseau. " +
+      box.innerHTML = "<h1>Candidature transmise à notre bureau d'études</h1><p class=\"lead\">Merci d'avoir rejoint le réseau. " +
         "Nous étudions votre dossier et vos capacités de production, puis nous revenons vers vous sous 48 heures " +
         "ouvrées pour valider votre référencement et vous transmettre vos premières demandes.</p>";
     }

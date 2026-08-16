@@ -697,4 +697,123 @@ module.exports = [
   related: ["impression-grand-format", "enseignes", "objets-publicitaires", "signaletique"]
 }
 
+,
+/* ══════════════════════════════════════════════════ 9. DÉCOUPE LASER & CNC */
+{
+  slug: "decoupe-laser-cnc",
+  nav: "Découpe laser & CNC",
+  navShort: "Découpe laser & CNC",
+  navDesc: "Découpe laser, fraisage numérique, gravure, usinage sur mesure",
+  h1: "Découpe laser, fraisage numérique CNC et gravure",
+  title: "Découpe Laser & CNC — Fraisage Numérique, Gravure, Usinage",
+  desc: "Découpe laser acier, inox, alu, plexiglas et bois. Fraisage numérique CNC, gravure, usinage sur mesure. Ateliers équipés, fichiers vectoriels, du prototype à la série.",
+  eyebrow: "Métier n°9",
+  topic: "decoupe-laser",
+  topicAlt: ["cnc", "gravure", "atelier"],
+  lead: "C'est l'atelier qui se cache derrière la plupart des enseignes de qualité. Lettres découpées, plaques gravées, pièces techniques, supports sur mesure : dès qu'une forme n'existe pas au catalogue, elle passe par une machine à commande numérique. Encore faut-il choisir le bon procédé — laser, fraiseuse ou jet d'eau ne coupent ni les mêmes matières, ni aux mêmes tolérances.",
+  keywords: [
+    "découpe laser", "découpe laser sur mesure", "découpe numérique", "fraisage numérique",
+    "CNC", "usinage CNC", "fraiseuse numérique", "découpe plexiglas", "découpe PMMA",
+    "découpe acier laser", "découpe inox", "découpe aluminium", "découpe bois CNC",
+    "gravure laser", "gravure sur métal", "gravure plexiglas", "marquage laser",
+    "lettres découpées", "lettrage découpé", "plaque gravée", "prototypage",
+    "découpe jet d'eau", "découpe plasma", "pliage tôle", "tôlerie fine",
+    "fichier vectoriel découpe", "DXF", "nesting", "petite série", "pièce sur mesure"
+  ],
+  intro: [
+    "Trois familles de machines se partagent ce travail, et elles ne sont pas interchangeables. Le <strong>laser</strong> excelle sur les tôles fines et les plastiques : trait de coupe très fin, chants nets, aucun outil à changer entre deux formes. La <strong>fraiseuse numérique</strong> travaille l'épais — plexiglas de 20 mm, bois, composite, aluminium — et sait aussi creuser, chanfreiner, graver en relief. Le <strong>jet d'eau</strong> intervient là où la chaleur est interdite : matériaux composites, pierre, verre, métaux très épais.",
+    "Un atelier qui ne possède qu'une machine vous orientera naturellement vers ce qu'elle sait faire. C'est le principal intérêt de passer par le réseau : nous confions votre pièce à l'atelier dont le parc correspond réellement à la matière, à l'épaisseur et à la tolérance demandées — pas à celui qui s'en approchera au mieux."
+  ],
+  sub: [
+    { t: "Découpe laser tôle et métal",
+      d: "Acier, inox, aluminium, laiton et cuivre, de 0,5 à 20 mm selon la puissance de la machine. Trait de coupe de 0,1 à 0,4 mm, chants propres ne demandant en général aucune reprise. C'est le procédé des lettres boîtier, des plaques professionnelles et des pièces de fixation sur mesure." },
+    { t: "Découpe laser plexiglas et plastiques",
+      d: "PMMA coulé ou extrudé, PETG, polycarbonate, PVC expansé. Sur le plexiglas coulé, le laser laisse un chant poli transparent, prêt à recevoir un rétro-éclairage — un rendu que la fraiseuse ne produit pas sans polissage." },
+    { t: "Découpe laser bois et dérivés",
+      d: "Contreplaqué, MDF, peuplier, bois massif fin. Chants légèrement caramélisés, caractéristiques du laser, souvent recherchés en décoration de boutique et en PLV. Gravure d'une même passe pour les motifs et les textes." },
+    { t: "Fraisage numérique CNC",
+      d: "Usinage 2D et 3D sur panneaux épais : plexiglas, Dibond, aluminium, PVC, bois, composite. La fraiseuse creuse, perce, chanfreine et détoure dans la même mise en position — indispensable dès que la pièce dépasse quelques millimètres d'épaisseur." },
+    { t: "Gravure et marquage",
+      d: "Gravure laser sur inox, aluminium anodisé, laiton, plexiglas et bois. Marquage indélébile pour plaques professionnelles, plaques de porte, signalétique de sécurité, numérotation et identification industrielle." },
+    { t: "Lettres et logos découpés",
+      d: "Lettrage relief en aluminium, inox brossé, laiton, PVC ou plexiglas, avec ou sans rétro-éclairage. C'est la sortie la plus fréquente de ces machines pour notre métier : le passage direct de votre fichier vectoriel à la lettre posée en façade." },
+    { t: "Prototypage et petite série",
+      d: "Une pièce unique coûte proportionnellement cher, mais reste possible : ces machines ne demandent pas d'outillage. À partir de la deuxième pièce identique, le prix chute nettement — le temps de programmation étant déjà amorti." },
+    { t: "Pliage et finitions",
+      d: "Beaucoup d'ateliers de découpe assurent la suite : pliage sur presse plieuse, soudure, ébavurage, thermolaquage, anodisation, polissage. Faites préciser dans le devis ce qui est inclus — c'est le poste qui creuse le plus les écarts entre deux propositions." }
+  ],
+  sections: [
+    {
+      h2: "Laser, fraiseuse ou jet d'eau : lequel pour votre pièce ?",
+      p: [
+        "La question se tranche sur trois critères : la <strong>matière</strong>, l'<strong>épaisseur</strong> et la <strong>tolérance</strong> attendue. Un chant destiné à rester visible n'appelle pas le même procédé qu'une pièce cachée derrière un caisson.",
+        "Un piège classique : le laser ne coupe pas tout. Le PVC rigide dégage du chlore et abîme les machines — les ateliers sérieux le refusent et le passent en fraiseuse. Les métaux très réfléchissants comme le cuivre et le laiton demandent une source fibre, que toutes les machines ne possèdent pas. Enfin, le laser marque toujours une zone thermiquement affectée sur quelques dixièmes de millimètre : sans importance pour une lettre d'enseigne, rédhibitoire pour une pièce mécanique."
+      ],
+      table: {
+        head: ["Procédé", "Matières", "Épaisseur courante", "Qualité de chant"],
+        rows: [
+          ["Laser CO₂", "Plexiglas, bois, textile, cuir", "0,5 – 25 mm", "Poli sur PMMA, caramélisé sur bois"],
+          ["Laser fibre", "Acier, inox, alu, cuivre, laiton", "0,5 – 20 mm", "Net, reprise rarement nécessaire"],
+          ["Fraiseuse CNC", "PMMA épais, Dibond, alu, bois, composite", "3 – 100 mm", "Strié, ébavurage souvent utile"],
+          ["Jet d'eau", "Pierre, verre, composite, métal épais", "1 – 200 mm", "Mat, sans zone thermique"],
+          ["Plasma", "Acier, inox épais", "1 – 40 mm", "Grossier, reprise nécessaire"],
+          ["Table de découpe numérique", "Carton, PVC expansé, adhésif, alvéolaire", "0,5 – 30 mm", "Propre, sans chaleur"]
+        ],
+        foot: "Le PVC rigide ne se coupe jamais au laser : il libère du chlore, dangereux pour l'opérateur comme pour la machine. Un atelier qui vous le propose ne connaît pas son métier."
+      }
+    },
+    {
+      h2: "Ce que coûte une découpe sur mesure",
+      p: [
+        "Trois postes composent le prix : la <strong>matière</strong>, le <strong>temps machine</strong> et la <strong>préparation du fichier</strong>. C'est le troisième qui surprend le plus souvent : un fichier mal préparé — tracés ouverts, doublons superposés, textes non vectorisés — demande une reprise facturée entre 40 et 120 €, quel que soit le nombre de pièces.",
+        "Le temps machine dépend du <strong>linéaire de coupe</strong>, pas de la surface. Une pièce ajourée de dentelle coûte plusieurs fois le prix d'un rectangle de même dimension. À l'inverse, l'<strong>imbrication</strong> — le nesting — permet de loger plusieurs pièces dans une même plaque et fait tomber le coût matière : groupez vos commandes plutôt que de les étaler dans l'année."
+      ],
+      table: {
+        head: ["Prestation", "Budget indicatif", "Remarque"],
+        rows: [
+          ["Plaque professionnelle gravée (inox ou laiton)", "60 – 220 €", "Selon format et fixation"],
+          ["Jeu de lettres découpées PVC ou plexi (30 cm)", "25 – 70 € la lettre", "Hors pose et hors éclairage"],
+          ["Jeu de lettres inox brossé relief (30 cm)", "70 – 190 € la lettre", "Hors rétro-éclairage"],
+          ["Logo découpé sur mesure, pièce unique", "90 – 450 €", "Programmation comprise"],
+          ["Découpe laser à l'heure machine", "60 – 130 € / h", "Hors matière"],
+          ["Fraisage CNC à l'heure machine", "45 – 95 € / h", "Hors matière"],
+          ["Reprise de fichier non conforme", "40 – 120 €", "Évitable avec un fichier vectoriel propre"],
+          ["Gravure de série (plaques de porte)", "12 – 45 € la pièce", "Dégressif dès 10 pièces"]
+        ],
+        foot: "Fourchettes hors pose et hors traitement de surface. Le thermolaquage ajoute couramment 25 à 60 € par mètre carré de pièce traitée."
+      }
+    },
+    {
+      h2: "Préparer un fichier qui passe du premier coup",
+      p: [
+        "Une machine numérique ne lit pas une image, elle suit un <strong>tracé vectoriel</strong>. Un logo fourni en JPG ou en PNG doit être redessiné, ce qui est un vrai travail et se facture comme tel. Fournissez un fichier vectoriel — AI, EPS, PDF, SVG ou DXF — et vous supprimez ce poste.",
+        "Quatre vérifications avant d'envoyer votre fichier : les <strong>tracés sont fermés</strong>, sans quoi la machine ne sait pas où couper ; les <strong>textes sont vectorisés</strong>, faute de quoi la police se substitue chez l'atelier ; les <strong>doublons superposés</strong> sont supprimés, sinon la machine coupe deux fois au même endroit ; et l'<strong>échelle est à 1:1</strong>, dans l'unité annoncée."
+      ],
+      list: [
+        "Épaisseur de trait : les traits de coupe se dessinent en filaire, pas en épaisseur — une ligne de 0,25 pt suffit",
+        "Contre-formes : dans un « A » ou un « O », le contre-poinçon doit être identifié, sinon il tombe à la découpe",
+        "Ponts de maintien : sur les pièces très ajourées, prévoyez des attaches temporaires pour éviter le basculement",
+        "Rayon d'outil : en fraisage, un angle interne ne peut jamais être plus vif que le rayon de la fraise",
+        "Sens du fil : sur le bois et l'aluminium brossé, le sens de la matière se voit — précisez-le si le rendu compte"
+      ],
+      note: "Les graphistes du réseau préparent les fichiers de découpe et livrent le DXF ou l'EPS directement exploitable par l'atelier. Si vous n'avez qu'un logo en image, dites-le : la vectorisation est chiffrée à part et elle vous appartient ensuite définitivement."
+    }
+  ],
+  faq: [
+    { q: "Quelle est l'épaisseur maximale que vous pouvez découper ?",
+      a: "Cela dépend du procédé et de la matière. En laser fibre, comptez jusqu'à 20 mm d'acier et 15 mm d'inox sur les machines courantes de nos ateliers ; en laser CO₂, jusqu'à 25 mm de plexiglas. Au-delà, on passe en fraisage numérique (jusqu'à 100 mm) ou en jet d'eau (jusqu'à 200 mm). Indiquez matière et épaisseur dans votre demande : c'est ce qui détermine à quel atelier elle est confiée." },
+    { q: "Puis-je commander une seule pièce ?",
+      a: "Oui. Ces machines ne demandent aucun outillage spécifique, donc l'unité est possible — contrairement à l'injection ou à l'emboutissage. Le temps de programmation reste toutefois le même pour une pièce que pour cinquante : la première coûte proportionnellement cher, et la deuxième nettement moins. Si vous prévoyez d'en reprendre, commandez-les ensemble." },
+    { q: "Mon logo est en JPG, est-ce suffisant ?",
+      a: "Non, il faudra le vectoriser. Une machine numérique suit un tracé, pas une image de pixels. La vectorisation se facture entre 40 et 120 € selon la complexité, une seule fois : le fichier vous reste et vous le réutiliserez pour votre enseigne, votre covering et vos impressions. Les graphistes du réseau s'en chargent si vous le souhaitez." },
+    { q: "Découpez-vous le PVC au laser ?",
+      a: "Jamais, et méfiez-vous d'un atelier qui l'accepterait. Le PVC rigide libère du chlore gazeux à la découpe laser : c'est toxique pour l'opérateur et corrosif pour l'optique de la machine. Le PVC se découpe en fraisage numérique ou sur table de découpe, sans aucune perte de qualité." },
+    { q: "Quel délai pour une pièce sur mesure ?",
+      a: "Sur un fichier vectoriel propre et une matière courante en stock, comptez 3 à 8 jours ouvrés. Ajoutez une semaine si un traitement de surface est prévu — thermolaquage, anodisation, polissage — et deux à trois jours si le fichier demande une reprise. Les urgences se traitent, mais elles se paient." },
+    { q: "La pose est-elle comprise ?",
+      a: "Non, la découpe et la pose sont deux métiers distincts et deux lignes de devis. Les ateliers du réseau livrent la pièce finie ; si vous avez besoin qu'elle soit installée, précisez-le dans votre demande et nous consultons également un poseur — vous recevez alors les deux chiffrages, ce qui reste plus clair qu'un forfait global." }
+  ],
+  related: ["enseignes", "signaletique", "maquette-creation-graphique", "impression-grand-format"]
+}
+
 ];

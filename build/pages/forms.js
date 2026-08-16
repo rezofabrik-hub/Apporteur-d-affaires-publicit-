@@ -609,11 +609,23 @@ function pros(cities) {
             "Intervention de nuit ou hors horaires", "Contrat d'entretien annuel"
           ])}
 
+          ${capGroup("Découpe laser, CNC et usinage", "cap_decoupe", [
+            "Découpe laser CO₂ (plexiglas, bois, textile)",
+            "Découpe laser fibre (acier, inox, alu, laiton)",
+            "Fraisage numérique CNC 2D", "Fraisage numérique CNC 3D",
+            "Découpe jet d'eau", "Découpe plasma",
+            "Table de découpe numérique (carton, PVC, alvéolaire)",
+            "Gravure laser sur métal", "Gravure laser sur plexiglas et bois",
+            "Gravure mécanique", "Usinage de pièces techniques",
+            "Nesting et optimisation de plaque", "Prototypage et pièce unique",
+            "Reprise et vectorisation de fichiers de découpe"
+          ], "Procédés que vous réalisez en interne")}
+
           ${capGroup("Atelier et équipement", "cap_atelier", [
-            "Fraiseuse à commande numérique (CNC)", "Découpe laser",
-            "Découpe jet d'eau", "Plieuse / cisaille", "Poste à souder alu et inox",
+            "Plieuse / cisaille", "Poste à souder alu et inox",
             "Thermoformage / plieuse plexiglas", "Cabine de peinture ou thermolaquage",
             "Menuiserie bois", "Serrurerie / métallerie",
+            "Polissage et ébavurage", "Anodisation",
             "Atelier de montage électrique", "Stockage et logistique"
           ], "Machines dont vous disposez en propre")}
 
@@ -905,9 +917,11 @@ function merci(cities) {
 <section class="hero hero-in-page">
   <div class="hero-bg">${heroImg("hero", 3, "Rue commerçante")}</div>
   <div class="wrap hero-in" id="thanks-msg">
-    <h1>Demande bien reçue</h1>
-    <p class="lead">Merci. Nous étudions votre projet et vous rappelons sous 24 heures ouvrées pour
-    préciser les points techniques. Vos premières propositions arriveront ensuite sous 48 heures.</p>
+    <h1>Demande transmise à notre bureau d'études</h1>
+    <p class="lead">Merci. Votre projet est entre les mains de notre bureau d'études : nous
+    l'analysons, puis nous vous rappelons sous 24 heures ouvrées pour préciser les points techniques
+    avant de le transmettre aux professionnels concernés. Vos premières propositions arriveront
+    ensuite sous 48 heures.</p>
   </div>
 </section>
 
