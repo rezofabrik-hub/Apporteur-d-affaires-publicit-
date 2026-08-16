@@ -15,7 +15,7 @@ module.exports = function partnersPage(cities) {
   /* Le prix affiché est le prix réellement pratiqué. Ce qui est annoncé, c'est
      la hausse à venir — jamais une réduction sur un tarif jamais appliqué. */
   const priceBlock = (pl) => {
-    const d = pl.free ? null : T.launchPriceOn(pl.price);
+    const d = pl.free ? null : T.launchPriceOn(pl);
     const price = `
   <div class="plan-price">
     <b>${esc(pl.price)}</b><span>${esc(P.currency)}${pl.free ? "" : " " + esc(P.priceSuffix)}</span>
@@ -110,7 +110,8 @@ module.exports = function partnersPage(cities) {
       Nous ne pratiquons pas les formules à deux vitesses, où celui qui s'engage moins longtemps
       reçoit moins de demandes. Ce qui change, c'est le tarif : l'année revient à
       <strong>890 € contre 980 € pour deux semestres</strong>, soit 90 € d'économie.
-      Les deux montants sont des tarifs de lancement, relevés de 20 % à la date anniversaire.</p>
+      Les deux montants sont des tarifs de lancement : ils passeront à 690 € et 1 199 € à la
+      date anniversaire du réseau.</p>
     </div>
     ${T.launchPriceBanner()}
     <div class="plans">${planCards}</div>

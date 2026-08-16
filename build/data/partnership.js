@@ -56,11 +56,11 @@ module.exports = {
      ┌──────────────────────────────────────────────────────────────────┐
      │  À FAIRE LE 16 AOÛT 2027 — application de la hausse annoncée      │
      │                                                                  │
-     │  1. Dans `plans` ci-dessous :  490 → 588   et   890 → 1068        │
-     │  2. Dans `pose.plans`, plus bas :  490 → 588   et   890 → 1068    │
-     │  3. Ici même : `active: false`                                    │
-     │  4. Mettre à jour `vatNote` : 408 → 490 HT, 742 → 890 HT          │
-     │  5. `node build/build.js`, puis pousser                           │
+     │  1. `plans` ci-dessous        : price 490 → 690, 890 → 1199       │
+     │  2. `pose.plans`, plus bas    : price 490 → 690, 890 → 1199       │
+     │  3. Ici même                  : `active: false`                   │
+     │  4. `vatNote`                 : 408 → 575 HT, 742 → 999 HT        │
+     │  5. `node build/build.js`, puis pousser                          │
      │                                                                  │
      │  Les abonnements en cours restent au tarif de lancement jusqu'à   │
      │  leur terme : c'est ce que le site promet, contractuellement.     │
@@ -69,15 +69,19 @@ module.exports = {
      │  n'arrive jamais ne renouvellera pas de bonne grâce.              │
      └──────────────────────────────────────────────────────────────────┘
 
-     `rate` = pourcentage de hausse prévu. La date se règle dans
-     build/data/site.js (`launchDate` et `anniversary`).
+     Les prix futurs sont portés par `nextPrice` sur chaque formule, et non
+     par un pourcentage global : les deux hausses ne sont pas du même ordre
+     (+41 % sur six mois, +35 % sur l'année, montants arrondis). Annoncer
+     « +20 % » aurait été faux dès lors que ces montants-là sont ceux qui
+     seront réellement appliqués.
+
+     La date se règle dans build/data/site.js (`launchDate` et `anniversary`).
   --------------------------------------------------------------------- */
   launchPrice: {
     active: true,
-    rate: 20,
     label: "Tarif de lancement",
     headline: "Tarif de lancement, bloqué sur toute la durée souscrite",
-    note: "Les montants ci-dessous sont les tarifs de lancement du réseau ; ils seront relevés de 20 % à la date anniversaire. Le tarif que vous obtenez aujourd'hui, comme votre accès au réseau, est bloqué pour toute la durée souscrite — six mois ou un an selon la formule — hausse comprise."
+    note: "Les montants ci-dessous sont les tarifs de lancement du réseau ; ils seront relevés à la date anniversaire. Le tarif que vous obtenez aujourd'hui, comme votre accès au réseau, est bloqué pour toute la durée souscrite — six mois ou un an selon la formule — hausse comprise."
   },
 
   /* Devise et mentions affichées sous les prix.
@@ -86,7 +90,7 @@ module.exports = {
      lui qui sert de base à tous les calculs d'amortissement ci-dessous. */
   currency: "€",
   priceSuffix: "TTC",
-  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € pour l'abonnement 6 mois et de 742 € pour l'abonnement 12 mois. Tarifs de lancement, relevés de 20 % à la date anniversaire du réseau. Sans reconduction tacite : vous décidez du renouvellement.",
+  vatNote: "Montants toutes taxes comprises, TVA 20 % incluse — que vous récupérez : la charge réellement supportée est de 408 € pour l'abonnement 6 mois et de 742 € pour l'abonnement 12 mois. Tarifs de lancement : ils passeront à 690 € et 1 199 € à la date anniversaire du réseau. Sans reconduction tacite : vous décidez du renouvellement.",
 
   /* ---------------------------------------------------------------------
      Les formules, dans l'ordre du parcours réel : on essaie gratuitement,
@@ -125,6 +129,7 @@ module.exports = {
       name: "Abonnement 6 mois",
       duration: "6 mois",
       price: "490",
+      nextPrice: "690",   // tarif au 16 août 2027
       priceNote: "soit 82 € par mois TTC — 408 € HT à votre charge réelle",
       pitch: "Tous les avantages du réseau, sur un engagement de six mois seulement.",
       audience: "Artisan, indépendant ou entreprise qui préfère ne pas s'engager sur l'année",
@@ -151,6 +156,7 @@ module.exports = {
       name: "Abonnement 12 mois",
       duration: "12 mois",
       price: "890",
+      nextPrice: "1199",   // tarif au 16 août 2027
       priceNote: "soit 74,17 € par mois TTC — 90 € de moins que deux semestres",
       featured: true,
       badge: "Le plus choisi",
@@ -280,7 +286,7 @@ module.exports = {
     { q: "Combien de partenaires par zone et par métier ?", a: "Deux à quatre selon la densité du territoire. Nous ne saturons pas une zone : un partenaire qui ne transforme jamais rien ne renouvelle pas, ce qui n'a d'intérêt pour personne." },
     { q: "Que se passe-t-il si je ne reçois pas de demandes ?", a: "Nous suivons le volume transmis à chaque partenaire. Si votre zone se révèle moins active que prévu, nous élargissons votre périmètre ou vos métiers déclarés sans surcoût. C'est précisément la raison d'être de la formule Découverte : deux mois à zéro euro vous permettent de mesurer le flux réel de votre secteur avant d'engager le moindre euro." },
     { q: "L'abonnement est-il reconduit automatiquement ?", a: "Non, et la formule Découverte ne bascule pas davantage en abonnement payant toute seule. Aucune reconduction tacite nulle part : nous vous recontactons avant l'échéance avec le bilan des demandes transmises, et vous décidez. C'est un choix assumé — un partenaire reconduit par inertie est un partenaire mécontent." },
-    { q: "Qu'est-ce que le tarif de lancement ?", a: "Ce sont les prix pratiqués pendant la constitution du réseau : 490 € pour six mois et 890 € pour douze. Ils seront relevés de 20 % à la date anniversaire du réseau, soit 588 € et 1 068 €. Nous l'annonçons à l'avance plutôt que de barrer un prix que nous n'avons jamais pratiqué : le tarif que vous obtenez aujourd'hui est le vrai, et il reste acquis pour toute la durée de votre abonnement." },
+    { q: "Qu'est-ce que le tarif de lancement ?", a: "Ce sont les prix pratiqués pendant la constitution du réseau : 490 € pour six mois et 890 € pour douze. À la date anniversaire du réseau, ils passeront à 690 € et 1 199 €. Nous l'annonçons à l'avance plutôt que de barrer un prix que nous n'avons jamais pratiqué : le tarif que vous obtenez aujourd'hui est le vrai, et il reste acquis pour toute la durée de votre abonnement." },
     { q: "Mon tarif peut-il augmenter en cours d'abonnement ?", a: "Non. Le contrat, l'accès au réseau et le tarif sont bloqués sur toute la durée que vous avez souscrite : six mois pour la formule semestrielle, un an pour la formule annuelle. La hausse du 16 août ne s'applique qu'aux nouvelles souscriptions et aux renouvellements postérieurs — jamais à un abonnement en cours. Un abonnement d'un an signé la veille de la hausse court donc au tarif de lancement jusqu'à son terme." },
     { q: "Le service de pose suit-il le même tarif de lancement ?", a: "Oui, aux mêmes montants et avec la même hausse programmée à la date anniversaire. Les deux offres suivent la même grille depuis le départ." },
     { q: "Quelle différence entre l'abonnement 6 mois et l'abonnement 12 mois ?", a: "La durée d'engagement et le prix, rien d'autre. Les prestations sont strictement identiques : même zone de trois départements, mêmes métiers illimités, même priorité d'envoi, même page dédiée, même mise en avant sur les pages villes. Nous avons écarté le principe des formules à deux vitesses — un partenaire qui paie est un partenaire servi. L'engagement annuel se récompense donc sur le tarif : 890 € contre 980 € pour deux semestres, soit 90 € d'économie." },
@@ -307,6 +313,7 @@ module.exports = {
         name: "Pose Ponctuelle",
         duration: "6 mois",
         price: "490",
+        nextPrice: "690",
         priceNote: "soit 82 € par mois TTC — 408 € HT à votre charge réelle",
         pitch: "Pour les structures qui posent quelques chantiers par mois hors de leur zone.",
         audience: "Enseigniste, imprimeur ou agence de 1 à 5 personnes",
@@ -324,6 +331,7 @@ module.exports = {
         name: "Pose Illimitée",
         duration: "12 mois",
         price: "890",
+        nextPrice: "1199",
         priceNote: "soit 74,17 € par mois TTC — demandes illimitées",
         featured: true,
         badge: "Pour les fabricants",

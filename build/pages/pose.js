@@ -18,7 +18,7 @@ module.exports = function posePage(cities) {
   <div class="plan-price">
     <b>${esc(pl.price)}</b><span>${esc(P.currency)} ${esc(P.priceSuffix)}</span><em>/ ${esc(pl.duration)}</em>
   </div>
-  ${(() => { const d = T.launchPriceOn(pl.price); return d ? `
+  ${(() => { const d = T.launchPriceOn(pl); return d ? `
   <p class="plan-note plan-note-launch"><b>${esc(P.launchPrice.label)}</b> — soit
     ${esc(d.perMonth(pl.duration))} ${esc(P.currency)} par mois. Ce tarif passe à
     <b>${esc(d.after)} ${esc(P.currency)}</b> le ${esc(T.site.anniversary)} — mais le vôtre

@@ -423,21 +423,23 @@ function trustBar() {
 /** Bandeau d'offre de lancement — masqué automatiquement si `launch.active` est faux. */
 /* ------------------------------------------------- tarif de lancement
    On n'affiche jamais un prix barré : le tarif actuel est le prix réel, et
-   c'est la hausse à venir qui est annoncée. Le montant futur se déduit du
-   tarif et du taux, il n'est écrit nulle part. */
-/** Millier séparé par une espace insécable, comme le veut l'usage français. */
+   c'est la hausse à venir qui est annoncée. Le prix futur vient de la formule
+   elle-même (`nextPrice`) : les deux hausses n'étant pas du même ordre, un
+   pourcentage global aurait été faux sur au moins l'une des deux. */
 const eur = (n) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0");
 
-function launchPriceOn(price) {
+function launchPriceOn(plan) {
   const L = partnership.launchPrice;
-  const base = Number(String(price).replace(/\s/g, ""));
-  if (!L || !L.active || !base) return null;
+  if (!L || !L.active || !plan || !plan.nextPrice) return null;
+  const now = Number(String(plan.price).replace(/\s/g, ""));
+  const after = Number(String(plan.nextPrice).replace(/\s/g, ""));
+  if (!now || !after) return null;
   return {
-    now: base,
-    after: eur(base * (1 + L.rate / 100)),
-    rate: L.rate,
-    perMonth: (d) => (base / parseInt(d, 10)).toFixed(2).replace(".", ","),
-    ht: eur(base / 1.2)
+    now, after: eur(after),
+    rise: eur(after - now),
+    pct: Math.round(((after - now) / now) * 100),
+    perMonth: (d) => (now / parseInt(d, 10)).toFixed(2).replace(".", ","),
+    ht: eur(now / 1.2)
   };
 }
 
@@ -447,10 +449,10 @@ function launchPriceBanner() {
   if (!L || !L.active) return "";
   return `<div class="disc-banner">
   <b>${esc(L.headline)}</b>
-  <span>Les tarifs ci-dessous seront relevés de <strong>${esc(L.rate)} %</strong> le
-  <strong>${esc(site.anniversary)}</strong>. Contrat, accès et tarif sont
-  <strong>bloqués sur toute la durée souscrite</strong> — six mois ou un an selon la
-  formule : une hausse ne touche jamais un abonnement en cours.</span>
+  <span>Les tarifs ci-dessous seront relevés le <strong>${esc(site.anniversary)}</strong>.
+  Contrat, accès et tarif sont <strong>bloqués sur toute la durée souscrite</strong> —
+  six mois ou un an selon la formule : une hausse ne touche jamais un abonnement
+  en cours.</span>
 </div>`;
 }
 
