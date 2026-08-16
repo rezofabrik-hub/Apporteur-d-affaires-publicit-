@@ -29,11 +29,20 @@ const b2bPage = require("./pages/b2b");
 
 const ROOT = path.join(__dirname, "..");
 
-/* Nombre de villes croisées avec les 8 métiers.
-   Les 8 angles rédactionnels et la note technique propre à chaque métier
+/* Nombre de villes croisées avec les métiers.
+   Les angles rédactionnels et la note technique propres à chaque métier
    limitent la répétition ; monter beaucoup plus haut produirait des pages
    trop proches les unes des autres, ce que Google traite en pages satellites. */
 const MATRIX_CITIES = 60;
+
+/* Villes ajoutées à la matrice hors du seuil ci-dessus, parce qu'un réseau
+   franchisé y tient un site dédié — pano-macon.fr, pano-agen.fr et les
+   autres. Ces sites-là comptent entre 2 et 93 URL et n'ont, pour la plupart,
+   aucune page « métier + ville » : c'est précisément le terrain où une page
+   « caisson lumineux à Mâcon » se gagne. Les villes déjà couvertes par le
+   seuil ne sont pas répétées ici. */
+const MATRIX_EXTRA = ["macon", "chambery", "valence", "annemasse", "agen", "auxerre"];
+let matrixCitiesCount = MATRIX_CITIES;
 const written = [];
 
 function write(file, html) {
@@ -108,7 +117,12 @@ function run() {
   sectors.forEach((sec) => write("signaletique-" + sec.slug + ".html", sectorPage(sec, cities)));
 
   /* Matrice métier x ville : les requêtes locales qui convertissent */
-  const matrixCities = cities.slice(0, MATRIX_CITIES);
+  const dejaDansMatrice = new Set(cities.slice(0, MATRIX_CITIES).map((c) => c.slug));
+  const matrixCities = cities.slice(0, MATRIX_CITIES).concat(
+    MATRIX_EXTRA.map((slug) => cities.find((c) => c.slug === slug && !dejaDansMatrice.has(slug)))
+      .filter(Boolean)
+  );
+  matrixCitiesCount = matrixCities.length;
   let n = 0;
   services.forEach((svc) => {
     matrixCities.forEach((city, ci) => {
@@ -167,8 +181,8 @@ function run() {
   console.log(`  · ${cities.length} pages villes`);
   console.log(`  · ${sectors.length + 1} pages secteurs`);
   console.log(`  · ${projects.length + 1} pages réalisations`);
-  console.log(`  · ${services.length * MATRIX_CITIES} pages métier x ville`);
-  console.log(`  · ${written.length - services.length - cities.length - sectors.length - 1 - projects.length - 1 - services.length * MATRIX_CITIES - 2} pages transverses + sitemap + robots`);
+  console.log(`  · ${services.length * matrixCitiesCount} pages métier x ville`);
+  console.log(`  · ${written.length - services.length - cities.length - sectors.length - 1 - projects.length - 1 - services.length * matrixCitiesCount - 2} pages transverses + sitemap + robots`);
 }
 
 run();
