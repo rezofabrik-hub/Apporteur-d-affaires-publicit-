@@ -7,7 +7,7 @@ const FAQ = [
   { q: "Combien de devis vais-je recevoir ?", a: "En général deux à trois propositions, établies sur le même cahier des charges pour être réellement comparables. Nous préférons trois devis sérieux à dix devis approximatifs : au-delà, le tri devient un travail à part entière et les professionnels se désengagent." },
   { q: "Qui réalise réellement les travaux ?", a: "Des entreprises indépendantes de votre région : enseignistes fabricants, imprimeurs grand format, poseurs habilités au travail en hauteur, graphistes et spécialistes de l'objet publicitaire. Nous vérifions leurs assurances, leurs qualifications et leurs capacités de production avant tout référencement." },
   { q: "Intervenez-vous partout en France ?", a: "Oui, en métropole comme en outre-mer. Le réseau s'est constitué depuis Perpignan et les Pyrénées-Orientales, puis s'est étendu aux grandes agglomérations. Lorsqu'une zone est encore peu couverte, nous sollicitons directement des professionnels locaux pour votre projet." },
-  { q: "En quoi est-ce différent d'une franchise d'enseignes ?", a: "Une franchise vous oriente vers son propre point de vente, avec son catalogue et ses fournisseurs imposés. Nous sommes un réseau ouvert d'entreprises indépendantes : selon votre projet, nous consultons un fabricant d'enseignes lumineuses, un imprimeur ou un poseur spécialisé — celui dont l'outil de production correspond réellement à votre besoin." },
+  { q: "En quoi est-ce différent d'une franchise d'enseignes ?", a: "Une franchise a un point de vente à remplir : elle vous oriente vers son propre atelier, son catalogue et ses fournisseurs référencés, parce que c'est son modèle. Nous n'avons aucun atelier à remplir et nous ne sommes liés à aucun réseau. Nous partons donc du projet et nous cherchons l'outil de production qui lui correspond — atelier indépendant le plus souvent, agence franchisée parfois, quand c'est elle qui a la bonne machine et la bonne disponibilité. La différence n'est pas de savoir qui fabrique, mais de savoir si celui qui vous oriente a un intérêt à vous orienter là." },
   { q: "Que se passe-t-il après ma demande ?", a: "Nous vous rappelons pour préciser le besoin — dimensions, contraintes de façade, délais, budget. Nous rédigeons ensuite un cahier des charges clair et le transmettons aux professionnels adaptés. Vous recevez leurs propositions directement, et vous traitez ensuite en direct avec celui que vous choisissez." }
 ];
 
@@ -153,17 +153,19 @@ module.exports = function home(cities) {
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Notre différence</span>
-      <h2>Un réseau ouvert d'artisans, pas une franchise</h2>
-      <p class="lead">Les réseaux franchisés du secteur vous orientent vers leur propre point de vente,
-      avec son catalogue et ses fournisseurs. Notre modèle est inverse : nous partons de votre projet,
-      puis nous cherchons l'atelier dont l'outil de production lui correspond.</p>
+      <h2>Un réseau ouvert, sans atelier à remplir</h2>
+      <p class="lead">Un réseau franchisé a un point de vente à alimenter : il vous oriente vers le
+      sien, avec son catalogue et ses fournisseurs référencés. Nous ne possédons aucun atelier et ne
+      sommes liés à aucune enseigne — nous partons donc de votre projet, puis nous cherchons l'outil
+      de production qui lui correspond, où qu'il se trouve.</p>
     </div>
     <div class="grid g-3">
       <div class="tile">
         <span class="tile-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20z"/><circle cx="12" cy="12" r="10"/></svg></span>
         <h3>Le bon atelier, pas le seul disponible</h3>
         <p>Une enseigne lumineuse sur mesure, un covering de flotte et un plan de signalétique d'hôpital
-        ne se fabriquent pas dans le même atelier. Nous orientons vers l'outil de production adapté.</p>
+        ne se fabriquent pas dans le même atelier. Nous orientons vers l'outil de production adapté —
+        sans exclure personne par principe, y compris une agence de réseau quand c'est elle qui l'a.</p>
       </div>
       <div class="tile">
         <span class="tile-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg></span>
