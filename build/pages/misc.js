@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const T = require("../lib/tpl");
+const sectors = require("../data/sectors");
 const { site, services, esc, attr, img, heroImg } = T;
 
 /* ════════════════════════════════════════════════════════════ VILLES */
@@ -264,6 +265,59 @@ function reglementation(cities) {
     { q: "Une enseigne doit-elle être éteinte la nuit ?", a: "Oui dans le cas général : les enseignes lumineuses doivent être éteintes entre 1 heure et 6 heures du matin, sauf lorsque l'activité s'exerce à ces heures. Certaines communes appliquent des plages plus larges via leur règlement local. Une horloge astronomique règle le problème pour une centaine d'euros." }
   ];
 
+  /* ----------------------------------------------------------------------
+     Plaque tournante vers les treize blocs réglementaires des pages
+     secteur. Sans ce routage, ces blocs n'avaient aucun lien entrant : ils
+     existaient sans que rien n'y mène — exactement le défaut corrigé sur la
+     matrice métier x ville.
+
+     Le regroupement par nature d'obligation n'est pas cosmétique : c'est
+     lui qui fait de cette page une référence plutôt qu'un sommaire. Un
+     lecteur qui découvre que son métier figure sous « l'affichage extérieur
+     des prix est obligatoire » a appris quelque chose avant même d'avoir
+     cliqué. ---------------------------------------------------------------------- */
+  const parFamille = {};
+  sectors.filter((sec) => sec.reglementation && sec.reglementation.famille)
+    .forEach((sec) => {
+      const f = sec.reglementation.famille;
+      (parFamille[f] = parFamille[f] || []).push(sec);
+    });
+  const ordreFamilles = [
+    "L'affichage extérieur des prix est obligatoire",
+    "Ce que vous avez le droit d'afficher",
+    "La signalétique est un équipement de sécurité",
+    "Un tiers décide, et cela commande le calendrier"
+  ].filter((f) => parFamille[f]);
+  const nbSecteurs = Object.keys(parFamille).reduce((n, f) => n + parFamille[f].length, 0);
+
+  const secteursBloc = nbSecteurs ? `
+<section class="sec bg-2" id="par-secteur">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Secteur par secteur</span>
+      <h2>Ce que la loi impose, métier par métier</h2>
+      <p class="lead">Les règles générales ci-dessus valent pour tout le monde. Mais ${nbSecteurs}
+      activités ont en plus leurs obligations propres, et ce sont elles qui surprennent le plus :
+      chacune a sa page, avec les textes applicables et leurs sources.</p>
+    </div>
+    ${ordreFamilles.map((f) => `<div class="fam">
+      <h3>${esc(f)}</h3>
+      <div class="grid g-2">
+        ${parFamille[f].map((sec) => `<a class="card card-link fam-card"
+          href="signaletique-${sec.slug}.html#reglementation">
+          <div class="card-body">
+            <h4>${esc(sec.nav)}</h4>
+            <p>${esc(sec.reglementation.resume)}</p>
+          </div>
+        </a>`).join("")}
+      </div>
+    </div>`).join("")}
+    <div class="note"><p>Chacune de ces pages cite les textes applicables et renvoie à leur source
+    officielle. Les valeurs chiffrées locales — surface, saillie, tarif de TLPE — relèvent du
+    règlement local de publicité de votre commune et se vérifient au cas par cas.</p></div>
+  </div>
+</section>` : "";
+
   const body = `
 <section class="hero hero-in-page">
   <div class="hero-bg">${heroImg("enseigne", 2, "Enseigne de commerce en façade")}</div>
@@ -371,6 +425,7 @@ function reglementation(cities) {
   </div>
 </section>
 
+${secteursBloc}
 <section class="sec bg-3">
   <div class="wrap wrap-narrow">
     <div class="sec-head center"><span class="eyebrow">Questions fréquentes</span>

@@ -1669,3 +1669,21 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
 }
 .gal-doc figcaption strong { color: var(--tx); }
 @media (max-width: 560px) { .gal-doc img { height: 200px; } }
+
+/* =========================================================================
+   40 · Routage réglementaire par famille d'obligation
+   -------------------------------------------------------------------------
+   Le regroupement par nature d'obligation est le contenu, pas la mise en
+   page : un lecteur qui voit son métier sous « l'affichage extérieur des
+   prix est obligatoire » a appris quelque chose avant d'avoir cliqué. Le
+   titre de famille doit donc se lire comme une affirmation, pas comme une
+   étiquette de rangement.
+   ========================================================================= */
+.fam { margin-bottom: 40px; }
+.fam:last-of-type { margin-bottom: 0; }
+.fam > h3 {
+  font-size: 1.02rem; margin: 0 0 16px; padding-bottom: 10px;
+  border-bottom: 2px solid var(--signal); display: inline-block;
+}
+.fam-card h4 { font-size: 1rem; margin: 0 0 .4em; }
+.fam-card p { font-size: .9rem; color: var(--tx-2); margin: 0; line-height: 1.6; }

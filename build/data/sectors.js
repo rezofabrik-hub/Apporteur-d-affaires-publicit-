@@ -52,6 +52,8 @@ module.exports = [
      règlement local de publicité, et les inventer ruinerait le reste.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "Ce que vous avez le droit d'afficher",
+    resume: "La croix verte et le caducée sont des marques collectives de l'Ordre des pharmaciens : une parapharmacie ne peut pas en poser.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre l'enseigne d'une officine",
     lead: "La pharmacie est le commerce le plus encadré en matière d'enseigne : quatre corpus de règles s'y superposent, qui ne relèvent ni des mêmes autorités ni des mêmes délais. C'est pour cela qu'un enseigniste généraliste se trompe presque toujours sur au moins un point.",
@@ -214,6 +216,8 @@ module.exports = [
      guichets, deux calendriers, une seule façade.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "L'affichage extérieur des prix est obligatoire",
+    resume: "Prix lisibles de l'extérieur, carte intérieure identique, et les prix de cinq vins. La terrasse, elle, relève du domaine public.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre la façade et la terrasse d'un établissement",
     lead: "Deux régimes se partagent votre devanture : celui de l'enseigne, qui regarde le mur, et celui du domaine public, qui regarde le trottoir. Ils n'ont ni le même service instructeur, ni le même délai, ni la même durée de validité.",
@@ -336,6 +340,8 @@ module.exports = [
      est irrégulière.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "Ce que vous avez le droit d'afficher",
+    resume: "La liste des mentions autorisées sur la plaque est limitative. Tout ce qui n'y figure pas est à proscrire.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre la plaque et la signalétique d'un cabinet",
     lead: "Ici, la contrainte ne porte pas d'abord sur la taille ou l'emplacement : elle porte sur <em>ce que vous avez le droit d'écrire</em>. La liste des mentions autorisées est limitative, et tout ce qui n'y figure pas est à proscrire.",
@@ -458,6 +464,8 @@ module.exports = [
      conformité est exactement ce que le réseau vend.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "L'affichage extérieur des prix est obligatoire",
+    resume: "Taux horaires et forfaits TTC à l'entrée, lisibles depuis l'extérieur. Jusqu'à 15 000 € d'amende, et quatre contrôles sur dix suivis de mesures.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre l'enseigne et l'affichage d'un garage",
     lead: "Le garage est le seul de nos secteurs où la signalétique extérieure est une obligation légale assortie d'une amende. Ce n'est pas une question d'image : c'est un poste de conformité, et la DGCCRF le contrôle.",
@@ -581,6 +589,8 @@ module.exports = [
      faire.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "L'affichage extérieur des prix est obligatoire",
+    resume: "Une dizaine de tarifs au minimum, visibles depuis l'extérieur et repris au lieu de paiement.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre la vitrine d'un salon",
     lead: "Votre vitrine n'est pas seulement un support d'image : c'est, au sens du code de la consommation, <em>un document tarifaire</em>. Et il doit être lisible sans que le client ait à pousser la porte.",
@@ -703,6 +713,8 @@ module.exports = [
      1er avril 2022 et beaucoup de vitrines portent encore l'ancienne.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "L'affichage extérieur des prix est obligatoire",
+    resume: "Le barème s'affiche au même format et au même emplacement que les annonces — la loi écrit le plan de vitrine.",
     eyebrow: "Le cadre juridique",
     titre: "Ce que la loi impose à votre vitrine",
     lead: "L'agence immobilière est le seul de nos secteurs où le texte ne dit pas seulement <em>ce qu'</em>il faut afficher, mais <em>à quel format et à quel emplacement</em>. La vitrine n'est pas un support libre : c'est un document réglementaire.",
@@ -824,6 +836,8 @@ module.exports = [
      le meilleur service que la page puisse rendre.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "Un tiers décide, et cela commande le calendrier",
+    resume: "Le panneau de chantier fait courir le délai de recours des tiers. Sans affichage régulier, l'autorisation n'est jamais purgée.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre le panneau de chantier et la communication du bâtiment",
     lead: "Dans ce métier, un panneau n'est pas un support de communication : <em>c'est une formalité juridique</em>. De son affichage dépend la sécurité même de l'autorisation d'urbanisme.",
@@ -945,6 +959,8 @@ module.exports = [
      qui l'ignore livre des panneaux non conformes qu'il faudra refaire.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "La signalétique est un équipement de sécurité",
+    resume: "Formes et couleurs imposées par le code du travail : sur ce lot, la charte graphique de l'entreprise n'a pas voix au chapitre.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre la signalétique d'un site industriel",
     lead: "Sur un site de production ou un entrepôt, la signalétique ne se choisit pas : <em>elle se conforme</em>. Formes, couleurs et pictogrammes sont fixés par le code du travail, et un panneau au mauvais format n'est pas un choix graphique — c'est un panneau non conforme.",
@@ -1067,6 +1083,8 @@ module.exports = [
      vérifie sa vitrine, et il appelle.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "L'affichage extérieur des prix est obligatoire",
+    resume: "Depuis mai 2022, le prix barré doit être le prix le plus bas pratiqué dans les trente jours précédents.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre votre vitrine et vos prix affichés",
     lead: "La façade relève du droit de l'enseigne ; ce que vous écrivez <em>dans</em> la vitrine relève du droit de la consommation. Le second est bien plus contrôlé que le premier, et il a changé récemment.",
@@ -1190,6 +1208,8 @@ module.exports = [
      sera déposé.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "La signalétique est un équipement de sécurité",
+    resume: "Les préenseignes sont interdites depuis 2015 ; seul le gestionnaire de voirie peut implanter la signalisation qui les remplace.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre la signalétique publique et le jalonnement",
     lead: "Deux mondes se croisent ici : celui de l'enseigne, qui relève du code de l'environnement, et celui du <em>jalonnement routier</em>, qui relève du code de la route. Les confondre conduit à poser des panneaux qui seront déposés.",
@@ -1312,6 +1332,8 @@ module.exports = [
      délai contractuel.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "Un tiers décide, et cela commande le calendrier",
+    resume: "Une charte est nationale, le droit de l'enseigne est communal. Quand les deux se contredisent, le règlement local l'emporte.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre le déploiement d'une enseigne de réseau",
     lead: "Une charte est nationale ; le droit de l'enseigne est communal. Tout le sujet du secteur tient dans cette phrase — et dans la question que l'on pose trop tard : <em>qui dépose les supports le jour où le contrat s'arrête ?</em>",
@@ -1434,6 +1456,8 @@ module.exports = [
      avant que le droit ne s'en mêle.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "Ce que vous avez le droit d'afficher",
+    resume: "La loi Évin interdit la publicité pour l'alcool en enceinte sportive, et aussi le parrainage — maillots et noms de tribune compris.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre la signalétique d'un équipement sportif",
     lead: "Un club vit de ses partenaires et de ses panneaux ; c'est précisément ce que le droit encadre le plus. <em>Ce que vous avez le droit d'afficher</em> compte ici autant que la façon de l'afficher.",
@@ -1575,6 +1599,8 @@ module.exports = [
      tempo commercial en découle.
      ---------------------------------------------------------------------- */
   reglementation: {
+    famille: "La signalétique est un équipement de sécurité",
+    resume: "Consignes d'incendie et plans des sous-sols affichés en hall et près des escaliers : l'emplacement est fixé par le texte.",
     eyebrow: "Le cadre juridique",
     titre: "Ce qui encadre la signalétique des parties communes",
     lead: "Deux logiques se superposent : des obligations d'affichage nommées par les textes, et une <em>mécanique de décision</em> — celle de la copropriété — qui commande les délais bien plus que la fabrication.",

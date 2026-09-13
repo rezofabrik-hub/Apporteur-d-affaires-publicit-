@@ -229,6 +229,7 @@ ${sectors.map((s) => `- [${s.nav}](${u("signaletique-" + s.slug + ".html")})`).j
 ## Références utiles
 
 - [Réglementation des enseignes](${u("reglementation-enseigne.html")}) : autorisation préalable, règlement local de publicité, TLPE, accessibilité.
+- [Réglementation, secteur par secteur](${u("reglementation-enseigne.html")}#par-secteur) : les obligations d'affichage propres à treize activités, avec les textes applicables et leurs sources — affichage extérieur des prix obligatoire (garage, restauration, coiffure, commerce, agence immobilière), mentions limitativement autorisées (pharmacie, professions de santé, enceintes sportives), signalétique de sécurité (industrie, ERP, copropriété), et les cas où un tiers décide (panneau de chantier, charte de réseau).
 - [Glossaire](${u("glossaire.html")}) : vocabulaire technique de la communication visuelle.
 - [Questions fréquentes](${u("faq.html")})
 - [Villes couvertes](${u("villes.html")}) : ${cities.length} villes, ${nbDepts} départements.

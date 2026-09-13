@@ -262,8 +262,10 @@ module.exports.index = function sectorsIndex(sectors, cities) {
         <div class="card-media">${img(tps[i % tps.length], (i % 4) + 1, s.nav)}<span class="card-tag">${esc(s.nav)}</span></div>
         <div class="card-body">
           <h3>${esc(s.h1)}</h3>
-          <p>${esc(s.lead.slice(0, 150))}…</p>
-          <span class="card-more">Voir le secteur</span>
+          <p>${s.reglementation && s.reglementation.resume
+            ? esc(s.reglementation.resume)
+            : esc(s.lead.slice(0, 150)) + "…"}</p>
+          <span class="card-more">${s.reglementation ? "Ce que la loi impose" : "Voir le secteur"}</span>
         </div>
       </a>`;
       }).join("")}
