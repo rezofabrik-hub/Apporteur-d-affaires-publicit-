@@ -1592,3 +1592,14 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
    principal, déjà juste au-dessus de la barre d'action fixe. Il est repris
    plus bas dans la page, où il a la place de se lire. */
 @media (max-width: 680px) { .hero-card { display: none; } }
+
+/* Sur les écrans les plus étroits (320 px), le bouton principal du hero
+   arrivait exactement au ras de la barre d'action fixe : il n'était pas
+   recouvert, mais il la touchait, ce qui se lit comme un défaut. On récupère
+   la vingtaine de pixels manquants sur les marges du hero, qui sont
+   surdimensionnées à cette largeur. */
+@media (max-width: 360px) {
+  .hero { padding-block: 42px 56px; }
+  .hero-badge { margin-bottom: 18px; }
+  .hero .btns { margin-top: 26px; }
+}

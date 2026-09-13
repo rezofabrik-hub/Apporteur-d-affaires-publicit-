@@ -88,8 +88,8 @@
   },
   {
    "name": "signaletique-2",
-   "w": 1023,
-   "h": 681
+   "w": 1024,
+   "h": 683
   },
   {
    "name": "signaletique-3",
@@ -99,25 +99,10 @@
   {
    "name": "signaletique-4",
    "w": 1024,
-   "h": 768
+   "h": 683
   },
   {
    "name": "signaletique-5",
-   "w": 1024,
-   "h": 768
-  },
-  {
-   "name": "signaletique-6",
-   "w": 1024,
-   "h": 768
-  },
-  {
-   "name": "signaletique-7",
-   "w": 1024,
-   "h": 768
-  },
-  {
-   "name": "signaletique-8",
    "w": 1024,
    "h": 768
   }
@@ -180,57 +165,27 @@
   {
    "name": "covering-1",
    "w": 1024,
-   "h": 679
+   "h": 768
   },
   {
    "name": "covering-2",
    "w": 1024,
-   "h": 682
+   "h": 768
   },
   {
    "name": "covering-3",
    "w": 1024,
-   "h": 768
+   "h": 683
   },
   {
    "name": "covering-4",
-   "w": 1023,
-   "h": 713
+   "w": 1024,
+   "h": 768
   },
   {
    "name": "covering-5",
    "w": 1024,
-   "h": 538
-  },
-  {
-   "name": "covering-6",
-   "w": 1024,
-   "h": 939
-  },
-  {
-   "name": "covering-7",
-   "w": 1024,
-   "h": 625
-  },
-  {
-   "name": "covering-8",
-   "w": 1024,
-   "h": 812
-  },
-  {
-   "name": "covering-9",
-   "w": 1024,
-   "h": 768
-  },
-  {
-   "name": "covering-10",
-   "w": 1010,
-   "h": 1024
-  },
-  {
-   "name": "covering-11",
-   "w": 1024,
-   "h": 768
+   "h": 869
   }
  ],
  "covering-flotte": [
@@ -242,12 +197,12 @@
   {
    "name": "covering-flotte-2",
    "w": 1024,
-   "h": 659
+   "h": 768
   },
   {
    "name": "covering-flotte-3",
    "w": 1024,
-   "h": 623
+   "h": 590
   }
  ],
  "impression": [
@@ -493,32 +448,27 @@
  ],
  "vitrophanie": [
   {
-   "name": "vitrophanie-4",
-   "w": 1023,
-   "h": 685
-  },
-  {
-   "name": "vitrophanie-6",
-   "w": 1023,
-   "h": 682
-  },
-  {
-   "name": "vitrophanie-3",
+   "name": "vitrophanie-1",
    "w": 1024,
-   "h": 768
+   "h": 687
   },
   {
    "name": "vitrophanie-2",
    "w": 1024,
-   "h": 703
+   "h": 768
+  },
+  {
+   "name": "vitrophanie-3",
+   "w": 1024,
+   "h": 826
+  },
+  {
+   "name": "vitrophanie-4",
+   "w": 1024,
+   "h": 768
   },
   {
    "name": "vitrophanie-5",
-   "w": 1023,
-   "h": 542
-  },
-  {
-   "name": "vitrophanie-1",
    "w": 1024,
    "h": 768
   }
@@ -966,20 +916,15 @@
   {
    "name": "flotte-1",
    "w": 1024,
-   "h": 697
+   "h": 639
   },
   {
    "name": "flotte-2",
    "w": 1024,
-   "h": 768
+   "h": 529
   },
   {
    "name": "flotte-3",
-   "w": 800,
-   "h": 705
-  },
-  {
-   "name": "flotte-4",
    "w": 1024,
    "h": 768
   }
@@ -1004,23 +949,13 @@
  "concession": [
   {
    "name": "concession-1",
-   "w": 1013,
-   "h": 645
+   "w": 1024,
+   "h": 651
   },
   {
    "name": "concession-2",
    "w": 1024,
-   "h": 761
-  },
-  {
-   "name": "concession-3",
-   "w": 1024,
-   "h": 619
-  },
-  {
-   "name": "concession-4",
-   "w": 1023,
-   "h": 592
+   "h": 683
   }
  ],
  "standexpo": [
@@ -1071,22 +1006,27 @@
   {
    "name": "restaurant-1",
    "w": 1024,
-   "h": 833
+   "h": 734
   },
   {
    "name": "restaurant-2",
    "w": 1024,
-   "h": 1024
+   "h": 768
   },
   {
    "name": "restaurant-3",
    "w": 1024,
-   "h": 496
+   "h": 837
   },
   {
    "name": "restaurant-4",
    "w": 1024,
-   "h": 752
+   "h": 768
+  },
+  {
+   "name": "restaurant-5",
+   "w": 1024,
+   "h": 754
   }
  ],
  "coiffure": [
