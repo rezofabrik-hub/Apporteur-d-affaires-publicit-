@@ -1457,3 +1457,83 @@ td { color: var(--tx-2); }
    pas, elle n'a aucun effet. Le `min-width` couvre les pseudonymes de deux
    caractères, qui satisfaisaient la hauteur mais pas la largeur. */
 td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
+
+/* =========================================================================
+   37 · Argumentaire d'adhésion et maillage de la matrice
+   -------------------------------------------------------------------------
+   Deux familles arrivées ensemble : les blocs de la page « Pourquoi
+   adhérer » et les listes de maillage qui relient les pages de tête à la
+   matrice métier x ville.
+   ========================================================================= */
+
+/* Les deux sens du réseau. La carte « latéral » est teintée pro parce que
+   c'est l'espace partenaire ; la carte « descendant » reste signal, comme
+   tout ce qui concerne le client final. */
+.sens-card { border-top: 3px solid var(--signal); }
+.sens-card:nth-child(2) { border-top-color: var(--pro); }
+.sens-fleche {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border-radius: 50%; margin-bottom: 14px;
+  background: var(--signal-100); color: var(--signal-600);
+  font-size: 1.35rem; line-height: 1; font-weight: 700;
+}
+.sens-card:nth-child(2) .sens-fleche { background: var(--pro-100); color: var(--pro-700); }
+.sens-contre {
+  margin-top: 1em !important; padding-top: .9em;
+  border-top: 1px dashed var(--line);
+  font-size: .88rem !important; color: var(--tx-3) !important; font-style: italic;
+}
+
+/* Une note qui porte la conclusion du bloc, donc plus appuyée que .note. */
+.note-fort {
+  border-left-width: 4px; background: var(--paper-2);
+  border-left-color: var(--ink-900, var(--tx));
+}
+.note-fort p { color: var(--tx); font-size: 1.02rem; font-weight: 500; }
+
+/* Tableau de calcul : deux colonnes, la dernière ligne conclut. */
+.table-calcul { width: 100%; }
+.table-calcul th { text-align: left; font-weight: 400; color: var(--tx-2); }
+.table-calcul td { text-align: right; font-weight: 600; white-space: nowrap; }
+.table-calcul .ligne-fin th,
+.table-calcul .ligne-fin td {
+  border-top: 2px solid var(--tx); color: var(--signal-600); font-weight: 700;
+}
+
+/* La colonne du réseau dans le comparatif : elle doit se distinguer sans
+   crier, le tableau devant rester lisible comme un tableau. */
+.col-nous { background: var(--pro-100); color: var(--pro-700); font-weight: 600; }
+
+/* Étapes numérotées. */
+.etapes { list-style: none; margin: 0; padding: 0; display: grid; gap: 20px; }
+.etapes li { display: flex; gap: 18px; align-items: flex-start; }
+.etapes h3 { font-size: 1.05rem; margin: 0 0 .3em; }
+.etapes p { color: var(--tx-2); font-size: .95rem; margin: 0; }
+.etape-n {
+  flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--pro); color: #fff; font-weight: 700; font-size: 1.05rem;
+}
+
+/* Variante compacte des listes à coches, pour les encarts latéraux. */
+.checks-sm li { font-size: .88rem; margin-bottom: .45em; }
+
+/* Maillage : les villes d'un métier, groupées par région. Colonnes typo
+   plutôt que grille, pour que des listes de longueurs très inégales ne
+   laissent pas de trous. */
+.ville-cols { columns: 4; column-gap: 34px; }
+.ville-col { break-inside: avoid; margin-bottom: 26px; display: inline-block; width: 100%; }
+.ville-col h3 {
+  font-size: .78rem; letter-spacing: .11em; text-transform: uppercase;
+  color: var(--tx-3); margin: 0 0 10px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+.ville-col ul { list-style: none; margin: 0; padding: 0; }
+.ville-col li { font-size: .9rem; margin-bottom: .1em; }
+.ville-col a { color: var(--tx-2); text-decoration: none; display: inline-block; padding: 4px 0; }
+.ville-col a:hover { color: var(--signal-600); text-decoration: underline; }
+.ville-dept { color: var(--tx-3); font-size: .8rem; }
+
+@media (max-width: 1080px) { .ville-cols { columns: 3; } }
+@media (max-width: 780px)  { .ville-cols { columns: 2; column-gap: 22px; } }
+@media (max-width: 480px)  { .ville-cols { columns: 1; } }

@@ -149,6 +149,7 @@ function heroImg(topic, i, alt) {
 /* ------------------------------------------------------------- structure */
 const NAV_MORE = [
   ["collectivites.html", "Collectivités & institutions", "Marchés publics, accessibilité, jalonnement"],
+  ["pourquoi-adherer.html", "Pourquoi adhérer au réseau", "Le comparatif, le calcul, les objections"],
   ["reseau-pose-national.html", "Réseau national de pose", "Trouver un poseur, ou en devenir un"],
   ["sous-traitance-professionnels.html", "Sous-traitance entre pros", "Agences, imprimeurs, franchises : qui produit"],
   ["entraide-partenaires.html", "Entraide entre partenaires", "Capacité, poseur, dépannage, matériel"],
@@ -545,10 +546,14 @@ function proInvite() {
   return `<aside class="pro-invite">
   <div>
     <b>Vous êtes enseigniste, imprimeur, poseur ou agence ?</b>
-    <span>Le réseau recrute des professionnels dans toute la France. Rubrique séparée,
-    abonnement sans commission, 12 mois au tarif de 6 pour la première année.</span>
+    <span>Le réseau recrute des professionnels dans toute la France. Il fonctionne dans les
+    deux sens : il vous amène des clients, et il vous trouve un poseur quand c'est vous qui en
+    cherchez un. Abonnement sans commission, 12 mois au tarif de 6 la première année.</span>
   </div>
-  <a class="btn btn-pro" href="partenaires.html">Devenir partenaire</a>
+  <div class="btns">
+    <a class="btn btn-pro" href="partenaires.html">Devenir partenaire</a>
+    <a class="btn btn-ghost" href="pourquoi-adherer.html">Pourquoi adhérer</a>
+  </div>
 </aside>`;
 }
 

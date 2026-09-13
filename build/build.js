@@ -27,6 +27,7 @@ const partnersPage = require("./pages/partners");
 const posePage = require("./pages/pose");
 const projectPage = require("./pages/project");
 const collectivitesPage = require("./pages/collectivites");
+const adhesionPage = require("./pages/adhesion");
 const reseauPosePage = require("./pages/reseaupose");
 const b2bPage = require("./pages/b2b");
 
@@ -342,6 +343,7 @@ function run() {
      croisées avec les villes — ce métier n'a pas d'ancrage local. */
   graphisme.PAGES.forEach((g) => write(g.slug + ".html", graphisme.page(g, cities)));
   write("collectivites.html", collectivitesPage(cities));
+  write("pourquoi-adherer.html", adhesionPage(cities));
   write("partenaires.html", partnersPage(cities));
   write("service-pose.html", posePage(cities));
   write("reseau-pose-national.html", reseauPosePage(cities));
