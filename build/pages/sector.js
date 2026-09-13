@@ -23,7 +23,7 @@ module.exports = function sectorPage(sec, cities) {
     <div class="sec-head">
       <span class="eyebrow">${esc(R.eyebrow)}</span>
       <h2>${esc(R.titre)}</h2>
-      <p class="lead">${esc(R.lead)}</p>
+      <p class="lead">${R.lead}</p>
     </div>
     <div class="couches">
       ${R.couches.map((c) => `<article class="couche">

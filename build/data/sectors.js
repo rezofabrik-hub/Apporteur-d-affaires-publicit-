@@ -204,7 +204,92 @@ module.exports = [
     { q: "Puis-je marquer les brise-vues de ma terrasse à mon nom ?", a: "Généralement oui pour votre propre nom, mais l'autorisation d'occupation du domaine public peut encadrer la surface, les couleurs, et interdire la publicité pour des marques tierces — un point sur lequel beaucoup de communes sont strictes vis-à-vis des marques de boissons. Vérifiez le règlement de terrasse de votre mairie avant de commander." },
     { q: "Faut-il éteindre l'enseigne la nuit ?", a: "Le cadre général impose l'extinction des enseignes lumineuses entre 1 h et 6 h, sauf lorsque l'activité s'exerce à ces heures — ce qui est justement le cas de nombreux bars et restaurants. Vérifiez votre règlement local : la dérogation liée à l'activité nocturne n'est pas automatique partout." }
   ],
-  services: ["enseignes", "vitrophanie-plv", "signaletique", "impression-grand-format"]
+
+  /* ----------------------------------------------------------------------
+     Restauration : l'affichage extérieur des prix y est obligatoire, comme
+     chez le garagiste, mais avec une particularité qui intéresse
+     directement l'enseigniste — le texte descend jusqu'au contenu de la
+     carte. Et la terrasse, qui est le vrai sujet du secteur, ne relève pas
+     du droit de l'enseigne mais de l'occupation du domaine public : deux
+     guichets, deux calendriers, une seule façade.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre la façade et la terrasse d'un établissement",
+    lead: "Deux régimes se partagent votre devanture : celui de l'enseigne, qui regarde le mur, et celui du domaine public, qui regarde le trottoir. Ils n'ont ni le même service instructeur, ni le même délai, ni la même durée de validité.",
+    couches: [
+      {
+        titre: "1 · L'affichage des prix : obligatoire, et lisible de l'extérieur",
+        texte: "L'arrêté du 27 mars 1987, modifié en 1990, impose d'afficher les prix pratiqués <strong>de manière visible et lisible depuis l'extérieur</strong> de l'établissement. Les cartes et menus disponibles à l'intérieur doivent être <strong>identiques</strong> à ceux affichés dehors. Pour chaque prestation figurent le prix et la mention « boisson comprise » ou « boisson non comprise », et pour les boissons la nature et la contenance servie. Les prix de <strong>cinq vins</strong> — ou de cinq boissons couramment servies si l'établissement ne sert pas de vin — doivent également être affichés.",
+        cle: "Ce que cela impose au support, et qu'on découvre souvent après l'avoir commandé : l'affichage extérieur <strong>change au rythme de la carte</strong>. Un menu gravé ou sérigraphié est une erreur coûteuse ; il faut un porte-menu, un cadre ou une ardoise conçus pour être mis à jour, et lisibles de nuit. Lorsqu'un service est perçu, les prix s'affichent taxes et service compris, avec la mention correspondante.",
+        source: { label: "Arrêté du 27 mars 1987 relatif à l'affichage des prix dans les établissements servant des repas, denrées ou boissons à consommer sur place", url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000338985" }
+      },
+      {
+        titre: "2 · La terrasse : ce n'est pas de l'enseigne, c'est du domaine public",
+        texte: "Occuper le trottoir suppose une autorisation de la commune, et la nature de l'autorisation dépend de ce que vous posez. Une <strong>terrasse ouverte</strong>, un étalage, un food-truck relèvent du <strong>permis de stationnement</strong> — occupation sans emprise au sol. Une <strong>terrasse fermée</strong> ou un kiosque fixé au sol relèvent de la <strong>permission de voirie</strong>. Dans les deux cas, une redevance est due, fixée par l'autorité gestionnaire, le plus souvent au mètre carré.",
+        cle: "Le point à retenir avant d'investir : cette autorisation est <strong>personnelle, temporaire, précaire et révocable</strong>. Elle ne se transmet pas avec le fonds de commerce, elle se renouvelle — souvent à la saison — et elle peut être retirée. Cela conditionne le choix des supports : sur une emprise précaire, on privilégie ce qui se démonte et se réemploie, pas ce qui se scelle.",
+        source: { label: "Occupation du domaine public par un commerce (AOT) — Justice.fr", url: "https://www.justice.fr/fiche/occupation-domaine-public-commerce-aot" }
+      },
+      {
+        titre: "3 · L'enseigne, le store et la nuit",
+        texte: "L'enseigne de façade relève de l'article L.581-3 du code de l'environnement et de l'autorisation du <strong>maire</strong>, avec l'accord de l'architecte des Bâtiments de France en secteur protégé — situation ordinaire pour un restaurant de centre ancien. Le <strong>store banne</strong>, lui, modifie l'aspect extérieur : il relève d'une <strong>déclaration préalable au titre du code de l'urbanisme</strong>, distincte de l'autorisation d'enseigne. Le lettrage porté sur le lambrequin du store est en revanche une enseigne.",
+        cle: "Et la nuit : l'arrêté du 27 décembre 2018 impose l'extinction des enseignes lumineuses <strong>entre 1 h et 6 h</strong>. Pour un établissement qui ferme à 2 h, la contrainte est réelle et se règle à l'installation — une commande programmable, pas un interrupteur derrière le bar que personne n'actionnera.",
+        source: { label: "Arrêté du 27 décembre 2018 relatif à la prévention, à la réduction et à la limitation des nuisances lumineuses", url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000037864346" }
+      },
+      {
+        titre: "4 · Les affichages que le public doit voir à l'intérieur",
+        texte: "Au-delà des prix, l'établissement doit porter à la connaissance du public un ensemble de mentions : interdiction de fumer et de vapoter, protection des mineurs en matière d'alcool, répression de l'ivresse publique, licence détenue, et — s'il reçoit du public au sens des ERP — les informations d'accessibilité.",
+        cle: "Ces affichages sont permanents et normalisés, à la différence de la carte qui change. Les traiter en panneaux durables plutôt qu'en feuilles imprimées n'est pas une coquetterie : <strong>c'est ce qui fait la différence entre un établissement tenu et un établissement qui a l'air de bricoler</strong>, et c'est la première chose que remarque un contrôle comme un client.",
+        source: { label: "Restaurants : droits et obligations des professionnels (DGCCRF)", url: "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/restaurants-droits-et-obligations-des-professionnels" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les dimensions de terrasse admises, la redevance au mètre carré, les horaires et les matériaux imposés relèvent du règlement de voirie et du règlement local de publicité de votre commune — certaines villes ont une charte des terrasses très détaillée. Cela se vérifie au cas par cas, avant tout devis."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand un établissement refait sa devanture",
+    lead: "La restauration est le secteur où le calendrier commande tout : ce qui n'est pas posé avant la saison ne servira pas cette année.",
+    moments: [
+      ["Avant la saison", "Le déclencheur numéro un. Terrasse, store, porte-menu, ardoises : tout doit être en place avant les beaux jours. Le délai prime sur le prix, et l'entreprise qui tient la date emporte l'affaire."],
+      ["Reprise du fonds", "Changement de nom et de concept, donc enseigne, vitrophanie, carte et supports repris d'un bloc. Attention : l'autorisation de terrasse ne se transmet pas avec le fonds, elle est à redemander."],
+      ["Changement de carte ou de concept", "Passage en bistronomie, ajout d'une offre à emporter, changement de formule du midi : l'affichage extérieur doit suivre, puisqu'il doit être identique à la carte intérieure."],
+      ["Mise en conformité", "Affichage des prix incomplet, mentions obligatoires manquantes, accessibilité : le besoin est précis et le délai imposé."],
+      ["Charte de terrasse communale", "De plus en plus de villes adoptent une charte imposant matériaux, couleurs et gabarits. Quand elle entre en vigueur, tout le centre-ville doit se mettre à niveau en même temps — c'est un volume de chantiers concentré sur quelques mois."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un établissement, la moitié des questions portent sur le trottoir, pas sur le mur.",
+    questions: [
+      "Enseigne de façade seule, ou façade et terrasse traitées ensemble ?",
+      "Disposez-vous déjà d'une autorisation d'occupation du domaine public, et de quel type : permis de stationnement ou permission de voirie ?",
+      "Terrasse ouverte ou fermée, et sur quelle surface ? La commune a-t-elle une charte des terrasses ?",
+      "Store banne existant ou à poser ? Un lettrage sur lambrequin est-il souhaité ?",
+      "Votre affichage extérieur des prix est-il à jour, et identique à la carte servie à l'intérieur ?",
+      "À quelle fréquence la carte change-t-elle ? C'est ce qui décide du support : porte-menu, cadre, ardoise ou vitrophanie.",
+      "Jusqu'à quelle heure l'établissement est-il ouvert ? L'extinction de 1 h à 6 h impose une commande programmable.",
+      "L'établissement est-il en secteur protégé ou aux abords d'un monument historique ?",
+      "Les affichages obligatoires intérieurs sont-ils en place : interdiction de fumer, protection des mineurs, licence, accessibilité ?",
+      "Y a-t-il une date butoir — ouverture, début de saison, passage d'un jury ou d'un contrôle ?"
+    ],
+    note: "La question la plus structurante est celle du rythme de la carte. Un établissement qui change sa carte chaque semaine et un établissement qui la change deux fois par an n'achètent pas le même support, même si la façade est identique."
+  },
+
+  vocabulaire: [
+    ["Permis de stationnement", "Autorisation d'occuper le domaine public sans emprise au sol : terrasse ouverte, étalage, food-truck."],
+    ["Permission de voirie", "Autorisation d'occupation avec emprise au sol : terrasse fermée, kiosque scellé. Régime plus lourd que le permis de stationnement."],
+    ["Lambrequin", "La bande verticale et souple qui pend au bord d'un store banne. Le lettrage qu'elle porte est une enseigne au sens du code de l'environnement."],
+    ["Store banne", "Store repliable en façade. Sa pose modifie l'aspect extérieur et relève d'une déclaration préalable d'urbanisme."],
+    ["Porte-menu", "Cadre extérieur, souvent lumineux, recevant la carte. C'est le support de l'affichage obligatoire des prix — donc il doit être remplaçable."],
+    ["Chevalet", "Panneau autoportant posé sur le trottoir. Il occupe le domaine public : son emprise entre dans l'autorisation."],
+    ["Charte des terrasses", "Document communal fixant matériaux, couleurs, gabarits et mobilier admis. Prime sur les envies du concept."],
+    ["Vitrophanie dépolie", "Film translucide en bas de vitrine. Isole visuellement la salle de la rue tout en gardant la lumière."],
+    ["Licence III / licence IV", "Catégories de licence de débit de boissons. La licence détenue fait partie des affichages obligatoires."]
+  ],
+  services: ["enseignes", "vitrophanie-plv", "impression-grand-format", "signaletique"]
 },
 {
   slug: "cabinet-medical",
@@ -239,6 +324,92 @@ module.exports = [
     { q: "Que peut-on écrire sur une plaque de médecin ?", a: "Les indications utiles à l'information du patient : nom, prénom, spécialité et qualifications reconnues, numéro d'inscription à l'ordre, horaires, modalités de prise de rendez-vous, situation vis-à-vis des conventions. Le Code de déontologie impose un aspect sobre et proscrit tout caractère publicitaire. En cas de doute, le conseil départemental de l'ordre valide un projet de plaque avant fabrication." },
     { q: "Combien de plaques peut-on apposer ?", a: "L'usage courant est d'une plaque à l'entrée de l'immeuble et d'une à la porte du cabinet. En copropriété, l'accord de l'assemblée générale est nécessaire pour la plaque de rue, et le règlement peut imposer un format et un emplacement communs — d'où l'intérêt du totem à platines pour un immeuble médical." },
     { q: "La signalétique braille est-elle obligatoire dans un cabinet ?", a: "Pour les informations essentielles à l'usage des lieux — identification des salles, sanitaires, boutons d'ascenseur, numéros d'étage — oui, dès lors que le cabinet reçoit du public. Le doublage en relief et en braille concerne les éléments posés à hauteur de main, entre 0,90 m et 1,30 m." }
+  ],
+
+  /* ----------------------------------------------------------------------
+     Cabinet médical : le secteur où la règle ne limite pas la forme mais le
+     CONTENU. Le code de déontologie énumère limitativement ce qui peut
+     figurer sur une plaque — tout le reste est interdit, y compris ce qu'un
+     commerçant trouverait normal d'écrire. C'est l'inverse de tous les
+     autres secteurs traités, et c'est ce qui piège l'enseigniste
+     généraliste : il fait de la belle signalétique commerciale, et elle
+     est irrégulière.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre la plaque et la signalétique d'un cabinet",
+    lead: "Ici, la contrainte ne porte pas d'abord sur la taille ou l'emplacement : elle porte sur <em>ce que vous avez le droit d'écrire</em>. La liste des mentions autorisées est limitative, et tout ce qui n'y figure pas est à proscrire.",
+    couches: [
+      {
+        titre: "1 · La plaque : une liste fermée de mentions",
+        texte: "L'article R.4127-81 du code de la santé publique — article 81 du code de déontologie médicale — énumère les seules indications qu'un médecin peut faire figurer à son lieu d'exercice : <strong>ses nom et prénoms, son numéro de téléphone, les jours et heures de consultation, sa situation vis-à-vis des organismes d'assurance maladie, ainsi que ses diplômes, titres et qualifications reconnus</strong>. Ces indications doivent être « présentées avec discrétion, conformément aux usages de la profession ».",
+        cle: "C'est une <strong>liste limitative</strong> : ce qui n'y est pas n'a pas sa place. Pas de slogan, pas de logo commercial, pas de liste de prestations, pas de mention valorisante. Un enseigniste habitué aux commerces produit spontanément l'inverse — et c'est le conseil de l'Ordre, pas le client, qui le lui fera remarquer. Sur le format, les 30 × 25 cm souvent cités relèvent de l'usage de la profession, pas d'une dimension inscrite dans le texte : c'est la discrétion qui est la règle.",
+        source: { label: "Article R.4127-81 du code de la santé publique — mentions sur les plaques", url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042795641" }
+      },
+      {
+        titre: "2 · Combien de plaques, et où",
+        texte: "Le même article prévoit qu'<strong>une plaque peut être apposée à l'entrée de l'immeuble et une autre à la porte du cabinet</strong>. Lorsque la disposition des lieux l'impose — cour, étage, bâtiment en retrait, cabinet de groupe — une <strong>signalisation intermédiaire</strong> peut s'y ajouter.",
+        cle: "C'est la marge de manœuvre réelle du praticien, et elle est souvent ignorée : dans un immeuble complexe ou un cabinet pluriprofessionnel, le jalonnement intermédiaire est admis et il résout la plupart des problèmes d'orientation du patient. Encore faut-il qu'il reste dans le même registre de discrétion que les plaques, et qu'il soit conçu comme une aide au repérage, non comme une signalétique d'appel.",
+        source: { label: "Article 81 du code de déontologie médicale — Conseil national de l'Ordre des médecins", url: "https://www.conseil-national.medecin.fr/code-deontologie/lexercice-profession-art-69-108/1-regles-communes-modes-dexercice-art-69-84-13" }
+      },
+      {
+        titre: "3 · L'accessibilité : un registre, et un résumé affiché",
+        texte: "Un cabinet recevant des patients est un <strong>établissement recevant du public</strong>, en cinquième catégorie le plus souvent. À ce titre, il doit tenir un <strong>registre public d'accessibilité</strong>, dont le contenu et les modalités de diffusion sont fixés par l'arrêté du 19 avril 2017, obligatoire depuis le 30 septembre 2017. Le registre se consulte sur place, au point d'accueil accessible, sur papier ou sur support numérique.",
+        cle: "Le point qui devient un sujet de signalétique : le praticien doit <strong>en afficher un résumé de manière visible dans ses locaux</strong>, pour informer les patients des conditions d'accessibilité et des travaux réalisés ou en cours. S'y ajoutent les obligations matérielles de repérage — contraste des nez de marche, bandes de vigilance, repérage des parois vitrées — qui relèvent de la réglementation ERP et non du code de déontologie.",
+        source: { label: "Registre d'accessibilité obligatoire — guide pour les ERP (handicap.gouv.fr)", url: "https://handicap.gouv.fr/registre-daccessibilite-obligatoire-un-guide-pour-les-erp" }
+      },
+      {
+        titre: "4 · Ce qui relève de l'immeuble, pas de vous",
+        texte: "Une plaque apposée sur la façade ou dans le hall d'un immeuble en copropriété touche aux <strong>parties communes</strong>. Son installation relève de ce que permettent le règlement de copropriété et, le cas échéant, une décision d'assemblée générale. En secteur protégé ou aux abords d'un monument historique, l'accord de l'architecte des Bâtiments de France s'ajoute pour toute intervention visible depuis l'espace public.",
+        cle: "Conséquence pratique sur le calendrier, et elle surprend : <strong>le délai n'est pas celui de la fabrication, il est celui de l'assemblée générale</strong>. Une plaque se grave en quelques jours ; l'autorisation de la poser sur une partie commune peut attendre plusieurs mois. C'est la première chose à vérifier lors d'une installation ou d'un transfert de cabinet.",
+        source: { label: "Code de l'environnement — enseignes et préenseignes (L.581-3)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074220/LEGISCTA000006159442/" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les règles déontologiques varient d'une profession de santé à l'autre — médecins, chirurgiens-dentistes, sages-femmes, auxiliaires médicaux relèvent chacun de leur propre code. En cas de doute sur une mention, le conseil départemental de votre ordre répond, et il vaut mieux l'interroger avant la gravure qu'après."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand un cabinet refait sa signalétique",
+    lead: "Un cabinet n'achète pas de la signalétique pour se faire remarquer, mais parce qu'un événement l'y oblige. D'où des besoins précis et des délais courts.",
+    moments: [
+      ["Installation ou transfert", "Le déclencheur principal : plaques d'entrée et de porte, jalonnement intermédiaire, accessibilité. Le délai réel est celui de la copropriété, pas celui de la gravure."],
+      ["Arrivée ou départ d'un associé", "En cabinet de groupe, chaque mouvement modifie la plaque collective. C'est un besoin récurrent et modeste, mais qui fidélise — le praticien revient chez celui qui a la gravure d'origine."],
+      ["Nouveau titre ou nouvelle qualification", "Un titre reconnu peut être mentionné : la plaque est reprise. L'occasion de vérifier que les mentions existantes sont toujours conformes."],
+      ["Mise en accessibilité", "Travaux, contrôle, ou simple mise à jour du registre : contraste des marches, bandes de vigilance, repérage des vitrages, résumé du registre à afficher."],
+      ["Regroupement en maison de santé", "Plusieurs praticiens sous un même toit : jalonnement complet, signalétique de couloir, identification des salles. C'est le chantier le plus important du secteur, et celui qui demande une vraie conception."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un cabinet, une question mal posée conduit à une plaque irrégulière — donc à refaire. Nous les posons toutes en amont.",
+    questions: [
+      "Quelle profession de santé, et quel ordre en relève ? Les règles ne sont pas identiques d'un code de déontologie à l'autre.",
+      "Quelles mentions exactes doivent figurer : nom, prénoms, téléphone, jours et heures, situation au regard de l'assurance maladie, titres reconnus ?",
+      "Exercice individuel ou de groupe ? Une plaque collective ou une plaque par praticien ?",
+      "Plaque d'entrée d'immeuble, plaque de porte, ou les deux ? Une signalisation intermédiaire est-elle nécessaire au vu de la disposition des lieux ?",
+      "L'immeuble est-il en copropriété ? L'accord de l'assemblée générale est-il obtenu, ou à demander ?",
+      "Le bâtiment est-il en secteur protégé ou aux abords d'un monument historique ?",
+      "Matière et fixation souhaitées : laiton, inox, plexiglas, gravure ou impression ? Pose en applique ou entretoises ?",
+      "Le registre public d'accessibilité est-il tenu, et son résumé affiché dans les locaux ?",
+      "Y a-t-il des aménagements d'accessibilité à signaler : nez de marche, bandes de vigilance, parois vitrées à repérer ?",
+      "Pour un cabinet de groupe ou une maison de santé : combien de salles à identifier, et quel parcours patient depuis l'entrée ?"
+    ],
+    note: "La question qui évite la reprise est la deuxième. Une mention non prévue par le code de déontologie — une spécialité non reconnue comme titre, un slogan, un logo — rend la plaque irrégulière quelle que soit sa qualité de fabrication."
+  },
+
+  vocabulaire: [
+    ["Plaque professionnelle", "Support portant les mentions autorisées à l'entrée de l'immeuble ou à la porte du cabinet. Son contenu est limitativement fixé par le code de déontologie."],
+    ["Signalisation intermédiaire", "Jalonnement admis lorsque la disposition des lieux l'impose : cour, étage, bâtiment en retrait. Aide au repérage, non support d'appel."],
+    ["Gravure laiton", "La facture traditionnelle de la plaque médicale : laiton gravé et rempli d'émail. Durable, sobre, conforme aux usages de la profession."],
+    ["Entretoises", "Pièces d'écartement qui décollent la plaque du mur. Donnent l'ombre portée caractéristique et facilitent le nettoyage du support."],
+    ["ERP de 5e catégorie", "La classification usuelle d'un cabinet libéral au regard des établissements recevant du public. Elle commande les obligations d'accessibilité."],
+    ["Registre public d'accessibilité", "Document consultable sur place depuis le 30 septembre 2017, dont un résumé doit être affiché visiblement dans les locaux."],
+    ["Bande de vigilance", "Bande podotactile posée en haut d'un escalier pour avertir du danger. Obligation d'accessibilité, pas de déontologie."],
+    ["Repérage des parois vitrées", "Marquage contrasté appliqué sur les vitrages pour les rendre perceptibles. Traité en vitrophanie discrète en milieu médical."],
+    ["Maison de santé", "Regroupement pluriprofessionnel. Le seul cas du secteur où la signalétique devient un vrai projet de jalonnement."]
   ],
   services: ["signaletique", "enseignes", "vitrophanie-plv", "maquette-creation-graphique"]
 },
