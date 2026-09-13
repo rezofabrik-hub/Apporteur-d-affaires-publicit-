@@ -27,9 +27,10 @@ module.exports = function partnersPage(cities) {
     return price + `
   <p class="plan-note plan-note-launch"><b>${esc(P.launchPrice.label)}</b> — soit
     ${esc(d.perMonth(pl.duration))} ${esc(P.currency)} par mois, et ${esc(d.ht)} ${esc(P.currency)}
-    HT à votre charge réelle une fois la TVA récupérée. Le tarif du réseau passera à
-    <b>${esc(d.after)} ${esc(P.currency)}</b> le ${esc(T.site.anniversary)} 2027 ;
-    le prix de votre souscription reste le vôtre jusqu'au terme de votre abonnement.</p>`;
+    HT à votre charge réelle une fois la TVA récupérée. Ce tarif couvre
+    <b>la première année d'adhésion</b> ; le renouvellement se fait ensuite au tarif du réseau,
+    <b>${esc(d.after)} ${esc(P.currency)}</b> par an. Les ${esc(pl.price)} ${esc(P.currency)} sont
+    garantis sur toute la durée des douze mois souscrits.</p>`;
   };
 
   const planCards = shownPlans.map((pl) => `

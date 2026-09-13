@@ -39,7 +39,8 @@ module.exports = {
     conditions: [
       "Tarif de lancement réservé aux entreprises inscrites avant le 16 août 2027",
       "12 mois d'accès à 490 € TTC, soit 408 € HT à votre charge réelle",
-      "Le tarif du réseau passera ensuite à 890 € par an — votre prix reste celui de votre souscription jusqu'à son terme",
+      "Le tarif de lancement vaut pour la première année d'adhésion, et pour elle seule",
+      "À l'échéance des douze mois, le renouvellement se fait au tarif du réseau alors en vigueur — 890 € par an",
       "Aucune commission sur les affaires signées",
       "Aucune reconduction tacite : à l'échéance, vous décidez",
       "Sans aucune demande transmise au bout de trois mois, votre accès est prolongé de six mois sans frais"
@@ -117,7 +118,7 @@ module.exports = {
     active: true,
     label: "Tarif de lancement",
     headline: "Tarif de lancement — première année du réseau",
-    note: "490 € TTC les 12 mois pour toute souscription avant le 16 août 2027. Le tarif du réseau passera ensuite à 890 € par an. Le prix de votre souscription reste le vôtre jusqu'au terme de votre abonnement."
+    note: "490 € TTC les douze premiers mois, pour toute souscription avant le 16 août 2027. Ce tarif couvre la première année d'adhésion ; le renouvellement se fait ensuite au tarif du réseau, 890 € par an."
   },
 
   /* Devise et mentions affichées sous les prix.
@@ -426,7 +427,7 @@ module.exports = {
   ],
 
   faq: [
-    { q: "Que comprend l'offre de lancement ?", a: "Douze mois d'accès au réseau pour 490 € TTC, soit le tarif d'un semestre. Elle est réservée aux entreprises qui souscrivent avant le 16 août 2027 ; au-delà, le tarif du réseau sera de 890 € par an. Le prix de votre souscription reste le vôtre jusqu'au terme de votre abonnement, quelle que soit l'évolution ultérieure." },
+    { q: "Que comprend l'offre de lancement ?", a: "Douze mois d'accès au réseau pour 490 € TTC, soit le tarif d'un semestre : six mois vous sont offerts. Elle est réservée aux entreprises qui souscrivent avant le 16 août 2027. C'est une offre de première année, et nous préférons l'écrire franchement plutôt que de le laisser découvrir à l'échéance : la deuxième année se renouvelle au tarif normal du réseau, 890 € par an. Les 490 € sont garantis pour toute la durée des douze mois souscrits — une hausse du tarif en cours d'année ne vous est jamais appliquée." },
     { q: "Pourquoi douze mois et pas six ?", a: "Par honnêteté de calendrier. Un réseau qui démarre met six à douze mois à installer un flux de demandes régulier : un abonnement de six mois se terminerait précisément au moment où cela commence à produire, et vous seriez parti juste avant. Douze mois vous font traverser la montée en charge — et c'est aussi pour cela que le tarif est celui d'un semestre." },
     { q: "Pourquoi un abonnement plutôt qu'une commission ?", a: "Parce qu'une commission variable pousse l'intermédiaire à privilégier les gros dossiers et à vous envoyer un maximum de demandes, qualifiées ou non. L'abonnement inverse la logique : notre intérêt devient de vous garder d'une année sur l'autre, donc de vous transmettre des demandes que vous transformez réellement. Vous gardez par ailleurs 100 % de la marge sur chaque chantier signé." },
     { q: "Je suis une agence franchisée. Puis-je rejoindre le réseau ?", a: "Oui, et c'est même une situation confortable des deux côtés. Un contrat de franchise vous attribue un secteur : il vous protège de vos confrères du réseau, mais il plafonne aussi votre croissance, puisque vous ne pouvez pas aller prospecter ailleurs. Nous ne vous demandons rien de contraire à cela — nous vous transmettons des demandes situées à l'intérieur de votre propre secteur, celui que votre contrat vous attribue déjà. Vous ne prenez le territoire de personne, vous recevez simplement des clients de votre zone que vous n'avez pas eu à démarcher. Deux réserves, dites franchement : relisez les clauses de votre contrat relatives aux apporteurs d'affaires extérieurs, certains réseaux imposent que toute demande passe par leur propre outil ; et parlez-en à votre franchiseur plutôt que de le découvrir plus tard. Le tarif de lancement et la garantie de montée en charge limitent le risque d'un essai : douze mois à 490 €, et une prolongation de six mois sans frais si rien ne vous est transmis au bout de trois." },

@@ -74,7 +74,7 @@ module.exports = {
     titre: "Ce que ça coûte, et à partir de quand c'est remboursé",
     lead: "Le chiffre à retenir n'est pas le prix affiché : c'est le montant qui reste réellement à votre charge une fois la TVA récupérée, et le chiffre d'affaires qu'il faut produire pour le couvrir.",
     lignes: [
-      ["Abonnement annuel, tarif de lancement", "490 € TTC"],
+      ["Abonnement, première année (tarif de lancement)", "490 € TTC"],
       ["TVA récupérable", "− 82 €"],
       ["Charge réelle sur douze mois", "408 € HT"],
       ["Charge déductible du résultat imposable", "408 € HT"],
@@ -82,7 +82,7 @@ module.exports = {
       ["Soit, en volume de chantier", "une seule enseigne de commerce"]
     ],
     note: "Une enseigne de commerce courante se situe entre 1 200 et 3 500 € selon la technique. La première affaire signée rembourse l'année. La deuxième est du résultat. C'est l'inverse d'une commission, qui prélève d'autant plus que vous réussissez.",
-    honnete: "Un chantier par an suffit à rembourser. Nous ne promettons pas pour autant un volume : un référencement neuf met six à douze mois à produire son plein effet, et c'est exactement la raison pour laquelle cette première année est à 490 € au lieu de 890 €."
+    honnete: "Un chantier par an suffit à rembourser. Nous ne promettons pas pour autant un volume : un référencement neuf met six à douze mois à produire son plein effet, et c'est exactement la raison pour laquelle cette première année est à 490 € au lieu de 890 € — six mois offerts, le temps que le flux s'installe. Autant le dire tout de suite : c'est une offre de première année. La deuxième se renouvelle à 890 €, et à ce moment-là vous aurez douze mois de relevé pour juger si ça les vaut."
   },
 
   /* ------------------------------------------- ce que vous ne perdez pas */
@@ -139,6 +139,10 @@ module.exports = {
     {
       q: "Combien d'entreprises par ville ? Je ne veux pas être quinze sur le même secteur.",
       a: "Le nombre de partenaires par département est limité, et il l'est pour une raison mécanique : au-delà de deux ou trois entreprises actives sur une zone, chacune reçoit trop peu de demandes pour que l'abonnement ait un sens, et le réseau se détruit lui-même. Une demande part vers deux ou trois destinataires au maximum, avec un tour de rôle pour que ce ne soit jamais toujours le même."
+    },
+    {
+      q: "Les 490 €, c'est tous les ans ?",
+      a: "Non, et c'est le genre de chose qu'il vaut mieux dire au début qu'à l'échéance. 490 € est un tarif de lancement : il couvre vos douze premiers mois — six mois vous sont offerts sur le tarif normal. La deuxième année se renouvelle à 890 €, le tarif du réseau. Deux garanties en contrepartie : vos 490 € sont acquis pour toute la durée des douze mois souscrits, une hausse en cours d'année ne vous est jamais appliquée ; et comme il n'y a aucune reconduction tacite, personne ne vous prélèvera 890 € sans que vous l'ayez décidé. Nous vous recontactons avant l'échéance avec le relevé des demandes transmises, et vous tranchez sur des chiffres."
     },
     {
       q: "Et si je ne suis pas satisfait au bout de quelques mois ?",

@@ -882,6 +882,12 @@ function cgv(cities) {
   <p><strong>L'abonnement ne fait l'objet d'aucune reconduction tacite.</strong> Il prend fin de
   plein droit à son terme, sans formalité ni préavis. Le prestataire recontacte le Partenaire avant
   l'échéance ; la poursuite de la relation suppose une nouvelle souscription expresse.</p>
+  <p><strong>Tarif de lancement et renouvellement.</strong> Le tarif de lancement s'applique à la
+  première année d'adhésion, et à elle seule. Le prix convenu à la souscription est ferme pour
+  toute la durée des douze mois souscrits : aucune revalorisation intervenue en cours de période
+  n'est opposable au Partenaire. Toute nouvelle souscription postérieure au terme est conclue au
+  tarif du réseau en vigueur à cette date, communiqué au Partenaire avant l'échéance en même temps
+  que le relevé des demandes qui lui ont été transmises.</p>
 
   <h2>5 bis. Garantie de montée en charge</h2>
   <p>Le référencement d'un site nouveau met plusieurs mois à produire son plein effet, ce dont le
