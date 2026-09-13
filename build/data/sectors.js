@@ -801,6 +801,91 @@ module.exports = [
     { q: "Les décors saisonniers laissent-ils des traces ?", a: "Pas si vous demandez explicitement un adhésif repositionnable ou électrostatique, prévu pour être posé et déposé plusieurs fois. Les traces viennent des adhésifs permanents laissés plusieurs années en plein soleil, ou des films bas de gamme dont la colle migre. Précisez la durée d'utilisation prévue lors de la demande de devis." },
     { q: "Comment renouveler l'affichage promotionnel sans tout refaire ?", a: "En investissant une fois dans des supports réutilisables — cadres clic, chevalets, kakémonos à visuel interchangeable, systèmes à glissière — et en ne refaisant que le visuel imprimé à chaque opération. Le surcoût initial est amorti dès la deuxième ou troisième campagne." }
   ],
+
+  /* ----------------------------------------------------------------------
+     Commerce de détail. L'angle fort n'est pas l'enseigne — tout le monde en
+     parle — mais le PRIX BARRÉ de la vitrine. Depuis le 28 mai 2022, le prix
+     de référence d'une promotion est le prix le plus bas des trente derniers
+     jours, et une quantité considérable de vitrophanies promotionnelles
+     posées depuis reprend l'ancienne logique. Le commerçant qui lit cela
+     vérifie sa vitrine, et il appelle.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre votre vitrine et vos prix affichés",
+    lead: "La façade relève du droit de l'enseigne ; ce que vous écrivez <em>dans</em> la vitrine relève du droit de la consommation. Le second est bien plus contrôlé que le premier, et il a changé récemment.",
+    couches: [
+      {
+        titre: "1 · Le prix barré : la règle des trente jours",
+        texte: "L'ordonnance n° 2021-1734 du 22 décembre 2021, qui transpose la directive européenne dite <em>Omnibus</em>, est entrée en vigueur le <strong>28 mai 2022</strong>. Depuis cette date, toute annonce de réduction de prix doit indiquer le prix antérieur pratiqué, et ce prix antérieur est <strong>le prix le plus bas pratiqué auprès de tous les consommateurs au cours des trente jours précédant</strong> la réduction. En cas de réductions successives sur une période déterminée, le prix de référence reste celui pratiqué avant la première réduction.",
+        cle: "C'est le point sur lequel beaucoup de vitrines sont restées en arrière. Un prix barré qui reprend le tarif catalogue, ou le prix pratiqué il y a trois mois, n'est plus conforme — et une vitrophanie promotionnelle posée avant mai 2022 véhicule l'ancienne logique. La règle ne s'applique pas aux <strong>produits périssables menacés d'altération rapide</strong>. Concrètement, cela pousse à concevoir les supports de promotion comme <strong>remplaçables</strong> plutôt que définitifs.",
+        source: { label: "Annonces de réduction de prix : ce que vous devez savoir (DGCCRF)", url: "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/annonces-de-reduction-de-prix-ce-que-vous-devez-savoir" }
+      },
+      {
+        titre: "2 · L'affichage des prix, en vitrine et en rayon",
+        texte: "Les prix doivent être affichés de manière <strong>visible et lisible</strong>, exprimés en euros <strong>toutes taxes comprises</strong>, et permettre au consommateur de connaître le prix sans avoir à le demander. Pour les produits exposés en vitrine, l'information doit être perceptible depuis l'extérieur.",
+        cle: "La conséquence pour l'agencement : l'étiquetage est un système, pas une suite d'autocollants. Trois niveaux de lecture cohabitent — le <strong>drapeau</strong> ou le bandeau, lus depuis l'entrée ; la <strong>réglette de linéaire</strong>, lue à un mètre ; l'étiquette produit, lue à trente centimètres. Quand ces niveaux ne sont pas hiérarchisés, le client ne trouve pas le prix, et c'est le premier motif d'abandon en rayon.",
+        source: { label: "Professionnels, quelles sont vos obligations en matière d'affichage des prix ?", url: "https://www.economie.gouv.fr/entreprises/gerer-son-entreprise-au-quotidien/gerer-un-commerce/professionnels-quelles-sont-vos-obligations-en-matiere-daffichage-des-prix" }
+      },
+      {
+        titre: "3 · L'enseigne, et le seuil de taxe que l'on franchit sans le voir",
+        texte: "L'enseigne de façade relève de l'article L.581-3 du code de l'environnement et de l'autorisation du <strong>maire</strong>, avec l'accord de l'architecte des Bâtiments de France en secteur protégé — situation ordinaire pour un commerce de centre-ville.",
+        cle: "Le point que les commerçants découvrent à la première facture : la <strong>TLPE</strong> se calcule sur la <strong>surface cumulée</strong> de tous les supports, pas sur la seule enseigne de façade. Un bandeau, une enseigne drapeau, un caisson au-dessus de la porte et un chevalet permanent s'additionnent. Ajouter un support peut faire basculer la boutique au-dessus du seuil d'exonération — cela se vérifie avant de dessiner, pas au moment de l'avis de taxe.",
+        source: { label: "Code général des collectivités territoriales — TLPE (L.2333-6 et suivants)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070633/LEGISCTA000006192887/" }
+      },
+      {
+        titre: "4 · Les opérations commerciales et le rythme de la vitrine",
+        texte: "Les soldes se déroulent à des dates fixées nationalement, et les mentions employées pendant ces périodes relèvent des mêmes règles d'annonce de réduction de prix. Les autres opérations — promotions, ventes privées, déstockage — obéissent au droit commun de la consommation, dont la règle des trente jours.",
+        cle: "Ce qui en découle intéresse directement la conception : <strong>une vitrine de commerce a deux couches</strong>. Une couche permanente — nom, activité, horaires, mentions obligatoires, coordonnées — qui se traite en vitrophanie durable ; et une couche saisonnière, remplacée plusieurs fois par an, qui doit se poser et se retirer sans abîmer le vitrage ni laisser de colle. Traiter les deux avec le même adhésif est l'erreur la plus courante, et la plus visible au bout de deux saisons.",
+        source: { label: "Code de commerce — soldes (L.310-3)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000005634379/LEGISCTA000006133186/" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les dimensions admises en façade, les seuils et tarifs de TLPE relèvent du règlement local de publicité et de la délibération de votre commune, et se vérifient au cas par cas avant tout devis."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand un commerce refait sa vitrine",
+    lead: "Le commerce de détail est le secteur au rythme le plus rapide : la vitrine travaille toute l'année, la façade une fois par décennie.",
+    moments: [
+      ["Ouverture ou reprise", "Le lot complet : enseigne, vitrophanie permanente, agencement, signalétique de rayon. Le délai est commandé par la date d'ouverture, jamais l'inverse."],
+      ["Les temps forts de l'année", "Soldes d'hiver et d'été, rentrée, fêtes de fin d'année. Quatre à six habillages saisonniers par an pour un commerce actif : c'est un volume récurrent plutôt qu'un chantier."],
+      ["Mise en conformité de l'affichage", "Prix barrés non conformes à la règle des trente jours, mentions obligatoires manquantes, étiquetage illisible. Besoin précis, délai court."],
+      ["Réagencement intérieur", "Nouveau mobilier, nouveau parcours client : la signalétique de rayon se refait avec l'implantation, et la hiérarchie drapeau / bandeau / réglette se rejoue."],
+      ["Entrée dans un réseau ou une franchise", "Charte imposée, calendrier contractuel, et la question classique : concilier la charte avec le règlement local de publicité, qui ne la connaît pas."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un commerce, la vraie question n'est pas ce qu'il faut poser, mais à quelle fréquence cela devra être changé.",
+    questions: [
+      "Enseigne de façade, habillage de vitrine, signalétique intérieure — ou l'ensemble ?",
+      "Combien d'habillages saisonniers par an ? C'est ce qui décide de la technique et du budget annuel réel.",
+      "Quelle surface vitrée, et quelle part peut être couverte sans assombrir le magasin ?",
+      "Vos annonces de réduction de prix appliquent-elles bien la règle des trente jours depuis mai 2022 ?",
+      "Quelle est la surface cumulée de vos enseignes actuelles — bandeau, drapeau, caisson, chevalet ? C'est elle qui décide de la TLPE.",
+      "La commune a-t-elle un règlement local de publicité ? Le commerce est-il en secteur protégé ?",
+      "Appartenez-vous à un réseau imposant une charte graphique et technique ?",
+      "Pour le rayon : combien de mètres de linéaire, et quelle hiérarchie de lecture souhaitée ?",
+      "Le vitrage est-il simple, feuilleté, teinté ou traité ? Cela conditionne l'adhésif et sa dépose.",
+      "Y a-t-il une date butoir — ouverture, début des soldes, arrivée d'une collection ?"
+    ],
+    note: "La deuxième question est celle qui change tout. Un commerce qui rhabille sa vitrine cinq fois par an et un commerce qui la laisse trois ans n'achètent ni le même film, ni la même pose, ni le même budget — même avec une vitrine identique."
+  },
+
+  vocabulaire: [
+    ["Prix de référence", "Le prix barré. Depuis le 28 mai 2022, c'est le prix le plus bas pratiqué au cours des trente jours précédant la réduction."],
+    ["Vitrophanie permanente", "Adhésif durable portant nom, activité, horaires et mentions obligatoires. À distinguer de l'habillage saisonnier."],
+    ["Micro-perforé", "Film percé de trous invisibles de loin : image pleine vue de l'extérieur, transparence conservée de l'intérieur."],
+    ["Film dépoli", "Translucide, non imprimé. Masque sans obscurcir — bas de vitrine, réserve, cabine d'essayage."],
+    ["Drapeau de rayon", "Panneau suspendu perpendiculaire au linéaire, lisible depuis l'entrée. Premier niveau de lecture."],
+    ["Bandeau de gondole", "Bandeau horizontal en tête de rayon, lisible depuis l'allée. Deuxième niveau."],
+    ["Réglette de linéaire", "Porte-étiquette de tablette, lu à un mètre. Troisième niveau."],
+    ["Stop-rayon", "Petit panneau perpendiculaire au linéaire, au niveau du produit. Arrête le regard sur une référence précise."],
+    ["Chevalet", "Panneau autoportant posé devant la boutique. Il occupe le domaine public, et sa surface entre dans le calcul de la TLPE s'il est permanent."]
+  ],
   services: ["enseignes", "vitrophanie-plv", "impression-grand-format", "objets-publicitaires"]
 },
 {
@@ -836,6 +921,93 @@ module.exports = [
     { q: "Comment consulter dans le cadre d'un marché public ?", a: "Selon le montant, une simple demande de devis peut suffire, ou une procédure adaptée voire formalisée devient nécessaire. Nous transmettons votre cahier des charges à des entreprises habituées aux marchés publics, capables de fournir mémoire technique, références comparables et attestations de régularité fiscale et sociale." },
     { q: "Quelles obligations d'accessibilité pour la signalétique d'une mairie ?", a: "Contraste d'au moins 70 % entre texte et fond, caractères dimensionnés selon la distance de lecture, doublage en relief et braille des informations essentielles — identification des locaux, sanitaires, étages, ascenseurs — posés entre 0,90 m et 1,30 m, bandes d'éveil de vigilance en haut des escaliers et repérage visuel des parois vitrées." },
     { q: "Peut-on jalonner un équipement privé sur la voie publique ?", a: "La signalisation d'information locale permet, dans un cadre défini par la commune ou le gestionnaire de voirie, de jalonner certains services et activités présentant un intérêt local. Elle obéit à une charte de mobilier et d'implantation, et les demandes sont instruites par la collectivité — ce n'est pas un droit automatique." }
+  ],
+
+  /* ----------------------------------------------------------------------
+     Collectivité et ERP. Le point le plus utile de tout le site est ici, et
+     il concerne bien au-delà des collectivités : depuis 2015, une entreprise
+     ne peut plus poser sa propre préenseigne au bord de la route. Le
+     remplacement — la SIL — relève du code de la route, et seul le
+     gestionnaire de voirie peut l'implanter. Autrement dit, le commerçant
+     rural qui veut être fléché doit passer par sa commune, pas par un
+     enseigniste. Le dire clairement vaut mieux que de vendre un panneau qui
+     sera déposé.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre la signalétique publique et le jalonnement",
+    lead: "Deux mondes se croisent ici : celui de l'enseigne, qui relève du code de l'environnement, et celui du <em>jalonnement routier</em>, qui relève du code de la route. Les confondre conduit à poser des panneaux qui seront déposés.",
+    couches: [
+      {
+        titre: "1 · La fin des préenseignes, et ce qui les remplace",
+        texte: "Depuis le <strong>13 juillet 2015</strong>, en application de la loi Grenelle II, les préenseignes dérogatoires sont <strong>interdites</strong>, à trois exceptions près : les activités liées à la production ou à la commercialisation de <strong>produits du terroir</strong>, les <strong>activités culturelles</strong>, et les <strong>monuments historiques ouverts à la visite</strong>. Les préenseignes autrefois admises pour les « activités utiles aux personnes en déplacement » — garages, stations-service, hôtels et restaurants — ont disparu.",
+        cle: "Ce qui les remplace est la <strong>signalisation d'information locale (SIL)</strong>, et elle change complètement l'interlocuteur : la SIL relève du code de la route et de l'instruction interministérielle sur la signalisation routière, si bien que <strong>seul le gestionnaire de voirie est autorisé à implanter ses panneaux</strong>. Un commerçant ne peut pas commander son fléchage à un enseigniste et le faire poser : il doit s'adresser à la commune ou au département, qui décide de l'inscrire ou non à son schéma de jalonnement.",
+        source: { label: "La signalisation d'information locale — services de l'État", url: "https://www.nord.gouv.fr/Actions-de-l-Etat/Environnement/Publicite/Reglementation-relative-a-la-publicite-exterieure-aux-enseignes-et-aux-preenseignes/Les-solutions-alternatives/La-Signalisation-d-Information-Locale-SIL" }
+      },
+      {
+        titre: "2 · L'accessibilité : un registre, et un résumé affiché",
+        texte: "Tout établissement recevant du public doit tenir un <strong>registre public d'accessibilité</strong>, dont le contenu et les modalités de diffusion sont fixés par l'arrêté du 19 avril 2017 et qui est obligatoire depuis le <strong>30 septembre 2017</strong>. Il se consulte sur place, au point d'accueil accessible, sur papier ou sur support numérique.",
+        cle: "Pour une collectivité, la difficulté n'est pas le principe mais le <strong>volume</strong> : mairie, écoles, salle des fêtes, gymnase, médiathèque, cimetière, aires de jeux. Chaque bâtiment a son registre et son résumé à afficher, et chacun appelle en outre la signalétique matérielle correspondante — contraste des nez de marche, bandes de vigilance, repérage des parois vitrées, boucle magnétique à l'accueil. C'est un marché de parc, pas un chantier unitaire.",
+        source: { label: "Registre d'accessibilité obligatoire — guide pour les ERP (handicap.gouv.fr)", url: "https://handicap.gouv.fr/registre-daccessibilite-obligatoire-un-guide-pour-les-erp" }
+      },
+      {
+        titre: "3 · Comment une commune achète, et jusqu'à quel montant sans procédure",
+        texte: "La commande publique impose une mise en concurrence au-delà d'un certain montant. Le <strong>seuil de dispense de procédure</strong> pour les marchés de fournitures et de services a été relevé de 40 000 à <strong>60 000 € HT au 1<sup>er</sup> avril 2026</strong>, par le décret n° 2025-1386 du 29 décembre 2025 modifiant l'article R.2122-8 du code de la commande publique.",
+        cle: "La conséquence est très concrète pour un professionnel du secteur : <strong>l'essentiel des commandes de signalétique d'une commune passe sous ce seuil</strong>, donc sans publicité ni mise en concurrence préalables. Le bon interlocuteur n'est pas la plateforme de marchés publics, c'est le service technique. Au-delà, la procédure adaptée s'applique, et l'allotissement — signalétique intérieure, jalonnement extérieur, accessibilité — décide de qui peut répondre.",
+        source: { label: "Mesures de simplification et rehaussement des seuils (DAJ, ministère de l'Économie)", url: "https://www.economie.gouv.fr/daj/maintien-des-seuils-de-declaration-des-donnees-essentielles-des-marches-publics" }
+      },
+      {
+        titre: "4 · Sécurité et évacuation : une signalétique normalisée",
+        texte: "Les plans d'évacuation et d'intervention, les consignes de sécurité et l'identification des issues relèvent de règles propres, distinctes du droit de l'enseigne. Les plans obéissent notamment à la norme <strong>NF X 08-070</strong>, qui en fixe la composition, les pictogrammes et les couleurs.",
+        cle: "Le piège pour l'acheteur public : <strong>un plan d'évacuation n'est pas un document graphique libre</strong>. Il se dessine à partir du plan du bâtiment, il porte le « vous êtes ici » à l'emplacement réel du support, et il doit être repris à chaque modification de cloisonnement. C'est pourquoi il se commande avec les plans DWG ou PDF du bâtiment, et pourquoi un prestataire qui ne les demande pas n'a pas compris la prestation.",
+        source: { label: "Accessibilité et sécurité des établissements recevant du public — ministère de la Transition écologique", url: "https://www.ecologie.gouv.fr/politiques-publiques/laccessibilite-etablissements-recevant-du-public-erp" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les schémas de jalonnement, les chartes de signalétique et les règlements de SIL sont propres à chaque commune ou département, et les seuils de la commande publique évoluent — ils se vérifient à la date de la consultation."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand une collectivité commande de la signalétique",
+    lead: "Le calendrier d'une commune est prévisible, et il ne ressemble à celui d'aucun commerce : il suit le budget et le mandat.",
+    moments: [
+      ["Après le vote du budget", "Le premier trimestre concentre les consultations : les crédits sont ouverts, les services techniques sortent les dossiers préparés l'hiver."],
+      ["Livraison d'un équipement", "Nouvelle école, salle polyvalente, médiathèque, tiers-lieu : la signalétique est le dernier lot, souvent le plus serré en délai parce qu'il dépend de l'achèvement des cloisons."],
+      ["Mise en accessibilité", "Programmation pluriannuelle, contrôle, ou plainte d'un usager. Le besoin porte sur un parc de bâtiments, pas sur un seul."],
+      ["Refonte du jalonnement", "Adoption d'un schéma directeur de signalétique ou d'un règlement local de publicité : la commune reprend son jalonnement et sa SIL d'un bloc. C'est le marché le plus important du secteur."],
+      ["Début de mandat", "La nouvelle équipe reprend l'identité visuelle de la commune : la signalétique suit, du panneau d'entrée d'agglomération aux plaques de rue."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un dossier public, ce qui coûte cher n'est pas la fabrication : c'est le temps perdu quand les pièces manquent.",
+    questions: [
+      "Signalétique intérieure de bâtiment, jalonnement extérieur, accessibilité, sécurité — ou plusieurs de ces lots ?",
+      "Combien de bâtiments et de sites sont concernés ? S'agit-il d'un parc à traiter ou d'une opération unique ?",
+      "Montant estimé : en dessous du seuil de dispense, ou en procédure adaptée ?",
+      "Disposez-vous des plans des bâtiments au format DWG ou PDF ? Ils sont indispensables aux plans d'évacuation.",
+      "Existe-t-il une charte graphique de la collectivité, et un schéma directeur de signalétique ?",
+      "Pour du jalonnement routier : quelle voirie, et quel gestionnaire — communal, départemental, national ?",
+      "S'agit-il de SIL ? Auquel cas le règlement du gestionnaire de voirie s'impose, et l'implantation lui revient.",
+      "Les registres publics d'accessibilité sont-ils établis, et leurs résumés affichés ?",
+      "Y a-t-il des contraintes patrimoniales : secteur protégé, abords de monument historique, site classé ?",
+      "Quel délai, et dépend-il d'une date d'ouverture, d'une commission de sécurité ou d'une échéance budgétaire ?"
+    ],
+    note: "La question qui débloque le plus de dossiers est celle des plans du bâtiment. Sans eux, aucun plan d'évacuation conforme n'est possible, et le lot se décale — souvent de plusieurs semaines."
+  },
+
+  vocabulaire: [
+    ["Préenseigne", "Panneau signalant une activité exercée ailleurs. Les préenseignes dérogatoires sont interdites depuis le 13 juillet 2015, sauf terroir, culture et monuments historiques."],
+    ["SIL", "Signalisation d'information locale. Relève du code de la route ; seul le gestionnaire de voirie peut l'implanter."],
+    ["Schéma de jalonnement", "Document par lequel une collectivité organise son fléchage : qui est signalé, depuis où, avec quel gabarit."],
+    ["Mât et lame", "Le support vertical et les lames directionnelles qui s'y fixent. L'unité de compte d'un marché de jalonnement."],
+    ["Registre public d'accessibilité", "Obligatoire depuis le 30 septembre 2017 dans tout ERP ; un résumé doit être affiché visiblement."],
+    ["NF X 08-070", "Norme des plans d'évacuation et d'intervention : composition, pictogrammes, couleurs, emplacement du « vous êtes ici »."],
+    ["Bande de vigilance", "Bande podotactile en haut d'escalier, obligation d'accessibilité."],
+    ["Boucle magnétique", "Dispositif d'aide à l'audition à un guichet d'accueil. Sa présence se signale par un pictogramme normalisé."],
+    ["Allotissement", "Découpage d'un marché en lots. Il décide de qui peut répondre : un lot unique écarte les petites entreprises."]
   ],
   services: ["signaletique", "impression-grand-format", "pose-nacelle", "maquette-creation-graphique"]
 },
