@@ -276,6 +276,92 @@ module.exports = [
     { q: "Marquer les véhicules de courtoisie, est-ce rentable ?", a: "C'est l'un des meilleurs rapports coût-visibilité du secteur. Un marquage à 300 € sur un véhicule qui circule quotidiennement sur votre zone génère plusieurs dizaines de milliers de contacts par mois, pour un amortissement de quelques mois. Prévoyez simplement le budget de dépose si les véhicules sont en location longue durée." },
     { q: "Quel marquage au sol résiste à l'huile et aux pneus ?", a: "La résine à froid bi-composant pour les zones les plus sollicitées, et l'adhésif technique antidérapant pour les circulations piétonnes. Le simple adhésif de bureau ne tient pas trois mois dans un atelier. La préparation du support — sol dégraissé, sec, non poreux — conditionne autant la tenue que le produit lui-même." }
   ],
+
+  /* ----------------------------------------------------------------------
+     Garage : le secteur où l'enseigne n'est pas qu'un choix commercial mais
+     une obligation légale sanctionnée. L'arrêté du 27 mars 1987 impose un
+     affichage des prix « visible et lisible de l'extérieur » — autrement
+     dit, de la signalétique extérieure imposée par la loi, que la DGCCRF
+     contrôle et verbalise. C'est l'argument le plus direct de tout le site :
+     le lecteur découvre qu'il est peut-être en infraction, et la mise en
+     conformité est exactement ce que le réseau vend.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre l'enseigne et l'affichage d'un garage",
+    lead: "Le garage est le seul de nos secteurs où la signalétique extérieure est une obligation légale assortie d'une amende. Ce n'est pas une question d'image : c'est un poste de conformité, et la DGCCRF le contrôle.",
+    couches: [
+      {
+        titre: "1 · L'affichage des prix : obligatoire, et à l'extérieur",
+        texte: "L'arrêté du 27 mars 1987 impose aux entreprises d'entretien, de réparation, de contrôle technique, de dépannage, de remorquage et de garage de véhicules un affichage <strong>à l'entrée de l'établissement, visible et lisible depuis l'extérieur</strong> : les taux horaires TTC et les prix TTC des prestations forfaitaires. Le même affichage doit être repris au lieu de réception de la clientèle. Lorsque les prix reposent sur un taux horaire, le <strong>mode de calcul doit être précisé</strong> — temps réellement passé, ou barème de temps.",
+        cle: "Les manquements sont sanctionnés par une <strong>amende administrative pouvant atteindre 3 000 € pour une personne physique et 15 000 € pour une personne morale</strong>. Et le sujet n'est pas théorique : l'enquête de la DGCCRF sur la loyauté de l'information en entretien et réparation automobile relève que <strong>quatre contrôles sur dix ont donné lieu à des mesures correctives ou répressives</strong>, l'affichage incomplet figurant parmi les anomalies les plus fréquentes.",
+        source: { label: "Arrêté du 27 mars 1987 relatif aux règles de publicité des prix (entretien, réparation, contrôle technique, dépannage, remorquage, garage)", url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000000862823" }
+      },
+      {
+        titre: "2 · Les marques de constructeur : ce que vous n'avez pas le droit d'afficher",
+        texte: "Un réparateur agréé dispose d'un lien contractuel avec le constructeur, qui l'autorise à porter sa marque. Un réparateur indépendant, lui, ne l'a pas — et la jurisprudence a écarté des formules comme « <em>citroëniste indépendant</em> », jugées de nature à laisser croire à une affiliation qui n'existe pas.",
+        cle: "La ligne est simple à retenir : vous pouvez <strong>indiquer les marques que vous entretenez</strong>, vous ne pouvez pas <strong>reprendre leurs logos ni une formulation qui suggère un agrément</strong>. C'est un point de conception, pas seulement de droit : il se règle au moment de dessiner le bandeau, avant la fabrication. Un totem refait parce qu'un logo constructeur y figurait est un totem payé deux fois.",
+        source: { label: "Règlement (UE) n° 461/2010 sur les accords verticaux dans le secteur automobile", url: "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX%3A32010R0461" }
+      },
+      {
+        titre: "3 · L'autorisation d'enseigne et le totem de bord de route",
+        texte: "Comme toute enseigne, celle d'un garage relève de l'article L.581-3 du code de l'environnement et d'une autorisation délivrée par le <strong>maire</strong>. Le totem mérite une attention particulière : implanté en limite de parcelle, en bord de voie circulée et souvent en zone d'activité, il cumule les contraintes de hauteur, de recul et parfois de sécurité routière.",
+        cle: "Le point que l'on découvre trop tard : <strong>une enseigne scellée au sol est encadrée plus strictement qu'une enseigne murale</strong>, et le règlement local de publicité limite couramment leur nombre par établissement. Avant de dessiner un totem de trois mètres, il faut savoir combien d'enseignes au sol la commune autorise — et si la vôtre en compte déjà une.",
+        source: { label: "Code de l'environnement — enseignes (R.581-58 et suivants)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074220/LEGISCTA000006189035/" }
+      },
+      {
+        titre: "4 · L'atelier : une signalétique qui relève du code du travail",
+        texte: "À l'intérieur, on change de corpus. Le marquage des circulations, l'identification des issues de secours, la signalisation des risques et des équipements de protection relèvent du <strong>code du travail</strong> et des règles de santé et sécurité, pas du droit de l'enseigne. Les couleurs et les pictogrammes y sont normalisés.",
+        cle: "Conséquence pratique pour le devis : <strong>l'atelier et la façade ne se chiffrent pas ensemble</strong>. La façade est un sujet d'image et d'urbanisme ; l'atelier est un sujet de conformité, avec des matériaux différents — adhésif de sol résistant au passage de véhicules, panneaux photoluminescents pour les issues. Confier les deux au même prestataire n'a de sens que s'il maîtrise les deux.",
+        source: { label: "Code du travail — signalisation de santé et de sécurité au travail", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018532292/" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Le nombre d'enseignes au sol admises, les hauteurs et les reculs relèvent du règlement local de publicité de votre commune et se vérifient au cas par cas — c'est la première chose que fait l'enseigniste que nous vous présentons."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand un garage refait son enseigne",
+    lead: "Cinq déclencheurs, dont deux sont subis et trois choisis.",
+    moments: [
+      ["Un contrôle DGCCRF", "Le plus fréquent, et le plus urgent. L'affichage extérieur des tarifs est relevé non conforme, un délai de mise en conformité est fixé. Le chantier est court, le besoin est précis, et le prix compte moins que le délai."],
+      ["Changement de statut réseau", "Entrée ou sortie d'un agrément constructeur, passage en réseau multimarque : la façade et le totem doivent être refaits, et les logos déposés retirés. Le calendrier est imposé par le contrat."],
+      ["Reprise ou transmission", "Le repreneur change le nom et veut marquer la rupture. Enseigne de façade, totem, marquage des véhicules de courtoisie — souvent le lot complet."],
+      ["Extension ou réaménagement de l'atelier", "Nouvelle baie, nouveau pont, reprise des circulations : le marquage au sol et la signalétique de sécurité sont repris avec l'implantation."],
+      ["Ajout d'une activité", "Contrôle technique, carrosserie, borne de recharge, dépannage : chaque activité nouvelle doit apparaître sur le totem et dans l'affichage des prix. C'est souvent ce qui fait passer l'établissement au-dessus du seuil de TLPE."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un garage, la moitié des questions portent sur la conformité. Nous les posons une fois pour toutes.",
+    questions: [
+      "Quelles activités exercez-vous : entretien, réparation, carrosserie, contrôle technique, dépannage, vente ?",
+      "Votre affichage des tarifs est-il aujourd'hui lisible depuis l'extérieur, à l'entrée de l'établissement ?",
+      "Êtes-vous réparateur agréé d'une ou plusieurs marques, et le contrat vous autorise-t-il à porter leurs logos ?",
+      "Enseigne murale, totem scellé au sol, ou les deux — et combien d'enseignes au sol existent déjà sur la parcelle ?",
+      "Depuis quelle voie faut-il être vu, et à quelle vitesse de circulation ?",
+      "La commune a-t-elle un règlement local de publicité ? La parcelle est-elle en zone d'activité ou en agglomération ?",
+      "Surface cumulée des enseignes existantes, pour situer le projet face au seuil de TLPE.",
+      "Pour l'atelier : surface à marquer, nombre de postes, circulations piétonnes à distinguer, passage de véhicules sur le marquage ?",
+      "Combien de véhicules à marquer — courtoisie, dépannage, utilitaires — et faut-il un covering total ou un lettrage ?",
+      "Y a-t-il un délai imposé par un contrôle, un contrat de réseau ou une ouverture ?"
+    ],
+    note: "La question qui change le plus le devis est celle des enseignes au sol déjà présentes sur la parcelle : elle décide si le totem est possible tel quel, ou s'il faut en déposer une autre."
+  },
+
+  vocabulaire: [
+    ["Taux horaire TTC", "La base de facturation de la main-d'œuvre. Son affichage extérieur est obligatoire, tout comme la mention du mode de calcul retenu."],
+    ["Barème de temps", "Temps forfaitaire par opération, publié par le constructeur ou par la profession. L'alternative au temps réellement passé — le choix doit être affiché."],
+    ["Enseigne scellée au sol", "Totem, mât, chevalet fixé au terrain. Encadrée plus strictement que l'enseigne murale, et souvent limitée en nombre par le règlement local."],
+    ["Recul", "Distance imposée entre l'enseigne au sol et la limite de propriété ou le bord de la voie."],
+    ["Réparateur agréé", "Lié par contrat à un constructeur, donc autorisé à porter sa marque. À distinguer du réparateur indépendant, qui peut citer les marques qu'il entretient sans en reprendre les logos."],
+    ["Marquage au sol d'atelier", "Adhésif ou peinture délimitant circulations, zones de travail et cheminements piétons. Relève du code du travail, pas du droit de l'enseigne."],
+    ["Photoluminescent", "Matériau qui restitue la lumière accumulée. Employé pour les issues de secours, afin qu'elles restent lisibles en cas de coupure."],
+    ["Covering total", "Habillage intégral d'un véhicule. À distinguer du lettrage, qui se limite à des éléments découpés posés sur la peinture d'origine."],
+    ["Véhicule de courtoisie", "Prêté au client pendant l'immobilisation. Souvent le support publicitaire le plus rentable d'un garage : il roule, il stationne, il est vu."]
+  ],
   services: ["covering-vehicule", "enseignes", "signaletique", "impression-grand-format"]
 },
 {
