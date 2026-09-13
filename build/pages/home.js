@@ -25,18 +25,32 @@ module.exports = function home(cities) {
   ]);
 
   const body = `
-<section class="hero">
+<section class="hero hero-home">
   <div class="hero-bg">${heroImg("hero", 2, "Rue commerçante avec enseignes et devantures de magasins")}</div>
   <div class="wrap hero-in">
-    <span class="hero-badge"><b>Pour les entreprises</b> Enseigne, signalétique, covering et publicité</span>
-    <h1>Vous voulez rendre votre entreprise visible ? Nous trouvons les bons professionnels</h1>
-    <p class="lead">${esc(site.baseline)} <strong>Commerce, entreprise, artisan, profession libérale,
-    restaurant, industrie ou collectivité</strong> : décrivez votre projet en deux minutes. Nous le
-    qualifions, puis nous le confions à des enseignistes, imprimeurs et poseurs sélectionnés près de
-    chez vous. Vous recevez des propositions comparables sous 48 heures, gratuitement et sans engagement.</p>
-    <div class="btns">
-      <a class="btn btn-primary btn-lg" href="devis.html">Décrire mon projet</a>
-      <a class="btn btn-ghost btn-lg" href="comment-ca-marche.html">Comment ça marche</a>
+    <div class="hero-split">
+      <div>
+        <span class="hero-badge"><b>Pour les entreprises</b> Enseigne, signalétique, covering et publicité</span>
+        <h1>Enseigne, signalétique, covering&nbsp;: le bon professionnel près de chez vous</h1>
+        <p class="lead">Décrivez votre projet en deux minutes. Nous le qualifions par téléphone, puis
+        nous le confions à des enseignistes, imprimeurs et poseurs vérifiés de votre département.
+        Deux à trois devis comparables sous 48 heures — gratuitement, et sans engagement.</p>
+        <div class="btns">
+          <a class="btn btn-primary btn-lg" href="devis.html">Décrire mon projet</a>
+          <a class="btn btn-ghost btn-lg" href="comment-ca-marche.html">Comment ça marche</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>Comment ça se passe</h2>
+        <ol class="hero-steps">
+          <li><b>Vous décrivez</b><span>Deux minutes, sans créer de compte.</span></li>
+          <li><b>Nous qualifions</b><span>Un appel, puis un cahier des charges écrit par
+            quelqu'un du métier.</span></li>
+          <li><b>Vous comparez</b><span>Deux à trois devis établis sur le même document.</span></li>
+        </ol>
+        <p class="hero-card-note">Le service est gratuit pour vous : le réseau est financé par
+        l'abonnement des professionnels, jamais par une commission sur votre chantier.</p>
+      </aside>
     </div>
     <div class="hero-stats">
       ${stats.map((s) => `<div><b>${esc(s.n)}</b><span>${esc(s.l)}</span></div>`).join("")}

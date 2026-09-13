@@ -1,126 +1,5 @@
 [
  {
-  "file": "enseigne-1",
-  "topic": "enseigne",
-  "title": "Coffee Shop Sign",
-  "creator": "pixeljones",
-  "creator_url": "https://www.flickr.com/photos/82862615@N00",
-  "license": "BY-SA",
-  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
-  "source_url": "https://www.flickr.com/photos/82862615@N00/24171123",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-2",
-  "topic": "enseigne",
-  "title": "Spanish Hairdresser Shop Sign",
-  "creator": "ornello_pics",
-  "creator_url": "https://www.flickr.com/photos/69709778@N03",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/69709778@N03/6344598426",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-3",
-  "topic": "enseigne",
-  "title": "Business Storefront Sign",
-  "creator": "Matt Jackson Matt",
-  "creator_url": "https://www.flickr.com/photos/160527667@N06",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/160527667@N06/41320362484",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-4",
-  "topic": "enseigne",
-  "title": "Our storefront sign being installed",
-  "creator": "The Haunted Game Cafe",
-  "creator_url": "https://www.flickr.com/photos/35408038@N06",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/35408038@N06/3949675766",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-5",
-  "topic": "enseigne",
-  "title": "Retail Costco Wholesale",
-  "creator": "ccPixs.com",
-  "creator_url": "https://www.flickr.com/photos/86530412@N02",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/86530412@N02/8408775087",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-lumineuse-1",
-  "topic": "enseigne-lumineuse",
-  "title": "Loveless Cafe Neon Sign",
-  "creator": "SeeMidTN.com (aka Brent)",
-  "creator_url": "https://www.flickr.com/photos/94502827@N00",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/94502827@N00/100384937",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-lumineuse-2",
-  "topic": "enseigne-lumineuse",
-  "title": "Starlite West Motel Neon Sign",
-  "creator": "Phillip Pessar",
-  "creator_url": "https://www.flickr.com/photos/25955895@N03",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/25955895@N03/6556586533",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-lumineuse-3",
-  "topic": "enseigne-lumineuse",
-  "title": "Snack Bar - Aldwych, London - Neon signs",
-  "creator": "ell brown",
-  "creator_url": "https://www.flickr.com/photos/39415781@N06",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/39415781@N06/6447495729",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-lumineuse-4",
-  "topic": "enseigne-lumineuse",
-  "title": "Society Cleaners Neon Sign",
-  "creator": "Phillip Pessar",
-  "creator_url": "https://www.flickr.com/photos/25955895@N03",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/25955895@N03/8206543188",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-lumineuse-5",
-  "topic": "enseigne-lumineuse",
-  "title": "Illuminated sign for Skincare Dreams by Jeanine",
-  "creator": "chris.rycroft",
-  "creator_url": "https://www.flickr.com/photos/193316968@N06",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/193316968@N06/52228835965",
-  "provider": "flickr"
- },
- {
-  "file": "enseigne-lumineuse-6",
-  "topic": "enseigne-lumineuse",
-  "title": "Leicester at night.",
-  "creator": "Holly Norval",
-  "creator_url": "https://www.flickr.com/photos/63833161@N05",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/63833161@N05/11016150125",
-  "provider": "flickr"
- },
- {
   "file": "lettres-decoupees-1",
   "topic": "lettres-decoupees",
   "title": "Serious 3D lettering",
@@ -1870,61 +1749,6 @@
   "provider": "flickr"
  },
  {
-  "file": "hero-1",
-  "topic": "hero",
-  "title": "Drottninggatan shopping street, Stockholm",
-  "creator": "tuey",
-  "creator_url": "https://www.flickr.com/photos/21168473@N00",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/21168473@N00/256657930",
-  "provider": "flickr"
- },
- {
-  "file": "hero-2",
-  "topic": "hero",
-  "title": "the shopping street to the Baltic Sea",
-  "creator": "dicau58",
-  "creator_url": "https://www.flickr.com/photos/25533024@N04",
-  "license": "BY-SA",
-  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
-  "source_url": "https://www.flickr.com/photos/25533024@N04/13925490220",
-  "provider": "flickr"
- },
- {
-  "file": "hero-3",
-  "topic": "hero",
-  "title": "Shopping Street",
-  "creator": "mikecogh",
-  "creator_url": "https://www.flickr.com/photos/89165847@N00",
-  "license": "BY-SA",
-  "license_url": "https://creativecommons.org/licenses/by-sa/2.0/",
-  "source_url": "https://www.flickr.com/photos/89165847@N00/8104119889",
-  "provider": "flickr"
- },
- {
-  "file": "hero-4",
-  "topic": "hero",
-  "title": "The Former Jewish and East London Model Lodgings, 45–55 Commercial Street - East London.",
-  "creator": "Jim Linwood",
-  "creator_url": "https://www.flickr.com/photos/54238124@N00",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/54238124@N00/4767413712",
-  "provider": "flickr"
- },
- {
-  "file": "hero-5",
-  "topic": "hero",
-  "title": "Twin EE Shops - Commercial Street",
-  "creator": "lazygamer",
-  "creator_url": "https://www.flickr.com/photos/16173632@N00",
-  "license": "BY",
-  "license_url": "https://creativecommons.org/licenses/by/2.0/",
-  "source_url": "https://www.flickr.com/photos/16173632@N00/8134808508",
-  "provider": "flickr"
- },
- {
   "file": "croix-pharmacie-1",
   "topic": "croix-pharmacie",
   "title": "Paris Pharmacy Cross",
@@ -2935,5 +2759,181 @@
   "license_url": "https://creativecommons.org/licenses/by/2.0/",
   "source_url": "https://www.flickr.com/photos/42998544@N07/12348987825",
   "provider": "flickr"
+ },
+ {
+  "file": "hero-1",
+  "topic": "hero",
+  "title": "Bijouterie Prieur à Nantes (mars 2023)",
+  "creator": "Benoît Prieur",
+  "creator_url": "",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Bijouterie_Prieur_%C3%A0_Nantes_(mars_2023).JPG",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "hero-2",
+  "topic": "hero",
+  "title": "Boulangerie Augustin Place de la Croix-Rousse (Lyon) août 2023",
+  "creator": "Benoît Prieur",
+  "creator_url": "",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Boulangerie_Augustin_Place_de_la_Croix-Rousse_(Lyon)_ao%C3%BBt_2023.JPG",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "hero-3",
+  "topic": "hero",
+  "title": "Animalerie à Bourg-en-Bresse (avril 2023)",
+  "creator": "Benoît Prieur",
+  "creator_url": "",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Animalerie_%C3%A0_Bourg-en-Bresse_(avril_2023).JPG",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "hero-4",
+  "topic": "hero",
+  "title": "Charcutier-traiteur \"Tête de Canut\" Lyon 4e en avril 2023",
+  "creator": "Benoît Prieur",
+  "creator_url": "",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Charcutier-traiteur_%22T%C3%AAte_de_Canut%22_Lyon_4e_en_avril_2023.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "hero-5",
+  "topic": "hero",
+  "title": "Boutique bleue a Narbonne",
+  "creator": "Exilexi",
+  "creator_url": "",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Boutique_bleue_a_Narbonne.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-1",
+  "topic": "enseigne",
+  "title": "Av de l'Europe n°101, ZC du Coudoulet, Orange (FR84) 2022-05-07",
+  "creator": "JLZIMMERMANN",
+  "creator_url": "",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Av_de_l%27Europe_n%C2%B0101,_ZC_du_Coudoulet,_Orange_(FR84)_2022-05-07.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-2",
+  "topic": "enseigne",
+  "title": "Boulangerie Au pétrin des Saveurs (Montluel) en juin 2023",
+  "creator": "Benoît Prieur",
+  "creator_url": "",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Boulangerie_Au_p%C3%A9trin_des_Saveurs_(Montluel)_en_juin_2023.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-3",
+  "topic": "enseigne",
+  "title": "Boulangerie libertaire, 86 rue Louis-Vestrepain (Toulouse)",
+  "creator": "Abdoucondorcet",
+  "creator_url": "",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Boulangerie_libertaire,_86_rue_Louis-Vestrepain_(Toulouse).jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-4",
+  "topic": "enseigne",
+  "title": "Boutique Sainte-Philomène (Ars-sur-Formans) août 2023",
+  "creator": "Benoît Prieur",
+  "creator_url": "",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Boutique_Sainte-Philom%C3%A8ne_(Ars-sur-Formans)_ao%C3%BBt_2023.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-5",
+  "topic": "enseigne",
+  "title": "Atelier LSPMED 5 octobre 2019 08",
+  "creator": "Nattes à chat",
+  "creator_url": "",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Atelier_LSPMED_5_octobre_2019_08.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-lumineuse-1",
+  "topic": "enseigne-lumineuse",
+  "title": "085 Restaurant neon, vintage restaurant neon sign in Amiens, France - Creative Commons",
+  "creator": "Marek Ślusarczyk (Tupungato) Photo portfolio",
+  "creator_url": "",
+  "license": "CC BY 3.0",
+  "license_url": "https://creativecommons.org/licenses/by/3.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:085_Restaurant_neon,_vintage_restaurant_neon_sign_in_Amiens,_France_-_Creative_Commons.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-lumineuse-2",
+  "topic": "enseigne-lumineuse",
+  "title": "Logelbach 2013 12",
+  "creator": "Lionel Allorge",
+  "creator_url": "",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Logelbach_2013_12.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-lumineuse-3",
+  "topic": "enseigne-lumineuse",
+  "title": "Agence Duluc 2, 18 rue du Louvre, Paris 2012",
+  "creator": "Guillaume Baviere from Helsingborg, Sweden",
+  "creator_url": "",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Agence_Duluc_2,_18_rue_du_Louvre,_Paris_2012.jpg",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-lumineuse-4",
+  "topic": "enseigne-lumineuse",
+  "title": "Metro at night",
+  "creator": "Alf van Beem",
+  "creator_url": "",
+  "license": "CC0",
+  "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Metro_at_night.JPG",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-lumineuse-5",
+  "topic": "enseigne-lumineuse",
+  "title": "Nice vietnamese restaurant 3630",
+  "creator": "Bektour",
+  "creator_url": "",
+  "license": "CC BY-SA 3.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Nice_vietnamese_restaurant_3630.JPG",
+  "provider": "Wikimedia Commons"
+ },
+ {
+  "file": "enseigne-lumineuse-6",
+  "topic": "enseigne-lumineuse",
+  "title": "Lis tes ratures",
+  "creator": "Fabien Chalon (artwork)",
+  "creator_url": "",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "source_url": "https://commons.wikimedia.org/wiki/File:Lis_tes_ratures.jpg",
+  "provider": "Wikimedia Commons"
  }
 ]

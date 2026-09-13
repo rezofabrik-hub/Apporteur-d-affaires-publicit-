@@ -3,59 +3,59 @@
   {
    "name": "enseigne-1",
    "w": 1024,
-   "h": 758
+   "h": 768
   },
   {
    "name": "enseigne-2",
-   "w": 1023,
-   "h": 682
+   "w": 1024,
+   "h": 768
   },
   {
    "name": "enseigne-3",
    "w": 1024,
-   "h": 768
+   "h": 683
   },
   {
    "name": "enseigne-4",
    "w": 1024,
-   "h": 768
+   "h": 750
   },
   {
    "name": "enseigne-5",
    "w": 1024,
-   "h": 683
+   "h": 768
   }
  ],
  "enseigne-lumineuse": [
   {
    "name": "enseigne-lumineuse-1",
    "w": 1024,
-   "h": 768
+   "h": 683
   },
   {
    "name": "enseigne-lumineuse-2",
    "w": 1024,
-   "h": 768
+   "h": 683
   },
   {
    "name": "enseigne-lumineuse-3",
    "w": 1024,
-   "h": 768
+   "h": 731
   },
   {
    "name": "enseigne-lumineuse-4",
    "w": 1024,
-   "h": 768
+   "h": 769
   },
   {
    "name": "enseigne-lumineuse-5",
    "w": 1024,
-   "h": 683
+   "h": 660
   },
   {
    "name": "enseigne-lumineuse-6",
    "w": 1024,
-   "h": 473
+   "h": 411
   }
  ],
  "lettres-decoupees": [
@@ -907,27 +907,27 @@
   {
    "name": "hero-1",
    "w": 1024,
-   "h": 834
+   "h": 768
   },
   {
    "name": "hero-2",
    "w": 1024,
-   "h": 743
+   "h": 891
   },
   {
    "name": "hero-3",
    "w": 1024,
-   "h": 768
+   "h": 809
   },
   {
    "name": "hero-4",
    "w": 1024,
-   "h": 768
+   "h": 867
   },
   {
    "name": "hero-5",
    "w": 1024,
-   "h": 768
+   "h": 578
   }
  ],
  "croix-pharmacie": [

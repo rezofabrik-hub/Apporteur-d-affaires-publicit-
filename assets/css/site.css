@@ -1537,3 +1537,58 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
 @media (max-width: 1080px) { .ville-cols { columns: 3; } }
 @media (max-width: 780px)  { .ville-cols { columns: 2; column-gap: 22px; } }
 @media (max-width: 480px)  { .ville-cols { columns: 1; } }
+
+/* =========================================================================
+   38 · Hero de l'accueil en deux colonnes
+   -------------------------------------------------------------------------
+   Le hero tenait dans une colonne de 780 px avec un `max-width: 17ch` sur le
+   titre : à 1440 px, le H1 tombait sur cinq lignes très courtes et la moitié
+   droite de l'écran restait vide. En mobile, la conséquence était pire —
+   titre sur six lignes, chapeau sur neuf, et le bouton principal repoussé
+   sous la barre d'action fixe.
+
+   Deux colonnes au-dessus de 1024 px : l'argument à gauche, le déroulé à
+   droite. En dessous, la carte passe sous le texte et le hero redevient une
+   colonne unique.
+   ========================================================================= */
+.hero-home .hero-in { max-width: none; }
+.hero-split {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(32px, 4vw, 60px); align-items: start;
+}
+.hero-home h1 { max-width: 20ch; }
+.hero-home .lead { max-width: 54ch; }
+
+.hero-card {
+  background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: var(--r-lg); padding: 26px 28px 24px; backdrop-filter: blur(10px);
+}
+.hero-card h2 {
+  font-size: .78rem !important; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--tx-inv-3); margin: 0 0 18px !important;
+}
+.hero-steps { list-style: none; margin: 0; padding: 0; counter-reset: hs; }
+.hero-steps li {
+  position: relative; padding-left: 38px; margin-bottom: 16px; counter-increment: hs;
+}
+.hero-steps li::before {
+  content: counter(hs); position: absolute; left: 0; top: 1px;
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--signal); color: #fff; font-size: .82rem; font-weight: 800;
+}
+.hero-steps b { display: block; color: #fff; font-size: .98rem; }
+.hero-steps span { display: block; color: var(--tx-inv-3); font-size: .88rem; line-height: 1.55; }
+.hero-card-note {
+  margin: 18px 0 0; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, .14);
+  font-size: .85rem; line-height: 1.6; color: var(--tx-inv-3);
+}
+
+@media (max-width: 1024px) {
+  .hero-split { grid-template-columns: 1fr; gap: 30px; }
+  .hero-home h1 { max-width: 24ch; }
+}
+/* En mobile, le déroulé en trois temps ferait reculer d'autant le bouton
+   principal, déjà juste au-dessus de la barre d'action fixe. Il est repris
+   plus bas dans la page, où il a la place de se lire. */
+@media (max-width: 680px) { .hero-card { display: none; } }
