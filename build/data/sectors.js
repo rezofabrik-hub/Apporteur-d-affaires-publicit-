@@ -1424,7 +1424,92 @@ module.exports = [
     { q: "Broderie ou flocage pour les maillots de club ?", a: "Broderie pour le blason et le logo du club, qui ne changent pas et doivent survivre à des centaines de lavages. Flex ou flocage pour les numéros et les noms, qui évoluent d'une saison à l'autre et se remplacent facilement. Cette combinaison est le standard des clubs bien équipés." },
     { q: "Une association bénéficie-t-elle de tarifs particuliers ?", a: "Il n'existe pas de tarif associatif réglementé, mais beaucoup de professionnels du réseau pratiquent des conditions adaptées, notamment pour les clubs de leur commune, et acceptent des délais de production plus longs contre une remise. Précisez votre statut associatif dans la demande : cela fait souvent une différence réelle." }
   ],
-  services: ["objets-publicitaires", "impression-grand-format", "enseignes", "signaletique"]
+
+  /* ----------------------------------------------------------------------
+     Sport et loisirs. Deux contraintes que l'on ne trouve nulle part
+     ailleurs : la loi Évin, qui interdit non seulement la publicité mais
+     aussi le PARRAINAGE par les boissons alcooliques dans les enceintes
+     sportives — ce qui retire au club une de ses ressources naturelles ;
+     et les règlements fédéraux, qui fixent les dimensions du marquage bien
+     avant que le droit ne s'en mêle.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre la signalétique d'un équipement sportif",
+    lead: "Un club vit de ses partenaires et de ses panneaux ; c'est précisément ce que le droit encadre le plus. <em>Ce que vous avez le droit d'afficher</em> compte ici autant que la façon de l'afficher.",
+    couches: [
+      {
+        titre: "1 · La loi Évin : ni publicité, ni parrainage",
+        texte: "L'article L.3323-2 du code de la santé publique énumère limitativement les supports sur lesquels la publicité en faveur des boissons alcooliques est autorisée. Les enceintes sportives n'en font pas partie. Le même article ajoute que <strong>toute opération de parrainage est interdite lorsqu'elle a pour objet ou pour effet la propagande ou la publicité, directe ou indirecte, en faveur des boissons alcooliques</strong>.",
+        cle: "C'est plus large que ce que l'on croit généralement : l'interdiction ne vise pas seulement le panneau de bord de terrain, elle vise <strong>le parrainage lui-même</strong> — maillots, nom d'une tribune, dénomination d'un tournoi. Elle n'a rien à voir avec la dérogation qui permet à certains clubs d'ouvrir une buvette quelques fois par an : celle-ci concerne la vente, pas l'affichage. Sur un plan de panneautage, cela se vérifie <strong>avant</strong> de vendre l'emplacement à un partenaire, pas après l'avoir imprimé.",
+        source: { label: "Article L.3323-2 du code de la santé publique — publicité en faveur des boissons alcooliques", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072665/LEGISCTA000006171041/" }
+      },
+      {
+        titre: "2 · L'équipement est un ERP : évacuation et accessibilité",
+        texte: "Une salle, un gymnase, une piscine ou un stade couvert sont des <strong>établissements recevant du public</strong>. À ce titre s'appliquent les obligations d'évacuation — identification des issues, plans, points de rassemblement — et d'accessibilité, dont le <strong>registre public d'accessibilité</strong>, obligatoire depuis le 30 septembre 2017 et dont un résumé doit être affiché.",
+        cle: "La spécificité du sport tient au <strong>public</strong> : il est nombreux, il ne connaît pas les lieux, il arrive et repart en masse, et une partie est en tenue ou pieds nus. La signalétique d'évacuation d'un gymnase ne se conçoit pas comme celle d'un bureau — hauteur de lecture depuis les gradins, lisibilité en éclairage réduit, résistance aux chocs de ballon, et matériaux compatibles avec l'humidité permanente d'un bassin.",
+        source: { label: "Registre d'accessibilité obligatoire — guide pour les ERP (handicap.gouv.fr)", url: "https://handicap.gouv.fr/registre-daccessibilite-obligatoire-un-guide-pour-les-erp" }
+      },
+      {
+        titre: "3 · Le marquage : ce sont les fédérations qui décident",
+        texte: "Les dimensions d'un terrain, la largeur des lignes, les couleurs et les zones réglementaires ne relèvent pas du droit commun mais des <strong>règlements de chaque fédération</strong>, eux-mêmes adossés aux règles internationales de la discipline. Ils conditionnent l'homologation du terrain et donc la possibilité d'y disputer des rencontres officielles.",
+        cle: "La conséquence pratique est qu'un marquage sportif <strong>ne s'improvise jamais à partir d'un plan fourni par le client</strong> : il se contrôle contre le règlement fédéral en vigueur, qui évolue. Et il faut savoir dans quel niveau de compétition l'équipement sera utilisé : les tolérances d'un terrain de loisir et celles d'un terrain homologué pour un championnat ne sont pas les mêmes. Poser avant d'avoir vérifié, c'est risquer la non-homologation — et la reprise complète.",
+        source: { label: "Code du sport — équipements sportifs", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006071318/LEGISCTA000006167648/" }
+      },
+      {
+        titre: "4 · Les tarifs et les conditions d'accès",
+        texte: "Une salle de sport commerciale est soumise aux obligations générales d'information sur les prix : affichage visible et lisible, en euros toutes taxes comprises, permettant de connaître le prix sans avoir à le demander — ce qui vaut pour les formules d'abonnement comme pour les prestations à l'unité.",
+        cle: "S'y ajoutent les mentions propres à l'activité, qui occupent durablement l'accueil : règlement intérieur, conditions d'accès des mineurs, consignes d'hygiène, certificat médical le cas échéant. Comme ailleurs, <strong>ce qui est permanent se traite en support durable</strong>, ce qui change — une grille tarifaire, une offre de rentrée — se traite en support remplaçable. Les confondre est l'erreur la plus visible dans un hall de salle.",
+        source: { label: "Professionnels, quelles sont vos obligations en matière d'affichage des prix ?", url: "https://www.economie.gouv.fr/entreprises/gerer-son-entreprise-au-quotidien/gerer-un-commerce/professionnels-quelles-sont-vos-obligations-en-matiere-daffichage-des-prix" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les dimensions de marquage, les tolérances et les conditions d'homologation relèvent du règlement de chaque fédération, qui évolue : ils se vérifient à la date du chantier et pour le niveau de compétition visé."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand un club ou un équipement commande",
+    lead: "Le sport a un calendrier à lui : tout se décide entre la fin d'une saison et le début de la suivante.",
+    moments: [
+      ["L'intersaison", "La seule fenêtre où le terrain est libre. Marquage, panneautage, reprise de la signalétique : entre juin et août pour la plupart des disciplines, et la date de reprise ne se négocie pas."],
+      ["Le renouvellement des partenaires", "Les panneaux de bord de terrain et les supports de partenaires se refont au rythme des contrats de sponsoring — un volume récurrent, plusieurs fois par an pour un club actif."],
+      ["Une montée de niveau", "L'accession à une division supérieure peut appeler une mise aux normes du marquage et des équipements. Délai court, contrainte fédérale."],
+      ["Livraison ou rénovation d'équipement", "Nouveau gymnase, réfection d'un sol sportif, nouvelle piscine : signalétique, évacuation, accessibilité et marquage sont repris ensemble."],
+      ["Un événement ponctuel", "Tournoi, compétition, course : habillage temporaire, fléchage du public, arches, banderoles. Tout se pose et se dépose dans la même semaine."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un équipement sportif, deux questions commandent tout : le niveau de compétition, et la fenêtre d'intervention.",
+    questions: [
+      "Marquage de terrain, panneautage de partenaires, signalétique d'équipement, habillage événementiel — ou plusieurs de ces lots ?",
+      "Quelle discipline, et quel niveau de compétition ? C'est le règlement fédéral applicable qui fixe les dimensions.",
+      "Le terrain doit-il être homologué, et pour quelle division ?",
+      "Quelle est la nature du sol : parquet, résine, gazon synthétique, gazon naturel, béton, terre battue ?",
+      "Intérieur ou extérieur ? Humidité permanente d'un bassin, gel, exposition aux UV : le matériau en dépend.",
+      "Pour le panneautage : combien d'emplacements, quelles dimensions, et les partenaires sont-ils déjà connus ?",
+      "Des boissons alcooliques figurent-elles parmi les partenaires pressentis ? La loi Évin l'interdit en enceinte sportive.",
+      "Quelle fenêtre d'intervention ? La plupart des chantiers ne peuvent se faire qu'à l'intersaison.",
+      "Évacuation et accessibilité : les plans du bâtiment sont-ils disponibles, et le registre d'accessibilité tenu ?",
+      "Y a-t-il une date ferme — reprise des entraînements, première rencontre, visite de commission ?"
+    ],
+    note: "La question du niveau de compétition est celle qui évite la reprise complète. Un marquage posé aux cotes du loisir sur un terrain destiné à l'homologation est à refaire intégralement, sol compris."
+  },
+
+  vocabulaire: [
+    ["Homologation", "Validation qui autorise la tenue de rencontres officielles sur un équipement. Le marquage en fait partie."],
+    ["Règlement fédéral", "Le document qui fixe dimensions, largeurs de lignes et zones d'une discipline. Il prime sur les habitudes locales et il évolue."],
+    ["Panneautage", "L'ensemble des panneaux de partenaires en bord de terrain. Ressource principale d'un club amateur."],
+    ["Bâche de clôture", "Toile imprimée tendue sur le grillage d'un stade. Support de partenaires et masque visuel, soumise à la prise au vent."],
+    ["Prise au vent", "Effort exercé par le vent sur un support plein. Décide des fixations, des œillets et parfois des découpes de dégagement."],
+    ["Marquage résine", "Marquage de sol sportif en résine, résistant au frottement des chaussures et au lavage mécanique."],
+    ["Sol sportif", "Le revêtement lui-même — parquet, résine, gazon synthétique. Sa nature commande le procédé de marquage."],
+    ["Photoluminescent", "Restitue la lumière accumulée : les issues restent visibles en éclairage réduit ou après coupure."],
+    ["Arche gonflable", "Portique événementiel pour départs et arrivées. Se pose et se dépose dans la journée."]
+  ],
+  services: ["impression-grand-format", "signaletique", "enseignes", "objets-publicitaires"]
 },
 
 /* Syndics et gestionnaires de copropriété. Segment distinct des agences
@@ -1476,6 +1561,95 @@ module.exports = [
     { q: "Qui décide de la charte graphique d'une résidence ?", a: "Le conseil syndical, sur proposition du syndic, et la décision passe en assemblée. Notre rôle est de fournir des propositions comparables sur la même base technique pour que le vote porte sur un choix éclairé — pas sur trois devis qui ne décrivent pas les mêmes matériaux." },
     { q: "Intervenez-vous sur les résidences anciennes en secteur protégé ?", a: "Oui. Une plaque de résidence sur un immeuble situé aux abords d'un monument historique relève de l'avis de l'Architecte des Bâtiments de France au même titre qu'une enseigne commerciale. Les professionnels du réseau connaissent les matériaux qui passent — laiton, bronze, lettres découpées — et ceux qui sont systématiquement refusés." }
   ],
-  services: ["signaletique", "decoupe-laser-cnc", "enseignes", "impression-grand-format"]
-}
+
+  /* ----------------------------------------------------------------------
+     Syndic et copropriété. Le dernier des treize, et celui dont le point
+     fort est le plus net : l'article 100 de l'arrêté du 31 janvier 1986
+     impose l'affichage des consignes d'incendie ET des plans des sous-sols
+     et du rez-de-chaussée, à un emplacement précis — halls d'entrée et
+     abords des escaliers et ascenseurs. Une obligation d'affichage nommée,
+     localisée, et que beaucoup d'immeubles ne remplissent pas.
+
+     Le second sujet est propre au secteur et n'a rien de réglementaire : ce
+     n'est pas le syndic qui décide, c'est l'assemblée générale. Tout le
+     tempo commercial en découle.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre la signalétique des parties communes",
+    lead: "Deux logiques se superposent : des obligations d'affichage nommées par les textes, et une <em>mécanique de décision</em> — celle de la copropriété — qui commande les délais bien plus que la fabrication.",
+    couches: [
+      {
+        titre: "1 · Les consignes et les plans, à un emplacement imposé",
+        texte: "L'article 100 de l'arrêté du 31 janvier 1986 relatif à la protection contre l'incendie des bâtiments d'habitation impose d'afficher <strong>les consignes à respecter en cas d'incendie ainsi que les plans des sous-sols et du rez-de-chaussée</strong>, et il en précise l'emplacement : <strong>dans les halls d'entrée et près des accès aux escaliers et aux ascenseurs</strong>.",
+        cle: "C'est une obligation nommée, localisée, et très inégalement remplie. Le point technique qui la distingue d'une simple affiche : <strong>ce sont des plans, pas un texte</strong>. Ils se dessinent à partir du plan du bâtiment, ils portent le « vous êtes ici » à l'emplacement réel du support — donc un plan différent par hall — et la norme <strong>NF X 08-070</strong> en fixe la composition, les pictogrammes et les couleurs. Un prestataire qui ne demande pas les plans de l'immeuble n'a pas compris la commande.",
+        source: { label: "Arrêté du 31 janvier 1986 relatif à la protection contre l'incendie des bâtiments d'habitation", url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000474032" }
+      },
+      {
+        titre: "2 · Le registre de sécurité : ce qui prouve l'entretien",
+        texte: "L'article 101 du même arrêté met à la charge du propriétaire l'entretien de <strong>toutes les installations concourant à la sécurité</strong>, et lui impose de pouvoir le justifier par la tenue d'un <strong>registre de sécurité</strong>.",
+        cle: "La conséquence est commerciale autant que réglementaire, et peu de prestataires l'exploitent : <strong>la livraison d'une signalétique de sécurité devrait s'accompagner d'un document de récolement</strong> — liste des supports posés, emplacements, date d'installation. Ce document se classe au registre, il prouve l'entretien, et il fait de l'intervention un élément de dossier plutôt qu'une facture de fournitures. C'est aussi ce qui donne au syndic une raison de rappeler le même prestataire l'année suivante.",
+        source: { label: "Article 101 de l'arrêté du 31 janvier 1986 — entretien et registre de sécurité", url: "https://www.legifrance.gouv.fr/loda/article_lc/LEGIARTI000006828539" }
+      },
+      {
+        titre: "3 · Ce n'est pas le syndic qui décide",
+        texte: "Les travaux sur les parties communes relèvent de l'<strong>assemblée générale des copropriétaires</strong>, à la majorité prévue selon la nature des travaux. Le syndic prépare, convoque, exécute — il ne décide pas. Et la modification de l'aspect extérieur de l'immeuble ajoute, le cas échéant, les autorisations d'urbanisme et l'accord de l'architecte des Bâtiments de France en secteur protégé.",
+        cle: "Tout le tempo du secteur découle de là, et c'est ce qui déroute les entreprises venues du commerce : <strong>un devis doit rester valable jusqu'à l'assemblée générale</strong>, qui peut se tenir plusieurs mois après sa remise. Une validité de trente jours rend l'offre inutilisable. À l'inverse, une fois le vote acquis, l'exécution est attendue vite. Lent puis pressé : c'est le rythme de la copropriété.",
+        source: { label: "Loi n° 65-557 du 10 juillet 1965 fixant le statut de la copropriété des immeubles bâtis", url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000880200" }
+      },
+      {
+        titre: "4 · Nommer les lieux : l'état descriptif de division fait foi",
+        texte: "Bâtiments, cages d'escalier, niveaux, caves, emplacements de stationnement : leur désignation officielle figure dans l'<strong>état descriptif de division</strong> de la copropriété, annexé au règlement. C'est lui qui donne les numéros de lots et les dénominations opposables.",
+        cle: "L'erreur la plus fréquente, et la plus coûteuse à corriger : <strong>signaler les lieux selon l'usage local plutôt que selon l'état descriptif</strong>. Le « bâtiment du fond » que tout le monde appelle ainsi est le bâtiment C ; la cave 12 de l'usage est le lot 147. Quand la signalétique contredit les actes notariés, elle crée un litige au lieu de le prévenir — et il faut tout regraver. Les plans et l'état descriptif se demandent avant le premier tracé, pas après.",
+        source: { label: "Loi n° 65-557 du 10 juillet 1965 — règlement de copropriété et état descriptif de division", url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000880200" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les majorités applicables dépendent de la nature des travaux votés, et les obligations d'affichage varient selon la catégorie du bâtiment d'habitation. Le règlement de copropriété prime sur les usages, et se lit avant de chiffrer."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand une copropriété commande",
+    lead: "Une copropriété n'achète jamais dans l'instant : elle vote, puis elle exécute. Connaître ce calendrier vaut mieux que relancer.",
+    moments: [
+      ["Avant l'assemblée générale", "Le vrai moment commercial. Les devis se préparent en amont pour être joints à la convocation ; celui qui n'est pas dans le dossier n'existe pas au vote."],
+      ["Après le vote", "L'exécution est attendue rapidement, souvent avant la fin de l'exercice comptable. Lent puis pressé."],
+      ["Après une visite de commission ou un sinistre", "Consignes manquantes, plans absents ou obsolètes : la mise en conformité devient urgente et échappe parfois au calendrier des assemblées."],
+      ["Au changement de syndic", "Le nouveau syndic fait l'inventaire et relève les manques du précédent. C'est un moment d'ouverture, et le meilleur pour être référencé."],
+      ["Après des travaux", "Ravalement, reprise de halls, création de locaux vélos ou de bornes de recharge : la signalétique et les plans doivent suivre le nouveau plan des lieux."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur une copropriété, les pièces comptent autant que le besoin : sans les plans et l'état descriptif, rien ne peut être dessiné juste.",
+    questions: [
+      "Plans d'évacuation et consignes, signalétique de halls, numérotage, boîtes aux lettres, signalétique de parking — ou plusieurs de ces lots ?",
+      "Combien de bâtiments, de cages d'escalier et de halls ? Chaque hall appelle son propre plan avec son « vous êtes ici ».",
+      "Les plans du bâtiment sont-ils disponibles en DWG ou PDF, et à jour des derniers travaux ?",
+      "L'état descriptif de division est-il accessible ? C'est lui qui donne les dénominations opposables.",
+      "Y a-t-il des sous-sols, des caves, des parkings, des locaux techniques à signaler ?",
+      "Le devis doit-il être présenté en assemblée générale, et à quelle date ? Sa durée de validité doit couvrir l'échéance.",
+      "L'immeuble est-il en secteur protégé, et l'intervention modifie-t-elle l'aspect extérieur ?",
+      "Accessibilité des parties communes : contraste des nez de marche, bandes de vigilance, repérage des vitrages sont-ils traités ?",
+      "Matières souhaitées pour les halls : gravure, aluminium, plexiglas, laiton ? Et quelle tenue au nettoyage ?",
+      "Un document de récolement est-il attendu pour le registre de sécurité ?"
+    ],
+    note: "La question de la validité du devis est celle qui fait gagner ou perdre l'affaire. Une offre à trente jours présentée en assemblée générale six semaines plus tard est caduque au moment du vote — et c'est le concurrent qui a prévu six mois qui emporte le marché."
+  },
+
+  vocabulaire: [
+    ["Plan d'évacuation", "Plan affiché en hall et près des escaliers, portant le « vous êtes ici » et les consignes. Un plan par emplacement, jamais un plan unique dupliqué."],
+    ["NF X 08-070", "Norme des plans d'évacuation et d'intervention : composition, pictogrammes, couleurs, emplacement du repère de position."],
+    ["Registre de sécurité", "Document où se justifie l'entretien des installations concourant à la sécurité. Le récolement d'une pose s'y classe."],
+    ["État descriptif de division", "Annexe du règlement de copropriété donnant les lots, leurs numéros et leurs dénominations opposables."],
+    ["Partie commune", "Ce qui n'appartient pas privativement à un copropriétaire. Toute intervention y relève de l'assemblée générale."],
+    ["Assemblée générale", "L'organe qui décide. Le syndic prépare et exécute ; la validité du devis doit couvrir le délai jusqu'au vote."],
+    ["Récolement", "Relevé des supports effectivement posés, avec emplacements et date. Preuve d'exécution et pièce du registre."],
+    ["Plaque de hall", "Support d'information collective : occupants, consignes, coordonnées. Souvent gravée, pour tenir au nettoyage."],
+    ["Bande de vigilance", "Bande podotactile en haut d'escalier. Obligation d'accessibilité des parties communes."]
+  ],
+  services: ["signaletique", "enseignes", "impression-grand-format", "vitrophanie-plv"]
+},
 ];
