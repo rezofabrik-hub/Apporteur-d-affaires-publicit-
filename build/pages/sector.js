@@ -10,6 +10,90 @@ module.exports = function sectorPage(sec, cities) {
   ];
   const svc = services.filter((s) => (sec.services || []).includes(s.slug));
 
+
+  /* ----------------------------------------------------------------------
+     Blocs du secteur approfondi. Ils ne s'affichent que si les données
+     existent : les secteurs non encore traités rendent exactement la même
+     page qu'avant.
+     ---------------------------------------------------------------------- */
+  const R = sec.reglementation;
+  const regBloc = R ? `
+<section class="sec bg-2" id="reglementation">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">${esc(R.eyebrow)}</span>
+      <h2>${esc(R.titre)}</h2>
+      <p class="lead">${esc(R.lead)}</p>
+    </div>
+    <div class="couches">
+      ${R.couches.map((c) => `<article class="couche">
+        <h3>${esc(c.titre)}</h3>
+        <p>${c.texte}</p>
+        <p class="couche-cle">${c.cle}</p>
+        <p class="couche-src">Source : <a href="${c.source.url}" rel="noopener nofollow"
+          target="_blank">${esc(c.source.label)}</a></p>
+      </article>`).join("")}
+    </div>
+    <div class="note warn"><p>${esc(R.avert)}</p></div>
+  </div>
+</section>` : "";
+
+  const C = sec.calendrier;
+  const calBloc = C ? `
+<section class="sec" id="calendrier">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">${esc(C.eyebrow)}</span>
+      <h2>${esc(C.titre)}</h2>
+      <p class="lead">${esc(C.lead)}</p>
+    </div>
+    <div class="grid g-3">
+      ${C.moments.map(([t, d]) => `<div class="card"><div class="card-body">
+        <h3>${esc(t)}</h3><p>${esc(d)}</p></div></div>`).join("")}
+    </div>
+  </div>
+</section>` : "";
+
+  const B = sec.brief;
+  const briefBloc = B ? `
+<section class="sec bg-3" id="dossier">
+  <div class="wrap">
+    <div class="split">
+      <article class="prose">
+        <span class="eyebrow">${esc(B.eyebrow)}</span>
+        <h2>${esc(B.titre)}</h2>
+        <p class="lead">${esc(B.lead)}</p>
+        <ul class="checks">${B.questions.map((q) => `<li>${esc(q)}</li>`).join("")}</ul>
+        <div class="note"><p>${esc(B.note)}</p></div>
+      </article>
+      <aside>
+        <div class="aside-card aside-sticky">
+          <h3>C'est nous qui le remplissons</h3>
+          <p>Vous décrivez votre projet en deux minutes ; nous vous rappelons pour établir ce
+          dossier, puis nous le transmettons à deux ou trois entreprises qui connaissent déjà
+          ces contraintes.</p>
+          <a class="btn btn-primary btn-block" href="devis.html?secteur=${encodeURIComponent(sec.nav)}">Décrire mon projet</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>` : "";
+
+  const V = sec.vocabulaire;
+  const vocBloc = (V && V.length) ? `
+<section class="sec" id="vocabulaire">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Le vocabulaire</span>
+      <h2>Les mots du métier, pour parler le même langage</h2>
+      <p class="lead">Employer le bon terme fait gagner un aller-retour à chaque étape du devis.</p>
+    </div>
+    <dl class="lexique">
+      ${V.map(([t, d]) => `<div><dt>${esc(t)}</dt><dd>${esc(d)}</dd></div>`).join("")}
+    </dl>
+  </div>
+</section>` : "";
+
   const body = `
 <section class="hero hero-in-page">
   <div class="hero-bg">${heroImg(sec.topic, 2, sec.h1)}</div>
@@ -20,7 +104,8 @@ module.exports = function sectorPage(sec, cities) {
     <p class="lead">${esc(sec.lead)}</p>
     <div class="btns">
       <a class="btn btn-primary btn-lg" href="devis.html?secteur=${encodeURIComponent(sec.nav)}">Demander un devis gratuit</a>
-      <a class="btn btn-ghost btn-lg" href="#besoins">Vos besoins types</a>
+      <a class="btn btn-ghost btn-lg" href="${R ? "#reglementation" : "#besoins"}">${R
+        ? "Ce que dit la réglementation" : "Vos besoins types"}</a>
     </div>
   </div>
 </section>
@@ -82,6 +167,11 @@ module.exports = function sectorPage(sec, cities) {
     <div class="grid g-4">${T.serviceCards(svc)}</div>
   </div>
 </section>
+
+${regBloc}
+${calBloc}
+${briefBloc}
+${vocBloc}
 
 <section class="sec bg-3">
   <div class="wrap">

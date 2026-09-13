@@ -37,6 +37,104 @@ module.exports = [
     { q: "Une croix à messages défilants est-elle rentable ?", a: "Elle le devient si vous l'utilisez réellement : gardes, campagnes de vaccination, arrivée d'une gamme, rappel des horaires. Une croix à messages laissée sur l'heure et la température n'apporte rien de plus qu'une croix fixe, pour 1 000 à 2 000 € de plus. Vérifiez que la programmation se fait à distance, sinon personne ne l'utilisera." },
     { q: "Peut-on masquer la zone orthopédie sans assombrir la pharmacie ?", a: "Oui, c'est exactement l'usage du film dépoli appliqué en bandeau à hauteur de regard, ou d'un dépoli à motif. Vous conservez la lumière naturelle et l'aspect ouvert de l'officine tout en préservant la confidentialité de l'espace d'essayage." }
   ],
+
+  /* ----------------------------------------------------------------------
+     Bloc réglementaire approfondi — gabarit du secteur « référent ».
+     Trois raisons d'écrire cela plutôt que du discours commercial : le
+     pharmacien y découvre une obligation qu'il ignorait, donc il appelle ;
+     les IA citent volontiers une page qui expose le droit applicable ; et
+     une page de référence réglementaire est le seul contenu de ce métier
+     vers lequel on fait spontanément des liens — ce qui est aujourd'hui le
+     premier facteur limitant du site.
+
+     Chaque affirmation porte sa source. Les valeurs chiffrées locales
+     (surface, saillie, TLPE) ne sont jamais données : elles dépendent du
+     règlement local de publicité, et les inventer ruinerait le reste.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre l'enseigne d'une officine",
+    lead: "La pharmacie est le commerce le plus encadré en matière d'enseigne : quatre corpus de règles s'y superposent, qui ne relèvent ni des mêmes autorités ni des mêmes délais. C'est pour cela qu'un enseigniste généraliste se trompe presque toujours sur au moins un point.",
+    couches: [
+      {
+        titre: "1 · Le droit de la santé : ce que vous avez le droit d'afficher",
+        texte: "L'article R.4235-53 du code de la santé publique réserve à l'officine deux emblèmes : la <strong>croix grecque verte</strong> — quatre branches d'égale longueur — lumineuse ou non, et le <strong>caducée pharmaceutique vert</strong>, formé de la coupe d'Hygie et du serpent d'Épidaure. Le vert de référence est le Pantone 347 C.",
+        cle: "La croix verte et le caducée sont des <strong>marques collectives dont le Conseil national de l'Ordre des pharmaciens est titulaire</strong>. Leur affichage par un non-pharmacien expose à des poursuites. C'est l'erreur la plus coûteuse du secteur : une parapharmacie, un espace bien-être ou une herboristerie ne peuvent pas poser de croix verte, quelle que soit leur bonne foi.",
+        source: { label: "Article R.4235-53 du code de la santé publique", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072665/LEGISCTA000006157750/" }
+      },
+      {
+        titre: "2 · L'autorisation d'enseigne : qui décide, et ce qu'elle ne couvre pas",
+        texte: "L'enseigne est définie à l'article L.581-3 du code de l'environnement. Depuis janvier 2024, son autorisation relève de la <strong>compétence exclusive du maire</strong>. S'y ajoute l'accord de l'<strong>architecte des Bâtiments de France</strong> lorsque l'immeuble est classé ou inscrit au titre des monuments historiques, et celui du <strong>préfet de région</strong> pour un site classé, un cœur de parc national ou une réserve naturelle.",
+        cle: "Le piège, et il arrête des chantiers : <strong>l'autorisation d'enseigne ne vaut pas autorisation de modifier la façade</strong>. Repeindre la devanture, changer la vitrine ou poser un store relèvent d'une <strong>déclaration préalable distincte, au titre du code de l'urbanisme</strong>. Deux dossiers, deux instructions — souvent le même service, jamais la même décision.",
+        source: { label: "Code de l'environnement — procédures de déclaration et d'autorisation préalable (R.581-6 à R.581-21-1)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074220/LEGISCTA000006189035/" }
+      },
+      {
+        titre: "3 · Les nuisances lumineuses : votre croix doit savoir s'éteindre",
+        texte: "L'arrêté du 27 décembre 2018, modifié le 29 mai 2019, impose l'extinction des enseignes lumineuses <strong>entre 1 h et 6 h du matin</strong>. Il s'applique à l'ensemble des enseignes depuis le 1<sup>er</sup> janvier 2020.",
+        cle: "<strong>Les officines de garde et celles ouvertes 24 h sur 24 en sont dérogataires</strong> : leur croix reste allumée, parce que c'est la visibilité du service de garde qui la justifie. La conséquence est technique, et elle doit figurer au cahier des charges : une croix ne peut pas être posée sur un simple interrupteur. Il lui faut une <strong>horloge astronomique et un calendrier de garde programmable</strong>, idéalement à distance — sinon la mise en conformité se fait à la main tous les soirs, ce qui revient à ne pas se faire.",
+        source: { label: "Arrêté du 27 décembre 2018 relatif à la prévention, à la réduction et à la limitation des nuisances lumineuses", url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000037864346" }
+      },
+      {
+        titre: "4 · Le règlement local et la taxe",
+        texte: "Le <strong>règlement local de publicité</strong> de votre commune, lorsqu'elle en a adopté un, fixe la surface admise, la saillie maximale, la hauteur d'implantation et parfois la luminance. Ces valeurs changent d'une commune à l'autre, parfois d'une rue à l'autre : aucun chiffre national n'a de sens ici, et nous n'en donnerons pas.",
+        cle: "S'y ajoute la <strong>TLPE</strong>, taxe locale sur la publicité extérieure, due au-delà d'un seuil de surface cumulée et tarifée selon la strate de population de la commune. Elle porte sur l'ensemble de vos supports, pas sur la seule croix : ajouter un totem ou un caisson peut faire basculer l'officine au-dessus du seuil. Cela se vérifie <em>avant</em> de dessiner, pas après.",
+        source: { label: "Code général des collectivités territoriales — TLPE (L.2333-6 et suivants)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070633/LEGISCTA000006192887/" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les valeurs chiffrées — surface, saillie, hauteur, tarif de TLPE — relèvent du règlement local de publicité de votre commune et se vérifient au cas par cas. C'est la première chose que fait l'enseigniste que nous vous présentons, avant même de chiffrer."
+  },
+
+  /* Une officine ne change pas de croix par caprice : cinq déclencheurs,
+     tous prévisibles. Connaître le calendrier d'achat d'un secteur vaut
+     mieux que prospecter au hasard, et c'est ce que le partenaire achète. */
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand une officine refait son enseigne",
+    lead: "Ce n'est jamais au hasard. Il y a cinq déclencheurs, et ils s'anticipent.",
+    moments: [
+      ["Transfert ou regroupement de licence", "Le budget le plus lourd : l'officine change d'adresse et tout est repris — croix, enseigne de façade, vitrine, signalétique intérieure. Le calendrier est commandé par l'autorisation de l'ARS, et le chantier doit être prêt le jour de l'ouverture."],
+      ["Changement de titulaire", "Le repreneur veut marquer la reprise. Le nom change souvent, donc l'enseigne de façade et la vitrophanie ; la croix, elle, se conserve si elle est récente et conforme."],
+      ["Rénovation d'agencement", "Le cycle est d'une dizaine d'années. La signalétique de rayons se refait avec le mobilier, et c'est le moment où la hiérarchie drapeau / bandeau / réglette se rejoue entièrement."],
+      ["Mise en conformité accessibilité", "Signalétique PMR, bandes de repérage des vitrages, contraste des nez de marche. Souvent déclenché par un contrôle ou par un registre public d'accessibilité à mettre à jour."],
+      ["Entrée dans un groupement", "L'adhésion impose une charte : façade, couleurs, vitrine. Le délai est court et le cahier des charges vient du groupement — il faut un poseur capable de lire une charte technique, pas d'improviser."]
+    ]
+  },
+
+  /* Les questions que la demande doit porter. C'est ce qui distingue un
+     dossier d'un contact, et c'est exactement ce que la console transmet
+     au partenaire. */
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Un enseigniste ne peut pas chiffrer une croix sans ces éléments. Nous les réunissons par téléphone pour que vous n'ayez pas à les redonner trois fois.",
+    questions: [
+      "Croix seule, ou croix et enseigne de façade reprises ensemble ?",
+      "Mono-face ou bi-face — et depuis quels axes la croix doit-elle être vue ?",
+      "L'officine assure-t-elle des gardes ? La réponse conditionne la programmation, donc le matériel.",
+      "Une alimentation électrique existe-t-elle à l'emplacement, et de quelle section ?",
+      "Hauteur de pose et saillie envisagées, longueur de façade disponible.",
+      "La commune a-t-elle un règlement local de publicité ? L'immeuble est-il en secteur protégé ou aux abords d'un monument historique ?",
+      "Surface cumulée des enseignes existantes, pour situer le projet par rapport au seuil de TLPE.",
+      "Accès : trottoir, stationnement, nacelle nécessaire, contrainte d'horaire de pose en centre-ville.",
+      "Messages défilants souhaités : température, heure, gardes, campagnes de prévention ?",
+      "Qui dépose le dossier en mairie — vous, ou l'enseigniste dans le cadre de sa prestation ?"
+    ],
+    note: "Les trois points que les clients oublient systématiquement sont la garde, l'alimentation existante et la surface cumulée d'enseignes. Ce sont aussi les trois qui font le plus varier le devis."
+  },
+
+  /* Vocabulaire du métier : c'est ce que tape le client qui sait déjà ce
+     qu'il veut, donc celui qui achète. */
+  vocabulaire: [
+    ["Croix grecque", "Quatre branches d'égale longueur. C'est la forme imposée : une croix latine ou un logo en forme de croix ne sont pas conformes."],
+    ["Caducée pharmaceutique", "Coupe d'Hygie et serpent d'Épidaure. L'alternative réglementaire à la croix, souvent posée en drapeau de petite taille."],
+    ["Croix bi-face", "Visible des deux sens de circulation. C'est le cas courant en rue ; la mono-face ne se justifie qu'adossée à un mur aveugle."],
+    ["Saillie", "Ce dont l'enseigne dépasse du nu de la façade. Valeur maximale fixée par le règlement local, et surveillée de près en centre ancien."],
+    ["Horloge astronomique", "Commande d'allumage calée sur le lever et le coucher du soleil. Indispensable pour tenir l'extinction de 1 h à 6 h sans intervention manuelle."],
+    ["Drapeau de rayon", "Panneau suspendu perpendiculaire au linéaire, lisible depuis l'entrée. Premier niveau de la hiérarchie de rayonnage."],
+    ["Bandeau de gondole", "Bandeau horizontal en tête de rayon, lisible depuis l'allée. Deuxième niveau."],
+    ["Réglette de linéaire", "Étiquette de tablette, lisible à un mètre. Troisième niveau."],
+    ["Dépoli", "Film translucide appliqué sur vitrage. En officine, il préserve la confidentialité de l'espace orthopédie sans assombrir la surface de vente."]
+  ],
   services: ["enseignes", "vitrophanie-plv", "signaletique", "impression-grand-format"]
 },
 {

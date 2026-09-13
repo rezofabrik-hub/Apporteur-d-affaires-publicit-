@@ -1603,3 +1603,51 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
   .hero-badge { margin-bottom: 18px; }
   .hero .btns { margin-top: 26px; }
 }
+
+/* =========================================================================
+   39 · Secteur approfondi : couches réglementaires et lexique
+   -------------------------------------------------------------------------
+   Une couche réglementaire se lit en trois temps : la règle, sa
+   conséquence pratique, la source. La hiérarchie typographique doit rendre
+   ces trois temps distincts sans que le bloc devienne un formulaire.
+   ========================================================================= */
+.couches { display: grid; gap: 20px; grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); }
+.couche {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--r-lg); padding: 26px 28px 22px;
+  border-top: 3px solid var(--signal);
+}
+.couche h3 { font-size: 1.06rem; margin: 0 0 .7em; line-height: 1.35; }
+.couche p { color: var(--tx-2); font-size: .94rem; line-height: 1.65; margin: 0 0 1em; }
+.couche strong { color: var(--tx); }
+
+/* La conséquence pratique — c'est elle qui déclenche l'appel, donc elle
+   se détache du corps de la règle. */
+.couche-cle {
+  background: var(--paper-2); border-left: 3px solid var(--amber);
+  padding: 14px 16px; border-radius: 0 var(--r) var(--r) 0;
+  margin-bottom: 1em !important;
+}
+
+.couche-src { font-size: .82rem !important; color: var(--tx-3) !important; margin: 0 !important; }
+.couche-src a { color: var(--tx-3); }
+.couche-src a:hover { color: var(--signal-600); }
+
+/* Lexique en deux colonnes : terme à gauche, définition à droite. */
+.lexique { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(430px, 100%), 1fr)); margin: 0; }
+.lexique > div {
+  display: grid; grid-template-columns: minmax(140px, 200px) 1fr; gap: 18px;
+  padding-bottom: 14px; border-bottom: 1px solid var(--line);
+}
+.lexique dt { font-weight: 700; color: var(--tx); font-size: .94rem; }
+.lexique dd { margin: 0; color: var(--tx-2); font-size: .91rem; line-height: 1.6; }
+
+@media (max-width: 560px) {
+  .lexique > div { grid-template-columns: 1fr; gap: 4px; }
+  .couche { padding: 22px 20px 18px; }
+}
+
+/* Liens légaux du pied de page : ils mesuraient 23 px de haut, soit un
+   pixel sous le seuil de 24 px du critère 2.5.8. Défaut ancien, relevé en
+   auditant les pages secteur — la correction vaut pour tout le site. */
+.ftr-bot nav a { display: inline-block; padding-block: 4px; }
