@@ -13,7 +13,7 @@ function table(t) {
 </table></div>${t.foot ? `<p style="font-size:.86rem;color:var(--tx-3);margin-top:-1em">${t.foot}</p>` : ""}`;
 }
 
-module.exports = function servicePage(svc, cities) {
+module.exports = function servicePage(svc, cities, matrixVilles) {
   const crumbItems = [
     { name: "Accueil", url: "index.html" },
     { name: "Nos métiers", url: "index.html#metiers" },
@@ -68,6 +68,35 @@ ${svc.sections.map((s) => `<li><a href="#${slugify(s.h2)}">${esc(s.h2)}</a></li>
     </div>
   </div>
 </section>` : "";
+
+  /* Maillage vers la matrice. Ces pages-ci sont la tête de pont du métier :
+     si elles ne pointent pas vers leurs déclinaisons locales, la matrice
+     n'existe que dans le sitemap et Google la laisse en « détectée, non
+     indexée ». Groupé par région pour rester lisible quand il y a cent villes. */
+  const villesBloc = (matrixVilles && matrixVilles.length) ? (() => {
+    const parRegion = {};
+    matrixVilles.forEach((v) => { (parRegion[v.region] = parRegion[v.region] || []).push(v); });
+    const regions = Object.keys(parRegion).sort();
+    return `
+<section class="sec bg-2">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Sur le terrain</span>
+      <h2>${esc(svc.navShort)} : ${matrixVilles.length} villes couvertes</h2>
+      <p class="lead">Chaque ville a sa page : les contraintes locales, la réglementation
+      applicable et les professionnels du réseau qui interviennent sur place.</p>
+    </div>
+    <div class="ville-cols">
+      ${regions.map((r) => `<div class="ville-col">
+        <h3>${esc(r)}</h3>
+        <ul>${parRegion[r].sort((a, b) => a.name.localeCompare(b.name, "fr")).map((v) =>
+          `<li><a href="${svc.slug}-${v.slug}.html">${esc(svc.navShort)} ${esc(v.name)}</a>
+           <span class="ville-dept">${esc(v.dept)}</span></li>`).join("")}</ul>
+      </div>`).join("")}
+    </div>
+  </div>
+</section>`;
+  })() : "";
 
   const body = `
 <section class="hero hero-in-page">
@@ -180,6 +209,7 @@ ${svc.sections.map((s) => `<li><a href="#${slugify(s.h2)}">${esc(s.h2)}</a></li>
   </div>
 </section>
 ${voletsBloc}
+${villesBloc}
 
 <section class="sec bg-2">
   <div class="wrap">${T.ctaDouble()}</div>

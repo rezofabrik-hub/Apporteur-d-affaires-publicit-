@@ -94,7 +94,13 @@ module.exports = function serviceCityPage(svc, city, cities, sameServiceCities, 
      404 — le genre d'erreur qui coûte plus cher en référencement que la page
      manquante elle-même. */
   const dispo = (metiersDispo && metiersDispo.length ? metiersDispo : services);
-  const otherServices = dispo.filter((s) => s.slug !== svc.slug).slice(0, 4);
+  /* Les métiers cités tournent avec l'index de la page : un `slice(0, 4)` fixe
+     ne désignait jamais que les quatre premiers du tableau, de sorte que les
+     métiers de fin de liste ne recevaient aucun lien entrant de la matrice. */
+  const restants = dispo.filter((s) => s.slug !== svc.slug);
+  const otherServices = restants.length <= 4 ? restants
+    : Array.from({ length: 4 }, (_, k) => restants[(index + k * 3) % restants.length])
+        .filter((s, k, a) => a.indexOf(s) === k);
 
   const body = `
 <section class="hero hero-in-page">

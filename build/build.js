@@ -253,18 +253,13 @@ function run() {
 
   write("index.html", home(cities));
 
-  services.forEach((s) => write(s.slug + ".html", servicePage(s, cities)));
-  cities.forEach((c, i) => write("enseigne-signaletique-" + c.slug + ".html", cityPage(c, cities, i)));
-
-  /* Réalisations */
-  write("realisations.html", projectPage.index(projects, cities));
-  projects.forEach((pr) => write("realisation-" + pr.slug + ".html", projectPage(pr, cities, projects)));
-
-  /* Secteurs d'activité */
-  write("secteurs.html", sectorPage.index(sectors, cities));
-  sectors.forEach((sec) => write("signaletique-" + sec.slug + ".html", sectorPage(sec, cities)));
-
-  /* Matrice métier x ville : les requêtes locales qui convertissent */
+  /* ---------------------------------------------------------------- matrice
+     Le plan de la matrice métier x ville est calculé AVANT d'écrire quoi que
+     ce soit : les pages métier et les pages ville ont besoin de savoir quelles
+     déclinaisons existent pour pouvoir pointer dessus. Sans ça, les 1383 pages
+     de la matrice n'ont aucun lien entrant depuis les pages de tête — elles
+     n'existent que dans le sitemap, et Google les laisse en « détectées, non
+     indexées ». */
   const dejaDansMatrice = new Set(cities.slice(0, MATRIX_CITIES).map((c) => c.slug));
   const matrixCities = cities.slice(0, MATRIX_CITIES).concat(
     MATRIX_EXTRA.map((slug) => cities.find((c) => c.slug === slug && !dejaDansMatrice.has(slug)))
@@ -282,13 +277,47 @@ function run() {
     .filter((c, i, a) => a.findIndex((x) => x.slug === c.slug) === i);
   matrixCitiesCount = matrixCities.length;
 
-  let n = 0;
+  /* Deux index croisés : par métier -> ses villes, par ville -> ses métiers.
+     Ce sont eux qui alimentent les blocs de maillage des pages de tête. */
+  const villesParMetier = {};
+  const metiersParVille = {};
   services.forEach((svc) => {
     const local = METIERS_LOCAUX.indexOf(svc.slug) !== -1;
     const cibles = local ? matrixCities.concat(villesConcurrence) : matrixCities;
+    villesParMetier[svc.slug] = cibles;
+    cibles.forEach((city) => {
+      (metiersParVille[city.slug] = metiersParVille[city.slug] || []).push(svc);
+    });
+  });
+
+  services.forEach((s) => write(s.slug + ".html", servicePage(s, cities, villesParMetier[s.slug] || [])));
+  cities.forEach((c, i) => write("enseigne-signaletique-" + c.slug + ".html",
+    cityPage(c, cities, i, metiersParVille[c.slug] || [])));
+
+  /* Réalisations */
+  write("realisations.html", projectPage.index(projects, cities));
+  projects.forEach((pr) => write("realisation-" + pr.slug + ".html", projectPage(pr, cities, projects)));
+
+  /* Secteurs d'activité */
+  write("secteurs.html", sectorPage.index(sectors, cities));
+  sectors.forEach((sec) => write("signaletique-" + sec.slug + ".html", sectorPage(sec, cities)));
+
+  /* Matrice métier x ville : les requêtes locales qui convertissent */
+  let n = 0;
+  services.forEach((svc) => {
+    const local = METIERS_LOCAUX.indexOf(svc.slug) !== -1;
+    const cibles = villesParMetier[svc.slug];
     cibles.forEach((city, ci) => {
-      const others = cibles.filter((c) => c.slug !== city.slug)
-        .slice(ci % 5, (ci % 5) + 6);
+      /* Les villes voisines citées tournent sur toute la liste : l'ancien
+         `slice(ci % 5, ci % 5 + 6)` ne désignait jamais que les dix premières
+         villes du tableau, si bien que les cinquante suivantes ne recevaient
+         aucun lien de leurs semblables. Un pas premier avec la longueur de la
+         liste balaie l'ensemble et distribue les liens uniformément. */
+      const others = [];
+      for (let k = 1; others.length < 6 && k < cibles.length; k++) {
+        const j = (ci + k * 7) % cibles.length;
+        if (j !== ci && others.indexOf(cibles[j]) === -1) others.push(cibles[j]);
+      }
       /* Métiers réellement déclinés pour cette ville : sur une ville
          « concurrence », seuls les sept métiers locaux existent. Sans cette
          liste, le bloc « autres métiers » pointerait vers des pages qui ne

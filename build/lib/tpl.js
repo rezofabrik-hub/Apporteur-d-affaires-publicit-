@@ -94,10 +94,15 @@ function seoDesc(d) {
   if (d.length <= DESC_MAX) return d;
 
   /* Une description coupée net se lit mal ; on préfère perdre la dernière
-     phrase entière plutôt que d'afficher des points de suspension. */
+     phrase entière plutôt que d'afficher des points de suspension — mais pas
+     à n'importe quel prix. Couper à la phrase précédente quand celle-ci
+     s'arrête à 104 caractères gaspille un tiers de la largeur affichable et
+     fait sauter l'appel à l'action, qui est justement en fin de description.
+     On n'accepte donc la coupe éditoriale que si elle laisse une description
+     encore pleine ; en deçà, on rogne au mot près. */
   const win = d.slice(0, DESC_MAX + 1);
   const dot = Math.max(win.lastIndexOf(". "), win.lastIndexOf("! "), win.lastIndexOf("? "));
-  if (dot >= 90) return d.slice(0, dot + 1);
+  if (dot >= DESC_MAX * 0.82) return d.slice(0, dot + 1);
 
   const sp = win.lastIndexOf(" ");
   return (sp >= 90 ? d.slice(0, sp) : d.slice(0, DESC_MAX - 1)).replace(/[,;:(—–-]+$/, "").trim() + "…";

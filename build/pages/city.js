@@ -38,7 +38,7 @@ const ANGLES = [
   }
 ];
 
-module.exports = function cityPage(city, cities, index) {
+module.exports = function cityPage(city, cities, index, matrixMetiers) {
   const angle = ANGLES[index % ANGLES.length];
   const regionNote = REGION_NOTE[city.region] ||
     "Chaque territoire a ses contraintes de façade, de climat et de réglementation locale : c'est précisément ce que connaissent les professionnels de proximité du réseau.";
@@ -103,6 +103,30 @@ module.exports = function cityPage(city, cities, index) {
         <p style="margin-top:1.2em;font-size:.9rem;color:var(--tx-3)">Communes les plus peuplées
         dans un rayon d'une vingtaine de kilomètres. Un poseur ne facture pas le même déplacement
         à 15 et à 80 kilomètres : c'est la raison d'être de cette liste.</p>` : ""}`;
+
+  /* Maillage vers la matrice, dans l'autre sens : la page de la ville pointe
+     vers chacun de ses métiers déclinés. C'est le pendant du bloc « villes »
+     des pages métier ; sans les deux, les pages métier x ville ne reçoivent de
+     liens que de leurs semblables et restent en périphérie du site. */
+  const metiersBlock = (matrixMetiers && matrixMetiers.length) ? `
+<section class="sec" id="metiers-ville">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Prestations sur place</span>
+      <h2>Nos ${matrixMetiers.length} métiers à ${esc(city.name)}</h2>
+      <p class="lead">Chaque métier a sa page pour ${esc(city.name)} : ce que le terrain impose,
+      la réglementation applicable et le délai auquel vous attendre sur place.</p>
+    </div>
+    <div class="grid g-3">
+      ${matrixMetiers.map((m) => `<a class="card card-link" href="${m.slug}-${city.slug}.html">
+        <div class="card-body">
+          <h3>${esc(m.navShort)} à ${esc(city.name)}</h3>
+          <p>${esc(m.navDesc)}</p>
+        </div>
+      </a>`).join("")}
+    </div>
+  </div>
+</section>` : "";
 
   const communesBlock = around.length ? `
 <section class="sec bg-2" id="communes">
@@ -301,6 +325,7 @@ ${!city.pilot ? `<section class="sec">
   </div>
 </section>` : ""}
 
+${metiersBlock}
 ${communesBlock}
 
 <section class="sec bg-3">
@@ -346,8 +371,20 @@ ${communesBlock}
        C'est la requête « ville + village voisin » qui fait le trafic local,
        pas le nom du réseau — que le calibrage sacrifiera s'il faut couper. */
     title: `Enseigne & Signalétique à ${city.name} (${city.dept}) — Devis gratuit | ${site.brand}`,
-    desc: `Enseigne, signalétique, covering et impression à ${city.name} (${city.cp})${
-      (city.neighbors || []).length ? ", " + city.neighbors.slice(0, 2).join(", ") : ""}. Devis d'artisans vérifiés sous 48 h, gratuit et sans engagement.`,
+    /* Description construite sous contrainte de largeur : la phrase d'appel
+       est posée d'abord, les communes voisines ne sont ajoutées qu'une par une
+       tant qu'elles tiennent. L'inverse — tout écrire puis laisser le
+       calibrage couper — sacrifiait l'appel à l'action sur les villes aux noms
+       longs, c'est-à-dire précisément celles où la concurrence est faible. */
+    desc: (() => {
+      const queue = ". Devis d'artisans vérifiés sous 48 h, gratuit et sans engagement.";
+      let tete = `Enseigne, signalétique, covering et impression à ${city.name} (${city.cp})`;
+      (city.neighbors || []).slice(0, 3).forEach((n) => {
+        const essai = tete + ", " + n;
+        if (essai.length + queue.length <= 158) tete = essai;
+      });
+      return tete + queue;
+    })(),
     body,
     cities,
     schema: [
