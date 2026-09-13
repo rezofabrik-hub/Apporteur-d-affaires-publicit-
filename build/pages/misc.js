@@ -83,6 +83,52 @@ function villes(cities) {
 /* ═════════════════════════════════════════════════════════════ TARIFS */
 function tarifs(cities) {
   const crumbItems = [{ name: "Accueil", url: "index.html" }, { name: "Prix et budgets", url: "tarifs.html" }];
+
+  /* ------------------------------------------------------------------------
+     Budgets par secteur d'activité.
+
+     Les tableaux ci-dessus sont rangés par technique — caisson, lettres
+     relief, covering. C'est la logique du fabricant. Le client, lui, ne
+     cherche pas « prix d'un caisson lumineux » mais « combien coûte une croix
+     de pharmacie » ou « budget vitrine d'agence immobilière ». Les
+     soixante-dix-neuf lignes écrites dans les pages secteur répondent
+     exactement à cette seconde question ; elles n'avaient aucune raison de
+     rester dispersées.
+
+     Aucun balisage de prix n'est posé sur ces tableaux, et c'est délibéré :
+     ce sont des ordres de grandeur constatés, pas des offres que le réseau
+     vend. Déclarer des `Offer` sur des fourchettes indicatives reviendrait à
+     annoncer des prix que personne ici ne pratique.
+     ------------------------------------------------------------------------ */
+  const secteursBudget = sectors.filter((sec) => (sec.budget || []).length);
+  const tablesSecteur = secteursBudget.map((sec) => `<h3 id="budget-${sec.slug}">${esc(sec.nav)}</h3>
+<div class="table-wrap"><table>
+  <thead><tr><th scope="col">Prestation</th><th scope="col">Budget indicatif</th></tr></thead>
+  <tbody>${sec.budget.map(([a, b]) =>
+    `<tr><th scope="row">${esc(a)}</th><td>${esc(b)}</td></tr>`).join("")}</tbody>
+</table></div>
+<p class="budget-lien"><a href="signaletique-${sec.slug}.html">Ce que la loi impose dans ce secteur,
+et le dossier technique à réunir</a></p>`).join("\n");
+  const nbLignesSecteur = secteursBudget.reduce((n, sec) => n + sec.budget.length, 0);
+
+  /* Vingt-deux tableaux : la page n'est plus parcourable sans sommaire. On
+     l'ouvre sur les deux entrées possibles — par technique, par métier —
+     parce que le lecteur arrive avec l'une ou l'autre en tête. */
+  const sommaire = `<nav class="toc" aria-label="Sommaire des budgets">
+  <h2>Aller directement à…</h2>
+  <div class="toc-cols">
+    <div>
+      <h3>Par technique</h3>
+      <ul>${services.filter((sv) => sv.sections.some((x) => x.table))
+        .map((sv) => `<li><a href="#${sv.slug}">${esc(sv.navShort)}</a></li>`).join("")}</ul>
+    </div>
+    <div>
+      <h3>Par secteur d'activité</h3>
+      <ul>${secteursBudget.map((sec) =>
+        `<li><a href="#budget-${sec.slug}">${esc(sec.nav)}</a></li>`).join("")}</ul>
+    </div>
+  </div>
+</nav>`;
   const tables = services.filter((s) => s.sections.some((x) => x.table)).map((s) => {
     const t = s.sections.find((x) => x.table).table;
     return `<h2 id="${s.slug}">${esc(s.navShort)}</h2>
@@ -126,7 +172,17 @@ ${t.foot ? `<p style="font-size:.86rem;color:var(--tx-3)">${t.foot}</p>` : ""}
           <li><strong>L'électricité</strong> — alimentation existante ou à créer, horloge astronomique, mise à la terre : 200 à 600 €</li>
         </ul>
 
+        ${sommaire}
+
         ${tables}
+
+        <h2 id="par-secteur">Budgets par secteur d'activité</h2>
+        <p>Les tableaux ci-dessus sont rangés par technique, ce qui est la logique du fabricant.
+        Voici la même matière rangée par métier : ${nbLignesSecteur} budgets pour
+        ${secteursBudget.length} activités, parce qu'on cherche rarement « le prix d'un caisson
+        lumineux » — on cherche ce que coûte une croix de pharmacie, un totem de garage ou une
+        vitrine d'agence.</p>
+        ${tablesSecteur}
 
         <h2 id="pieges">Les pièges classiques d'un devis trop bas</h2>
         <p>Un écart de 40 % entre deux devis cache presque toujours une différence de contenu, pas de marge.

@@ -1732,3 +1732,14 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
   margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--line);
   font-size: .92rem; color: var(--tx-2);
 }
+
+/* Sommaire de la page tarifs : deux entrées, par technique et par secteur,
+   parce que le lecteur arrive avec l'une ou l'autre en tête. */
+.toc-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); gap: 22px; }
+.toc-cols h3 {
+  font-size: .76rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--tx-3); margin: 0 0 8px;
+}
+.toc-cols ul { list-style: none; margin: 0; padding: 0; columns: 1; }
+.toc-cols li { font-size: .9rem; margin-bottom: .1em; }
+.budget-lien { font-size: .88rem; margin: -.8em 0 2em; }
