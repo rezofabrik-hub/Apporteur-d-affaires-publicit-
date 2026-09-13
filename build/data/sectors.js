@@ -569,7 +569,94 @@ module.exports = [
     { q: "Comment protéger l'intimité sans fermer la vitrine ?", a: "Le film dépoli en bandeau, posé à hauteur des bacs ou des postes de coiffage, est la solution standard : il masque à hauteur assise tout en laissant passer la lumière et en conservant la visibilité au-dessus. On peut y réserver le logo ou un motif en transparence pour en faire un élément de décor plutôt qu'un cache." },
     { q: "Quelle enseigne pour un barbier plutôt qu'un salon mixte ?", a: "Les codes diffèrent nettement. Le barbier fonctionne avec des matières sombres et chaudes — laiton, noir mat, bois, néon ambré — et une typographie à empattements ou une enseigne drapeau à l'ancienne. Le salon mixte contemporain va plutôt vers des lettres fines en blanc ou en inox brossé et un rétro-éclairage neutre. Le budget est comparable ; c'est le parti pris qui change." }
   ],
-  services: ["enseignes", "vitrophanie-plv", "objets-publicitaires", "maquette-creation-graphique"]
+
+  /* ----------------------------------------------------------------------
+     Coiffure et esthétique. Même schéma que le garage et la restauration :
+     l'affichage extérieur des prix est obligatoire et sanctionné. La
+     particularité ici est le nombre — une dizaine de prestations au
+     minimum — ce qui transforme la vitrine en support tarifaire permanent
+     et détermine sa conception. Second point, propre au secteur : la
+     qualification professionnelle conditionne l'exploitation, et ce que la
+     vitrine annonce doit correspondre à ce que le salon a le droit de
+     faire.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre la vitrine d'un salon",
+    lead: "Votre vitrine n'est pas seulement un support d'image : c'est, au sens du code de la consommation, <em>un document tarifaire</em>. Et il doit être lisible sans que le client ait à pousser la porte.",
+    couches: [
+      {
+        titre: "1 · Les tarifs, affichés dehors et repris dedans",
+        texte: "L'affichage des prix relève de l'article L.112-1 du code de la consommation, précisé pour ce métier par l'arrêté du 27 mars 1987 relatif à la publicité des tarifs de coiffure. La liste doit être <strong>visible depuis l'extérieur du salon ou à l'entrée</strong>, en prix TTC, et porter sur les prestations les plus courantes — en pratique une <strong>dizaine de tarifs au minimum</strong> : coupe, shampooing, brushing, coloration, permanente, selon la clientèle du salon. Les mêmes prix doivent se retrouver à l'intérieur, au lieu de paiement.",
+        cle: "La conséquence sur la conception est directe : <strong>une part permanente de votre vitrine est occupée par un tableau de prix</strong>, et ce tableau change — hausses, nouvelles prestations, forfaits. Le traiter en vitrophanie découpée définitive condamne à tout refaire au premier ajustement ; un cadre, un panneau interchangeable ou une zone dédiée en film repositionnable coûtent moins cher sur trois ans. Les manquements sont sanctionnés par une amende administrative pouvant atteindre <strong>3 000 € pour une personne physique et 15 000 € pour une personne morale</strong>.",
+        source: { label: "Professionnels, quelles sont vos obligations en matière d'affichage des prix ? (economie.gouv.fr)", url: "https://www.economie.gouv.fr/entreprises/gerer-son-entreprise-au-quotidien/gerer-un-commerce/professionnels-quelles-sont-vos-obligations-en-matiere-daffichage-des-prix" }
+      },
+      {
+        titre: "2 · La qualification, et ce que la vitrine a le droit d'annoncer",
+        texte: "La loi n° 46-1173 du 23 mai 1946 réglemente l'accès à la profession de coiffeur : <strong>chaque établissement doit être placé sous le contrôle effectif et permanent d'une personne professionnellement qualifiée</strong> — titulaire du brevet professionnel de coiffure, du brevet de maîtrise, ou d'un titre enregistré au répertoire national des certifications professionnelles de niveau égal ou supérieur.",
+        cle: "Ce qui en découle pour l'enseigne, et qui se règle au moment du dessin : <strong>ce que la vitrine annonce doit correspondre à ce que le salon est en droit d'exercer</strong>. C'est particulièrement sensible du côté esthétique, où certains actes relèvent du médical et ne peuvent être proposés en institut. Une vitrine qui promet une prestation hors du champ autorisé n'est pas seulement irrégulière : elle expose à une action pour pratique commerciale trompeuse.",
+        source: { label: "Loi n° 46-1173 du 23 mai 1946 portant réglementation des conditions d'accès à la profession de coiffeur", url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000313944" }
+      },
+      {
+        titre: "3 · L'enseigne et la taxe",
+        texte: "L'enseigne de façade relève de l'article L.581-3 du code de l'environnement et de l'autorisation du <strong>maire</strong>, avec l'accord de l'architecte des Bâtiments de France en secteur protégé — situation courante, les salons s'installant volontiers en pied d'immeuble ancien.",
+        cle: "Le calcul à faire avant de dessiner : la <strong>TLPE</strong> porte sur la <strong>surface cumulée</strong> de tous les supports. Un salon additionne vite un bandeau, une enseigne drapeau, un lettrage de vitrine et parfois un chevalet permanent — et bascule au-dessus du seuil d'exonération sans l'avoir vu venir. Cela se vérifie en amont, pas à l'avis de taxe.",
+        source: { label: "Code général des collectivités territoriales — TLPE (L.2333-6 et suivants)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070633/LEGISCTA000006192887/" }
+      },
+      {
+        titre: "4 · Voir sans être vu : la contrainte propre au métier",
+        texte: "Un salon a besoin de lumière et de vitrine pour exister commercialement, mais la clientèle en fauteuil ne souhaite pas être observée depuis le trottoir — pendant une couleur, une pose ou un soin. Aucun texte ne l'impose ; c'est une exigence de confort qui décide pourtant de la moitié de la surface vitrée.",
+        cle: "La réponse technique est connue et souvent mal employée : <strong>film dépoli en bandeau à hauteur de regard assis</strong>, ou micro-perforé qui laisse voir de l'intérieur sans donner à voir de l'extérieur. L'erreur classique est le film plein sur toute la hauteur, qui règle la confidentialité en supprimant la lumière naturelle — et rend le salon sombre toute l'année.",
+        source: { label: "Code de l'environnement — enseignes (R.581-58 et suivants)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074220/LEGISCTA000006189035/" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Le nombre exact de tarifs à afficher, les dimensions admises en façade et les seuils de TLPE relèvent des textes applicables à votre activité et de la délibération de votre commune, et se vérifient au cas par cas avant tout devis."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand un salon refait sa vitrine",
+    lead: "Le salon de coiffure a un rythme intermédiaire : la façade dure, mais le tableau de prix, lui, bouge chaque année.",
+    moments: [
+      ["Ouverture ou reprise", "Le lot complet : enseigne, vitrophanie, tableau de tarifs, signalétique intérieure. Le calendrier est commandé par la date d'ouverture."],
+      ["Révision des tarifs", "Au moins une fois par an. C'est le besoin récurrent du secteur, modeste à l'unité, et celui qui fidélise le prestataire — le salon revient chez celui qui a le fichier."],
+      ["Ajout d'une activité", "Barbier, esthétique, onglerie, prothèse capillaire : la vitrine doit l'annoncer, et le tableau de tarifs s'allonge d'autant."],
+      ["Rénovation d'agencement", "Le cycle est d'environ sept à dix ans. La vitrophanie et la signalétique intérieure se refont avec le mobilier."],
+      ["Entrée dans une enseigne", "Franchise ou groupement : charte imposée, calendrier contractuel, et la conciliation habituelle entre la charte et le règlement local de publicité."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un salon, deux questions décident du devis : combien de tarifs à afficher, et à quelle fréquence ils changent.",
+    questions: [
+      "Enseigne de façade, vitrophanie, tableau de tarifs, signalétique intérieure — ou l'ensemble ?",
+      "Combien de prestations doivent figurer à l'affichage extérieur, et à quelle fréquence les tarifs évoluent-ils ?",
+      "Quelle clientèle : femme, homme, mixte, barbier ? Cela change la liste des prestations à afficher.",
+      "Exercez-vous une activité d'esthétique en complément ? Certaines prestations ne peuvent pas être annoncées librement.",
+      "Quelle surface vitrée, et quelle hauteur de regard assis à protéger pour la confidentialité des clients ?",
+      "Souhaitez-vous conserver la lumière naturelle ? Cela oriente vers le dépoli en bandeau ou le micro-perforé plutôt que le film plein.",
+      "Quelle est la surface cumulée de vos enseignes existantes — bandeau, drapeau, lettrage, chevalet ? C'est elle qui décide de la TLPE.",
+      "La commune a-t-elle un règlement local de publicité ? Le salon est-il en secteur protégé ?",
+      "Appartenez-vous à une enseigne imposant une charte graphique ?",
+      "Y a-t-il une date butoir — ouverture, reprise, changement de tarifs au 1er janvier ?"
+    ],
+    note: "La deuxième question est celle qui fait la différence de budget sur trois ans. Un tableau de tarifs en vitrophanie découpée est à refaire intégralement à chaque hausse ; un cadre ou une zone repositionnable ne coûte qu'une réimpression."
+  },
+
+  vocabulaire: [
+    ["Tableau de tarifs", "L'affichage réglementaire des prix, visible de l'extérieur. Support permanent mais contenu évolutif — d'où l'intérêt d'un système remplaçable."],
+    ["Film dépoli", "Translucide non imprimé. Masque sans obscurcir ; posé en bandeau à hauteur de regard assis, il protège la clientèle en fauteuil."],
+    ["Micro-perforé", "Film percé de trous invisibles à distance : image pleine depuis la rue, vision conservée depuis l'intérieur."],
+    ["Lettrage adhésif", "Lettres découpées posées directement sur le vitrage. La technique la plus sobre pour le nom et les horaires."],
+    ["Bandeau", "Partie horizontale de l'enseigne au-dessus de la vitrine. Support principal du nom du salon."],
+    ["Enseigne drapeau", "Perpendiculaire à la façade, lisible dans l'axe de la rue. Sa saillie est plafonnée par le règlement local."],
+    ["Brevet professionnel", "La qualification qui permet d'assurer le contrôle effectif et permanent d'un établissement de coiffure."],
+    ["Chevalet", "Panneau autoportant posé devant le salon. Occupe le domaine public, et sa surface entre dans la TLPE s'il est permanent."],
+    ["Hauteur de regard assis", "Environ 1,10 à 1,30 m du sol : la bande à traiter pour préserver la clientèle en fauteuil."]
+  ],
+  services: ["enseignes", "vitrophanie-plv", "impression-grand-format", "objets-publicitaires"]
 },
 {
   slug: "agence-immobiliere",
@@ -1214,7 +1301,93 @@ module.exports = [
     { q: "Combien de temps pour déployer 20 points de vente ?", a: "Comptez 4 à 8 mois selon la complexité. Le facteur limitant est rarement la fabrication : ce sont les autorisations communales, avec deux à quatre mois d'instruction par site. La méthode consiste à déposer tous les dossiers en parallèle dès la charte validée, puis à lancer la fabrication par vagues au rythme des accords obtenus." },
     { q: "Comment garantir la même couleur d'un site à l'autre ?", a: "En référençant les couleurs en Pantone et en RAL dans la charte technique, en imposant un seul fournisseur de laque et de film adhésif, et en conservant des échantillons de référence validés. Pour les enseignes lumineuses, ajoutez la température de couleur des LED en kelvins : c'est ce qui fait qu'un blanc paraît identique ou non d'une ville à l'autre." }
   ],
-  services: ["enseignes", "signaletique", "covering-vehicule", "maquette-creation-graphique"]
+
+  /* ----------------------------------------------------------------------
+     Franchise et réseau. Page à double lectorat : le franchiseur qui
+     déploie, et le franchisé qui subit le déploiement. Le fil conducteur
+     est le même dans les deux cas — une charte nationale ne se réplique
+     pas à l'identique, parce que le droit de l'enseigne est communal. Et
+     le point que personne n'anticipe est la sortie du réseau : la dépose
+     des supports à la marque, à la charge de l'ex-franchisé et sous
+     délai contractuel.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre le déploiement d'une enseigne de réseau",
+    lead: "Une charte est nationale ; le droit de l'enseigne est communal. Tout le sujet du secteur tient dans cette phrase — et dans la question que l'on pose trop tard : <em>qui dépose les supports le jour où le contrat s'arrête ?</em>",
+    couches: [
+      {
+        titre: "1 · Avant de signer : le document d'information précontractuelle",
+        texte: "L'article L.330-3 du code de commerce — la loi dite Doubin — impose de remettre au candidat un <strong>document d'information précontractuelle au moins vingt jours avant</strong> la signature ou le versement de toute somme. Il porte notamment sur l'état et les perspectives du marché, l'ancienneté et l'expérience du réseau, la <strong>liste des membres du réseau avec les dates d'entrée et de sortie</strong>, les motifs des départs de l'année écoulée, la durée et les conditions de renouvellement du contrat, et le montant des investissements exigés.",
+        cle: "Le poste signalétique fait partie de ces investissements, et il est presque toujours sous-estimé dans les projections. Entre l'enseigne de façade, le totem, la vitrophanie, la signalétique intérieure et le marquage des véhicules, <strong>un point de vente sous enseigne représente un budget à cinq chiffres</strong>. Un candidat qui n'a pas chiffré ce lot séparément découvre le montant au moment où tout le reste est déjà engagé.",
+        source: { label: "Article L.330-3 du code de commerce — information précontractuelle", url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006230297" }
+      },
+      {
+        titre: "2 · Quand la charte rencontre le règlement local",
+        texte: "La charte du réseau fixe les couleurs, la typographie, le gabarit du bandeau, l'implantation du totem. Le <strong>règlement local de publicité</strong> de la commune, lui, fixe la surface admise, la saillie, la hauteur, le nombre d'enseignes au sol, parfois la luminance — et il ne connaît pas votre charte.",
+        cle: "La règle est sans appel : <strong>quand les deux se contredisent, c'est le règlement local qui l'emporte</strong>. Un déploiement national se conçoit donc comme une charte assortie de <strong>variantes autorisées</strong> — un bandeau réduit, un totem abaissé, une enseigne drapeau supprimée en secteur protégé — validées par le franchiseur en amont. Sans ce travail, chaque ouverture se termine en dérogation négociée dans l'urgence, à quelques jours de l'inauguration.",
+        source: { label: "Code de l'environnement — enseignes (R.581-58 et suivants)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074220/LEGISCTA000006189035/" }
+      },
+      {
+        titre: "3 · La même enseigne ne coûte pas la même taxe",
+        texte: "La <strong>TLPE</strong> est instituée par délibération de chaque commune ou intercommunalité, et son tarif dépend de la strate de population. Elle se calcule sur la surface cumulée des supports de l'établissement.",
+        cle: "Pour un réseau, la conséquence est contre-intuitive et rarement modélisée : <strong>un concept identique ne produit pas la même charge fiscale annuelle d'une ville à l'autre</strong>. Certaines communes ne l'ont pas instituée, d'autres l'appliquent au plafond. Quand le concept prévoit trois supports par point de vente, un quatrième — le chevalet permanent, le totem de parking — peut faire franchir un seuil sur l'ensemble du parc. Cela se simule à l'échelle du réseau, pas au coup par coup.",
+        source: { label: "Code général des collectivités territoriales — TLPE (L.2333-6 et suivants)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070633/LEGISCTA000006192887/" }
+      },
+      {
+        titre: "4 · La sortie du réseau : la dépose que personne n'a budgétée",
+        texte: "Le franchisé exploite la marque sous licence, pour la durée du contrat et pas au-delà. À l'échéance, à la résiliation ou à la cession, il doit <strong>cesser tout usage des signes distinctifs du réseau</strong> — enseigne, totem, vitrophanie, véhicules, supports imprimés. Les contrats prévoient généralement un délai bref, et la dépose est à la charge du sortant.",
+        cle: "C'est le chantier le plus urgent et le moins anticipé du secteur : <strong>quelques jours pour déposer une façade complète, remettre le support en état et poser une identité provisoire</strong>, faute de quoi le maintien des signes engage la responsabilité de l'ex-franchisé. Pour un professionnel du réseau, c'est une intervention à part entière — dépose, reprise de façade, repose — et elle se prépare avant la fin du contrat, pas le jour où la mise en demeure arrive.",
+        source: { label: "Article L.330-3 du code de commerce — information précontractuelle", url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006230297" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les obligations de dépose, leurs délais et la prise en charge des frais relèvent du contrat de franchise, qui prime ici sur toute généralité : il faut le lire avant de chiffrer. Les dimensions admises et les tarifs de TLPE relèvent de chaque commune."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand un réseau commande de la signalétique",
+    lead: "Un réseau achète sur deux rythmes qui n'ont rien à voir : l'ouverture, unitaire et urgente ; le changement de charte, massif et planifié.",
+    moments: [
+      ["Chaque ouverture de point de vente", "Le lot complet, avec une date d'inauguration qui ne se décale pas. C'est un flux régulier plutôt qu'un chantier, et il demande un prestataire capable d'intervenir partout."],
+      ["Le changement de charte", "Le chantier majeur : tout le parc à reprendre, souvent en quelques mois, ville par ville, avec autant de dossiers d'autorisation que de communes. Cela se planifie un an à l'avance."],
+      ["L'entrée d'un indépendant dans le réseau", "Un commerce existant passe sous enseigne : dépose de l'ancienne identité, pose de la nouvelle, et souvent reprise de façade entre les deux."],
+      ["La sortie du réseau", "Résiliation, non-renouvellement, cession : dépose sous délai contractuel et pose d'une identité provisoire. Urgent, et rarement budgété."],
+      ["Le renouvellement courant", "Éclairage LED en panne, vitrophanie décollée, totem accidenté : la maintenance d'un parc est un poste récurrent, qui justifie à lui seul un référent national."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un dossier de réseau, la question n'est jamais « quel support » mais « combien de sites, et sous quelles contraintes locales ».",
+    questions: [
+      "Ouverture d'un point de vente, déploiement d'un parc, ou dépose de fin de contrat ?",
+      "Combien de sites, et dans combien de communes différentes ?",
+      "Disposez-vous de la charte graphique et du cahier des charges technique du réseau ?",
+      "La charte prévoit-elle des variantes autorisées pour les secteurs protégés et les règlements locaux restrictifs ?",
+      "Qui dépose les dossiers d'autorisation : le franchiseur, le franchisé, ou le poseur dans le cadre de sa prestation ?",
+      "Quels supports par site : bandeau, totem, drapeau, vitrophanie, signalétique intérieure, véhicules ?",
+      "La surface cumulée par site a-t-elle été simulée au regard de la TLPE des communes concernées ?",
+      "Pour une dépose : quel délai contractuel, et l'état de la façade après dépose est-il à reprendre ?",
+      "Y a-t-il des dates d'inauguration fermes, et sont-elles échelonnées ou simultanées ?",
+      "Qui assure la maintenance du parc après pose, et selon quel délai d'intervention ?"
+    ],
+    note: "La question des variantes autorisées est celle qui évite le plus de retards. Un réseau qui n'a pas prévu de version allégée de sa charte pour les secteurs protégés négocie une dérogation à chaque ouverture en centre ancien — et perd trois semaines à chaque fois."
+  },
+
+  vocabulaire: [
+    ["DIP", "Document d'information précontractuelle, remis au moins vingt jours avant la signature. Il porte notamment la liste des membres du réseau et les motifs des départs."],
+    ["Charte technique", "Le document qui traduit la charte graphique en spécifications : matériaux, gabarits, modes d'éclairage, tolérances de pose."],
+    ["Variante autorisée", "Version allégée de la charte, validée d'avance pour les cas où le règlement local interdit la version standard."],
+    ["Déploiement", "Reprise de l'ensemble d'un parc sous une nouvelle identité, ville par ville. Se planifie à l'échelle de l'année."],
+    ["Dépose", "Retrait des supports portant les signes du réseau à la fin du contrat, avec remise en état du support. À la charge du sortant, sous délai contractuel."],
+    ["Identité provisoire", "Habillage neutre posé entre la dépose d'une enseigne et la pose de la suivante, pour que le point de vente reste identifiable."],
+    ["Référent national", "Interlocuteur unique coordonnant les poses sur l'ensemble d'un parc, quelles que soient les entreprises qui interviennent localement."],
+    ["Recette", "Vérification contradictoire de la conformité d'une pose à la charte, avant réception et paiement."],
+    ["Parc", "L'ensemble des points de vente d'un réseau, considéré comme un objet unique en maintenance comme en déploiement."]
+  ],
+  services: ["enseignes", "signaletique", "vitrophanie-plv", "covering-vehicule"]
 },
 {
   slug: "sport-loisirs",
