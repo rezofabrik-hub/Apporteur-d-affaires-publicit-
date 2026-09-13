@@ -213,8 +213,58 @@ const GLOSSARY = [
   ["Vitrophanie", "Ensemble des adhésifs appliqués sur une surface vitrée : lettrage, décor, film dépoli, microperforé, film solaire ou de sécurité."]
 ];
 
+/* ---------------------------------------------------------------------------
+   Glossaire fusionné.
+
+   Les définitions écrites secteur par secteur — quatre-vingt-dix-sept termes
+   absents du glossaire d'origine — vivaient cloisonnées dans leur page. Elles
+   ont ici leur domicile canonique, et chaque entrée renvoie vers le ou les
+   secteurs où elle prend son sens : le lecteur passe de la définition à
+   l'usage, et le maillage interne y gagne autant d'entrées.
+
+   Une seule famille de quasi-doublons méritait d'être réduite : « dépoli »,
+   « film dépoli » et « vitrophanie dépolie » désignent la même chose.
+   Les autres homonymies apparentes n'en sont pas — un drapeau de rayon n'est
+   pas une enseigne drapeau, un registre de sécurité n'est pas un registre
+   public d'accessibilité.
+   --------------------------------------------------------------------------- */
+const ALIAS = { "film dépoli": "dépoli", "vitrophanie dépolie": "dépoli" };
+
+function normTerme(t) {
+  return String(t).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+function glossaireFusionne() {
+  const index = new Map();
+  const ajouter = (terme, def, secteur) => {
+    const cle = normTerme(ALIAS[terme.toLowerCase()] || terme);
+    if (!index.has(cle)) index.set(cle, { terme, def, secteurs: [] });
+    const e = index.get(cle);
+    /* On garde la définition la plus développée : à contenu égal, celle qui
+       explique davantage rend plus de service sur une page de référence. */
+    if (def.length > e.def.length) { e.def = def; e.terme = terme; }
+    if (secteur && !e.secteurs.some((x) => x.slug === secteur.slug)) e.secteurs.push(secteur);
+  };
+  GLOSSARY.forEach(([t, d]) => ajouter(t, d, null));
+  sectors.forEach((sec) => (sec.vocabulaire || []).forEach(([t, d]) =>
+    ajouter(t, d, { slug: sec.slug, nav: sec.nav })));
+  return Array.from(index.values())
+    .sort((a, b) => a.terme.localeCompare(b.terme, "fr", { sensitivity: "base" }));
+}
+
 function glossaire(cities) {
   const crumbItems = [{ name: "Accueil", url: "index.html" }, { name: "Glossaire", url: "glossaire.html" }];
+  const G = glossaireFusionne();
+  /* Regroupement par initiale : à cent trente termes, une liste continue
+     n'est plus consultable. L'index de lettres est la navigation attendue
+     d'un ouvrage de référence. */
+  const parLettre = {};
+  G.forEach((e) => {
+    const l = e.terme[0].toUpperCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    (parLettre[l] = parLettre[l] || []).push(e);
+  });
+  const lettres = Object.keys(parLettre).sort((a, b) => a.localeCompare(b, "fr"));
   const body = `
 <section class="hero hero-in-page">
   <div class="hero-bg">${heroImg("lettres-decoupees", 1, "Lettres découpées en façade")}</div>
@@ -223,19 +273,30 @@ function glossaire(cities) {
     <span class="eyebrow">Référence</span>
     <h1>Glossaire de l'enseigne, de la signalétique et de l'impression</h1>
     <p class="lead">Le vocabulaire du secteur est un obstacle réel : difficile de comparer deux devis
-    quand on ne sait pas ce que recouvre « adhésif coulé », « rétro-éclairage » ou « TLPE ».
-    Voici les ${GLOSSARY.length} termes qui reviennent le plus souvent, expliqués simplement.</p>
+    quand on ne sait pas ce que recouvre « adhésif coulé », « lambrequin », « saillie » ou « TLPE ».
+    Voici les ${G.length} termes du métier, expliqués simplement — et, pour la plupart, replacés
+    dans le secteur où ils prennent leur sens.</p>
   </div>
 </section>
 
 <section class="sec">
   <div class="wrap wrap-narrow">
-    <div class="acc">
-      ${GLOSSARY.map(([t, d]) => `<details>
-        <summary>${esc(t)}</summary>
-        <div class="acc-body"><p>${esc(d)}</p></div>
-      </details>`).join("")}
-    </div>
+    <nav class="glo-index" aria-label="Index alphabétique">
+      ${lettres.map((l) => `<a href="#lettre-${l}">${esc(l)}</a>`).join("")}
+    </nav>
+    ${lettres.map((l) => `<div class="glo-groupe" id="lettre-${l}">
+      <h2>${esc(l)}</h2>
+      <div class="acc">
+        ${parLettre[l].map((e) => `<details>
+          <summary>${esc(e.terme)}</summary>
+          <div class="acc-body">
+            <p>${esc(e.def)}</p>
+            ${e.secteurs.length ? `<p class="glo-sec">En contexte : ${e.secteurs.map((sec) =>
+              `<a href="signaletique-${sec.slug}.html#vocabulaire">${esc(sec.nav)}</a>`).join(", ")}</p>` : ""}
+          </div>
+        </details>`).join("")}
+      </div>
+    </div>`).join("")}
   </div>
 </section>
 
@@ -243,13 +304,16 @@ function glossaire(cities) {
 
   return T.page({
     file: "glossaire.html", active: "glossaire.html",
-    title: `Glossaire Enseigne, Signalétique & Impression — ${GLOSSARY.length} termes | ${site.brand}`,
+    title: `Glossaire Enseigne, Signalétique & Impression — ${G.length} termes | ${site.brand}`,
     desc: "Adhésif coulé, rétro-éclairage, TLPE, RLP, PMR, microperforé, thermolaquage : tout le vocabulaire de la communication visuelle expliqué simplement.",
     body, cities,
     schema: [T.crumbSchema(crumbItems), {
       "@context": "https://schema.org", "@type": "DefinedTermSet",
       name: "Glossaire de la communication visuelle",
-      hasDefinedTerm: GLOSSARY.map(([t, d]) => ({ "@type": "DefinedTerm", name: t, description: d }))
+      /* Le jeu structuré porte la liste fusionnée, pas la seule liste
+         d'origine : c'est ce balisage que lisent les moteurs et les
+         assistants, et il n'aurait décrit que le tiers de la page. */
+      hasDefinedTerm: G.map((e) => ({ "@type": "DefinedTerm", name: e.terme, description: e.def }))
     }]
   });
 }

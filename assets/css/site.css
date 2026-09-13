@@ -1687,3 +1687,48 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
 }
 .fam-card h4 { font-size: 1rem; margin: 0 0 .4em; }
 .fam-card p { font-size: .9rem; color: var(--tx-2); margin: 0; line-height: 1.6; }
+
+/* =========================================================================
+   41 · Glossaire : index alphabétique et renvois de contexte
+   -------------------------------------------------------------------------
+   À cent trente-quatre termes, la liste continue n'est plus consultable.
+   L'index de lettres est la navigation attendue d'un ouvrage de référence ;
+   il doit rester atteignable au pouce, d'où des cibles largement au-dessus
+   du seuil de 24 px.
+   ========================================================================= */
+.glo-index {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 36px;
+  padding-bottom: 22px; border-bottom: 1px solid var(--line);
+}
+.glo-index a {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 34px; height: 34px; padding: 0 8px;
+  border: 1px solid var(--line); border-radius: var(--r);
+  background: var(--paper); color: var(--tx-2);
+  font-weight: 700; font-size: .9rem; text-decoration: none; transition: .15s;
+}
+.glo-index a:hover { background: var(--ink-900, var(--tx)); color: #fff; border-color: transparent; }
+
+.glo-groupe { margin-bottom: 34px; scroll-margin-top: 90px; }
+.glo-groupe > h2 {
+  font-size: 1.5rem !important; color: var(--signal-600);
+  margin: 0 0 14px !important; padding-bottom: 8px;
+  border-bottom: 2px solid var(--signal-100);
+}
+
+/* Renvoi vers le ou les secteurs où le terme prend son sens. */
+.glo-sec {
+  margin: .9em 0 0 !important; padding-top: .8em;
+  border-top: 1px dashed var(--line);
+  font-size: .85rem !important; color: var(--tx-3) !important;
+}
+.glo-sec a { color: var(--tx-2); }
+.glo-sec a:hover { color: var(--signal-600); }
+
+/* Renvoi du lexique de secteur vers le glossaire complet : la boucle se
+   referme dans les deux sens, chaque entrée du glossaire renvoyant déjà
+   vers le secteur où le terme prend son sens. */
+.lexique-plus {
+  margin: 26px 0 0; padding-top: 18px; border-top: 1px solid var(--line);
+  font-size: .92rem; color: var(--tx-2);
+}

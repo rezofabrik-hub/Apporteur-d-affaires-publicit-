@@ -91,6 +91,9 @@ module.exports = function sectorPage(sec, cities) {
     <dl class="lexique">
       ${V.map(([t, d]) => `<div><dt>${esc(t)}</dt><dd>${esc(d)}</dd></div>`).join("")}
     </dl>
+    <p class="lexique-plus">Ces termes sont ceux qui reviennent dans ce secteur.
+    <a href="glossaire.html">Le glossaire complet</a> rassemble l'ensemble du vocabulaire du
+    métier, classé par ordre alphabétique.</p>
   </div>
 </section>` : "";
 
