@@ -434,6 +434,92 @@ module.exports = [
     { q: "Vitrine à câbles ou cadres LED individuels ?", a: "Les câbles offrent la souplesse de composition et un coût inférieur ; les cadres LED individuels sont plus lisibles de nuit et plus rapides à changer. Le critère décisif est le nombre de changements hebdomadaires : au-delà de dix annonces modifiées par semaine, le temps gagné par un système à ouverture rapide rembourse la différence en une saison." },
     { q: "En franchise, puis-je choisir librement mon enseigne ?", a: "Non, la charte du réseau s'impose généralement : matériaux, couleurs référencées, typographie, proportions et parfois fournisseurs agréés. Nous consultons alors des enseignistes capables de travailler sur charte imposée et de fournir un bon à tirer conforme, ce qui évite un refus de validation par le franchiseur après fabrication." }
   ],
+
+  /* ----------------------------------------------------------------------
+     Agence immobilière : le secteur où la loi va le plus loin, puisqu'elle
+     ne se contente pas d'imposer un affichage — elle en spécifie le format
+     et l'emplacement dans la vitrine. Autrement dit, le législateur écrit
+     un cahier des charges de vitrophanie. C'est l'angle le plus précis des
+     trois secteurs traités, et celui où le lecteur a le plus de chances de
+     découvrir qu'il n'est pas à jour : la formulation exigée a changé le
+     1er avril 2022 et beaucoup de vitrines portent encore l'ancienne.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce que la loi impose à votre vitrine",
+    lead: "L'agence immobilière est le seul de nos secteurs où le texte ne dit pas seulement <em>ce qu'</em>il faut afficher, mais <em>à quel format et à quel emplacement</em>. La vitrine n'est pas un support libre : c'est un document réglementaire.",
+    couches: [
+      {
+        titre: "1 · Le barème d'honoraires : format et emplacement imposés",
+        texte: "L'arrêté du 10 janvier 2017 impose l'affichage du barème <strong>depuis l'extérieur, sur la vitrine de l'établissement</strong> — et il précise la forme : <strong>dans le même format et au même emplacement que celui normalement alloué aux annonces</strong> de vente ou de location. La même obligation vaut pour chaque vitrine publicitaire située hors établissement. Lorsque la vitrine est partagée entre plusieurs professionnels, une mention renvoyant à la consultation du barème sur simple demande peut s'y substituer.",
+        cle: "Le point que beaucoup de vitrines n'ont pas intégré : depuis l'arrêté du 26 janvier 2022, applicable au <strong>1<sup>er</sup> avril 2022</strong>, il ne s'agit plus d'afficher les « prix effectivement pratiqués » mais les <strong>« prix maximums pratiqués »</strong>. Une vitrine refaite avant cette date porte une formulation qui n'est plus celle du texte. Le manquement est sanctionné par une amende administrative d'au plus <strong>3 000 € pour une personne physique et 15 000 € pour une personne morale</strong>.",
+        source: { label: "Arrêté du 10 janvier 2017 relatif à l'information des consommateurs par les professionnels intervenant dans une transaction immobilière", url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000033888549" }
+      },
+      {
+        titre: "2 · La loi Hoguet : ce qui doit figurer à côté du barème",
+        texte: "Le titulaire de la carte professionnelle doit apposer de manière visible, <strong>en vitrine et dans les lieux où est reçue la clientèle</strong> : le <strong>numéro de la carte professionnelle</strong>, les mentions relatives à la <strong>garantie financière</strong> — dénomination et coordonnées du garant, montant — ou, à défaut, la mention de non-perception de fonds, ainsi que le <strong>barème des honoraires TTC</strong>.",
+        cle: "Ces mentions sont permanentes, alors que les annonces tournent chaque semaine. C'est ce qui commande la conception : <strong>les mentions légales se traitent en vitrophanie fixe, jamais sur une feuille glissée dans un porte-affiche</strong>. Un A4 punaisé qui jaunit ou qui tombe est le premier signe relevé lors d'un contrôle, et c'est aussi ce que voit le vendeur qui hésite entre deux agences.",
+        source: { label: "Professionnels de l'immobilier : les règles à connaître (DGCCRF)", url: "https://www.economie.gouv.fr/dgccrf/les-fiches-pratiques/professionnels-de-limmobilier-les-regles-connaitre" }
+      },
+      {
+        titre: "3 · L'enseigne et le réseau",
+        texte: "Comme partout, l'enseigne de façade relève de l'article L.581-3 du code de l'environnement et d'une autorisation du <strong>maire</strong>, avec l'accord de l'architecte des Bâtiments de France en secteur protégé — situation fréquente pour une agence, qui s'installe volontiers en centre-ville ancien et en pied d'immeuble.",
+        cle: "Particularité du secteur : beaucoup d'agences appartiennent à un <strong>réseau qui impose une charte</strong> — couleurs, typographie, implantation du bandeau, gabarit des panneaux de commercialisation. Le poseur doit savoir lire un cahier des charges de réseau et le concilier avec le règlement local, qui ne connaît pas votre charte. Quand les deux se contredisent, <strong>c'est le règlement local qui l'emporte</strong>, et il faut le faire arbitrer avant fabrication, pas devant la façade.",
+        source: { label: "Code de l'environnement — enseignes (R.581-58 et suivants)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074220/LEGISCTA000006189035/" }
+      },
+      {
+        titre: "4 · Les panneaux de commercialisation, hors de l'agence",
+        texte: "Le panneau « À vendre » posé sur un bien n'est pas une enseigne au sens du code de l'environnement : il ne signale pas l'activité exercée sur place, mais un bien à commercialiser. Sa pose relève de l'accord du propriétaire, et en copropriété de ce que permettent le règlement de copropriété et les décisions d'assemblée générale.",
+        cle: "En conséquence : <strong>un panneau en façade d'immeuble collectif se heurte régulièrement au règlement de copropriété</strong>, et la question se pose avant l'impression du lot, pas après. C'est aussi ce qui détermine le format : un panneau de balcon, un panneau de clôture et un panneau de vitrine n'ont ni la même fixation ni la même résistance au vent.",
+        source: { label: "Code de l'environnement — définitions (L.581-3)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074220/LEGISCTA000006159442/" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Le format exact, les dimensions admises en façade et les contraintes de secteur protégé relèvent du règlement local de publicité de votre commune, et votre charte de réseau s'y ajoute — c'est la première chose que vérifie l'enseigniste que nous vous présentons."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand une agence refait sa vitrine",
+    lead: "La vitrine d'agence est le support qui vieillit le plus vite du commerce de centre-ville : elle est lue debout, longuement, et de près.",
+    moments: [
+      ["Une mise en conformité", "Un contrôle, ou simplement la lecture du texte : le barème n'est pas au bon format, les mentions ne sont plus à jour depuis avril 2022, la garantie financière a changé de garant. Le besoin est précis et le délai court."],
+      ["Un changement de réseau ou d'indépendance", "Entrée dans une enseigne nationale, sortie vers l'indépendance, changement de franchise : tout est repris — bandeau, vitrophanie, panneaux, véhicules. C'est le lot complet, avec un calendrier imposé par le contrat."],
+      ["L'ouverture ou le transfert d'agence", "Le chantier doit être terminé le jour de l'ouverture, mentions légales comprises : une agence ne peut pas recevoir de clientèle sans son affichage réglementaire."],
+      ["Le passage aux vitrines LED", "Remplacement des porte-affiches classiques par des cadres lumineux : c'est le poste qui change le plus la perception nocturne, et le seul qui fait travailler la vitrine quand l'agence est fermée."],
+      ["Le renouvellement du parc de panneaux", "Les panneaux de commercialisation se dégradent en une à deux saisons dehors. Leur renouvellement est régulier et se commande par lots — c'est un volume constant plutôt qu'un chantier."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur une agence, la conformité et le design se décident ensemble : c'est la loi qui fixe une partie du plan de vitrine.",
+    questions: [
+      "Quelle surface de vitrine, et combien d'emplacements d'annonces — le barème doit occuper le même format et le même emplacement.",
+      "Porte-affiches LED ou vitrophanie seule ? Simple ou double face, et pour quel format d'annonce : A4, A3, A2 ?",
+      "Vos mentions légales sont-elles à jour : numéro de carte professionnelle, garant, montant de la garantie financière, ou non-perception de fonds ?",
+      "Votre affichage porte-t-il bien la mention des « prix maximums pratiqués », exigée depuis le 1er avril 2022 ?",
+      "Appartenez-vous à un réseau, et disposez-vous de sa charte graphique et de son cahier des charges technique ?",
+      "La vitrine est-elle partagée avec un autre professionnel ? Cela change le régime d'affichage du barème.",
+      "L'agence est-elle en secteur protégé ou aux abords d'un monument historique ?",
+      "Enseigne de façade : bandeau, lettres relief, caisson ? Une enseigne drapeau est-elle envisagée, et la saillie est-elle admise ?",
+      "Panneaux de commercialisation : quel volume annuel, quels formats, quelles fixations — balcon, clôture, façade d'immeuble ?",
+      "Véhicules à marquer, et faut-il un covering ou un lettrage amovible sur véhicule en leasing ?"
+    ],
+    note: "La question qui structure tout le reste est la première : le nombre d'emplacements d'annonces. C'est elle qui détermine la place que le barème doit occuper, donc le plan de vitrine, donc le devis."
+  },
+
+  vocabulaire: [
+    ["Barème d'honoraires", "Le document qui liste les prix maximums pratiqués par prestation. Affichage obligatoire en vitrine, au format des annonces."],
+    ["Carte professionnelle", "La carte T et ses déclinaisons, délivrées par la CCI. Son numéro doit figurer en vitrine et dans les lieux de réception."],
+    ["Garantie financière", "Couvre les fonds détenus pour le compte de tiers. Nom du garant, coordonnées et montant s'affichent — sauf mention de non-perception de fonds."],
+    ["Porte-affiche LED", "Cadre lumineux recevant une annonce imprimée. Simple face côté vitrine, double face pour être lu du trottoir et de l'intérieur."],
+    ["Vitrophanie fixe", "Adhésif appliqué sur le vitrage, par opposition au document glissé dans un cadre. C'est le support des mentions permanentes."],
+    ["Bandeau", "La partie horizontale de l'enseigne, au-dessus de la vitrine. Support principal du nom de l'agence."],
+    ["Enseigne drapeau", "Perpendiculaire à la façade, lisible dans l'axe de la rue. Sa saillie est plafonnée par le règlement local."],
+    ["Panneau de commercialisation", "Le « à vendre » ou « à louer » posé sur le bien. Ce n'est pas une enseigne au sens du code de l'environnement."],
+    ["Dépoli", "Film translucide. En agence, il sert surtout à isoler visuellement les bureaux de négociation depuis la rue."]
+  ],
   services: ["vitrophanie-plv", "enseignes", "impression-grand-format", "covering-vehicule"]
 },
 {
