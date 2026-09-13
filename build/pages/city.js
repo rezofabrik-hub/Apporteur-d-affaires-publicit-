@@ -1,4 +1,6 @@
 const T = require("../lib/tpl");
+const sectors = require("../data/sectors");
+const COMMUNES = require("../data/communes");
 const { site, services, esc, img, heroImg } = T;
 const FR = require("../lib/fr");  // accords des noms de département
 
@@ -108,6 +110,137 @@ module.exports = function cityPage(city, cities, index, matrixMetiers) {
      vers chacun de ses métiers déclinés. C'est le pendant du bloc « villes »
      des pages métier ; sans les deux, les pages métier x ville ne reçoivent de
      liens que de leurs semblables et restent en périphérie du site. */
+  /* Ce que le code de l'environnement autorise dans CETTE commune.
+
+     C'est le bloc qui distingue réellement une page ville d'une autre :
+     il ne reformule pas le nom de la ville, il énonce un droit qui change
+     d'une commune à l'autre selon un seuil de population officiel. À
+     Rivesaltes (9 270 hab, unité urbaine de Perpignan) le totem est
+     interdit mais l'enseigne lumineuse permise ; à Bayeux (12 659 hab)
+     les deux sont permis ; à Lépanges-sur-Vologne (844 hab) ni l'un ni
+     l'autre. Aucun réseau concurrent ne publie cette information.
+
+     Toutes les valeurs viennent de build/data/communes.js — Insee et code
+     de l'environnement, jamais d'estimation. */
+  const REG = COMMUNES.regime(city.slug);
+  const interdits = REG ? REG.regles.filter((r) => r.verdict === "interdite") : [];
+  const nInterdits = interdits.length;
+  /* Nommer ce qui est effectivement interdit dans CETTE commune. Rivesaltes
+     n'a pas le droit au totem mais a le droit au lumineux : une phrase
+     générique sur « le totem ou le caisson lumineux » y serait fausse. */
+  const NOM_COURT = {
+    "Enseigne scellée au sol de plus d'un mètre carré": "un totem ou une enseigne sur pied",
+    "Publicité scellée au sol non lumineuse": "un panneau publicitaire au sol",
+    "Publicité lumineuse": "un dispositif publicitaire lumineux"
+  };
+  const listeInterdits = interdits
+    .map((r) => NOM_COURT[r.objet] || r.objet.toLowerCase())
+    .reduce((acc, x, i, a) => acc + (i === 0 ? "" : i === a.length - 1 ? " ni " : ", ") + x, "");
+
+  const droitBloc = REG ? `
+<section class="sec" id="ce-qui-est-permis">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Le droit applicable ici</span>
+      <h2>Ce que vous avez le droit de poser à ${esc(city.name)}</h2>
+      <p class="lead">${esc(city.name)} compte <strong>${REG.pop.toLocaleString("fr-FR")} habitants</strong>${
+        REG.uu ? ` et appartient à l'unité urbaine de ${esc(REG.uu)}` : " et n'appartient à aucune unité urbaine"
+      }. Ce n'est pas un détail administratif : le code de l'environnement fait dépendre de la taille de la commune, et de son rattachement urbain, ce qu'il est permis d'installer sur votre façade et devant votre porte.</p>
+    </div>
+    <div class="table-wrap"><table class="table-droit">
+      <thead><tr>
+        <th scope="col">Dispositif</th>
+        <th scope="col">À ${esc(city.name)}</th>
+        <th scope="col">Ce que dit le texte</th>
+      </tr></thead>
+      <tbody>
+        ${REG.regles.map((r) => `<tr>
+          <th scope="row">${esc(r.objet)}</th>
+          <td><span class="verdict verdict-${r.verdict}">${r.verdict === "interdite" ? "Interdit" : "Autorisé"}</span></td>
+          <td>${esc(r.texte)}<br><span class="src">${esc(r.source)}</span></td>
+        </tr>`).join("")}
+      </tbody>
+    </table></div>
+    <div class="note${nInterdits ? " warn" : ""}"><p>${
+      nInterdits
+        ? `Concrètement, à ${esc(city.name)}, vous ne pouvez pas installer ${listeInterdits}. Commander l'un d'eux sans le savoir, c'est payer une fabrication et une pose qui devront être déposées. C'est exactement la vérification qu'un professionnel implanté sur le secteur fait avant de chiffrer — et celle qu'un fournisseur lointain ne fait pas.`
+        : `À ${esc(city.name)}, aucun de ces dispositifs n'est interdit par le règlement national. Restent les règles de format, de densité et d'extinction nocturne, et surtout le règlement local de publicité s'il en existe un : il ne peut être que plus sévère.`
+    }</p></div>
+    <div class="split split-droit">
+      <div class="prose">
+        <h3>Ce que la taille de ${esc(city.name)} change en pratique</h3>
+        <p>${esc(COMMUNES.strate(city.slug))}</p>
+      </div>
+      <aside>
+        <div class="aside-card">
+          <h3>Deux réserves</h3>
+          <p>Ces règles sont celles du règlement national, applicable à défaut de règlement local de
+          publicité : un <a href="reglementation-enseigne.html">RLP</a> ne peut que les durcir.</p>
+          <p>Le texte raisonne sur la population de l'agglomération au sens du code de la route, que le
+          maire détermine à défaut de décret. La population Insee en donne le cadre, la mairie a le
+          dernier mot — nos partenaires posent la question avant de chiffrer.</p>
+          <p class="src">Insee, recensement 2023, populations en vigueur au 1<sup>er</sup> janvier 2026
+          (commune ${esc(REG.insee)}) · unités urbaines 2020 · code de l'environnement, art. R.581-26,
+          R.581-31, R.581-34, R.581-63, R.581-64, R.581-65 · guide du ministère de la Transition
+          écologique, janvier 2025 · CE, 29 mars 1993, Sté Dauphin OTA, n° 143774.</p>
+        </div>
+      </aside>
+    </div>
+    <div class="btns" style="margin-top:26px">
+      <a class="btn btn-primary" href="devis.html?ville=${encodeURIComponent(city.name)}">Faire vérifier mon projet</a>
+      <a class="btn btn-ghost" href="reglementation-enseigne.html">La réglementation en détail</a>
+    </div>
+  </div>
+</section>` : "";
+
+  /* Six secteurs sur treize, choisis par rotation.
+
+     Afficher les treize sur chacune des 440 pages ajouterait treize lignes
+     rigoureusement identiques partout : ce serait reproduire exactement le
+     défaut mesuré chez le concurrent, dont les pages locales se ressemblent
+     à 77-80 %. Six par ville, tournants, routent vers l'ensemble des
+     secteurs à l'échelle du corpus sans alourdir la similarité page à page.
+
+     La rotation est semée par le slug et non par l'index : la liste des
+     communes est ordonnée par département, si bien que deux voisines s'y
+     suivent et recevraient sinon presque la même sélection — or ce sont
+     précisément les deux pages qu'un moteur compare. */
+  const secteursAvecDroit = sectors.filter((x) => x.reglementation && x.reglementation.resume);
+  let graine = 0;
+  for (let i = 0; i < city.slug.length; i++) graine = (graine * 33 + city.slug.charCodeAt(i)) % 100003;
+  const secteursVille = Array.from({ length: Math.min(6, secteursAvecDroit.length) },
+    (_, k) => secteursAvecDroit[(graine + k * 3 + (k % 2)) % secteursAvecDroit.length])
+    .filter((x, k, a) => a.indexOf(x) === k);
+
+  /* Routage vers les secteurs. Section autonome et non plus enfouie dans le
+     bloc réservé aux villes non pilotes : Perpignan, la ville de référence,
+     en était privée alors que c'est le marché d'origine du réseau. */
+  const secteursBloc = secteursVille.length ? `
+<section class="sec bg-2" id="votre-metier">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Votre activité</span>
+      <h2>Ce que la loi impose à votre métier, à ${esc(city.name)}</h2>
+      <p class="lead">Selon votre activité, ce n'est pas la même enseigne qu'il vous faut — et ce
+      ne sont surtout pas les mêmes obligations. Chaque métier a sa page, avec les textes
+      applicables et leurs sources officielles.</p>
+    </div>
+    <div class="grid g-3">
+      ${secteursVille.map((sec) => `<a class="card card-link fam-card"
+        href="signaletique-${sec.slug}.html#reglementation">
+        <div class="card-body">
+          <h3>${esc(sec.nav)}</h3>
+          <p>${esc(sec.reglementation.resume)}</p>
+        </div>
+      </a>`).join("")}
+    </div>
+    <p style="margin-top:24px;font-size:.92rem">
+      <a href="secteurs.html">Les ${sectors.length} secteurs traités</a> ·
+      <a href="reglementation-enseigne.html#par-secteur">La réglementation métier par métier</a>
+    </p>
+  </div>
+</section>` : "";
+
   const metiersBlock = (matrixMetiers && matrixMetiers.length) ? `
 <section class="sec" id="metiers-ville">
   <div class="wrap">
@@ -168,7 +301,30 @@ module.exports = function cityPage(city, cities, index, matrixMetiers) {
   </div>
 </section>` : "";
 
+  /* Questions dont la réponse change d'une commune à l'autre : c'est sur
+     celles-là qu'une page locale peut gagner un extrait enrichi, parce que
+     personne d'autre ne publie la réponse commune par commune. */
+  const faqDroit = REG ? [
+    {
+      q: `Peut-on installer un totem ou une enseigne sur pied à ${city.name} ?`,
+      a: REG.grande
+        ? `Oui. ${city.name} compte ${REG.pop.toLocaleString("fr-FR")} habitants, au-dessus du seuil de 10 000 fixé par l'article R.581-65 du code de l'environnement : les enseignes scellées au sol de plus d'un mètre carré y sont admises. La hauteur est limitée à 6,50 m pour un dispositif d'un mètre de large ou plus, à 8 m en dessous d'un mètre de large, et un seul dispositif de plus d'un mètre carré est permis le long de chaque voie publique bordant l'établissement. Un règlement local de publicité peut être plus sévère.`
+        : `Non, sauf à rester sous un mètre carré. ${city.name} compte ${REG.pop.toLocaleString("fr-FR")} habitants : en dessous de 10 000, l'article R.581-65 du code de l'environnement n'admet pas les enseignes scellées au sol de plus d'un mètre carré${REG.uuGrande ? ", et l'appartenance à l'unité urbaine de " + REG.uu + " n'y change rien puisque ce texte ne regarde que la population de l'agglomération" : ""}. L'enseigne de façade, le drapeau et le dispositif d'un mètre carré au plus restent ouverts.`
+    },
+    {
+      q: `Une enseigne ou une publicité lumineuse est-elle autorisée à ${city.name} ?`,
+      a: REG.largePub
+        ? `Oui. ${REG.grande ? `Avec ${REG.pop.toLocaleString("fr-FR")} habitants, ${city.name} dépasse le seuil de 10 000` : `${city.name} compte ${REG.pop.toLocaleString("fr-FR")} habitants mais appartient à l'unité urbaine de ${REG.uu}, qui dépasse 100 000 habitants`} : la publicité lumineuse peut y être autorisée au titre de l'article R.581-34. Elle reste soumise à l'extinction nocturne obligatoire et aux prescriptions d'économie d'énergie. L'enseigne lumineuse obéit quant à elle à l'article R.581-59, avec sa propre obligation d'extinction.`
+        : `Non pour la publicité lumineuse. ${city.name} compte ${REG.pop.toLocaleString("fr-FR")} habitants et n'appartient pas à une unité urbaine de plus de 100 000 habitants : l'article R.581-34 du code de l'environnement ne permet pas de l'y autoriser. L'enseigne lumineuse de votre propre établissement relève d'un autre texte, l'article R.581-59, et reste possible avec extinction nocturne.`
+    },
+    {
+      q: `Quelle surface d'affichage est permise à ${city.name} ?`,
+      a: `Pour une publicité murale non lumineuse, ${REG.largePub ? "10,50 m² de surface unitaire et 7,50 m de hauteur au maximum" : "4,70 m² de surface unitaire et 6 m de hauteur au maximum, une surface qu'un arrêté préfectoral peut porter à 8 m² le long d'une route à grande circulation"} (art. R.581-26). Attention au chiffre de 12 m² que l'on lit encore : il a été ramené à 10,50 m² par le décret n° 2023-1007 du 30 octobre 2023. Pour vos enseignes de façade, la règle est ailleurs : leur surface cumulée ne peut dépasser 15 % de la façade commerciale, 25 % si celle-ci mesure moins de 50 m² (art. R.581-63).`
+    }
+  ] : [];
+
   const localFaq = [
+    ...faqDroit,
     {
       q: `Intervenez-vous dans tout ${city.name} et ses environs ?`,
       a: `Oui. Le réseau couvre ${city.name} (${city.cp}) ainsi que l'ensemble des communes voisines du département ${city.dept} — ${(city.neighbors || []).slice(0, 5).join(", ")} et au-delà. Les professionnels sollicités sont choisis pour leur proximité : c'est ce qui garantit un délai de pose court et un service après-vente réactif.`
@@ -303,11 +459,9 @@ ${!city.pilot ? `<section class="sec">
         <ul class="checks">
           <li><strong>Commerces de centre-ville</strong> — devanture, enseigne drapeau, vitrophanie, chevalet</li>
           <li><strong>Zones commerciales et retail parks</strong> — caisson lumineux, totem d'entrée, jalonnement</li>
-          <li><strong>Artisans et entreprises du bâtiment</strong> — marquage de véhicules, panneaux de chantier, tenues marquées</li>
-          <li><strong>Professions libérales et santé</strong> — plaques gravées, totems multi-praticiens, signalétique de cabinet</li>
-          <li><strong>Industrie et logistique</strong> — signalétique de sécurité, marquage au sol, identification de zones</li>
-          <li><strong>Collectivités et établissements recevant du public</strong> — signalétique directionnelle, accessibilité PMR, plans d'évacuation</li>
-          <li><strong>Hôtellerie et restauration</strong> — enseigne lumineuse, néon LED, menu board, terrasse</li>
+          <li><strong>Artisans et entreprises du bâtiment</strong> — marquage de véhicules, panneaux de chantier</li>
+          <li><strong>Industrie et logistique</strong> — signalétique de sécurité, marquage au sol</li>
+          <li><strong>Collectivités et ERP</strong> — signalétique directionnelle, accessibilité, plans d'évacuation</li>
         </ul>
       </article>
       <aside>
@@ -326,6 +480,8 @@ ${!city.pilot ? `<section class="sec">
 </section>` : ""}
 
 ${metiersBlock}
+${droitBloc}
+${secteursBloc}
 ${communesBlock}
 
 <section class="sec bg-3">

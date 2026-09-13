@@ -1743,3 +1743,65 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
 .toc-cols ul { list-style: none; margin: 0; padding: 0; columns: 1; }
 .toc-cols li { font-size: .9rem; margin-bottom: .1em; }
 .budget-lien { font-size: .88rem; margin: -.8em 0 2em; }
+
+/* =========================================================================
+   42 · Le droit applicable par commune (pages villes)
+   -------------------------------------------------------------------------
+   Trois colonnes : le dispositif, le verdict, le texte. Le verdict est la
+   seule information que le lecteur cherche vraiment, d'où la pastille.
+   Contrastes vérifiés : #B3261E sur #FDECEA = 5,72:1 ; #087167 sur
+   #E2F5F3 = 5,21:1. Tous deux au-dessus de 4,5:1.
+   ========================================================================= */
+.table-droit { width: 100%; border-collapse: collapse; }
+.table-droit th[scope="row"] { width: 26%; min-width: 190px; }
+.table-droit th:nth-child(2),
+.table-droit td:nth-child(2) { width: 15%; min-width: 132px; }
+.table-droit td:nth-child(2) { white-space: nowrap; }
+.table-droit td:last-child { font-size: .93rem; line-height: 1.62; }
+
+.verdict {
+  display: inline-block; padding: 4px 12px; border-radius: var(--r-pill);
+  font-size: .8rem; font-weight: 700; letter-spacing: .02em;
+}
+.verdict-interdite { background: #FDECEA; color: #B3261E; }
+.verdict-autorisee { background: var(--pro-100); color: var(--pro-700); }
+
+.src {
+  display: block; margin-top: 6px;
+  font-size: .78rem; line-height: 1.5; color: var(--tx-3);
+}
+.note .src { margin-top: 10px; }
+
+.note.warn { border-left: 3px solid #B3261E; background: #FDECEA; }
+.note.warn p { color: #6E1610; }
+
+/* Sur mobile, ce tableau se lit mal en défilement latéral : la colonne
+   utile — le texte de loi — sort de l'écran. On l'empile donc en fiches,
+   une par dispositif, avec le verdict en tête. */
+@media (max-width: 720px) {
+  .table-wrap:has(.table-droit) { overflow-x: visible; border: 0; border-radius: 0; }
+  .table-droit,
+  .table-droit tbody,
+  .table-droit tr,
+  .table-droit th,
+  .table-droit td { display: block; width: auto; min-width: 0; }
+  .table-droit thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .table-droit tr {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: 18px 18px 16px; margin-bottom: 14px; box-shadow: var(--sh-1);
+  }
+  .table-droit tr:last-child { margin-bottom: 0; }
+  .table-droit th[scope="row"] {
+    background: none; padding: 0; border: 0;
+    font-size: 1rem; line-height: 1.35; letter-spacing: 0;
+  }
+  .table-droit td { padding: 0; border: 0; }
+  .table-droit td:nth-child(2) { margin: 10px 0 12px; }
+  .table-droit td:last-child { font-size: .9rem; }
+}
+
+/* Rappel de strate + réserves, sous le tableau du droit applicable. */
+.split-droit { margin-top: 34px; }
+.split-droit .prose h3 { margin-top: 0; }
+.split-droit .aside-card p { font-size: .92rem; line-height: 1.6; }
+.split-droit .aside-card p + p { margin-top: .8em; }
