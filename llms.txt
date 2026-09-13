@@ -7,7 +7,7 @@
 > vérifiés proches de chez elle. Le service est gratuit et sans engagement pour
 > le client : aucune commission n'est ajoutée au prix de l'entreprise retenue.
 > La rémunération vient d'un abonnement fixe payé par les professionnels du
-> réseau. Couverture : 100 départements, 436 villes,
+> réseau. Couverture : 100 départements, 440 villes,
 > France métropolitaine et outre-mer. Opéré par SARL Rezofabrik,
 > Canet-en-Roussillon (66140), par un professionnel de la
 > communication visuelle exerçant depuis 25 ans.
@@ -73,7 +73,7 @@
 - [Réglementation, secteur par secteur](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/reglementation-enseigne.html#par-secteur) : les obligations d'affichage propres à treize activités, avec les textes applicables et leurs sources — affichage extérieur des prix obligatoire (garage, restauration, coiffure, commerce, agence immobilière), mentions limitativement autorisées (pharmacie, professions de santé, enceintes sportives), signalétique de sécurité (industrie, ERP, copropriété), et les cas où un tiers décide (panneau de chantier, charte de réseau).
 - [Glossaire](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/glossaire.html) : vocabulaire technique de la communication visuelle.
 - [Questions fréquentes](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/faq.html)
-- [Villes couvertes](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/villes.html) : 436 villes, 100 départements.
+- [Villes couvertes](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/villes.html) : 440 villes, 100 départements.
 - [Collectivités et institutions](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/collectivites.html) : marchés publics, jalonnement, accessibilité.
 - [Sous-traitance entre professionnels](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/sous-traitance-professionnels.html) : agences, imprimeurs, franchises cherchant un exécutant.
 

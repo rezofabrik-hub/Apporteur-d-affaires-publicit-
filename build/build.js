@@ -48,7 +48,34 @@ const MATRIX_CITIES = 60;
    Mâcon ». */
 const MATRIX_EXTRA = ["macon", "chambery", "valence", "annemasse", "agen", "auxerre"];
 
-const MATRIX_CONCURRENCE = ["anglet", "angouleme", "aubagne", "bastia", "biscarrosse", "boulogne-sur-mer", "bourg-en-bresse", "briancon", "chaville", "cholet", "creil", "dax", "douai", "evreux", "haguenau", "issoire", "lannion", "lons-le-saunier", "lorient", "mantes-la-jolie", "marmande", "mayenne", "menton", "orange", "pau", "perigueux", "quimper", "rambouillet", "saint-brieuc", "saint-laurent-du-var", "saint-nazaire", "saintes", "salon-de-provence", "toul", "vannes", "vesoul", "vichy", "vienne", "villefranche-sur-saone", "vitrolles", "voiron"];
+/* Villes où un réseau concurrent est implanté. Deux sources réunies :
+   la carte des agences relevée en août, et les 99 domaines franchisés que
+   PANO déclare lui-même dans le robots.txt de pano-group.com — ramenés à
+   88 communes, les domaines multiples d'une même ville (lyon-4, lyon-8,
+   bordeaux-begles…) se rejoignant sur une seule page.
+
+   L'union des deux listes, et non la seconde seule : la carte contenait
+   dix-sept communes qui n'ont pas de domaine dédié, et les retirer aurait
+   fait perdre une couverture déjà acquise. */
+const MATRIX_CONCURRENCE = [
+  "agen", "amiens", "ancenis-saint-gereon", "angers", "anglet", "angouleme", "annemasse",
+  "antibes", "argeles-sur-mer", "arras", "aubagne", "bastia", "bayeux", "beauvais",
+  "biscarrosse", "bordeaux", "boulogne-sur-mer", "bourg-en-bresse", "briancon", "caen",
+  "chaville", "cholet", "clamart", "clermont-ferrand", "colmar", "cosne-cours-sur-loire",
+  "creil", "dax", "dijon", "douai", "evreux", "feurs", "fort-de-france", "gramat",
+  "haguenau", "houilles", "issoire", "la-rochelle", "langon", "lannion", "lesparre-medoc",
+  "libourne", "lieusaint", "limoges", "lons-le-saunier", "lorient", "lyon",
+  "mantes-la-jolie", "marmande", "marseille", "maubeuge", "mayenne", "menton", "metz",
+  "meyzieu", "montargis", "montbeliard", "montpellier", "mulhouse", "nantes", "nice",
+  "nimes", "orange", "paris", "pau", "perigueux", "peronne", "perpignan", "plaisir",
+  "poitiers", "pont-du-chateau", "quimper", "rambouillet", "reims", "rennes", "royan",
+  "saint-amour", "saint-andre-de-cubzac", "saint-brieuc", "saint-denis-reunion",
+  "saint-etienne", "saint-jean-de-luz", "saint-laurent-du-var", "saint-nazaire",
+  "saint-paul-reunion", "saint-pierre-reunion", "saint-vincent-de-tyrosse", "saintes",
+  "salon-de-provence", "sartene", "serris", "strasbourg", "toul", "toulouse", "tours",
+  "troyes", "valence", "valenciennes", "vannes", "vesoul", "vichy", "vienne",
+  "villefranche-sur-saone", "vitrolles", "voiron"
+];
 
 /* Sur ces villes-là, la matrice est volontairement restreinte aux métiers
    à intention locale. Un internaute cherche « pose d'enseigne à Vesoul » ;

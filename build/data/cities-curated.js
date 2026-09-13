@@ -4,6 +4,34 @@
    ========================================================================= */
 module.exports = [
 {
+  slug: "bayeux", name: "Bayeux", dept: "14", deptName: "Calvados",
+  region: "Normandie", cp: "14400", pop: "13 000",
+  quartiers: ["Centre historique", "Quartier de la Cathédrale", "Saint-Patrice", "Les Ormes"],
+  zones: ["Zone d'activités de Bayeux Intercom", "Route de Port-en-Bessin"],
+  neighbors: ["Port-en-Bessin-Huppain", "Saint-Vigor-le-Grand", "Nonant", "Vaux-sur-Aure", "Tracy-sur-Mer"]
+},
+{
+  slug: "meyzieu", name: "Meyzieu", dept: "69", deptName: "Rhône",
+  region: "Auvergne-Rhône-Alpes", cp: "69330", pop: "34 000",
+  quartiers: ["Centre", "Le Carreau", "Les Plantées", "Grand Large"],
+  zones: ["ZI Meyzieu-Jonage", "Zone du Carreau", "Parc du Grand Large"],
+  neighbors: ["Jonage", "Décines-Charpieu", "Chassieu", "Genas", "Pusignan"]
+},
+{
+  slug: "saint-paul-reunion", name: "Saint-Paul", dept: "974", deptName: "La Réunion",
+  region: "La Réunion", cp: "97460", pop: "105 000",
+  quartiers: ["Centre-ville", "Saint-Gilles-les-Bains", "La Saline", "Plateau Caillou", "Bois-de-Nèfles"],
+  zones: ["ZAC Savanna", "Zone artisanale de Cambaie", "Port de plaisance de Saint-Gilles"],
+  neighbors: ["Le Port", "La Possession", "Trois-Bassins", "Saint-Leu", "Saint-Denis"]
+},
+{
+  slug: "saint-pierre-reunion", name: "Saint-Pierre", dept: "974", deptName: "La Réunion",
+  region: "La Réunion", cp: "97410", pop: "86 000",
+  quartiers: ["Centre-ville", "Terre-Sainte", "Ravine Blanche", "Basse-Terre", "Bois d'Olives"],
+  zones: ["ZI n°2 de Saint-Pierre", "Zone de Pierrefonds", "Canabady"],
+  neighbors: ["Le Tampon", "Saint-Louis", "Petite-Île", "Saint-Joseph", "Entre-Deux"]
+},
+{
   slug: "perpignan", name: "Perpignan", pilot: true,
   dept: "66", deptName: "Pyrénées-Orientales", region: "Occitanie",
   cp: "66000", pop: "121 000",
