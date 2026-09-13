@@ -94,6 +94,24 @@ module.exports = function sectorPage(sec, cities) {
   </div>
 </section>` : "";
 
+  const G = sec.galerie;
+  const galBloc = (G && G.photos && G.photos.length) ? `
+<section class="sec bg-2" id="galerie">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">${esc(G.eyebrow)}</span>
+      <h2>${esc(G.titre)}</h2>
+      <p class="lead">${esc(G.lead)}</p>
+    </div>
+    <div class="gal-doc">
+      ${G.photos.map((ph) => `<figure>
+        ${img(ph.topic, ph.i, ph.alt, { sizes: "(max-width: 700px) 100vw, (max-width: 1080px) 50vw, 33vw" })}
+        <figcaption>${ph.legende}</figcaption>
+      </figure>`).join("")}
+    </div>
+  </div>
+</section>` : "";
+
   const body = `
 <section class="hero hero-in-page">
   <div class="hero-bg">${heroImg(sec.topic, 2, sec.h1)}</div>
@@ -169,6 +187,7 @@ module.exports = function sectorPage(sec, cities) {
 </section>
 
 ${regBloc}
+${galBloc}
 ${calBloc}
 ${briefBloc}
 ${vocBloc}

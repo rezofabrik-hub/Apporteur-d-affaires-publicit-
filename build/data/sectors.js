@@ -135,6 +135,37 @@ module.exports = [
     ["Réglette de linéaire", "Étiquette de tablette, lisible à un mètre. Troisième niveau."],
     ["Dépoli", "Film translucide appliqué sur vitrage. En officine, il préserve la confidentialité de l'espace orthopédie sans assombrir la surface de vente."]
   ],
+
+  /* Galerie documentaire : chaque photographie porte une légende qui
+     enseigne un point du bloc réglementaire. Une image qui décore ne vaut
+     rien sur une page qui prétend faire autorité ; une image légendée
+     ajoute une preuve visuelle à chaque règle énoncée plus haut. */
+  galerie: {
+    eyebrow: "En images",
+    titre: "Six croix, six règles",
+    lead: "Chacune de ces façades illustre un point de ce qui précède. C'est le meilleur moyen de vérifier, avant de commander, ce que l'on est en train de demander.",
+    photos: [
+      { topic: "croix-pharmacie", i: 1,
+        alt: "Croix de pharmacie néon verte en drapeau sur une façade",
+        legende: "<strong>La forme grecque.</strong> Quatre branches d'égale longueur : c'est ce qu'impose l'article R.4235-53. Une croix latine ou un logo en forme de croix ne sont pas conformes." },
+      { topic: "croix-pharmacie", i: 2,
+        alt: "Croix de pharmacie à matrice de LED affichant un motif vert",
+        legende: "<strong>La croix à matrice de LED.</strong> C'est elle qui affiche l'heure, la température et les gardes. C'est aussi celle qui impose une programmation — et donc un paramétrage à distance, si l'on ne veut pas monter sur la façade à chaque changement." },
+      { topic: "croix-pharmacie", i: 4,
+        alt: "Caducée pharmaceutique lumineux : coupe d'Hygie et serpent",
+        legende: "<strong>Le caducée pharmaceutique.</strong> Coupe d'Hygie et serpent d'Épidaure : l'autre emblème autorisé, souvent posé en complément de la croix ou sur les façades où la saillie est contrainte." },
+      { topic: "croix-pharmacie", i: 6,
+        alt: "Croix de pharmacie vue de dessous, potence et fixation apparentes",
+        legende: "<strong>La saillie.</strong> Vue de dessous, la potence et le débord sur le domaine public. C'est cette cote que le règlement local plafonne, et le premier point que vérifie la mairie." },
+      { topic: "croix-pharmacie", i: 5,
+        alt: "Croix de pharmacie éteinte en plein jour sur une façade d'immeuble",
+        legende: "<strong>L'extinction.</strong> Éteinte en journée — et, depuis l'arrêté du 27 décembre 2018, obligatoirement entre 1 h et 6 h. Sauf pendant les gardes, où elle doit au contraire rester allumée." },
+      { topic: "croix-pharmacie", i: 3,
+        alt: "Croix de pharmacie à contour lumineux fin sur une façade ancienne",
+        legende: "<strong>Le secteur protégé.</strong> Sur une façade ancienne ou aux abords d'un monument historique, l'accord de l'architecte des Bâtiments de France s'ajoute à celui du maire. Le dessin se négocie." }
+    ]
+  },
+
   services: ["enseignes", "vitrophanie-plv", "signaletique", "impression-grand-format"]
 },
 {

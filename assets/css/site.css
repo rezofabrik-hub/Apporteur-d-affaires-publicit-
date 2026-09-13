@@ -1651,3 +1651,21 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
    pixel sous le seuil de 24 px du critère 2.5.8. Défaut ancien, relevé en
    auditant les pages secteur — la correction vaut pour tout le site. */
 .ftr-bot nav a { display: inline-block; padding-block: 4px; }
+
+/* Galerie documentaire des pages secteur : la légende porte l'information,
+   la photographie n'est que la preuve. Elle doit donc se lire comme du
+   texte courant, pas comme une vignette de portfolio. */
+.gal-doc {
+  display: grid; gap: 26px;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+.gal-doc figure { margin: 0; }
+.gal-doc img {
+  width: 100%; height: 230px; object-fit: cover;
+  border-radius: var(--r-lg); background: var(--paper-3); display: block;
+}
+.gal-doc figcaption {
+  margin-top: 12px; font-size: .89rem; line-height: 1.6; color: var(--tx-2);
+}
+.gal-doc figcaption strong { color: var(--tx); }
+@media (max-width: 560px) { .gal-doc img { height: 200px; } }
