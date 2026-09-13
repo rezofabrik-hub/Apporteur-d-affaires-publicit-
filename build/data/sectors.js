@@ -727,7 +727,92 @@ module.exports = [
     { q: "Le panneau de permis de construire est-il vraiment obligatoire ?", a: "Oui, et il conditionne le point de départ du délai de recours des tiers. Il doit être installé dès l'obtention du permis, rester visible depuis la voie publique pendant toute la durée des travaux, et mesurer au minimum 80 cm de côté. Un affichage incomplet ou interrompu peut prolonger le délai pendant lequel un recours reste possible." },
     { q: "Peut-on marquer des vêtements de sécurité sans perdre la certification ?", a: "Oui, en respectant les zones de marquage définies par le fabricant et en ne réduisant pas la surface fluorescente sous le seuil de la classe visée. Concrètement : pas de marquage sur les bandes rétro-réfléchissantes, et surface limitée dans le dos et sur la poitrine. Les fournisseurs du réseau travaillent à partir des gabarits officiels des marques." }
   ],
-  services: ["covering-vehicule", "impression-grand-format", "objets-publicitaires", "signaletique"]
+
+  /* ----------------------------------------------------------------------
+     Bâtiment. L'angle est le panneau de chantier, et il n'a rien de
+     décoratif : c'est lui qui fait courir le délai de recours des tiers.
+     Un panneau absent ou irrégulier signifie que le permis n'est jamais
+     purgé, et qu'un voisin peut l'attaquer des années plus tard. Aucun
+     artisan ne mesure ce que coûte un panneau mal posé ; l'écrire ici est
+     le meilleur service que la page puisse rendre.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre le panneau de chantier et la communication du bâtiment",
+    lead: "Dans ce métier, un panneau n'est pas un support de communication : <em>c'est une formalité juridique</em>. De son affichage dépend la sécurité même de l'autorisation d'urbanisme.",
+    couches: [
+      {
+        titre: "1 · Le panneau de chantier fait courir le délai de recours",
+        texte: "L'affichage de l'autorisation d'urbanisme sur le terrain est prévu par l'article R.424-15 du code de l'urbanisme, ses mentions par les articles A.424-15 à A.424-19. Le panneau doit être <strong>rectangulaire, de dimensions supérieures à 80 centimètres</strong> — un 80 × 120 cm est régulier — et rester <strong>lisible depuis la voie publique ou les espaces ouverts au public</strong> pendant toute la durée du chantier, sans jamais descendre en dessous de deux mois continus.",
+        cle: "Voici ce que peu de maîtres d'ouvrage savent, et qui devrait figurer dans toute conversation de début de chantier : <strong>le délai de recours des tiers, de deux mois, ne commence à courir qu'au premier jour d'une période continue de deux mois d'affichage régulier</strong>. Un panneau absent, illisible, tombé ou incomplet ne fait pas courir ce délai. L'autorisation n'est alors jamais purgée, et un voisin peut la contester bien après la fin des travaux. Un panneau à quelques dizaines d'euros protège un projet à plusieurs centaines de milliers.",
+        source: { label: "Code de l'urbanisme — affichage de la décision (A.424-15 à A.424-19)", url: "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006175623" }
+      },
+      {
+        titre: "2 · La bâche de chantier : de la publicité admise par dérogation",
+        texte: "La publicité est en principe interdite sur les échafaudages ; les articles R.581-53 et suivants du code de l'environnement y font exception. Une <strong>bâche de chantier</strong> peut porter de la publicité, sous conditions : la saillie ne peut excéder <strong>0,50 mètre</strong> par rapport à l'échafaudage, l'affichage ne peut dépasser la durée réelle d'utilisation de celui-ci, et la publicité ne peut couvrir plus de <strong>50 % de la surface totale</strong> de la bâche. Les bâches ne sont pas admises dans les agglomérations de moins de 10 000 habitants.",
+        cle: "C'est une ressource largement sous-employée : sur un ravalement de plusieurs mois en centre-ville, <strong>la bâche publicitaire peut financer une part significative de l'échafaudage</strong>. Elle suppose une autorisation et un annonceur, donc de l'anticipation — cela se monte au moment du dossier, pas quand l'échafaudage est déjà debout. Lorsque les travaux visent un label de rénovation énergétique, le maire peut autoriser un dépassement de la limite de surface.",
+        source: { label: "Code de l'environnement — bâches, dispositifs de dimensions exceptionnelles et de petit format (R.581-53 à R.581-57)", url: "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000027691289" }
+      },
+      {
+        titre: "3 · Le chantier est un lieu de travail : la signalisation y est normée",
+        texte: "Clôtures, accès, circulations, ports d'équipements obligatoires, risques de chute : la signalisation de sécurité du chantier relève du <strong>code du travail</strong> et de l'arrêté du 4 novembre 1993. Les formes et les couleurs ne sont pas libres — rond à bordure rouge pour l'interdiction, triangle jaune pour l'avertissement, rond bleu pour l'obligation, pictogramme blanc sur fond vert pour le sauvetage.",
+        cle: "Et une obligation que l'on oublie systématiquement : <strong>la signalisation ne suffit pas, la formation est due</strong>. Le chef d'établissement doit donner aux travailleurs une formation portant sur le sens des panneaux, des couleurs de sécurité et des signaux lumineux et acoustiques. Poser les panneaux sans former n'est pas se conformer.",
+        source: { label: "Arrêté du 4 novembre 1993 relatif à la signalisation de sécurité et de santé au travail", url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000483337" }
+      },
+      {
+        titre: "4 · Le véhicule, premier support de l'artisan",
+        texte: "Le marquage d'un utilitaire n'est encadré par aucune obligation d'enseigne : il circule, il ne signale pas une activité exercée sur place. Rien n'impose donc un contenu — mais tout impose la cohérence avec les mentions légales que vous portez déjà sur vos devis et factures, à commencer par les coordonnées de votre assureur en responsabilité décennale.",
+        cle: "Le calcul qui devrait décider de l'investissement : un utilitaire marqué <strong>travaille sur tous les chantiers et sur tous les trajets</strong>, sans redevance, sans autorisation et sans TLPE. C'est, de très loin, le support le moins cher au contact dont dispose un artisan — et le seul qui suit le chantier au lieu de l'attendre.",
+        source: { label: "Code de l'environnement — définition de l'enseigne et de la publicité (L.581-3)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074220/LEGISCTA000006159442/" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les mentions exactes du panneau dépendent de la nature de l'autorisation — permis de construire, permis d'aménager, déclaration préalable — et les conditions d'autorisation des bâches relèvent de la commune. Cela se vérifie au cas par cas, avant fabrication."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand une entreprise du bâtiment commande",
+    lead: "Contrairement au commerce, l'artisan n'achète pas à date fixe : il achète au rythme de ses chantiers et de sa flotte.",
+    moments: [
+      ["À l'obtention de l'autorisation", "Le panneau réglementaire doit être posé dès l'affichage de la décision, et il conditionne le délai de recours. C'est un besoin immédiat, répété à chaque chantier."],
+      ["À l'ouverture d'un chantier visible", "Un ravalement, une construction en centre-ville : panneau de chantier, bâche, habillage de palissade. La vitrine dure le temps du chantier, et elle est vue par tout le quartier."],
+      ["À chaque véhicule qui entre dans la flotte", "Achat ou renouvellement d'un utilitaire : marquage à faire avant la mise en service. Un besoin récurrent, modeste à l'unité, constant sur l'année."],
+      ["À l'obtention d'une qualification", "RGE, Qualibat, certification : le logo peut être porté sur les véhicules, les panneaux et les supports. C'est un déclencheur de reprise complète de l'identité."],
+      ["Au changement de statut", "Passage en société, association de deux artisans, reprise : nouveau nom, nouveaux véhicules, nouveaux panneaux et nouveaux supports imprimés."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un chantier, le panneau et le véhicule ne se chiffrent pas du tout de la même manière. Nous séparons les deux.",
+    questions: [
+      "Panneau réglementaire de chantier, communication de chantier, marquage de véhicules — ou plusieurs de ces besoins ?",
+      "Pour le panneau : quelle autorisation — permis de construire, permis d'aménager, déclaration préalable ? Les mentions obligatoires en dépendent.",
+      "Combien de chantiers simultanés ? Un panneau réutilisable avec encart interchangeable peut se justifier au-delà d'un certain volume.",
+      "Y a-t-il un échafaudage, et pour quelle durée ? Au-delà de quelques semaines en centre-ville, la bâche mérite d'être étudiée.",
+      "La commune compte-t-elle plus de 10 000 habitants ? En dessous, la bâche publicitaire n'est pas admise.",
+      "Palissade ou clôture de chantier à habiller, et sur quelle longueur ?",
+      "Signalisation de sécurité : quels risques à signaler, et la formation des équipes est-elle assurée ?",
+      "Combien de véhicules à marquer, et de quels types : utilitaire, benne, plateau, remorque ?",
+      "Covering total ou lettrage adhésif ? Les véhicules sont-ils en pleine propriété ou en location longue durée ?",
+      "Portez-vous des qualifications — RGE, Qualibat, certifications — à faire figurer sur les supports ?"
+    ],
+    note: "La question du volume de chantiers change tout sur le panneau. À partir de quatre ou cinq chantiers par an, un support réutilisable avec cartouche imprimée revient nettement moins cher qu'un panneau perdu à chaque fois."
+  },
+
+  vocabulaire: [
+    ["Panneau réglementaire de chantier", "Support rectangulaire de plus de 80 cm portant les mentions de l'autorisation d'urbanisme. Son affichage fait courir le délai de recours des tiers."],
+    ["Délai de recours des tiers", "Deux mois pendant lesquels un voisin peut contester l'autorisation. Il ne court qu'à partir d'un affichage régulier et continu."],
+    ["Bâche de chantier", "Toile posée sur un échafaudage. Peut porter de la publicité par dérogation, sur 50 % de sa surface au maximum."],
+    ["Saillie", "Débord du dispositif par rapport à l'échafaudage. Plafonnée à 0,50 mètre pour une bâche de chantier."],
+    ["Habillage de palissade", "Impression posée sur la clôture de chantier. Ni enseigne ni publicité au sens strict quand elle présente l'opération en cours."],
+    ["Lettrage adhésif", "Éléments découpés posés sur la peinture d'origine du véhicule. Moins cher qu'un covering, et déposable — le choix des flottes en location."],
+    ["Covering total", "Habillage intégral du véhicule. Protège la peinture d'origine et se dépose en fin de contrat."],
+    ["Pictogramme normalisé", "Signalisation de sécurité dont la forme et la couleur sont fixées : rond rouge pour l'interdiction, triangle jaune pour le danger, rond bleu pour l'obligation."],
+    ["RGE", "Reconnu garant de l'environnement. Qualification dont le logo peut être porté sur les véhicules et les supports."]
+  ],
+  services: ["enseignes", "covering-vehicule", "impression-grand-format", "signaletique"]
 },
 {
   slug: "industrie-logistique",
@@ -764,7 +849,91 @@ module.exports = [
     { q: "Adhésif ou résine pour le marquage au sol d'un entrepôt ?", a: "Résine à froid dans les allées de circulation de chariots, où les rotations sur place arrachent tout adhésif en quelques mois. Adhésif technique antidérapant dans les zones piétonnes, les bureaux et les marquages temporaires ou appelés à évoluer. Dans les deux cas, la préparation du support conditionne la tenue autant que le produit." },
     { q: "À quelle fréquence renouveler la signalétique de sécurité ?", a: "Dès qu'elle devient illisible, décolorée ou obsolète, et systématiquement après toute modification des installations, des flux ou des risques. Un contrôle annuel intégré à la mise à jour du document unique est la pratique la plus simple à tenir dans le temps." }
   ],
-  services: ["signaletique", "impression-grand-format", "pose-nacelle", "objets-publicitaires"]
+
+  /* ----------------------------------------------------------------------
+     Industrie et logistique. Ici, presque rien ne relève du droit de
+     l'enseigne : la signalétique est un équipement de sécurité, régi par le
+     code du travail, avec des formes et des couleurs imposées. C'est le
+     secteur où l'esthétique n'a pas voix au chapitre — et où l'enseigniste
+     qui l'ignore livre des panneaux non conformes qu'il faudra refaire.
+     ---------------------------------------------------------------------- */
+  reglementation: {
+    eyebrow: "Le cadre juridique",
+    titre: "Ce qui encadre la signalétique d'un site industriel",
+    lead: "Sur un site de production ou un entrepôt, la signalétique ne se choisit pas : <em>elle se conforme</em>. Formes, couleurs et pictogrammes sont fixés par le code du travail, et un panneau au mauvais format n'est pas un choix graphique — c'est un panneau non conforme.",
+    couches: [
+      {
+        titre: "1 · Formes et couleurs imposées",
+        texte: "L'arrêté du 4 novembre 1993 fixe les prescriptions minimales de la signalisation de santé et de sécurité au travail. Chaque famille a sa géométrie et sa couleur : <strong>rond à bordure rouge et barre oblique</strong> pour l'interdiction, <strong>triangle jaune</strong> pour l'avertissement d'un risque, <strong>rond bleu</strong> pour l'obligation de comportement, <strong>pictogramme blanc sur fond vert</strong> pour le sauvetage et les issues, <strong>pictogramme blanc sur fond rouge</strong> pour le matériel de lutte contre l'incendie. La norme <strong>ISO 7010</strong> harmonise les pictogrammes eux-mêmes.",
+        cle: "La conséquence est nette et elle surprend les donneurs d'ordre : <strong>sur ce lot, la charte graphique de l'entreprise n'a pas voix au chapitre</strong>. On ne décline pas un panneau d'évacuation dans les couleurs de la marque. Un enseigniste habitué au commerce livre spontanément de beaux panneaux non conformes — et c'est l'inspection du travail, ou pire un accident, qui le révèle.",
+        source: { label: "Arrêté du 4 novembre 1993 relatif à la signalisation de sécurité et de santé au travail", url: "https://www.legifrance.gouv.fr/loda/id/JORFTEXT000000483337" }
+      },
+      {
+        titre: "2 · La formation est due, autant que les panneaux",
+        texte: "Le même arrêté impose au chef d'établissement de donner aux travailleurs une <strong>formation adéquate</strong> portant sur la signalisation de sécurité : le sens des panneaux, celui des couleurs de sécurité, et la signification des signaux lumineux et acoustiques.",
+        cle: "Autrement dit : <strong>poser la signalétique ne suffit pas à se conformer</strong>. Ce point a une conséquence commerciale directe, et beaucoup de prestataires la ratent — la livraison devrait s'accompagner d'un document récapitulatif des pictogrammes installés, de leur sens et de leur emplacement. Ce document sert de support de formation, il se classe au registre de sécurité, et il vaut bien plus au client que la remise d'un carton de panneaux.",
+        source: { label: "Pictogrammes de signalisation de santé et de sécurité au travail — INRS", url: "https://www.inrs.fr/media.html?refINRS=outil10" }
+      },
+      {
+        titre: "3 · Le marquage au sol : séparer les hommes des machines",
+        texte: "Dans un entrepôt ou un atelier, la séparation des circulations piétonnes et des engins relève des règles de santé et sécurité, et le marquage au sol en est le support principal : cheminements piétons, voies de chariots, zones de stockage, aires de chargement, dégagements à maintenir libres devant les organes de sécurité.",
+        cle: "Le point technique qui décide du budget, et sur lequel se trompent les prestataires généralistes : <strong>un marquage d'entrepôt subit le passage des roues de chariots élévateurs</strong>. Un adhésif de sol standard tient quelques semaines sous un trafic intense. Le choix se fait entre peinture à froid, résine et adhésif technique renforcé selon l'intensité du trafic et la nature du sol — béton lissé, béton quartzé, résine existante. Poser sans avoir posé cette question, c'est refaire dans six mois.",
+        source: { label: "Code du travail — signalisation de santé et de sécurité au travail", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006072050/LEGISCTA000018532292/" }
+      },
+      {
+        titre: "4 · L'enseigne du site : le seul endroit où vous êtes libre",
+        texte: "L'enseigne de façade, le totem d'entrée de site et le jalonnement interne des bâtiments relèvent, eux, du droit commun : autorisation du <strong>maire</strong> au titre de l'article L.581-3 du code de l'environnement, et règlement local de publicité pour les dimensions.",
+        cle: "C'est là que la charte graphique reprend ses droits, et c'est aussi là que se joue un enjeu bien réel en zone d'activité : <strong>l'orientation des poids lourds</strong>. Un chauffeur qui manque l'entrée ne fait pas demi-tour — il gêne la voirie, il perd trente minutes, et il revient par un itinéraire improvisé. Un jalonnement lisible depuis la voie, dimensionné pour une lecture à 50 km/h et cohérent avec l'adresse que donne le GPS, vaut mieux qu'un totem élégant lu à dix mètres.",
+        source: { label: "Code de l'environnement — enseignes (R.581-58 et suivants)", url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006074220/LEGISCTA000006189035/" }
+      }
+    ],
+    avert: "Ces règles sont l'état du droit national tel que nous l'appliquons sur les dossiers du réseau. Les sites relevant des installations classées, les zones à atmosphère explosive et les stockages de produits dangereux appellent des signalisations spécifiques qui s'ajoutent à celles décrites ici, et qui se déterminent à partir du document unique et de l'étude de dangers."
+  },
+
+  calendrier: {
+    eyebrow: "Le moment",
+    titre: "Quand un site industriel commande",
+    lead: "L'industrie achète sur événement : un contrôle, une extension, une certification. Rarement sur envie.",
+    moments: [
+      ["Une visite d'inspection ou un audit", "Inspection du travail, audit d'assurance, visite CSE : les écarts relevés sur la signalisation deviennent un plan d'action daté. Besoin précis, délai imposé."],
+      ["Une certification ou un audit client", "ISO, IFS, audit d'un donneur d'ordre : la signalétique fait partie des points contrôlés, et la mise à niveau précède la visite."],
+      ["Une extension ou un réaménagement", "Nouvelle travée, nouveau quai, réimplantation des lignes : le marquage au sol et le jalonnement sont repris avec les flux."],
+      ["Après un accident ou un presqu'accident", "L'analyse conclut souvent à un défaut de signalisation ou de séparation des flux. Le besoin est immédiat et rarement discuté sur le prix."],
+      ["Le renouvellement du marquage", "Un marquage au sol d'entrepôt s'use. Sous trafic intense, sa reprise est un poste récurrent, à budgéter comme de la maintenance."]
+    ]
+  },
+
+  brief: {
+    eyebrow: "Le dossier",
+    titre: "Ce que nous établissons avant de transmettre votre projet",
+    lead: "Sur un site industriel, les bonnes questions portent sur le sol, le trafic et les flux — pas sur les couleurs.",
+    questions: [
+      "Signalisation de sécurité, marquage au sol, jalonnement extérieur, enseigne de site — ou plusieurs de ces lots ?",
+      "Quelle surface à marquer, et quelle est la nature du sol : béton lissé, béton quartzé, résine, enrobé ?",
+      "Quelle intensité de trafic sur le marquage : piétons seuls, transpalettes, chariots élévateurs, poids lourds ?",
+      "Le site relève-t-il des installations classées ? Y a-t-il des zones à atmosphère explosive ou des stockages de produits dangereux ?",
+      "Disposez-vous du document unique et d'un plan des flux ? Ils déterminent ce qui doit être signalé et où.",
+      "Les plans du bâtiment sont-ils disponibles en DWG ou PDF ? Indispensables pour les plans d'évacuation.",
+      "Combien d'issues de secours, de points de rassemblement et d'organes de sécurité à identifier ?",
+      "La production peut-elle être interrompue ? Le marquage au sol impose un temps de séchage et une zone inaccessible.",
+      "Pour le jalonnement extérieur : quels flux de poids lourds, et l'adresse donnée par les GPS correspond-elle à l'entrée réelle ?",
+      "Y a-t-il une date butoir — audit, certification, mise en service, échéance d'un plan d'action ?"
+    ],
+    note: "La question sur la nature du sol et l'intensité du trafic est celle qui évite de refaire. Un adhésif standard sous roues de chariots élévateurs ne passe pas la saison ; le même budget en résine tient des années."
+  },
+
+  vocabulaire: [
+    ["ISO 7010", "Norme internationale harmonisant les pictogrammes de sécurité, pour qu'ils soient compris quelle que soit la langue."],
+    ["Panneau d'interdiction", "Rond, bordure rouge, barre oblique. Interdit un comportement qui pourrait provoquer un danger."],
+    ["Panneau d'avertissement", "Triangle jaune bordé de noir. Signale un risque ou un danger."],
+    ["Panneau d'obligation", "Rond bleu. Prescrit un comportement : port du casque, des lunettes, des protections auditives."],
+    ["Panneau de sauvetage", "Pictogramme blanc sur fond vert. Issues de secours, points de rassemblement, matériel de premiers secours."],
+    ["Matériel d'incendie", "Pictogramme blanc sur fond rouge. Extincteurs, RIA, déclencheurs manuels."],
+    ["Photoluminescent", "Matériau restituant la lumière accumulée : les issues restent lisibles après coupure d'alimentation."],
+    ["Marquage à froid", "Peinture de sol appliquée sans apport de chaleur. Alternative à l'adhésif sur les surfaces très circulées."],
+    ["Zone de dégagement", "Surface à maintenir libre devant un organe de sécurité — extincteur, coffret électrique, issue. Se matérialise au sol par un hachurage."]
+  ],
+  services: ["signaletique", "impression-grand-format", "enseignes", "covering-vehicule"]
 },
 {
   slug: "commerce-detail",
