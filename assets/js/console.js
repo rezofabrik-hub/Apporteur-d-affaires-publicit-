@@ -372,3 +372,91 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
+
+/* =========================================================================
+   Retours sur les fiches de pose — lecture seule.
+   -------------------------------------------------------------------------
+   Le jeton n'est pas conservé : il se saisit à chaque consultation. Le
+   stocker dans le navigateur reviendrait à laisser une clé de lecture sur
+   un poste partagé, pour une commodité de quelques secondes.
+   ========================================================================= */
+(function () {
+  var btn = document.getElementById("c_retours");
+  if (!btn) return;
+
+  var base = (window.RF_CONFIG && window.RF_CONFIG.workerBase) || "";
+  var msg = document.getElementById("c_retours_msg");
+  var res = document.getElementById("c_retours_res");
+
+  function dire(t, erreur) {
+    if (!msg) return;
+    msg.textContent = t;
+    msg.style.color = erreur ? "#B3261E" : "";
+  }
+
+  btn.addEventListener("click", function () {
+    var jeton = (document.getElementById("c_token") || {}).value || "";
+    if (!base) { dire("Aucun worker configuré : renseignez workerBase dans assets/js/config.js.", true); return; }
+    if (!jeton) { dire("Saisissez le jeton de lecture.", true); return; }
+
+    btn.disabled = true;
+    dire("Chargement…");
+
+    fetch(base.replace(/\/+$/, "") + "/classement?token=" + encodeURIComponent(jeton))
+      .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (o) {
+        btn.disabled = false;
+        if (!o.ok) { dire(o.j && o.j.error ? o.j.error : "Lecture refusée.", true); return; }
+
+        var poses = o.j.poses || [];
+        var tb = document.querySelector("#c_retours_tbl tbody");
+        tb.innerHTML = "";
+        if (!poses.length) {
+          tb.innerHTML = '<tr><td colspan="2">Aucune demande enregistrée pour l\'instant.</td></tr>';
+        } else {
+          poses.forEach(function (p) {
+            var tr = document.createElement("tr");
+            var th = document.createElement("th");
+            th.setAttribute("scope", "row");
+            var a = document.createElement("a");
+            a.href = "pose-" + p.slug + ".html";
+            a.textContent = p.slug.replace(/-/g, " ");
+            th.appendChild(a);
+            var td = document.createElement("td");
+            td.style.textAlign = "right";
+            td.textContent = p.votes;
+            tr.appendChild(th); tr.appendChild(td); tb.appendChild(tr);
+          });
+        }
+
+        var corrs = o.j.corrections || [];
+        var box = document.getElementById("c_corrections");
+        box.innerHTML = "";
+        if (!corrs.length) {
+          var vide = document.createElement("p");
+          vide.className = "c-msg";
+          vide.textContent = "Aucune correction reçue.";
+          box.appendChild(vide);
+        } else {
+          corrs.forEach(function (c) {
+            var d = document.createElement("div");
+            d.className = "note";
+            var h = document.createElement("p");
+            h.innerHTML = "";
+            var strong = document.createElement("strong");
+            strong.textContent = (c.slug || "fiche inconnue").replace(/-/g, " ");
+            h.appendChild(strong);
+            h.appendChild(document.createTextNode(
+              " — " + (c.date || "").slice(0, 10) + (c.contact ? " · " + c.contact : "")));
+            var m = document.createElement("p");
+            m.textContent = c.message || "";
+            d.appendChild(h); d.appendChild(m); box.appendChild(d);
+          });
+        }
+
+        res.hidden = false;
+        dire(poses.length + " pose(s) suivie(s), " + corrs.length + " correction(s).");
+      })
+      .catch(function () { btn.disabled = false; dire("Worker injoignable.", true); });
+  });
+})();

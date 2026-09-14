@@ -54,6 +54,24 @@ window.RF_CONFIG = {
   endpointClientAlt: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
   endpointProAlt: "https://formsubmit.co/ajax/commercial-rezofabrik@gmail.com",
 
+  /* ---------------------------------------------------------------------
+     WORKER CLOUDFLARE — retours sur les fiches de pose
+     ---------------------------------------------------------------------
+     Deux usages, tous deux facultatifs : compter l'intérêt pour une pose
+     en vidéo, et recevoir les corrections proposées par des gens du
+     métier. Tant que cette valeur reste vide, les deux blocs de retour
+     ne s'affichent tout simplement pas — aucun bouton mort, aucun clic
+     dans le vide.
+
+     Déploiement : voir l'en-tête de worker/lead-worker.js. Une fois le
+     worker en ligne, coller ici son URL SANS barre oblique finale, par
+     exemple "https://rezofabrik-leads.VOTRE-SOUS-DOMAINE.workers.dev".
+
+     La console de lecture (classement des poses demandées, corrections
+     reçues) est sur console.html et réclame le jeton défini par
+     wrangler secret put CONSOLE_TOKEN. */
+  workerBase: "",
+
   /* Champ requis par Web3Forms uniquement (sinon laisser vide) */
   web3formsKey: "",
 

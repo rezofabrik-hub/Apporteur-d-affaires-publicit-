@@ -90,6 +90,48 @@ module.exports = function fichePosePage(pose, cities) {
   ${esc(pose.verifier)}</p></div>
 </div>`;
 
+  /* Deux retours demandés au lecteur, et un seul clic chacun.
+
+     Le premier ne demande PAS si la fiche est bonne mais si la pose
+     intéresse en vidéo : c'est la question à laquelle il faudra répondre
+     pour décider quelles poses filmer, et elle n'expose aucun jugement
+     négatif sur du contenu de sécurité. Le compteur reste privé — un
+     « 2 personnes intéressées » affiché sur un site jeune est une
+     contre-preuve, pas une preuve sociale.
+
+     Le second vaut plus que tout le reste : un poseur de trente ans de
+     métier qui corrige une fiche est exactement le professionnel que le
+     réseau cherche, et il vient de se signaler tout seul. */
+  const retourBloc = `
+<div class="pose-bloc pose-retour">
+  <div class="retour-video">
+    <h2>Vous aimeriez voir cette pose en vidéo&nbsp;?</h2>
+    <p>Les trente poses ne seront pas toutes filmées d'un coup. Un clic ici nous dit par
+    lesquelles commencer.</p>
+    <button type="button" class="btn btn-primary js-interet" data-slug="${esc(pose.slug)}">
+      Oui, ça m'intéresse
+    </button>
+    <p class="retour-merci" hidden role="status">Noté, merci. C'est compté pour cette pose.</p>
+  </div>
+
+  <details class="retour-corr">
+    <summary>Un point manque, ou vous paraît faux&nbsp;?</summary>
+    <p>Vous faites ce métier&nbsp;? Dites-le en une ligne, on corrige. C'est comme ça que ces
+    fiches deviennent justes.</p>
+    <form class="js-correction" data-slug="${esc(pose.slug)}">
+      <label for="corr-${esc(pose.slug)}">Ce qui ne va pas</label>
+      <textarea id="corr-${esc(pose.slug)}" name="message" rows="4" required
+        placeholder="Par exemple : à l'étape 4, l'ordre n'est pas celui-là quand le support est…"></textarea>
+      <label for="ctc-${esc(pose.slug)}">Votre e-mail ou téléphone <span class="retour-opt">(facultatif)</span></label>
+      <input id="ctc-${esc(pose.slug)}" name="contact" type="text" autocomplete="off"
+        placeholder="Pour qu'on puisse vous répondre">
+      <input type="text" name="website" tabindex="-1" autocomplete="off" class="piege" aria-hidden="true">
+      <button type="submit" class="btn btn-ghost">Envoyer la correction</button>
+      <p class="retour-merci" hidden role="status">Reçu, merci. C'est relu à la main.</p>
+    </form>
+  </details>
+</div>`;
+
   const autres = POSES.filter((p) => p.famille === pose.famille && p.slug !== pose.slug).slice(0, 5);
   const autresBloc = autres.length ? `
 <section class="sec bg-2">
@@ -144,6 +186,7 @@ ${avert}
           <h2>Questions fréquentes</h2>
           ${T.faqBlock(pose.faq)}
         </div>
+        ${retourBloc}
       </article>
       <aside>
         <div class="aside-card aside-sticky">

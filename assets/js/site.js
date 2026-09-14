@@ -609,7 +609,99 @@
     initProjects(); initContacts(); initThanks(); initYear();
   }
 
+  /* =======================================================================
+     Retours sur les fiches de pose.
+
+     Règle de conception : si aucun worker n'est configuré, les deux blocs
+     sont retirés du document. Un bouton qui ne fait rien est pire que pas
+     de bouton — il fait croire au lecteur qu'il a été entendu.
+
+     Le compteur n'est jamais affiché. Le localStorage sert uniquement à
+     ne pas reproposer le bouton à quelqu'un qui a déjà cliqué, sur son
+     propre navigateur ; ce n'est pas une protection contre la triche, et
+     il n'a pas à en être une puisque rien n'est publié.
+     ===================================================================== */
+  function retoursPose() {
+    var base = (window.RF_CONFIG && window.RF_CONFIG.workerBase) || "";
+    var blocs = document.querySelectorAll(".pose-retour");
+    if (!blocs.length) return;
+
+    if (!base) {
+      for (var i = 0; i < blocs.length; i++) blocs[i].remove();
+      return;
+    }
+    base = base.replace(/\/+$/, "");
+
+    function dejaVote(slug) {
+      try { return localStorage.getItem("interet:" + slug) === "1"; }
+      catch (e) { return false; }
+    }
+    function marquer(slug) {
+      try { localStorage.setItem("interet:" + slug, "1"); } catch (e) {}
+    }
+
+    var btns = document.querySelectorAll(".js-interet");
+    for (var b = 0; b < btns.length; b++) {
+      (function (btn) {
+        var slug = btn.getAttribute("data-slug");
+        var merci = btn.parentNode.querySelector(".retour-merci");
+        if (dejaVote(slug)) {
+          btn.disabled = true;
+          btn.textContent = "Déjà signalé";
+          return;
+        }
+        btn.addEventListener("click", function () {
+          btn.disabled = true;
+          fetch(base + "/interet", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ slug: slug })
+          }).then(function () {
+            marquer(slug);
+            btn.hidden = true;
+            if (merci) merci.hidden = false;
+          }).catch(function () {
+            btn.disabled = false;
+            btn.textContent = "Réessayer";
+          });
+        });
+      })(btns[b]);
+    }
+
+    var forms = document.querySelectorAll(".js-correction");
+    for (var f = 0; f < forms.length; f++) {
+      (function (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var envoi = form.querySelector("button[type=submit]");
+          var merci = form.querySelector(".retour-merci");
+          var msg = form.querySelector("[name=message]");
+          if (!msg || !msg.value.trim()) return;
+          if (envoi) { envoi.disabled = true; envoi.textContent = "Envoi…"; }
+          fetch(base + "/correction", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              slug: form.getAttribute("data-slug"),
+              message: msg.value,
+              contact: (form.querySelector("[name=contact]") || {}).value || "",
+              website: (form.querySelector("[name=website]") || {}).value || ""
+            })
+          }).then(function () {
+            form.querySelector("textarea").value = "";
+            if (envoi) envoi.hidden = true;
+            if (merci) merci.hidden = false;
+          }).catch(function () {
+            if (envoi) { envoi.disabled = false; envoi.textContent = "Réessayer"; }
+          });
+        });
+      })(forms[f]);
+    }
+  }
+
+  function demarrer() { boot(); retoursPose(); }
+
   document.readyState === "loading"
-    ? document.addEventListener("DOMContentLoaded", boot)
-    : boot();
+    ? document.addEventListener("DOMContentLoaded", demarrer)
+    : demarrer();
 })();

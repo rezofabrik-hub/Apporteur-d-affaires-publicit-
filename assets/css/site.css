@@ -1862,3 +1862,93 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
   .pose-secu { padding: 20px; }
   .pose-bloc > h2 { font-size: 1.2rem; }
 }
+
+/* =========================================================================
+   44 · Retours du lecteur sur une fiche de pose
+   -------------------------------------------------------------------------
+   Volontairement discret : ce bloc arrive après la FAQ, il ne doit pas
+   concurrencer le contenu. Aucun compteur n'est affiché — c'est un choix,
+   pas un oubli : sur un site jeune, « 2 personnes intéressées » dessert.
+   ========================================================================= */
+.pose-retour {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 26px 28px;
+}
+.pose-retour h2 { border: 0; padding: 0; font-size: 1.15rem; margin-bottom: 8px; }
+.pose-retour p { font-size: .95rem; color: var(--tx-2); }
+.retour-video > .btn { margin-top: 14px; }
+
+.retour-merci {
+  margin: 12px 0 0;
+  color: var(--pro-700);
+  font-weight: 600;
+  font-size: .93rem;
+}
+
+.retour-corr { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 20px; }
+.retour-corr > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .97rem;
+  color: var(--tx);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.retour-corr > summary::-webkit-details-marker { display: none; }
+.retour-corr > summary::before {
+  content: "+";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px; height: 22px; flex: none;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-sm);
+  font-weight: 700;
+  color: var(--tx-3);
+}
+.retour-corr[open] > summary::before { content: "−"; }
+.retour-corr > summary:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+.retour-corr form { margin-top: 16px; display: grid; gap: 6px; max-width: 100%; }
+.retour-corr label { font-size: .88rem; font-weight: 600; color: var(--tx-2); margin-top: 8px; }
+/* « retour-opt » et non « opt » : cette dernière existe déjà sur le site
+   pour les cartes d'option des formulaires partenaires, et elle rendait
+   le mot « facultatif » sous forme de boîte encadrée. */
+.retour-corr label .retour-opt { font-weight: 400; color: var(--tx-3); }
+.retour-corr textarea,
+.retour-corr input[type="text"] {
+  width: 100%;
+  font: inherit;
+  font-size: .95rem;
+  padding: 11px 13px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r);
+  background: #fff;
+  color: var(--tx);
+}
+.retour-corr textarea { resize: vertical; min-height: 96px; }
+.retour-corr textarea:focus,
+.retour-corr input[type="text"]:focus {
+  outline: 2px solid var(--signal);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+.retour-corr .btn { margin-top: 14px; justify-self: start; }
+
+/* Piège à robots : hors écran, mais jamais display:none — certains
+   remplisseurs automatiques ignorent les champs masqués de cette façon. */
+.piege {
+  position: absolute !important;
+  left: -9999px !important;
+  width: 1px; height: 1px;
+  opacity: 0;
+}
+
+@media (max-width: 720px) {
+  .pose-retour { padding: 22px 20px; }
+  .retour-corr .btn { justify-self: stretch; text-align: center; }
+}

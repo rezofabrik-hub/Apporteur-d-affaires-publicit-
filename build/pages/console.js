@@ -198,6 +198,38 @@ module.exports = function consolePage() {
         </ol>
       </div>
 
+      <div class="c-panel">
+        <h2>Retours sur les fiches de pose</h2>
+        <p>Le classement des poses que les lecteurs demandent en vidéo, et les corrections qu'ils
+        proposent. C'est ce qui décide de l'ordre de tournage — pas l'intuition.</p>
+        <div class="note"><p>Ces compteurs ne sont <strong>jamais affichés sur le site</strong>.
+        Ils servent à arbitrer, pas à faire de la preuve sociale sur des chiffres encore faibles.</p></div>
+
+        <label for="c_token" style="display:block;font-weight:600;font-size:.9rem;margin:16px 0 6px">
+          Jeton de lecture</label>
+        <input type="password" id="c_token" autocomplete="off" placeholder="CONSOLE_TOKEN du worker"
+          style="width:100%;padding:10px 12px;border:1px solid var(--line-2);border-radius:var(--r);font:inherit">
+        <div class="btns" style="margin-top:12px">
+          <button class="btn btn-dark" id="c_retours">Charger les retours</button>
+        </div>
+        <p id="c_retours_msg" class="c-msg"></p>
+
+        <div id="c_retours_res" hidden>
+          <h3 style="font-size:1rem;margin-top:22px">Poses les plus demandées</h3>
+          <div class="table-wrap"><table id="c_retours_tbl">
+            <thead><tr><th scope="col">Pose</th><th scope="col" style="text-align:right">Demandes</th></tr></thead>
+            <tbody></tbody>
+          </table></div>
+
+          <h3 style="font-size:1rem;margin-top:26px">Corrections proposées</h3>
+          <div id="c_corrections"></div>
+        </div>
+
+        <p class="src" style="margin-top:18px">Le jeton se définit côté worker&nbsp;:
+        <code>wrangler secret put CONSOLE_TOKEN</code>. Sans lui, l'adresse de lecture répond 401 —
+        personne ne peut savoir ce que le site mesure.</p>
+      </div>
+
     </div>
   </div>
 </section>
