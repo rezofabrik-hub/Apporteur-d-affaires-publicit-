@@ -19,6 +19,9 @@ const cityPage = require("./pages/city");
 const forms = require("./pages/forms");
 const misc = require("./pages/misc");
 const sectorPage = require("./pages/sector");
+const poserPage = require("./pages/poser");
+const fichePosePage = require("./pages/fiche-pose");
+const { POSES } = require("./data/formations");
 const serviceCityPage = require("./pages/servicecity");
 const graphisme = require("./pages/graphisme");
 const paiementPage = require("./pages/paiement");
@@ -123,13 +126,21 @@ function sitemap(pages) {
     /* paiement.html est volontairement absent : la page porte un noindex et
        son adresse ne se transmet qu'à un partenaire dont le dossier est
        validé. L'inscrire au sitemap reviendrait à l'annoncer à Google. */
+    /* Les fiches de pose en relecture sortent du sitemap en même temps
+       qu'elles portent un noindex : on n'annonce pas à Google un contenu
+       technique qu'un professionnel n'a pas encore validé. */
     .filter((f) => !["404.html", "merci.html", "paiement.html", "console.html"].includes(f))
+    .filter((f) => {
+      const pose = POSES.find((p) => "pose-" + p.slug + ".html" === f);
+      return !pose || pose.statut === "publie";
+    })
     .map((f) => {
       let p = "0.6";
       if (f === "index.html") p = "1.0";
       else if (["devis.html", "professionnels.html", "partenaires.html", "service-pose.html", "collectivites.html", "reseau-pose-national.html", "sous-traitance-professionnels.html"].includes(f)) p = "0.9";
       else if (services.some((s) => s.slug + ".html" === f)) p = "0.9";
-      else if (["secteurs.html", "villes.html", "realisations.html"].includes(f)) p = "0.85";
+      else if (["secteurs.html", "villes.html", "realisations.html", "poser.html"].includes(f)) p = "0.85";
+      else if (f.startsWith("pose-")) p = "0.8";
       else if (f.startsWith("realisation-")) p = "0.75";
       else if (services.some((s) => f.startsWith(s.slug + "-"))) p = "0.8";
       else if (f.startsWith("signaletique-") && sectors.some((x) => "signaletique-" + x.slug + ".html" === f)) p = "0.8";
@@ -408,6 +419,9 @@ function run() {
   projects.forEach((pr) => write("realisation-" + pr.slug + ".html", projectPage(pr, cities, projects)));
 
   /* Secteurs d'activité */
+  write("poser.html", poserPage(cities));
+  POSES.forEach((p) => write("pose-" + p.slug + ".html", fichePosePage(p, cities)));
+
   write("secteurs.html", sectorPage.index(sectors, cities));
   sectors.forEach((sec) => write("signaletique-" + sec.slug + ".html", sectorPage(sec, cities)));
 

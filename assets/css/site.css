@@ -1808,3 +1808,57 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
 
 /* Verdict intermédiaire : ni permis ni interdit, mais soumis à autorisation. */
 .verdict-attention { background: var(--amber-100, #FFF4DC); color: #7A4E00; }
+
+/* =========================================================================
+   43 · Rubrique « Poser » — fiches de geste métier
+   -------------------------------------------------------------------------
+   Deux registres de liste cohabitent sur ces pages et ne doivent pas se
+   confondre : les erreurs (ambre, on peut encore corriger) et la sécurité
+   (rouge, on ne négocie pas). La couleur porte l'information.
+   Contrastes vérifiés : #7A4E00 sur #FFF4DC = 6,59:1 ; #8F1D16 sur
+   #FDECEA = 7,80:1.
+   ========================================================================= */
+.pose-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.tag-plein { background: var(--ink-900); color: var(--tx-inv); border-color: transparent; }
+
+.pose-bloc { margin-bottom: 40px; }
+.pose-bloc > h2 {
+  font-size: 1.35rem; margin: 0 0 14px;
+  padding-bottom: 10px; border-bottom: 2px solid var(--line);
+}
+.pose-bloc:last-child { margin-bottom: 0; }
+
+.pose-video { margin: 0 0 36px; }
+.pose-video video { width: 100%; height: auto; border-radius: var(--r-lg); display: block; }
+.pose-video-vide {
+  background: var(--paper-2); border: 1px dashed var(--line-2);
+  border-radius: var(--r-lg); padding: 22px 24px;
+}
+.pose-video-vide p { margin: 0; color: var(--tx-2); font-size: .95rem; }
+
+.checks-warn li::marker, .checks-danger li::marker { content: ""; }
+.checks-warn li, .checks-danger li {
+  position: relative; padding-left: 30px; list-style: none; margin-bottom: .6em;
+}
+.checks-warn li::before, .checks-danger li::before {
+  position: absolute; left: 0; top: 0; font-weight: 700; font-size: .95rem;
+}
+.checks-warn { padding-left: 0; }
+.checks-warn li::before { content: "✕"; color: #7A4E00; }
+.checks-danger { padding-left: 0; }
+.checks-danger li::before { content: "!"; color: #8F1D16; }
+
+.pose-secu { background: #FDECEA; border-radius: var(--r-lg); padding: 24px 26px; }
+.pose-secu > h2 { color: #8F1D16; border-bottom-color: rgba(143, 29, 22, .25); }
+.pose-secu .note.warn { margin-bottom: 0; background: #fff; }
+
+.pose-meta { font-size: .82rem; color: var(--tx-3); margin: 10px 0 0; }
+.pose-ok { color: var(--pro-700); font-weight: 600; }
+.pose-att { color: #7A4E00; font-weight: 600; }
+.pose-card .card-body h3 { font-size: 1.02rem; line-height: 1.3; }
+.pose-dispo { border-left: 3px solid var(--pro); }
+
+@media (max-width: 720px) {
+  .pose-secu { padding: 20px; }
+  .pose-bloc > h2 { font-size: 1.2rem; }
+}
