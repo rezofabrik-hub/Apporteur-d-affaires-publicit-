@@ -143,6 +143,84 @@ function sitemap(pages) {
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     body + "\n</urlset>\n");
 
+  /* SITEMAP D'IMAGES.
+
+     Le métier est visuel : une enseigne, un covering, un totem se cherchent
+     autant en images qu'en texte. Les 19 866 illustrations du site portent
+     toutes un attribut alt rédigé, mais aucune n'était déclarée — donc
+     invisible pour Google Images, qui est un moteur à part entière.
+
+     On lit les alt réellement écrits dans les pages plutôt que de les
+     reconstruire : ce qui est déclaré est exactement ce qui est affiché.
+     Deux garde-fous : un maximum de 1 000 images par page (limite du
+     protocole) et la même liste d'exclusion que le sitemap principal, pour
+     ne pas annoncer par la bande une page qu'on a choisi de taire. */
+  imagesSitemap(pages);
+}
+
+function imagesSitemap(pages) {
+  const base = site.domain.replace(/\/$/, "");
+  const exclues = ["404.html", "merci.html", "paiement.html", "console.html"];
+  const blocs = [];
+  let total = 0;
+
+  pages.filter((f) => exclues.indexOf(f) === -1).forEach((f) => {
+    let html;
+    try { html = fs.readFileSync(path.join(ROOT, f), "utf8"); }
+    catch (e) { return; }
+
+    const vues = {};
+    const re = /<img\b[^>]*>/g;
+    let m;
+    while ((m = re.exec(html)) !== null) {
+      const tag = m[0];
+      const src = (tag.match(/\ssrc="([^"]+)"/) || [])[1];
+      if (!src || src.indexOf("data:") === 0 || src.indexOf("http") === 0) continue;
+      if (vues[src]) continue;
+      vues[src] = true;
+      const alt = (tag.match(/\salt="([^"]*)"/) || [])[1] || "";
+      blocs.push({ page: f, src: src, alt: alt });
+      total++;
+    }
+  });
+
+  /* Regrouper par page : le protocole veut une entrée <url> par page, qui
+     porte ses images. */
+  const parPage = {};
+  blocs.forEach((b) => { (parPage[b.page] = parPage[b.page] || []).push(b); });
+
+  const corps = Object.keys(parPage).map((f) => {
+    const loc = base + "/" + (f === "index.html" ? "" : f);
+    const imgs = parPage[f].slice(0, 1000).map((b) =>
+      "      <image:image>\n" +
+      "        <image:loc>" + base + "/" + b.src.replace(/^\.\//, "") + "</image:loc>" +
+      /* L'attribut alt est lu tel qu'il est écrit dans le HTML : il y est
+           déjà échappé, et XML emploie les mêmes entités. Le réechapper
+           produirait des &amp;amp; dans le sitemap. */
+        (b.alt ? "\n        <image:title>" + b.alt + "</image:title>" : "") +
+      "\n      </image:image>").join("\n");
+    return "  <url>\n    <loc>" + loc + "</loc>\n" + imgs + "\n  </url>";
+  }).join("\n");
+
+  write("sitemap-images.xml",
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n' +
+    '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' +
+    corps + "\n</urlset>\n");
+
+  /* Index des deux sitemaps : c'est lui que déclare le robots.txt. */
+  const today = new Date().toISOString().slice(0, 10);
+  write("sitemap-index.xml",
+    '<?xml version="1.0" encoding="UTF-8"?>\n' +
+    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    ["sitemap.xml", "sitemap-images.xml"].map((x) =>
+      "  <sitemap>\n    <loc>" + base + "/" + x + "</loc>\n" +
+      "    <lastmod>" + today + "</lastmod>\n  </sitemap>").join("\n") +
+    "\n</sitemapindex>\n");
+
+  console.log("  · " + total + " images déclarées sur " +
+              Object.keys(parPage).length + " pages");
+
   /* ROBOTS — décision explicite sur les robots d'IA générative.
 
      Un site de mise en relation a intérêt à être la source citée quand
@@ -189,7 +267,9 @@ Disallow: /paiement.html
 Disallow: /console.html
 
 ${ROBOTS_IA.map(([ua, note]) => `# ${note}\nUser-agent: ${ua}\nAllow: /\nDisallow: /merci.html\n`).join("\n")}
+Sitemap: ${base}/sitemap-index.xml
 Sitemap: ${base}/sitemap.xml
+Sitemap: ${base}/sitemap-images.xml
 `);
 
   /* llms.txt — convention émergente : une carte du site en texte brut, à
