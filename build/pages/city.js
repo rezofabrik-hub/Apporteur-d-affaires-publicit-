@@ -123,6 +123,80 @@ module.exports = function cityPage(city, cities, index, matrixMetiers) {
      Toutes les valeurs viennent de build/data/communes.js — Insee et code
      de l'environnement, jamais d'estimation. */
   const REG = COMMUNES.regime(city.slug);
+  const PAT = COMMUNES.patrimoine(city.slug);
+
+  /* Les abords des monuments historiques changent le régime d'un local à
+     l'autre à l'intérieur d'une même commune. On ne peut donc pas trancher
+     ici — mais on peut dire combien de monuments existent, et donc à quel
+     point la question se pose. Quatre textes selon la densité, ce qui évite
+     au passage de répéter la même phrase sur 440 pages. */
+  const PAT_TXT = PAT && {
+    fort: `Avec ${PAT.nombre.toLocaleString("fr-FR")} immeubles protégés au titre des monuments historiques, ${esc(city.name)} est une commune où la question se pose pour une part importante des locaux commerciaux, et presque systématiquement en centre ancien.`,
+    moyen: `${esc(city.name)} compte ${PAT.nombre} immeuble${PAT.nombre > 1 ? "s" : ""} protégé${PAT.nombre > 1 ? "s" : ""} au titre des monuments historiques. La question se pose donc pour les locaux situés à leur proximité, typiquement dans le centre.`,
+    faible: `${esc(city.name)} compte ${PAT.nombre} immeuble${PAT.nombre > 1 ? "s" : ""} protégé${PAT.nombre > 1 ? "s" : ""} au titre des monuments historiques. Peu de locaux sont concernés, mais s'il se trouve que le vôtre l'est, la procédure change du tout au tout.`,
+    aucun: `Aucun immeuble de ${esc(city.name)} n'est protégé au titre des monuments historiques. Le sujet ne devrait donc pas se poser — restent les protections voisines : site patrimonial remarquable, parc naturel régional, ou un monument d'une commune limitrophe dont le périmètre déborde.`
+  }[PAT.niveau];
+
+  /* Cinq angles sur la même contrainte, tirés du slug. Sans cette rotation le
+     bloc ajoutait trois cents mots rigoureusement identiques aux 440 pages :
+     la similarité mesurée remontait de 59,3 % à 60,9 % et six paires
+     repassaient au-dessus de 70 %. C'est le défaut que l'on reproche au
+     concurrent, il n'y a pas de raison de le reproduire. */
+  const PAT_ANGLES = [
+    "C'est la question à poser <strong>avant de dessiner quoi que ce soit</strong> : elle ne modifie pas le projet à la marge, elle change la procédure et, très souvent, le dessin lui-même.",
+    "Beaucoup l'apprennent au dépôt du dossier, une fois la maquette validée et l'acompte versé. Reprendre un projet à ce stade coûte cher&nbsp;; poser la question au premier rendez-vous ne coûte rien.",
+    "Ce n'est pas une formalité tatillonne : l'avis porte sur les matériaux, les couleurs, le mode d'éclairage et la fixation en façade. Un caisson plein passe rarement&nbsp;; des lettres découpées en relief, presque toujours.",
+    "Le délai d'instruction s'allonge dès que l'Architecte des Bâtiments de France est consulté. Un projet bien monté passe sans encombre, mais il faut l'avoir anticipé dans le calendrier d'ouverture.",
+    "La règle ne se lit pas sur une carte : deux locaux de la même rue peuvent relever de régimes différents selon qu'on voit ou non le monument depuis la façade. C'est une vérification de terrain."
+  ];
+  let patGraine = 0;
+  for (let i = 0; i < city.slug.length; i++) {
+    patGraine = (patGraine * 31 + city.slug.charCodeAt(i)) % 99991;
+  }
+  const PAT_ANGLE = PAT_ANGLES[patGraine % PAT_ANGLES.length];
+
+  const patrimoineBloc = PAT ? `
+<section class="sec bg-3" id="abords-monuments">
+  <div class="wrap">
+    <div class="split">
+      <article class="prose">
+        <span class="eyebrow">La contrainte qui change tout</span>
+        <h2>Votre local est-il aux abords d'un monument historique&nbsp;?</h2>
+        <p class="lead">${PAT_TXT}</p>
+        <p>${PAT_ANGLE}</p>
+        <div class="table-wrap"><table class="table-droit">
+          <thead><tr><th scope="col">Dispositif</th><th scope="col">Hors périmètre</th><th scope="col">Aux abords d'un monument</th></tr></thead>
+          <tbody>
+            <tr>
+              <th scope="row">Enseigne</th>
+              <td><span class="verdict verdict-autorisee">Libre</span></td>
+              <td><span class="verdict verdict-attention">Autorisation</span> préalable en mairie, instruite avec l'Architecte des Bâtiments de France. Le refus est possible, et l'avis oriente presque toujours vers des lettres découpées plutôt qu'un caisson plein.</td>
+            </tr>
+            <tr>
+              <th scope="row">Publicité</th>
+              <td><span class="verdict verdict-autorisee">Selon le régime ci-dessus</span></td>
+              <td><span class="verdict verdict-interdite">Interdite</span> — sauf si un règlement local de publicité prévoit expressément une dérogation.</td>
+            </tr>
+          </tbody>
+        </table></div>
+      </article>
+      <aside>
+        <div class="aside-card aside-sticky">
+          <h3>Comment savoir</h3>
+          <p>Le périmètre couvre les immeubles situés <strong>à moins de 500 mètres</strong> d'un
+          monument <strong>et visibles en même temps que lui</strong>. Lorsque la commune a défini
+          un périmètre délimité des abords, c'est lui qui s'applique à la place.</p>
+          <p>Le service urbanisme de la mairie de ${esc(city.name)} répond en une question, et
+          l'Atlas des patrimoines du ministère de la Culture cartographie les périmètres.</p>
+          <p class="src">Art. L.581-8 et L.581-18 du code de l'environnement · art. L.621-30 du code
+          du patrimoine · base Mérimée, ministère de la Culture.</p>
+          <a class="btn btn-primary btn-block" href="devis.html?ville=${encodeURIComponent(city.name)}">Faire vérifier mon local</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>` : "";
+
   const interdits = REG ? REG.regles.filter((r) => r.verdict === "interdite") : [];
   const nInterdits = interdits.length;
   /* Nommer ce qui est effectivement interdit dans CETTE commune. Rivesaltes
@@ -481,6 +555,7 @@ ${!city.pilot ? `<section class="sec">
 
 ${metiersBlock}
 ${droitBloc}
+${patrimoineBloc}
 ${secteursBloc}
 ${communesBlock}
 

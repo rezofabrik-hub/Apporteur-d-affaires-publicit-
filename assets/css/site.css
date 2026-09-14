@@ -1805,3 +1805,6 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
 .split-droit .prose h3 { margin-top: 0; }
 .split-droit .aside-card p { font-size: .92rem; line-height: 1.6; }
 .split-droit .aside-card p + p { margin-top: .8em; }
+
+/* Verdict intermédiaire : ni permis ni interdit, mais soumis à autorisation. */
+.verdict-attention { background: var(--amber-100, #FFF4DC); color: #7A4E00; }
