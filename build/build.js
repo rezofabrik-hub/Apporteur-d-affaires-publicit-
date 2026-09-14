@@ -19,7 +19,7 @@ const cityPage = require("./pages/city");
 const forms = require("./pages/forms");
 const misc = require("./pages/misc");
 const sectorPage = require("./pages/sector");
-const poserPage = require("./pages/poser");
+const formationPage = require("./pages/formation");
 const fichePosePage = require("./pages/fiche-pose");
 const { POSES } = require("./data/formations");
 const serviceCityPage = require("./pages/servicecity");
@@ -139,7 +139,7 @@ function sitemap(pages) {
       if (f === "index.html") p = "1.0";
       else if (["devis.html", "professionnels.html", "partenaires.html", "service-pose.html", "collectivites.html", "reseau-pose-national.html", "sous-traitance-professionnels.html"].includes(f)) p = "0.9";
       else if (services.some((s) => s.slug + ".html" === f)) p = "0.9";
-      else if (["secteurs.html", "villes.html", "realisations.html", "poser.html"].includes(f)) p = "0.85";
+      else if (["secteurs.html", "villes.html", "realisations.html", "formation.html"].includes(f)) p = "0.85";
       else if (f.startsWith("pose-")) p = "0.8";
       else if (f.startsWith("realisation-")) p = "0.75";
       else if (services.some((s) => f.startsWith(s.slug + "-"))) p = "0.8";
@@ -419,7 +419,7 @@ function run() {
   projects.forEach((pr) => write("realisation-" + pr.slug + ".html", projectPage(pr, cities, projects)));
 
   /* Secteurs d'activité */
-  write("poser.html", poserPage(cities));
+  write("formation.html", formationPage(cities));
   POSES.forEach((p) => write("pose-" + p.slug + ".html", fichePosePage(p, cities)));
 
   write("secteurs.html", sectorPage.index(sectors, cities));

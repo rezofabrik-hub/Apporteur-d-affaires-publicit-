@@ -148,7 +148,7 @@ function heroImg(topic, i, alt) {
 
 /* ------------------------------------------------------------- structure */
 const NAV_MORE = [
-  ["poser.html", "Poser : le geste métier", "30 poses expliquées, du lettrage au massif béton"],
+  ["formation.html", "Formation à la pose", "30 gestes du métier expliqués, du lettrage au massif béton"],
   ["collectivites.html", "Collectivités & institutions", "Marchés publics, accessibilité, jalonnement"],
   ["pourquoi-adherer.html", "Pourquoi adhérer au réseau", "Le comparatif, le calcul, les objections"],
   ["reseau-pose-national.html", "Réseau national de pose", "Trouver un poseur, ou en devenir un"],

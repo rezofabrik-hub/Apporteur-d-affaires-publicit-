@@ -38,8 +38,8 @@ module.exports = function fichePosePage(pose, cities) {
 
   const crumbItems = [
     { name: "Accueil", url: "index.html" },
-    { name: "Poser", url: "poser.html" },
-    { name: fam.nom, url: "poser.html#" + fam.slug },
+    { name: "Formation", url: "formation.html" },
+    { name: fam.nom, url: "formation.html#" + fam.slug },
     { name: pose.nav, url: nom }
   ];
 
@@ -197,7 +197,7 @@ ${autresBloc}`;
 
   return T.page({
     file: nom,
-    active: "poser.html",
+    active: "formation.html",
     title: pose.title + " | " + site.brand,
     desc: pose.desc,
     body, cities, schema,
