@@ -2,7 +2,7 @@
 /* =========================================================================
    Bascule du site vers son nom de domaine définitif.
    -------------------------------------------------------------------------
-   Usage :  node build/domaine.js rezoenseignes.fr
+   Usage :  node build/domaine.js rezo-enseignes.fr
             node build/domaine.js --etat
 
    CE QUE FAIT CE SCRIPT

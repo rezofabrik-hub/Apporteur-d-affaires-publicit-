@@ -9,8 +9,9 @@ module.exports = {
   tagline: "Réseau national enseigne, signalétique, imprimerie & web",
   /* Adresse publique du site. Utilisée pour les URL canoniques, le sitemap
      et les balises Open Graph. À remplacer par votre nom de domaine dès qu'il
-     est en place (ex. "https://www.rezoenseignes.fr"), puis relancer le build.
-     Le domaine rezoenseignes.fr est libre en .fr comme en .com. */
+     est en place. Ne pas éditer cette ligne à la main : passer par
+     node build/domaine.js <domaine>, qui écrit aussi le fichier CNAME
+     attendu par GitHub Pages et reconstruit le site. */
   domain: "https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-",
   lang: "fr-FR",
 
@@ -34,8 +35,9 @@ module.exports = {
   experienceText: "Le réseau n'est pas piloté par un informaticien qui a repéré un marché, mais par un professionnel de la communication visuelle qui l'exerce depuis vingt-cinq ans. C'est ce qui permet de qualifier un projet en dix minutes au téléphone, de traduire « je voudrais quelque chose de visible » en cahier des charges technique, et de repérer immédiatement un devis auquel il manque la moitié des postes.",
 
   /* Contact — répliqué dans assets/js/config.js */
-  /* Adresse opérationnelle actuelle. À basculer sur contact@rezoenseignes.fr
-     et partenaires@rezoenseignes.fr dès que le domaine sera déposé. */
+  /* Adresse opérationnelle actuelle. À basculer sur contact@rezo-enseignes.fr
+     et partenaires@rezo-enseignes.fr une fois le domaine déposé et la
+     redirection e-mail créée chez Gandi (incluse avec le domaine). */
   email: "commercial-rezofabrik@gmail.com",
   emailPro: "commercial-rezofabrik@gmail.com",
   phoneDisplay: "07 75 76 92 32",
