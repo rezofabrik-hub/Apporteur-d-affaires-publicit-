@@ -305,10 +305,19 @@
             location.href = (CFG.thanksUrl || "merci.html") +
               "?type=" + encodeURIComponent(form.dataset.kind || "client");
           } else if (status) {
+            /* Formulation volontairement prudente. Le navigateur ne peut pas
+               savoir si la demande est arrivée : une coupure survenue après
+               le traitement côté serveur produit le même silence qu'un échec
+               réel. Annoncer « non abouti » est parfois faux et pousse le
+               visiteur à renoncer ; annoncer « envoyé » serait pire. On dit
+               donc ce qui est vrai — l'envoi n'a pas pu être confirmé — et on
+               lève l'inquiétude du doublon, qui est la raison pour laquelle
+               un visiteur n'ose pas réessayer. */
             status.className = "form-status ko show";
-            status.innerHTML = 'La transmission automatique n\'a pas abouti. Votre demande a été ' +
-              'conservée : <a href="' + mailtoFallback(form, data) + '">cliquez ici pour la faire ' +
-              'parvenir à notre bureau d\'études</a>.';
+            status.innerHTML = 'Nous n\'avons pas pu confirmer l\'envoi. Par sécurité, votre ' +
+              'demande a été conservée : <a href="' + mailtoFallback(form, data) + '">cliquez ici ' +
+              'pour nous la faire parvenir par e-mail</a>. Si elle nous est déjà parvenue, ' +
+              'nous ne la traiterons qu\'une seule fois.';
           }
         }
 
@@ -477,6 +486,27 @@
            sans immobiliser le visiteur au-delà du délai de garde. */
         var PAUSES = [2000, 4000];
 
+        /* MARQUAGE DES REPRISES
+           --------------------
+           Une réponse 522 peut survenir APRÈS que le serveur a traité la
+           demande : l'e-mail part, mais l'accusé de réception se perd. Le
+           navigateur, lui, ne peut pas distinguer ce cas d'un échec réel —
+           il ne reçoit rien dans les deux situations.
+
+           Une reprise renvoie donc parfois une demande déjà reçue. On
+           préfère ce doublon à la perte : un doublon se repère, un prospect
+           perdu ne revient pas. Encore faut-il le repérer sans ouvrir le
+           message — d'où l'objet préfixé et la mention ajoutée au corps. */
+        function corpsReprise(passe) {
+          var copie = {};
+          for (var k in data) { if (Object.prototype.hasOwnProperty.call(data, k)) copie[k] = data[k]; }
+          copie._subject = "[Reprise " + (passe + 1) + "] " + (data._subject || "Demande");
+          copie["Note technique"] =
+            "Renvoi automatique après un échec réseau lors du premier envoi. " +
+            "Si vous avez déjà reçu cette demande, il s'agit du même prospect.";
+          return copie;
+        }
+
         function reprendre(passe) {
           if (passe >= PAUSES.length || !aReprendre.length || Date.now() >= deadline) {
             done(false); return;
@@ -495,7 +525,7 @@
               fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                body: JSON.stringify(data),
+                body: JSON.stringify(corpsReprise(passe)),
                 signal: ctrl ? ctrl.signal : undefined
               })
                 .then(function (r) {
