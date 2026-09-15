@@ -142,6 +142,34 @@ module.exports = function cityPage(city, cities, index, matrixMetiers) {
      la similarité mesurée remontait de 59,3 % à 60,9 % et six paires
      repassaient au-dessus de 70 %. C'est le défaut que l'on reproche au
      concurrent, il n'y a pas de raison de le reproduire. */
+  /* ─────────────────────────────────────────────────────────────────────
+     SÉLECTEUR DE VARIANTES
+
+     Mesure du 15/09/2026 sur 990 paires de pages villes : la similarité
+     médiane était remontée à 61 % et six paires dépassaient 70 %, la pire
+     à 72,7 % (La Ciotat / Saint-Raphaël). Le détail par bloc désignait les
+     coupables — le droit applicable à 86 %, le bloc secteur à 95 %, la
+     FAQ à 71 %.
+
+     Ce ne sont pas les faits juridiques qui se répètent : deux communes de
+     même strate ont réellement le même droit, et le travestir pour faire
+     varier le texte serait mentir. Ce sont les phrases d'encadrement —
+     l'amorce, la mise en garde, la réserve — rigoureusement identiques sur
+     440 pages.
+
+     `variante` tire dans une liste d'après le nom de la commune et un sel
+     propre à chaque emplacement. Deux communes voisines reçoivent des
+     amorces différentes, et la même commune garde les siennes d'une
+     reconstruction à l'autre : la stabilité compte autant que la variété,
+     un texte qui change à chaque déploiement inquiète les moteurs.
+     ───────────────────────────────────────────────────────────────────── */
+  function variante(sel, liste) {
+    let h = 7;
+    const cle = city.slug + "|" + sel;
+    for (let i = 0; i < cle.length; i++) h = (h * 131 + cle.charCodeAt(i)) % 1000003;
+    return liste[h % liste.length];
+  }
+
   const PAT_ANGLES = [
     "C'est la question à poser <strong>avant de dessiner quoi que ce soit</strong> : elle ne modifie pas le projet à la marge, elle change la procédure et, très souvent, le dessin lui-même.",
     "Beaucoup l'apprennent au dépôt du dossier, une fois la maquette validée et l'acompte versé. Reprendre un projet à ce stade coûte cher&nbsp;; poser la question au premier rendez-vous ne coûte rien.",
@@ -219,7 +247,12 @@ module.exports = function cityPage(city, cities, index, matrixMetiers) {
       <h2>Ce que vous avez le droit de poser à ${esc(city.name)}</h2>
       <p class="lead">${esc(city.name)} compte <strong>${REG.pop.toLocaleString("fr-FR")} habitants</strong>${
         REG.uu ? ` et appartient à l'unité urbaine de ${esc(REG.uu)}` : " et n'appartient à aucune unité urbaine"
-      }. Ce n'est pas un détail administratif : le code de l'environnement fait dépendre de la taille de la commune, et de son rattachement urbain, ce qu'il est permis d'installer sur votre façade et devant votre porte.</p>
+      }. ${variante("droit-lead", [
+        "Ce n'est pas un détail administratif : le code de l'environnement fait dépendre de la taille de la commune, et de son rattachement urbain, ce qu'il est permis d'installer sur votre façade et devant votre porte.",
+        "Ces deux chiffres commandent tout le reste. Le code de l'environnement ne raisonne pas par région ni par type de commerce, mais par seuils de population — et selon le côté du seuil où l'on se trouve, le même projet est autorisé ou non.",
+        "Retenez ces deux chiffres avant de choisir un dispositif : c'est d'eux que dépend ce que vous pourrez poser. Le code de l'environnement raisonne par seuils, et la même enseigne passe dans une commune et se refuse dans la voisine.",
+        "Beaucoup de projets se dessinent avant que cette question soit posée, et se reprennent ensuite. Le code de l'environnement fait dépendre l'autorisé de l'interdit de la population de la commune et de son rattachement urbain, pas du goût ni du budget."
+      ])}</p>
     </div>
     <div class="table-wrap"><table class="table-droit">
       <thead><tr>
@@ -237,8 +270,16 @@ module.exports = function cityPage(city, cities, index, matrixMetiers) {
     </table></div>
     <div class="note${nInterdits ? " warn" : ""}"><p>${
       nInterdits
-        ? `Concrètement, à ${esc(city.name)}, vous ne pouvez pas installer ${listeInterdits}. Commander l'un d'eux sans le savoir, c'est payer une fabrication et une pose qui devront être déposées. C'est exactement la vérification qu'un professionnel implanté sur le secteur fait avant de chiffrer — et celle qu'un fournisseur lointain ne fait pas.`
-        : `À ${esc(city.name)}, aucun de ces dispositifs n'est interdit par le règlement national. Restent les règles de format, de densité et d'extinction nocturne, et surtout le règlement local de publicité s'il en existe un : il ne peut être que plus sévère.`
+        ? variante("droit-note-ko", [
+            `Concrètement, à ${esc(city.name)}, vous ne pouvez pas installer ${listeInterdits}. Commander l'un d'eux sans le savoir, c'est payer une fabrication et une pose qui devront être déposées. C'est exactement la vérification qu'un professionnel implanté sur le secteur fait avant de chiffrer — et celle qu'un fournisseur lointain ne fait pas.`,
+            `Traduit en clair : à ${esc(city.name)}, ${listeInterdits} sont hors jeu. Le devis d'un fournisseur qui l'ignore paraîtra le moins cher jusqu'au jour de la dépose, où il devient le plus cher de tous. Un poseur du secteur pose la question avant de chiffrer.`,
+            `Ce tableau se lit surtout par ce qu'il refuse : à ${esc(city.name)}, ${listeInterdits} ne sont pas permis. L'erreur classique consiste à valider une maquette séduisante, puis à découvrir la contrainte au dépôt du dossier — quand la fabrication est lancée.`
+          ])
+        : variante("droit-note-ok", [
+            `À ${esc(city.name)}, aucun de ces dispositifs n'est interdit par le règlement national. Restent les règles de format, de densité et d'extinction nocturne, et surtout le règlement local de publicité s'il en existe un : il ne peut être que plus sévère.`,
+            `Aucune interdiction de principe à ${esc(city.name)}, donc, mais ne concluez pas trop vite : le format, la densité et l'extinction nocturne restent encadrés, et un règlement local de publicité peut durcir l'ensemble sans que rien ne l'annonce en façade.`,
+            `Le règlement national laisse le champ libre à ${esc(city.name)}. La vraie question se déplace alors vers la mairie : existe-t-il un règlement local de publicité ? S'il existe, c'est lui qui commande, et il ne peut aller que dans le sens de la sévérité.`
+          ])
     }</p></div>
     <div class="split split-droit">
       <div class="prose">
@@ -247,12 +288,35 @@ module.exports = function cityPage(city, cities, index, matrixMetiers) {
       </div>
       <aside>
         <div class="aside-card">
-          <h3>Deux réserves</h3>
+          ${variante("droit-aside", [
+            `<h3>Deux réserves</h3>
           <p>Ces règles sont celles du règlement national, applicable à défaut de règlement local de
           publicité : un <a href="reglementation-enseigne.html">RLP</a> ne peut que les durcir.</p>
           <p>Le texte raisonne sur la population de l'agglomération au sens du code de la route, que le
           maire détermine à défaut de décret. La population Insee en donne le cadre, la mairie a le
-          dernier mot — nos partenaires posent la question avant de chiffrer.</p>
+          dernier mot — nos partenaires posent la question avant de chiffrer.</p>`,
+            `<h3>À lire avec deux précautions</h3>
+          <p>Ce tableau donne le régime national. Il ne s'applique qu'en l'absence de
+          <a href="reglementation-enseigne.html">règlement local de publicité</a> — et là où il en
+          existe un, c'est lui qui prime, toujours dans le sens de la restriction.</p>
+          <p>Second point, plus subtil : le texte parle de la population de l'agglomération au sens du
+          code de la route, notion qui ne se confond pas avec la population communale. Le maire la
+          détermine à défaut de décret. Le chiffre Insee situe le cadre, la mairie tranche.</p>`,
+            `<h3>Ce que ce tableau ne dit pas</h3>
+          <p>Il décrit le règlement national, celui qui s'applique par défaut. Un
+          <a href="reglementation-enseigne.html">règlement local de publicité</a> peut se superposer
+          à lui et resserrer chacune de ces lignes : formats, matériaux, couleurs, éclairage.</p>
+          <p>Il repose en outre sur la population de l'agglomération au sens du code de la route,
+          que le maire détermine lorsqu'aucun décret ne l'a fixée. C'est pourquoi un professionnel
+          du secteur interroge la mairie avant de chiffrer, plutôt que de se fier au seul recensement.</p>`,
+            `<h3>Deux limites à garder en tête</h3>
+          <p>Premièrement, ce régime est le régime national : il cède devant tout
+          <a href="reglementation-enseigne.html">règlement local de publicité</a>, qui ne peut
+          qu'ajouter des contraintes, jamais en retirer.</p>
+          <p>Deuxièmement, la population qui compte n'est pas exactement celle du recensement : le
+          texte vise l'agglomération au sens du code de la route, que le maire délimite à défaut de
+          décret. Le recensement oriente, la mairie décide.</p>`
+          ])}
           <p class="src">Insee, recensement 2023, populations en vigueur au 1<sup>er</sup> janvier 2026
           (commune ${esc(REG.insee)}) · unités urbaines 2020 · code de l'environnement, art. R.581-26,
           R.581-31, R.581-34, R.581-63, R.581-64, R.581-65 · guide du ministère de la Transition
@@ -295,9 +359,12 @@ module.exports = function cityPage(city, cities, index, matrixMetiers) {
     <div class="sec-head">
       <span class="eyebrow">Votre activité</span>
       <h2>Ce que la loi impose à votre métier, à ${esc(city.name)}</h2>
-      <p class="lead">Selon votre activité, ce n'est pas la même enseigne qu'il vous faut — et ce
-      ne sont surtout pas les mêmes obligations. Chaque métier a sa page, avec les textes
-      applicables et leurs sources officielles.</p>
+      <p class="lead">${variante("secteur-lead", [
+        "Selon votre activité, ce n'est pas la même enseigne qu'il vous faut — et ce ne sont surtout pas les mêmes obligations. Chaque métier a sa page, avec les textes applicables et leurs sources officielles.",
+        "Une pharmacie, un restaurant et un garage ne relèvent pas des mêmes textes : croix verte réglementée, affichage des prix obligatoire, contraintes de zone d'activité. Chaque métier a sa page, sources à l'appui.",
+        "Au-delà du droit commun de l'enseigne, votre secteur ajoute ses propres règles — et ce sont souvent celles qu'on découvre en dernier. Voici les métiers dont nous avons détaillé les obligations, texte par texte.",
+        "Le droit de l'enseigne n'est que la moitié du sujet : votre activité impose ses propres mentions, ses formats, parfois ses couleurs. Chaque métier ci-dessous a sa page, avec les références officielles."
+      ])}</p>
     </div>
     <div class="grid g-3">
       ${secteursVille.map((sec) => `<a class="card card-link fam-card"
@@ -401,11 +468,19 @@ module.exports = function cityPage(city, cities, index, matrixMetiers) {
     ...faqDroit,
     {
       q: `Intervenez-vous dans tout ${city.name} et ses environs ?`,
-      a: `Oui. Le réseau couvre ${city.name} (${city.cp}) ainsi que l'ensemble des communes voisines du département ${city.dept} — ${(city.neighbors || []).slice(0, 5).join(", ")} et au-delà. Les professionnels sollicités sont choisis pour leur proximité : c'est ce qui garantit un délai de pose court et un service après-vente réactif.`
+      a: variante("faq-zone", [
+        `Oui. Le réseau couvre ${city.name} (${city.cp}) ainsi que l'ensemble des communes voisines du département ${city.dept} — ${(city.neighbors || []).slice(0, 5).join(", ")} et au-delà. Les professionnels sollicités sont choisis pour leur proximité : c'est ce qui garantit un délai de pose court et un service après-vente réactif.`,
+        `Oui, et au-delà. ${city.name} (${city.cp}) comme les communes alentour du ${city.dept} — ${(city.neighbors || []).slice(0, 5).join(", ")} notamment. Nous retenons toujours le professionnel le plus proche du chantier : un poseur à vingt minutes revient sur une reprise, un poseur à deux heures la facture.`,
+        `Oui. Nous traitons les projets de ${city.name} (${city.cp}) et de tout le ${city.dept}, y compris ${(city.neighbors || []).slice(0, 5).join(", ")}. La proximité n'est pas un argument commercial mais une condition de suivi : c'est elle qui décide du délai d'intervention et de la réactivité après la pose.`
+      ])
     },
     {
       q: `Faut-il une autorisation pour poser une enseigne à ${city.name} ?`,
-      a: `Dans la plupart des cas, oui : une autorisation préalable d'enseigne doit être déposée en mairie de ${city.name} dès lors que la commune dispose d'un règlement local de publicité, ou que le local se trouve aux abords d'un monument historique ou en site patrimonial remarquable. Le dossier repose sur le formulaire Cerfa n°14798 accompagné d'un plan de façade et d'une insertion photographique. Les enseignistes du réseau montent ce dossier pour vous.`
+      a: variante("faq-autorisation", [
+        `Dans la plupart des cas, oui : une autorisation préalable d'enseigne doit être déposée en mairie de ${city.name} dès lors que la commune dispose d'un règlement local de publicité, ou que le local se trouve aux abords d'un monument historique ou en site patrimonial remarquable. Le dossier repose sur le formulaire Cerfa n°14798 accompagné d'un plan de façade et d'une insertion photographique. Les enseignistes du réseau montent ce dossier pour vous.`,
+        `Le plus souvent oui. Deux situations déclenchent l'autorisation préalable à ${city.name} : l'existence d'un règlement local de publicité, ou la présence du local aux abords d'un monument historique ou en site patrimonial remarquable. Le dossier tient au formulaire Cerfa n°14798, à un plan de façade et à une insertion photographique — un montage que les enseignistes du réseau prennent en charge.`,
+        `Oui dans la majorité des cas, et c'est la première chose à vérifier avant de commander quoi que ce soit. À ${city.name}, l'autorisation préalable s'impose si la commune a adopté un règlement local de publicité, ou si vous êtes aux abords d'un monument historique ou en site patrimonial remarquable. Cerfa n°14798, plan de façade, insertion photographique : le dossier est monté par le professionnel retenu.`
+      ])
     },
     {
       q: `Combien coûte une enseigne à ${city.name} ?`,
