@@ -44,6 +44,13 @@ module.exports = {
   domain: "https://rezo-enseigne.fr",
   lang: "fr-FR",
 
+  /* Clé IndexNow — signalement des pages à Bing, Yandex, Naver et Seznam.
+     Elle est publique : le fichier <clé>.txt servi à la racine du site est
+     la preuve de propriété du domaine, et c'est tout ce qu'elle permet.
+     Générée le 15/09/2026. La changer suppose de redéployer avant toute
+     nouvelle soumission, sinon les moteurs refusent la requête. */
+  indexNowKey: "be2932405c91ddcfbc4e4f27f37bf330",
+
   /* Positionnement (repris dans les balises et le contenu) */
   baseline: "Un seul interlocuteur pour toute votre communication, de l'enseigne au site internet, partout en France.",
   role: "agence de communication et de mise en relation",

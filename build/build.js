@@ -290,6 +290,22 @@ Sitemap: ${base}/sitemap-images.xml
      structurées. On la publie parce qu'elle coûte un fichier et qu'elle ne
      peut rien casser — pas parce qu'elle est un standard. */
   write("llms.txt", llms(base));
+
+  /* ─────────────────────────────────────────────────────────────────────
+     INDEXNOW — fichier de clé.
+
+     IndexNow permet de signaler une page nouvelle ou modifiée à Bing,
+     Yandex, Naver et Seznam sans compte ni jeton d'API : la preuve de
+     propriété du domaine est le fichier ci-dessous, servi à la racine et
+     contenant exactement la clé qui le nomme. Google n'y participe pas —
+     pour Google, c'est Search Console et le sitemap.
+
+     Le fichier est réécrit à chaque construction : sans cela, une
+     reconstruction le ferait disparaître et toute soumission ultérieure
+     serait refusée. La clé est publique par conception, elle ne donne
+     accès à rien : elle atteste seulement qu'on a la main sur le domaine.
+     ───────────────────────────────────────────────────────────────────── */
+  write(`${site.indexNowKey}.txt`, site.indexNowKey);
 }
 
 /* Carte du site à destination des modèles de langage. Format : titre,
