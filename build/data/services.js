@@ -1259,4 +1259,127 @@ module.exports = [
   related: ["creation-site-internet", "maquette-creation-graphique", "enseignes", "objets-publicitaires"]
 }
 
+,
+
+/* ═══════════════════════════════════════════════════════ MÉTIER 14
+   Écrans et affichage dynamique.
+
+   Ajouté le 15/09/2026. C'était le seul segment de la communication
+   visuelle absent du site alors qu'il est le seul en croissance : un
+   commerçant qui refait sa devanture se pose désormais la question de
+   l'écran, et aucune des treize autres rubriques ne répondait à
+   « écran vitrine » ou « affichage dynamique ».
+
+   Le vivier photo `digital` ne contient aucune image française
+   (Denver, Tokyo, Londres, Düsseldorf). Les viviers de repli sont donc
+   des commerces et des restaurants français, en attendant des clichés
+   de chantiers réels.
+   ═══════════════════════════════════════════════════════════════════ */
+{
+  slug: "affichage-dynamique",
+  nav: "Écrans & affichage dynamique",
+  navShort: "Écrans & affichage",
+  navDesc: "Écran de vitrine, totem, mur d'images, borne tactile",
+  h1: "Écrans et affichage dynamique",
+  title: "Écrans & Affichage Dynamique — Vitrine, Totem, Mur d'Images, Borne Tactile",
+  desc: "Écran de vitrine haute luminosité, totem extérieur, mur d'images, borne tactile et menu board. Étude, installation, logiciel de diffusion et maintenance, partout en France.",
+  topic: "digital",
+  topicAlt: ["commerce", "restaurant", "plv"],
+  eyebrow: "Métier n°14",
+  lead: "Un écran n'est pas une enseigne qui bouge. C'est le seul support de votre devanture dont le message change sans repasser par un fabricant — et le seul qui meurt en trois semaines si personne ne s'occupe de ce qu'on met dessus.",
+  keywords: [
+    "affichage dynamique", "écran vitrine", "écran de vitrine haute luminosité",
+    "écran extérieur", "totem numérique", "totem tactile", "borne tactile",
+    "mur d'images", "video wall", "menu board", "écran restaurant",
+    "stop-trottoir dynamique", "écran LED", "dalle haute luminosité",
+    "affichage dynamique magasin", "écran professionnel commerce",
+    "signalétique dynamique", "écran d'accueil entreprise", "écran hall",
+    "logiciel affichage dynamique", "gestion de contenu écran",
+    "installation écran vitrine", "maintenance écran", "location écran",
+    "écran vitrine lumineux", "publicité lumineuse numérique"
+  ],
+  intro: [
+    "L'affichage dynamique regroupe tout écran installé pour communiquer : la dalle haute luminosité posée derrière une vitrine, le totem extérieur d'un parking, le mur d'images d'un hall d'accueil, la borne tactile d'un showroom, le menu board d'un restaurant. Le support est électronique, mais le métier reste celui de la communication visuelle : cadrage, lisibilité, hiérarchie de l'information, tenue dans le temps.",
+    "Sa différence tient en une phrase : c'est le seul élément de votre devanture dont le contenu change sans commande, sans délai de fabrication et sans repose. Un menu du jour, une promotion de week-end, un recrutement, une fermeture exceptionnelle — trois minutes depuis un téléphone. C'est son intérêt, et c'est aussi ce qui explique la plupart des échecs : un écran qu'on n'alimente pas devient un cadre noir en vitrine, et un cadre noir dit au passant que le commerce va mal."
+  ],
+  sub: [
+    { t: "Écran de vitrine haute luminosité",
+      d: "Dalle conçue pour être lue derrière un vitrage en plein jour, orientée en portrait ou en paysage, avec dissipation thermique adaptée à l'exposition solaire. C'est le produit le plus demandé en centre-ville, et celui où le choix technique se joue sur un seul chiffre : la luminosité." },
+    { t: "Écran intérieur et menu board",
+      d: "Affichage de carte, de tarifs, de files d'attente ou d'offres du moment, en boutique, en restaurant ou en agence. Un menu board remplace l'ardoise et la réimpression à chaque changement de prix." },
+    { t: "Écran extérieur et totem numérique",
+      d: "Boîtier étanche et ventilé pour une pose en façade, sur parking ou en voirie privée. Supporte la pluie, le gel et le plein soleil, et se pilote à distance comme les autres." },
+    { t: "Mur d'images",
+      d: "Plusieurs dalles assemblées pour former une seule grande surface, en hall d'accueil, showroom ou salon. Demande un calepinage précis et une structure capable d'en porter le poids." },
+    { t: "Borne et écran tactile",
+      d: "Consultation de catalogue, prise de rendez-vous, orientation dans un bâtiment, commande en libre-service. L'écran cesse d'être un panneau pour devenir un outil." },
+    { t: "Stop-trottoir dynamique",
+      d: "Le chevalet de trottoir, en version écran : même encombrement, contenu renouvelable, sur batterie ou sur secteur. Soumis aux mêmes règles d'occupation du domaine public que son équivalent en carton." },
+    { t: "Logiciel de diffusion",
+      d: "La plateforme qui décide quoi s'affiche, où et quand. Elle programme les plages horaires, pilote plusieurs sites depuis un seul compte et signale l'écran qui ne répond plus. C'est elle qui fait la différence entre un parc d'écrans et une collection de téléviseurs." },
+    { t: "Installation, câblage et maintenance",
+      d: "Support et fixation, alimentation, passage des câbles, mise en réseau, configuration, puis suivi. Un écran de vitrine tourne douze à seize heures par jour : la maintenance n'est pas une option de confort, c'est ce qui décide de sa durée de vie." }
+  ],
+  sections: [
+    {
+      h2: "Le seul chiffre qui compte en vitrine : la luminosité",
+      p: [
+        "C'est l'erreur la plus fréquente et la plus coûteuse : installer un téléviseur grand public derrière une vitrine. À midi, il est illisible. Pas un peu terne — <strong>invisible</strong>, un rectangle gris où le passant devine un reflet de la rue.",
+        "La raison est mesurable. Un téléviseur de salon affiche autour de <strong>250 à 400 cd/m²</strong>, une valeur pensée pour une pièce éclairée à l'intérieur. Une vitrine exposée au sud reçoit un éclairement sans commune mesure : il faut compter <strong>2 500 à 4 000 cd/m²</strong> pour rester lisible, soit environ dix fois plus.",
+        "Deux autres différences achèvent la démonstration. Un téléviseur grand public est conçu pour six à huit heures d'usage quotidien, là où une dalle professionnelle est prévue pour seize ou vingt-quatre heures en continu. Et sa garantie exclut généralement l'usage professionnel : l'écran qui lâche au bout de huit mois n'est pas remplacé."
+      ],
+      list: [
+        "Vitrine plein sud ou plein ouest : viser le haut de la fourchette, 3 000 cd/m² et au-delà",
+        "Vitrine à l'ombre ou orientée nord : 1 500 à 2 500 cd/m² suffisent souvent",
+        "Pose en portrait : vérifier que la dalle est certifiée pour cette orientation, la dissipation thermique n'est pas la même",
+        "Intérieur de boutique ou menu board : 350 à 700 cd/m², l'enjeu se déplace vers l'angle de vision",
+        "Extérieur exposé : contrôler l'indice de protection du boîtier et la plage de température admissible"
+      ]
+    },
+    {
+      h2: "Un écran est-il une enseigne ou une publicité ?",
+      p: [
+        "La distinction n'est pas théorique : elle décide de ce que vous avez le droit d'installer, et de qui doit l'autoriser.",
+        "Un écran qui diffuse l'activité de l'établissement où il se trouve — votre carte, vos horaires, vos produits — relève du régime de l'<strong>enseigne</strong>. Un écran qui diffuse autre chose, la marque d'un fournisseur ou l'annonce d'un tiers, bascule vers celui de la <strong>publicité lumineuse</strong>, nettement plus contraint et souvent interdit dans les secteurs protégés.",
+        "Dans les deux cas, l'obligation d'extinction nocturne s'applique : <strong>entre 1 h et 6 h du matin</strong>, sauf lorsque l'activité s'exerce à ces heures. Et le règlement local de publicité de votre commune peut aller plus loin que la règle nationale — interdire le numérique en vitrine, plafonner la surface ou imposer une distance aux habitations."
+      ],
+      list: [
+        "Contenu limité à votre propre activité : régime de l'enseigne",
+        "Contenu de marques ou d'annonceurs tiers : régime de la publicité lumineuse",
+        "Extinction entre 1 h et 6 h, sauf activité nocturne",
+        "Vérifier le règlement local de publicité avant de commander le matériel",
+        "Abords de monument historique et site patrimonial remarquable : avis de l'architecte des Bâtiments de France"
+      ]
+    },
+    {
+      h2: "Ce qui coûte vraiment, ce n'est pas l'écran",
+      p: [
+        "Le budget d'un projet d'affichage dynamique se répartit en cinq postes, et le matériel n'est pas celui qui décide de la réussite : le support et la fixation, l'alimentation et le passage des câbles, la dalle elle-même, le logiciel de diffusion, et le contenu.",
+        "C'est le dernier qui fait échouer les installations. Un écran posé sans que personne ne soit chargé de l'alimenter affiche la même image pendant six mois, puis finit éteint. Le passant l'enregistre comme un décor, plus comme une information — et l'investissement est perdu, non par défaut de matériel, mais par défaut d'exploitation.",
+        "La question à trancher avant de commander n'est donc pas la taille de la dalle. C'est : <strong>qui produit les visuels, à quelle fréquence, et qui les met en ligne ?</strong> Un commerçant seul tiendra rarement un rythme hebdomadaire. Mieux vaut prévoir dès le départ un accompagnement graphique, ou une programmation saisonnière préparée à l'avance et diffusée automatiquement."
+      ],
+      list: [
+        "Support, fixation et éventuel habillage de l'encastrement",
+        "Alimentation électrique, passage des câbles, mise en réseau",
+        "Dalle professionnelle adaptée à l'exposition et à la durée d'usage",
+        "Licence du logiciel de diffusion, généralement annuelle et par écran",
+        "Production des visuels et calendrier de diffusion — le poste le plus souvent oublié"
+      ]
+    }
+  ],
+  faq: [
+    { q: "Puis-je installer un téléviseur du commerce dans ma vitrine ?",
+      a: "Techniquement oui, utilement non. Sa luminosité, de l'ordre de 250 à 400 cd/m², est prévue pour une pièce intérieure : derrière une vitrine exposée au jour, l'image disparaît sous les reflets. Il est par ailleurs conçu pour six à huit heures d'usage quotidien quand un écran de vitrine en fait douze à seize, et la garantie des téléviseurs grand public exclut le plus souvent l'usage professionnel. L'économie de départ se paie en illisibilité, puis en remplacement." },
+    { q: "Faut-il une autorisation pour un écran en vitrine ?",
+      a: "Cela dépend de ce qu'il diffuse et de votre commune. S'il ne présente que votre propre activité, il relève du régime de l'enseigne et suit les mêmes démarches qu'une enseigne classique. S'il diffuse des marques ou des annonceurs tiers, il devient une publicité lumineuse, un régime bien plus restrictif. Le règlement local de publicité peut en outre interdire ou encadrer le numérique indépendamment de la règle nationale : c'est le premier document à consulter, avant même de choisir le matériel." },
+    { q: "Un écran consomme-t-il beaucoup ?",
+      a: "Une dalle de vitrine haute luminosité consomme davantage qu'un téléviseur, puisque le rétroéclairage travaille plus. L'ordre de grandeur reste celui d'un appareil électroménager courant, et la consommation baisse fortement si la luminosité est asservie à la lumière ambiante — la dalle se calme la nuit et en hiver. L'extinction obligatoire entre 1 h et 6 h y contribue également." },
+    { q: "Écran ou enseigne lumineuse : que choisir ?",
+      a: "Ce ne sont pas des concurrents. L'enseigne lumineuse dit qui vous êtes, elle est permanente, elle se lit de loin et elle dure quinze ans. L'écran dit ce que vous faites aujourd'hui, il se lit de près et il vit du renouvellement de son contenu. Un commerce qui n'a ni l'un ni l'autre commence par l'enseigne : sans identification, un écran informe des gens qui ne savent pas chez qui ils sont." },
+    { q: "Que se passe-t-il si l'écran tombe en panne ?",
+      a: "C'est la raison pour laquelle le logiciel de diffusion compte autant que la dalle : une plateforme sérieuse signale l'écran qui ne répond plus, avant que vous ne le découvriez en ouvrant le rideau. Un contrat de maintenance prévoit le diagnostic à distance et l'intervention sur place. Sans supervision, une panne passe inaperçue plusieurs jours — et un écran noir en vitrine fait plus de mal que pas d'écran du tout." }
+  ],
+  related: ["enseignes", "signaletique", "vitrophanie-plv", "maquette-creation-graphique"]
+}
+
 ];

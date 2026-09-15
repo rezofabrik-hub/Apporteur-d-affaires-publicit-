@@ -148,7 +148,7 @@ ${familleBloc}
     <p class="lead" style="margin:0 auto 26px;max-width:60ch">La liste s'allonge au fil des
     chantiers. Dites-nous ce que vous cherchez&nbsp;: si la demande revient, la fiche se fait.</p>
     <div class="btns" style="justify-content:center">
-      <a class="btn btn-primary btn-lg" href="contact.html">Proposer une pose</a>
+      <a class="btn btn-primary btn-lg" href="devis.html">Proposer une pose</a>
       <a class="btn btn-ghost btn-lg" href="glossaire.html">Le glossaire du métier</a>
     </div>
   </div>

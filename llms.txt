@@ -44,6 +44,7 @@
 - [Impression 3D](https://rezo-enseigne.fr/impression-3d.html) : Prototypage, pièces techniques, lettres volumiques, maquettes
 - [Création de site internet](https://rezo-enseigne.fr/creation-site-internet.html) : Site vitrine, e-commerce, refonte, hébergement, maintenance
 - [Référencement naturel](https://rezo-enseigne.fr/referencement-naturel.html) : SEO local, technique, contenu, fiche Google, campagnes
+- [Écrans & affichage dynamique](https://rezo-enseigne.fr/affichage-dynamique.html) : Écran de vitrine, totem, mur d'images, borne tactile
 
 ## Graphisme — logo, charte, choix d'un graphiste
 
