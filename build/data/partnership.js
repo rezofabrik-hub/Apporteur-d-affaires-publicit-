@@ -341,7 +341,7 @@ module.exports = {
      AMORTISSEMENT — l'objection numéro un d'un artisan devant un abonnement
      est « combien ça va me coûter », jamais « combien ça va me rapporter ».
      On répond donc par un seuil, pas par un argument : le chiffre d'affaires
-     qu'il faut signer dans l'année pour rembourser l'abonnement.
+     qu'il faut signer dans l'année pour amortir l'abonnement.
 
      Deux règles pour que ce bloc reste crédible :
      · les fourchettes de prix sont EXACTEMENT celles des tableaux tarifaires
@@ -356,11 +356,11 @@ module.exports = {
   --------------------------------------------------------------------- */
   amortissement: {
     eyebrow: "Amortissement",
-    title: "Combien faut-il signer pour rembourser l'abonnement ?",
-    lead: "La question n'est pas ce que coûte l'abonnement, mais à partir de quel moment il est remboursé. Voici le calcul, fait avec nos propres grilles tarifaires et une hypothèse de marge délibérément prudente.",
+    title: "Combien faut-il signer pour amortir l'abonnement ?",
+    lead: "La question n'est pas ce que coûte l'abonnement, mais à partir de quel moment il est amorti. Voici le calcul, fait avec nos propres grilles tarifaires et une hypothèse de marge délibérément prudente.",
     threshold: "408 €",
     thresholdNote: "Coût réel de l'abonnement annuel au tarif de lancement : 490 € TTC, dont 82 € de TVA que vous récupérez. C'est donc 408 € qu'il faut couvrir sur douze mois, soit environ 1 170 € de chiffre d'affaires à 35 % de marge brute. Une seule enseigne de commerce y suffit.",
-    head: ["Une seule affaire de ce type", "Budget courant", "Marge brute à 35 %", "Année d'abonnement remboursée ?"],
+    head: ["Une seule affaire de ce type", "Budget courant", "Marge brute à 35 %", "Année d'abonnement amortie ?"],
     rows: [
       ["Caisson lumineux LED simple face 2 m", "900 – 2 200 €", "315 – 770 €", "Oui sur le haut de la fourchette"],
       ["Lettres découpées relief rétro-éclairées", "1 800 – 6 000 €", "630 – 2 100 €", "Oui, dès 2 100 € de vente"],
@@ -369,7 +369,7 @@ module.exports = {
       ["Semi-covering imprimé sur fourgon", "1 100 – 2 400 €", "385 – 840 €", "Oui sur le haut de la fourchette"],
       ["Total covering sur fourgon", "2 600 – 5 500 €", "910 – 1 925 €", "Oui, une seule suffit"]
     ],
-    note: "Autrement dit : une enseigne à lettres relief, un totem ou un covering complet dans l'année, et l'abonnement est remboursé. Tout le reste de ce que le réseau vous transmet est du chiffre d'affaires net de coût d'acquisition — puisqu'il n'y a aucune commission sur les affaires signées.",
+    note: "Autrement dit : une enseigne à lettres relief, un totem ou un covering complet dans l'année, et l'abonnement est amorti. Tout le reste de ce que le réseau vous transmet est du chiffre d'affaires net de coût d'acquisition — puisqu'il n'y a aucune commission sur les affaires signées.",
     compare: [
       ["Abonnement annuel", "408 € HT pour l'année", "Demandes qualifiées, jamais adressées à plus de 2 ou 3 partenaires"],
       ["Achat de contacts à l'unité", "25 à 60 € le contact", "Non qualifié, revendu simultanément à 5 ou 10 entreprises"],
@@ -380,9 +380,9 @@ module.exports = {
        élevée qu'en fabrication : la pose, c'est de la main-d'œuvre, pas de
        l'achat de matière. Le seuil tombe donc à moins de deux journées. */
     pose: {
-      title: "Une à deux journées de pose et l'année est remboursée",
+      title: "Une à deux journées de pose et l'année est amortie",
       lead: "Le calcul est encore plus direct sur la pose : il n'y a pas d'achat de matière, donc la marge porte sur la main-d'œuvre. Nous retenons 45 %, ce qui reste conservateur pour une équipe équipée.",
-      head: ["Type d'intervention", "Budget courant", "Marge brute à 45 %", "Année d'abonnement remboursée ?"],
+      head: ["Type d'intervention", "Budget courant", "Marge brute à 45 %", "Année d'abonnement amortie ?"],
       rows: [
         ["Pose d'enseigne avec nacelle (journée)", "800 – 1 600 €", "360 – 720 €", "Oui, une à deux journées"],
         ["Pose d'enseigne avec nacelle (½ journée)", "450 – 900 €", "202 – 405 €", "Une à deux demi-journées"],

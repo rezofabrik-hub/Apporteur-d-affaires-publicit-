@@ -21,7 +21,7 @@
 module.exports = {
   slug: "pourquoi-adherer",
   nav: "Pourquoi adhérer",
-  navDesc: "Ce que l'abonnement vous apporte réellement, ce qu'il coûte, et à partir de quand il est remboursé.",
+  navDesc: "Ce que l'abonnement vous apporte réellement, ce qu'il coûte, et à partir de quand il est amorti.",
   h1: "Pourquoi adhérer au réseau plutôt que d'acheter des contacts ou d'entrer en franchise",
   title: "Pourquoi adhérer au réseau — l'argumentaire complet",
   desc: "Un réseau qui vous amène des clients et qui vous trouve un poseur quand c'est vous qui en cherchez. Abonnement fixe, aucune commission, votre enseigne reste la vôtre.",
@@ -71,7 +71,7 @@ module.exports = {
   /* ------------------------------------------------------------ le calcul */
   calcul: {
     eyebrow: "L'arithmétique",
-    titre: "Ce que ça coûte, et à partir de quand c'est remboursé",
+    titre: "Ce que ça coûte, et à partir de quand c'est amorti",
     lead: "Le chiffre à retenir n'est pas le prix affiché : c'est le montant qui reste réellement à votre charge une fois la TVA récupérée, et le chiffre d'affaires qu'il faut produire pour le couvrir.",
     lignes: [
       ["Abonnement, première année (tarif de lancement)", "490 € TTC"],
@@ -81,8 +81,8 @@ module.exports = {
       ["Chiffre d'affaires à produire, à 35 % de marge brute", "≈ 1 170 €"],
       ["Soit, en volume de chantier", "une seule enseigne de commerce"]
     ],
-    note: "Une enseigne de commerce courante se situe entre 1 200 et 3 500 € selon la technique. La première affaire signée rembourse l'année. La deuxième est du résultat. C'est l'inverse d'une commission, qui prélève d'autant plus que vous réussissez.",
-    honnete: "Un chantier par an suffit à rembourser. Nous ne promettons pas pour autant un volume : un référencement neuf met six à douze mois à produire son plein effet, et c'est exactement la raison pour laquelle cette première année est à 490 € au lieu de 890 € — six mois offerts, le temps que le flux s'installe. Autant le dire tout de suite : c'est une offre de première année. La deuxième se renouvelle à 890 €, et à ce moment-là vous aurez douze mois de relevé pour juger si ça les vaut."
+    note: "Une enseigne de commerce courante se situe entre 1 200 et 3 500 € selon la technique. La première affaire signée amortit l'année. La deuxième est du résultat. C'est l'inverse d'une commission, qui prélève d'autant plus que vous réussissez.",
+    honnete: "Un chantier par an suffit à amortir l'abonnement. Nous ne promettons pas pour autant un volume : un référencement neuf met six à douze mois à produire son plein effet, et c'est exactement la raison pour laquelle cette première année est à 490 € au lieu de 890 € — six mois offerts, le temps que le flux s'installe. Autant le dire tout de suite : c'est une offre de première année. La deuxième se renouvelle à 890 €, et à ce moment-là vous aurez douze mois de relevé pour juger si ça les vaut."
   },
 
   /* ------------------------------------------- ce que vous ne perdez pas */
