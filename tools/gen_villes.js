@@ -87,7 +87,19 @@ const VILLES_CONCURRENCE = [
    pas du remplissage, c'est le cœur de ce que le site apporte. */
 const SEUIL_POP = 10000;   // seuil de l'article R.581-65 du code de l'environnement
 const MIN_PAR_DEPT = 3;    // plancher, même dans un département rural
-const MAX_PAR_DEPT = 16;   // plafond, pour ne pas empiler les banlieues
+/* Plafond porté à 60 le 15/09/2026. Il visait à ne pas empiler les banlieues
+   d'une même agglomération ; à 16, il écartait encore 362 communes de plus de
+   10 000 habitants, concentrées dans le Nord et la petite couronne
+   parisienne — 39 dans le seul département du Nord, 26 dans les Yvelines.
+
+   Ces communes franchissent le seuil de l'article R.581-65 : leur page décrit
+   un droit réel, pas un remplissage. Mais la mise en garde vaut d'être notée
+   ici : dans une agglomération dense, deux communes voisines de même strate
+   ont exactement le même régime, et la seule différence tient alors à la
+   population, au patrimoine protégé et aux variantes rédactionnelles. C'est
+   la zone où la similarité doit être surveillée de près, département par
+   département et non sur un échantillon national qui la diluerait. */
+const MAX_PAR_DEPT = 60;   // plafond, pour ne pas empiler les banlieues
 const CHEFS_LIEUX = new Set(require("../build/data/chefs-lieux.js"));
 
 /* Socle intangible : les villes déjà publiées. Sans cette reprise,
