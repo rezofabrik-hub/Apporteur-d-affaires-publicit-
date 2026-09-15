@@ -819,6 +819,7 @@ function credits(cities) {
 
 /* ═══════════════════════════════════════════════════════════ LÉGAL */
 function legal(cities) {
+  const L = site.legal;
   const mentions = T.page({
     file: "mentions-legales.html",
     title: `Mentions légales | ${site.brand}`,
@@ -830,32 +831,59 @@ function legal(cities) {
   <h1>Mentions légales</h1>
 </div></section>
 <section class="sec"><div class="wrap wrap-narrow"><article class="prose">
-  <div class="note"><p><strong>Trois champs restent à compléter</strong> — SIRET, capital social et
-  numéro de TVA intracommunautaire — signalés entre crochets ci-dessous. Ces mentions sont
-  obligatoires (article 6 de la loi n°2004-575 du 21 juin 2004 pour la confiance dans
-  l'économie numérique).</p></div>
+  <div class="note"><p><strong>Un champ reste à compléter</strong> : le montant du capital social,
+  signalé entre crochets ci-dessous. Il ne figure pas dans les données ouvertes du répertoire des
+  entreprises ; il se relève sur les statuts ou sur l'extrait Kbis. Les autres mentions exigées par
+  l'article 6 de la loi n°2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique sont
+  renseignées.</p></div>
 
   <h2>Éditeur du site</h2>
-  <p><strong>${esc(site.brandLegal)}</strong>, exploitant la marque <strong>${esc(site.brand)}</strong><br>
-  Société à responsabilité limitée au capital de [montant] €<br>
-  Siège social : ${esc(site.address.street)}, ${esc(site.address.cp)} ${esc(site.address.city)}<br>
-  SIRET : [numéro] — RCS Perpignan [numéro]<br>
-  TVA intracommunautaire : [numéro]<br>
+  <p><strong>${esc(L.denomination)}</strong>, ${esc(L.forme)} au capital de ${esc(L.capital)} euros,
+  exploitant la marque <strong>${esc(site.brand)}</strong><br>
+  Siège social : ${esc(L.siege)}<br>
+  SIREN : ${esc(L.siren)} — SIRET du siège : ${esc(L.siret)}<br>
+  RCS : ${esc(L.rcs)}<br>
+  TVA intracommunautaire : ${esc(L.tva)}<br>
+  Code APE : ${esc(L.naf)}<br>
   Téléphone : <a data-cfg="phone" href="tel:${esc(site.phoneHref)}">${esc(site.phoneDisplay)}</a><br>
-  E-mail : <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a><br>
-  Directeur de la publication : le gérant de ${esc(site.brandLegal)}</p>
+  E-mail : <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a></p>
+  <p><strong>Directeur de la publication</strong> : ${esc(L.dirigeant)}, gérant de
+  ${esc(L.denomination)}.</p>
 
   <h2>Hébergement</h2>
-  <p>GitHub, Inc. — GitHub Pages<br>
+  <p>Le site est hébergé sur GitHub Pages.<br>
+  <strong>GitHub, Inc.</strong><br>
   88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis<br>
-  <a href="https://github.com" rel="nofollow noopener" target="_blank">github.com</a></p>
+  <a href="https://support.github.com" rel="nofollow noopener" target="_blank">support.github.com</a>
+  — <a href="https://github.com" rel="nofollow noopener" target="_blank">github.com</a></p>
 
-  <h2>Activité</h2>
-  <p>${esc(site.brandLegal)} exerce une activité d'apport d'affaires et de mise en relation entre des
-  clients ayant un projet de communication visuelle et des professionnels indépendants
-  (enseignistes, imprimeurs, poseurs, graphistes, fournisseurs d'objets publicitaires).
-  ${esc(site.brandLegal)} n'assure ni la fabrication, ni la pose, ni la vente des prestations présentées :
-  les contrats sont conclus directement entre le client et le professionnel retenu.</p>
+  <h2>Activité exercée</h2>
+  <p>${esc(site.brandLegal)} exerce, à travers ce site, une activité d'apport d'affaires et de mise en
+  relation entre des clients ayant un projet de communication visuelle et des professionnels
+  indépendants (enseignistes, imprimeurs, poseurs, graphistes, fournisseurs d'objets publicitaires).</p>
+  <p><strong>${esc(site.brandLegal)} n'assure ni la fabrication, ni la pose, ni la vente des prestations
+  présentées.</strong> Les contrats sont conclus directement entre le client et le professionnel
+  retenu, qui en assume seul l'exécution, les garanties et les assurances. ${esc(site.brandLegal)}
+  n'est ni mandataire, ni commissionnaire, ni agent commercial d'aucune des parties.</p>
+
+  <h2>Absence de vente aux consommateurs</h2>
+  <p>La mise en relation est gratuite pour le client : aucun contrat de vente ou de prestation n'est
+  conclu entre ${esc(site.brandLegal)} et le visiteur du site. La seule prestation facturée par
+  ${esc(site.brandLegal)} est l'abonnement souscrit par des professionnels, régi par les
+  <a href="conditions-generales.html">conditions générales de vente</a> et conclu entre
+  professionnels.</p>
+  <p>Aucun dispositif de médiation de la consommation n'est donc requis au titre de l'article
+  L.616-1 du code de la consommation pour l'activité exercée sur ce site. La plateforme européenne
+  de règlement en ligne des litiges, à laquelle renvoyaient jusqu'alors de nombreux sites
+  marchands, a par ailleurs définitivement fermé le 20 juillet 2025.</p>
+
+  <h2>Contenus pédagogiques</h2>
+  <p>Les fiches publiées dans la rubrique <a href="formation.html">formation</a> sont une
+  documentation technique mise à disposition gratuitement. Elles ne constituent ni une action de
+  formation au sens de l'article L.6313-1 du code du travail, ni une prestation vendue, et
+  ${esc(site.brandLegal)} n'est pas déclaré organisme de formation. Elles ne dispensent pas de
+  respecter les notices des fabricants, les règles de l'art et la réglementation applicable au
+  chantier.</p>
 
   <h2>Propriété intellectuelle</h2>
   <p>La structure du site, ses textes et son identité visuelle sont protégés par le droit d'auteur.
@@ -893,8 +921,10 @@ function legal(cities) {
 </div></section>
 <section class="sec"><div class="wrap wrap-narrow"><article class="prose">
   <h2>Responsable du traitement</h2>
-  <p><strong>${esc(site.brandLegal)}</strong>, exploitant la marque <strong>${esc(site.brand)}</strong><br>
-  ${esc(site.address.street)}, ${esc(site.address.cp)} ${esc(site.address.city)}<br>
+  <p><strong>${esc(L.denomination)}</strong>, ${esc(L.forme)} exploitant la marque
+  <strong>${esc(site.brand)}</strong><br>
+  ${esc(L.siege)}<br>
+  SIREN ${esc(L.siren)}<br>
   Téléphone : <a data-cfg="phone" href="tel:${esc(site.phoneHref)}">${esc(site.phoneDisplay)}</a><br>
   E-mail : <a data-cfg="email" href="mailto:${esc(site.email)}">${esc(site.email)}</a></p>
 
@@ -913,9 +943,26 @@ function legal(cities) {
   un réseau de partenaires qualifiés.</p>
 
   <h2>Destinataires</h2>
-  <p>Vos données sont transmises aux professionnels du réseau sélectionnés pour répondre à votre demande,
-  ainsi qu'aux prestataires techniques assurant l'hébergement et l'acheminement des formulaires.
-  Elles ne sont ni vendues, ni cédées, ni utilisées à des fins de prospection par des tiers.</p>
+  <p>Vos données sont transmises aux professionnels du réseau sélectionnés pour répondre à votre
+  demande. Elles ne sont ni vendues, ni louées, ni utilisées à des fins de prospection par des tiers.
+  Aucun annuaire des partenaires n'est publié et le fichier des partenaires n'est pas
+  commercialisé.</p>
+
+  <h2>Sous-traitants et transferts hors Union européenne</h2>
+  <p>Deux prestataires techniques interviennent, tous deux établis aux États-Unis :</p>
+  <ul class="checks">
+    <li><strong>GitHub, Inc.</strong> — hébergement des pages du site. Le site est statique :
+        GitHub ne reçoit aucune donnée de formulaire, seulement les données techniques inhérentes à
+        toute consultation d'une page (adresse IP, date et heure, page demandée).</li>
+    <li><strong>FormSubmit</strong> — acheminement des formulaires vers la messagerie du responsable
+        de traitement. Les informations que vous saisissez dans un formulaire transitent par ce
+        service avant de nous parvenir.</li>
+  </ul>
+  <p>Ces transferts hors de l'Union européenne sont nécessaires à l'exécution des mesures
+  précontractuelles prises à votre demande, au sens de l'article 49.1.b du règlement général sur la
+  protection des données. Si vous préférez ne pas utiliser les formulaires, vous pouvez nous
+  contacter directement par téléphone ou par courriel : les coordonnées figurent ci-dessus, et
+  votre demande sera traitée de la même manière.</p>
 
   <h2>Durée de conservation</h2>
   <ul class="checks">
@@ -939,6 +986,17 @@ function legal(cities) {
   <h2>Sécurité</h2>
   <p>Les échanges avec le site sont chiffrés (HTTPS). L'accès aux demandes est restreint aux personnes
   habilitées et aux professionnels destinataires de votre projet.</p>
+
+  <h2>Changement de responsable du traitement</h2>
+  <p>L'activité de mise en relation exploitée sous la marque ${esc(site.brand)} est susceptible
+  d'être transmise à une autre société. Dans cette hypothèse, les traitements décrits ici seraient
+  repris par cette société, aux mêmes finalités et dans les mêmes conditions. Vous en seriez informé
+  par tout moyen avant la reprise, et vous conserveriez la faculté de vous y opposer et d'obtenir
+  l'effacement de vos données dans les conditions rappelées ci-dessus.</p>
+
+  <h2>Mise à jour</h2>
+  <p>La présente politique peut être modifiée pour tenir compte d'une évolution du site ou de la
+  réglementation. Version en vigueur au ${esc(new Date().toISOString().slice(0, 10))}.</p>
 </article></div></section>`
   });
 
@@ -1027,6 +1085,7 @@ function plan(cities, extraPages, sectors) {
    évite d'en perdre plusieurs milliers. */
 function cgv(cities) {
   const A = site.address;
+  const L = site.legal;
   return T.page({
     file: "conditions-generales.html",
     title: `Conditions générales de vente | ${site.brand}`,
@@ -1044,14 +1103,17 @@ function cgv(cities) {
   <div class="note"><p><strong>Document à faire valider avant le premier encaissement.</strong>
   Ce texte couvre les clauses attendues d'un abonnement vendu entre professionnels, mais il n'a pas
   été relu par un avocat. Une relecture par un conseil ou par un expert-comptable, avant la première
-  facture, est vivement recommandée — de même que le renseignement des mentions entre crochets.</p></div>
+  facture, reste vivement recommandée. Seul le montant du capital social, entre crochets à
+  l'article 1, demeure à compléter.</p></div>
 
   <h2>1. Identification du prestataire</h2>
-  <p>${esc(site.brandLegal)}, exploitant la marque ${esc(site.brand)}, société à responsabilité
-  limitée au capital de [capital social] euros, dont le siège est situé ${esc(A.street)},
-  ${esc(A.cp)} ${esc(A.city)}, immatriculée au registre du commerce et des sociétés de Perpignan
-  sous le numéro [SIRET], numéro de TVA intracommunautaire [TVA].</p>
+  <p>${esc(L.denomination)}, exploitant la marque ${esc(site.brand)}, ${esc(L.forme)} au capital de
+  ${esc(L.capital)} euros, dont le siège est situé ${esc(L.siege)}, immatriculée au registre du
+  commerce et des sociétés sous le numéro ${esc(L.rcs)}, SIRET ${esc(L.siret)}, numéro de TVA
+  intracommunautaire ${esc(L.tva)}, représentée par son gérant ${esc(L.dirigeant)}.</p>
   <p>Téléphone : ${esc(site.phoneDisplay)} — Courriel : ${esc(site.emailPro)}</p>
+  <p>Ci-après « le prestataire ». Le site ${esc(site.domain.replace(/^https?:\/\//, ""))} et la
+  marque ${esc(site.brand)} sont exploités par ${esc(L.denomination)}.</p>
 
   <h2>2. Objet et champ d'application</h2>
   <p>Les présentes conditions régissent la souscription, par une entreprise professionnelle
@@ -1061,6 +1123,11 @@ function cgv(cities) {
   fait la demande.</p>
   <p>Toute souscription emporte acceptation sans réserve des présentes. Elles prévalent sur les
   conditions d'achat du Partenaire, sauf accord écrit contraire.</p>
+  <p><strong>Ce que les présentes ne régissent pas.</strong> Elles ne s'appliquent ni au contrat
+  conclu entre le Partenaire et son client, qui relève des conditions propres au Partenaire, ni à la
+  mise en relation elle-même, qui est gratuite pour le client, ni aux fiches techniques publiées
+  dans la rubrique <a href="formation.html">formation</a>, qui sont une documentation mise à
+  disposition gratuitement et ne font l'objet d'aucune vente.</p>
 
   <h2>3. Nature de la prestation</h2>
   <p>Le prestataire qualifie les demandes émanant de clients finals et les transmet aux partenaires
@@ -1072,6 +1139,21 @@ function cgv(cities) {
   sur la zone souscrite : ils ne peuvent faire l'objet d'aucune garantie, et aucun volume minimal
   n'est promis. Cette réalité est la raison pour laquelle une formule d'essai gratuite est proposée
   préalablement à tout engagement payant.</p>
+
+  <h2>3 bis. Indépendance des parties — absence de mandat</h2>
+  <p>Les parties sont et demeurent des entreprises juridiquement et économiquement indépendantes.
+  Les présentes ne créent entre elles ni société, ni groupement, ni franchise, ni contrat de travail,
+  ni lien de subordination.</p>
+  <p><strong>Le prestataire n'est pas l'agent commercial du Partenaire.</strong> Il ne dispose
+  d'aucun pouvoir de négocier, d'aménager ou de conclure un contrat au nom et pour le compte du
+  Partenaire, ne reçoit de lui aucun mandat à cet effet, et ne perçoit aucune rémunération assise
+  sur les affaires conclues. Son intervention se limite à la présentation d'un client, à charge
+  pour le Partenaire de négocier et de conclure seul.</p>
+  <p>Réciproquement, le Partenaire ne représente pas le prestataire, ne prend aucun engagement en
+  son nom et ne peut se prévaloir du réseau autrement que comme partenaire référencé.</p>
+  <p>Aucune exclusivité n'est consentie de part et d'autre : le prestataire demeure libre de
+  référencer d'autres professionnels, y compris sur la même zone et le même métier dans les limites
+  de densité annoncées, et le Partenaire demeure libre de prospecter par tout autre moyen.</p>
 
   <h2>4. Conditions d'adhésion</h2>
   <p>L'adhésion est subordonnée à la vérification du dossier : SIRET actif, assurance de
@@ -1151,6 +1233,8 @@ function cgv(cities) {
         qu'au client concerné par un projet précis.</li>
     <li>Ne pas saturer une zone au-delà de la densité annoncée pour un même métier.</li>
     <li>Restituer, avant l'échéance, le relevé des demandes transmises au Partenaire.</li>
+    <li>Maintenir une assurance de responsabilité civile professionnelle couvrant son activité de
+        mise en relation, et en justifier sur demande écrite du Partenaire.</li>
   </ul>
 
   <h2>11. Confidentialité</h2>
@@ -1182,7 +1266,45 @@ function cgv(cities) {
   <p>Aucune partie ne peut être tenue responsable d'un manquement résultant d'un événement de force
   majeure au sens de l'article 1218 du code civil.</p>
 
-  <h2>16. Droit applicable et différends</h2>
+  <h2>16. Cession du contrat et transmission de l'activité</h2>
+  <p>Le prestataire peut céder le présent contrat, ainsi que l'ensemble des droits et obligations
+  qui en découlent, à toute société qu'il contrôle, qui le contrôle, ou à laquelle il transmet
+  l'activité de mise en relation exploitée sous la marque ${esc(site.brand)}, y compris par voie de
+  cession de fonds, d'apport partiel d'actif, de fusion ou de scission.</p>
+  <p>Conformément à l'article 1216 du code civil, <strong>le Partenaire donne dès à présent son
+  accord à cette cession</strong>. Elle lui est notifiée par écrit au moins trente jours avant sa
+  prise d'effet. Les conditions, le périmètre et le tarif de l'abonnement en cours demeurent
+  inchangés jusqu'à son terme, et le cédant n'est libéré qu'autant que le cessionnaire reprend
+  l'intégralité des engagements souscrits envers le Partenaire.</p>
+  <p>Si le Partenaire ne souhaite pas poursuivre avec le cessionnaire, il peut résilier l'abonnement
+  par écrit dans les trente jours suivant la notification ; il est alors remboursé au prorata de la
+  période non courue.</p>
+  <p>Le Partenaire ne peut céder son abonnement, qui est conclu en considération de la personne, de
+  ses capacités déclarées et de ses habilitations, sans l'accord écrit préalable du prestataire.</p>
+
+  <h2>17. Réclamations</h2>
+  <p>Toute réclamation relative à l'exécution des présentes est adressée par écrit à
+  ${esc(site.emailPro)} ou au siège du prestataire. Une réponse est apportée dans un délai de
+  quinze jours ouvrés à compter de la réception.</p>
+
+  <h2>18. Modification des conditions générales</h2>
+  <p>Le prestataire peut faire évoluer les présentes conditions. <strong>La version applicable à un
+  abonnement est celle en vigueur au jour de sa souscription</strong>, et elle le reste pour toute
+  la durée souscrite. Une version modifiée n'est opposable qu'aux souscriptions postérieures à sa
+  mise en ligne. La date de version figure en fin de page.</p>
+
+  <h2>19. Preuve</h2>
+  <p>Les échanges électroniques, les formulaires transmis et les journaux de connexion conservés par
+  le prestataire constituent entre les parties un mode de preuve admissible des souscriptions, des
+  demandes transmises et des notifications, au sens des articles 1366 et 1368 du code civil.</p>
+
+  <h2>20. Nullité partielle et tolérance</h2>
+  <p>Si une stipulation des présentes est jugée nulle ou inapplicable, les autres conservent leur
+  plein effet et les parties lui substituent une stipulation valable d'effet économique équivalent.
+  Le fait pour l'une des parties de ne pas se prévaloir d'un manquement ne vaut pas renonciation à
+  s'en prévaloir ultérieurement.</p>
+
+  <h2>21. Droit applicable et différends</h2>
   <p>Les présentes sont soumises au droit français. En cas de différend, les parties s'efforcent de
   trouver une solution amiable. À défaut d'accord, le litige relève de la compétence exclusive du
   tribunal de commerce de Perpignan, y compris en cas de pluralité de défendeurs ou d'appel en
