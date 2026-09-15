@@ -12,7 +12,7 @@ module.exports = {
      est en place. Ne pas éditer cette ligne à la main : passer par
      node build/domaine.js <domaine>, qui écrit aussi le fichier CNAME
      attendu par GitHub Pages et reconstruit le site. */
-  domain: "https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-",
+  domain: "https://rezo-enseigne.fr",
   lang: "fr-FR",
 
   /* Positionnement (repris dans les balises et le contenu) */

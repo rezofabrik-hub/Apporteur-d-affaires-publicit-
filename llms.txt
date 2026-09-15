@@ -25,65 +25,65 @@
 
 ## Demander un devis
 
-- [Formulaire de demande](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/devis.html) : décrire un projet en deux minutes.
-- [Comment ça marche](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/comment-ca-marche.html) : le rôle exact de l'intermédiaire.
-- [Prix et budgets](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/tarifs.html) : fourchettes réelles par prestation.
+- [Formulaire de demande](https://rezo-enseigne.fr/devis.html) : décrire un projet en deux minutes.
+- [Comment ça marche](https://rezo-enseigne.fr/comment-ca-marche.html) : le rôle exact de l'intermédiaire.
+- [Prix et budgets](https://rezo-enseigne.fr/tarifs.html) : fourchettes réelles par prestation.
 
 ## Métiers couverts
 
-- [Enseignes & enseignes lumineuses](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/enseignes.html) : Lettres relief, caisson lumineux, néon LED, drapeau, totem
-- [Signalétique intérieure & extérieure](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique.html) : Directionnelle, PMR, sécurité, plaques, totems d'orientation
-- [Covering & marquage véhicule](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/covering-vehicule.html) : Total covering, semi-covering, lettrage, flotte, déco
-- [Impression numérique grand format](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/impression-grand-format.html) : Bâche, banderole, roll-up, panneau, adhésif, kakémono
-- [Objets publicitaires & textile](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/objets-publicitaires.html) : Goodies, textile floqué, EPI marqués, cadeaux d'affaires
-- [Maquette & création graphique](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/maquette-creation-graphique.html) : Logo, charte, simulation façade, BAT, fichiers de production
-- [Pose, nacelle & maintenance](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/pose-nacelle.html) : Travail en hauteur, dépose, raccordement, SAV, entretien
-- [Vitrophanie, PLV & stands](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/vitrophanie-plv.html) : Vitrine, dépoli, PLV magasin, stands et salons
-- [Découpe laser & CNC](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/decoupe-laser-cnc.html) : Découpe laser, fraisage numérique, gravure, usinage sur mesure
-- [Imprimerie](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/imprimerie.html) : Cartes, flyers, brochures, papeterie, catalogues, façonnage
-- [Impression 3D](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/impression-3d.html) : Prototypage, pièces techniques, lettres volumiques, maquettes
-- [Création de site internet](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/creation-site-internet.html) : Site vitrine, e-commerce, refonte, hébergement, maintenance
-- [Référencement naturel](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/referencement-naturel.html) : SEO local, technique, contenu, fiche Google, campagnes
+- [Enseignes & enseignes lumineuses](https://rezo-enseigne.fr/enseignes.html) : Lettres relief, caisson lumineux, néon LED, drapeau, totem
+- [Signalétique intérieure & extérieure](https://rezo-enseigne.fr/signaletique.html) : Directionnelle, PMR, sécurité, plaques, totems d'orientation
+- [Covering & marquage véhicule](https://rezo-enseigne.fr/covering-vehicule.html) : Total covering, semi-covering, lettrage, flotte, déco
+- [Impression numérique grand format](https://rezo-enseigne.fr/impression-grand-format.html) : Bâche, banderole, roll-up, panneau, adhésif, kakémono
+- [Objets publicitaires & textile](https://rezo-enseigne.fr/objets-publicitaires.html) : Goodies, textile floqué, EPI marqués, cadeaux d'affaires
+- [Maquette & création graphique](https://rezo-enseigne.fr/maquette-creation-graphique.html) : Logo, charte, simulation façade, BAT, fichiers de production
+- [Pose, nacelle & maintenance](https://rezo-enseigne.fr/pose-nacelle.html) : Travail en hauteur, dépose, raccordement, SAV, entretien
+- [Vitrophanie, PLV & stands](https://rezo-enseigne.fr/vitrophanie-plv.html) : Vitrine, dépoli, PLV magasin, stands et salons
+- [Découpe laser & CNC](https://rezo-enseigne.fr/decoupe-laser-cnc.html) : Découpe laser, fraisage numérique, gravure, usinage sur mesure
+- [Imprimerie](https://rezo-enseigne.fr/imprimerie.html) : Cartes, flyers, brochures, papeterie, catalogues, façonnage
+- [Impression 3D](https://rezo-enseigne.fr/impression-3d.html) : Prototypage, pièces techniques, lettres volumiques, maquettes
+- [Création de site internet](https://rezo-enseigne.fr/creation-site-internet.html) : Site vitrine, e-commerce, refonte, hébergement, maintenance
+- [Référencement naturel](https://rezo-enseigne.fr/referencement-naturel.html) : SEO local, technique, contenu, fiche Google, campagnes
 
 ## Graphisme — logo, charte, choix d'un graphiste
 
-- [Création de logo et identité visuelle](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/creation-logo-identite-visuelle.html) : ce qui doit être livré (fichiers vectoriels, versions monochrome et négatif, références Pantone/CMJN/RVB) et la cession de droits, qui doit être écrite — payer une création ne suffit pas à en acquérir les droits en droit français.
-- [Charte graphique](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/charte-graphique.html) : ce que contient le document, et la distinction avec le cahier technique d'enseigne.
-- [Trouver un graphiste](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/trouver-un-graphiste.html) : différences entre indépendant, studio et agence, tarifs journaliers, ce qu'il faut fournir pour obtenir un devis juste.
+- [Création de logo et identité visuelle](https://rezo-enseigne.fr/creation-logo-identite-visuelle.html) : ce qui doit être livré (fichiers vectoriels, versions monochrome et négatif, références Pantone/CMJN/RVB) et la cession de droits, qui doit être écrite — payer une création ne suffit pas à en acquérir les droits en droit français.
+- [Charte graphique](https://rezo-enseigne.fr/charte-graphique.html) : ce que contient le document, et la distinction avec le cahier technique d'enseigne.
+- [Trouver un graphiste](https://rezo-enseigne.fr/trouver-un-graphiste.html) : différences entre indépendant, studio et agence, tarifs journaliers, ce qu'il faut fournir pour obtenir un devis juste.
 
 ## Secteurs d'activité
 
-- [Pharmacie & parapharmacie](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-pharmacie.html)
-- [Restaurant, bar & hôtel](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-restaurant-bar-hotel.html)
-- [Santé & professions libérales](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-cabinet-medical.html)
-- [Automobile & garage](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-garage-automobile.html)
-- [Coiffure, beauté & bien-être](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-coiffure-esthetique.html)
-- [Immobilier & agences](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-agence-immobiliere.html)
-- [Bâtiment & artisans](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-batiment-artisan.html)
-- [Industrie & logistique](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-industrie-logistique.html)
-- [Commerce de détail](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-commerce-detail.html)
-- [Collectivités & ERP](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-collectivite-erp.html)
-- [Franchises & réseaux](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-franchise-reseau.html)
-- [Sport, loisirs & associations](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-sport-loisirs.html)
-- [Syndics & copropriétés](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/signaletique-syndic-copropriete.html)
+- [Pharmacie & parapharmacie](https://rezo-enseigne.fr/signaletique-pharmacie.html)
+- [Restaurant, bar & hôtel](https://rezo-enseigne.fr/signaletique-restaurant-bar-hotel.html)
+- [Santé & professions libérales](https://rezo-enseigne.fr/signaletique-cabinet-medical.html)
+- [Automobile & garage](https://rezo-enseigne.fr/signaletique-garage-automobile.html)
+- [Coiffure, beauté & bien-être](https://rezo-enseigne.fr/signaletique-coiffure-esthetique.html)
+- [Immobilier & agences](https://rezo-enseigne.fr/signaletique-agence-immobiliere.html)
+- [Bâtiment & artisans](https://rezo-enseigne.fr/signaletique-batiment-artisan.html)
+- [Industrie & logistique](https://rezo-enseigne.fr/signaletique-industrie-logistique.html)
+- [Commerce de détail](https://rezo-enseigne.fr/signaletique-commerce-detail.html)
+- [Collectivités & ERP](https://rezo-enseigne.fr/signaletique-collectivite-erp.html)
+- [Franchises & réseaux](https://rezo-enseigne.fr/signaletique-franchise-reseau.html)
+- [Sport, loisirs & associations](https://rezo-enseigne.fr/signaletique-sport-loisirs.html)
+- [Syndics & copropriétés](https://rezo-enseigne.fr/signaletique-syndic-copropriete.html)
 
 ## Références utiles
 
-- [Réglementation des enseignes](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/reglementation-enseigne.html) : autorisation préalable, règlement local de publicité, TLPE, accessibilité.
-- [Réglementation, secteur par secteur](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/reglementation-enseigne.html#par-secteur) : les obligations d'affichage propres à treize activités, avec les textes applicables et leurs sources — affichage extérieur des prix obligatoire (garage, restauration, coiffure, commerce, agence immobilière), mentions limitativement autorisées (pharmacie, professions de santé, enceintes sportives), signalétique de sécurité (industrie, ERP, copropriété), et les cas où un tiers décide (panneau de chantier, charte de réseau).
-- [Glossaire](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/glossaire.html) : vocabulaire technique de la communication visuelle.
-- [Questions fréquentes](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/faq.html)
-- [Villes couvertes](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/villes.html) : 440 villes, 100 départements.
-- [Collectivités et institutions](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/collectivites.html) : marchés publics, jalonnement, accessibilité.
-- [Sous-traitance entre professionnels](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/sous-traitance-professionnels.html) : agences, imprimeurs, franchises cherchant un exécutant.
+- [Réglementation des enseignes](https://rezo-enseigne.fr/reglementation-enseigne.html) : autorisation préalable, règlement local de publicité, TLPE, accessibilité.
+- [Réglementation, secteur par secteur](https://rezo-enseigne.fr/reglementation-enseigne.html#par-secteur) : les obligations d'affichage propres à treize activités, avec les textes applicables et leurs sources — affichage extérieur des prix obligatoire (garage, restauration, coiffure, commerce, agence immobilière), mentions limitativement autorisées (pharmacie, professions de santé, enceintes sportives), signalétique de sécurité (industrie, ERP, copropriété), et les cas où un tiers décide (panneau de chantier, charte de réseau).
+- [Glossaire](https://rezo-enseigne.fr/glossaire.html) : vocabulaire technique de la communication visuelle.
+- [Questions fréquentes](https://rezo-enseigne.fr/faq.html)
+- [Villes couvertes](https://rezo-enseigne.fr/villes.html) : 440 villes, 100 départements.
+- [Collectivités et institutions](https://rezo-enseigne.fr/collectivites.html) : marchés publics, jalonnement, accessibilité.
+- [Sous-traitance entre professionnels](https://rezo-enseigne.fr/sous-traitance-professionnels.html) : agences, imprimeurs, franchises cherchant un exécutant.
 
 ## Professionnels souhaitant rejoindre le réseau
 
-- [Devenir partenaire](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/partenaires.html) : formules, tarifs, engagement.
-- [Candidature](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/professionnels.html)
-- [Entraide entre partenaires](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/entraide-partenaires.html) : un membre du réseau qui cherche lui-même une capacité de production, un poseur, un dépannage urgent, du matériel ou un avis technique. Compris dans toutes les formules.
+- [Devenir partenaire](https://rezo-enseigne.fr/partenaires.html) : formules, tarifs, engagement.
+- [Candidature](https://rezo-enseigne.fr/professionnels.html)
+- [Entraide entre partenaires](https://rezo-enseigne.fr/entraide-partenaires.html) : un membre du réseau qui cherche lui-même une capacité de production, un poseur, un dépannage urgent, du matériel ou un avis technique. Compris dans toutes les formules.
 
 ## Plan complet
 
-- [Plan du site](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/plan-du-site.html)
-- [Sitemap XML](https://rezofabrik-hub.github.io/Apporteur-d-affaires-publicit-/sitemap.xml)
+- [Plan du site](https://rezo-enseigne.fr/plan-du-site.html)
+- [Sitemap XML](https://rezo-enseigne.fr/sitemap.xml)
