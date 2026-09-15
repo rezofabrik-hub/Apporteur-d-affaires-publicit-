@@ -26,7 +26,7 @@ window.RF_CONFIG = {
      rien transmettre. Deux points à retenir pour la suite :
 
      · L'activation vaut pour le DOMAINE depuis lequel la demande est postée.
-       Au passage sur rezo-enseignes.fr, prévoir une nouvelle confirmation :
+       Au passage sur rezo-enseigne.fr, prévoir une nouvelle confirmation :
        poster une fois depuis le nouveau domaine déclenche l'e-mail, un clic
        et c'est réglé. Le vérifier AVANT d'annoncer le domaine, pas après.
      · L'e-mail d'activation n'arrive presque jamais dans l'onglet principal
@@ -80,7 +80,7 @@ window.RF_CONFIG = {
   --------------------------------------------------------------------- */
   /* Adresse opérationnelle actuelle — les formulaires en mode secours
      y aboutissent réellement. À basculer sur les adresses du domaine
-     rezo-enseignes.fr dès qu'il sera déposé. */
+     rezo-enseigne.fr dès qu'il sera déposé. */
   email: "commercial-rezofabrik@gmail.com",
   emailPro: "commercial-rezofabrik@gmail.com",
   phone: "07 75 76 92 32",

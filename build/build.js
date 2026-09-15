@@ -267,7 +267,7 @@ function imagesSitemap(pages) {
     ["CCBot", "Common Crawl — corpus repris par de nombreux modèles"]
   ];
 
-  write("robots.txt", `# Robots — Rezo Enseignes
+  write("robots.txt", `# Robots — Rezo Enseigne
 # Le site est ouvert à l'indexation classique comme aux moteurs de réponse.
 # Aucune donnée de partenaire n'y figure : c'est le service qui est décrit.
 

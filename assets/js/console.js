@@ -151,7 +151,7 @@
     l.push("Bien à vous,");
     l.push("");
     l.push((CFG.email || "").split("@")[0] === "" ? "" : "");
-    l.push("Rezo Enseignes — " + (CFG.phone || ""));
+    l.push("Rezo Enseigne — " + (CFG.phone || ""));
     return { objet: objet, corps: l.join("\n") };
   }
 

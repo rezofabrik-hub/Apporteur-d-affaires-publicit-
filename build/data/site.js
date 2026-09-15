@@ -2,7 +2,7 @@
    Identité du site — modifiez ce fichier puis relancez `node build/build.js`
    ========================================================================= */
 module.exports = {
-  brand: "Rezo Enseignes",
+  brand: "Rezo Enseigne",
   /* Marque commerciale ci-dessus, raison sociale ci-dessous : les mentions
      légales doivent porter la société immatriculée, pas le nom d'enseigne. */
   brandLegal: "SARL Rezofabrik",
@@ -35,8 +35,8 @@ module.exports = {
   experienceText: "Le réseau n'est pas piloté par un informaticien qui a repéré un marché, mais par un professionnel de la communication visuelle qui l'exerce depuis vingt-cinq ans. C'est ce qui permet de qualifier un projet en dix minutes au téléphone, de traduire « je voudrais quelque chose de visible » en cahier des charges technique, et de repérer immédiatement un devis auquel il manque la moitié des postes.",
 
   /* Contact — répliqué dans assets/js/config.js */
-  /* Adresse opérationnelle actuelle. À basculer sur contact@rezo-enseignes.fr
-     et partenaires@rezo-enseignes.fr une fois le domaine déposé et la
+  /* Adresse opérationnelle actuelle. À basculer sur contact@rezo-enseigne.fr
+     et partenaires@rezo-enseigne.fr une fois le domaine déposé et la
      redirection e-mail créée chez Gandi (incluse avec le domaine). */
   email: "commercial-rezofabrik@gmail.com",
   emailPro: "commercial-rezofabrik@gmail.com",

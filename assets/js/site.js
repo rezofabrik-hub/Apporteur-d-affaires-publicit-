@@ -1,5 +1,5 @@
 /* =========================================================================
-   Rezo Enseignes — comportements du site (sans dépendance externe)
+   Rezo Enseigne — comportements du site (sans dépendance externe)
    ========================================================================= */
 (function () {
   "use strict";

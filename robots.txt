@@ -1,4 +1,4 @@
-# Robots — Rezo Enseignes
+# Robots — Rezo Enseigne
 # Le site est ouvert à l'indexation classique comme aux moteurs de réponse.
 # Aucune donnée de partenaire n'y figure : c'est le service qui est décrit.
 

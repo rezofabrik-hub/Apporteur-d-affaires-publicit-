@@ -301,7 +301,7 @@ ${T.localBlock("national")}
     <div class="sec-head">
       <span class="eyebrow">Pour les professionnels du métier</span>
       <h2>Un réseau national qui marche dans les deux sens</h2>
-      <p class="lead">C'est ce qui distingue Rezo Enseignes des places de marché de contacts d'un
+      <p class="lead">C'est ce qui distingue Rezo Enseigne des places de marché de contacts d'un
       côté, et des réseaux de sous-traitance de pose de l'autre. Un abonnement, deux flux — et
       aucune commission sur les affaires signées, dans un sens comme dans l'autre.</p>
     </div>
