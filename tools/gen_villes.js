@@ -67,9 +67,36 @@ const VILLES_CONCURRENCE = [
   ["Ris-Orangis", "91"]
 ];
 
-const SEUIL_POP = 20000;   // toute commune au-dessus est retenue
+/* Seuils revus le 15/09/2026.
+
+   Le seuil de 20 000 habitants et le plafond de huit communes par
+   département donnaient 440 villes — une couverture correcte des
+   agglomérations, mais qui laissait de côté deux catégories que les clients
+   cherchent réellement.
+
+   D'abord les sous-préfectures. Prades, 6 148 habitants, est chef-lieu
+   d'arrondissement des Pyrénées-Orientales : cinq communes du département
+   avaient une page, pas elle. Un chef-lieu d'arrondissement est un point de
+   repère, les communes alentour s'y réfèrent, et c'est son nom que l'on tape.
+
+   Ensuite les communes de 10 000 à 20 000 habitants. Le seuil de 10 000 n'a
+   rien d'arbitraire : c'est celui de l'article R.581-65 du code de
+   l'environnement, au-dessus duquel les enseignes scellées au sol de plus
+   d'un mètre carré deviennent admises. Une page consacrée à une commune qui
+   franchit ce seuil décrit donc un droit différent de sa voisine — ce n'est
+   pas du remplissage, c'est le cœur de ce que le site apporte. */
+const SEUIL_POP = 10000;   // seuil de l'article R.581-65 du code de l'environnement
 const MIN_PAR_DEPT = 3;    // plancher, même dans un département rural
-const MAX_PAR_DEPT = 8;    // plafond, pour ne pas empiler les banlieues
+const MAX_PAR_DEPT = 16;   // plafond, pour ne pas empiler les banlieues
+const CHEFS_LIEUX = new Set(require("../build/data/chefs-lieux.js"));
+
+/* Socle intangible : les villes déjà publiées. Sans cette reprise,
+   l'abaissement du seuil a écarté treize communes qui avaient une page —
+   Albert, Joigny, Sisteron, Monistrol-sur-Loire et neuf autres, toutes sous
+   les 10 000 habitants et sans rôle administratif, évincées par le plafond
+   départemental au profit de communes plus peuplées. Une URL indexée est un
+   actif : on en ajoute, on n'en retire pas. */
+const PUBLIEES = new Set(require("../build/data/villes-publiees.js"));
 const NB_VOISINES = 8;     // communes limitrophes citées par page
 const RAYON_KM = 22;       // rayon de recherche des communes voisines
 const RAYON_LARGE = 40;    // rayon de repli en zone peu dense
@@ -81,9 +108,26 @@ const RAYON_LARGE = 40;    // rayon de repli en zone peu dense
    générateur n'est lancé qu'à la main, l'appel externe est sans conséquence
    sur le build. */
 function get(url) {
-  const out = execFileSync("curl", ["-sSfL", url, "--max-time", "60"],
-    { maxBuffer: 64 * 1024 * 1024 }).toString();
-  return JSON.parse(out);
+  /* Reprise sur échec réseau. Une centaine de requêtes s'enchaînent ici, et
+     une seule coupure — proxy sortant, reset de connexion — interrompait tout
+     le générateur après plusieurs minutes de travail. Quatre tentatives
+     espacées suffisent : les échecs observés sont transitoires. */
+  let dernier;
+  for (let essai = 1; essai <= 4; essai++) {
+    try {
+      const out = execFileSync("curl", ["-sSfL", url, "--max-time", "90"],
+        { maxBuffer: 64 * 1024 * 1024 }).toString();
+      return JSON.parse(out);
+    } catch (e) {
+      dernier = e;
+      if (essai < 4) {
+        const pause = 2000 * essai;
+        process.stderr.write(`  réseau : échec ${essai}/4, nouvelle tentative dans ${pause / 1000} s\n`);
+        execFileSync("sleep", [String(pause / 1000)]);
+      }
+    }
+  }
+  throw dernier;
 }
 
 /* Cache disque : l'API est publique et sans quota annoncé, mais relancer le
@@ -158,14 +202,28 @@ const cpPrincipal = (c) => (c.codesPostaux || []).slice().sort()[0] || "";
     const prendre = (c) => { if (c) prises.set(c.code, c); };
 
     list.filter((c) => c.population >= SEUIL_POP).forEach(prendre);
+    list.filter((c) => CHEFS_LIEUX.has(c.code)).forEach(prendre);  // sous-préfectures
+    list.filter((c) => PUBLIEES.has(slugify(c.nom))).forEach(prendre);  // socle publié
     prendre(list.find((c) => c.code === d.chefLieu));      // la préfecture, toujours
     for (const c of list) {                                 // plancher départemental
       if (prises.size >= MIN_PAR_DEPT) break;
       prendre(c);
     }
+    /* Le tri place les chefs-lieux d'arrondissement en tête, avant le classement
+       par population : sans cela le plafond départemental évincerait Prades ou
+       Céret au profit de communes plus peuplées mais sans rôle administratif,
+       et l'on retomberait exactement sur le manque que cette révision corrige. */
     const gardees = [...prises.values()]
-      .sort((a, b) => b.population - a.population)
-      .slice(0, MAX_PAR_DEPT);
+      .sort((a, b) => {
+        /* Deux rangs avant la population : une ville déjà publiée ne peut pas
+           être évincée, et un chef-lieu d'arrondissement non plus. */
+        const ra = (PUBLIEES.has(slugify(a.nom)) ? 2 : 0) + (CHEFS_LIEUX.has(a.code) ? 1 : 0);
+        const rb = (PUBLIEES.has(slugify(b.nom)) ? 2 : 0) + (CHEFS_LIEUX.has(b.code) ? 1 : 0);
+        if (ra !== rb) return rb - ra;
+        return b.population - a.population;
+      })
+      .slice(0, Math.max(MAX_PAR_DEPT,
+        [...prises.values()].filter((c) => PUBLIEES.has(slugify(c.nom)) || CHEFS_LIEUX.has(c.code)).length));
 
     /* Le plafond ne doit jamais évincer la préfecture. En Seine-Saint-Denis,
        huit communes sont plus peuplées que Bobigny : sans cette reprise, le
@@ -210,20 +268,42 @@ const cpPrincipal = (c) => (c.codesPostaux || []).slice().sort()[0] || "";
     region: regionNom[dept.codeRegion],
     cp: cpPrincipal(commune),
     pop: pop(commune.population),
+    _pop: commune.population,   // brut, pour départager les homonymes
     prefecture: commune.code === dept.chefLieu || undefined,
     concurrence: commune.concurrence || undefined,
     neighbors: voisines(commune)
   }));
 
-  /* Doublons de slug entre départements (Saint-Denis 93 et 974, hors
-     métropole ici, mais aussi Vitry, Saint-Étienne-du-Rouvray…). On suffixe
-     par le code départemental plutôt que d'en perdre une. */
+  /* Doublons de slug entre départements (Vitry, Saint-Étienne-du-Rouvray,
+     Saint-Denis…). On suffixe par le code départemental plutôt que d'en
+     perdre une.
+
+     QUI GARDE LE SLUG NU — la question n'est pas cosmétique.
+
+     L'ordre était celui du parcours, c'est-à-dire le hasard du numéro de
+     département. En passant de 440 à 865 villes, des homonymes minuscules
+     sont apparus et ont pris le slug nu de villes déjà publiées :
+     `franconville` désignait la commune du Val-d'Oise et ses 37 754
+     habitants, il est passé à une homonyme de Meurthe-et-Moselle qui en
+     compte 63. Vingt-quatre pages indexées changeaient ainsi de sujet sans
+     que rien ne le signale.
+
+     Deux rangs, donc : une ville déjà publiée garde son slug — son URL est
+     indexée et liée. À défaut, la plus peuplée le garde, parce que c'est
+     celle que l'on cherche quand on tape le nom seul. */
   const vus = new Map();
-  villes.forEach((v) => {
-    if (!vus.has(v.slug)) { vus.set(v.slug, v); return; }
-    v.slug = v.slug + "-" + v.dept;
-    console.log(`  slug dédoublonné : ${v.name} (${v.dept}) → ${v.slug}`);
-  });
+  villes.slice()
+    .sort((a, b) => {
+      const pa = PUBLIEES.has(a.slug) ? 1 : 0;
+      const pb = PUBLIEES.has(b.slug) ? 1 : 0;
+      if (pa !== pb) return pb - pa;
+      return (b._pop || 0) - (a._pop || 0);
+    })
+    .forEach((v) => {
+      if (!vus.has(v.slug)) { vus.set(v.slug, v); return; }
+      v.slug = v.slug + "-" + v.dept;
+      console.log(`  slug dédoublonné : ${v.name} (${v.dept}) → ${v.slug}`);
+    });
 
   villes.sort((a, b) => a.dept.localeCompare(b.dept) || a.name.localeCompare(b.name, "fr"));
 
