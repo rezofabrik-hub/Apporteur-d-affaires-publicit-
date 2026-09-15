@@ -415,7 +415,7 @@ const POSES = [
   h1: "Poser une enseigne drapeau sur potence",
   title: "Poser une Enseigne Drapeau — Potence, Saillie et Autorisation",
   desc: "L'enseigne perpendiculaire prend le vent en porte-à-faux et déborde sur le domaine public. Fixation, saillie réglementaire, contrôle.",
-  statut: "brouillon", acces: "libre", duree: "3 h", niveau: "Confirmé",
+  statut: "publie", acces: "libre", duree: "3 h", niveau: "Confirmé",
   resume: "Le drapeau est la pose la plus sollicitée mécaniquement : tout le poids et toute la prise au vent sont en porte-à-faux sur quelques chevilles.",
   quand: "Rue piétonne, rue étroite, commerce en enfilade : partout où l'enseigne à plat n'est pas vue.",
   materiel: ["Potence dimensionnée", "Chevilles sous avis technique", "Perforateur", "Niveau", "Matériel de hauteur", "Clé dynamométrique"],
@@ -427,12 +427,20 @@ const POSES = [
     ["Suspendre l'enseigne", "À deux, sans forcer sur les fixations fraîches."],
     ["Contrôler", "Vérifier l'absence de jeu, reprendre le serrage après quelques jours si la notice le prévoit."]
   ],
-  erreurs: ["Sous-estimer la prise au vent : un panneau plein en porte-à-faux subit des efforts très supérieurs à son poids.", "Charger un scellement avant la fin du temps de prise.", "Ignorer la saillie autorisée : dépose à la charge du commerçant.", "Fixer sur un enduit sans atteindre le support porteur."],
-  securite: ["Travail en hauteur et au-dessus du domaine public : balisage obligatoire.", "Autorisation d'occupation temporaire du domaine public en mairie.", "Vérification périodique : une enseigne drapeau doit être maintenue en bon état de fonctionnement et de sécurité (art. R.581-58)."],
-  verifier: "Le dimensionnement de la potence et des ancrages relève d'un calcul au vent selon l'Eurocode 1, tenant compte de la zone de vent, de la hauteur et de l'exposition. Sur un dispositif de taille significative, ce calcul se demande au fabricant ou à un bureau d'études — il ne s'improvise pas.",
+  erreurs: ["Sous-estimer la prise au vent : un panneau plein en porte-à-faux subit des efforts très supérieurs à son poids.", "Charger un scellement avant la fin du temps de prise.", "Ignorer la saillie autorisée : dépose à la charge du commerçant.", "Fixer sur un enduit sans atteindre le support porteur.",
+    "Reprendre les fixations d'une ancienne potence sans les contrôler : les trous existants sont fatigués et le support a travaillé autour.",
+    "Poser un drapeau ajouré en croyant réduire la prise au vent : le gain est réel mais bien moindre qu'il n'y paraît, et il ne dispense d'aucun calcul.",
+    "Oublier que l'enseigne devra être déposée : sans accès nacelle possible sur la voie, la dépose coûtera un arrêté de circulation."
+  ],
+  securite: ["Travail en hauteur et au-dessus du domaine public : balisage obligatoire.", "Autorisation d'occupation temporaire du domaine public en mairie.", "Vérification périodique : une enseigne drapeau doit être maintenue en bon état de fonctionnement et de sécurité (art. R.581-58).",
+    "Le montage se fait à deux : une potence en porte-à-faux devient incontrôlable seule dès qu'il y a du vent.",
+    "Contrôle de l'ancrage après quelques semaines de service : c'est là que se révèle un scellement insuffisant, avant qu'il ne cède."
+  ],
+  verifier: "Le dimensionnement de la potence et des ancrages relève d'un calcul au vent selon l'Eurocode 1, tenant compte de la zone de vent, de la hauteur au-dessus du sol, de la surface du panneau et du bras de levier. Ce calcul se demande au fabricant de la potence, qui le fournit pour ses gammes, ou à un bureau d'études. Aucune règle générale ne le remplace : la même enseigne qui tient depuis vingt ans à Lille descend au sol sur le littoral languedocien. La saillie maximale autorisée sur le domaine public et la hauteur libre à respecter sont, elles, fixées par la commune et se lisent au règlement local de publicité ou au règlement de voirie.",
   faq: [
     { q: "Quelle hauteur libre sous une enseigne drapeau ?", a: "Elle est fixée par le règlement de voirie de la commune, pour laisser passer piétons et véhicules de secours. Le service voirie de la mairie la donne en un appel." },
-    { q: "Le drapeau est-il soumis à autorisation ?", a: "Comme toute enseigne : oui en présence d'un RLP, aux abords d'un monument historique ou en site patrimonial remarquable. S'y ajoute l'autorisation d'occupation du domaine public, puisque l'enseigne surplombe la voie." }
+    { q: "Le drapeau est-il soumis à autorisation ?", a: "Comme toute enseigne : oui en présence d'un RLP, aux abords d'un monument historique ou en site patrimonial remarquable. S'y ajoute l'autorisation d'occupation du domaine public, puisque l'enseigne surplombe la voie." },
+    { q: "Qui est responsable si une enseigne drapeau tombe ?", a: "L'exploitant de l'enseigne au premier chef, en sa qualité de gardien de la chose au sens de l'article 1242 du code civil, et le poseur si le défaut vient de l'installation. C'est pourquoi le contrôle périodique n'est pas une précaution de confort : une enseigne suspendue au-dessus d'un trottoir doit être maintenue en bon état, et le prouver en cas d'accident suppose d'en garder trace. Un simple relevé de visite daté suffit." }
   ]
 },
 {
@@ -441,7 +449,7 @@ const POSES = [
   h1: "Raccorder une enseigne lumineuse et programmer son extinction",
   title: "Raccorder une Enseigne Lumineuse — Habilitation et Extinction",
   desc: "Protection du circuit, indice de protection, horloge astronomique et obligation d'extinction nocturne. Ce qui relève de l'habilitation.",
-  statut: "brouillon", acces: "reseau", duree: "2 h", niveau: "Confirmé",
+  statut: "publie", acces: "reseau", duree: "2 h", niveau: "Confirmé",
   resume: "Le raccordement est la seule étape de la pose d'enseigne qui exige une habilitation. Elle n'est pas une formalité : elle est exigible en cas de contrôle et déterminante en cas de sinistre.",
   quand: "Toute enseigne lumineuse, tout caisson, tout rétro-éclairage.",
   materiel: ["Matériel d'électricien habilité", "Horloge astronomique ou interrupteur crépusculaire", "Boîtiers de dérivation étanches", "Vérificateur d'absence de tension"],
@@ -452,12 +460,20 @@ const POSES = [
     ["Poser la commande d'extinction", "Horloge astronomique de préférence : elle suit le lever et le coucher du soleil sans réglage saisonnier."],
     ["Essayer et documenter", "Essai de nuit, puis remise au client de la notice et du réglage effectué."]
   ],
-  erreurs: ["Raccorder sans habilitation.", "Dominos ou connexions non étanches en extérieur.", "Oublier la programmation d'extinction : l'infraction est constatée par le maire.", "Alimenter depuis une prise intérieure par un câble passé sous une fenêtre."],
-  securite: ["Habilitation électrique obligatoire, adaptée à la nature de l'opération, délivrée par l'employeur après formation.", "Consignation avant toute intervention.", "Travail en hauteur cumulé au risque électrique : ne jamais intervenir seul."],
-  verifier: "Les règles d'installation relèvent de la norme NF C 15-100. L'obligation d'extinction des enseignes lumineuses est fixée par l'article R.581-59 du code de l'environnement ; les horaires et les exceptions se vérifient dans le texte en vigueur et dans le RLP local, qui peut être plus strict.",
+  erreurs: ["Raccorder sans habilitation.", "Dominos ou connexions non étanches en extérieur.", "Oublier la programmation d'extinction : l'infraction est constatée par le maire.", "Alimenter depuis une prise intérieure par un câble passé sous une fenêtre.",
+    "Piquer sur le circuit d'éclairage existant de la boutique : la protection n'est pas dimensionnée pour la charge, et rien ne signale l'anomalie jusqu'au déclenchement.",
+    "Laisser l'horloge de programmation sans sauvegarde d'heure : après chaque coupure de courant elle repart à zéro et l'enseigne reste allumée la nuit.",
+    "Ne pas repérer ni étiqueter le circuit au tableau : le jour d'une panne, personne ne sait quoi couper."
+  ],
+  securite: ["Habilitation électrique obligatoire, adaptée à la nature de l'opération, délivrée par l'employeur après formation.", "Consignation avant toute intervention.", "Travail en hauteur cumulé au risque électrique : ne jamais intervenir seul.",
+    "Aucune intervention sous tension : la coupure seule ne suffit pas, il faut la consignation, avec condamnation et vérification d'absence de tension.",
+    "Vérification du raccordement à la terre des parties métalliques accessibles : un caisson en aluminium mal relié est un défaut classique et dangereux."
+  ],
+  verifier: "Les règles d'installation relèvent de la norme NF C 15-100, et la section des conducteurs comme le calibre de la protection dépendent de la puissance installée, de la longueur de la ligne et du mode de pose — ce site ne publiera aucune valeur générique, parce qu'une section sous-dimensionnée chauffe sans que rien ne le signale. Ce calcul revient à l'électricien qui réalise le raccordement, sous son habilitation. L'obligation d'extinction des enseignes lumineuses est fixée par l'article R.581-59 du code de l'environnement : entre 1 h et 6 h, sauf lorsque l'activité s'exerce à ces heures.",
   faq: [
     { q: "Un poseur d'enseigne peut-il raccorder lui-même ?", a: "Seulement s'il détient une habilitation électrique adaptée. L'habilitation n'est pas un diplôme mais une autorisation écrite de l'employeur, délivrée après formation et réactualisée périodiquement." },
-    { q: "À quelle heure faut-il éteindre ?", a: "Les enseignes lumineuses sont soumises à une obligation d'extinction nocturne encadrée par l'article R.581-59. Les horaires précis et les cas particuliers — activité nocturne notamment — se lisent dans le texte applicable et dans le règlement local de publicité." }
+    { q: "À quelle heure faut-il éteindre ?", a: "Les enseignes lumineuses sont soumises à une obligation d'extinction nocturne encadrée par l'article R.581-59. Les horaires précis et les cas particuliers — activité nocturne notamment — se lisent dans le texte applicable et dans le règlement local de publicité." },
+    { q: "Faut-il un circuit dédié pour une enseigne ?", a: "C'est la bonne pratique, et elle règle trois problèmes à la fois. Un circuit propre, protégé et repéré au tableau permet de couper l'enseigne sans couper la boutique, d'y placer l'horloge d'extinction, et de diagnostiquer une panne sans tout éteindre. Le surcoût à l'installation est modeste comparé au premier dépannage réalisé dans le noir." }
   ]
 },
 {
@@ -466,7 +482,7 @@ const POSES = [
   h1: "Poser un bandeau ou un habillage de façade en Dibond",
   title: "Habillage de Façade en Dibond — Entraxes et Dilatation",
   desc: "Le Dibond bouge avec la température. Entraxes, trous oblongs, joints de dilatation : poser un bandeau qui ne gondole pas.",
-  statut: "brouillon", acces: "libre", duree: "4 h", niveau: "Confirmé",
+  statut: "publie", acces: "libre", duree: "4 h", niveau: "Confirmé",
   resume: "L'aluminium composite se dilate de façon sensible. Un bandeau fixé rigidement à ses deux extrémités gondole au premier été.",
   quand: "Bandeau de devanture, habillage de pilier, rénovation de façade commerciale.",
   materiel: ["Panneaux Dibond", "Rivets ou vis à tête large", "Perceuse, forets", "Niveau laser", "Cales de dilatation", "Mastic"],
@@ -477,12 +493,19 @@ const POSES = [
     ["Respecter les jeux", "Un jeu entre panneaux et en périphérie, jamais bord à bord."],
     ["Finir", "Profilés de finition ou joint souple ; mastic sur les percements exposés à l'eau."]
   ],
-  erreurs: ["Percer au diamètre exact de la vis : le panneau ne peut plus se dilater et gondole.", "Serrer à fond : même effet.", "Poser bord à bord sans jeu.", "Entraxes de fixation trop espacés : le panneau vague entre deux points."],
-  securite: ["Travail en hauteur.", "Chants de Dibond coupants : gants.", "Découpe : lunettes et aspiration des copeaux d'aluminium."],
-  verifier: "Le coefficient de dilatation, l'entraxe maximal de fixation et le jeu à prévoir sont donnés par la fiche technique du panneau, et ils varient selon l'épaisseur et la marque. Ces valeurs se lisent, elles ne s'estiment pas.",
+  erreurs: ["Percer au diamètre exact de la vis : le panneau ne peut plus se dilater et gondole.", "Serrer à fond : même effet.", "Poser bord à bord sans jeu.", "Entraxes de fixation trop espacés : le panneau vague entre deux points.",
+    "Poser des panneaux de grande longueur d'un seul tenant : la dilatation cumulée devient impossible à rattraper aux extrémités.",
+    "Fixer directement sur un support non plan sans ossature : le panneau épouse les défauts du mur et les révèle en lumière rasante.",
+    "Négliger la ventilation de la lame d'air derrière l'habillage : l'humidité s'y accumule et l'aluminium se corrode par l'arrière, là où on ne le voit pas."
+  ],
+  securite: ["Travail en hauteur.", "Chants de Dibond coupants : gants.", "Découpe : lunettes et aspiration des copeaux d'aluminium.",
+    "Manutention par vent : un panneau composite de grand format se comporte comme une voile et échappe des mains au-delà d'une brise modérée."
+  ],
+  verifier: "Le coefficient de dilatation, l'entraxe maximal de fixation et le jeu à prévoir sont donnés par la fiche technique du panneau, et ils varient selon l'épaisseur, la longueur et la teinte — un panneau sombre en plein sud se dilate nettement plus qu'un panneau clair. Ces valeurs se lisent, elles ne se déduisent pas. Deux vérifications s'ajoutent en façade : la nature réelle du support porteur derrière l'enduit, et la présence éventuelle d'une isolation extérieure, qui impose des fixations traversantes d'un tout autre type.",
   faq: [
     { q: "Quelle épaisseur de Dibond pour un bandeau de façade ?", a: "Cela dépend de l'entraxe de l'ossature et de l'exposition au vent. Le fabricant publie des abaques croisant épaisseur, entraxe et charge : c'est là qu'on lit la réponse." },
-    { q: "Peut-on coller le Dibond au lieu de le visser ?", a: "Sur support sain et plan, un collage structural existe, avec un mastic-colle qualifié pour cet usage et un temps de prise respecté. En façade exposée et en hauteur, la fixation mécanique reste la référence." }
+    { q: "Peut-on coller le Dibond au lieu de le visser ?", a: "Sur support sain et plan, un collage structural existe, avec un mastic-colle qualifié pour cet usage et un temps de prise respecté. En façade exposée et en hauteur, la fixation mécanique reste la référence." },
+    { q: "Le Dibond peut-il rester dehors dix ans ?", a: "Oui pour le panneau lui-même, dont le laquage résiste bien, à condition que la pose ait laissé la dilatation s'exercer et que l'arrière soit ventilé. Ce qui vieillit en premier, c'est l'impression ou l'adhésif qui l'habille, pas l'aluminium. Sur une façade exposée plein sud, prévoyez un laminat de protection dès la fabrication : il coûte peu et double la tenue des couleurs." }
   ]
 }
 ,
@@ -541,7 +564,7 @@ const POSES = [
   h1: "Scellement chimique ou cheville mécanique : lequel choisir",
   title: "Scellement Chimique ou Mécanique — Comment Choisir",
   desc: "Béton fissuré, parpaing creux, brique, pierre : quel ancrage pour quel support, et pourquoi le soufflage du trou change tout.",
-  statut: "brouillon", acces: "libre", duree: "1 h", niveau: "Intermédiaire",
+  statut: "publie", acces: "libre", duree: "1 h", niveau: "Intermédiaire",
   resume: "La cheville mécanique travaille par expansion, le scellement chimique par adhérence. Le support décide, pas l'habitude.",
   quand: "Toute fixation qui reprend une charge : mât, potence, platine, caisson.",
   materiel: ["Perforateur", "Forets au diamètre exact prescrit", "Écouvillon et soufflette", "Cartouche de résine et pistolet", "Tamis pour matériaux creux", "Clé dynamométrique"],
@@ -553,12 +576,20 @@ const POSES = [
     ["Injecter depuis le fond", "Remplir aux deux tiers environ en remontant, sans emprisonner de bulle."],
     ["Insérer et attendre", "Tige mise en place en tournant, excédent essuyé, temps de prise intégralement respecté avant toute charge."]
   ],
-  erreurs: ["Ne pas souffler le trou.", "Charger avant la fin du temps de prise.", "Cheville à expansion en parpaing creux.", "Trop près du bord : la distance au bord conditionne la résistance autant que la profondeur.", "Résine périmée ou stockée hors de sa plage de température."],
-  securite: ["Poussière de perçage : masque, et aspiration si possible.", "Résines : gants nitrile, lunettes, fiche de données de sécurité lue.", "Repérage amiante obligatoire avant travaux sur bâtiment antérieur à 1997."],
-  verifier: "Profondeur d'ancrage, diamètre, distance au bord, entraxe minimal, couple de serrage et charge admissible figurent dans l'avis technique européen de la cheville. Le temps de prise dépend de la température du support et fait l'objet d'un tableau dans la notice. Ces valeurs sont propres à chaque référence.",
+  erreurs: ["Ne pas souffler le trou.", "Charger avant la fin du temps de prise.", "Cheville à expansion en parpaing creux.", "Trop près du bord : la distance au bord conditionne la résistance autant que la profondeur.", "Résine périmée ou stockée hors de sa plage de température.",
+    "Percer au perforateur en mode percussion dans un matériau creux : la percussion fait éclater les cloisons intérieures et le trou perd toute tenue.",
+    "Employer un tamis dans du plein ou l'omettre dans du creux : le tamis est une pièce obligatoire en matériau creux, et un gaspillage inutile ailleurs.",
+    "Réutiliser un trou existant sans le nettoyer ni le rechemiser : l'ancienne résine empêche l'adhérence de la nouvelle."
+  ],
+  securite: ["Poussière de perçage : masque, et aspiration si possible.", "Résines : gants nitrile, lunettes, fiche de données de sécurité lue.", "Repérage amiante obligatoire avant travaux sur bâtiment antérieur à 1997.",
+    "Cartouche entamée : la résine durcit dans la canule, et une canule bouchée qu'on force peut éclater sous la pression du pistolet.",
+    "Travail au-dessus de la tête : les coulures de résine tombent, lunettes de protection fermées obligatoires."
+  ],
+  verifier: "Profondeur d'ancrage, diamètre de perçage, distance au bord, entraxe minimal, couple de serrage et charge admissible figurent dans l'avis technique du fabricant de la cheville, sous forme de tableaux par matériau support. Ce sont les seules valeurs qui engagent, et elles varient d'une marque à l'autre pour un même diamètre apparent : un tableau lu sur une documentation concurrente ne vaut rien. La température du support au moment de la pose, et non la température de l'air, conditionne le temps de prise — un mur nord en février est bien plus froid que l'air ambiant.",
   faq: [
     { q: "Le scellement chimique est-il toujours meilleur ?", a: "Non. Il est supérieur en matériau creux, en béton fissuré et près des bords. En béton plein sain et pour une charge modérée, une cheville mécanique de qualité est plus rapide et immédiatement chargeable." },
-    { q: "Peut-on sceller par temps froid ?", a: "Oui, avec une résine adaptée aux basses températures et en acceptant un temps de prise bien plus long. En dessous de la température minimale indiquée, la résine ne polymérise pas." }
+    { q: "Peut-on sceller par temps froid ?", a: "Oui, avec une résine adaptée aux basses températures et en acceptant un temps de prise bien plus long. En dessous de la température minimale indiquée, la résine ne polymérise pas." },
+    { q: "Combien de temps tient un scellement chimique ?", a: "Toute la vie de l'ouvrage si la pose a été faite dans les règles : trou nettoyé, résine dans sa plage de température, temps de prise respecté, charge conforme au tableau. Ce qui lâche, ce n'est presque jamais la résine — c'est le support qui se dégrade autour, ou un trou qu'on n'avait pas soufflé. C'est pourquoi le nettoyage du trou, qui paraît le geste le plus négligeable, est celui dont dépend le reste." }
   ]
 },
 {
@@ -567,7 +598,7 @@ const POSES = [
   h1: "Poser un totem sur platine, démontable",
   title: "Totem sur Platine — Pose Démontable sur Dalle Existante",
   desc: "Quand la dalle existe, la platine évite la fouille. Vérification de la dalle, chevillage, calage et reprise d'aplomb.",
-  statut: "brouillon", acces: "libre", duree: "4 h", niveau: "Confirmé",
+  statut: "publie", acces: "libre", duree: "4 h", niveau: "Confirmé",
   resume: "Plus rapide qu'un massif coulé, et réversible — mais la dalle doit être capable de reprendre le moment de renversement.",
   quand: "Parking béton existant, local loué où le bail impose la remise en état, dispositif temporaire.",
   materiel: ["Platine et visserie du fabricant", "Chevilles ou scellement selon la dalle", "Perforateur", "Cales de réglage", "Clé dynamométrique", "Niveau"],
@@ -579,12 +610,19 @@ const POSES = [
     ["Serrer au couple", "Serrage croisé progressif, contre-écrous."],
     ["Ragréer", "Mortier sans retrait sous la platine si la notice le prévoit, pour répartir l'appui."]
   ],
-  erreurs: ["Cheviller sur une dalle trop mince.", "Caler avec du bois.", "Serrer d'un côté puis de l'autre au lieu de croiser.", "Percer sans repérer les gaines et réseaux noyés dans la dalle."],
-  securite: ["Levage du mât : élingues vérifiées, personne sous la charge.", "Repérage des réseaux avant perçage de dalle.", "Balisage si la zone reste accessible au public."],
-  verifier: "La capacité d'une dalle à reprendre le moment de renversement d'un totem se calcule. Épaisseur minimale, ferraillage et type d'ancrage font partie de la note de calcul demandée au fabricant ou au bureau d'études.",
+  erreurs: ["Cheviller sur une dalle trop mince.", "Caler avec du bois.", "Serrer d'un côté puis de l'autre au lieu de croiser.", "Percer sans repérer les gaines et réseaux noyés dans la dalle.",
+    "Poser une platine sur un enrobé ou un dallage sur sable : ces revêtements ne reprennent aucun moment de renversement, quel que soit l'ancrage employé.",
+    "Omettre l'étanchéité au pied de la platine : l'eau stagne sous la plaque et corrode les tiges par la base, là où rien ne se voit.",
+    "Négliger le contrôle du serrage après quelques semaines : les tiges se détendent lors des premiers cycles de charge."
+  ],
+  securite: ["Levage du mât : élingues vérifiées, personne sous la charge.", "Repérage des réseaux avant perçage de dalle.", "Balisage si la zone reste accessible au public.",
+    "Platine boulonnée en attente sans mât : les tiges filetées dépassant au sol sont un risque de chute et de blessure, à protéger dès la pose."
+  ],
+  verifier: "La capacité d'une dalle à reprendre le moment de renversement d'un totem se calcule : épaisseur, ferraillage, portance du sol support et type d'ancrage doivent être vérifiés ensemble, et la vérification suppose de connaître la dalle — ce qu'un carottage ou un sondage établit, pas une estimation visuelle. Une dalle de parking courante n'est pas toujours suffisante, et c'est le cas le plus fréquemment rencontré. Le calcul relève du fabricant du totem ou d'un bureau d'études ; aucune valeur générique ne s'y substitue.",
   faq: [
     { q: "Platine ou massif ?", a: "Massif dès que le sol est nu ou que le totem est haut et exposé. Platine quand une dalle apte existe et que la réversibilité est demandée — typiquement un local en location." },
-    { q: "La platine est-elle visible ?", a: "Elle se masque par une jupe ou un capot fourni avec le totem. Prévoir cet accessoire à la commande, pas après." }
+    { q: "La platine est-elle visible ?", a: "Elle se masque par une jupe ou un capot fourni avec le totem. Prévoir cet accessoire à la commande, pas après." },
+    { q: "Peut-on déplacer un totem sur platine ?", a: "C'est justement son intérêt, et la raison de le préférer au massif coulé quand le bail est incertain ou le site provisoire. Le démontage laisse les tiges d'ancrage en place — on les recoupe et on rebouche —, la dalle reste utilisable et le totem se repose ailleurs. À condition d'avoir conservé la platine, son gabarit et la note de calcul : sans eux, la repose redevient une étude complète." }
   ]
 },
 {
@@ -593,7 +631,7 @@ const POSES = [
   h1: "Poser un panneau sur poteaux (pré-enseigne)",
   title: "Poser un Panneau sur Poteaux — Implantation et Scellement",
   desc: "Deux poteaux, un panneau, et une réglementation stricte sur les pré-enseignes. Implantation, scellement, alignement.",
-  statut: "brouillon", acces: "libre", duree: "1 jour", niveau: "Intermédiaire",
+  statut: "publie", acces: "libre", duree: "1 jour", niveau: "Intermédiaire",
   resume: "Techniquement simple, réglementairement délicat : la pré-enseigne hors agglomération est très encadrée.",
   quand: "Signalisation d'activité en périphérie, jalonnement de site, panneau de chantier.",
   materiel: ["Poteaux bois, acier ou alu", "Béton de scellement", "Tarière ou bêche", "Niveau, cordeau", "Visserie inox"],
@@ -605,12 +643,19 @@ const POSES = [
     ["Attendre puis monter le panneau", "Temps de prise respecté avant de charger."],
     ["Fixer le panneau", "Visserie inox, trous légèrement surdimensionnés pour la dilatation."]
   ],
-  erreurs: ["Négliger le régime des pré-enseignes hors agglomération.", "Monter le panneau avant prise du béton.", "Poteaux non alignés : visible de loin.", "Visserie acier zingué : coulures de rouille sur le panneau dès la première année."],
-  securite: ["DT-DICT.", "Travail en bord de voie : balisage, gilet, et arrêté de circulation si nécessaire.", "Levage à deux pour les grands panneaux."],
-  verifier: "Le régime des pré-enseignes est fixé par les articles L.581-7 et R.581-66 et suivants du code de l'environnement, avec des dérogations limitativement énumérées. La profondeur de scellement dépend de la hauteur du panneau et de la prise au vent : note de calcul ou prescription du fabricant.",
+  erreurs: ["Négliger le régime des pré-enseignes hors agglomération.", "Monter le panneau avant prise du béton.", "Poteaux non alignés : visible de loin.", "Visserie acier zingué : coulures de rouille sur le panneau dès la première année.",
+    "Sceller des poteaux bois sans les protéger au niveau du sol : c'est précisément à la ligne de terre que le bois pourrit, pas au-dessus ni en dessous.",
+    "Implanter sur l'accotement sans vérifier la limite du domaine public : le panneau est déposable et le commerçant paye la dépose.",
+    "Fixer le panneau rigidement sur les deux poteaux sans jeu : les poteaux travaillent différemment et le panneau se vrille."
+  ],
+  securite: ["DT-DICT.", "Travail en bord de voie : balisage, gilet, et arrêté de circulation si nécessaire.", "Levage à deux pour les grands panneaux.",
+    "Sur route à grande circulation, l'intervention suppose une signalisation temporaire conforme, pas un simple gilet."
+  ],
+  verifier: "Le régime des pré-enseignes est fixé par les articles L.581-7 et R.581-66 et suivants du code de l'environnement, avec des dérogations limitativement énumérées hors agglomération — et c'est un terrain où l'intuition trompe presque toujours : beaucoup de panneaux visibles le long des routes sont en réalité irréguliers et tolérés jusqu'au jour où ils ne le sont plus. Avant toute implantation hors agglomération, la question se pose au service urbanisme de la commune, et la réponse se garde par écrit.",
   faq: [
     { q: "Peut-on poser une pré-enseigne le long d'une route ?", a: "Hors agglomération, la publicité est en principe interdite et les pré-enseignes ne sont admises que dans des cas limitativement prévus par le code de l'environnement. C'est à vérifier avant de fabriquer, pas après." },
-    { q: "Bois ou acier pour les poteaux ?", a: "Le bois traité classe 4 convient en milieu rural et vieillit bien ; l'acier galvanisé dure plus longtemps mais se voit davantage. Le choix est souvent dicté par l'environnement paysager et par l'avis de l'ABF en site protégé." }
+    { q: "Bois ou acier pour les poteaux ?", a: "Le bois traité classe 4 convient en milieu rural et vieillit bien ; l'acier galvanisé dure plus longtemps mais se voit davantage. Le choix est souvent dicté par l'environnement paysager et par l'avis de l'ABF en site protégé." },
+    { q: "Combien de temps tient un panneau sur poteaux bois ?", a: "Sept à quinze ans selon l'essence, le traitement et l'exposition, et la rupture se produit presque toujours au même endroit : au ras du sol, là où le bois alterne humidité et séchage. Des poteaux en acier galvanisé ou des pieds métalliques scellés qui maintiennent le bois au-dessus du sol allongent considérablement la durée de vie, pour un surcoût faible à l'installation." }
   ]
 },
 {
@@ -619,7 +664,7 @@ const POSES = [
   h1: "Poser une signalétique directionnelle multi-lames",
   title: "Signalétique Directionnelle Multi-Lames — Pose et Ordre",
   desc: "Mât, lames orientables, ordre de lecture et hauteur de pose : monter un jalonnement directionnel qui reste lisible à la distance réelle et qui évolue.",
-  statut: "brouillon", acces: "libre", duree: "4 h", niveau: "Intermédiaire",
+  statut: "publie", acces: "libre", duree: "4 h", niveau: "Intermédiaire",
   resume: "La difficulté n'est pas mécanique mais logique : l'ordre des lames et leur orientation décident si le visiteur trouve ou tourne en rond.",
   quand: "Zone d'activité, hôpital, campus, site touristique, parc d'entreprises.",
   materiel: ["Mât et colliers de lames", "Lames", "Béton ou platine", "Boussole ou plan orienté", "Niveau", "Clé dynamométrique"],
@@ -630,12 +675,19 @@ const POSES = [
     ["Orienter", "Chaque lame pointe la direction réelle, pas approximative."],
     ["Contrôler à hauteur d'œil", "Se placer en position de conducteur ou de piéton et vérifier la lisibilité réelle, à la distance réelle."]
   ],
-  erreurs: ["Orienter au jugé.", "Mélanger les conventions d'ordre d'un mât à l'autre.", "Lames trop nombreuses : au-delà de cinq ou six, plus personne ne lit.", "Hauteur inadaptée au mode de déplacement visé."],
-  securite: ["Travail en bord de voie de circulation : balisage.", "Levage du mât.", "DT-DICT si scellement."],
-  verifier: "La hauteur de pose, la taille de caractère et les distances de lecture relèvent des règles d'accessibilité lorsque le site reçoit du public, et de la charte de jalonnement du gestionnaire lorsqu'il en existe une.",
+  erreurs: ["Orienter au jugé.", "Mélanger les conventions d'ordre d'un mât à l'autre.", "Lames trop nombreuses : au-delà de cinq ou six, plus personne ne lit.", "Hauteur inadaptée au mode de déplacement visé.",
+    "Écrire des destinations trop longues : au-delà de deux ou trois mots, la lame devient illisible à la vitesse où on la lit.",
+    "Poser le mât trop près du carrefour : l'automobiliste lit après avoir dû choisir.",
+    "Employer des lames de teintes différentes sans logique : la couleur doit porter une information, ou ne rien porter du tout."
+  ],
+  securite: ["Travail en bord de voie de circulation : balisage.", "Levage du mât.", "DT-DICT si scellement.",
+    "Mât en bord de voie : sa position doit tenir compte du risque de heurt, et un mât rigide implanté en zone de récupération est un danger en soi."
+  ],
+  verifier: "La hauteur de pose, la taille de caractère et les distances de lecture relèvent des règles d'accessibilité lorsque le site reçoit du public, et ces règles sont précises : hauteur de caractère rapportée à la distance de lecture, contraste minimal entre le texte et son fond, absence de reflet. Elles se lisent dans l'arrêté du 20 avril 2017 relatif à l'accessibilité des établissements recevant du public. Sur le domaine public routier, le jalonnement obéit en outre à l'instruction interministérielle sur la signalisation routière, qui n'admet pas n'importe quelle forme ni n'importe quelle couleur.",
   faq: [
     { q: "Combien de lames au maximum ?", a: "En pratique, au-delà de cinq ou six lames un mât devient illisible à la vitesse de passage. Mieux vaut deux mâts successifs qu'un mât surchargé." },
-    { q: "Le jalonnement est-il soumis à autorisation ?", a: "Sur domaine privé, il relève de la signalétique et non de la publicité. Sur domaine public, il relève du gestionnaire de voirie et suit sa charte : c'est lui qu'il faut consulter." }
+    { q: "Le jalonnement est-il soumis à autorisation ?", a: "Sur domaine privé, il relève de la signalétique et non de la publicité. Sur domaine public, il relève du gestionnaire de voirie et suit sa charte : c'est lui qu'il faut consulter." },
+    { q: "Quelle hauteur de caractère faut-il ?", a: "Elle se déduit de la distance à laquelle on doit lire, et c'est le seul raisonnement qui vaille. Un piéton qui lit à deux mètres n'a pas les mêmes besoins qu'un automobiliste qui lit à trente. La règle d'accessibilité applicable aux établissements recevant du public fixe des minima selon cette distance : ils figurent dans l'arrêté du 20 avril 2017 et ce sont eux qui font foi, pas l'aspect de la maquette à l'écran." }
   ]
 }
 ,
@@ -679,7 +731,7 @@ const POSES = [
   h1: "Poser un panneau PVC ou Forex en intérieur",
   title: "Poser un Panneau PVC Expansé — Collage ou Fixation",
   desc: "Léger, peu coûteux, mais sensible à la chaleur et au fluage. Collage, fixation, et les limites du PVC expansé.",
-  statut: "brouillon", acces: "libre", duree: "1 h", niveau: "Débutant",
+  statut: "publie", acces: "libre", duree: "1 h", niveau: "Débutant",
   resume: "Le PVC expansé est le support d'intérieur le plus courant. Léger et bon marché, il flue sous son propre poids en grand format et se déforme à la chaleur.",
   quand: "Signalétique intérieure, panneau d'information, PLV, habillage temporaire.",
   materiel: ["Panneau PVC expansé", "Adhésif double face haute performance ou vis à tête large", "Niveau", "Chiffon et alcool", "Cutter à lame longue"],
@@ -690,12 +742,18 @@ const POSES = [
     ["Positionner et presser", "Le double face haute performance ne se repositionne pas : on vise juste du premier coup."],
     ["En fixation mécanique", "Trous surdimensionnés dans le panneau, rondelles larges, serrage doux."]
   ],
-  erreurs: ["Coller sur peinture récente.", "Grand format collé uniquement : il se décolle par fluage.", "Poser du PVC devant une source de chaleur ou en vitrine plein sud : il se déforme.", "Serrer fort une vis dans du PVC expansé : elle traverse."],
-  securite: ["Cutter à lame longue : coupe en plusieurs passes, jamais en forçant.", "Découpe : le PVC expansé produit une poussière fine."],
-  verifier: "La tenue d'un adhésif double face dépend du support, de la surface de contact et de la température ; les valeurs sont dans la fiche technique. La température maximale d'utilisation du panneau y figure également.",
+  erreurs: ["Coller sur peinture récente.", "Grand format collé uniquement : il se décolle par fluage.", "Poser du PVC devant une source de chaleur ou en vitrine plein sud : il se déforme.", "Serrer fort une vis dans du PVC expansé : elle traverse.",
+    "Stocker les panneaux à plat contre un mur chaud avant la pose : ils prennent une déformation que la fixation ne rattrape pas.",
+    "Coller un panneau sur un revêtement mural texturé : la surface de contact réelle est une fraction de la surface apparente."
+  ],
+  securite: ["Cutter à lame longue : coupe en plusieurs passes, jamais en forçant.", "Découpe : le PVC expansé produit une poussière fine.",
+    "Chutes de PVC expansé : légères et coupantes sur les chants, à ramasser avant qu'elles ne se dispersent."
+  ],
+  verifier: "La tenue d'un adhésif double face dépend du support, de la surface de contact et de la température ; les valeurs figurent sur la fiche technique du ruban, et elles supposent un support propre, sec et non poreux. Deux points qui décident du résultat : la classification au feu exigée dans un établissement recevant du public, que le PVC expansé courant ne satisfait pas toujours, et le comportement du panneau en température — un PVC posé devant une baie plein sud ou au-dessus d'un radiateur se déforme quelle que soit la qualité de la fixation.",
   faq: [
     { q: "PVC ou Dibond ?", a: "PVC en intérieur, à plat, sur des formats modestes et pour un budget serré. Dibond dès qu'il y a de l'extérieur, du grand format ou une exigence de tenue dans le temps." },
-    { q: "Le PVC expansé convient-il en extérieur ?", a: "Il existe des qualités extérieures, mais il reste sensible aux écarts thermiques et jaunit. Pour une pose durable en façade, l'aluminium composite est le bon choix." }
+    { q: "Le PVC expansé convient-il en extérieur ?", a: "Il existe des qualités extérieures, mais il reste sensible aux écarts thermiques et jaunit. Pour une pose durable en façade, l'aluminium composite est le bon choix." },
+    { q: "Le PVC expansé convient-il dans un établissement recevant du public ?", a: "Pas automatiquement, et c'est un point qu'on découvre rarement au bon moment. Les aménagements intérieurs d'un ERP répondent à des exigences de réaction au feu, et tous les PVC expansés ne portent pas le classement nécessaire. La fiche technique du panneau mentionne son classement : s'il n'y figure pas, c'est qu'il n'en a pas. Demandez-le au fournisseur avant de commander, pas après la pose." }
   ]
 },
 {
@@ -704,7 +762,7 @@ const POSES = [
   h1: "Poser une plaque de plexiglas sur entretoises",
   title: "Poser du Plexiglas sur Entretoises — Perçage et Jeu",
   desc: "Le PMMA se fissure si on le contraint. Perçage, jeu de dilatation, entretoises et produits à ne jamais approcher.",
-  statut: "brouillon", acces: "libre", duree: "1 h 30", niveau: "Intermédiaire",
+  statut: "publie", acces: "libre", duree: "1 h 30", niveau: "Intermédiaire",
   resume: "Le plexiglas se dilate beaucoup et casse net si on le serre. Toute la pose consiste à ne jamais le contraindre.",
   quand: "Plaque professionnelle, signalétique de bureau, plaque de porte haut de gamme.",
   materiel: ["Plaque PMMA", "Entretoises inox", "Forets adaptés au plastique", "Niveau", "Gabarit de perçage"],
@@ -715,12 +773,18 @@ const POSES = [
     ["Présenter la plaque", "Sans forcer. Si elle ne vient pas seule, c'est que le perçage est décalé : on reprend, on ne force pas."],
     ["Serrer doucement", "Juste le contact. Un serrage appuyé fissure le PMMA à terme, en étoile autour du trou."]
   ],
-  erreurs: ["Percer au diamètre de la vis.", "Serrer fort.", "Forcer pour faire entrer la plaque.", "Nettoyer à l'alcool ménager, à l'acétone ou au white-spirit : le PMMA se fissure (fissuration sous contrainte)."],
-  securite: ["Perçage : lunettes, la plaque peut éclater.", "Chants coupants après découpe."],
-  verifier: "Le jeu de perçage à prévoir et les produits de nettoyage compatibles sont indiqués par le fabricant de la plaque. Le PMMA est sensible à un grand nombre de solvants courants : la liste des incompatibilités se lit avant, pas après.",
+  erreurs: ["Percer au diamètre de la vis.", "Serrer fort.", "Forcer pour faire entrer la plaque.", "Nettoyer à l'alcool ménager, à l'acétone ou au white-spirit : le PMMA se fissure (fissuration sous contrainte).",
+    "Retirer les films de protection avant la pose : le PMMA se raye au moindre contact, et les films sont là pour ça jusqu'au dernier geste.",
+    "Poser une grande plaque avec des entretoises aux seuls quatre angles : elle prend du ventre au centre, et le défaut s'accentue avec la chaleur."
+  ],
+  securite: ["Perçage : lunettes, la plaque peut éclater.", "Chants coupants après découpe.",
+    "Plaque de grand format manipulée seule : le PMMA casse net sous son propre poids s'il fléchit trop, et les éclats sont coupants."
+  ],
+  verifier: "Le jeu de perçage à prévoir et les produits de nettoyage compatibles sont indiqués par le fabricant de la plaque. Le PMMA est sensible à la fissuration sous contrainte : un perçage trop juste, un serrage excessif ou un solvant inadapté provoquent des microfissures qui apparaissent des semaines plus tard, en étoile autour des vis. C'est la panne caractéristique de ce matériau, et elle est toujours imputée à la pose. Le coefficient de dilatation du PMMA est par ailleurs élevé : une plaque d'un mètre bouge de façon mesurable entre l'hiver et l'été, et le perçage doit le permettre.",
   faq: [
     { q: "Comment nettoyer du plexiglas ?", a: "Eau tiède savonneuse et chiffon microfibre doux. Jamais d'alcool, d'acétone, de white-spirit ni de nettoyant vitres ammoniaqué : ils provoquent une fissuration en réseau, irréversible." },
-    { q: "Plexiglas ou verre pour une plaque professionnelle ?", a: "Le PMMA est plus léger, incassable à l'usage courant et moins cher. Le verre ne raye pas et vieillit mieux, mais il pèse et casse. Pour une plaque de porte, le PMMA domine largement." }
+    { q: "Plexiglas ou verre pour une plaque professionnelle ?", a: "Le PMMA est plus léger, incassable à l'usage courant et moins cher. Le verre ne raye pas et vieillit mieux, mais il pèse et casse. Pour une plaque de porte, le PMMA domine largement." },
+    { q: "Plexiglas ou polycarbonate ?", a: "Le PMMA, dit plexiglas, est plus dur, plus transparent et ne jaunit pas : c'est le bon choix en intérieur et pour tout ce qui doit rester net. Le polycarbonate est beaucoup plus résistant aux chocs mais se raye plus facilement et jaunit aux ultraviolets s'il n'est pas traité. En extérieur exposé ou dans un lieu où l'on redoute le vandalisme, le polycarbonate traité l'emporte ; partout ailleurs, le PMMA." }
   ]
 },
 {
@@ -729,7 +793,7 @@ const POSES = [
   h1: "Poser une bâche ou une banderole sous tension",
   title: "Poser une Bâche Publicitaire — Tension et Prise au Vent",
   desc: "Œillets, tendeurs, filets de vent et fixation. Poser une bâche qui ne claque pas et ne s'arrache pas au premier coup de vent.",
-  statut: "brouillon", acces: "libre", duree: "2 h", niveau: "Intermédiaire",
+  statut: "publie", acces: "libre", duree: "2 h", niveau: "Intermédiaire",
   resume: "Une bâche est une voile. Mal tendue elle claque, se déchire et arrache ses fixations — et sur échafaudage, la réglementation s'en mêle.",
   quand: "Bâche de chantier, banderole événementielle, habillage de grille, façade en rénovation.",
   materiel: ["Bâche ourlée et œilletée", "Tendeurs élastiques ou colliers", "Cordage", "Échelle ou nacelle", "Gants"],
@@ -740,12 +804,18 @@ const POSES = [
     ["Utiliser des tendeurs élastiques", "Ils absorbent les rafales, là où un cordage rigide transmet tout l'effort aux œillets."],
     ["Contrôler après quelques jours", "La bâche se détend : une reprise de tension est presque toujours nécessaire."]
   ],
-  erreurs: ["Tendre par les angles uniquement.", "Cordage rigide sans élasticité.", "Bâche pleine sur grande surface sans filets de vent : la prise au vent devient considérable.", "Négliger la reprise de tension."],
-  securite: ["Travail en hauteur.", "Vent : ne jamais poser une grande bâche par vent soutenu, elle devient incontrôlable.", "Sur échafaudage : la charge de vent supplémentaire doit être prise en compte par le monteur de l'échafaudage."],
-  verifier: "La publicité sur bâche de chantier est encadrée par les articles R.581-53 et suivants du code de l'environnement : saillie limitée, durée liée à celle du chantier, part maximale de la surface consacrée à la publicité, et exclusion dans les agglomérations de moins de 10 000 habitants. Ces conditions se vérifient avant de vendre.",
+  erreurs: ["Tendre par les angles uniquement.", "Cordage rigide sans élasticité.", "Bâche pleine sur grande surface sans filets de vent : la prise au vent devient considérable.", "Négliger la reprise de tension.",
+    "Poser une bâche neuve sans reprendre la tension quelques jours après : toutes les bâches se détendent lors des premiers cycles.",
+    "Fixer dans les œillets sans anneau intermédiaire : l'œillet s'ovalise puis arrache le renfort."
+  ],
+  securite: ["Travail en hauteur.", "Vent : ne jamais poser une grande bâche par vent soutenu, elle devient incontrôlable.", "Sur échafaudage : la charge de vent supplémentaire doit être prise en compte par le monteur de l'échafaudage.",
+    "Dépose par vent : une bâche que l'on détache d'un côté devient immédiatement incontrôlable. La dépose se fait dans le même ordre de précaution que la pose."
+  ],
+  verifier: "La publicité sur bâche de chantier est encadrée par les articles R.581-53 et suivants du code de l'environnement : la surface consacrée à la publicité ne peut excéder une proportion de la surface totale de la bâche, et le dispositif est soumis à autorisation. Ces règles sont strictes et contrôlées, la bâche de chantier étant un support très surveillé. Le dimensionnement des points d'accroche relève, lui, du calcul au vent : une bâche pleine de grande surface développe des efforts considérables, et le support — échafaudage, façade, structure — doit être vérifié pour les reprendre.",
   faq: [
     { q: "Faut-il des filets de vent ?", a: "Sur grande surface exposée, oui : une bâche pleine reçoit tout l'effort du vent. Les découpes en croissant réduisent cet effort. Le fabricant indique à partir de quelle surface les prévoir." },
-    { q: "Une bâche de chantier peut-elle porter de la publicité ?", a: "Oui, sous conditions strictes fixées par le code de l'environnement, et elles ne sont pas admises dans les agglomérations de moins de 10 000 habitants. La page ville du réseau indique la population de chaque commune couverte." }
+    { q: "Une bâche de chantier peut-elle porter de la publicité ?", a: "Oui, sous conditions strictes fixées par le code de l'environnement, et elles ne sont pas admises dans les agglomérations de moins de 10 000 habitants. La page ville du réseau indique la population de chaque commune couverte." },
+    { q: "Combien de temps une bâche tendue reste-t-elle belle ?", a: "Un à trois ans selon le grammage, l'exposition et surtout la qualité de la tension. Une bâche correctement tendue et reprise vieillit lentement ; une bâche qui claque au vent s'use aux œillets en quelques mois et finit par se déchirer d'un bord à l'autre. Sur une pose destinée à durer, le choix du grammage et des renforts périphériques pèse davantage que celui de l'impression." }
   ]
 }
 ,
@@ -756,7 +826,7 @@ const POSES = [
   h1: "Réaliser le covering partiel d'un utilitaire",
   title: "Covering Partiel d'Utilitaire — Méthode et Préparation",
   desc: "Préparation de la carrosserie, pose par panneaux, gestion des nervures et des joints. Le covering partiel expliqué geste par geste.",
-  statut: "brouillon", acces: "libre", duree: "1 jour", niveau: "Confirmé",
+  statut: "publie", acces: "libre", duree: "1 jour", niveau: "Confirmé",
   resume: "Le covering partiel habille les flancs et les portes sans démonter. Tout se joue à la préparation : un covering échoue presque toujours à cause d'un dégraissage insuffisant.",
   quand: "Flotte d'artisan, utilitaire de société, véhicule en leasing à restituer intact.",
   materiel: ["Film covering coulé", "Raclette à feutre", "Décapeur thermique", "Alcool isopropylique et dégraissant carrosserie", "Cutter à lame fine et ruban de découpe", "Aimants de maintien", "Local hors poussière, tempéré"],
@@ -775,13 +845,19 @@ const POSES = [
     "Étirer le film sur les surfaces planes : il se rétracte en quelques semaines et laisse un bord blanc.",
     "Pont sur un creux : le film se décolle du fond dans les jours qui suivent.",
     "Couper au cutter directement sur la carrosserie : rayure irréparable et litige garanti.",
-    "Poser sur une peinture refaite depuis moins de quelques semaines : les solvants continuent de s'évaporer."
+    "Poser sur une peinture refaite depuis moins de quelques semaines : les solvants continuent de s'évaporer.",
+    "Poser sur un véhicule sorti du lavage sans laisser sécher les joints : l'eau retenue dans les jointures ressort sous le film pendant plusieurs jours.",
+    "Franchir une ouverture — capot, porte, hayon — d'un seul tenant : le film casse à la première ouverture. Chaque élément mobile se traite séparément.",
+    "Négliger le post-chauffage dans les creux et sur les bords : sans lui, le film garde sa mémoire de forme et revient à plat en quelques semaines."
   ],
-  securite: ["Décapeur thermique : gants, jamais dirigé vers un réservoir ou une durite.", "Solvants : ventilation et gants nitrile.", "Lames : gants anti-coupure."],
-  verifier: "Plage de température d'application, température de post-chauffage et délai après réfection de peinture sont propres à chaque film et figurent sur sa fiche technique.",
+  securite: ["Décapeur thermique : gants, jamais dirigé vers un réservoir ou une durite.", "Solvants : ventilation et gants nitrile.", "Lames : gants anti-coupure.",
+    "Véhicule immobilisé et calé pendant l'intervention : un utilitaire sur un sol en pente qui bouge au moment où l'on travaille contre la carrosserie est un accident classique."
+  ],
+  verifier: "Plage de température d'application, température de post-chauffage et délai après réfection de peinture sont propres à chaque référence de film et figurent sur sa fiche technique. Un point mérite d'être tranché avec le client avant de commencer : l'état de la carrosserie. Sur une peinture déjà écaillée, oxydée ou reprise localement, le film n'adhère pas durablement et sa dépose emportera ce qui tenait encore. Un constat contradictoire avec photos, fait avant la pose, évite le litige qui suivra.",
   faq: [
     { q: "Combien de temps tient un covering ?", a: "Le fabricant annonce une durabilité pour le film, mais elle suppose une pose correcte et un entretien adapté. Un véhicule lavé au rouleau haute pression tous les quinze jours vieillit bien plus vite." },
-    { q: "Le covering abîme-t-il la peinture ?", a: "Sur une peinture d'origine en bon état, non : il la protège même des micro-rayures. Sur une peinture refaite ou déjà écaillée, la dépose peut arracher. Cela se dit au client avant, et se note sur le devis." }
+    { q: "Le covering abîme-t-il la peinture ?", a: "Sur une peinture d'origine en bon état, non : il la protège même des micro-rayures. Sur une peinture refaite ou déjà écaillée, la dépose peut arracher. Cela se dit au client avant, et se note sur le devis." },
+    { q: "Faut-il déclarer un covering publicitaire à l'assurance ?", a: "Le changement d'aspect d'un véhicule se signale à l'assureur, et l'omission peut être opposée en cas de sinistre. La déclaration est par ailleurs obligatoire auprès du service des immatriculations lorsque la couleur dominante change, ce qui est le cas d'un covering total. Pour un marquage partiel qui laisse la teinte d'origine dominante, la question ne se pose pas dans les mêmes termes — mais un mot à l'assureur reste la prudence élémentaire." }
   ]
 },
 {
@@ -790,7 +866,7 @@ const POSES = [
   h1: "Poser un lettrage adhésif sur un véhicule",
   title: "Lettrage de Véhicule — Alignement sur Carrosserie Courbe",
   desc: "Aligner un lettrage sur une carrosserie qui n'a aucune ligne droite : repères visuels, papier de transfert, courbes et nervures, et le post-chauffage des bords.",
-  statut: "brouillon", acces: "libre", duree: "3 h", niveau: "Intermédiaire",
+  statut: "publie", acces: "libre", duree: "3 h", niveau: "Intermédiaire",
   resume: "La difficulté n'est pas de coller mais d'aligner : une carrosserie n'a ni horizontale ni verticale fiables. C'est l'œil, à distance, qui tranche.",
   quand: "Artisan, taxi, véhicule de société, flotte légère.",
   materiel: ["Lettrage découpé et papier de transfert", "Ruban de masquage", "Raclette à feutre", "Dégraissant", "Décapeur thermique"],
@@ -803,12 +879,19 @@ const POSES = [
     ["Retirer le transfert à angle fermé", "Presque parallèlement à la carrosserie."],
     ["Post-chauffer les bords", "Selon la fiche technique du film."]
   ],
-  erreurs: ["Aligner à la règle au lieu de l'œil : le résultat paraît de travers.", "Poser à cheval sur une nervure sans maroufler au fond.", "Retirer le transfert trop vite ou à 90°.", "Poser sur véhicule mouillé ou froid."],
-  securite: ["Décapeur thermique.", "Travail accroupi prolongé : prévoir un tapis."],
-  verifier: "Température minimale d'application et nécessité de post-chauffage : fiche technique du film.",
+  erreurs: ["Aligner à la règle au lieu de l'œil : le résultat paraît de travers.", "Poser à cheval sur une nervure sans maroufler au fond.", "Retirer le transfert trop vite ou à 90°.", "Poser sur véhicule mouillé ou froid.",
+    "Poser sur une surface exposée au soleil : la tôle est bien plus chaude que l'air, et la colle prend avant d'avoir pu marouffler.",
+    "Ignorer le sens de lecture sur un véhicule à deux côtés : le lettrage se conçoit symétrique, pas dupliqué.",
+    "Poser à cheval sur un joint de porte : la lettre se déchire dès la première ouverture."
+  ],
+  securite: ["Décapeur thermique.", "Travail accroupi prolongé : prévoir un tapis.",
+    "Cutter à proximité de la carrosserie : jamais de coupe directement sur la tôle, la rayure est définitive et se règle en litige."
+  ],
+  verifier: "Température minimale d'application et nécessité d'un post-chauffage figurent sur la fiche technique du film, et elles se rapportent à la température du support, pas à celle de l'air. Un point à vérifier avant la commande : la durabilité attendue du vinyle en usage véhicule, très différente de celle d'un usage vitrine. Un véhicule lavé au rouleau, exposé en permanence et soumis aux projections use un lettrage bien plus vite qu'une vitrine, et la gamme choisie doit en tenir compte.",
   faq: [
     { q: "Faut-il mouiller pour poser sur un véhicule ?", a: "Non, la pose se fait à sec dans l'immense majorité des cas. L'eau resterait piégée dans les nervures et les joints, et empêcherait la prise de la colle." },
-    { q: "Combien de temps avant de laver le véhicule ?", a: "Le fabricant indique un délai avant premier lavage, le temps que l'adhésif atteigne son adhérence finale. Le respecter évite de décoller les bords." }
+    { q: "Combien de temps avant de laver le véhicule ?", a: "Le fabricant indique un délai avant premier lavage, le temps que l'adhésif atteigne son adhérence finale. Le respecter évite de décoller les bords." },
+    { q: "Le lettrage résiste-t-il au lavage automatique ?", a: "Il le supporte, mais il en souffre. Les rouleaux attaquent les bords et les angles, qui sont les points de départ de tout décollement, et les produits alcalins employés en station accélèrent le vieillissement des encres. Un véhicule marqué se lave idéalement au jet à distance raisonnable et à la main sur les zones lettrées. Prévenez le client : c'est la première cause d'usure prématurée, et il l'ignore presque toujours." }
   ]
 },
 {
@@ -851,7 +934,7 @@ const POSES = [
   h1: "Déposer un covering sans abîmer la peinture",
   title: "Retirer un Covering — Méthode Sans Arrachement",
   desc: "Chaleur, angle de traction, résidus de colle. Déposer un covering de plusieurs années sans emporter la peinture.",
-  statut: "brouillon", acces: "libre", duree: "1 jour", niveau: "Intermédiaire",
+  statut: "publie", acces: "libre", duree: "1 jour", niveau: "Intermédiaire",
   resume: "Le risque n'est pas le film mais la peinture en dessous. Sur une carrosserie repeinte ou déjà fragilisée, la dépose peut arracher.",
   quand: "Fin de leasing, changement d'identité visuelle, revente du véhicule.",
   materiel: ["Décapeur thermique", "Dissolvant de colle compatible carrosserie", "Chiffons microfibre", "Gomme à décaper (roue en caoutchouc)", "Polish de finition"],
@@ -862,12 +945,19 @@ const POSES = [
     ["Traiter les résidus", "Dissolvant compatible, temps de pose respecté, ou gomme à décaper à faible vitesse."],
     ["Laver et lustrer", "Lavage complet puis polish léger pour homogénéiser l'aspect — la zone couverte a moins vieilli que le reste."]
   ],
-  erreurs: ["Tirer à 90° : le film casse en confettis et la dépose prend trois fois plus de temps.", "Surchauffer : la peinture peut cloquer.", "Gomme à décaper trop vite ou appuyée : elle brûle le vernis.", "Dissolvant non compatible avec le vernis : voilage définitif."],
-  securite: ["Décapeur thermique : jamais vers un réservoir ni une durite.", "Solvants : ventilation, gants nitrile, fiche de données de sécurité."],
-  verifier: "La compatibilité du dissolvant avec les vernis automobiles est indiquée sur sa fiche technique. Tester systématiquement sur une zone non visible.",
+  erreurs: ["Tirer à 90° : le film casse en confettis et la dépose prend trois fois plus de temps.", "Surchauffer : la peinture peut cloquer.", "Gomme à décaper trop vite ou appuyée : elle brûle le vernis.", "Dissolvant non compatible avec le vernis : voilage définitif.",
+    "Déposer un film resté en place bien au-delà de sa durée annoncée : la colle a durci et migré, et la dépose emporte parfois le vernis.",
+    "Travailler sur un véhicule froid : en dessous d'une dizaine de degrés, le film casse au lieu de s'étirer, quelle que soit la chaleur appliquée localement.",
+    "Négliger le lustrage final : la carrosserie découvre un contraste net entre les zones couvertes et les zones exposées, et le client l'attribue à la dépose."
+  ],
+  securite: ["Décapeur thermique : jamais vers un réservoir ni une durite.", "Solvants : ventilation, gants nitrile, fiche de données de sécurité.",
+    "Poste dégagé et extincteur accessible : chaleur, solvants et chutes de film forment une combinaison inflammable."
+  ],
+  verifier: "La compatibilité du dissolvant avec les vernis automobiles est indiquée sur sa fiche technique, et l'essai sur une zone cachée reste obligatoire quoi qu'elle annonce — les vernis varient d'un constructeur et d'une année à l'autre. Un constat préalable est tout aussi important : une carrosserie repeinte, un vernis déjà microfissuré ou un élément en plastique peint ne réagissent pas comme une peinture d'origine. Photographier l'état avant dépose protège les deux parties.",
   faq: [
     { q: "Combien de temps pour déposer un covering complet ?", a: "Très variable selon l'âge et l'exposition : un film de deux ans se retire en quelques heures, un film de sept ans plein sud peut demander plusieurs jours. Facturer en régie." },
-    { q: "La peinture sera-t-elle comme avant ?", a: "Sur peinture d'origine saine, oui, souvent mieux préservée que le reste de la carrosserie. Sur peinture refaite, le risque d'arrachement existe et doit être annoncé et écrit avant intervention." }
+    { q: "La peinture sera-t-elle comme avant ?", a: "Sur peinture d'origine saine, oui, souvent mieux préservée que le reste de la carrosserie. Sur peinture refaite, le risque d'arrachement existe et doit être annoncé et écrit avant intervention." },
+    { q: "Combien coûte une dépose de covering ?", a: "Souvent plus cher que la pose, et c'est ce qui surprend. Un film récent et bien posé se retire en quelques heures ; un covering resté sept ou huit ans au soleil peut demander deux à trois fois le temps de pose, plus les produits et le lustrage. Le devis de dépose s'établit après avoir vu le véhicule, jamais par téléphone — l'âge du film et son exposition changent tout." }
   ]
 },
 
@@ -878,7 +968,7 @@ const POSES = [
   h1: "Poser une plaque de signalétique de porte",
   title: "Poser une Plaque de Porte — Hauteur et Fixation",
   desc: "Hauteur de pose, fixation sans percer, et la méthode du gabarit pour aligner une série de plaques sur un couloir entier sans décalage visible.",
-  statut: "brouillon", acces: "libre", duree: "30 min", niveau: "Débutant",
+  statut: "publie", acces: "libre", duree: "30 min", niveau: "Débutant",
   resume: "Simple en apparence, mais une série de plaques mal alignées sur un couloir se remarque immédiatement.",
   quand: "Bureaux, cabinet médical, hôtel, établissement recevant du public.",
   materiel: ["Plaques", "Adhésif double face ou vis", "Niveau laser", "Gabarit de hauteur", "Alcool"],
@@ -889,12 +979,19 @@ const POSES = [
     ["Poser au gabarit", "Le gabarit garantit l'alignement d'un bout à l'autre du couloir, là où le laser se déplace et dérive."],
     ["Contrôler en enfilade", "Se placer en bout de couloir : les défauts d'alignement sautent aux yeux depuis cet angle et seulement celui-là."]
   ],
-  erreurs: ["Mesurer chaque plaque indépendamment au lieu d'utiliser un gabarit.", "Poser sur peinture fraîche.", "Poser côté charnière : la plaque disparaît porte ouverte.", "Hauteur variable d'un étage à l'autre."],
-  securite: ["Rien de particulier hors perçage."],
-  verifier: "Dans un établissement recevant du public, la hauteur de pose, le contraste visuel et la taille de caractère relèvent des règles d'accessibilité. Les valeurs applicables figurent dans l'arrêté relatif à l'accessibilité des ERP en vigueur.",
+  erreurs: ["Mesurer chaque plaque indépendamment au lieu d'utiliser un gabarit.", "Poser sur peinture fraîche.", "Poser côté charnière : la plaque disparaît porte ouverte.", "Hauteur variable d'un étage à l'autre.",
+    "Poser sur une porte vitrée sans tenir compte de ce qu'on voit au travers : le texte devient illisible sur un fond mouvant.",
+    "Employer un double face sur un mur peint récemment repeint ou sur un revêtement poreux : la plaque tombe, en emportant la peinture.",
+    "Multiplier les formats et les matières d'un étage à l'autre : une signalétique cohérente se reconnaît sans être lue."
+  ],
+  securite: ["Rien de particulier hors perçage.",
+    "Perçage dans une cloison : repérer les gaines électriques, qui passent souvent à hauteur d'interrupteur, donc à hauteur de plaque."
+  ],
+  verifier: "Dans un établissement recevant du public, la hauteur de pose, le contraste visuel et la taille de caractère relèvent des règles d'accessibilité fixées par l'arrêté du 20 avril 2017. Ce sont des valeurs réglementaires, pas des recommandations esthétiques, et un contrôle les vérifie. Un point que l'on découvre souvent tard : la plaque se pose sur le mur du côté de la poignée, à distance de l'ouvrant, précisément pour rester lisible et atteignable porte ouverte — ce qui suppose d'avoir prévu la place lors du choix du format.",
   faq: [
     { q: "À quelle hauteur pose-t-on une plaque de porte ?", a: "En ERP, la hauteur et le contraste sont encadrés par la réglementation accessibilité. Hors ERP, l'usage se situe à hauteur de regard, et la règle d'or reste l'uniformité sur tout le bâtiment." },
-    { q: "Double face ou vis ?", a: "Double face sur mur lisse et sain, pour ne pas percer en location. Vis dès que le mur est irrégulier, la plaque lourde, ou le passage intensif." }
+    { q: "Double face ou vis ?", a: "Double face sur mur lisse et sain, pour ne pas percer en location. Vis dès que le mur est irrégulier, la plaque lourde, ou le passage intensif." },
+    { q: "Faut-il la même plaque pour tous les locaux ?", a: "Le format et la matière, oui — c'est la cohérence qui fait qu'une signalétique se lit sans effort. Le contenu, non : une porte de bureau, un local technique et une issue de secours n'appellent ni les mêmes mentions ni les mêmes obligations. Les locaux recevant du public et les issues relèvent en outre de règles propres, qui priment sur la charte graphique." }
   ]
 },
 {
@@ -903,7 +1000,7 @@ const POSES = [
   h1: "Poser une signalétique braille et en relief",
   title: "Signalétique Braille et Relief — Pose et Conformité",
   desc: "Hauteur, emplacement atteignable, sens de lecture. La signalétique tactile obéit à des règles précises, pas à l'esthétique.",
-  statut: "brouillon", acces: "libre", duree: "45 min", niveau: "Intermédiaire",
+  statut: "publie", acces: "libre", duree: "45 min", niveau: "Intermédiaire",
   resume: "Une signalétique braille posée trop haut ou hors d'atteinte ne sert à rien. L'emplacement est ici une obligation, pas un choix de décorateur.",
   quand: "Établissement recevant du public, ascenseur, sanitaires, numérotation de chambres, mairie.",
   materiel: ["Plaques braille et relief", "Double face ou vis inox", "Gabarit de hauteur", "Alcool"],
@@ -914,12 +1011,19 @@ const POSES = [
     ["Vérifier le sens et l'intégrité", "Le braille se lit de gauche à droite ; contrôler qu'aucun point n'est écrasé par le marouflage."],
     ["Contrôler le contraste", "Le relief doit aussi être visible : le contraste entre la plaque et son support est réglementé."]
   ],
-  erreurs: ["Poser sur la porte : elle bouge, la lecture devient impossible.", "Poser trop haut ou derrière un obstacle.", "Écraser les points braille en marouflant.", "Contraste insuffisant avec le mur."],
-  securite: ["Rien de particulier."],
-  verifier: "Les caractéristiques dimensionnelles du braille et du relief, la hauteur de pose et le contraste requis sont définis par la réglementation accessibilité applicable aux ERP. Se reporter à l'arrêté en vigueur et, en cas de doute, à la commission d'accessibilité.",
+  erreurs: ["Poser sur la porte : elle bouge, la lecture devient impossible.", "Poser trop haut ou derrière un obstacle.", "Écraser les points braille en marouflant.", "Contraste insuffisant avec le mur.",
+    "Poser une plaque braille derrière une plante, un extincteur ou un mobilier : elle doit être atteignable à la main, pas seulement visible.",
+    "Choisir un relief trop peu marqué pour des raisons esthétiques : un relief que le doigt ne distingue pas ne sert à rien.",
+    "Poser à une hauteur différente d'un local à l'autre : une personne aveugle cherche à hauteur constante, c'est la régularité qui rend le dispositif utilisable."
+  ],
+  securite: ["Rien de particulier.",
+    "Plaque en saillie sur un cheminement : elle ne doit pas constituer elle-même un obstacle au sens des règles d'accessibilité."
+  ],
+  verifier: "Les caractéristiques dimensionnelles du braille et du relief, la hauteur de pose et le contraste requis sont définis par la réglementation sur l'accessibilité des établissements recevant du public, notamment l'arrêté du 20 avril 2017. Le braille répond en outre à des normes dimensionnelles précises — diamètre des points, espacement, hauteur — qui ne se laissent pas adapter : un braille redessiné pour des raisons graphiques n'est plus lisible au doigt. La maquette se fait valider par un fournisseur qui maîtrise ces contraintes, jamais par le seul graphiste.",
   faq: [
     { q: "Le braille est-il obligatoire partout ?", a: "Non, il l'est pour certaines informations dans les établissements recevant du public — notamment la numérotation des étages en ascenseur et l'identification des locaux. Le champ exact figure dans la réglementation accessibilité." },
-    { q: "Braille gravé ou rapporté ?", a: "Les deux existent. Les points rapportés en demi-sphère offrent un relief franc et durable ; la gravure creuse est moins lisible au toucher. La réglementation impose des points saillants." }
+    { q: "Braille gravé ou rapporté ?", a: "Les deux existent. Les points rapportés en demi-sphère offrent un relief franc et durable ; la gravure creuse est moins lisible au toucher. La réglementation impose des points saillants." },
+    { q: "Une plaque en relief suffit-elle sans braille ?", a: "Les deux ne s'adressent pas aux mêmes personnes et ne se remplacent pas. Le relief en caractères latins sert aux personnes malvoyantes et à celles devenues aveugles tardivement, qui ne lisent pas le braille — c'est la majorité. Le braille sert à celles qui l'ont appris. Une signalétique accessible porte donc les deux, et c'est ce que prévoit la réglementation." }
   ]
 },
 {
@@ -928,7 +1032,7 @@ const POSES = [
   h1: "Poser un habillage mural grand format, lé par lé",
   title: "Habillage Mural Grand Format — Pose Lé par Lé",
   desc: "Raccords, recouvrement, aplomb et préparation du mur. Poser un décor mural adhésif sur plusieurs mètres sans décalage.",
-  statut: "brouillon", acces: "libre", duree: "1 jour", niveau: "Confirmé",
+  statut: "publie", acces: "libre", duree: "1 jour", niveau: "Confirmé",
   resume: "Le premier lé décide de tout : s'il n'est pas d'aplomb, l'erreur se cumule sur toute la largeur du mur.",
   quand: "Décor de salle de sport, hall d'accueil, salle de réunion, vitrine intérieure, restaurant.",
   materiel: ["Lés numérotés", "Raclette à feutre", "Niveau laser", "Cutter à lame fine", "Règle inox", "Alcool", "Échafaudage roulant"],
@@ -940,12 +1044,19 @@ const POSES = [
     ["Couper les raccords en double coupe", "Lame neuve, règle inox, coupe des deux épaisseurs en une passe, puis retrait des deux chutes. Le raccord devient invisible."],
     ["Araser en périphérie", "Plinthes, angles, interrupteurs."]
   ],
-  erreurs: ["Se fier au mur ou au plafond pour l'aplomb.", "Poser dans le désordre : les raccords de motif ne tombent plus.", "Double coupe avec lame usée : elle entaille le mur.", "Poser sur peinture fraîche."],
-  securite: ["Travail en hauteur : échafaudage roulant, jamais en équilibre sur un escabeau avec un lé de trois mètres.", "Lames : gants."],
-  verifier: "Le délai à respecter après peinture et la compatibilité avec le type de peinture figurent sur la fiche technique du film et sur celle de la peinture. Les peintures dites lessivables ou satinées n'accueillent pas toutes un adhésif.",
+  erreurs: ["Se fier au mur ou au plafond pour l'aplomb.", "Poser dans le désordre : les raccords de motif ne tombent plus.", "Double coupe avec lame usée : elle entaille le mur.", "Poser sur peinture fraîche.",
+    "Poser sur une cloison qui n'a pas été ratissée : le grand format révèle chaque défaut d'enduit en lumière rasante.",
+    "Commencer par le mur le plus visible : on progresse d'un angle vers l'autre, et les écarts s'accumulent sur le dernier lé — autant qu'ils tombent là où personne ne regarde.",
+    "Négliger le climat du local : une pose faite dans un local non chauffé en hiver se rétracte dès la remise en chauffe."
+  ],
+  securite: ["Travail en hauteur : échafaudage roulant, jamais en équilibre sur un escabeau avec un lé de trois mètres.", "Lames : gants.",
+    "Échafaudage roulant : roues bloquées avant de monter, et jamais déplacé avec quelqu'un dessus. C'est l'accident le plus fréquent en pose intérieure."
+  ],
+  verifier: "Le délai à respecter après peinture et la compatibilité avec le type de peinture figurent sur la fiche technique du film, et ils ne sont pas anecdotiques : une peinture mate récente est le support le plus difficile qui soit, et beaucoup d'échecs viennent de là. Un essai d'adhérence sur une zone cachée, quarante-huit heures avant le chantier, dit ce qu'aucune fiche technique ne peut dire sur une peinture dont on ignore la référence exacte. Sur support douteux, il vaut mieux prévoir une impression sur panneau rapporté qu'un film collé.",
   faq: [
     { q: "Peut-on poser sur une peinture mate ?", a: "C'est le cas le plus délicat : la peinture mate est poreuse et fragile, et le retrait arrache souvent le film de peinture. À déconseiller ou à faire précéder d'un primaire d'accrochage." },
-    { q: "Comment gérer les interrupteurs et prises ?", a: "On démonte les plaques quand c'est possible, on pose le lé par-dessus, on découpe et on remonte. Couper autour sans démonter se voit toujours." }
+    { q: "Comment gérer les interrupteurs et prises ?", a: "On démonte les plaques quand c'est possible, on pose le lé par-dessus, on découpe et on remonte. Couper autour sans démonter se voit toujours." },
+    { q: "Combien de temps tient un habillage mural intérieur ?", a: "Cinq à dix ans sans difficulté en intérieur, la lumière et les écarts de température y étant modérés. Ce qui l'abîme, ce sont les passages : angles, hauteur d'épaule dans un couloir, zones de manutention. Sur ces endroits précis, un laminat de protection ou un panneau rigide rapporté prolonge considérablement la durée de vie, et coûte moins cher que de refaire le mur entier." }
   ]
 },
 
@@ -956,7 +1067,7 @@ const POSES = [
   h1: "Nettoyer et entretenir une enseigne",
   title: "Entretien d'une Enseigne — Produits, Gestes et Fréquence",
   desc: "Ce qui prolonge une enseigne et ce qui la tue. Produits à proscrire, fréquence, et l'obligation légale de maintien en bon état.",
-  statut: "brouillon", acces: "libre", duree: "1 h", niveau: "Débutant",
+  statut: "publie", acces: "libre", duree: "1 h", niveau: "Débutant",
   resume: "La plupart des enseignes ne meurent pas d'usure mais de nettoyage. Trois produits et deux gestes suffisent à ruiner une pose correcte.",
   quand: "Contrat d'entretien, visite annuelle, remise en état avant photo ou vente.",
   materiel: ["Eau tiède savonneuse", "Chiffon microfibre", "Éponge non abrasive", "Perche télescopique", "Produits adaptés au support"],
@@ -972,13 +1083,18 @@ const POSES = [
     "Produits abrasifs ou éponge grattante : ils rayent définitivement le plexiglas et matifient les impressions.",
     "Solvants sur plexiglas : fissuration irréversible.",
     "Raclette de laveur de vitres sur un microperforé : elle l'arrache.",
-    "Nettoyer une pose de moins de quelques jours : l'adhésif n'a pas atteint son adhérence finale."
+    "Nettoyer une pose de moins de quelques jours : l'adhésif n'a pas atteint son adhérence finale.",
+    "Nettoyer par temps de gel ou en plein soleil : l'eau sèche en traces avant d'avoir été essuyée, et le résultat est pire qu'avant.",
+    "Traiter un caisson sans vérifier son étanchéité au préalable : le nettoyage introduit alors l'eau qu'on croyait chasser."
   ],
-  securite: ["Travail en hauteur avec de l'eau : risque de glissade accru.", "Coupure de l'alimentation avant tout nettoyage d'une enseigne lumineuse."],
-  verifier: "Les produits compatibles avec chaque support figurent sur les fiches techniques des matériaux. L'article R.581-58 du code de l'environnement impose le maintien en bon état de propreté, d'entretien et de fonctionnement, à la charge de l'exploitant de l'activité signalée.",
+  securite: ["Travail en hauteur avec de l'eau : risque de glissade accru.", "Coupure de l'alimentation avant tout nettoyage d'une enseigne lumineuse.",
+    "Nettoyage à la nacelle sur voirie : les mêmes autorisations d'occupation du domaine public que pour une pose s'appliquent."
+  ],
+  verifier: "Les produits compatibles avec chaque support figurent sur les fiches techniques des matériaux, et la règle est simple : en cas de doute, eau tiède et savon neutre ne détériorent rien. L'article R.581-58 du code de l'environnement impose par ailleurs que l'enseigne soit maintenue en bon état de propreté, d'entretien et de fonctionnement — ce n'est pas une recommandation. Une enseigne dont la moitié des lettres est éteinte est en infraction, et le maire peut en exiger la remise en état.",
   faq: [
     { q: "À quelle fréquence entretenir une enseigne ?", a: "Deux fois par an en milieu urbain ou littoral, une fois ailleurs, avec un contrôle des fixations à chaque passage. En bord de mer, le sel impose un rinçage plus fréquent." },
-    { q: "Le client est-il obligé d'entretenir son enseigne ?", a: "Oui. L'article R.581-58 du code de l'environnement met le maintien en bon état à la charge de la personne exerçant l'activité signalée. Une enseigne dégradée ou à l'éclairage défectueux est en infraction." }
+    { q: "Le client est-il obligé d'entretenir son enseigne ?", a: "Oui. L'article R.581-58 du code de l'environnement met le maintien en bon état à la charge de la personne exerçant l'activité signalée. Une enseigne dégradée ou à l'éclairage défectueux est en infraction." },
+    { q: "Un contrat d'entretien est-il utile ?", a: "Il l'est dès qu'une enseigne est lumineuse et en hauteur, pour une raison simple : sans visite programmée, personne ne monte voir avant la panne. Une visite annuelle permet de repérer un joint qui vieillit, une fixation qui se desserre ou un module qui faiblit, c'est-à-dire de réparer au lieu de remplacer. Le coût d'une visite se compare à celui d'un remplacement de caisson, pas à zéro." }
   ]
 },
 {
@@ -987,7 +1103,7 @@ const POSES = [
   h1: "Déposer une enseigne en fin d'activité",
   title: "Déposer une Enseigne — Obligation Légale et Remise en État",
   desc: "La dépose n'est pas facultative : elle est obligatoire à la cessation d'activité. Délai, charge, remise en état de la façade.",
-  statut: "brouillon", acces: "libre", duree: "3 h", niveau: "Intermédiaire",
+  statut: "publie", acces: "libre", duree: "3 h", niveau: "Intermédiaire",
   resume: "Beaucoup l'ignorent : la suppression de l'enseigne au terme de l'activité est une obligation légale, pas un service optionnel. C'est aussi une prestation à vendre.",
   quand: "Cessation d'activité, déménagement, changement d'enseigne, fin de bail commercial.",
   materiel: ["Matériel de hauteur", "Outillage de démontage", "Mastic et enduit de rebouchage", "Peinture de retouche façade", "Bennes ou filière de déchets"],
@@ -999,12 +1115,18 @@ const POSES = [
     ["Reprendre la façade", "Nettoyage de l'empreinte laissée par l'enseigne, retouche de peinture si le bail l'exige."],
     ["Évacuer en filière", "Les caissons contiennent de l'électronique et parfois des tubes : ils relèvent d'une filière de déchets professionnels."]
   ],
-  erreurs: ["Laisser les percements ouverts.", "Abandonner les tiges d'ancrage qui rouillent et coulent sur la façade.", "Oublier la remise en état prévue au bail commercial.", "Jeter caissons et sources lumineuses avec les déchets courants."],
-  securite: ["Consignation électrique avant démontage.", "Travail en hauteur et manutention de charges.", "Chute d'objets : balisage au sol obligatoire.", "Bâtiment antérieur à 1997 : repérage amiante avant travaux."],
-  verifier: "L'obligation de suppression de l'enseigne au terme de l'activité signalée figure à l'article R.581-58 du code de l'environnement. Les délais et la charge financière s'y lisent, de même que les obligations de remise en état prévues au bail commercial.",
+  erreurs: ["Laisser les percements ouverts.", "Abandonner les tiges d'ancrage qui rouillent et coulent sur la façade.", "Oublier la remise en état prévue au bail commercial.", "Jeter caissons et sources lumineuses avec les déchets courants.",
+    "Déposer sans photographier l'état de la façade avant intervention : toute trace préexistante sera attribuée à la dépose.",
+    "Omettre de couper et de déposer l'alimentation restée en attente : un câble sous tension qui pend en façade après la dépose est un danger et une responsabilité."
+  ],
+  securite: ["Consignation électrique avant démontage.", "Travail en hauteur et manutention de charges.", "Chute d'objets : balisage au sol obligatoire.", "Bâtiment antérieur à 1997 : repérage amiante avant travaux.",
+    "Vérification d'absence de tension avant tout démontage, y compris sur une enseigne que le client affirme hors service depuis des mois."
+  ],
+  verifier: "L'obligation de suppression de l'enseigne au terme de l'activité signalée figure à l'article R.581-58 du code de l'environnement : elle incombe à la personne qui exerçait l'activité, dans les trois mois de la cessation, remise en état des lieux comprise. Les déchets relèvent par ailleurs de filières distinctes — les sources lumineuses et les appareillages électriques sont des déchets d'équipements électriques et électroniques, qui ne se jettent ni avec les gravats ni avec les encombrants. Le bordereau de suivi remis au client est la preuve que l'obligation a été tenue : il se conserve.",
   faq: [
     { q: "Qui doit payer la dépose ?", a: "Le code de l'environnement met la suppression à la charge de la personne qui exerçait l'activité signalée. En pratique, le bail commercial précise souvent aussi les obligations de remise en état du preneur." },
-    { q: "Peut-on laisser une enseigne d'un commerce fermé ?", a: "Non. Une enseigne qui ne signale plus aucune activité doit être supprimée. Le maire peut mettre en demeure, et c'est un motif de contentieux fréquent en centre-ville." }
+    { q: "Peut-on laisser une enseigne d'un commerce fermé ?", a: "Non. Une enseigne qui ne signale plus aucune activité doit être supprimée. Le maire peut mettre en demeure, et c'est un motif de contentieux fréquent en centre-ville." },
+    { q: "Le bailleur peut-il exiger la dépose ?", a: "Il le peut, et il le fait généralement au titre de la clause de remise en état du bail commercial, indépendamment de l'obligation du code de l'environnement. Les deux se cumulent : l'une est administrative et vise l'enseigne, l'autre est contractuelle et vise l'état des lieux. Un locataire sortant qui laisse son enseigne s'expose donc aux deux, et la retenue sur dépôt de garantie dépasse presque toujours le coût qu'aurait eu la dépose." }
   ]
 }
 
