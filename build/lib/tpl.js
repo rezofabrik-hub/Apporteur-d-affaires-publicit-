@@ -163,6 +163,7 @@ const NAV_MORE = [
   ["tarifs.html", "Prix et budgets", "Ce que coûte réellement chaque prestation"],
   ["glossaire.html", "Glossaire du métier", "Tout le vocabulaire de la communication visuelle"],
   ["reglementation-enseigne.html", "Réglementation", "Autorisation, RLP, TLPE, accessibilité"],
+  ["production-locale.html", "Produire près de chez vous", "Circuit court, réparabilité, dépose obligatoire"],
   ["comment-ca-marche.html", "Comment ça marche", "Notre rôle d'agence de mise en relation"],
   ["faq.html", "Questions fréquentes", "Les réponses aux 20 questions les plus posées"]
 ];

@@ -494,6 +494,7 @@ function run() {
   write("glossaire.html", misc.glossaire(cities));
   write("reglementation-enseigne.html", misc.reglementation(cities));
   write("comment-ca-marche.html", misc.comment(cities));
+  write("production-locale.html", misc.local(cities));
   write("faq.html", misc.faqPage(cities));
   write("credits-photos.html", misc.credits(cities));
 

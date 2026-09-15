@@ -1355,4 +1355,144 @@ function cgv(cities) {
   });
 }
 
-module.exports = { villes, tarifs, glossaire, reglementation, comment, faqPage, credits, legal, cgv, plan };
+
+/* ═══════════════════════════════════════════════════ PRODUCTION LOCALE
+   Le circuit court comme argument — sans allégation environnementale.
+
+   POURQUOI CETTE PAGE NE DIT JAMAIS « ÉCOLOGIQUE »
+
+   Depuis la loi Climat et Résilience, une allégation environnementale
+   vague et non étayée constitue une pratique commerciale trompeuse au sens
+   de l'article L.121-2 du code de la consommation, et l'article L.229-68 du
+   code de l'environnement interdit de se dire « neutre en carbone » sans
+   publier un bilan d'émissions et une trajectoire de réduction. Un réseau
+   de mise en relation n'a ni l'un ni l'autre, et n'a pas à en avoir.
+
+   La page tient donc uniquement des faits vérifiables : la distance
+   parcourue, la possibilité de réparer, l'obligation légale de déposer.
+   Ils sont plus solides qu'un label, et plus convaincants — parce qu'un
+   commerçant sait reconnaître une promesse creuse.
+   ═══════════════════════════════════════════════════════════════════════ */
+function local(cities) {
+  return T.page({
+    file: "production-locale.html",
+    title: `Fabriquer et poser près de chez vous — Circuit court | ${site.brand}`,
+    desc: "Pourquoi faire fabriquer et poser son enseigne par un professionnel de son secteur : moins de transport, une enseigne réparable donc durable, et la dépose assurée le jour où l'activité cesse.",
+    cities,
+    body: `
+<section class="hero hero-in-page"><div class="wrap hero-in">
+  ${T.crumbs([{ name: "Accueil", url: "index.html" }, { name: "Produire près de chez vous", url: "production-locale.html" }])}
+  <span class="eyebrow">Circuit court</span>
+  <h1>Faire fabriquer et poser près de chez vous</h1>
+  <p class="lead">Le réseau retient toujours le professionnel le plus proche du chantier. Ce n'est
+  pas un argument de façade : c'est ce qui décide du délai, du prix réel, et de la durée de vie de
+  votre enseigne.</p>
+</div></section>
+
+<section class="sec"><div class="wrap wrap-narrow"><article class="prose">
+
+  <h2>Une enseigne n'est pas un colis</h2>
+  <p>C'est le point que l'on mesure mal tant qu'on ne l'a pas vécu. Un caisson lumineux de deux
+  mètres, un totem, un panneau composite grand format : ce sont des objets <strong>volumineux,
+  rigides et fragiles</strong>. Ils ne voyagent pas dans un carton de transporteur ordinaire, ils
+  voyagent sur palette ou dans un véhicule dédié.</p>
+  <p>Trois conséquences très concrètes :</p>
+  <ul class="checks">
+    <li><strong>Le transport pèse dans le devis</strong>, et il se voit d'autant plus que la pièce
+        est encombrante et la distance longue. Ce que vous économisez sur le prix de fabrication,
+        vous le repayez en logistique.</li>
+    <li><strong>La casse arrive.</strong> Un angle de Dibond plié, un plexiglas rayé, un néon fêlé :
+        la pièce repart, et le chantier est décalé de plusieurs semaines.</li>
+    <li><strong>Le délai se dilate.</strong> En circuit court, la pièce sort de l'atelier le matin
+        et elle est posée l'après-midi. À six cents kilomètres, il faut caler un enlèvement, un
+        transport et une livraison — trois calendriers au lieu d'un.</li>
+  </ul>
+
+  <h2>L'argument que personne ne fait : la réparabilité</h2>
+  <p>C'est le point le plus important de cette page, et celui dont on parle le moins.</p>
+  <p>Une enseigne lumineuse tombe en panne. Un transformateur lâche, un module LED s'éteint, un
+  joint prend l'eau, une fixation travaille. La question n'est pas de savoir <em>si</em> ça arrive,
+  mais <strong>qui revient quand ça arrive</strong>.</p>
+  <p>Un poseur à vingt minutes revient. Il connaît l'ouvrage, il l'a monté, il a gardé la référence
+  du transformateur. L'intervention coûte une demi-journée et l'enseigne repart pour des années.</p>
+  <p>Un fournisseur à six cents kilomètres ne revient pas — ou à un coût de déplacement tel que
+  personne ne le demande. L'enseigne reste en panne, puis à moitié allumée, puis on la remplace.
+  <strong>Une enseigne réparée dure quinze ans, une enseigne qu'on ne peut pas faire réparer en
+  dure cinq.</strong> C'est là que se joue l'essentiel, bien plus que dans les kilomètres du premier
+  transport.</p>
+
+  <h2>Et le jour où l'activité s'arrête, il faut la déposer</h2>
+  <p>Beaucoup l'ignorent : la dépose n'est pas facultative. L'article R.581-58 du code de
+  l'environnement impose que l'enseigne soit <strong>supprimée par la personne qui exerçait
+  l'activité signalée, et les lieux remis en état, dans les trois mois de la cessation de cette
+  activité</strong>.</p>
+  <p>Cette obligation suppose quelqu'un qui revienne avec une nacelle. Un professionnel du secteur
+  le fait — c'est souvent lui qui a posé. Un fournisseur lointain, non. On voit ainsi des façades
+  garder pendant des années l'enseigne d'un commerce fermé : le gérant est en infraction sans le
+  savoir, et le bailleur hérite du problème.</p>
+  <p>Choisir un professionnel implanté sur votre secteur, c'est aussi s'assurer que cette
+  obligation-là sera tenable le jour venu.</p>
+
+  <h2>La consommation, une fois l'enseigne posée</h2>
+  <p>Sur la durée de vie d'une enseigne lumineuse, l'électricité consommée pèse davantage que sa
+  fabrication. Deux leviers, et ils sont de votre côté :</p>
+  <ul class="checks">
+    <li><strong>Les modules LED de marque avec alimentation de qualité</strong> consomment moins et
+        durent plus longtemps que le premier prix. L'écart de facture se rattrape en quelques
+        saisons, et l'écart de durée de vie se compte en années.</li>
+    <li><strong>L'extinction nocturne est de toute façon obligatoire</strong> entre 1 h et 6 h du
+        matin, sauf activité nocturne. Autant la piloter proprement — une horloge bien réglée vaut
+        mieux qu'un disjoncteur qu'on oublie.</li>
+  </ul>
+
+  <h2>Ce que nous ne dirons pas</h2>
+  <div class="note"><p>Vous ne lirez sur cette page ni « enseigne écologique », ni « neutre en
+  carbone », ni aucun label vert. Ces formules demandent des justifications que nous n'avons pas —
+  et depuis la loi Climat et Résilience, une allégation environnementale vague expose son auteur.
+  Nous préférons des faits que vous pouvez vérifier : la distance, la possibilité de faire revenir
+  celui qui a posé, et une obligation de dépose inscrite au code de l'environnement.</p></div>
+
+  <h2>L'économie locale, dite simplement</h2>
+  <p>Le professionnel retenu est une entreprise de votre département ou de ceux qui le bordent. Il
+  y paie ses charges, il y emploie ses salariés, et il y sera encore l'an prochain. Ce n'est pas un
+  argument moral : c'est la condition matérielle de tout ce qui précède. On ne fait pas revenir
+  quelqu'un qui n'existe plus.</p>
+
+  <div class="btns" style="margin-top:2.4em">
+    <a class="btn btn-primary btn-lg" href="devis.html">Demander un devis</a>
+    <a class="btn btn-ghost btn-lg" href="villes.html">Voir les villes couvertes</a>
+  </div>
+
+</article></div></section>
+
+${T.faqBlock ? "" : ""}
+<section class="sec bg-2"><div class="wrap wrap-narrow">
+  <div class="sec-head"><span class="eyebrow">Questions fréquentes</span>
+  <h2>Produire près de chez soi</h2></div>
+  <div class="faq">
+    <details><summary>Un professionnel local coûte-t-il plus cher ?</summary>
+      <p>Sur le prix de fabrication seul, pas toujours — un atelier lointain qui produit en série
+      peut être moins cher à la pièce. Mais le devis complet comprend le transport d'un objet
+      encombrant, le risque de casse et le déplacement pour la pose. Une fois ces postes ajoutés,
+      l'écart se referme le plus souvent, et il s'inverse dès qu'une reprise est nécessaire.</p></details>
+    <details><summary>Que se passe-t-il si mon enseigne tombe en panne ?</summary>
+      <p>C'est précisément la question à poser avant de commander, et rarement celle qu'on pose.
+      Un professionnel implanté sur votre secteur revient, il connaît l'ouvrage et il a gardé les
+      références des composants. Demandez systématiquement, au moment du devis, qui intervient en
+      cas de panne et sous quel délai — la réponse vous en dira plus que le prix.</p></details>
+    <details><summary>Le réseau choisit-il toujours le plus proche ?</summary>
+      <p>Le plus proche parmi ceux qui savent faire. La proximité ne prime pas sur la compétence :
+      un totem scellé, un habillage de façade en hauteur ou une pose en site occupé demandent des
+      habilitations précises. Nous retenons le professionnel le plus proche qui dispose réellement
+      des capacités et des assurances que le chantier exige.</p></details>
+    <details><summary>Est-ce que « local » veut dire « dans ma commune » ?</summary>
+      <p>Rarement, et ce n'est pas nécessaire. L'échelle utile est celle du département et de ses
+      voisins : c'est la distance à laquelle un professionnel se déplace sans surcoût significatif
+      et revient sans discuter. Exiger une entreprise de sa propre commune reviendrait le plus
+      souvent à choisir moins bien.</p></details>
+  </div>
+</div></section>`
+  });
+}
+
+module.exports = { villes, tarifs, glossaire, reglementation, comment, faqPage, credits, legal, cgv, plan, local };
