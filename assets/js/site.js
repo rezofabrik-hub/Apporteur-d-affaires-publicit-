@@ -402,11 +402,39 @@
            faible, tunnel, point de collecte indisponible — laisse le visiteur
            devant « Envoi en cours… » indéfiniment : il ferme la page et la
            demande est perdue. Passé ce délai on abandonne la chaîne et on
-           bascule sur le repli e-mail, qui lui aboutit toujours. */
-        var deadline = Date.now() + 16000;
+           bascule sur le repli e-mail, qui lui aboutit toujours.
+
+           Porté de 16 à 22 secondes le 15/09/2026, pour laisser la place aux
+           reprises décrites ci-dessous. Le bouton affiche « Envoi en cours… »
+           pendant ce temps : mieux vaut faire patienter que perdre la
+           demande. */
+        var deadline = Date.now() + 22000;
+
+        /* REPRISES APRÈS PANNE PASSAGÈRE
+           ------------------------------
+           Les adresses de repli sont toutes hébergées par le même service.
+           Une panne de ce service les fait donc échouer toutes les trois en
+           une fraction de seconde, et le visiteur voit le message d'échec
+           alors qu'un simple délai aurait suffi : le 15/09/2026, une panne
+           de FormSubmit a répondu 522 puis s'est rétablie en moins d'une
+           minute.
+
+           On distingue donc deux natures d'échec :
+
+             · passager  — réseau coupé, délai dépassé, réponse 5xx : le
+               serveur est momentanément injoignable, réessayer a du sens ;
+
+             · définitif — réponse 200 avec `success: false` : adresse non
+               confirmée ou quota atteint. Réessayer la même adresse ne
+               changerait rien, on passe à la suivante et on ne revient pas.
+
+           Les adresses ayant échoué de façon passagère sont reprises après
+           une pause, deux fois, tant que le délai de garde le permet. */
+        var aReprendre = [];
 
         function attempt(i) {
-          if (i >= endpoints.length || Date.now() >= deadline) { done(false); return; }
+          if (Date.now() >= deadline) { done(false); return; }
+          if (i >= endpoints.length) { reprendre(0); return; }
 
           var ctrl = window.AbortController ? new AbortController() : null;
           var budget = Math.min(8000, Math.max(2000, deadline - Date.now()));
@@ -423,14 +451,74 @@
                visiteur sur la page de remerciement alors que rien n'est parti. */
             .then(function (r) {
               return r.json().then(function (j) {
-                return r.ok && (j.success === undefined || j.success === true || j.success === "true");
-              }, function () { return r.ok; });
+                return {
+                  ok: r.ok && (j.success === undefined || j.success === true || j.success === "true"),
+                  passager: r.status >= 500
+                };
+              }, function () { return { ok: r.ok, passager: r.status >= 500 }; });
             })
-            .then(function (ok) {
+            .then(function (res) {
               clearTimeout(timer);
-              if (ok) done(true); else attempt(i + 1);
+              if (res.ok) { done(true); return; }
+              if (res.passager) aReprendre.push(endpoints[i]);
+              attempt(i + 1);
             })
-            .catch(function () { clearTimeout(timer); attempt(i + 1); });
+            /* Coupure réseau ou délai dépassé : on n'a aucune réponse, donc
+               aucune raison de croire l'adresse définitivement hors service. */
+            .catch(function () {
+              clearTimeout(timer);
+              aReprendre.push(endpoints[i]);
+              attempt(i + 1);
+            });
+        }
+
+        /* Deux reprises, espacées, sur les seules adresses momentanément
+           injoignables. Les pauses laissent au service le temps de revenir
+           sans immobiliser le visiteur au-delà du délai de garde. */
+        var PAUSES = [2000, 4000];
+
+        function reprendre(passe) {
+          if (passe >= PAUSES.length || !aReprendre.length || Date.now() >= deadline) {
+            done(false); return;
+          }
+          var lot = aReprendre.slice();
+          aReprendre = [];
+          setTimeout(function () {
+            if (Date.now() >= deadline) { done(false); return; }
+            var k = 0;
+            (function suivant() {
+              if (k >= lot.length || Date.now() >= deadline) { reprendre(passe + 1); return; }
+              var url = lot[k++];
+              var ctrl = window.AbortController ? new AbortController() : null;
+              var budget = Math.min(6000, Math.max(2000, deadline - Date.now()));
+              var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, budget);
+              fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "Accept": "application/json" },
+                body: JSON.stringify(data),
+                signal: ctrl ? ctrl.signal : undefined
+              })
+                .then(function (r) {
+                  return r.json().then(function (j) {
+                    return {
+                      ok: r.ok && (j.success === undefined || j.success === true || j.success === "true"),
+                      passager: r.status >= 500
+                    };
+                  }, function () { return { ok: r.ok, passager: r.status >= 500 }; });
+                })
+                .then(function (res) {
+                  clearTimeout(timer);
+                  if (res.ok) { done(true); return; }
+                  if (res.passager) aReprendre.push(url);
+                  suivant();
+                })
+                .catch(function () {
+                  clearTimeout(timer);
+                  aReprendre.push(url);
+                  suivant();
+                });
+            })();
+          }, PAUSES[passe]);
         }
 
         attempt(0);
