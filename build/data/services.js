@@ -615,11 +615,11 @@ module.exports = [
 /* ═════════════════════════════════════════════ 8. VITROPHANIE / PLV */
 {
   slug: "vitrophanie-plv",
-  nav: "Vitrophanie, PLV & stands",
-  navShort: "Vitrophanie & PLV",
+  nav: "Vitrophanie, films & stands",
+  navShort: "Vitrophanie & films",
   navDesc: "Vitrine, dépoli, PLV magasin, stands et salons",
-  h1: "Vitrophanie, PLV et stands de salon",
-  title: "Vitrophanie & PLV — Vitrine, Dépoli, Stand de Salon, Présentoir",
+  h1: "Vitrophanie, films techniques et stands de salon",
+  title: "Vitrophanie & Films — Vitrine, Dépoli, Micro-perforé, Stand de Salon",
   desc: "Vitrophanie de vitrine, film dépoli, décoration de surfaces vitrées, PLV magasin et stands de salon. Devis gratuits de professionnels partout en France.",
   topic: "vitrophanie",
   topicAlt: ["plv", "stand", "digital"],
@@ -642,9 +642,9 @@ module.exports = [
     { t: "Micro-perforé one way vision", d: "Visuel plein visible de l'extérieur, transparence maintenue de l'intérieur. La solution reine pour habiller une vitrine sans assombrir le point de vente." },
     { t: "Décor saisonnier et vitrine événementielle", d: "Soldes, fêtes de fin d'année, nouvelle collection, ouverture : visuels grand format posés et déposés sans trace, avec adhésifs repositionnables ou électrostatiques." },
     { t: "Films techniques", d: "Film solaire pour réduire l'apport de chaleur et l'éblouissement, film anti-UV pour protéger les produits en vitrine, film de sécurité retardateur d'effraction, film anti-graffiti sacrificiel." },
-    { t: "PLV et présentoirs", d: "Totems carton, silhouettes découpées, présentoirs de comptoir, box palettes, stop-rayons, chevalets et cadres clic pour l'affichage magasin." },
+    { t: "PLV et présentoirs", d: "Totems carton, silhouettes découpées, présentoirs de comptoir, box palettes, stop-rayons, chevalets et cadres clic. Ce métier a désormais sa rubrique : <a href=\"plv-presentoirs.html\">PLV et présentoirs</a>." },
     { t: "Stands de salon", d: "Stand parapluie, mur d'images textile tendu, comptoir d'accueil personnalisé, arche gonflable, porte-brochures et éclairage LED, avec valise de transport." },
-    { t: "Affichage dynamique", d: "Écrans professionnels, totems tactiles, vitrines LED haute luminosité et menu boards, avec logiciel de diffusion pilotable à distance sur plusieurs points de vente." }
+    { t: "Affichage dynamique", d: "Écrans professionnels, totems tactiles, vitrines LED haute luminosité et menu boards, avec logiciel de diffusion pilotable à distance sur plusieurs points de vente. Ce métier a désormais sa rubrique : <a href=\"affichage-dynamique.html\">écrans et affichage dynamique</a>." }
   ],
   sections: [
     {
@@ -690,7 +690,7 @@ module.exports = [
     }
   ],
   faq: [
-    { q: "La vitrophanie s'enlève-t-elle sans traces ?", a: "Oui, avec un vinyle prévu pour le vitrage et posé correctement. Le retrait se fait au décapeur thermique doux puis à l'alcool isopropylique. Les traces apparaissent surtout avec des adhésifs permanents laissés plus de sept ans en plein soleil, ou avec des films bas de gamme dont la colle migre. Pour un décor saisonnier, demandez explicitement un adhésif repositionnable." },
+    { q: "La vitrophanie s'enlève-t-elle sans traces ?", a: "Oui, avec un vinyle prévu pour le vitrage et posé correctement. Le retrait se fait au décapeur thermique doux puis à l'alcool isopropylique. Les traces apparaissent surtout avec des adhésifs permanents laissés plus de sept ans en plein soleil, ou avec des films bas de gamme dont la colle migre. Pour un décor saisonnier, demandez explicitement un adhésif repositionnable Ce métier a désormais sa rubrique : <a href=\"affichage-dynamique.html\">écrans et affichage dynamique</a>." },
     { q: "Quelle différence entre dépoli adhésif et verre sablé ?", a: "Le rendu visuel est quasiment identique, mais le dépoli adhésif est un film appliqué sur un verre existant : il coûte 5 à 10 fois moins cher, se pose en quelques heures sans dépose du vitrage, se modifie et se retire. Le verre sablé est un traitement définitif de la matière, réservé aux projets où l'on remplace de toute façon le vitrage." },
     { q: "Le micro-perforé fonctionne-t-il la nuit ?", a: "L'effet s'inverse : de jour, la lumière extérieure étant plus forte, le visuel est plein depuis la rue et transparent depuis l'intérieur. De nuit, si l'intérieur est éclairé, on voit depuis l'extérieur et le visuel s'atténue. Pour un commerce ouvert en soirée, prévoyez un éclairage de vitrine dirigé vers le visuel pour compenser." },
     { q: "Un stand de salon est-il réutilisable ?", a: "Oui, c'est tout l'intérêt des structures modernes. Un stand parapluie ou un mur d'images textile se transporte en valise, se monte à deux en 20 à 30 minutes et se réutilise pendant des années. Seule la housse textile imprimée doit être refaite quand la charte change, pour une fraction du coût de la structure." },
@@ -1380,6 +1380,135 @@ module.exports = [
       a: "C'est la raison pour laquelle le logiciel de diffusion compte autant que la dalle : une plateforme sérieuse signale l'écran qui ne répond plus, avant que vous ne le découvriez en ouvrant le rideau. Un contrat de maintenance prévoit le diagnostic à distance et l'intervention sur place. Sans supervision, une panne passe inaperçue plusieurs jours — et un écran noir en vitrine fait plus de mal que pas d'écran du tout." }
   ],
   related: ["enseignes", "signaletique", "vitrophanie-plv", "maquette-creation-graphique"]
+}
+
+,
+
+/* ═══════════════════════════════════════════════════════ MÉTIER 15
+   PLV, présentoirs et ILV.
+
+   Extrait le 15/09/2026 du métier 8, où la PLV n'était qu'une
+   sous-rubrique parmi huit sur une page dont le titre et les trois
+   quarts du contenu traitent de vitrophanie. Quelqu'un qui cherche
+   « présentoir carton magasin » ou « stop-rayon » atterrissait sur une
+   page de films pour vitrines.
+
+   Le slug du métier 8 reste `vitrophanie-plv` : 440 pages ville sont
+   déjà publiées sous ce nom, et GitHub Pages ne sait pas rediriger.
+   Renommer le slug créerait 440 pages introuvables pour gagner un mot
+   dans une URL — le jeu n'en vaut pas la chandelle.
+   ═══════════════════════════════════════════════════════════════════ */
+{
+  slug: "plv-presentoirs",
+  nav: "PLV & présentoirs",
+  navShort: "PLV & présentoirs",
+  navDesc: "Présentoir, ILV de rayon, totem carton, kakémono, comptoir",
+  h1: "PLV, présentoirs et information sur le lieu de vente",
+  title: "PLV & Présentoirs — Totem Carton, ILV Rayon, Comptoir, Kakémono",
+  desc: "Présentoir de comptoir, totem et silhouette carton, box palette, stop-rayon, kakémono, chevalet, PLV permanente et meuble de marque. Conception, fabrication et livraison partout en France.",
+  topic: "plv",
+  topicAlt: ["commerce", "standexpo", "stand"],
+  eyebrow: "Métier n°15",
+  lead: "La PLV est le seul support publicitaire qui parle au client au moment exact où il décide. Elle ne cherche pas à le faire venir — il est déjà là. Elle cherche à le faire choisir, et elle a une seconde et demie pour y parvenir.",
+  keywords: [
+    "PLV", "publicité sur le lieu de vente", "présentoir", "présentoir de comptoir",
+    "présentoir carton", "totem carton", "silhouette carton", "box palette",
+    "demi-palette", "stop-rayon", "ILV", "information sur le lieu de vente",
+    "réglette de rayon", "fronton de gondole", "kakémono", "roll-up",
+    "chevalet trottoir", "cadre clic", "PLV permanente", "PLV promotionnelle",
+    "meuble de marque", "corner de marque", "présentoir bois", "présentoir plexiglas",
+    "PLV magasin", "affichage magasin"
+  ],
+  intro: [
+    "La PLV — publicité sur le lieu de vente — rassemble tout ce qui, dans un magasin, met un produit en avant : le présentoir posé près de la caisse, le totem carton en tête de gondole, la silhouette découpée à l'entrée, le stop-rayon qui dépasse du linéaire, le meuble de marque installé pour trois ans. Elle se distingue de l'ILV, l'information sur le lieu de vente, qui ne vend rien mais oriente : balisage de prix, signalétique de rayon, indication de promotion.",
+    "Sa particularité est le moment. Une affiche ou une enseigne travaillent à faire venir ; la PLV, elle, s'adresse à quelqu'un qui est déjà entré, qui a son panier à la main et qui n'avait pas prévu d'acheter ce produit-là. C'est le dernier point de contact avant la décision — et celui dont le coût par contact est le plus bas de toute la communication visuelle."
+  ],
+  sub: [
+    { t: "Présentoir de comptoir",
+      d: "Petit format posé près de la caisse ou sur un meuble, pour l'achat d'impulsion : échantillons, petits formats, nouveautés. Carton compact, plexiglas ou bois selon la durée d'exposition prévue." },
+    { t: "Totem et silhouette carton",
+      d: "Grand format autoportant, découpé à la forme d'un produit ou d'un personnage. Monte en trente secondes, se stocke à plat, s'utilise le temps d'une opération puis se recycle." },
+    { t: "Box palette et demi-palette",
+      d: "Le produit arrive déjà présenté : la palette livrée devient le point de vente. Habillage imprimé sur les quatre faces, fronton visible depuis l'allée. C'est le format de la grande distribution." },
+    { t: "Stop-rayon, réglette et fronton",
+      d: "L'ILV de linéaire : ce qui dépasse du rayon pour arrêter le regard, ce qui court le long de l'étagère, ce qui coiffe la gondole. Peu coûteux, très efficace, souvent le premier budget d'une petite marque." },
+    { t: "Kakémono, roll-up et drapeau intérieur",
+      d: "Enrouleur à déployer en quelques secondes, oriflamme sur pied, banderole suspendue. Le support des salons, des halls d'accueil et des animations ponctuelles." },
+    { t: "Chevalet et cadre clic",
+      d: "Chevalet de trottoir double face pour le passage devant la boutique, cadre à ouverture rapide pour changer l'affiche sans outil. Le visuel se remplace en dix secondes, le cadre dure des années." },
+    { t: "PLV permanente",
+      d: "Bois, métal, plexiglas ou combinaison des trois, conçue pour rester en place un à cinq ans. Investissement plus lourd, coût par mois bien inférieur au carton renouvelé chaque trimestre." },
+    { t: "Meuble de marque et corner",
+      d: "Espace dédié à une marque dans un point de vente : mobilier sur mesure, éclairage intégré, habillage graphique. Relève autant de l'agencement que de la communication." }
+  ],
+  sections: [
+    {
+      h2: "Permanente ou promotionnelle : deux métiers, deux budgets",
+      p: [
+        "C'est la première question à trancher, avant même le visuel, parce qu'elle décide de la matière, du prix et du mode de livraison.",
+        "La <strong>PLV promotionnelle</strong> vit le temps d'une opération : une semaine, un mois, une saison. Elle est en carton alvéolaire ou compact, elle se livre à plat, elle se monte sans outil et elle se recycle. Son coût unitaire est faible, mais il se répète à chaque campagne.",
+        "La <strong>PLV permanente</strong> reste un à cinq ans. Bois, métal, plexiglas, souvent éclairée. Elle coûte dix à trente fois plus cher à l'unité — et beaucoup moins cher au mois d'exposition. Un présentoir bois à 400 € installé trois ans revient à 11 € par mois ; quatre totems carton à 120 € renouvelés chaque trimestre, à 40 €.",
+        "Le calcul penche donc vers le permanent dès qu'un emplacement est acquis durablement. Il penche vers le carton quand l'emplacement est négocié opération par opération, ce qui est le cas le plus fréquent en grande distribution."
+      ],
+      list: [
+        "Opération de moins de trois mois, emplacement non garanti : carton",
+        "Emplacement acquis à l'année chez un revendeur : permanent",
+        "Produit lourd ou fragile : structure métal ou bois, le carton plie",
+        "Besoin de renouveler souvent le message : cadre permanent, visuel interchangeable",
+        "Contrainte de stockage chez le client : privilégier ce qui se livre à plat"
+      ]
+    },
+    {
+      h2: "Ce qui déclenche réellement l'achat",
+      p: [
+        "En magasin, l'attention se joue en une seconde et demie. Une PLV efficace porte <strong>une seule idée</strong>, un bénéfice formulé en moins de sept mots, et un prix ou une promesse lisible à trois mètres. Tout le reste est décoratif — et le décoratif coûte de la lisibilité.",
+        "L'emplacement pèse autant que le message. Les zones de <strong>décélération</strong> — entrée du magasin, tête de gondole, file d'attente en caisse — captent bien mieux qu'un linéaire au milieu du parcours, où le client est en mode recherche et non en mode découverte. Une excellente PLV au mauvais endroit est invisible.",
+        "Dernier point, le plus souvent négligé : la PLV se salit, se déforme et vieillit. Un présentoir carton avachi ou une affiche jaunie envoient un signal pire que l'absence de PLV. Prévoyez qui la retire, et quand."
+      ],
+      table: {
+        head: ["Support", "Usage", "Budget indicatif"],
+        rows: [
+          ["Stop-rayon ou réglette", "Linéaire, ILV de rayon", "2 – 15 € / pièce"],
+          ["Présentoir de comptoir", "Achat d'impulsion en caisse", "12 – 60 € / pièce"],
+          ["Totem carton alvéolaire", "Opération temporaire en magasin", "45 – 180 €"],
+          ["Chevalet trottoir A1 double face", "Trafic devant le point de vente", "70 – 220 €"],
+          ["Kakémono / roll-up 85×200", "Intérieur, salon, hall", "70 – 190 €"],
+          ["Silhouette découpée à la forme", "Impact fort, entrée de magasin", "90 – 400 €"],
+          ["Box palette habillée", "Grande distribution, opération", "150 – 600 €"],
+          ["Présentoir permanent bois ou métal", "Emplacement acquis, 1 à 5 ans", "250 – 1 500 €"],
+          ["Meuble de marque sur mesure", "Corner, showroom, revendeur", "1 200 – 8 000 €"]
+        ]
+      }
+    },
+    {
+      h2: "L'ILV : la partie qu'on oublie, et qui est parfois obligatoire",
+      p: [
+        "La PLV donne envie, l'ILV renseigne. On les fabrique ensemble et on les confond souvent, mais elles ne répondent pas au même besoin — ni aux mêmes contraintes.",
+        "Le balisage de prix, notamment, n'est pas décoratif : l'information du consommateur sur les prix est encadrée, et l'affichage doit être <strong>visible et lisible</strong> depuis l'endroit où le produit est présenté. Une étiquette illisible ou absente n'est pas un détail d'aménagement, c'est un manquement.",
+        "L'ILV couvre aussi ce qui structure le parcours : identification des rayons, sens de circulation, indication des services, mentions obligatoires selon les secteurs. Elle rejoint alors la signalétique intérieure, et gagne à être conçue avec elle plutôt qu'à côté."
+      ],
+      list: [
+        "Balisage de prix : visible et lisible depuis la présentation du produit",
+        "Mention d'une promotion : l'affichage du prix de référence suit des règles précises",
+        "Identification des rayons et sens de circulation : c'est de la signalétique, pas de la PLV",
+        "Secteurs réglementés — alimentaire, optique, pharmacie — mentions obligatoires spécifiques",
+        "Cohérence graphique entre PLV, ILV et signalétique : c'est ce qui fait un magasin qui paraît tenu"
+      ]
+    }
+  ],
+  faq: [
+    { q: "Carton, bois ou plexiglas : comment choisir ?",
+      a: "La durée d'exposition tranche presque toujours. En dessous de trois mois, le carton alvéolaire ou compact : il se livre à plat, se monte sans outil, se recycle et coûte peu. Au-delà d'un an, le bois, le métal ou le plexiglas : le coût par mois d'exposition devient inférieur, et la tenue n'a rien à voir. Le poids du produit impose parfois le choix — un présentoir carton chargé de bouteilles ou de boîtes métalliques plie en quelques jours." },
+    { q: "Combien de temps tient un présentoir en carton ?",
+      a: "Trois à six mois en usage normal à l'intérieur, nettement moins en zone humide, à proximité d'une entrée ou d'un rayon frais. Le carton alvéolaire tient mieux la charge que le carton compact, mais craint autant l'humidité. La vraie limite n'est d'ailleurs pas la rupture : c'est l'aspect. Un présentoir affaissé ou corné dessert le produit qu'il expose, et il vaut mieux le retirer que le laisser." },
+    { q: "Y a-t-il une quantité minimum ?",
+      a: "Pour la PLV carton découpée à la forme, oui : l'outil de découpe représente un coût fixe amorti sur la série, si bien que dix exemplaires coûtent presque autant que cinquante. Les formats standards — chevalet, roll-up, cadre clic, présentoir de gamme — se commandent à l'unité sans surcoût. Pour une petite série sur mesure, la découpe numérique évite l'outil, avec un coût unitaire plus élevé mais aucun minimum." },
+    { q: "Faut-il une autorisation pour un chevalet sur le trottoir ?",
+      a: "Oui. Un chevalet posé sur le trottoir occupe le domaine public : il relève d'une autorisation de la commune et, le plus souvent, d'une redevance annuelle. Les règles varient beaucoup d'une ville à l'autre — largeur de passage à préserver, nombre de chevalets par commerce, dimensions maximales, parfois interdiction pure et simple dans les secteurs protégés. C'est le service du domaine public ou de l'urbanisme de votre mairie qui renseigne, et la démarche est rapide." },
+    { q: "Quelle différence entre PLV et ILV ?",
+      a: "La PLV fait vendre, l'ILV renseigne. Un totem qui met en avant une nouveauté est de la PLV ; l'étiquette de prix, la réglette qui identifie une gamme ou le panneau qui indique la caisse sont de l'ILV. La distinction compte parce que l'ILV comporte des obligations — l'affichage des prix doit être visible et lisible — là où la PLV est libre. Dans les faits on les fabrique ensemble, et c'est mieux ainsi : un magasin où les deux sont cohérentes paraît tenu." }
+  ],
+  related: ["vitrophanie-plv", "impression-grand-format", "objets-publicitaires", "affichage-dynamique"]
 }
 
 ];

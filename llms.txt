@@ -38,13 +38,14 @@
 - [Objets publicitaires & textile](https://rezo-enseigne.fr/objets-publicitaires.html) : Goodies, textile floqué, EPI marqués, cadeaux d'affaires
 - [Maquette & création graphique](https://rezo-enseigne.fr/maquette-creation-graphique.html) : Logo, charte, simulation façade, BAT, fichiers de production
 - [Pose, nacelle & maintenance](https://rezo-enseigne.fr/pose-nacelle.html) : Travail en hauteur, dépose, raccordement, SAV, entretien
-- [Vitrophanie, PLV & stands](https://rezo-enseigne.fr/vitrophanie-plv.html) : Vitrine, dépoli, PLV magasin, stands et salons
+- [Vitrophanie, films & stands](https://rezo-enseigne.fr/vitrophanie-plv.html) : Vitrine, dépoli, PLV magasin, stands et salons
 - [Découpe laser & CNC](https://rezo-enseigne.fr/decoupe-laser-cnc.html) : Découpe laser, fraisage numérique, gravure, usinage sur mesure
 - [Imprimerie](https://rezo-enseigne.fr/imprimerie.html) : Cartes, flyers, brochures, papeterie, catalogues, façonnage
 - [Impression 3D](https://rezo-enseigne.fr/impression-3d.html) : Prototypage, pièces techniques, lettres volumiques, maquettes
 - [Création de site internet](https://rezo-enseigne.fr/creation-site-internet.html) : Site vitrine, e-commerce, refonte, hébergement, maintenance
 - [Référencement naturel](https://rezo-enseigne.fr/referencement-naturel.html) : SEO local, technique, contenu, fiche Google, campagnes
 - [Écrans & affichage dynamique](https://rezo-enseigne.fr/affichage-dynamique.html) : Écran de vitrine, totem, mur d'images, borne tactile
+- [PLV & présentoirs](https://rezo-enseigne.fr/plv-presentoirs.html) : Présentoir, ILV de rayon, totem carton, kakémono, comptoir
 
 ## Graphisme — logo, charte, choix d'un graphiste
 
