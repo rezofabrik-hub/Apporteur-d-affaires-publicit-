@@ -84,6 +84,10 @@ window.RF_CONFIG = {
   email: "commercial-rezofabrik@gmail.com",
   emailPro: "commercial-rezofabrik@gmail.com",
   phone: "07 75 76 92 32",
+  /* Nom repris dans les accusés de réception envoyés au visiteur. Un
+     message signé d'un nom se lit autrement qu'un message signé d'une
+     marque : c'est ce qui dit au client qu'un humain a lu sa demande. */
+  contactNom: "Laurent Mienville",
   phoneHref: "+33775769232",
 
   /* ---------------------------------------------------------------------

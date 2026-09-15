@@ -405,6 +405,87 @@
           data._template = "table";
           data._captcha = "false";
           if (data.email) data._replyto = data.email;
+
+          /* ACCUSÉ DE RÉCEPTION ENVOYÉ AU VISITEUR
+             --------------------------------------
+             Le site annonce une réponse sous 48 heures ouvrées. Entre
+             l'envoi du formulaire et le rappel, le visiteur n'a rien : un
+             commerçant qui demande un devis le soir a le temps d'appeler
+             deux concurrents avant qu'on le rappelle. Ce message comble ce
+             vide, et surtout il lui met un numéro sous les yeux — quelqu'un
+             qui a de quoi joindre attend au lieu de chercher ailleurs.
+
+             Trois textes, parce que les trois publics n'attendent pas la
+             même chose : un client veut savoir qu'un humain a lu sa demande
+             et qu'il ne sera pas rappelé par dix entreprises ; un candidat
+             partenaire veut savoir ce qu'on vérifie et ce qu'on ne lui
+             promet pas ; un partenaire qui cherche un poseur veut un délai
+             et la garantie qu'on ne lui prendra pas son client.
+
+             Aucun de ces textes ne promet ce que le contrat ne tient pas :
+             les délais annoncés sont ceux du site, la garantie citée est
+             celle de l'article 5 bis, l'interdiction de démarchage est celle
+             de l'article 12. */
+          if (data.email) {
+            var nom = CFG.contactNom || "";
+            var tel = CFG.phone || "";
+            var signature = "\n\n--\nRezo Enseigne — réseau national enseigne, signalétique, " +
+              "imprimerie & web\nUne marque de REZO FABRIK, Canet-en-Roussillon (66)\n" +
+              "https://rezo-enseigne.fr\n";
+
+            if (form.dataset.kind === "pro") {
+              data._autoresponse =
+                "Bonjour,\n\n" +
+                "Votre candidature est bien arrivée, merci de l'intérêt que vous portez au réseau.\n\n" +
+                "Voici ce qui se passe maintenant. Je vérifie d'abord votre dossier : SIRET actif, " +
+                "assurance de responsabilité civile professionnelle, décennale si votre activité " +
+                "l'exige, cohérence des capacités déclarées. Puis je vous appelle — je préfère " +
+                "connaître les gens à qui je confie des clients.\n\n" +
+                "Deux choses que je préfère vous dire tout de suite.\n\n" +
+                "Le réseau est neuf. Le référencement d'un site met six à douze mois à produire " +
+                "son plein effet, et je ne vais pas vous raconter le contraire pour vendre un " +
+                "abonnement. C'est précisément pour cela que si aucune demande ne vous a été " +
+                "transmise au bout de trois mois, votre accès est prolongé de six mois sans frais, " +
+                "sans démarche de votre part.\n\n" +
+                "Et je ne prends pas tout le monde. La densité est limitée par zone et par métier : " +
+                "si votre secteur est déjà couvert pour votre spécialité, je vous le dirai " +
+                "franchement plutôt que d'encaisser un abonnement qui ne vous rapporterait rien.\n\n" +
+                "Aucune commission n'est prélevée sur les affaires que vous signez. Jamais.\n\n" +
+                "Réponse sous 48 heures ouvrées. Si vous voulez m'en parler avant :\n" +
+                nom + " — " + tel + signature;
+
+            } else if (form.dataset.kind === "entraide") {
+              data._autoresponse =
+                "Bonjour,\n\n" +
+                "Votre demande est bien arrivée.\n\n" +
+                "Je cherche dès maintenant un professionnel disponible sur la zone du chantier, " +
+                "avec les habilitations que votre intervention demande. Vous recevrez ses " +
+                "attestations — CACES, habilitation électrique, décennale — avant toute " +
+                "intervention, et un devis sous 24 heures ouvrées.\n\n" +
+                "Un point qui revient toujours, alors autant le dire tout de suite : le " +
+                "professionnel qui intervient pour vous a l'interdiction contractuelle de " +
+                "démarcher votre client, pendant le chantier et vingt-quatre mois après. C'est " +
+                "l'article 12 des conditions générales, vous pouvez le lire en ligne. Le client " +
+                "reste le vôtre.\n\n" +
+                "Si le chantier est urgent, appelez-moi plutôt que d'attendre :\n" +
+                nom + " — " + tel + signature;
+
+            } else {
+              data._autoresponse =
+                "Bonjour,\n\n" +
+                "Votre demande est bien arrivée, merci.\n\n" +
+                "Je l'étudie personnellement et je vous appelle dans la journée — au plus tard le " +
+                "prochain jour ouvré — pour préciser votre projet : dimensions, contraintes de " +
+                "pose, règlement local de publicité. Dix minutes au téléphone suffisent en général " +
+                "à transformer une idée en cahier des charges chiffrable.\n\n" +
+                "Ce n'est qu'ensuite que je la transmets à deux ou trois professionnels de votre " +
+                "secteur, choisis pour ce projet précis. Ils vous rappellent directement. Vous ne " +
+                "recevrez pas dix appels : c'est la différence avec un formulaire revendu au plus " +
+                "offrant.\n\n" +
+                "Si vous préférez me joindre avant :\n" +
+                nom + " — " + tel + signature;
+            }
+          }
         }
 
         /* Délai de garde global. Sans lui, un réseau qui ne répond pas — 4G
