@@ -1952,3 +1952,32 @@ td > a { display: inline-block; padding: 4px 0; min-width: 24px; }
   .pose-retour { padding: 22px 20px; }
   .retour-corr .btn { justify-self: stretch; text-align: center; }
 }
+
+/* ═════════════════════════════════════════════════════════════════════ 45
+   Bloc « ce que deviennent vos informations », sous les formulaires.
+
+   Il ne remplace pas la case de consentement, qui reste l'acte juridique :
+   il répond à l'inquiétude au moment où elle se pose, c'est-à-dire juste
+   avant d'appuyer sur Envoyer. Un bandeau à l'arrivée sur le site aurait
+   fait l'inverse — poser la question trop tôt, à quelqu'un qui ne se la
+   posait pas, et laisser entendre un pistage qui n'existe pas ici.
+
+   Volontairement discret : encadré léger, corps réduit. C'est une
+   réassurance, pas une alerte. */
+.form-privacy{
+  margin:18px 0 14px;
+  padding:14px 16px;
+  border:1px solid var(--li);
+  border-radius:10px;
+  background:var(--bg-2);
+  font-size:.86rem;
+  line-height:1.55;
+}
+.form-privacy > p:first-child{margin:0 0 8px;font-size:.9rem}
+.form-privacy ul{margin:0;padding-left:1.15em;list-style:disc}
+.form-privacy li{margin:0 0 5px}
+.form-privacy li:last-child{margin-bottom:0}
+.form-privacy .hint{margin:9px 0 0;font-size:.8rem}
+@media (max-width:640px){
+  .form-privacy{padding:12px 13px;font-size:.84rem}
+}

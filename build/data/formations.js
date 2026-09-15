@@ -125,7 +125,7 @@ const POSES = [
   h1: "Coller un adhésif sur une vitrine à la méthode sèche",
   title: "Pose d'Adhésif à Sec sur Vitrine — Technique et Limites",
   desc: "La pose à sec : plus rapide, sans repositionnement possible. Technique de la charnière, marouflage progressif, et les films qui l'exigent.",
-  statut: "brouillon", acces: "libre",
+  statut: "publie", acces: "libre",
   duree: "30 min", niveau: "Intermédiaire",
   resume: "Plus rapide que la méthode humide, mais sans droit à l'erreur : le film colle où il touche. C'est la méthode obligatoire pour les films microperforés et les colles à billes.",
   quand: "Sur petits formats, sur les films que l'eau abîme, et quand le délai de séchage n'est pas acceptable.",
@@ -140,13 +140,20 @@ const POSES = [
   erreurs: [
     "Laisser le film retomber devant la raclette : il colle d'un coup et emprisonne une bulle qu'on ne récupère pas.",
     "Retirer tout le liner d'un coup : le film se colle sur lui-même et il est perdu.",
-    "Vouloir repositionner : à sec, un film décollé puis recollé garde des marques."
+    "Vouloir repositionner : à sec, un film décollé puis recollé garde des marques.",
+    "Poser par temps froid : en dessous d'une dizaine de degrés, la colle n'accroche pas et le film se rétracte en séchant. La plage de température admissible figure sur la fiche technique.",
+    "Travailler en plein soleil sur la vitre : le verre chaud fait prendre la colle instantanément, sans laisser le temps de marouffler.",
+    "Négliger la charnière et poser à main levée : le visuel part de travers dès les premiers centimètres et il n'y a pas de retour possible."
   ],
-  securite: ["Travail en hauteur : mêmes règles que pour la méthode humide.", "Gants anti-coupure au cutter."],
-  verifier: "Certains films n'admettent QUE la pose à sec : c'est écrit sur la fiche technique. Les mouiller ruine la colle.",
+  securite: ["Travail en hauteur : mêmes règles que pour la méthode humide.", "Gants anti-coupure au cutter.",
+    "Décapeur thermique s'il sert à chasser une bulle : jamais dirigé vers un joint d'étanchéité, et à distance constante.",
+    "Chutes de liner au sol : elles glissent comme du verglas, surtout sur un carrelage de vitrine."
+  ],
+  verifier: "Certains films n'admettent que la pose à sec — c'est écrit sur leur fiche technique, et les mouiller ruine définitivement la colle. La plage de température de pose y figure également : elle conditionne l'accroche et elle est plus étroite qu'on ne croit, généralement quelques degrés au-dessus de zéro au minimum. En cas de doute sur une référence inconnue, la fiche technique du fabricant tranche, jamais l'habitude prise sur une autre marque.",
   faq: [
     { q: "Quand la méthode sèche est-elle obligatoire ?", a: "Sur les microperforés, dont les trous laisseraient passer l'eau derrière le film, et sur les colles structurées à billes ou canaux d'air, conçues pour se repositionner à sec." },
-    { q: "Comment rattraper une bulle d'air en pose sèche ?", a: "Une petite bulle se perce à l'aiguille très fine et se maroufle. Une grande bulle demande de décoller jusqu'à elle et de reprendre — d'où l'intérêt de maroufler par petites passes." }
+    { q: "Comment rattraper une bulle d'air en pose sèche ?", a: "Une petite bulle se perce à l'aiguille très fine et se maroufle. Une grande bulle demande de décoller jusqu'à elle et de reprendre — d'où l'intérêt de maroufler par petites passes." },
+    { q: "Peut-on poser à sec sur une vitrine en plein soleil ?", a: "C'est déconseillé, et pas pour le confort du poseur. Un verre chauffé par le soleil fait prendre la colle au contact, sans le temps de repositionner ni de chasser l'air. Si le chantier ne peut pas être décalé, travaillez la vitrine à l'ombre du bâtiment, tôt le matin, ou posez un voile d'ombrage le temps de l'intervention." }
   ]
 },
 {
@@ -156,7 +163,7 @@ const POSES = [
   h1: "Poser un film dépoli (effet sablé) sans bulles",
   title: "Poser un Film Dépoli sur Vitre — Sans Bulle ni Trace",
   desc: "Le dépoli ne pardonne rien : chaque bulle et chaque poussière se voit. Préparation, pose humide, découpe des angles et finitions.",
-  statut: "brouillon", acces: "libre",
+  statut: "publie", acces: "libre",
   duree: "1 h", niveau: "Intermédiaire",
   resume: "Le film dépoli est translucide et uniforme : le moindre défaut se lit en contre-jour. C'est la pose la moins indulgente de toutes.",
   quand: "Occultation partielle d'un bureau, confidentialité en pharmacie ou cabinet médical, décor de vitrine.",
@@ -171,13 +178,20 @@ const POSES = [
   erreurs: [
     "Une poussière sous le film : invisible sur un adhésif opaque, très visible sur un dépoli.",
     "Couper à la dimension exacte avant pose : le moindre décalage laisse un jour au bord.",
-    "Lame usée : elle déchire le dépoli au lieu de le couper."
+    "Lame usée : elle déchire le dépoli au lieu de le couper.",
+    "Maroufler avec une raclette dure : elle marque le dépoli de traces brillantes que rien n'efface.",
+    "Poser sur un vitrage sale en périphérie : la poussière du joint migre sous le film dans les jours qui suivent et forme une frange visible.",
+    "Oublier de contrôler en lumière rasante avant d'araser : une bulle repérée après la coupe ne se chasse plus vers le bord."
   ],
-  securite: ["Travail en hauteur.", "Gants anti-coupure : la règle inox et la lame neuve sont une combinaison qui blesse vite."],
-  verifier: "Certains dépolis sont déconseillés sur double vitrage exposé plein sud : l'accumulation de chaleur entre les verres peut provoquer une casse thermique. La compatibilité se lit sur la fiche technique du film et se vérifie auprès du fabricant du vitrage.",
+  securite: ["Travail en hauteur.", "Gants anti-coupure : la règle inox et la lame neuve sont une combinaison qui blesse vite.",
+    "Eau au sol : le sol d'une vitrine mouillé est glissant, et l'on y travaille souvent sur un escabeau.",
+    "Chutes de film et lames usagées : conteneur fermé, jamais la poubelle du client."
+  ],
+  verifier: "Certains dépolis sont déconseillés sur double vitrage exposé plein sud : l'accumulation de chaleur entre les verres peut provoquer une casse thermique, et la responsabilité en cas de bris revient à celui qui a posé. La compatibilité se lit sur la fiche technique du film et se confirme auprès du fabricant du vitrage, qui connaît la composition exacte du double vitrage. Cette vérification prend dix minutes et elle vaut le prix d'un vitrage de vitrine.",
   faq: [
     { q: "Le dépoli adhésif remplace-t-il un verre sablé ?", a: "Visuellement oui, de très près on distingue la différence. Il a l'avantage d'être réversible et infiniment moins cher, et l'inconvénient d'être vulnérable aux rayures." },
-    { q: "Peut-on découper un motif dans le dépoli ?", a: "Oui, c'est même l'usage le plus courant : bandes horizontales, logo réservé en transparence, motif aléatoire. La découpe se fait en amont au traceur, pas sur place." }
+    { q: "Peut-on découper un motif dans le dépoli ?", a: "Oui, c'est même l'usage le plus courant : bandes horizontales, logo réservé en transparence, motif aléatoire. La découpe se fait en amont au traceur, pas sur place." },
+    { q: "Combien de temps avant que le dépoli soit sec ?", a: "Le film est manipulable immédiatement mais la colle n'atteint sa tenue finale qu'après plusieurs jours, le temps que l'eau résiduelle s'évacue. Pendant cette période, quelques micro-bulles laiteuses peuvent subsister : elles disparaissent seules. Ne les percez pas, vous laisseriez un point visible définitif." }
   ]
 },
 {
@@ -187,7 +201,7 @@ const POSES = [
   h1: "Poser un lettrage découpé avec papier de transfert",
   title: "Poser un Lettrage Adhésif Découpé — Papier de Transfert",
   desc: "Lettrage découpé, échenillage, transfert et alignement. La méthode pour que les lettres arrivent droites et espacées comme au fichier.",
-  statut: "brouillon", acces: "libre",
+  statut: "publie", acces: "libre",
   duree: "45 min", niveau: "Débutant",
   resume: "Le lettrage découpé n'a pas de fond : chaque lettre est indépendante et c'est le papier de transfert qui les maintient en place jusqu'à la vitre.",
   quand: "Horaires, raison sociale, mentions légales, numéro de téléphone : tout ce qui est du texte sans fond.",
@@ -202,13 +216,20 @@ const POSES = [
   erreurs: [
     "Oublier une contre-forme : un O plein au lieu d'un O.",
     "Retirer le transfert à 90° : les lettres suivent.",
-    "Se fier à l'œil pour l'horizontalité : un décalage de deux millimètres sur deux mètres se voit depuis la rue."
+    "Se fier à l'œil pour l'horizontalité : un décalage de deux millimètres sur deux mètres se voit depuis la rue.",
+    "Maroufler le transfert trop faiblement : les lettres restent sur le liner au lieu de suivre, et le lettrage est à refaire.",
+    "Poser un lettrage fin par temps humide : l'humidité ambiante suffit à faire perdre son mordant au papier de transfert.",
+    "Oublier de vérifier le sens de lecture avant de poser côté intérieur de vitre : c'est l'erreur qui ne se rattrape jamais."
   ],
-  securite: ["Travail en hauteur selon la position du lettrage."],
-  verifier: "Le temps de repos du transfert avant retrait varie selon le film et la température : fiche technique du fabricant.",
+  securite: ["Travail en hauteur selon la position du lettrage.",
+    "Cutter et lames : rangement immédiat, jamais posé sur l'appui de vitrine.",
+    "Escabeau plutôt que chaise ou comptoir, y compris pour un lettrage bas."
+  ],
+  verifier: "Le temps de repos du transfert avant retrait varie selon le film et la température, et il figure sur la fiche technique du fabricant. Deux points s'y lisent également et se vérifient avant la commande : la pose intérieure ou extérieure attendue, qui change le sens de fabrication du fichier, et la durabilité annoncée du vinyle, qui va de deux à dix ans selon les gammes. Un lettrage économique posé côté extérieur en plein sud ne passe pas deux étés.",
   faq: [
     { q: "Pose humide ou sèche pour un lettrage ?", a: "Humide pour les grands lettrages, où l'alignement compte et où le repositionnement sauve. Sèche pour les petits textes, plus rapide." },
-    { q: "Comment poser un lettrage sur une vitre déjà teintée ?", a: "Sans difficulté particulière côté extérieur. Côté intérieur, sur un film solaire, l'adhérence est moindre : il faut vérifier la compatibilité des deux films." }
+    { q: "Comment poser un lettrage sur une vitre déjà teintée ?", a: "Sans difficulté particulière côté extérieur. Côté intérieur, sur un film solaire, l'adhérence est moindre : il faut vérifier la compatibilité des deux films." },
+    { q: "Combien de temps tient un lettrage de vitrine ?", a: "De deux à dix ans selon la qualité du vinyle et l'exposition. Un film monomère d'entrée de gamme sur une vitrine plein sud commence à jaunir et à se rétracter au bout de deux ans ; un film coulé de qualité posé côté intérieur tient dix ans sans bouger. L'écart de prix à la commande est faible, l'écart de durée est considérable : c'est la question à poser au moment du devis." }
   ]
 },
 {
@@ -218,7 +239,7 @@ const POSES = [
   h1: "Poser un film microperforé sur une vitrine",
   title: "Poser un Microperforé One Way Vision — Méthode et Pièges",
   desc: "Le microperforé se pose à sec, se nettoie autrement et se laque parfois. Pose, entretien et limites du one way vision.",
-  statut: "brouillon", acces: "libre",
+  statut: "publie", acces: "libre",
   duree: "1 h", niveau: "Intermédiaire",
   resume: "Visuel plein depuis la rue, transparence depuis l'intérieur : le microperforé est troué à 40 ou 50 %. Ces trous changent tout, à la pose comme à l'entretien.",
   quand: "Vitrine que l'on veut habiller sans aveugler le commerce, vitre de véhicule, devanture d'agence.",
@@ -232,13 +253,20 @@ const POSES = [
   erreurs: [
     "Poser à l'eau : c'est l'erreur classique, et elle est irrattrapable.",
     "Nettoyer à la raclette de laveur de vitres : elle arrache le film par les perforations.",
-    "Poser côté intérieur : le one way vision ne fonctionne que côté extérieur, avec la lumière du jour du bon côté."
+    "Poser côté intérieur : le one way vision ne fonctionne que côté extérieur, avec la lumière du jour du bon côté.",
+    "Poser sur une vitrine dépourvue de recul intérieur : le one way vision a besoin que l'intérieur soit plus sombre que l'extérieur. Devant un mur blanc éclairé, l'effet ne fonctionne pas.",
+    "Omettre le laminat de protection en pose extérieure : l'encre s'efface en une saison et les perforations se chargent de poussière.",
+    "Araser au ras du joint sans marge : la moindre reprise de découpe laisse un bord dentelé, très visible sur un support perforé."
   ],
-  securite: ["Travail en hauteur selon la vitrine."],
-  verifier: "Le taux de perforation (souvent 40 ou 50 %) et la nécessité d'un laminat de protection en pose extérieure dépendent de la référence : fiche technique.",
+  securite: ["Travail en hauteur selon la vitrine.",
+    "Chutes de microperforé : elles sont coupantes en bord de découpe et glissantes au sol.",
+    "Gants anti-coupure au moment de l'arasement, la lame ripe facilement sur un film perforé."
+  ],
+  verifier: "Le taux de perforation — le plus souvent 40 ou 50 % — et la nécessité d'un laminat de protection en pose extérieure dépendent de la référence et se lisent sur la fiche technique. Un point mérite d'être tranché avant la commande : la pose est-elle prévue côté extérieur ou côté intérieur du vitrage ? Les deux existent, elles ne se fabriquent pas de la même façon, et un film destiné à l'extérieur posé à l'intérieur donne un résultat terne dans les deux sens.",
   faq: [
     { q: "Comment nettoie-t-on un microperforé ?", a: "À l'eau claire et à l'éponge douce, par tamponnement, jamais à la raclette ni au jet haute pression. C'est à dire au client : c'est la première cause de dégradation." },
-    { q: "Le one way vision fonctionne-t-il la nuit ?", a: "Non, et c'est sa limite. L'effet repose sur le contraste de luminosité : la nuit, boutique éclairée et rue sombre, la vision s'inverse et l'on voit l'intérieur depuis la rue." }
+    { q: "Le one way vision fonctionne-t-il la nuit ?", a: "Non, et c'est sa limite. L'effet repose sur le contraste de luminosité : la nuit, boutique éclairée et rue sombre, la vision s'inverse et l'on voit l'intérieur depuis la rue." },
+    { q: "Le microperforé réduit-il la lumière à l'intérieur ?", a: "Oui, dans la proportion de son taux de perforation : un film perforé à 40 % laisse passer environ 40 % de la lumière, donc en bloque la majorité. Sur une vitrine déjà sombre ou orientée au nord, l'effet sur le confort intérieur est net, et les occupants le signalent en général au bout de quelques jours. À évaluer avant de couvrir une vitrine entière." }
   ]
 },
 {
@@ -248,7 +276,7 @@ const POSES = [
   h1: "Déposer un ancien adhésif sans rayer le verre",
   title: "Retirer un Vieil Adhésif de Vitrine Sans Rayer le Verre",
   desc: "Chaleur, grattoir, dissolvant de colle : la méthode pour déposer un adhésif cuit par dix ans de soleil sans abîmer le support.",
-  statut: "brouillon", acces: "libre",
+  statut: "publie", acces: "libre",
   duree: "1 h 30", niveau: "Débutant",
   resume: "Un adhésif de dix ans ne se décolle pas, il s'arrache par morceaux en laissant sa colle. La chaleur est la clé, la patience fait le reste.",
   quand: "Changement d'enseigne, reprise de local, rénovation de vitrine.",
@@ -262,17 +290,22 @@ const POSES = [
   erreurs: [
     "Surchauffer : sur double vitrage, une chaleur excessive et localisée risque la casse thermique.",
     "Grattoir sur châssis peint ou alu laqué : il raye définitivement. Le grattoir est pour le verre, pas pour l'encadrement.",
-    "Dissolvant sur plexiglas ou polycarbonate : beaucoup de produits les fissurent. Toujours tester sur une zone cachée."
+    "Dissolvant sur plexiglas ou polycarbonate : beaucoup de produits les fissurent. Toujours tester sur une zone cachée.",
+    "Décoller à froid pour gagner du temps : le film casse en petits morceaux et la colle reste intégralement, ce qui triple la durée du chantier.",
+    "Employer une lame de rasoir sur un vitrage à couche : les verres à couche peu émissive ou anti-reflet ont un traitement de surface que la lame raye définitivement.",
+    "Négliger le nettoyage du joint périphérique : la colle s'y accumule et ressort sous le film neuf dans les semaines qui suivent."
   ],
   securite: [
     "Décapeur thermique : gants, et jamais dirigé vers un joint d'étanchéité ou un câble.",
     "Dissolvants : ventilation, gants nitrile, lecture de la fiche de données de sécurité.",
-    "Déchets : les films déposés et les chiffons imbibés relèvent d'une filière de déchets professionnels, pas de la poubelle du client."
+    "Déchets : les films déposés et les chiffons imbibés relèvent d'une filière de déchets professionnels, pas de la poubelle du client.",
+    "Travail en hauteur si la dépose concerne un bandeau haut : nacelle ou échafaudage, pas d'escabeau en appui sur la vitrine."
   ],
-  verifier: "La compatibilité du dissolvant avec le support (verre, alu laqué, plexiglas, peinture) est indiquée sur sa fiche de données de sécurité.",
+  verifier: "La compatibilité du dissolvant avec le support — verre, aluminium laqué, plexiglas, peinture — est indiquée sur sa fiche de données de sécurité, qui doit être présente sur le chantier. Un point souvent découvert trop tard : sur un vitrage à couche, ni la lame ni certains solvants ne sont admis, et le vitrier du bâtiment est le seul à pouvoir dire de quel type de verre il s'agit. Avant d'attaquer une dépose sur un vitrage dont on ignore la nature, la question se pose au gestionnaire du bâtiment.",
   faq: [
     { q: "Et sur du plexiglas ?", a: "Chaleur douce uniquement, jamais de grattoir métallique, et surtout pas d'acétone ni de white-spirit qui fissurent le PMMA. Un dissolvant spécifiquement déclaré compatible, ou rien." },
-    { q: "Combien de temps pour déposer une vitrine complète ?", a: "Très variable : un adhésif de deux ans se retire en une demi-heure, un adhésif de dix ans plein sud peut demander une journée. C'est à chiffrer en régie, pas au forfait." }
+    { q: "Combien de temps pour déposer une vitrine complète ?", a: "Très variable : un adhésif de deux ans se retire en une demi-heure, un adhésif de dix ans plein sud peut demander une journée. C'est à chiffrer en régie, pas au forfait." },
+    { q: "Combien de temps faut-il pour déposer un covering de vitrine complet ?", a: "Bien plus longtemps que pour le poser, et c'est la surprise classique du devis. Comptez deux à trois fois le temps de pose sur un film récent et correctement posé, davantage sur un adhésif resté sept ou huit ans en plein soleil, dont la colle a migré et durci. Un devis de dépose établi au même tarif horaire qu'une pose est un devis qui sera dépassé." }
   ]
 },
 /* ========================== ENSEIGNE DE FAÇADE ========================== */
@@ -282,7 +315,7 @@ const POSES = [
   h1: "Poser un caisson lumineux en façade",
   title: "Poser un Caisson Lumineux en Façade — Fixation et Raccord",
   desc: "Repérage, choix des chevilles selon le support, passage de l'alimentation, étanchéité des percements. La pose d'un caisson pas à pas.",
-  statut: "brouillon", acces: "libre", duree: "3 h", niveau: "Confirmé",
+  statut: "publie", acces: "libre", duree: "3 h", niveau: "Confirmé",
   resume: "Un caisson pèse, prend le vent et se raccorde au réseau. Trois métiers en un : fixation, étanchéité, électricité.",
   quand: "Devanture de commerce, façade d'agence, enseigne de zone d'activité.",
   materiel: ["Perforateur et forets adaptés au support", "Chevilles dimensionnées selon le support et la charge", "Niveau laser", "Détecteur de métaux et de câbles", "Mastic d'étanchéité compatible façade", "Matériel de travail en hauteur"],
@@ -295,12 +328,19 @@ const POSES = [
     ["Passer et raccorder l'alimentation", "Percement en pente vers l'extérieur, passe-fil, et raccordement par un intervenant habilité."],
     ["Étanchéifier", "Mastic sur tous les percements, en cordon continu. C'est ce qui évite l'infiltration derrière la façade — et le litige deux hivers plus tard."]
   ],
-  erreurs: ["Cheviller du parpaing creux comme du béton plein.", "Percer sans détecter.", "Percement horizontal ou en pente vers l'intérieur : l'eau entre.", "Serrer une cheville au-delà du couple : elle perd sa tenue."],
-  securite: ["Travail en hauteur : échafaudage ou nacelle, harnais selon configuration. La conduite de nacelle exige une autorisation délivrée par l'employeur après formation.", "Raccordement électrique : opération réservée à une personne titulaire d'une habilitation électrique adaptée.", "Occupation du domaine public : autorisation en mairie, balisage, et arrêté de circulation si le trottoir est neutralisé.", "Casque et chaussures de sécurité : un caisson qui échappe tombe de haut."],
-  verifier: "La charge admissible d'une cheville dépend du support, de l'entraxe, de la distance au bord et de la profondeur d'ancrage. Ces valeurs figurent dans l'avis technique européen de la cheville. Pour un caisson de grande dimension ou en site exposé, une note de calcul au vent selon l'Eurocode 1 s'impose : ce n'est pas une estimation à l'œil.",
+  erreurs: ["Cheviller du parpaing creux comme du béton plein.", "Percer sans détecter.", "Percement horizontal ou en pente vers l'intérieur : l'eau entre.", "Serrer une cheville au-delà du couple : elle perd sa tenue.",
+    "Poser le caisson avant d'avoir fait tirer l'alimentation : il faut alors le redéposer, ou passer le câble en apparent sur la façade.",
+    "Négliger l'isolation thermique par l'extérieur : sur une façade ITE, une cheville ordinaire ne traverse que l'isolant et ne tient rien. Il faut des fixations traversantes prévues pour ce cas.",
+    "Oublier le point de purge en partie basse : un caisson étanche en apparence accumule la condensation et noie son alimentation en un hiver."
+  ],
+  securite: ["Travail en hauteur : échafaudage ou nacelle, harnais selon configuration. La conduite de nacelle exige une autorisation délivrée par l'employeur après formation.", "Raccordement électrique : opération réservée à une personne titulaire d'une habilitation électrique adaptée.", "Occupation du domaine public : autorisation en mairie, balisage, et arrêté de circulation si le trottoir est neutralisé.", "Casque et chaussures de sécurité : un caisson qui échappe tombe de haut.",
+    "Le caisson se lève à deux au minimum, ou au treuil : sa prise au vent en cours de levage surprend même par temps calme."
+  ],
+  verifier: "La charge admissible d'une cheville dépend du support, de l'entraxe, de la distance au bord et de la profondeur d'ancrage. Ces valeurs figurent dans la fiche technique du fabricant de fixations, sous forme de tableaux par matériau, et elles ne se déduisent d'aucune règle générale. Sur un support douteux — parpaing creux, brique ancienne, façade isolée par l'extérieur, enduit épais sur support inconnu — un essai d'arrachement sur place est la seule réponse sérieuse. Aucun poids de caisson ne permet à lui seul de choisir une fixation : c'est le support qui commande, pas la charge.",
   faq: [
     { q: "Faut-il une autorisation pour poser un caisson ?", a: "Oui dès lors que la commune a un règlement local de publicité, ou que le local se trouve aux abords d'un monument historique ou en site patrimonial remarquable. Le dossier repose sur le formulaire Cerfa n° 14798. La page ville du réseau indique le régime applicable commune par commune." },
-    { q: "Qui raccorde l'alimentation ?", a: "Une personne habilitée. Le poseur d'enseigne n'est pas électricien par défaut : l'habilitation électrique est une autorisation écrite délivrée par l'employeur après formation, et elle est exigible en cas de contrôle comme en cas de sinistre." }
+    { q: "Qui raccorde l'alimentation ?", a: "Une personne habilitée. Le poseur d'enseigne n'est pas électricien par défaut : l'habilitation électrique est une autorisation écrite délivrée par l'employeur après formation, et elle est exigible en cas de contrôle comme en cas de sinistre." },
+    { q: "Combien de temps dure un caisson lumineux ?", a: "Le caisson lui-même, quinze à vingt ans si l'étanchéité tient. Ce qui lâche en premier, ce sont l'alimentation et les modules LED, entre cinq et dix ans selon leur qualité et la température qu'ils subissent à l'intérieur du coffre. D'où l'importance d'un accès de maintenance prévu dès la pose : un caisson qu'on ne peut pas ouvrir sans le déposer finit remplacé au lieu d'être réparé." }
   ]
 },
 {
@@ -309,7 +349,7 @@ const POSES = [
   h1: "Poser des lettres découpées en relief sur une façade",
   title: "Poser des Lettres Relief en Façade — Gabarit et Entraxes",
   desc: "La technique du gabarit papier, le perçage des entretoises, l'alignement et le rattrapage des façades qui ne sont pas d'aplomb.",
-  statut: "brouillon", acces: "libre", duree: "4 h", niveau: "Confirmé",
+  statut: "publie", acces: "libre", duree: "4 h", niveau: "Confirmé",
   resume: "Chaque lettre est une pièce indépendante à fixer. Tout se joue au gabarit : une fois percé, on ne rattrape plus.",
   quand: "Enseigne haut de gamme, façade en secteur patrimonial où le caisson plein est refusé.",
   materiel: ["Gabarit papier ou film fourni par l'atelier", "Perforateur, forets", "Entretoises et tiges filetées", "Niveau laser", "Mastic ou scellement selon le support"],
@@ -321,12 +361,19 @@ const POSES = [
     ["Présenter les lettres", "Une par une, en partant du centre vers les extrémités pour répartir les écarts éventuels."],
     ["Ajuster et étanchéifier", "Entretoises réglées pour compenser les défauts de planéité, mastic sur les percements."]
   ],
-  erreurs: ["Retirer le gabarit avant d'avoir percé tous les trous.", "Poser les lettres avant la fin du temps de prise du scellement.", "Commencer par une extrémité : l'écart cumulé se retrouve entièrement sur la dernière lettre.", "Négliger le défaut d'aplomb de la façade : les lettres avancent et reculent visiblement en lumière rasante."],
-  securite: ["Travail en hauteur.", "Poussière de perçage : masque FFP2 minimum, surtout en intérieur ou sur support ancien.", "Attention aux supports amiantés sur les bâtiments antérieurs à 1997 : le repérage avant travaux est une obligation du donneur d'ordre."],
-  verifier: "Le temps de prise d'un scellement chimique dépend fortement de la température : la notice donne un tableau. À 5 °C il peut être plusieurs fois plus long qu'à 20 °C.",
+  erreurs: ["Retirer le gabarit avant d'avoir percé tous les trous.", "Poser les lettres avant la fin du temps de prise du scellement.", "Commencer par une extrémité : l'écart cumulé se retrouve entièrement sur la dernière lettre.", "Négliger le défaut d'aplomb de la façade : les lettres avancent et reculent visiblement en lumière rasante.",
+    "Percer sans relever l'aplomb réel de la façade : sur un mur qui fuit, des entretoises de longueur identique donnent des lettres qui avancent et reculent.",
+    "Poser des lettres de grande taille sans point de fixation intermédiaire : elles vrillent avec les écarts de température.",
+    "Coller des lettres légères sur une façade peinte sans essai préalable : c'est la peinture qui se décolle, pas la lettre."
+  ],
+  securite: ["Travail en hauteur.", "Poussière de perçage : masque FFP2 minimum, surtout en intérieur ou sur support ancien.", "Attention aux supports amiantés sur les bâtiments antérieurs à 1997 : le repérage avant travaux est une obligation du donneur d'ordre.",
+    "Entretoises et tiges dépassant de la façade pendant la pose : elles sont à hauteur de visage et doivent être signalées ou protégées."
+  ],
+  verifier: "Le temps de prise d'un scellement chimique dépend fortement de la température, et la notice donne un tableau : à cinq degrés, il peut être plusieurs fois plus long qu'à vingt. Deux autres valeurs s'y lisent et ne se devinent pas : la profondeur d'ancrage exigée pour chaque diamètre de tige, et le couple de serrage. Sur une façade dont la composition est inconnue — enduit épais, doublage, isolation extérieure —, un sondage préalable dit ce qui porte réellement, et la réponse surprend souvent.",
   faq: [
     { q: "Lettres collées ou vissées ?", a: "Le collage seul se réserve aux petites lettres légères sur support parfaitement sain et plan. Dès que la lettre a du poids ou de la prise au vent, la fixation mécanique s'impose — quitte à la compléter par un joint." },
-    { q: "Pourquoi les lettres relief passent-elles mieux en secteur patrimonial ?", a: "L'Architecte des Bâtiments de France privilégie les dispositifs qui laissent lire la façade. Des lettres détachées conservent la maçonnerie visible entre elles, là qu'un caisson plein masque un pan de mur entier." }
+    { q: "Pourquoi les lettres relief passent-elles mieux en secteur patrimonial ?", a: "L'Architecte des Bâtiments de France privilégie les dispositifs qui laissent lire la façade. Des lettres détachées conservent la maçonnerie visible entre elles, là qu'un caisson plein masque un pan de mur entier." },
+    { q: "Quelle est la durée de vie de lettres découpées en relief ?", a: "Vingt ans et davantage en aluminium laqué ou en inox, à condition que la fixation soit saine et que la façade ne travaille pas. C'est le format d'enseigne le plus durable, et c'est aussi celui qui vieillit le mieux visuellement : une lettre relief se nettoie, se repeint et se redépose, là où un caisson vieilli se remplace. C'est un argument à faire valoir quand le budget initial paraît élevé." }
   ]
 },
 {
@@ -335,7 +382,7 @@ const POSES = [
   h1: "Poser des lettres rétro-éclairées et passer les câbles",
   title: "Lettres Rétro-Éclairées — Pose, Câblage et Halo",
   desc: "Le rétro-éclairage se joue au recul de la lettre et à la couleur du mur. Pose, passage des câbles, alimentation et réglage du halo.",
-  statut: "brouillon", acces: "libre", duree: "5 h", niveau: "Confirmé",
+  statut: "publie", acces: "libre", duree: "5 h", niveau: "Confirmé",
   resume: "La lettre n'éclaire pas vers l'avant mais vers le mur. Le rendu dépend autant du support que du produit.",
   quand: "Enseigne de façade haut de gamme, hall d'accueil, contre-jour de nuit.",
   materiel: ["Gabarit", "Perforateur", "Entretoises réglables", "Alimentations LED", "Gaines et passe-fils", "Détecteur de câbles"],
@@ -347,12 +394,19 @@ const POSES = [
     ["Raccorder et régler", "Raccordement par intervenant habilité, essai de nuit avant de refermer."],
     ["Étanchéifier", "Tous les percements, cordon continu."]
   ],
-  erreurs: ["Poser sur mur sombre sans prévenir le client du rendu.", "Connexions non étanches en extérieur.", "Alimentation sous-dimensionnée : scintillement et durée de vie réduite.", "Ne pas prévoir l'accès à l'alimentation pour la maintenance."],
-  securite: ["Travail en hauteur.", "Raccordement réservé à un intervenant habilité.", "Coupure et consignation du circuit avant intervention."],
-  verifier: "La puissance de l'alimentation, son indice de protection et la longueur maximale de ruban par alimentation sont données par le fabricant. L'obligation d'extinction nocturne des enseignes lumineuses relève de l'article R.581-59 du code de l'environnement.",
+  erreurs: ["Poser sur mur sombre sans prévenir le client du rendu.", "Connexions non étanches en extérieur.", "Alimentation sous-dimensionnée : scintillement et durée de vie réduite.", "Ne pas prévoir l'accès à l'alimentation pour la maintenance.",
+    "Rétroéclairer sur un mur clair très réfléchissant : le halo se dilue et l'effet disparaît de jour comme de nuit.",
+    "Mélanger des modules LED de lots ou de marques différentes sur une même enseigne : la teinte de blanc varie d'une lettre à l'autre et cela ne se rattrape pas.",
+    "Placer l'alimentation dans un coffre non ventilé : la chaleur accumulée divise sa durée de vie."
+  ],
+  securite: ["Travail en hauteur.", "Raccordement réservé à un intervenant habilité.", "Coupure et consignation du circuit avant intervention.",
+    "Les alimentations restent sous tension résiduelle après coupure : respecter le délai de décharge indiqué avant toute manipulation."
+  ],
+  verifier: "La puissance de l'alimentation, son indice de protection et la longueur maximale de ruban par alimentation sont données par le fabricant, et les dépasser réduit la durée de vie sans forcément provoquer de panne immédiate — ce qui rend l'erreur difficile à détecter. L'obligation d'extinction nocturne s'applique par ailleurs indépendamment de la technologie employée. Un point à trancher avant la commande : la température de blanc, du blanc chaud au blanc froid, qui change complètement le rendu nocturne et ne se modifie plus après fabrication.",
   faq: [
     { q: "Quelle distance entre la lettre et le mur ?", a: "Elle se règle à l'essai, de nuit, avant serrage définitif : c'est le seul moyen de juger. Les entretoises réglables existent pour cela." },
-    { q: "Combien consomme une enseigne LED ?", a: "Bien moins qu'un néon, mais le chiffre exact dépend du linéaire et du produit. L'extinction nocturne étant de toute façon obligatoire, la consommation réelle est calculée sur les heures autorisées." }
+    { q: "Combien consomme une enseigne LED ?", a: "Bien moins qu'un néon, mais le chiffre exact dépend du linéaire et du produit. L'extinction nocturne étant de toute façon obligatoire, la consommation réelle est calculée sur les heures autorisées." },
+    { q: "Le rétroéclairage convient-il à toutes les façades ?", a: "Non, et c'est la question à poser avant de le proposer. Il lui faut un fond mat, de teinte moyenne à sombre, et un recul suffisant pour que le halo se forme. Sur une façade blanche, vitrée ou très claire, l'effet est faible et le client sera déçu par un résultat pourtant conforme à la commande. Une simulation nocturne au moment du devis évite ce malentendu." }
   ]
 },
 {
@@ -763,7 +817,7 @@ const POSES = [
   h1: "Poser un adhésif sur surface complexe, rivetée ou ondulée",
   title: "Poser un Adhésif sur Rivets et Tôle Ondulée",
   desc: "Rivets, ondulations, tôle nervurée : la pose au pinceau chauffant et au rouleau. Les techniques pour épouser un relief marqué.",
-  statut: "brouillon", acces: "reseau", duree: "1 jour", niveau: "Expert",
+  statut: "publie", acces: "reseau", duree: "1 jour", niveau: "Expert",
   resume: "Sur une tôle rivetée ou ondulée, le film doit épouser chaque relief sans être étiré à l'excès. C'est la pose la plus technique du métier.",
   quand: "Camion à ridelles rivetées, remorque, container, bardage industriel ondulé.",
   materiel: ["Film coulé haute conformabilité", "Décapeur thermique", "Rouleau en mousse dure", "Pinceau de marouflage", "Aiguille fine", "Thermomètre infrarouge"],
@@ -775,12 +829,20 @@ const POSES = [
     ["Percer si nécessaire", "Sur les reliefs les plus marqués, une micro-perforation à l'aiguille libère l'air emprisonné."],
     ["Post-chauffer impérativement", "C'est l'étape qui empêche le film de revenir à sa forme initiale. Sans elle, le film se décolle des reliefs en quelques semaines."]
   ],
-  erreurs: ["Film calandré au lieu de coulé.", "Surchauffer : le film blanchit et devient cassant.", "Étirer au lieu de maroufler.", "Oublier le post-chauffage : décollement garanti sur les reliefs."],
-  securite: ["Décapeur thermique en usage prolongé : pauses et gants.", "Travail en hauteur sur camion ou bardage."],
-  verifier: "La température de marouflage et celle de post-chauffage sont propres au film et se contrôlent au thermomètre infrarouge. Les valeurs sont sur la fiche technique — les dépasser détruit le film.",
+  erreurs: ["Film calandré au lieu de coulé.", "Surchauffer : le film blanchit et devient cassant.", "Étirer au lieu de maroufler.", "Oublier le post-chauffage : décollement garanti sur les reliefs.",
+    "Chauffer le film avant de l'avoir posé à plat : préchauffé, il perd sa mémoire de forme et ne se rétracte plus correctement dans les creux.",
+    "Employer un film monomère sur une surface à double courbure : il ne s'y conforme pas et se décolle par les bords en quelques semaines.",
+    "Poser sur une surface froide : en dessous de la température admissible, la colle ne s'accroche pas et le travail se défait à la première pluie."
+  ],
+  securite: ["Décapeur thermique en usage prolongé : pauses et gants.", "Travail en hauteur sur camion ou bardage.",
+    "Décapeur ou chalumeau de carrossier : risque de brûlure et d'inflammation des chutes de film, poste dégagé.",
+    "Ventilation si le travail se fait en local fermé, les films chauffés dégagent des composés volatils."
+  ],
+  verifier: "Seuls les films coulés, dits « cast », se conforment durablement à une surface complexe : rivets, ondulations, double courbure. Un film calandré posé au même endroit se rétracte et découvre les reliefs en quelques mois. Le type de film, sa plage de température de pose et la température de thermoformage admissible figurent sur la fiche technique. Sur un support inconnu — bardage traité, panneau composite, peinture récente —, un essai d'adhérence sur une zone cachée vaut mieux qu'une reprise complète.",
   faq: [
     { q: "Peut-on couvrir un rivet entièrement ?", a: "Oui avec un film coulé haute conformabilité, chauffé et maroufflé au pinceau autour du rivet, puis post-chauffé. C'est long, et c'est ce qui distingue un poseur confirmé." },
-    { q: "Et sur tôle ondulée de bardage ?", a: "Même principe : marouflage au fond de chaque onde, post-chauffage systématique. Prévoir un temps de pose largement supérieur à une surface plane équivalente." }
+    { q: "Et sur tôle ondulée de bardage ?", a: "Même principe : marouflage au fond de chaque onde, post-chauffage systématique. Prévoir un temps de pose largement supérieur à une surface plane équivalente." },
+    { q: "Combien de temps faut-il attendre après une peinture neuve ?", a: "Plusieurs semaines, et c'est l'erreur la plus fréquente sur un véhicule ou un bardage repeint. Une peinture fraîche continue de dégazer bien après avoir séché en surface : les solvants qui s'échappent forment des bulles sous l'adhésif et ruinent l'accroche. Le délai exact dépend du type de peinture et figure dans sa documentation ; à défaut, un mois est un minimum raisonnable." }
   ]
 },
 {

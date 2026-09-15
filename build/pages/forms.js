@@ -259,6 +259,16 @@ function devis(cities) {
               <button type="button" class="btn btn-ghost" data-prev>Retour</button>
               <button type="submit" class="btn btn-primary btn-lg" data-submit>Envoyer ma demande</button>
             </div>
+            <div class="form-privacy">
+              <p><strong>Ce que deviennent vos informations</strong></p>
+              <ul>
+                <li>Transmises à <strong>deux ou trois professionnels</strong> choisis pour votre projet, jamais davantage.</li>
+                <li><strong>Ni vendues, ni louées, ni cédées</strong> à qui que ce soit d'autre.</li>
+                <li>Le site ne dépose <strong>aucun cookie publicitaire ni traceur</strong>.</li>
+                <li>Échanges chiffrés (HTTPS). Suppression sur simple demande, à tout moment.</li>
+              </ul>
+              <p class="hint">Le détail figure dans la <a href="confidentialite.html">politique de confidentialité</a>.</p>
+            </div>
             <p class="hint" style="text-align:center">Gratuit · Sans engagement · Réponse sous 48 h ouvrées</p>
           </div>
         </form>
@@ -947,7 +957,17 @@ function pros(cities) {
             <button type="button" class="btn btn-ghost" data-prev>Retour</button>
             <button type="submit" class="btn btn-pro btn-lg" data-submit>Envoyer ma candidature</button>
           </div>
-          <p class="hint" style="text-align:center">Réponse sous 48 h ouvrées · Aucune commission sur vos affaires</p>
+          <div class="form-privacy">
+              <p><strong>Ce que deviennent vos informations</strong></p>
+              <ul>
+                <li><strong>Aucun annuaire public</strong> : votre nom n'apparaît nulle part sur le site, vos concurrents ignorent que vous êtes du réseau.</li>
+                <li>Le fichier partenaires <strong>n'est ni publié ni commercialisé</strong> — c'est un engagement contractuel, article 10 des <a href=\"conditions-generales.html\">conditions générales</a>.</li>
+                <li>Le site ne dépose <strong>aucun cookie publicitaire ni traceur</strong>.</li>
+                <li>Vos coordonnées ne sont communiquées qu'au client dont le projet vous concerne. Échanges chiffrés (HTTPS).</li>
+              </ul>
+              <p class="hint">Le détail figure dans la <a href="confidentialite.html">politique de confidentialité</a>.</p>
+            </div>
+            <p class="hint" style="text-align:center">Réponse sous 48 h ouvrées · Aucune commission sur vos affaires</p>
         </div>
               </form>
         <script type="application/json" id="dept-data">${JSON.stringify(
